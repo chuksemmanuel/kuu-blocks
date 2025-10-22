@@ -1,8 +1,21 @@
 <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
 
+{% assign tabs = "" %}
 
-<div x-data="{ menuOpen: true }" @toggle-menu.window="menuOpen = !menuOpen">
+{% for item in section.blocks %}
+  {% if item.type == 'menu_item' %}
+    {% assign current_tab = item.settings.parent_tab %}
+    {% unless tabs contains current_tab %}
+      {% assign tabs = tabs | append: current_tab | append: ',' %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+
+{% assign tab_list = tabs | split: ',' %}
+
+
+  <div x-data="{ menuOpen: true }" @toggle-menu.window="menuOpen = !menuOpen">
 
   <!-- Menu Trigger Button -->
   <button @click="$dispatch('toggle-menu')" class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-black inset-ring inset-ring-white/5 hover:bg-white/20">
@@ -80,7 +93,7 @@
       </div>
 
 
-      {% comment %} Menu Tab {% endcomment %}
+      {% comment %} Menu Tab  Starts {% endcomment %}
       <div
         x-data="{
         tabSelected: 1,
@@ -107,7 +120,6 @@
 
         <div x-ref="tabButtons" class="relative inline-grid items-center justify-center w-full h-10 grid-cols-3 p-1 text-gray-500 bg-white select-none">
 
-
           <button
             :id="$id(tabId)"
             @click="tabButtonClicked($el);"
@@ -115,6 +127,16 @@
             :class="{ 'bg-gray-100 text-gray-700' : tabButtonActive($el) }"
             class="relative z-20 inline-flex items-center justify-center w-full h-8 px-3 text-sm font-medium transition-all rounded-md cursor-pointer whitespace-nowrap">
             Tab 1
+
+          </button>
+          <button
+            :id="$id(tabId)"
+            @click="tabButtonClicked($el);"
+            type="button"
+            :class="{ 'bg-gray-100 text-gray-700' : tabButtonActive($el) }"
+            class="relative z-20 inline-flex items-center justify-center w-full h-8 px-3 text-sm font-medium transition-all rounded-md cursor-pointer whitespace-nowrap">
+            Tab 2
+
           </button>
 
 
@@ -147,6 +169,7 @@
 
         </div>
       </div>
+    {% comment %}  {% endcomment %}
 
     </nav>
 
@@ -155,35 +178,3 @@
 
 
 </div>
-
-
-{% schema %}
-  {
-    "name": "Mobile Menu",
-    "settings": [
-      {
-
-        "type": "text",
-        "id": "tab-title",
-        "label": "Menu Title",
-        "info": "This is displayed in to top tabs, e.g Footwears, Bestsellers"
-      }
-    ],
-
-    "blocks": [
-      {
-        "type": "mobile-menu-tab"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Tabbed Menu",
-        "blocks": [
-          {
-            "type": "mobile-menu-tab"
-          }
-        ]
-      }
-    ]
-  }
-{% endschema %}

@@ -1,7 +1,10 @@
 <header>
   <div class="flex items-center justify-center gap-4">
 
-    {% content_for 'blocks' %}
+
+    {% render 'mobile-menu'
+      , section: section %}
+
 
     <h2 class="header__title">
       {{ shop.name | link_to: routes.root_url }}
@@ -69,8 +72,35 @@
     ],
     "blocks": [
       {
-        "type": "mobile-menu"
+        "type": "menu_item",
+        "name": "Menu Item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Item Image"
+          }, {
+            "type": "text",
+            "id": "title",
+            "label": "Item Title"
+          }, {
+            "type": "url",
+            "id": "href",
+            "label": "Item Link"
+          }, {
+            "type": "text",
+            "id": "parent_tab",
+            "label": "Parent Tab (must match tab title)"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Tabbed Menu"
+
       }
     ]
+
   }
 {% endschema %}
