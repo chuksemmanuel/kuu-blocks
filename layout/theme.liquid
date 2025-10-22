@@ -12,7 +12,7 @@
 
 
     {% # Load Custom Alpine js %}
-    <script src="{{ 'alpine.js' |  asset_url }}" defer>
+    <script src="{{ 'alpine@3.15.0.min.js' |  asset_url }}" defer>
   </script>
 
     {% # Social, title, etc. %}
@@ -29,6 +29,13 @@
     {% sections 'footer-group' %}
 
 
-    <script src="{{ 'swiper.js' |  asset_url }}" defer></script>
+    {% # Load Custom Swiper js %}
+    <script src="{{ 'swiper-element-bundle@3.13.0.min.js' |  asset_url }}" defer></script>
+
+    {% # Load Custom Gsap js %}
+    <script src="{{ 'gsap@3.13.min.js' |  asset_url }}" defer></script>
+
+    {% # Load Custom App js %}
+    <script src="{{ 'app.js' |  asset_url }}" defer></script>
   </body>
 </html>

@@ -8,15 +8,44 @@
  * ------------------------------------------------------------
  */
 {
-  "type": "header",
-  "name": "t:general.header",
-  "sections": {
-    "header": {
-      "type": "header",
-      "settings": {}
-    }
-  },
-  "order": [
-    "header"
-  ],
+	"type": "header",
+	"name": "t:general.header",
+	"sections": {
+		"anouncement_bar_hrfxpD": {
+			"type": "anouncement-bar",
+			"blocks": {
+				"announcement_agaGWX": {
+					"type": "announcement",
+					"settings": {
+						"announcement_text": "<p>Free shipping on orders over $50!</p>"
+					}
+				},
+				"announcement_wANDX7": {
+					"type": "announcement",
+					"settings": {
+						"announcement_text": "<p>30days money back guarantee</p>"
+					}
+				},
+				"announcement_MF7iHw": {
+					"type": "announcement",
+					"settings": {
+						"announcement_text": "<p>Free Mystery gift included</p>"
+					}
+				}
+			},
+			"block_order": ["announcement_agaGWX", "announcement_wANDX7", "announcement_MF7iHw"],
+			"name": "Announcement Bar",
+			"settings": {
+				"background_color": "#ff0606",
+				"text_color": "#ffffff"
+			}
+		},
+		"header": {
+			"type": "header",
+			"settings": {
+				"menu": ""
+			}
+		}
+	},
+	"order": ["anouncement_bar_hrfxpD", "header"]
 }

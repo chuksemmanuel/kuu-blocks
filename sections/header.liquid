@@ -1,7 +1,10 @@
 <header>
-  <h2 class="header__title">
-    {{ shop.name | link_to: routes.root_url }}
-  </h2>
+  <div class="flex items-center justify-center gap-4">
+    <div class="mr-4 shrink-0 " style="background:{{settings.background_color}}; ">{% render 'mobile-menu' %}</div>
+    <h2 class="header__title">
+      {{ shop.name | link_to: routes.root_url }}
+    </h2>
+  </div>
 
   <div class="header__menu">
     {% for link in section.settings.menu.links %}
@@ -53,14 +56,14 @@
 {% endstylesheet %}
 
 {% schema %}
-{
-  "name": "t:general.header",
-  "settings": [
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
-    }
-  ]
-}
+  {
+    "name": "t:general.header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "t:labels.menu"
+      }
+    ]
+  }
 {% endschema %}

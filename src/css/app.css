@@ -12,6 +12,10 @@
 
 @layer components {
 	.anouncement-bar {
-		@apply w-full';
+		@apply w-full;
+	}
+
+	[x-cloak] {
+		display: none !important;
 	}
 }
