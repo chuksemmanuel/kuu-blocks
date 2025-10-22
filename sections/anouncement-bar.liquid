@@ -1,0 +1,64 @@
+<div class=" announcement-bar px-4 py-2 flex items-center justify-center " style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.text_color }};">
+  <swiper-container
+    class="mySwiper text-center gap-x-2 gap-y-1 overflow-hidden overflow-x-auto swiper-scrollbar-disabled"
+    scrollbar="true"
+    direction="horizontal"
+    slides-per-view="auto"
+    free-mode="true"
+    scrollbar="#scrollbar"
+    scrollbar-hide="true"
+    mousewheel="true"
+    autoplay="true"
+    delay="500"
+    loop="true">
+    {% for block in section.blocks %}
+      <swiper-slide class="flex items-center justify-center  gap-x-2 whitespace-nowrap w-fit!">
+        <div class="shrink-0 w-fit">{{ block.settings.announcement_text }}</div>
+        {% unless forloop.last %}
+          <div class="size-2 rounded-full bg-white mx-4! shrink-0"></div>
+        {% endunless %}
+      </swiper-slide>
+    {% endfor %}
+    <div id="scrollbar"></div>
+  </swiper-container>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Announcement Bar",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#fff"
+      }, {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "announcement",
+        "name": "announcement",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "announcement_text",
+            "label": "Announcement Text",
+            "default": "<p>Free shipping on orders over $50!</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Announcement Bar",
+        "category": "Header"
+      }
+    ]
+  }
+{% endschema %}
