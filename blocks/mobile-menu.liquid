@@ -107,6 +107,7 @@
 
         <div x-ref="tabButtons" class="relative inline-grid items-center justify-center w-full h-10 grid-cols-3 p-1 text-gray-500 bg-white select-none">
 
+
           <button
             :id="$id(tabId)"
             @click="tabButtonClicked($el);"
@@ -160,18 +161,18 @@
   {
     "name": "Mobile Menu",
     "settings": [
-     {
-     
-            "type": "text",
-            "id": "tab-title",
-            "label": "Menu Title",
-            "info": "This is displayed in to top tabs, e.g Footwears, Bestsellers"
-          }
+      {
+
+        "type": "text",
+        "id": "tab-title",
+        "label": "Menu Title",
+        "info": "This is displayed in to top tabs, e.g Footwears, Bestsellers"
+      }
     ],
 
     "blocks": [
       {
-        "type":"mobile-menu-item"
+        "type": "mobile-menu-tab"
       }
     ],
     "presets": [
@@ -179,7 +180,7 @@
         "name": "Tabbed Menu",
         "blocks": [
           {
-            "type": "mobile-menu-item"
+            "type": "mobile-menu-tab"
           }
         ]
       }
