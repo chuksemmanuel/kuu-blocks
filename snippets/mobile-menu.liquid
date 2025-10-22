@@ -96,10 +96,9 @@
       {% comment %} Menu Tab  Starts {% endcomment %}
       <div
         x-data="{
-        tabSelected: 1,
-        tabId: $id('tabs'),
+        tabSelected:'{{tab_list.first}}',
         tabButtonClicked(tabButton){
-            this.tabSelected = tabButton.id.replace(this.tabId + '-', '');
+            this.tabSelected = tabButton.id;
             this.tabRepositionMarker(tabButton);
         },
         tabRepositionMarker(tabButton){
@@ -108,10 +107,12 @@
             this.$refs.tabMarker.style.left=tabButton.offsetLeft + 'px';
         },
         tabContentActive(tabContent){
-            return this.tabSelected == tabContent.id.replace(this.tabId + '-content-', '');
+         console.log(tabContent)
+         console.log(tabContent.id)
+            return this.tabSelected == tabContent.id.replace('-content','');
         },
         tabButtonActive(tabContent){
-            const tabId = tabContent.id.split('-').slice(-1);
+            const tabId = tabContent.id.replace('-content','');
             return this.tabSelected == tabId;
         }
     }"
@@ -120,24 +121,18 @@
 
         <div x-ref="tabButtons" class="relative inline-grid items-center justify-center w-full h-10 grid-cols-3 p-1 text-gray-500 bg-white select-none">
 
-          <button
-            :id="$id(tabId)"
-            @click="tabButtonClicked($el);"
-            type="button"
-            :class="{ 'bg-gray-100 text-gray-700' : tabButtonActive($el) }"
-            class="relative z-20 inline-flex items-center justify-center w-full h-8 px-3 text-sm font-medium transition-all rounded-md cursor-pointer whitespace-nowrap">
-            Tab 1
 
-          </button>
-          <button
-            :id="$id(tabId)"
-            @click="tabButtonClicked($el);"
-            type="button"
-            :class="{ 'bg-gray-100 text-gray-700' : tabButtonActive($el) }"
-            class="relative z-20 inline-flex items-center justify-center w-full h-8 px-3 text-sm font-medium transition-all rounded-md cursor-pointer whitespace-nowrap">
-            Tab 2
+          {% for tab in tab_list %}
+            <button
+              :id="'{{tab}}'"
+              @click="tabButtonClicked($el);"
+              type="button"
+              :class="{ 'bg-gray-100 text-gray-700' : tabButtonActive($el) }"
+              class="relative z-20 inline-flex items-center justify-center w-full h-8 px-3 text-sm font-medium transition-all rounded-md cursor-pointer whitespace-nowrap">
+              {{ tab }}
 
-          </button>
+            </button>
+          {% endfor %}
 
 
           <div
@@ -151,20 +146,39 @@
 
         <div class="relative flex items-center justify-center w-full p-5 mt-2 text-xs text-gray-400  rounded-md content ">
 
-          <div
-            :id="$id(tabId + '-content')"
-            x-show="tabContentActive($el)"
-            class="relative">
-            This is the content shown for Tab1
-          </div>
+          {% for tab in tab_list %}
+            {% if tab != blank %}
 
-          <div
-            :id="$id(tabId + '-content')"
-            x-show="tabContentActive($el)"
-            class="relative"
-            x-cloak>
-            And, this is the content for Tab2
-          </div>
+              <div
+                :id="'{{tab}}-content'"
+                x-show="tabContentActive($el)"
+                class="relative w-full">
+                {% for item in section.blocks %}
+                  {% if item.type == 'menu_item' and item.settings.parent_tab == tab %}
+                    <a href="{{ item.settings.href }}">
+                      <img
+                        src="{{ item.settings.image | image_url: width: 375 }}"
+                        alt="{{ item.settings.title }}"
+                        width="124"
+                        height="124">
+                      <p>{{ item.settings.title }}</p>
+                    </a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+
+            {% endif %}
+          {% endfor %}
+
+
+        {% comment %} <div
+                                                                                                                                                                                                                                                                                                                                                                                                                  :id="$id(tabId + '-content')"
+                                                                                                                                                                                                                                                                                                                                                                                                                  x-show="tabContentActive($el)"
+                                                                                                                                                                                                                                                                                                                                                                                                                  class="relative"
+                                                                                                                                                                                                                                                                                                                                                                                                                  x-cloak>
+                                                                                                                                                                                                                                                                                                                                                                                                                  And, this is the content for Tab2
+                                                                                                                                                                                                                                                                                                                                  </div> {% endcomment %}
 
 
         </div>
