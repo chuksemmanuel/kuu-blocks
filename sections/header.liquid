@@ -1,6 +1,8 @@
 <header>
   <div class="flex items-center justify-center gap-4">
-    <div class="mr-4 shrink-0 " style="background:{{settings.background_color}}; ">{% render 'mobile-menu' %}</div>
+
+    {% content_for 'blocks' %}
+
     <h2 class="header__title">
       {{ shop.name | link_to: routes.root_url }}
     </h2>
@@ -63,6 +65,11 @@
         "type": "link_list",
         "id": "menu",
         "label": "t:labels.menu"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "mobile-menu"
       }
     ]
   }

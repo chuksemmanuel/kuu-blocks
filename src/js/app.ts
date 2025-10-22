@@ -1,1 +1,5 @@
-console.log('Hello world from app.ts');
+import { menuIcon } from './animations/menu-icon';
+
+window.Animations = {
+	menuIcon,
+};

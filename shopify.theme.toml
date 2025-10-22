@@ -1,0 +1,2 @@
+[environments.development]
+store = "https://9y5a67-1x.myshopify.com/" # Replace https://chuksdemo.myshopify.com/ with your store url

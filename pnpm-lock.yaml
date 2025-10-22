@@ -14,6 +14,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4.1.15
         version: 4.1.15
+      '@types/alpinejs':
+        specifier: ^3.13.11
+        version: 3.13.11
       alpinejs:
         specifier: ^3.15.0
         version: 3.15.0
@@ -800,6 +803,9 @@ packages:
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
+
+  '@types/alpinejs@3.13.11':
+    resolution: {integrity: sha512-3KhGkDixCPiLdL3Z/ok1GxHwLxEWqQOKJccgaQL01wc0EVM2tCTaqlC3NIedmxAXkVzt/V6VTM8qPgnOHKJ1MA==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -4245,6 +4251,8 @@ snapshots:
       tailwindcss: 4.1.15
 
   '@trysound/sax@0.2.0': {}
+
+  '@types/alpinejs@3.13.11': {}
 
   '@types/babel__core@7.20.5':
     dependencies:

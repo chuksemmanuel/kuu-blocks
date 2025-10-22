@@ -14,18 +14,64 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/js/animations/menu-icon.ts":
+/*!****************************************!*\
+  !*** ./src/js/animations/menu-icon.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   menuIcon: () => (/* binding */ menuIcon)
+/* harmony export */ });
+function menuIcon(el, watch) {
+  var gsap = window.gsap;
+  console.log('Animations', gsap);
+  var container = el;
+  console.log(container);
+  if (!container) return;
+  var line1 = container.querySelector('#line1');
+  var line2 = container.querySelector('#line2');
+  var line3 = container.querySelector('#line3');
+  if (!line1 || !line2 || !line3) return;
+  var tl = gsap.timeline({
+    paused: true,
+    defaults: {
+      duration: 0.3,
+      ease: 'power2.inOut'
+    }
+  });
+  tl.to(line2, {
+    opacity: 0
+  }, 0).to(line1, {
+    y: 7,
+    rotate: 45
+  }, '+=0.5').to(line3, {
+    y: -7,
+    rotate: -45
+  }, 0);
+  if (watch) {
+    console.log('Watching menuOpen');
+    watch('menuOpen', function (isOpen) {
+      isOpen ? tl.play() : tl.reverse();
+    });
+  }
+}
+
+/***/ }),
+
 /***/ "./src/js/app.ts":
 /*!***********************!*\
   !*** ./src/js/app.ts ***!
   \***********************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _animations_menu_icon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./animations/menu-icon */ "./src/js/animations/menu-icon.ts");
 
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-console.log('Hello world from app.ts');
+window.Animations = {
+  menuIcon: _animations_menu_icon__WEBPACK_IMPORTED_MODULE_0__.menuIcon
+};
 
 /***/ })
 
@@ -88,6 +134,18 @@ console.log('Hello world from app.ts');
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
 /******/ 		};
 /******/ 	})();
 /******/ 	

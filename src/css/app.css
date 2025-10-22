@@ -1,5 +1,12 @@
 @import 'tailwindcss';
 
+@layer base {
+	/* Custom base styles can be added here */
+	button {
+		@apply cursor-pointer;
+	}
+}
+
 @layer utilities {
 	.no-scrollbar::-webkit-scrollbar {
 		display: none;
