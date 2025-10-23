@@ -4,8 +4,6 @@
     {% # Inlined CSS Variables %}
   {% render 'css-variables' %}
 
-    {% # Load Custom tailwind css %}
-  {{ 'app.css' | asset_url | stylesheet_tag: preload: true }}
 
     {% # Load and preload the critical CSS %}
   {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}

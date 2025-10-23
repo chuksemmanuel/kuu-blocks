@@ -2,61 +2,15 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/css/app.css":
-/*!*************************!*\
-  !*** ./src/css/app.css ***!
-  \*************************/
+/***/ "./src/css/tabbed-menu.css":
+/*!*********************************!*\
+  !*** ./src/css/tabbed-menu.css ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
-
-/***/ }),
-
-/***/ "./src/js/animations/menu-icon.ts":
-/*!****************************************!*\
-  !*** ./src/js/animations/menu-icon.ts ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   menuIcon: () => (/* binding */ menuIcon)
-/* harmony export */ });
-function menuIcon(el, watch) {
-  var gsap = window.gsap;
-  console.log('Animations', gsap);
-  var container = el;
-  console.log(container);
-  if (!container) return;
-  var line1 = container.querySelector('#line1');
-  var line2 = container.querySelector('#line2');
-  var line3 = container.querySelector('#line3');
-  if (!line1 || !line2 || !line3) return;
-  var tl = gsap.timeline({
-    paused: true,
-    defaults: {
-      duration: 0.3,
-      ease: 'power2.inOut'
-    }
-  });
-  tl.to(line2, {
-    opacity: 0
-  }, 0).to(line1, {
-    y: 7,
-    rotate: 45
-  }, '+=0.5').to(line3, {
-    y: -7,
-    rotate: -45
-  }, 0);
-  if (watch) {
-    console.log('Watching menuOpen');
-    watch('menuOpen', function (isOpen) {
-      isOpen ? tl.play() : tl.reverse();
-    });
-  }
-}
 
 /***/ }),
 
@@ -67,11 +21,49 @@ function menuIcon(el, watch) {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _animations_menu_icon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./animations/menu-icon */ "./src/js/animations/menu-icon.ts");
+/* harmony import */ var _utils_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/index */ "./src/js/utils/index.ts");
 
-window.Animations = {
-  menuIcon: _animations_menu_icon__WEBPACK_IMPORTED_MODULE_0__.menuIcon
+window.Utils = {
+  horizontalScroll: _utils_index__WEBPACK_IMPORTED_MODULE_0__.horizontalScroll
 };
+
+/***/ }),
+
+/***/ "./src/js/utils/index.ts":
+/*!*******************************!*\
+  !*** ./src/js/utils/index.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   horizontalScroll: () => (/* binding */ horizontalScroll)
+/* harmony export */ });
+function horizontalScroll($el) {
+  return {
+    isDragging: false,
+    startX: 0,
+    scrollLeft: 0,
+    init: function init() {
+      $el.style.scrollBehavior = 'auto'; // Disable smooth scrolling for better drag fe$el
+    },
+    startDragging: function startDragging(e) {
+      this.isDragging = true;
+      this.startX = e.pageX - $el.offsetLeft;
+      this.scrollLeft = $el.scrollLeft;
+    },
+    stopDragging: function stopDragging() {
+      this.isDragging = false;
+    },
+    drag: function drag(e) {
+      if (!this.isDragging) return;
+      e.preventDefault();
+      var x = e.pageX - $el.offsetLeft;
+      var walk = (x - this.startX) * 1.5; // Adjust multiplier for desired scroll speed
+      $el.scrollLeft = this.scrollLeft - walk;
+    }
+  };
+}
 
 /***/ })
 
@@ -174,7 +166,7 @@ window.Animations = {
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/assets/app": 0,
-/******/ 			"assets/app": 0
+/******/ 			"assets/tabbed-menu": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -224,8 +216,8 @@ window.Animations = {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["assets/app"], () => (__webpack_require__("./src/js/app.ts")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/app"], () => (__webpack_require__("./src/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["assets/tabbed-menu"], () => (__webpack_require__("./src/js/app.ts")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/tabbed-menu"], () => (__webpack_require__("./src/css/tabbed-menu.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

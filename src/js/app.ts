@@ -1,5 +1,5 @@
-import { menuIcon } from './animations/menu-icon';
+import { horizontalScroll } from './utils/index';
 
-window.Animations = {
-	menuIcon,
+window.Utils = {
+	horizontalScroll,
 };

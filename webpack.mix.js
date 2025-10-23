@@ -5,4 +5,4 @@ mix.options({
 });
 
 mix.ts('src/js/app.ts', 'assets')
-mix.css('src/css/app.css', 'assets')
+mix.css('src/css/tabbed-menu.css', 'assets')
