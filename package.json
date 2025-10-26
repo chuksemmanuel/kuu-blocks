@@ -6,7 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"watch": "npx mix watch",
+		"dev": "npx mix watch",
 		"build": "npx mix build -p"
 	},
 	"keywords": [],

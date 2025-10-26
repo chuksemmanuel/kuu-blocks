@@ -5,3 +5,6 @@ mix.options({
 });
 
 mix.css('src/css/tabbed-menu.css', 'assets')
+
+mix.ts('src/ts/vendors/alpine.ts', 'assets')
+    .ts('src/ts/vendors/gsap.ts', 'assets')

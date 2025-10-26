@@ -21,18 +21,16 @@
     {{ content_for_layout }}
 
     {% sections 'footer-group' %}
-    {% # Load Custom App js %}
-    <script src="{{ 'app.js' |  asset_url }}" defer></script>
+
 
     {% # Load Swiper.js %}
     <script src="{{ 'swiper-element-bundle@3.13.0.min.js' |  asset_url }}" defer></script>
 
     {% # Load Gsap.js %}
-    <script src="{{ 'gsap-motion-path@3.13.min.js' |  asset_url }}" defer></script>
-    <script src="{{ 'gsap@3.13.min.js' |  asset_url }}" defer></script>
+    <script src="{{ 'gsap.js' |  asset_url }}" defer></script>
 
 
     {% # Load  Alpine.js %}
-    <script src="{{ 'alpine@3.15.0.min.js' |  asset_url }}" defer></script>
+    <script src="{{ 'alpine.js' |  asset_url }}" defer></script>
   </body>
 </html>

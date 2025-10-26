@@ -21,7 +21,7 @@
 
 		// Stricter Typechecking Options
 		"noUncheckedIndexedAccess": true,
-		"exactOptionalPropertyTypes": true,
+		"exactOptionalPropertyTypes": false,
 
 		// Style Options
 		// "noImplicitReturns": true,
@@ -32,6 +32,8 @@
 		// "noPropertyAccessFromIndexSignature": true,
 
 		// Recommended Options
+		"module": "esnext",
+		"moduleResolution": "bundler",
 		"strict": true,
 		"jsx": "react-jsx",
 		"verbatimModuleSyntax": true,
@@ -40,5 +42,6 @@
 		"moduleDetection": "force",
 		"skipLibCheck": true
 	},
-	"include": ["src", "src/types"]
+	"include": ["./src/**/*.ts", "./src/**/*.tsx"],
+	"exclude": ["node_modules", "dist"]
 }

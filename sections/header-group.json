@@ -56,7 +56,70 @@
             "parent_tab": "Apparels"
           }
         },
+        "menu_item_gGMg7K": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/t-shirt-product05.jpg",
+            "title": "T-shirts",
+            "href": "#",
+            "parent_tab": "Apparels"
+          }
+        },
+        "menu_item_x6VGAW": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/t-shirt-product05.jpg",
+            "title": "T-shirts",
+            "href": "#",
+            "parent_tab": "Apparels"
+          }
+        },
+        "menu_item_tpQr8e": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/t-shirt-product05.jpg",
+            "title": "T-shirts",
+            "href": "#",
+            "parent_tab": "Apparels"
+          }
+        },
         "menu_item_WWYmJA": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/hoodie-product03.jpg",
+            "title": "Hoodies",
+            "href": "#",
+            "parent_tab": "Apparels"
+          }
+        },
+        "menu_item_RMjgQL": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/hoodie-product03.jpg",
+            "title": "Hoodies",
+            "href": "#",
+            "parent_tab": "Apparels"
+          }
+        },
+        "menu_item_w7A6yG": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/hoodie-product03.jpg",
+            "title": "Hoodies",
+            "href": "#",
+            "parent_tab": "Apparels"
+          }
+        },
+        "menu_item_Mw4QRn": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/hoodie-product03.jpg",
+            "title": "Hoodies",
+            "href": "#",
+            "parent_tab": "Apparels"
+          }
+        },
+        "menu_item_6V4HY7": {
           "type": "menu_item",
           "settings": {
             "image": "shopify://shop_images/hoodie-product03.jpg",
@@ -82,13 +145,100 @@
             "href": "#",
             "parent_tab": "Accessories"
           }
+        },
+        "menu_item_nADgKJ": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/Tote_Bag-Product-2.jpg",
+            "title": "Tote-bags",
+            "href": "#",
+            "parent_tab": "Accessories"
+          }
+        },
+        "menu_item_pHFjdN": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/Tote_Bag-Product-2.jpg",
+            "title": "Tote-bags",
+            "href": "#",
+            "parent_tab": "Accessories"
+          }
+        },
+        "menu_item_rR6gtF": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/Product_image05.jpg",
+            "title": "Caps",
+            "href": "#",
+            "parent_tab": "Caps"
+          }
+        },
+        "menu_item_fDfeBw": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/Product_image05.jpg",
+            "title": "Caps",
+            "href": "#",
+            "parent_tab": "Caps"
+          }
+        },
+        "menu_item_RDmaVm": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/Product_image05.jpg",
+            "title": "Caps",
+            "href": "#",
+            "parent_tab": "Caps"
+          }
+        },
+        "menu_item_G7iL99": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/Product_image05.jpg",
+            "title": "Caps",
+            "href": "#",
+            "parent_tab": "Caps"
+          }
+        },
+        "menu_item_QmqJEk": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/Pillowcase-Product-1.jpg",
+            "title": "Pillows",
+            "href": "#",
+            "parent_tab": "House"
+          }
+        },
+        "menu_item_Kidgba": {
+          "type": "menu_item",
+          "settings": {
+            "image": "shopify://shop_images/black-and-white-running-shoe.jpg",
+            "title": "Sneakers",
+            "href": "#",
+            "parent_tab": "Footwears"
+          }
         }
       },
       "block_order": [
         "menu_item_at3wdw",
+        "menu_item_gGMg7K",
+        "menu_item_x6VGAW",
+        "menu_item_tpQr8e",
         "menu_item_WWYmJA",
+        "menu_item_RMjgQL",
+        "menu_item_w7A6yG",
+        "menu_item_Mw4QRn",
+        "menu_item_6V4HY7",
         "menu_item_9fpWjY",
-        "menu_item_ezMPRT"
+        "menu_item_ezMPRT",
+        "menu_item_nADgKJ",
+        "menu_item_pHFjdN",
+        "menu_item_rR6gtF",
+        "menu_item_fDfeBw",
+        "menu_item_RDmaVm",
+        "menu_item_G7iL99",
+        "menu_item_QmqJEk",
+        "menu_item_Kidgba"
       ],
       "settings": {
         "menu": ""
