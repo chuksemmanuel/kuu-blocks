@@ -47,198 +47,88 @@
     "header": {
       "type": "header",
       "blocks": {
-        "menu_item_at3wdw": {
+        "menu_item_Ga9hDU": {
           "type": "menu_item",
           "settings": {
-            "image": "shopify://shop_images/t-shirt-product05.jpg",
-            "title": "T-shirts",
-            "href": "#",
-            "parent_tab": "Apparels"
+            "image": "shopify://shop_images/nc0014-new-formula-vitapair-c-glow-facial-serum-873385.png",
+            "title": "Vitamin C",
+            "href": "shopify://products/vitapair-c-dark-spot-duo-serum-cream",
+            "parent_tab": "Serum"
           }
         },
-        "menu_item_gGMg7K": {
+        "menu_item_bUMFQY": {
           "type": "menu_item",
           "settings": {
-            "image": "shopify://shop_images/t-shirt-product05.jpg",
-            "title": "T-shirts",
-            "href": "#",
-            "parent_tab": "Apparels"
+            "image": "shopify://shop_images/snail_serum1.jpg",
+            "title": "Snail Oil",
+            "href": "shopify://products/snail-mucin-green-caviar-serum",
+            "parent_tab": "Serum"
           }
         },
-        "menu_item_x6VGAW": {
+        "menu_item_WELiYQ": {
           "type": "menu_item",
           "settings": {
-            "image": "shopify://shop_images/t-shirt-product05.jpg",
-            "title": "T-shirts",
-            "href": "#",
-            "parent_tab": "Apparels"
+            "image": "shopify://shop_images/Ammuri-Pro-Retinol-2.5_-Face-Serum-Anti-Aging-Retinol-Serum-Ammuri-Skincare-266821339.jpg",
+            "title": "Amurri",
+            "href": "shopify://products/anti-aging-retinol-serum-amuri",
+            "parent_tab": "Serum"
           }
         },
-        "menu_item_tpQr8e": {
+        "menu_item_rCtHYC": {
           "type": "menu_item",
           "settings": {
-            "image": "shopify://shop_images/t-shirt-product05.jpg",
-            "title": "T-shirts",
-            "href": "#",
-            "parent_tab": "Apparels"
+            "image": "shopify://shop_images/ProductGallery167of173_10f286f2-8df4-48db-9c6a-7b3edafd1b08.jpg",
+            "title": "Night Face Cream",
+            "href": "shopify://products/illuminating-face-serum",
+            "parent_tab": "Cream"
           }
         },
-        "menu_item_WWYmJA": {
+        "menu_item_QqJeAw": {
           "type": "menu_item",
           "settings": {
-            "image": "shopify://shop_images/hoodie-product03.jpg",
-            "title": "Hoodies",
-            "href": "#",
-            "parent_tab": "Apparels"
+            "image": "shopify://shop_images/Hyaluronic-Acid-Serum-cashymart-39737199558934.webp",
+            "title": "Hyaluronic Acid Serum",
+            "href": "shopify://products/hyaluronic-acid-serum-s-1",
+            "parent_tab": "Cream"
           }
         },
-        "menu_item_RMjgQL": {
+        "menu_item_ME3jJc": {
           "type": "menu_item",
           "settings": {
-            "image": "shopify://shop_images/hoodie-product03.jpg",
-            "title": "Hoodies",
-            "href": "#",
-            "parent_tab": "Apparels"
+            "image": "shopify://shop_images/GPDC0021-25.jpg",
+            "title": "Lip Gloss",
+            "href": "shopify://products/gel-polish-color-0021-12ml-dnka",
+            "parent_tab": "Cosmetics"
           }
         },
-        "menu_item_w7A6yG": {
+        "menu_item_DUfyUd": {
           "type": "menu_item",
           "settings": {
-            "image": "shopify://shop_images/hoodie-product03.jpg",
-            "title": "Hoodies",
-            "href": "#",
-            "parent_tab": "Apparels"
+            "image": "shopify://shop_images/DNKa__COLOR__0021-Photoroom.png",
+            "title": "Purple Gel Polish",
+            "href": "shopify://products/gel-polish-color-0021-12ml-dnka",
+            "parent_tab": "Cosmetics"
           }
         },
-        "menu_item_Mw4QRn": {
+        "menu_item_9JxJHK": {
           "type": "menu_item",
           "settings": {
-            "image": "shopify://shop_images/hoodie-product03.jpg",
-            "title": "Hoodies",
-            "href": "#",
-            "parent_tab": "Apparels"
-          }
-        },
-        "menu_item_6V4HY7": {
-          "type": "menu_item",
-          "settings": {
-            "image": "shopify://shop_images/hoodie-product03.jpg",
-            "title": "Hoodies",
-            "href": "#",
-            "parent_tab": "Apparels"
-          }
-        },
-        "menu_item_9fpWjY": {
-          "type": "menu_item",
-          "settings": {
-            "image": "shopify://shop_images/Pillowcase-Product-1.jpg",
-            "title": "Pillows",
-            "href": "#",
-            "parent_tab": "Accessories"
-          }
-        },
-        "menu_item_ezMPRT": {
-          "type": "menu_item",
-          "settings": {
-            "image": "shopify://shop_images/Tote_Bag-Product-2.jpg",
-            "title": "Tote-bags",
-            "href": "#",
-            "parent_tab": "Accessories"
-          }
-        },
-        "menu_item_nADgKJ": {
-          "type": "menu_item",
-          "settings": {
-            "image": "shopify://shop_images/Tote_Bag-Product-2.jpg",
-            "title": "Tote-bags",
-            "href": "#",
-            "parent_tab": "Accessories"
-          }
-        },
-        "menu_item_pHFjdN": {
-          "type": "menu_item",
-          "settings": {
-            "image": "shopify://shop_images/Tote_Bag-Product-2.jpg",
-            "title": "Tote-bags",
-            "href": "#",
-            "parent_tab": "Accessories"
-          }
-        },
-        "menu_item_rR6gtF": {
-          "type": "menu_item",
-          "settings": {
-            "image": "shopify://shop_images/Product_image05.jpg",
-            "title": "Caps",
-            "href": "#",
-            "parent_tab": "Caps"
-          }
-        },
-        "menu_item_fDfeBw": {
-          "type": "menu_item",
-          "settings": {
-            "image": "shopify://shop_images/Product_image05.jpg",
-            "title": "Caps",
-            "href": "#",
-            "parent_tab": "Caps"
-          }
-        },
-        "menu_item_RDmaVm": {
-          "type": "menu_item",
-          "settings": {
-            "image": "shopify://shop_images/Product_image05.jpg",
-            "title": "Caps",
-            "href": "#",
-            "parent_tab": "Caps"
-          }
-        },
-        "menu_item_G7iL99": {
-          "type": "menu_item",
-          "settings": {
-            "image": "shopify://shop_images/Product_image05.jpg",
-            "title": "Caps",
-            "href": "#",
-            "parent_tab": "Caps"
-          }
-        },
-        "menu_item_QmqJEk": {
-          "type": "menu_item",
-          "settings": {
-            "image": "shopify://shop_images/Pillowcase-Product-1.jpg",
-            "title": "Pillows",
-            "href": "#",
-            "parent_tab": "House"
-          }
-        },
-        "menu_item_Kidgba": {
-          "type": "menu_item",
-          "settings": {
-            "image": "shopify://shop_images/black-and-white-running-shoe.jpg",
-            "title": "Sneakers",
-            "href": "#",
-            "parent_tab": "Footwears"
+            "image": "shopify://shop_images/anti-puffiness-eye-serum-210380.jpg",
+            "title": "Concealer",
+            "href": "shopify://products/eye-serum-anti-puffiness-formula",
+            "parent_tab": "Cosmetics"
           }
         }
       },
       "block_order": [
-        "menu_item_at3wdw",
-        "menu_item_gGMg7K",
-        "menu_item_x6VGAW",
-        "menu_item_tpQr8e",
-        "menu_item_WWYmJA",
-        "menu_item_RMjgQL",
-        "menu_item_w7A6yG",
-        "menu_item_Mw4QRn",
-        "menu_item_6V4HY7",
-        "menu_item_9fpWjY",
-        "menu_item_ezMPRT",
-        "menu_item_nADgKJ",
-        "menu_item_pHFjdN",
-        "menu_item_rR6gtF",
-        "menu_item_fDfeBw",
-        "menu_item_RDmaVm",
-        "menu_item_G7iL99",
-        "menu_item_QmqJEk",
-        "menu_item_Kidgba"
+        "menu_item_Ga9hDU",
+        "menu_item_bUMFQY",
+        "menu_item_WELiYQ",
+        "menu_item_rCtHYC",
+        "menu_item_QqJeAw",
+        "menu_item_ME3jJc",
+        "menu_item_DUfyUd",
+        "menu_item_9JxJHK"
       ],
       "settings": {
         "menu": ""
