@@ -1,0 +1,80 @@
+<div class="w-full overflow-hidden h-[calc(80svh-148px)]">
+  <div class="grid grid-cols-2 gap-4 rounded-3xl bg-white w-full h-full p-6">
+    <div class="h-full flex flex-col justify-between  gap-6">
+
+      {% comment %} Main Content {% endcomment %}
+      <div class="flex flex-col gap-8">
+        <h1 class="text-6xl font-medium">
+          Unleash Your Style, Shop the Latest Trends
+        </h1>
+        <p class="text-gray-700 ">
+          Discover teh latest trends & express your style effortlessly. Shop exclusive collections with premium designs, just for you!
+        </p>
+
+        <div class="flex ">
+          {% render 'button' variant: 'primary' size: 'lg' href: "/collections/all" label: 'Shop Now' class: 'rounded-full! px-14' %}
+          {% render 'button' variant: 'primary' size: 'icon' href: "/collections/all" icon: 'icons/arrow-up-right.svg' class: 'rounded-full! size-12' %}
+        </div>
+      </div>
+
+      {% comment %} Hero review {% endcomment %}
+      <div class="flex justify-between items-end">
+        <div class="flex flex-col gap-6 max-w-[360px]">
+          <h3 class="text-4xl font-semibold">
+            25 Million+
+          </h3>
+          <p class="text-gray-700">
+            Real reviews from our happy customers!                                                               
+            See What fashion lovers are saying about our quality, style and service.
+          </p>
+        </div>
+
+
+        {% comment %} Avatar Images {% endcomment %}
+        <div class="flex gap-[-4px] translate-x-1.5">
+
+
+          {% comment %} 
+                                                Adding this comment here so tailwind compiler picks up the classes from the computed translate-x
+                                                -translate-x-[calc(0*6px)]
+                                                -translate-x-[calc(1*6px)]
+                                                -translate-x-[calc(2*6px)]
+                                                -translate-x-[calc(3*6px)]
+                                                -translate-x-[calc(4*6px)]
+                                                -translate-x-[calc(5*6px)]
+                                        {% endcomment %}
+
+          {% for i in (1..5) %}
+            <div class="rounded-full size-12 bg-gray-200 border-2 border-white overflow-hidden -translate-x-[calc({{i}}*6px)]">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0628/4348/6291/files/S08c1d41dfe024b0b95262310fea8b515j.png?width=48"
+                alt="avatar review"
+                width="48"
+                height="48"
+                class="object-fit">
+            </div>
+          {% endfor %}
+
+        </div>
+      </div>
+
+
+    </div>
+
+    {% comment %} Featured Image {% endcomment %}
+    <div class="rounded-3xl  w-full h-full bg-[linear-gradient(45deg,rgba(230,232,235,1)_0%,rgba(211,219,227,1)_51%,rgba(255,255,255,1)_100%)] overflow-hidden">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0628/4348/6291/files/S42325dc6d03e45dd98f379450a1cd6382.png?width=614"
+        alt="Person wearing a gray zip-up sweatshirt on a white background"
+        width="614"
+        height="614" />
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Hero",
+    "settings": []
+  }
+{% endschema %}

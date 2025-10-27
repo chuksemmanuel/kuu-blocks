@@ -8,13 +8,15 @@
  * ------------------------------------------------------------
  */
 {
-  "sections": {
-    "main": {
-      "type": "hello-world",
-      "settings": {}
-    }
-  },
-  "order": [
-    "main"
-  ]
+	"sections": {
+		"hero": {
+			"type": "hero",
+			"settings": {}
+		},
+		"featured_outfits": {
+			"type": "featured_outfits",
+			"settings": {}
+		}
+	},
+	"order": ["hero", "featured_outfits"]
 }

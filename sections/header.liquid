@@ -32,7 +32,7 @@
         {% render 'button'
           , href: routes.account_url
           , size: 'icon'
-          , icon: 'icons/icon-account.svg'
+          , icon: 'icons/user.svg'
           , class: 'bg-white text-black hover:bg-primary hover:text-white! md:size-12 rounded-full!' %}
       {% endif %}
 
@@ -42,7 +42,7 @@
           <sup>{{ cart.item_count }}</sup>
         {% endif %}
 
-        {{ 'icons/icon-cart.svg' | inline_asset_content }}
+        {{ 'icons/bag.svg' | inline_asset_content }}
       {% endcapture %}
       {% render 'button'
         , href: routes.cart_url
