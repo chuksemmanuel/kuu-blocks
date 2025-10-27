@@ -1,0 +1,26 @@
+<a
+  href="{{href}}"
+  class=" bg-gray-200 rounded-3xl w-full  relative overflow-hidden flex justify-center items-center cursor-pointer group {{class}}"
+  style="height:{{height}}px">
+  <div class="flex flex-col  text-center">
+    <span class="relative z-50 text-white text-shadow-sm text-2xl">
+      {{ title }}
+    </span>
+    {% if subtitle %}
+      <span class="relative z-50 text-white text-shadow-sm">
+        {{ subtitle }}
+      </span>
+    {% endif %}
+  </div>
+
+
+  <img
+    src="{{ image}}"
+    alt="{{title}}"
+    width="{{width}}"
+    height="{{height}}"
+    class="absolute inset-0 h-full! w-full object-cover  z-5 transition duration-300 ease-out group-hover:scale-105 group-active:scale-100">
+
+  {% comment %} Overlay {% endcomment %}
+  <div class="bg-black/5 absolute inset-0 h-full w-full z-10"></div>
+</a>
