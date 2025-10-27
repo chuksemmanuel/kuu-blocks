@@ -1,0 +1,86 @@
+{% comment %}
+  Product Card Component with GSAP Animation
+  ------------------------------------------
+  Usage:
+
+  {% render 'product-card',
+  product: product,
+  show_floating_cart: true
+  %}
+
+  or for manual custom content:
+  {% render 'product-card',
+  title: 'Plain White Shirt',
+  price: 29,
+  image: 'shopify://shop_images/shirt.jpg',
+  url: '/products/plain-white-shirt'
+  %}
+{% endcomment %}
+
+{%- assign card_product = product | default: null -%}
+{%- assign product_title = title | default: card_product.title -%}
+{%- assign product_price = price | default: card_product.price | money -%}
+{%- assign product_image = image | default: card_product.featured_image.src -%}
+{%- assign product_url = url | default: card_product.url -%}
+
+<div x-data="{
+    adding: false,
+    init() {
+      const el = this.$el;
+      gsap.set(el, { opacity: 0, y: 30 });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            gsap.to(el, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' });
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(el);
+    }
+  }" class="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition hover:shadow-md">
+  <a href="{{ product_url }}" class="block aspect-4/5 overflow-hidden">
+    <img
+      src="{{ product_image | image_url: width: 600 }}"
+      alt="{{ product_title | escape }}"
+      width="600"
+      height="720"
+      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+      loading="lazy" />
+  </a>
+
+  <div class="flex flex-col gap-1 p-4">
+    <h3 class="text-sm font-medium text-gray-800">{{ product_title }}</h3>
+    <p class="text-sm font-semibold text-gray-500">{{ product_price }}</p>
+  </div>
+
+  {% if show_floating_cart %}
+    <button
+      @click.prevent="adding = true; $dispatch('add-to-cart', { id: {{ card_product.variants.first.id | default: 0 }} }); setTimeout(() => adding = false, 1000)"
+      class="absolute bottom-3 right-3 flex size-9 items-center justify-center rounded-full bg-primary text-white shadow-md transition hover:bg-primary/90"
+      :disabled="adding">
+      <template x-if="!adding">
+        {{ 'icon-cart.svg' | inline_asset_content }}
+      </template>
+      <template x-if="adding">
+        <svg
+          class="size-5 animate-spin text-white"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24">
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+        </svg>
+      </template>
+    </button>
+  {% endif %}
+</div>

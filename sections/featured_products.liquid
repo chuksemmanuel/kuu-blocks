@@ -1,0 +1,22 @@
+<div class="py-6 lg:py-12 flex flex-col gap-4 md:gap-6">
+  {% render 'heading' tag: 'h2'
+    , title: 'Our Products'
+    , subheading: 'Recently Added Shirts!'
+    , align: 'center' %}
+
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+    {% for product in all_products limit: 4 %}
+      <h1>Product</h1>
+      {% render 'product-card' product: product %}
+    {% endfor %}
+
+
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Featured Products",
+    "settings": []
+  }
+{% endschema %}

@@ -20,7 +20,11 @@
 		"featured_categories": {
 			"type": "featured_categories",
 			"settings": {}
+		},
+		"featured_products": {
+			"type": "featured_products",
+			"settings": {}
 		}
 	},
-	"order": ["hero", "featured_outfits", "featured_categories"]
+	"order": ["hero", "featured_outfits", "featured_categories", "featured_products"]
 }
