@@ -1,0 +1,55 @@
+<div class="py-6 lg:py-12 flex flex-col gap-4 md:gap-6 lg:gap-12">
+  <div class="w-full aspect-1400/540 hidden sm:flex justify-center items-center rounded-3xl overflow-hidden relative">
+    <div class="flex flex-col items-center text-center gap-4 w-[200px] md:w-[250px]">
+      <p class="relative z-50 text-black text-shadow-xs text-shadow-white text-2xl md:text-4xl">
+        Get 50% Off
+      </p>
+      <span class="relative z-50 text-black text-shadow-xs text-shadow-white">
+        for all new products purchases min. purchase $450
+      </span>
+
+      {% render 'button'
+        , variant: 'primary'
+        , size: 'lg'
+        , href: '#'
+        , label: 'Shop Now'
+        , class: 'z-50' %}
+    </div>
+    <img
+      src="https://cdn.shopify.com/s/files/1/0628/4348/6291/files/sleek-banner-desktop.png?v=1761549670"
+      alt="Two people wearing hoodies and t-shirts with graphic designs on a white background"
+      width="1400"
+      height="540"
+      class="absolute inset-0 h-full! w-full object-cover  z-5 transition duration-300 ease-out group-hover:scale-105 group-active:scale-100">
+
+  </div>
+  <div class="w-full aspect-360/540 max-h-[540px]  flex justify-center p-8 sm:hidden  rounded-3xl overflow-hidden  relative">
+    <div class="flex flex-col items-center text-center gap-4 w-[250px]">
+      <p class="relative z-50 text-black text-shadow-xs text-shadow-white text-4xl">
+        Get 50% Off
+      </p>
+      <span class="relative z-50 text-black text-shadow-xs text-shadow-white">
+        for all new products purchases min. purchase $450
+      </span>
+
+      {% render 'button'
+        , variant: 'primary'
+        , size: 'lg'
+        , href: '#'
+        , label: 'Shop Now'
+        , class: 'z-50' %}
+    </div>
+    <img
+      src="https://cdn.shopify.com/s/files/1/0628/4348/6291/files/sleek-banner-mobile.png?v=1761549668"
+      alt="Two people wearing hoodies and t-shirts with graphic designs on a white background"
+      width="1400"
+      height="540"
+      class="absolute inset-0 h-full! w-full object-cover  z-5 transition duration-300 ease-out group-hover:scale-105 group-active:scale-100">
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Featured Banner",
+    "settings": []
+  }
+{% endschema %}
