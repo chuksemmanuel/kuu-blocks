@@ -3421,10 +3421,10 @@ var module_default = src_default;
 
 /***/ }),
 
-/***/ "./src/css/tabbed-menu.css":
-/*!*********************************!*\
-  !*** ./src/css/tabbed-menu.css ***!
-  \*********************************/
+/***/ "./src/css/tailwind.css":
+/*!******************************!*\
+  !*** ./src/css/tailwind.css ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -3545,7 +3545,7 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/assets/alpine": 0,
-/******/ 			"assets/tabbed-menu": 0
+/******/ 			"assets/tailwind": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -3595,8 +3595,8 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["assets/tabbed-menu"], () => (__webpack_require__("./src/ts/vendors/alpine.ts")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/tabbed-menu"], () => (__webpack_require__("./src/css/tabbed-menu.css")))
+/******/ 	__webpack_require__.O(undefined, ["assets/tailwind"], () => (__webpack_require__("./src/ts/vendors/alpine.ts")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["assets/tailwind"], () => (__webpack_require__("./src/css/tailwind.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

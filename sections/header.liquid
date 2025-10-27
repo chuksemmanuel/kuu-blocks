@@ -1,32 +1,39 @@
-<header>
+<header class="grid grid-cols-3 place-content-between w-full py-6">
 
-  <div class="flex items-center justify-center gap-4">
+  <div class="flex items-center gap-2 shrink-0">
     {% render 'tabbed-menu'
       , section: section %}
 
+    <h2 class="header__title uppercase font-medium text-2xl hidden md:block ">
+      {{ shop.name | link_to: routes.root_url }}
+    </h2>
 
   </div>
 
 
-  <h2 class="header__title uppercase font-medium text-2xl">
-    {{ shop.name | link_to: routes.root_url }}
-  </h2>
+  <div class="flex items-center justify-center  shrink-0">
+    <h2 class="header__title uppercase text-center font-medium text-lg md:text-2xl  md:hidden">
+      {{ shop.name | link_to: routes.root_url }}
+    </h2>
 
-
-  <div class="flex justify-between items-center gap-8">
-    <div class="flex justify-between gap-8">
+    <div class=" justify-between gap-8 hidden md:flex font-medium">
       {% for link in section.settings.menu.links %}
         {{ link.title | link_to: link.url }}
       {% endfor %}
     </div>
+  </div>
+
+
+  <div class="flex justify-end items-center  md:gap-16">
+
 
     <div class="flex gap-4">
       {% if shop.customer_accounts_enabled %}
         {% render 'button'
           , href: routes.account_url
           , size: 'icon'
-          , icon: 'icon-account.svg'
-          , class: 'bg-white text-black hover:text-white!' %}
+          , icon: 'icons/icon-account.svg'
+          , class: 'bg-white text-black hover:bg-primary hover:text-white! md:size-12 rounded-full!' %}
       {% endif %}
 
 
@@ -35,13 +42,13 @@
           <sup>{{ cart.item_count }}</sup>
         {% endif %}
 
-        {{ 'icon-cart.svg' | inline_asset_content }}
+        {{ 'icons/icon-cart.svg' | inline_asset_content }}
       {% endcapture %}
       {% render 'button'
         , href: routes.cart_url
         , size: 'icon'
         , content: cart_content
-        , variant: 'primary'
+        , class: 'bg-white text-black hover:bg-primary hover:text-white!  md:size-12 rounded-full!'
       %}
 
     </div>
@@ -50,12 +57,7 @@
 </header>
 
 {% stylesheet %}
-  header {
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+
   header a {
     position: relative;
     text-decoration: none;

@@ -8,5 +8,10 @@
  * ------------------------------------------------------------
  */
 {
-  "current": {}
+  "current": {
+    "type_primary_font": "work_sans_n4",
+    "background_color": "#f5f5f5",
+    "foreground_color": "#393838",
+    "content_for_index": []
+  }
 }
