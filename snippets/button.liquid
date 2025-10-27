@@ -32,7 +32,7 @@
   , class: 'bg-white text-black hover:text-white!' %}
 {% endcomment %}
 
-{%- assign base_class = 'button inline-flex items-center justify-center font-medium transition-colors focus:outline-none  disabled:opacity-50 disabled:pointer-events-none' -%}
+{%- assign base_class = 'button relative inline-flex items-center justify-center font-medium transition-colors focus:outline-none  disabled:opacity-50 disabled:pointer-events-none' -%}
 
 {%- case variant -%}
   {%- when 'primary' -%}
@@ -53,7 +53,7 @@
   {%- when 'lg' -%}
     {%- assign size_class = 'h-12 px-6 text-base rounded-lg' -%}
   {%- when 'icon' -%}
-    {%- assign size_class = 'size-8 p-1 rounded-md' -%}
+    {%- assign size_class = 'size-8 p-2 rounded-md' -%}
   {%- else -%}
     {%- assign size_class = 'h-10 px-4 text-sm rounded-md' -%}
 {%- endcase -%}

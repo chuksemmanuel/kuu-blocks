@@ -25,21 +25,9 @@
 
 <div x-data="{
     adding: false,
-    init() {
-      const el = this.$el;
-      gsap.set(el, { opacity: 0, y: 30 });
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            gsap.to(el, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' });
-            observer.disconnect();
-          }
-        });
-      }, { threshold: 0.2 });
-      observer.observe(el);
-    }
-  }" class="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition hover:shadow-md">
-  <a href="{{ product_url }}" class="block aspect-4/5 overflow-hidden">
+   
+  }" class="group relative flex flex-col overflow-hidden rounded-md bg-white  transition ">
+  <a href="{{ product_url }}" class="block  overflow-hidden">
     <img
       src="{{ product_image | image_url: width: 600 }}"
       alt="{{ product_title | escape }}"
@@ -50,37 +38,30 @@
   </a>
 
   <div class="flex flex-col gap-1 p-4">
-    <h3 class="text-sm font-medium text-gray-800">{{ product_title }}</h3>
-    <p class="text-sm font-semibold text-gray-500">{{ product_price }}</p>
+    <a href="{{ product_url }}" class="text-xl font-medium text-foreground line-clamp-2 lg:line-clamp-1">{{ product_title }}</a>
+    <p class="text-lg font-medium text-gray-500">{{ product_price }}</p>
   </div>
 
   {% if show_floating_cart %}
-    <button
+    <div
       @click.prevent="adding = true; $dispatch('add-to-cart', { id: {{ card_product.variants.first.id | default: 0 }} }); setTimeout(() => adding = false, 1000)"
-      class="absolute bottom-3 right-3 flex size-9 items-center justify-center rounded-full bg-primary text-white shadow-md transition hover:bg-primary/90"
+      class="absolute top-3 right-3 "
       :disabled="adding">
+
       <template x-if="!adding">
-        {{ 'icon-cart.svg' | inline_asset_content }}
+        {% render 'button' href: ''
+          , size: 'icon'
+          , icon: 'icons/shopping-cart.svg'
+          , class: 'bg-white text-black hover:bg-primary hover:text-white!  md:size-12 shadow-sm rounded-full!'
+        %}
       </template>
       <template x-if="adding">
-        <svg
-          class="size-5 animate-spin text-white"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24">
-          <circle
-            class="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            stroke-width="4"></circle>
-          <path
-            class="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
-        </svg>
+        {% render 'button' variant: 'primary'
+          , size: 'icon'
+          , icon: 'icons/loader-circle.svg'
+          , class: ' bg-primary text-white hover:bg-primary hover:text-white!  md:size-12 shadow-sm rounded-full! animate-spin ' %}
+
       </template>
-    </button>
+    </div>
   {% endif %}
 </div>
