@@ -466,6 +466,9 @@
   .h-\[250px\] {
     height: 250px;
   }
+  .h-\[460px\] {
+    height: 460px;
+  }
   .h-\[700px\] {
     height: 700px;
   }
@@ -517,6 +520,9 @@
   .min-h-fit {
     min-height: -moz-fit-content;
     min-height: fit-content;
+  }
+  .min-h-full\! {
+    min-height: 100% !important;
   }
   .w-1\/2 {
     width: calc(1/2 * 100%);
