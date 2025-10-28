@@ -396,6 +396,9 @@
   .aspect-\[4\/5\] {
     aspect-ratio: 4/5;
   }
+  .aspect-\[360\/540\] {
+    aspect-ratio: 360/540;
+  }
   .size-2 {
     width: calc(var(--spacing) * 2);
     height: calc(var(--spacing) * 2);
