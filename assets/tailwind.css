@@ -387,6 +387,9 @@
   .aspect-440\/460 {
     aspect-ratio: 440/460;
   }
+  .aspect-600\/720 {
+    aspect-ratio: 600/720;
+  }
   .aspect-660\/600 {
     aspect-ratio: 660/600;
   }
@@ -398,6 +401,9 @@
   }
   .aspect-\[360\/540\] {
     aspect-ratio: 360/540;
+  }
+  .aspect-square {
+    aspect-ratio: 1 / 1;
   }
   .size-2 {
     width: calc(var(--spacing) * 2);

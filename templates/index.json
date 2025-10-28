@@ -8,31 +8,194 @@
  * ------------------------------------------------------------
  */
 {
-	"sections": {
-		"hero": {
-			"type": "hero",
-			"settings": {}
-		},
-		"featured": {
-			"type": "featured",
-			"settings": {}
-		},
-		"featured_categories": {
-			"type": "featured_categories",
-			"settings": {}
-		},
-		"featured_products": {
-			"type": "featured_products",
-			"settings": {}
-		},
-		"featured_banner": {
-			"type": "featured_banner",
-			"settings": {}
-		},
-		"featured_collections": {
-			"type": "featured_collections",
-			"settings": {}
-		}
-	},
-	"order": ["hero", "featured", "featured_categories", "featured_products", "featured_banner", "featured_collections"]
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "heading": "Unleash Your Style, Shop the Latest Trends",
+        "subheading": "Discover the latest trends & express your style effortlessly. Shop exclusive collections with premium designs, just for you!",
+        "hero_image_alt": "Person wearing a gray zip-up sweatshirt on a white background",
+        "review_heading": "25 Million+",
+        "review_text": "Real reviews from our happy customers! See what fashion lovers are saying about our quality, style and service."
+      }
+    },
+    "featured": {
+      "type": "featured",
+      "blocks": {
+        "featured_item_aA3pbd": {
+          "type": "featured_item",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/S898f8c3c29814418bfddf3e2bb628eb2a.webp",
+            "title": "Cozy wears",
+            "href": "shopify://products/vancl-pure-cotton-long-sve-t-irt-mens-spring-autumn-loose-fit-inner-wear-base-irt-breathable-comfortable-round-ne"
+          }
+        },
+        "featured_item_R9Eg6r": {
+          "type": "featured_item",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/S9b9a8bc0720a4ceca55d767b0a8666b3F.png",
+            "title": "Shirts",
+            "href": "shopify://products/autumn-winter-corduroy-shirts-men-old-money-style-button-up-long-sleeve-comfortable-casual-shirt-blouse"
+          }
+        },
+        "cta_card_3W8DaV": {
+          "type": "cta_card",
+          "settings": {
+            "cta_text": "Models wearing full outfits",
+            "cta_link": "shopify://collections/all",
+            "cta_label": "Explore more"
+          }
+        }
+      },
+      "block_order": [
+        "featured_item_aA3pbd",
+        "featured_item_R9Eg6r",
+        "cta_card_3W8DaV"
+      ],
+      "settings": {
+        "show_button": false,
+        "show_count": false,
+        "position": "center"
+      }
+    },
+    "featured_categories": {
+      "type": "featured_categories",
+      "blocks": {
+        "featured_category_qMEC7T": {
+          "type": "featured_category",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/S5156047fb0b0474593244ae139da981di_339d6d68-5c47-41af-9dae-86ca1e331bcc.webp",
+            "title": "Set Collection",
+            "href": "shopify://products/male-tracksuit-jacket-pants-men-set-large-size-6xl-7xl-8xl-fashion-new-autumn-winter-homme-suit-sweatshirt-sweatpants-man-set",
+            "count": 35
+          }
+        },
+        "featured_category_yCAdR6": {
+          "type": "featured_category",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/S46d9fe14067242ef8f3ccd11f4ba8376y.webp",
+            "title": "Jackets",
+            "href": "",
+            "count": 10
+          }
+        },
+        "featured_category_YbNKcR": {
+          "type": "featured_category",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/S30894bcac7e44f07bfeaf951a1fb3c9ey.webp",
+            "title": "Shirts",
+            "href": "",
+            "count": 25
+          }
+        }
+      },
+      "block_order": [
+        "featured_category_qMEC7T",
+        "featured_category_yCAdR6",
+        "featured_category_YbNKcR"
+      ],
+      "settings": {
+        "heading_title": "Our Category List",
+        "heading_align": "left",
+        "show_button": false,
+        "show_count": true,
+        "position": "center"
+      }
+    },
+    "featured_products": {
+      "type": "featured_products",
+      "settings": {}
+    },
+    "featured_banner": {
+      "type": "featured_banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/sleek-banner-desktop.png",
+        "mobile_image": "shopify://shop_images/sleek-banner-mobile.png",
+        "heading": "Get 50% Off",
+        "subtext": "for all new products purchases min. purchase $450",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections"
+      }
+    },
+    "featured_collections": {
+      "type": "featured_collections",
+      "blocks": {
+        "featured_collection_qEJwf3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/S25309327f0e84189b27ca16e78f6d813x.webp",
+            "title": "Top Sleeves",
+            "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
+          }
+        },
+        "featured_collection_qDeYm9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/S25309327f0e84189b27ca16e78f6d813x.webp",
+            "title": "Top Sleeves",
+            "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
+          }
+        },
+        "featured_collection_DjArDx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/S25309327f0e84189b27ca16e78f6d813x.webp",
+            "title": "Top Sleeves",
+            "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
+          }
+        },
+        "featured_collection_QbtTBV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/S25309327f0e84189b27ca16e78f6d813x.webp",
+            "title": "Top Sleeves",
+            "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
+          }
+        },
+        "featured_collection_gHTpft": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "image": "shopify://shop_images/S25309327f0e84189b27ca16e78f6d813x.webp",
+            "title": "Top Sleeves",
+            "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_qEJwf3",
+        "featured_collection_qDeYm9",
+        "featured_collection_DjArDx",
+        "featured_collection_QbtTBV",
+        "featured_collection_gHTpft"
+      ],
+      "settings": {
+        "heading_title": "Our Featured Collections",
+        "heading_subtitle": "Best sellers",
+        "heading_align": "center",
+        "card_width": "440",
+        "card_height": "460",
+        "show_button": true,
+        "show_count": false,
+        "position": "bottom"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "featured",
+    "featured_categories",
+    "featured_products",
+    "featured_banner",
+    "featured_collections"
+  ]
 }

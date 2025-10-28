@@ -1,22 +1,100 @@
 <div class="py-6 lg:py-12 flex flex-col gap-4 md:gap-6 lg:gap-12">
-  {% render 'heading' tag: 'h2'
-    , title: 'Our Products'
-    , subheading: 'Recently Added Shirts!'
-    , align: 'center' %}
+  {% render 'heading'
+    , tag: 'h2'
+    , title: section.settings.title
+    , subheading: section.settings.subheading
+    , align: section.settings.align
+  %}
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+    {% assign collection_handle = section.settings.collection | default: 'all' %}
+    {% assign selected_collection = collections[collection_handle] %}
+    {% assign products = selected_collection.products %}
 
-    {% for product in collections['all'].products limit: 8 %}
-      {% render 'product-card' product: product
+    {%- if section.settings.filter == 'bestsellers' -%}
+      {% assign products = products | sort: 'best_selling' %}
+    {%- elsif section.settings.filter == 'new' -%}
+      {% assign products = products | sort: 'created_at' | reverse %}
+    {%- endif -%}
+
+    {% for product in products limit: section.settings.limit %}
+      {% render 'product-card'
+        , product: product
         , show_floating_cart: true %}
     {% endfor %}
-
-
   </div>
 </div>
+
 {% schema %}
   {
     "name": "Featured Products",
-    "settings": []
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Our Products"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Recently Added Shirts!"
+      },
+      {
+        "type": "select",
+        "id": "align",
+        "label": "Heading alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Choose a collection"
+      }, {
+        "type": "select",
+        "id": "filter",
+        "label": "Product filter",
+        "options": [
+          {
+            "value": "none",
+            "label": "All products"
+          }, {
+            "value": "new",
+            "label": "New arrivals"
+          }, {
+            "value": "bestsellers",
+            "label": "Bestsellers"
+          }
+        ],
+        "default": "none"
+      }, {
+        "type": "range",
+        "id": "limit",
+        "label": "Number of products to display",
+        "step": 1,
+        "min": 1,
+        "max": 12,
+        "default": 8
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Products",
+        "category": "Products"
+      }
+    ]
   }
 {% endschema %}

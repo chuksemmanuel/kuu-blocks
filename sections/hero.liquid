@@ -63,7 +63,7 @@
         <div class="flex translate-x-1.5">
           {% for block in section.blocks %}
             {% if block.type == 'avatar' %}
-              <div class="rounded-full size-12 bg-gray-200 border-2 border-white overflow-hidden -translate-x-[calc({{ forloop.index0 }}*6px)]">
+              <div class="rounded-full size-12 bg-gray-200 border-2 border-white overflow-hidden -translate-x-[calc({{ forloop.index0 }}*6px)]" {{ block.shopify_attributes }}>
                 <img
                   src="{{ block.settings.avatar | image_url: width: 48 }}"
                   alt="avatar"

@@ -27,12 +27,12 @@
     adding: false,
    
   }" class="group relative flex flex-col overflow-hidden rounded-md bg-white  transition ">
-  <a href="{{ product_url }}" class="block  overflow-hidden">
+  <a href="{{ product_url }}" class="block  overflow-hidden aspect-square">
     <img
       src="{{ product_image | image_url: width: 600 }}"
       alt="{{ product_title | escape }}"
       width="600"
-      height="720"
+      height="600"
       class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
       loading="lazy" />
   </a>
