@@ -28,7 +28,11 @@
 		"featured_banner": {
 			"type": "featured_banner",
 			"settings": {}
+		},
+		"featured_collections": {
+			"type": "featured_collections",
+			"settings": {}
 		}
 	},
-	"order": ["hero", "featured_outfits", "featured_categories", "featured_products", "featured_banner"]
+	"order": ["hero", "featured_outfits", "featured_categories", "featured_products", "featured_banner", "featured_collections"]
 }

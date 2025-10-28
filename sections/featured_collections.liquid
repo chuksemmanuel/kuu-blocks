@@ -1,0 +1,32 @@
+<div class="py-6 lg:py-12 flex flex-col gap-4 md:gap-6 lg:gap-12">
+  {% render 'heading'
+    , tag: 'h2'
+    , title: 'Our Featured Collections'
+    , subheading: 'Best sellers'
+    , align: 'center' %}
+
+  {% assign len = 5 %}
+  <div class="grid grid:cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-rows-2 lg:h-[700px] gap-4">
+    {% for i in (1..5) %}
+      <div class=" rounded-3xl h-full md:min-h-[350px] min-h-[250px] {% if i == 2 and len == 5 %} md:row-span-2 {% endif %} w-full">
+        {% render 'collection-card' href: '#'
+          , width="440"
+          , image: 'https://cdn.shopify.com/s/files/1/0628/4348/6291/files/Saa7186b0be5f405b8e9c33409226ad6dI.webp?height=460'
+          , title: 'Set Collection apko niom momomi moimom opmpom.  mpm'
+          , position: 'bottom'
+          , show_button: 'true'
+          , class: 'max-md:h-60!  '
+        %}
+      </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Featured Collections",
+    "settings": []
+  }
+{% endschema %}
