@@ -1,109 +1,106 @@
 <style>
-  button {
-    cursor: pointer;
-  }
+	button {
+		cursor: pointer;
+	}
 
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
 
-  [x-cloak] {
-    display: none !important;
-  }</style>
+	[x-cloak] {
+		display: none !important;
+	}
+</style>
 
-
-{% comment %} Get TabList from Tab items by extracting and de-duplicating the parent_tab value {% endcomment %}
-{% assign tabs = "" %}
-
-{% for item in section.blocks %}
-  {% if item.type == 'menu_item' %}
-    {% assign current_tab = item.settings.parent_tab %}
-    {% unless tabs contains current_tab %}
-      {% assign tabs = tabs | append: current_tab | append: ',' %}
-    {% endunless %}
-  {% endif %}
-{% endfor %}
-
-{% assign tab_list = tabs | split: ',' %}
-{% comment %} Get TabList from Tab items Ends {% endcomment %}
+{% comment %} Get TabList from Tab items by extracting and de-duplicating the parent_tab value {% endcomment %} {% assign tabs = "" %} {% for item in
+section.blocks %} {% if item.type == 'menu_item' %} {% assign current_tab = item.settings.parent_tab %} {% unless tabs contains current_tab %} {%
+assign tabs = tabs | append: current_tab | append: ',' %} {% endunless %} {% endif %} {% endfor %} {% assign tab_list = tabs | split: ',' %} {%
+comment %} Get TabList from Tab items Ends {% endcomment %}
 
 <div
-  x-data="{ menuOpen: false }"
-  @toggle-menu.window="menuOpen = !menuOpen"
-  class="ida-tabbed-menu">
+	x-data="{ menuOpen: true }"
+	x-init="
+  this.overlayEl = $el.querySelector('[data-overlay]');
+      this.menuEl = $el.querySelector('[data-menu]');
+      console.log('okie dokie')
 
-  {% comment %} Menu Trigger Button starts {% endcomment %}
-  <div @click="$dispatch('toggle-menu')" class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-black inset-ring inset-ring-white/5 hover:bg-white/20">
-    {% render 'button' variant: 'ghost' size: 'icon' icon: 'icons/hamburger.svg' class: "hover:bg-white! md:size-12" %}
-  </div>
-  {% comment %} Menu Trigger Button Ends {% endcomment %}
+      // Initialize state
+      gsap.set(this.overlayEl, { opacity: 0, pointerEvents: 'none' });
+      gsap.set(this.menuEl, { scaleX: 0, opacity: 0, transformOrigin: 'left center' });
 
-  {% comment %} Overlay for menu {% endcomment %}
-  <div
-    class="fixed w-screen h-screen top-0 left-0 bg-black/50 z-40"
-    x-show="menuOpen"
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0"
-    x-transition:enter-end="opacity-100"
-    x-transition:leave="transition ease-in duration-200"
-    x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
-    x-cloak></div>
+      $watch('menuOpen', (open) => {
+        if (open) {
+          // Animate in
+          gsap.to(this.overlayEl, { opacity: 1, pointerEvents: 'auto', duration: 0.3 });
+          gsap.to(this.menuEl, { scaleX: 1, opacity: 1, duration: 0.3, ease: 'power2.out' });
+        } else {
+          // Animate out
+          gsap.to(this.overlayEl, { opacity: 0, pointerEvents: 'none', duration: 0.2 });
+          gsap.to(this.menuEl, { scaleX: 0, opacity: 0, duration: 0.2, ease: 'power2.in' });
+        }
+      });
+  "
+	@toggle-menu.window="menuOpen = !menuOpen"
+	class="ida-tabbed-menu">
+	{% comment %} Menu Trigger Button starts {% endcomment %}
+	<div
+		@click="$dispatch('toggle-menu')"
+		class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-black inset-ring inset-ring-white/5 hover:bg-white/20">
+		{% render 'button' variant: 'ghost' size: 'icon' icon: 'icons/hamburger.svg' class: "hover:bg-white! md:size-12" %}
+	</div>
+	{% comment %} Menu Trigger Button Ends {% endcomment %} {% comment %} Overlay for menu {% endcomment %}
+	<div
+		class="fixed w-screen h-screen top-0 left-0 bg-black/50 z-40"
+		x-show="menuOpen"
+		x-transition:enter="transition ease-out duration-300"
+		x-transition:enter-start="opacity-0"
+		x-transition:enter-end="opacity-100"
+		x-transition:leave="transition ease-in duration-200 delay-300"
+		x-transition:leave-start="opacity-100"
+		x-transition:leave-end="opacity-0"
+		x-cloak></div>
 
-  {% comment %} Menu Content {% endcomment %}
-  <div
-    class="fixed bottom-0 left-0 w-full max-w-[430px]  h-full bg-white  z-50"
-    @click.away="$dispatch('toggle-menu')"
-    x-show="menuOpen"
-    x-cloak
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="-translate-x-full opacity-0"
-    x-transition:enter-end="translate-x-0 opacity-100"
-    x-transition:leave="transition ease-in duration-200"
-    x-transition:leave-start="opacity-100"
-    x-transition:leave-end="-translate-x-full opacity-0">
+	{% comment %} Menu Content {% endcomment %}
+	<div
+		class="fixed top-5 left-1/2 sm:left-5 w-full max-w-[min(430px,95%)] h-[calc(100svh-40px)] bg-white rounded-lg z-50 -translate-x-1/2 sm:translate-x-0 origin-left"
+		@click.away="$dispatch('toggle-menu')"
+		x-show="menuOpen"
+		x-cloak
+		x-transition:enter="transition ease-out duration-300"
+		x-transition:enter-start="scale-x-0 opacity-0"
+		x-transition:enter-end="scale-x-1  opacity-100"
+		x-transition:leave="transition ease-in duration-200 delay-300"
+		x-transition:leave-start="scale-x-1  opacity-100"
+		x-transition:leave-end="scale-x-0 opacity-0"
+    >
+		<nav
+			class="flex flex-col"
+			x-show="menuOpen"
+			x-cloak
+			x-transition:enter="delay-300"
+			x-transition:enter-start="opacity-0"
+			x-transition:enter-end=" opacity-100"
+			x-transition:leave=""
+			x-transition:leave-start="opacity-100"
+			x-transition:leave-end="opacity-0">
+			{% comment %} Menu Header {% endcomment %}
+			<div class="flex items-center justify-between mb-6 px-4 py-4">
+				<h2 class="text-lg font-semibold">Menu</h2>
 
-    <nav class="flex flex-col ">
+				{% comment %} Close button {% endcomment %}
+				<div @click="$dispatch('toggle-menu')" class="text-gray-500 hover:text-gray-700">
+					{% render 'button' variant: 'outline' size: 'icon' icon: 'icons/cancel.svg' class: "hover:bg-white! md:size-12 rounded-full!" %}
+				</div>
+			</div>
 
-      {% comment %} Menu Header {% endcomment %}
-      <div class="flex items-center justify-between mb-6 px-4 py-2">
-        <h2 class="text-lg font-semibold">Menu</h2>
-
-        {% comment %} Close button {% endcomment %}
-        <button @click="$dispatch('toggle-menu')" class="text-gray-500 hover:text-gray-700 ">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-x">
-            <line
-              x1="18"
-              y1="6"
-              x2="6"
-              y2="18"></line>
-            <line
-              x1="6"
-              y1="6"
-              x2="18"
-              y2="18"></line>
-          </svg>
-        </button>
-      </div>
-
-
-      {% comment %} Menu Tab  Starts {% endcomment %}
-      <div x-data="{
-        tabSelected:'{{tab_list.first}}',
+			{% comment %} Menu Tab Starts {% endcomment %}
+			<div
+				x-data="{
+        tabSelected:'{{ tab_list.first }}',
         getContentID(tabContent){
           return tabContent.id.replace('-content','')
         },
@@ -125,14 +122,14 @@
             const tabId = this.getContentID(tabContent);
             return this.tabSelected == tabId;
         }
-    }" class="relative w-full max-w-[430px]">
+    }"
+				class="relative w-full max-w-[430px]">
+				{% comment %} Tab List Starts{% endcomment %}
 
-        {% comment %} Tab List Starts{% endcomment %}
-
-        <div
-          x-ref="tabButtons"
-          :class="`tabsButton relative flex shrink-0 items-center  justify-center-safe h-10 z-30 overflow-hidden  text-gray-500 bg-white border-y  border-gray-200 select-none overflow-x-auto w-full no-scrollbar   ${!isDragging ? 'cursor-grap': 'cursor-grabbing'}`  "
-          x-data="{
+				<div
+					x-ref="tabButtons"
+					:class="`tabsButton relative flex shrink-0 items-center  justify-center-safe h-10 z-30 overflow-hidden  text-gray-500 bg-white border-y  border-gray-200 select-none overflow-x-auto w-full no-scrollbar   ${!isDragging ? 'cursor-grap': 'cursor-grabbing'}`  "
+					x-data="{
             isDragging: false,
             startX: 0,
             scrollLeft: 0,
@@ -155,70 +152,46 @@
               $el.scrollLeft = this.scrollLeft - walk;
             },
           }"
-          x-init="init()"
-          @mousedown="startDragging"
-          @mouseup="stopDragging"
-          @mouseleave="stopDragging"
-          @mousemove="drag">
-          {% for tab in tab_list %}
-            <button
-              :id="'{{tab}}'"
-              @click="tabButtonClicked($el);"
-              type="button"
-              :class="{ 'bg-gray-100 text-gray-900' : tabButtonActive($el) }"
-              x-init="tabRepositionMarker($el)"
-              class="relative z-20 inline-flex items-center justify-center w-full h-10 px-3 text-sm font-medium transition-all cursor-pointer whitespace-nowrap border-r border-gray-200">
-              {{ tab }}
+					x-init="init()"
+					@mousedown="startDragging"
+					@mouseup="stopDragging"
+					@mouseleave="stopDragging"
+					@mousemove="drag">
+					{% for tab in tab_list %}
+					<button
+						:id="'{{ tab }}'"
+						@click="tabButtonClicked($el);"
+						type="button"
+						:class="{ 'bg-gray-100 text-gray-900' : tabButtonActive($el) }"
+						x-init="tabRepositionMarker($el)"
+						class="relative z-20 inline-flex items-center justify-center w-full h-10 px-3 text-sm font-medium transition-all cursor-pointer whitespace-nowrap border-r border-gray-200">
+						{{ tab }}
+					</button>
+					{% endfor %}
 
-            </button>
-          {% endfor %}
+					<div x-ref="tabMarker" class="absolute left-0 z-10 w-1/2 h-full duration-300 linear" x-cloak>
+						<div class="w-full h-full bg-gray-100"></div>
+					</div>
+				</div>
+				{% comment %} Tab List Ends{% endcomment %} {% comment %} Menu Items Starts {% endcomment %}
+				<div class="h-[calc(100dvh-48px-40px)] overflow-y-auto">
+					<div class="relative flex items-center justify-center w-full mt-2 text-xs text-gray-400 rounded-md content">
+						{% for tab in tab_list %} {% if tab != blank %}
 
-          <div
-            x-ref="tabMarker"
-            class="absolute left-0 z-10 w-1/2 h-full duration-300 linear"
-            x-cloak>
-            <div class="w-full h-full bg-gray-100 "></div>
-          </div>
-        </div>
-        {% comment %} Tab List Ends{% endcomment %}
+						<div :id="'{{ tab }}-content'" x-show="tabContentActive($el)" class="relative w-full">
+							{% for item in section.blocks %} {% if item.type == 'menu_item' and item.settings.parent_tab == tab %}
+							<a href="{{ item.settings.href }}" class="flex items-center gap-5 border-b border-gray-200 p-4" {{ item.shopify_attributes }}>
+								<img src="{{ item.settings.image | image_url : width : 64 }}" alt="{{ item.settings.title }}" width="64" height="64" />
+								<p class="text-lg">{{ item.settings.title }}</p>
+							</a>
+							{% endif %} {% endfor %}
+						</div>
 
-
-        {% comment %} Menu Items Starts {% endcomment %}
-        <div class="h-[calc(100dvh-48px-40px)] overflow-y-auto">
-
-
-          <div class="relative flex items-center justify-center w-full  mt-2 text-xs text-gray-400  rounded-md content ">
-            {% for tab in tab_list %}
-              {% if tab != blank %}
-
-                <div
-                  :id="'{{tab}}-content'"
-                  x-show="tabContentActive($el)"
-                  class="relative w-full">
-                  {% for item in section.blocks %}
-                    {% if item.type == 'menu_item' and item.settings.parent_tab == tab %}
-                      <a
-                        href="{{ item.settings.href }}"
-                        class="flex items-center gap-5 border-b  border-gray-200 p-4"
-                        {{ item.shopify_attributes }}>
-                        <img
-                          src="{{ item.settings.image | image_url: width: 64 }}"
-                          alt="{{ item.settings.title }}"
-                          width="64"
-                          height="64">
-                        <p class="text-lg">{{ item.settings.title }}</p>
-                      </a>
-                    {% endif %}
-                  {% endfor %}
-                </div>
-
-              {% endif %}
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-    {% comment %} Menu Items Ends {% endcomment %}
-
-    </nav>
-  </div>
+						{% endif %} {% endfor %}
+					</div>
+				</div>
+			</div>
+			{% comment %} Menu Items Ends {% endcomment %}
+		</nav>
+	</div>
 </div>
