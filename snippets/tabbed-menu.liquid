@@ -22,7 +22,7 @@ assign tabs = tabs | append: current_tab | append: ',' %} {% endunless %} {% end
 comment %} Get TabList from Tab items Ends {% endcomment %}
 
 <div
-	x-data="{ menuOpen: true }"
+	x-data="{ menuOpen: false }"
 
 	@toggle-menu.window="menuOpen = !menuOpen"
 	class="ida-tabbed-menu">

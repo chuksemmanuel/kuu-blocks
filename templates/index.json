@@ -11,6 +11,56 @@
   "sections": {
     "hero": {
       "type": "hero",
+      "blocks": {
+        "button_cHbf7P": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "href": "shopify://collections/all",
+            "variant": "primary",
+            "size": "lg",
+            "class": "rounded-full! px-14"
+          }
+        },
+        "avatar_npttzt": {
+          "type": "avatar",
+          "settings": {
+            "avatar": "shopify://shop_images/avatar5.jpg"
+          }
+        },
+        "avatar_m3AqVJ": {
+          "type": "avatar",
+          "settings": {
+            "avatar": "shopify://shop_images/avatar2.jpg"
+          }
+        },
+        "avatar_F4HDfQ": {
+          "type": "avatar",
+          "settings": {
+            "avatar": "shopify://shop_images/avatar4.jpg"
+          }
+        },
+        "avatar_VhPrew": {
+          "type": "avatar",
+          "settings": {
+            "avatar": "shopify://shop_images/avatar1.jpg"
+          }
+        },
+        "avatar_cJwrMw": {
+          "type": "avatar",
+          "settings": {
+            "avatar": "shopify://shop_images/avatar3.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "button_cHbf7P",
+        "avatar_npttzt",
+        "avatar_m3AqVJ",
+        "avatar_F4HDfQ",
+        "avatar_VhPrew",
+        "avatar_cJwrMw"
+      ],
       "settings": {
         "heading": "Unleash Your Style, Shop the Latest Trends",
         "subheading": "Discover the latest trends & express your style effortlessly. Shop exclusive collections with premium designs, just for you!",
@@ -109,7 +159,14 @@
     },
     "featured_products": {
       "type": "featured_products",
-      "settings": {}
+      "settings": {
+        "title": "Our Products",
+        "subheading": "Recently Added Shirts!",
+        "align": "center",
+        "collection": "",
+        "filter": "new",
+        "limit": 8
+      }
     },
     "featured_banner": {
       "type": "featured_banner",
@@ -125,16 +182,16 @@
     "featured_collections": {
       "type": "featured_collections",
       "blocks": {
-        "featured_collection_qEJwf3": {
+        "featured_collection_qDeYm9": {
           "type": "featured_collection",
           "settings": {
             "collection": "",
-            "image": "shopify://shop_images/S25309327f0e84189b27ca16e78f6d813x.webp",
-            "title": "Top Sleeves",
+            "image": "shopify://shop_images/S4a54d341017c41c48f8b6b18ba4c3878L.webp",
+            "title": "Top Jacktes",
             "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
           }
         },
-        "featured_collection_qDeYm9": {
+        "featured_collection_qEJwf3": {
           "type": "featured_collection",
           "settings": {
             "collection": "",
@@ -147,8 +204,8 @@
           "type": "featured_collection",
           "settings": {
             "collection": "",
-            "image": "shopify://shop_images/S25309327f0e84189b27ca16e78f6d813x.webp",
-            "title": "Top Sleeves",
+            "image": "shopify://shop_images/S898f8c3c29814418bfddf3e2bb628eb2a.webp",
+            "title": "Cozy wears",
             "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
           }
         },
@@ -156,8 +213,8 @@
           "type": "featured_collection",
           "settings": {
             "collection": "",
-            "image": "shopify://shop_images/S25309327f0e84189b27ca16e78f6d813x.webp",
-            "title": "Top Sleeves",
+            "image": "shopify://shop_images/S08fa95a6d8284759a68b3e76795b4e19o.png",
+            "title": "Winter Collection",
             "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
           }
         },
@@ -165,15 +222,15 @@
           "type": "featured_collection",
           "settings": {
             "collection": "",
-            "image": "shopify://shop_images/S25309327f0e84189b27ca16e78f6d813x.webp",
-            "title": "Top Sleeves",
+            "image": "shopify://shop_images/S42325dc6d03e45dd98f379450a1cd6382.webp",
+            "title": "Zip ups",
             "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
           }
         }
       },
       "block_order": [
-        "featured_collection_qEJwf3",
         "featured_collection_qDeYm9",
+        "featured_collection_qEJwf3",
         "featured_collection_DjArDx",
         "featured_collection_QbtTBV",
         "featured_collection_gHTpft"
