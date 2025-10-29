@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"target": "ESNext", // Modern JS target
+		"module": "ESNext", // Use ES modules
+		"moduleResolution": "Node", // Resolve imports like Node
+		"baseUrl": ".", // Root folder for imports
+		"paths": {
+			"@lib/*": ["assets/js/lib/*"], // Libraries like Swiper, GSAP
+			"@core/*": ["assets/js/core/*"], // Core scripts: init, utils, globals
+			"@features/*": ["assets/js/features/*"], // Features/sections
+			"@theme/*": ["assets/js/*"] // Top-level theme scripts
+		},
+		"allowSyntheticDefaultImports": true, // For non-ESM libraries
+		"checkJs": true, // Enable type checking in JS
+		"jsx": "preserve",
+		"strict": true, // Optional: strict type checking
+		"noEmit": true, // Don't output compiled files
+		"types": ["alpinejs", "gsap", "swiper"] // Optional: global type references
+	},
+	"include": ["assets/js/**/*", "global.d.ts"],
+	"exclude": ["node_modules", "dist"]
+}

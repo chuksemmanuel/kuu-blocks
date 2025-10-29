@@ -1,0 +1,5 @@
+---
+inclusion: always
+---
+🚨 MANDATORY: YOU MUST CALL "learn_shopify_api" ONCE WHEN WORKING WITH LIQUID THEMES.
+

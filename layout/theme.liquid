@@ -1,16 +1,12 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
   <head>
-    {% # Inlined CSS Variables %}
-  {% render 'css-variables' %}
-
-
     {% # Load and preload the critical CSS %}
-    {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
-  {% render 'stylesheet' %}
+    {{ 'css/critical.css' | asset_url | stylesheet_tag: preload: true }}
 
-
-    {% # Social, title, etc. %}
+    {% render 'css-variables' %}
+    {% render 'stylesheet' %}
+    {% render 'script' %}
     {% render 'meta-tags' %}
 
     {{ content_for_header }}
@@ -24,14 +20,12 @@
     {% sections 'footer-group' %}
 
 
-    {% # Load Swiper.js %}
-    <script src="{{ 'swiper-element-bundle@3.13.0.min.js' |  asset_url }}" defer></script>
-
-    {% # Load Gsap.js %}
-    <script src="{{ 'gsap.js' |  asset_url }}" defer></script>
-
-
-    {% # Load  Alpine.js %}
-    <script src="{{ 'alpine.js' |  asset_url }}" defer></script>
+    {% comment %} External Libraries {% endcomment %}
+    {% # Gsap.js %}
+    <script src="{{ 'js/lib/gsap@3.13.0.min.js' |  asset_url }}" defer></script>
+    {% # Swiper.js %}
+    <script src="{{ 'js/lib/swiperjs@12.0.3.min.js' |  asset_url }}" defer></script>
+    {% # Alpine.js %}
+    <script src="{{ 'js/lib/alpinejs@3.15.1.min.js' |  asset_url }}" defer></script>
   </body>
 </html>

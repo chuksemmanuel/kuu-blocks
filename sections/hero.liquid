@@ -59,7 +59,15 @@
           </p>
         </div>
 
-        {%- comment -%} Avatar Images {%- endcomment -%}
+        {% # Avatar Images %}
+        <!-- comment
+          This class are added here so the tailwind complier picks up the computed values for the avatar translate property
+          -translate-x-[calc(1*6px)]
+          -translate-x-[calc(2*6px)]
+          -translate-x-[calc(3*6px)]
+          -translate-x-[calc(4*6px)]
+          -translate-x-[calc(5*6px)]
+        -->
         <div class="flex translate-x-1.5">
           {% for block in section.blocks %}
             {% if block.type == 'avatar' %}

@@ -1,26 +1,43 @@
-<div class=" announcement-bar px-4 py-2 flex items-center justify-center full-width " style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.text_color }};">
-  <swiper-container
-    class="mySwiper text-center gap-x-2 gap-y-1 overflow-hidden overflow-x-auto swiper-scrollbar-disabled"
-    scrollbar="true"
-    direction="horizontal"
-    slides-per-view="auto"
-    free-mode="true"
-    scrollbar="#scrollbar"
-    scrollbar-hide="true"
-    mousewheel="true"
-    autoplay="true"
-    delay="500"
-    loop="true">
-    {% for block in section.blocks %}
-      <swiper-slide class="flex items-center justify-center  gap-x-2 whitespace-nowrap w-fit!">
-        <div class="shrink-0 w-fit">{{ block.settings.announcement_text }}</div>
-        {% unless forloop.last %}
-          <div class="size-2 rounded-full bg-white mx-4! shrink-0"></div>
-        {% endunless %}
-      </swiper-slide>
-    {% endfor %}
-    <div id="scrollbar"></div>
-  </swiper-container>
+<style>
+  .slide p {
+    text-wrap: nowrap !important;
+  }
+</style>
+
+
+{% # Always-on Features %}
+<script type="module" src="{{ 'js/features/announcement-bar.js' | asset_url }}"></script>
+
+
+
+
+<div
+  class=" announcement-bar px-4 py-2 full-width w-full overflow-hidden"
+  style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.text_color }};"
+  x-data="announcementBar($el)"
+  x-init="init()"
+  x-on:destroy.window="destroy()"
+  >
+  <div class="swiper mySwiper slider">
+      <div class="swiper-wrapper  flex justify-center-safe items-center w-full">
+        {% for block in section.blocks %}
+
+          {% if block.type == 'announcement' %}
+                  <div class="swiper-slide w-fit flex items-center justify-center shink-0 slide px-4">
+            {{ block.settings.announcement_text }}
+        
+          </div>
+          {% unless forloop.last %}
+            <div class="swiper-slide w-fit flex items-center justify-center shink-0 slide px-4">
+              <div class="size-2 rounded-full bg-white mx-4! shrink-0 hidden lg:block  "></div>
+            </div>
+            
+          {% endunless %}
+          {% endif %}
+      
+        {% endfor %}
+    </div>
+  </div>
 </div>
 
 
