@@ -34,14 +34,14 @@
   {{ block.shopify_attributes }}
   {% endif %}>
 
-  <div class="flex {{ position_class }} p-4 w-full h-full z-50 relative">
+  <div class="flex {{ position_class }} p-4 w-full h-full z-30 relative">
     <div class="flex flex-col max-w-[60%]">
-      <span class="relative z-50 text-white text-shadow-sm text-2xl line-clamp-2">
+      <span class="relative z-30 text-white text-shadow-sm text-2xl line-clamp-2">
         {{ card_title }}
       </span>
 
       {% if card_count and show_count %}
-        <span class="relative z-50 text-white text-shadow-sm line-clamp-2">
+        <span class="relative z-30 text-white text-shadow-sm line-clamp-2">
           ({{ card_count }} item{% if card_count > 1 %}s{% endif %})
         </span>
       {% endif %}
