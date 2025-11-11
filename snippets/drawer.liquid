@@ -35,12 +35,15 @@
 
   <!-- Drawer panel (no built-in header/close) -->
   <div
-    class="fixed bg-white shadow-lg z-50 overflow-y-auto no-scrollbar"
+    class="fixed w-full z-50 overflow-y-auto no-scrollbar flex justify-stretch p-2 lg:p-4"
     x-cloak
     x-ref="panel"
     style="opacity: 0; visibility: hidden; will-change: transform, opacity;"
     @click.stop>
-    {{ content }}
+    <div class="w-full  bg-white rounded-md lg:rounded-lg p-5 lg:p-8 shadow-lg flex-1">
+      {{ content }}
+    </div>
+
   </div>
 </div>
 
@@ -63,7 +66,8 @@
           Object.assign(this.$panel.style, {
             top: '0',
             height: '100vh',
-            width: '20rem',
+            width: '100%',
+            maxWidth:'min(648px,100%)',
             left: this.direction === 'left' ? '0' : 'auto',
             right: this.direction === 'right' ? '0' : 'auto',
             bottom: 'auto',
@@ -171,17 +175,19 @@
           }
         })
 
-        tl.to(overlay, { opacity: 0, duration: 0.22 }, 0)
-
+        
+        
         if (this.direction === 'left') {
-          tl.to(panel, { x: '-100%', opacity: 0, duration: 0.32 }, 0)
+          tl.to(panel, { x: '-100%',  duration: 0.32 }, 0)
         } else if (this.direction === 'right') {
-          tl.to(panel, { x: '100%', opacity: 0, duration: 0.32 }, 0)
+          tl.to(panel, { x: '100%',  duration: 0.32 }, 0)
         } else if (this.direction === 'top') {
-          tl.to(panel, { y: '-100%', opacity: 0, duration: 0.32 }, 0)
+          tl.to(panel, { y: '-100%',  duration: 0.32 }, 0)
         } else if (this.direction === 'bottom') {
-          tl.to(panel, { y: '100%', opacity: 0, duration: 0.32 }, 0)
+          tl.to(panel, { y: '100%',  duration: 0.32 }, 0)
         }
+
+        tl.to(overlay, { opacity: 0, duration: 0.32 }, 0.2)
       },
 
       // call to clean up listeners if needed
