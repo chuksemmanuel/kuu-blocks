@@ -29,20 +29,45 @@
         {% else %}
             <div class="w-full h-full flex flex-col">
 
-                
-                 <div class="bg-gray-200 flex-1 p-5 lg:p-8 overflow-y-auto">
-                    <button data-drawer-close> Close Drawer</button>
+                <!-- Cart Scrollable -->
+                 <div class=" flex-1 p-5 lg:p-8 overflow-y-auto flex flex-col justify-between">
 
-                    <div class="flex flex-col gap-4">
-                        <div class="bg-gray-400 rounded h-35"></div>
-                        <div class="bg-gray-400 rounded h-35"></div>
-                        <div class="bg-gray-400 rounded h-35"></div>
-                        <div class="bg-gray-400 rounded h-35"></div>
-                        <div class="bg-gray-400 rounded h-35"></div>
-                        <div class="bg-gray-400 rounded h-35"></div>
+                 <!-- Main Content -->
+                 <div>
+                    <!-- Cart Top -->
+                    <div class="pb-6 lg:pb-8 flex flex-col gap-2">
+                        <!-- Cart Header -->
+                        <div class="flex justify-between items-center w-full">
+                            <div class="flex items-center gap-2">
+                                <p class="font-semibold lg:text-lg">Cart </p>
+                                <span class="flex justify-center items-center size-6 min-w-fit bg-primary text-white rounded-full p-px text-sm">{{cart.item_count}}</span>
+                            </div>
+                                
+                            <div data-drawer-close class="leading-0">
+                                {% render 'button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ' %}
+                            </div>
+                        </div>
+
+                        <!--Placeholder for app extension -->
+                        <div class="hidden"></div>
                     </div>
+                    
+                    {% render 'cart-drawer-items' %}
+               
                  </div>
-                 <div class="bg-yellow-400 shrink-0 p-5 lg:p-8 h-35 lg:h-44">
+
+
+                 <!-- Recommended Products -->
+                  <div>
+                    <div class="bg-orange-400 w-full h-32 rounded-lg"></div>
+                  </div>
+
+                    
+         
+                 </div>
+
+                 <!-- Cart Footer -->
+                 <div class="border-t border-gray-200 shrink-0 p-5 lg:p-8 h-35 lg:h-44">
 
                  </div>
             </div>
