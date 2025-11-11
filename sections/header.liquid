@@ -38,21 +38,20 @@
 
 
       {% capture cart_content %}
-        
-          {% comment %} {% if cart.item_count > 0 %}
-          <sup>{{ cart.item_count }}</sup>
-        {% endif %} {% endcomment %}
-
         <span class="bg-primary flex justify-center items-center text-white z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs">{{ cart.item_count }}</span>
-
-
         {{ 'icons/shopping-cart.svg' | inline_asset_content }}
       {% endcapture %}
-      {% render 'button'
-        , href: routes.cart_url
+      {% capture cart_button %}
+           {% render 'button'
         , size: 'icon'
         , content: cart_content
         , class: 'bg-white text-black hover:bg-primary hover:text-white!  md:size-12 rounded-full!'
+      %}
+      {% endcapture %}
+      {% render 'drawer'
+        , trigger: cart_button
+        , content: 'Hello world!'
+        , from: 'right'
       %}
 
     </div>
@@ -80,15 +79,18 @@
             "type": "image_picker",
             "id": "image",
             "label": "Item Image"
-          }, {
+          },
+          {
             "type": "text",
             "id": "title",
             "label": "Item Title"
-          }, {
+          },
+          {
             "type": "url",
             "id": "href",
             "label": "Item Link"
-          }, {
+          },
+          {
             "type": "text",
             "id": "parent_tab",
             "label": "Parent Tab (must match tab title)"
