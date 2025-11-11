@@ -36,23 +36,7 @@
           , class: 'bg-white text-black hover:bg-primary hover:text-white! md:size-12 rounded-full!' %}
       {% endif %}
 
-
-      {% capture cart_content %}
-        <span class="bg-primary flex justify-center items-center text-white z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs">{{ cart.item_count }}</span>
-        {{ 'icons/shopping-cart.svg' | inline_asset_content }}
-      {% endcapture %}
-      {% capture cart_button %}
-           {% render 'button'
-        , size: 'icon'
-        , content: cart_content
-        , class: 'bg-white text-black hover:bg-primary hover:text-white!  md:size-12 rounded-full! '
-      %}
-      {% endcapture %}
-      {% render 'drawer'
-        , trigger: cart_button
-        , content: '<button data-drawer-close> Close Drawer</button>'
-        , from: 'right'
-      %}
+      {% render 'cart-drawer' %}
 
     </div>
   </div>

@@ -40,7 +40,7 @@
     x-ref="panel"
     style="opacity: 0; visibility: hidden; will-change: transform, opacity;"
     @click.stop>
-    <div class="w-full  bg-white rounded-md lg:rounded-lg p-5 lg:p-8 shadow-lg flex-1">
+    <div class="w-full  bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg flex-1">
       {{ content }}
     </div>
 
@@ -110,6 +110,11 @@
           if (e.key === 'Escape' && this.open) this.closeDrawer()
         }
         document.addEventListener('keydown', this._escHandler)
+
+        // Remove Later
+        setTimeout(() => {
+          this.openDrawer()
+        }, 500);
       },
 
       openDrawer() {
@@ -175,7 +180,7 @@
           }
         })
 
-        
+
         
         if (this.direction === 'left') {
           tl.to(panel, { x: '-100%',  duration: 0.32 }, 0)
