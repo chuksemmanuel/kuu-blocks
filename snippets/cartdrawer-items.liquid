@@ -1,9 +1,14 @@
-<div x-data="cartDrawer()" class="flex flex-col gap-4">
+<div
+  x-data="cartDrawer()"
+  class="flex flex-col gap-4 lg:gap-6"
+  id="cartdrawer-content">
   {% for item in cart.items %}
     <div
-      class="flex gap-5 justify-between"
+      class="flex gap-5 justify-between relative"
       x-id="['{{ item.key }}']"
-      key="{{ item.key }}">
+      key="{{ item.key }}"
+      :class="{ 'opacity-95 pointer-events-none': updatingKey === '{{ item.key }}' }">
+
       <div class="flex items-center gap-5">
         <!-- Cart Image -->
         <div class="size-20 rounded bg-gray-200 overflow-hidden border border-gray-200 shrink-0">
@@ -17,7 +22,7 @@
 
         <!-- Cart Details -->
         <div class="flex flex-col gap-px">
-          <span class="font-semibold line-clamp-2">{{ item.title }}</span>
+          <span class="font-semibold line-clamp-2 max-w-50">{{ item.title }}</span>
           <span>{{ item.final_line_price | money }}</span>
         </div>
       </div>
@@ -33,20 +38,32 @@
             @keyup="filterNumeric($event, '{{ item.key }}')" />
 
           <div class="flex flex-col justify-center items-center">
-            <button class="size-5 flex justify-center items-center hover:text-gray-700" @click="updateQuantity('{{ item.key }}', {{ item.quantity | plus: 1 }})">
+            <button class="size-5 flex justify-center items-center hover:text-gray-700" @click="onQuantityClick('{{ item.key }}', Number($event.target.closest('[key]').querySelector('input').value) + 1)">
               {{ 'icons/chevron-up.svg' | inline_asset_content }}
             </button>
-            <button class="size-5 flex justify-center items-center hover:text-gray-700" @click="updateQuantity('{{ item.key }}', {{ item.quantity | minus: 1 }})">
+
+            <button class="size-5 flex justify-center items-center hover:text-gray-700" @click="onQuantityClick('{{ item.key }}', Math.max(0, Number($event.target.closest('[key]').querySelector('input').value) - 1))">
               {{ 'icons/chevron-down.svg' | inline_asset_content }}
             </button>
           </div>
         </div>
 
-        <button class="text-xs text-right underline text-gray-500 hover:text-black" @click="updateQuantity('{{ item.key }}', 0)">
+        <button
+          x-show="updatingKey !== '{{ item.key }}'"
+          class="text-xs text-right underline text-gray-500 hover:text-black h-5"
+          @click="updateQuantity('{{ item.key }}', 0)">
           Remove
         </button>
+
+        <!-- Spinner for currently updating item -->
+        <template x-if="updatingKey === '{{ item.key }}'">
+          <button class=" text-gray-500 transition  animate-spin [animation-duration:0.5s] self-end  size-5" @click="updateQuantity('{{ item.key }}', 0)">
+            {{ 'icons/loader-circle.svg' | inline_asset_content }}
+          </button>
+        </template>
       </div>
     </div>
   {% endfor %}
 </div>
-<script src="{{'js/features/cartdrawer/cart-drawer-items.js' |  asset_url}}" defer></script>
+
+<script src="{{ 'js/features/cartdrawer/cart-drawer-items.js' | asset_url }}" defer></script>
