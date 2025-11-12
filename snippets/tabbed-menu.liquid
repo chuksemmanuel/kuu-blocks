@@ -59,7 +59,7 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
         }
     }">
       {%# Menu Top %}
-      <div class="min-h-[104px] md:min-h-[120px] shrink-0">
+      <div class="min-h-[120px] shrink-0">
 
          {%# Menu Header  %}
         <div class="flex items-center justify-between mb-6 p-5 lg:p-5">
@@ -78,7 +78,7 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
           <div
             x-ref="tabButtons"
             
-            :class="`tabsButton  relative flex gap-4 shrink-0 items-center  justify-center-safe h-10 z-30 overflow-hidden  text-gray-500 bg-white select-none overflow-x-auto w-full no-scrollbar   ${!isDragging ? 'cursor-grap': 'cursor-grabbing'}`  "
+            :class="`tabsButton relative pl-5 flex gap-4 shrink-0 items-center  justify-center-safe h-10 z-30 overflow-hidden  text-gray-500 bg-white select-none overflow-x-auto w-full no-scrollbar   ${!isDragging ? 'cursor-grap': 'cursor-grabbing'}`  "
             x-data="{
               isDragging: false,
               startX: 0,
@@ -135,20 +135,25 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
 
         {% comment %} Menu Items Starts {% endcomment %}
         <div class="flex-1 overflow-y-auto">
-          <div class="relative flex items-center justify-center w-full mt-2 text-xs rounded-md content">
+
             {% for tab in tab_list %}
               {% if tab != blank %}
 
                 <div
                   :id="'{{ tab }}-content'"
                   x-show="tabContentActive($el)"
-                
-                  class="relative w-full ">
+                  x-transition:enter="transition ease-in delay-200"
+                  x-transition:enter-start="opacity-0"
+                  x-transition:enter-end=" opacity-100"
+                  x-transition:leave="transition ease-out "
+                  x-transition:leave-start="opacity-100"
+                  x-transition:leave-end="opacity-0"
+                  class="relative w-full flex flex-col gap-4">
                   {% for item in section.blocks %}
                     {% if item.type == 'menu_item' and item.settings.parent_tab == tab %}
                       <a
                         href="{{ item.settings.href }}"
-                        class="flex items-center gap-5 border-b border-gray-200 p-5 lg:p-8"
+                        class="flex items-center gap-5   px-5 lg:px-8 pb-6"
                         {{ item.shopify_attributes }}>
 
                             <div
@@ -173,7 +178,7 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
               {% endif %}
             {% endfor %}
           </div>
-        </div>
+
       
     {% comment %} Menu Items Ends {% endcomment %}
   </div>
