@@ -30,61 +30,11 @@
 {%
 comment %} Get TabList from Tab items Ends {% endcomment %}
 
-<div
-  x-data="{ menuOpen: false }"
-  @toggle-menu.window="menuOpen = !menuOpen"
-  class="ida-tabbed-menu">
-  {% comment %} Menu Trigger Button starts {% endcomment %}
-  <div @click="$dispatch('toggle-menu')" class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-black inset-ring inset-ring-white/5 hover:bg-white/20">
-    {% render 'button' variant: 'ghost' size: 'icon' icon: 'icons/hamburger.svg' class: "bg-white text-black hover:bg-primary hover:text-white! md:size-12 rounded-lg!" %}
-  </div>
-  {% comment %} Menu Trigger Button Ends {% endcomment %}
-  {% comment %} Overlay for menu {% endcomment %}
-  <div
-    class="fixed w-screen h-screen top-0 left-0 bg-black/50 z-40"
-    x-show="menuOpen"
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0"
-    x-transition:enter-end="opacity-100"
-    x-transition:leave="transition ease-in duration-200 delay-300"
-    x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
-    x-cloak></div>
-
-  {% comment %} Menu Content {% endcomment %}
-  <div
-    class="fixed top-5 left-1/2 sm:left-5 w-full max-w-[min(430px,95%)] h-[calc(100svh-40px)] bg-white rounded-lg z-50 -translate-x-1/2 sm:translate-x-0 origin-left transform-3d transition ease-out"
-    @click.away="$dispatch('toggle-menu')"
-    x-show="menuOpen"
-    x-cloak
-    x-transition:enter="transition ease-out"
-    x-transition:enter-start="scale-x-0 opacity-0"
-    x-transition:enter-end="scale-x-1  opacity-100"
-    x-transition:leave="transition ease-in duration-200 delay-300"
-    x-transition:leave-start="scale-x-1  opacity-100"
-    x-transition:leave-end="scale-x-0 opacity-0">
-    <nav
-      class="flex flex-col"
-      x-show="menuOpen"
-      x-cloak
-      x-transition:enter="transition ease-out delay-500"
-      x-transition:enter-start="opacity-0"
-      x-transition:enter-end=" opacity-100"
-      x-transition:leave=""
-      x-transition:leave-start="opacity-100"
-      x-transition:leave-end="opacity-0">
-      {% comment %} Menu Header {% endcomment %}
-      <div class="flex items-center justify-between mb-6 px-4 py-4">
-        <h2 class="text-lg font-semibold">Menu</h2>
-
-        {% comment %} Close button {% endcomment %}
-        <div @click="$dispatch('toggle-menu')" class="text-gray-500 hover:text-gray-700">
-          {% render 'button' variant: 'outline' size: 'icon' icon: 'icons/cancel.svg' class: "hover:bg-white! md:size-12 rounded-full!" %}
-        </div>
-      </div>
-
-      {% comment %} Menu Tab Starts {% endcomment %}
-      <div x-data="{
+{% capture menu_trigger %}
+   {% render 'button' variant: 'ghost' size: 'icon' icon: 'icons/hamburger.svg' class: "bg-white text-black hover:bg-primary hover:text-white! md:size-12 rounded-lg!" %}
+{% endcapture %}
+{% capture menu_content %}
+  <div class="flex flex-col w-full h-full"  x-data="{
         tabSelected:'{{ tab_list.first }}',
         getContentID(tabContent){
           return tabContent.id.replace('-content','')
@@ -107,81 +57,113 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
             const tabId = this.getContentID(tabContent);
             return this.tabSelected == tabId;
         }
-    }" class="relative w-full max-w-[430px]">
-        {% comment %} Tab List Starts{% endcomment %}
+    }">
+      {%# Menu Top %}
+      <div class="min-h-[104px] md:min-h-[120px] shrink-0">
 
-        <div
-          x-ref="tabButtons"
-          :class="`tabsButton relative flex shrink-0 items-center  justify-center-safe h-10 z-30 overflow-hidden  text-gray-500 bg-white border-y  border-gray-200 select-none overflow-x-auto w-full no-scrollbar   ${!isDragging ? 'cursor-grap': 'cursor-grabbing'}`  "
-          x-data="{
-            isDragging: false,
-            startX: 0,
-            scrollLeft: 0,
-            init() {
-              $el.style.scrollBehavior = 'auto'; // Disable smooth scrolling for better drag fe$el
-            },
-            startDragging(e) {
-              this.isDragging = true;
-              this.startX = e.pageX - $el.offsetLeft;
-              this.scrollLeft = $el.scrollLeft;
-            },
-            stopDragging() {
-              this.isDragging = false;
-            },
-            drag(e) {
-              if (!this.isDragging) return;
-              e.preventDefault();
-              const x = e.pageX - $el.offsetLeft;
-              const walk = (x - this.startX) * 1.5; // Adjust multiplier for desired scroll speed
-              $el.scrollLeft = this.scrollLeft - walk;
-            },
-          }"
-          x-init="init()"
-          @mousedown="startDragging"
-          @mouseup="stopDragging"
-          @mouseleave="stopDragging"
-          @mousemove="drag">
-          {% for tab in tab_list %}
-            <button
-              :id="'{{ tab }}'"
-              @click="tabButtonClicked($el);"
-              type="button"
-              :class="{ 'bg-gray-100 text-gray-900' : tabButtonActive($el) }"
-              x-init="tabRepositionMarker($el)"
-              class="relative z-20 inline-flex items-center justify-center w-full h-10 px-3 text-sm font-medium transition-all cursor-pointer whitespace-nowrap border-r border-gray-200">
-              {{ tab }}
-            </button>
-          {% endfor %}
+         {%# Menu Header  %}
+        <div class="flex items-center justify-between mb-6 p-5 lg:p-5">
+          <h2 class="text-lg font-semibold">Menu</h2>
 
-          <div
-            x-ref="tabMarker"
-            class="absolute left-0 z-10 w-1/2 h-full duration-300 linear"
-            x-cloak>
-            <div class="w-full h-full bg-gray-100"></div>
-          </div>
+          {%# Close button  %}
+           <div data-drawer-close class="leading-0">
+                {% render 'button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ' %}
+            </div>
+          
+
         </div>
-        {% comment %} Tab List Ends{% endcomment %}
+
+        {%# Tab List Starts%}
+       
+          <div
+            x-ref="tabButtons"
+            
+            :class="`tabsButton  relative flex gap-4 shrink-0 items-center  justify-center-safe h-10 z-30 overflow-hidden  text-gray-500 bg-white select-none overflow-x-auto w-full no-scrollbar   ${!isDragging ? 'cursor-grap': 'cursor-grabbing'}`  "
+            x-data="{
+              isDragging: false,
+              startX: 0,
+              scrollLeft: 0,
+              init() {
+                $el.style.scrollBehavior = 'auto'; // Disable smooth scrolling for better drag fe$el
+              },
+              startDragging(e) {
+                this.isDragging = true;
+                this.startX = e.pageX - $el.offsetLeft;
+                this.scrollLeft = $el.scrollLeft;
+              },
+              stopDragging() {
+                this.isDragging = false;
+              },
+              drag(e) {
+                if (!this.isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - $el.offsetLeft;
+                const walk = (x - this.startX) * 1.5; // Adjust multiplier for desired scroll speed
+                $el.scrollLeft = this.scrollLeft - walk;
+              },
+            }"
+            x-init="init()"
+            @mousedown="startDragging"
+            @mouseup="stopDragging"
+            @mouseleave="stopDragging"
+            @mousemove="drag">
+              {% for tab in tab_list %}
+                <button
+                  :id="'{{ tab }}'"
+                  @click="tabButtonClicked($el);"
+                  type="button"
+                  :class="{ 'bg-primary text-white' : tabButtonActive($el) }"
+                  x-init="tabRepositionMarker($el)"
+                  class="relative z-20 bg-gray-100 inline-flex items-center justify-center w-full h-10 px-3 text-sm font-medium transition duration-300 ease-out cursor-pointer whitespace-nowrap rounded-full">
+                  {{ tab }}
+                </button>
+              {% endfor %}
+
+              <div
+                x-ref="tabMarker"
+                class="absolute left-0 z-10 w-1/2 h-full duration-300 linear hidden"
+                x-cloak>
+                <div class="w-full h-full bg-primary rounded-full"></div>
+              </div>
+          </div>
+
+      </div>
+
+          {% comment %} Menu Tab Starts {% endcomment %}
+     
+     
+
         {% comment %} Menu Items Starts {% endcomment %}
-        <div class="h-[calc(100dvh-48px-40px)] overflow-y-auto">
-          <div class="relative flex items-center justify-center w-full mt-2 text-xs text-gray-400 rounded-md content">
+        <div class="flex-1 overflow-y-auto">
+          <div class="relative flex items-center justify-center w-full mt-2 text-xs rounded-md content">
             {% for tab in tab_list %}
               {% if tab != blank %}
 
                 <div
                   :id="'{{ tab }}-content'"
                   x-show="tabContentActive($el)"
-                  class="relative w-full">
+                
+                  class="relative w-full ">
                   {% for item in section.blocks %}
                     {% if item.type == 'menu_item' and item.settings.parent_tab == tab %}
                       <a
                         href="{{ item.settings.href }}"
-                        class="flex items-center gap-5 border-b border-gray-200 p-4"
+                        class="flex items-center gap-5 border-b border-gray-200 p-5 lg:p-8"
+                        {{ item.shopify_attributes }}>
+
+                            <div
+                       
+                        class="block size-20 rounded bg-gray-200 overflow-hidden  shrink-0"
                         {{ item.shopify_attributes }}>
                         <img
-                          src="{{ item.settings.image | image_url : width : 64 }}"
+                          src="{{ item.settings.image | image_url : width : 200 }}"
                           alt="{{ item.settings.title }}"
-                          width="64"
-                          height="64" />
+                          class="w-full h-full object-cover"
+                          width="80px"
+                          height="80px" />
+                        <p class="text-lg">{{ item.settings.title }}</p>
+                      </div>
+                       
                         <p class="text-lg">{{ item.settings.title }}</p>
                       </a>
                     {% endif %}
@@ -192,8 +174,15 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
             {% endfor %}
           </div>
         </div>
-      </div>
+      
     {% comment %} Menu Items Ends {% endcomment %}
-    </nav>
   </div>
-</div>
+       
+
+  
+{% endcapture %}
+{% render 'drawer'
+  , trigger: menu_trigger
+  , content: menu_content
+  , from: 'left'
+%}
