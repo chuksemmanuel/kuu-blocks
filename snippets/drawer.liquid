@@ -33,7 +33,7 @@
     style="pointer-events: none; opacity: 0;"
     @click="closeDrawer()"></div>
 
-  <!-- Drawer panel (no built-in header/close) -->
+  <!-- Drawer panel -->
   <div
     class="fixed w-full z-50 overflow-y-auto no-scrollbar flex justify-stretch p-2 lg:p-4"
     x-cloak
@@ -61,7 +61,7 @@
         this.$overlay = this.$refs.overlay
         this.$panel = this.$refs.panel
 
-        // Ensure the panel has base CSS for positioning (you can tweak sizes)
+        // Ensure the panel has base CSS for positioning 
         if (this.direction === 'left' || this.direction === 'right') {
           Object.assign(this.$panel.style, {
             top: '0',

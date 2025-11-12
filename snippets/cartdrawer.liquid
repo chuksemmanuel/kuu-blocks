@@ -1,16 +1,20 @@
-{% capture cart_button %}
+<div id="cartdrawer">
+  {% capture cart_button %}
         <span class="bg-primary flex justify-center items-center text-white z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs">{{ cart.item_count }}</span>
         {{ 'icons/shopping-cart.svg' | inline_asset_content }}
 {% endcapture %}
-{% capture cart_trigger %}
+  {% capture cart_trigger %}
            {% render 'button'
         , size: 'icon'
         , content: cart_button
         , class: 'bg-white text-black hover:bg-primary hover:text-white!  md:size-12 rounded-full! '
       %}
 {% endcapture %}
-{% capture cart_content %}
+  {% capture cart_content %}
 
+    <div id="cartdrawer-content" class="h-full w-full">
+
+   
     {% if cart.empty? %}
         <div class="w-full h-full flex flex-col justify-center items-center gap-4">
                     {% render 'button'
@@ -52,7 +56,7 @@
                         <div class="hidden"></div>
                     </div>
                     
-                    {% render 'cart-drawer-items' %}
+                    {% render 'cartdrawer-items' %}
                
                  </div>
 
@@ -73,10 +77,10 @@
             </div>
             
     {% endif %}
-    
+     </div>
 {% endcapture %}
-{% render 'drawer'
-  , trigger: cart_trigger
-  , content: cart_content
-  , from: 'right'
-%}
+  {% render 'drawer'
+    , trigger: cart_trigger 
+    , content: cart_content 
+    , from: 'right'
+  %}</div>

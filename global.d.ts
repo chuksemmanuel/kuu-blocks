@@ -2,6 +2,7 @@ import type Alpine from 'alpinejs';
 import type { Alpine } from 'alpinejs';
 import type { gsap } from 'gsap';
 import type SwiperClass from 'swiper';
+import type { morph } from '@alpinejs/morph';
 
 declare global {
 	interface Window {
@@ -9,9 +10,9 @@ declare global {
 			init: () => void;
 		};
 		// Libraries
-		Alpine: Alpine;
+		Alpine: typeof Alpine;
 		Swiper: typeof SwiperClass;
-		gsap: gsap;
+		gsap: typeof gsap;
 	}
 }
 

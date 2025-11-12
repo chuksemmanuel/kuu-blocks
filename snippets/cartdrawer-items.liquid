@@ -1,0 +1,48 @@
+<div x-data="cartDrawer()" class="flex flex-col gap-4">
+  {% for item in cart.items %}
+    <div class="flex gap-5 justify-between" x-id="['{{ item.key }}']">
+      <div class="flex items-center gap-5">
+        <!-- Cart Image -->
+        <div class="size-20 rounded bg-gray-200 overflow-hidden border border-gray-200 shrink-0">
+          <img
+            src="{{ item.image | image_url: width: 200 }}"
+            alt="{{ item.title | escape }}"
+            class="w-full h-full object-cover"
+            width="80px"
+            height="80px" />
+        </div>
+
+        <!-- Cart Details -->
+        <div class="flex flex-col gap-px">
+          <span class="font-semibold line-clamp-2">{{ item.title }}</span>
+          <span>{{ item.final_line_price | money }}</span>
+        </div>
+      </div>
+
+      <!-- Quantity Controls -->
+      <div class="flex flex-col justify-center items-center shrink-0 gap-2">
+        <div class="border border-gray-200 rounded flex justify-center items-center p-px h-10">
+          <input
+            type="text"
+            value="{{ item.quantity }}"
+            class="w-12 text-center p-px ring-0 outline-0 appearance-none"
+            @keyup="filterNumeric($event, '{{ item.key }}')" />
+
+          <div class="flex flex-col justify-center items-center">
+            <button class="size-5 flex justify-center items-center hover:text-gray-700" @click="updateQuantity('{{ item.key }}', {{ item.quantity | plus: 1 }})">
+              {{ 'icons/chevron-up.svg' | inline_asset_content }}
+            </button>
+            <button class="size-5 flex justify-center items-center hover:text-gray-700" @click="updateQuantity('{{ item.key }}', {{ item.quantity | minus: 1 }})">
+              {{ 'icons/chevron-down.svg' | inline_asset_content }}
+            </button>
+          </div>
+        </div>
+
+        <button class="text-xs text-right underline text-gray-500 hover:text-black" @click="updateQuantity('{{ item.key }}', 0)">
+          Remove
+        </button>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<script src="{{'js/features/cartdrawer/cart-drawer-items.js' |  asset_url}}" defer></script>
