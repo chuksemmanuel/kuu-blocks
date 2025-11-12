@@ -1,86 +1,98 @@
 <div id="cartdrawer">
   {% capture cart_button %}
-        <span class="bg-primary flex justify-center items-center text-white z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs">{{ cart.item_count }}</span>
+        <span class="bg-primary flex justify-center items-center text-white z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs" id="cart-bubble">{{ cart.item_count }}</span>
         {{ 'icons/shopping-cart.svg' | inline_asset_content }}
-{% endcapture %}
+  {% endcapture %}
   {% capture cart_trigger %}
            {% render 'button'
         , size: 'icon'
         , content: cart_button
         , class: 'bg-white text-black hover:bg-primary hover:text-white!  md:size-12 rounded-full! '
       %}
-{% endcapture %}
+  {% endcapture %}
   {% capture cart_content %}
 
-    <div id="cartdrawer-content" class="h-full w-full">
-
-   
+  <div id="cartdrawer-content" class="h-full w-full">
     {% if cart.empty? %}
         <div class="w-full h-full flex flex-col justify-center items-center gap-4">
-                    {% render 'button'
-        , size: 'icon'
-        , content: cart_button
-        , class: 'bg-white text-black  size-12 rounded-full! '
-      %}
-        <p class="text-xl font-semibold">Your Cart is Empty</p>
-        <div data-drawer-close>
-            {% render 'button',variant:'primary', size:'lg', label:'Continue Shopping', class:'rounded-full!' %}
-        </div>
-        </div>
-        
+          {% render 'button'
+          , size: 'icon'
+          , content: cart_button
+          , class: 'bg-white text-black  size-12 rounded-full! '
+          %}
+          <p class="text-xl font-semibold">Your Cart is Empty</p>
+          <div data-drawer-close>
+              {% render 'button',variant:'primary', size:'lg', label:'Continue Shopping', class:'rounded-full!' %}
+          </div>
+      </div>
 
+    {% else %}
+      <div class="w-full h-full flex flex-col">
 
-        {% else %}
-            <div class="w-full h-full flex flex-col">
+          <!-- Cart Scrollable -->
+          <div class=" flex-1 p-5 lg:p-8 overflow-y-auto flex flex-col justify-between">
 
-                <!-- Cart Scrollable -->
-                 <div class=" flex-1 p-5 lg:p-8 overflow-y-auto flex flex-col justify-between">
-
-                 <!-- Main Content -->
-                 <div>
-                    <!-- Cart Top -->
-                    <div class="pb-6 lg:pb-8 flex flex-col gap-2">
-                        <!-- Cart Header -->
-                        <div class="flex justify-between items-center w-full">
-                            <div class="flex items-center gap-2">
-                                <p class="font-semibold lg:text-lg">Cart </p>
-                                <span class="flex justify-center items-center size-6 min-w-fit bg-primary text-white rounded-full p-px text-sm">{{cart.item_count}}</span>
-                            </div>
-                                
-                            <div data-drawer-close class="leading-0">
-                                {% render 'button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ' %}
-                            </div>
+            <!-- Main Content -->
+            <div>
+                <!-- Cart Top -->
+                <div class="pb-6 lg:pb-8 flex flex-col gap-2">
+                    <!-- Cart Header -->
+                    <div class="flex justify-between items-center w-full">
+                        <div class="flex items-center gap-2">
+                            <p class="font-semibold lg:text-lg">Cart </p>
+                            <span class="flex justify-center items-center size-6 min-w-fit bg-primary text-white rounded-full p-px text-sm">{{cart.item_count}}</span>
                         </div>
 
-                        <!--Placeholder for app extension -->
-                        <div class="hidden"></div>
+                        <div data-drawer-close class="leading-0">
+                            {% render 'button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ' %}
+                        </div>
                     </div>
-                    
-                    {% render 'cartdrawer-items' %}
-               
-                 </div>
 
+                    <!--Placeholder for app extension -->
+                    <div class="hidden"></div>
+                </div>
 
-                 <!-- Recommended Products -->
-                  <div>
-                    <div class="bg-orange-400 w-full h-32 rounded-lg"></div>
-                  </div>
+                <!-- Cart Items -->
+                {% render 'cartdrawer-items' %}
 
-                    
-         
-                 </div>
-
-                 <!-- Cart Footer -->
-                 <div class="border-t border-gray-200 shrink-0 p-5 lg:p-8 h-35 lg:h-44">
-
-                 </div>
             </div>
-            
+
+            <!-- Recommended Products -->
+            <div class="bg-gray-200 animate-pulse w-full min-h-32 rounded-lg hidden"></div>
+
+      </div>
+
+      <!-- Cart Footer -->
+      <div class="border-t border-gray-200 shrink-0 p-4 flex flex-col justify-between gap-4 lg:gap-6 lg:pt-6 lg:pb-8 lg:px-8 min-h-35 lg:min-h-35" id="cartdrawer-footer">
+
+        <!-- Total -->
+          <div class="flex flex-col gap-1">
+            <div class="flex justify-between items-center">
+                <span class="font-medium lg:text-lg">Total</span>
+                <span class="font-semibold lg:text-lg">{{ cart.total_price | money }}</span>
+            </div>
+          </div>
+
+
+          <!-- CTA -->
+          <div class="flex flex-col justify-center items-center gap-2 lg:gap-4">
+            <div class="flex gap-4 items-center w-full">
+              <div class="w-full hidden md:block" data-drawer-close>
+                {% render 'button', variant:'secondary',size:'lg', label:'Continue Shopping',  class:'w-full rounded-full!' %}
+              </div>
+              {% render 'button', variant:'primary',size:'lg', label:'Checkout', icon:'icons/lock-keyhole.svg', class:'w-full rounded-full!', href:'/checkout' %}
+            </div>
+            <span class="text-center cursor-pointer md:hidden" data-drawer-close>Continue Shoping</span>
+          </div>
+      </div>
+
+      </div>
     {% endif %}
-     </div>
-{% endcapture %}
+  </div>
+  {% endcapture %}
   {% render 'drawer'
-    , trigger: cart_trigger 
-    , content: cart_content 
+    , trigger: cart_trigger
+    , content: cart_content
     , from: 'right'
-  %}</div>
+  %}
+</div>

@@ -32,13 +32,13 @@
   , class: 'bg-white text-black hover:text-white!' %}
 {% endcomment %}
 
-{%- assign base_class = 'button relative inline-flex items-center justify-center font-medium transition-colors focus:outline-none  disabled:opacity-50 disabled:pointer-events-none' -%}
+{%- assign base_class = 'button relative inline-flex items-center justify-center font-medium transition-colors focus:outline-none  disabled:opacity-50 disabled:pointer-events-none ' -%}
 
 {%- case variant -%}
   {%- when 'primary' -%}
     {%- assign variant_class = 'bg-primary text-white hover:bg-primary/90' -%}
   {%- when 'secondary' -%}
-    {%- assign variant_class = 'bg-secondary text-gray-900 hover:bg-secondary/90' -%}
+    {%- assign variant_class = 'bg-gray-100 text-gray-900 hover:bg-gray-200' -%}
   {%- when 'outline' -%}
     {%- assign variant_class = 'border border-gray-300 text-gray-900 hover:bg-gray-50' -%}
   {%- when 'ghost' -%}

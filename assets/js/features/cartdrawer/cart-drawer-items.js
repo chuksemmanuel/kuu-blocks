@@ -11,7 +11,6 @@
 
 document.addEventListener('alpine:init', () => {
     const Alpine = window.Alpine
-    console.log('Alpine for cartdrawer is initialized')
 
     Alpine.data('cartDrawer', () => ({
         /**
@@ -21,6 +20,11 @@ document.addEventListener('alpine:init', () => {
          */
         updatingKey: null,
 
+        /**
+         * The cart update message.
+         * @type {{message: string|null, key: string|null, type: 'warning'|'success'|'error'} | null}
+         */
+        cartMessage: null,
         /**
          * Debounce timers for each item (by key).
          * Prevents rapid clicks from sending multiple network requests.
@@ -34,7 +38,34 @@ document.addEventListener('alpine:init', () => {
          * @type {Record<string, number|string>}
          */
         pendingQuantities: {},
+        /**
+         * Locally tracked quantities before syncing with the server.
+         * This allows us to revert to the previous quantity if the update fails.
+         * @type {Record<string, number|string>}
+         */
+        itemsQuantity: {},
+        async init() {
+            // Populate items quantity
 
+            try {
+                const cartRes = await fetch('/cart.js')
+                /** @type {ShopifyCart} */
+                const cart = await cartRes.json()
+                if (!cartRes.ok) {
+
+                    const cartErr = await cartRes.json()
+                    throw new Error(`${cartErr?.message || 'Failed to fetch cart'}`)
+                }
+                cart.items.forEach((item) => {
+                    this.itemsQuantity[item.key] = item.quantity
+                })
+
+                console.log('items quantity', this.itemsQuantity)
+            } catch (error) {
+                console.log(error)
+            }
+
+        },
         /**
          * Sanitize user input to allow only numeric values.
          * @param {Event} event - Input event from quantity field
@@ -43,6 +74,21 @@ document.addEventListener('alpine:init', () => {
             const el = event.target
             if (!(el instanceof HTMLInputElement)) return
             el.value = el.value.replace(/\D/g, '')
+        },
+        /**
+         * Clear the cart update message.
+         */
+        clearCartMessage() {
+            this.cartMessage = null
+        },
+        /**
+         * Add a message to the cart drawer.
+         * @param {string} message - Message to display
+         * @param {'warning'|'success'|'error'} type - Message type
+         * @param {string | null} key - Unique cart item key
+         */
+        setCartMessage(message, type = "error", key = null) {
+            this.cartMessage = { message, type, key }
         },
 
         /**
@@ -56,6 +102,12 @@ document.addEventListener('alpine:init', () => {
             const el = event.target
             if (!(el instanceof HTMLInputElement)) return
             const value = el.value.trim()
+
+
+            if (value.length === 0) {
+                this.updateQuantityValue(key, this.itemsQuantity[key] || 1)
+                return
+            }
 
             // Save optimistic quantity immediately
             this.pendingQuantities[key] = value
@@ -114,6 +166,7 @@ document.addEventListener('alpine:init', () => {
          */
         async updateQuantity(key, quantity) {
             this.updatingKey = key
+            this.clearCartMessage()
 
             try {
                 // Update cart item quantity via Shopify AJAX API
@@ -123,31 +176,76 @@ document.addEventListener('alpine:init', () => {
                     body: JSON.stringify({ id: key, quantity }),
                 })
 
+                if (!cartRes.ok) {
+                    // Revert optimistic update on error
+                    this.updateQuantityValue(key, this.itemsQuantity[key] || 1)
+                    const cartErr = await cartRes.json()
+                    throw new Error(`${cartErr?.message || 'Failed to update cart'}`)
+                }
+
+                /** @type {ShopifyCart} */
                 const cart = await cartRes.json()
-                console.log('Cart updated', cart)
+
+                // Update ItemsQuantity
+                cart.items.forEach((item) => {
+                    this.itemsQuantity[item.key] = item.quantity
+                })
 
                 // Reflect the confirmed quantity from server
-                const newQuantity = cart.items.find((item) => item.key === key)?.quantity
-                if (newQuantity) {
+                const newQuantity = cart?.items?.find((item) => item.key === key)?.quantity ?? null
+                if (newQuantity && newQuantity !== quantity) {
+                    this.setCartMessage(`Only ${newQuantity} item${newQuantity > 1 ? 's' : ''} left in stock`, 'warning', key)
                     this.updateQuantityValue(key, newQuantity)
                 }
 
-                // Fetch updated cart drawer section
-                const res = await fetch('/?sections=cartdrawer')
-                const data = await res.json()
-
-                const cartContent = document.querySelector('#cartdrawer-content')
-                const fragment = new DOMParser().parseFromString(data.cartdrawer, 'text/html')
-                const newContent = fragment.querySelector('#cartdrawer-content')
-
-                if (cartContent && newContent) {
-                    Alpine.morph(cartContent, newContent)
-                }
+                // Refresh the cart drawer content
+                await this.updateCartDrawer()
             } catch (err) {
-                console.error('Cart update failed', err)
+                console.log('Cart update failed', err)
+                if (typeof err === 'string') {
+
+                    this.setCartMessage(err, 'error', key)
+
+                } else if (err instanceof Error) {
+                    this.setCartMessage(err.message, 'error', key)
+                } else {
+                    this.setCartMessage('Unable to update cart. Please try again.', 'error', key)
+
+                }
+
+
+                // Revert optimistic update on error
+                this.updateQuantityValue(key, this.itemsQuantity[key] || 1)
+
+
             } finally {
                 this.updatingKey = null
             }
         },
+        async updateCartDrawer() {
+            try {
+                // Fetch updated cart drawer section
+                const res = await fetch('/?sections=cartdrawer')
+                const data = await res.json()
+                const cartContent = document.querySelector('#cartdrawer-content')
+                const cartBubble = document.querySelector('#cart-bubble')
+
+                const fragment = new DOMParser().parseFromString(data.cartdrawer, 'text/html')
+                const newContent = fragment.querySelector('#cartdrawer-content')
+                const newBubble = fragment.querySelector('#cart-bubble')
+
+                if (cartContent && newContent) {
+                    Alpine.morph(cartContent, newContent)
+                }
+                if (cartBubble && newBubble) {
+                    Alpine.morph(cartBubble, newBubble)
+                }
+            } catch (error) {
+                this.setCartMessage('Unable to update cart. Please try again.', 'error')
+
+                console.log('Failed to update cart drawer', error)
+            }
+
+        }
     }))
 })

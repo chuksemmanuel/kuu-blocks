@@ -15,6 +15,6 @@
 		"noEmit": true, // Don't output compiled files
 		"types": ["alpinejs", "gsap", "swiper"] // Optional: global type references
 	},
-	"include": ["assets/js/**/*", "global.d.ts"],
+	"include": ["assets/js/**/*", "global.d.ts", "types/**/*.ts"],
 	"exclude": ["node_modules", "dist"]
 }

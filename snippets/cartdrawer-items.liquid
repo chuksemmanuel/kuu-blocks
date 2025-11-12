@@ -4,45 +4,87 @@
   id="cartdrawer-content">
   {% for item in cart.items %}
     <div
-      class="flex gap-5 justify-between relative"
+      class="flex gap-5 justify-between relative "
       x-id="['{{ item.key }}']"
       key="{{ item.key }}"
       :class="{ 'opacity-95 pointer-events-none': updatingKey === '{{ item.key }}' }">
 
       <div class="flex items-center gap-5">
         <!-- Cart Image -->
-        <div class="size-20 rounded bg-gray-200 overflow-hidden border border-gray-200 shrink-0">
+        <a href="{{item.product.url}}" class="block size-20 rounded bg-gray-200 overflow-hidden  shrink-0">
           <img
             src="{{ item.image | image_url: width: 200 }}"
             alt="{{ item.title | escape }}"
             class="w-full h-full object-cover"
             width="80px"
             height="80px" />
-        </div>
+        </a>
 
-        <!-- Cart Details -->
+        {% # Details %}
         <div class="flex flex-col gap-px">
-          <span class="font-semibold line-clamp-2 max-w-50">{{ item.title }}</span>
-          <span>{{ item.final_line_price | money }}</span>
+
+          {% # Title %}
+          <a href="{{item.product.url}}" class="font-semibold line-clamp-2 max-w-50">{{ item.title }}</a>
+
+          {% # Price %}
+          <span class="">{{ item.final_line_price | money }}</span>
+
+          {% # Variant Ttitle %}
+          {% if item.product.has_only_default_variant == false and item.item_components.size == 0 %}
+            <span class="text-gray-500 text-xs max-w-30">{{ item.variant.title }}</span>
+          {% endif %}
+
+          {% # Error Message %}
+          <template x-if="cartMessage && cartMessage.key === '{{ item.key }}'">
+            <div class=" text-sm min-h-5 " :class="cartMessage.type === 'warning'? 'text-amber-500': cartMessage.type === 'success' ? 'text-green-500':'text-red-500'">
+              <style>
+                .cart-message-icon > svg {
+                  width: 14px;
+                  display: inline;
+                }
+              </style>
+              <span class="shrink-0 cart-message-icon" x-show="cartMessage.type === 'warning'">
+                {{ 'icons/circle-alert.svg' | inline_asset_content }}
+              </span>
+              <span class="shrink-0 cart-message-icon" x-show="cartMessage.type === 'success'">
+                {{ 'icons/circle-check.svg' | inline_asset_content }}
+              </span>
+              <span class="shrink-0 cart-message-icon" x-show="cartMessage.type === 'error'">
+                {{ 'icons/circle-x.svg' | inline_asset_content }}
+              </span>
+              <span x-text="cartMessage.message" class="text-sm"></span>
+              <span
+                @click="clearCartMessage()"
+                class="underline cursor-pointer"
+                title="Click to clear error">Clear</span>
+            </div>
+          </template>
+
+
         </div>
       </div>
 
       <!-- Quantity Controls -->
       <div class="flex flex-col justify-center items-center shrink-0 gap-2">
-        <div class="border border-gray-200 rounded flex justify-center items-center p-px h-10">
+        <div class="border border-gray-200 rounded flex justify-center items-center p-px h-10 overflow-hidden">
           <input
             type="text"
             value="{{ item.quantity }}"
             class="w-12 text-center p-px ring-0 outline-0 appearance-none"
-            @input="onQuantityInput($event, '{{ item.key }}')"
+            @change="onQuantityInput($event, '{{ item.key }}')"
             @keyup="filterNumeric($event, '{{ item.key }}')" />
 
-          <div class="flex flex-col justify-center items-center">
-            <button class="size-5 flex justify-center items-center hover:text-gray-700" @click="onQuantityClick('{{ item.key }}', Number($event.target.closest('[key]').querySelector('input').value) + 1)">
+          <div class="hidden md:flex flex-col justify-center items-center ">
+            <button class="bg-gray-50 transition ease-out duration-400 hover:bg-gray-200 text-gray-400 size-5 flex justify-center items-center hover:text-gray-700" @click="onQuantityClick('{{ item.key }}', Number($event.target.closest('[key]').querySelector('input').value) + 1)">
               {{ 'icons/chevron-up.svg' | inline_asset_content }}
             </button>
 
-            <button class="size-5 flex justify-center items-center hover:text-gray-700" @click="onQuantityClick('{{ item.key }}', Math.max(0, Number($event.target.closest('[key]').querySelector('input').value) - 1))">
+            <button
+              class="bg-gray-50 transition ease-out duration-400 hover:bg-gray-200 text-gray-400 size-5 flex justify-center items-center hover:text-gray-700 disabled:opacity-50 disabled:pointer-events-none"
+              @click="onQuantityClick('{{ item.key }}', Math.max(1, Number($event.target.closest('[key]').querySelector('input').value) - 1))"
+              {%- if item.quantity == 1 -%}
+              disabled
+              {%- endif -%}>
               {{ 'icons/chevron-down.svg' | inline_asset_content }}
             </button>
           </div>
