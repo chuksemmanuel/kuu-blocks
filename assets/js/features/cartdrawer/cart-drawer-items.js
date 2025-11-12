@@ -1,62 +1,92 @@
+// assets/js/features/cartdrawer/cart-drawer-items.js
 
 document.addEventListener('alpine:init', () => {
-    const Alpine = window.Alpine;
-    console.log('Alpine for cartdrawer is initialized');
+    const Alpine = window.Alpine
+    console.log('Alpine for cartdrawer is initialized')
+
     Alpine.data('cartDrawer', () => ({
         updating: false,
+        updatingKey: null, // track which item is updating
+        /**
+         * Debounce timers for quantity inputs
+         * @type {Object<string, number>}
+         */
+        debounceTimers: {},
 
         /**
-         * 
-         * @param {Event} event 
-         * @param {string} key 
+         * Sanitize input (allow only numbers)
+         * @param {Event} event
+         * @param {string} key
          */
         filterNumeric(event, key) {
-            const el = event.target;
-            if (!(el instanceof HTMLInputElement)) return;
+            const el = event.target
+            if (!(el instanceof HTMLInputElement)) return
             el.value = el.value.replace(/\D/g, '')
         },
 
         /**
-         * 
-         * @param {string} key 
-         * @param {string | number} quantity 
-         * @returns 
+         * Handle manual input (debounced update)
+         * @param {Event} event
+         * @param {string} key
          */
-        updateQuantity(key, quantity) {
+        onQuantityInput(event, key) {
+            const el = event.target
+            if (!(el instanceof HTMLInputElement)) return
+            const value = el.value.trim()
+
+            // Cancel previous debounce
+            clearTimeout(this.debounceTimers[key])
+
+            // Debounce update (wait 500ms after user stops typing)
+            this.debounceTimers[key] = setTimeout(() => {
+                const quantity = value
+                if (!Number.isFinite(Number(quantity))) return
+                this.updateQuantity(key, quantity)
+            }, 500)
+        },
+
+        /**
+         * Update cart item quantity and morph the drawer
+         * @param {string} key
+         * @param {string } quantity
+         * @returns {Promise<void>}
+         */
+        async updateQuantity(key, quantity) {
             if (this.updating) return
+
+
+            // Optimistically update input value
+            const cartItem = document.querySelector(`[key="${key}"]`)
+            if (cartItem) {
+                /** @type {HTMLInputElement | null} */
+                const input = cartItem.querySelector('input[type="text"]')
+                if (input) input.value = quantity
+            }
             this.updating = true
-
-            fetch('/cart/change.js', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id: key, quantity })
-            })
-                .then(() => {
-                    // Re-render the cart drawer section
-                    return fetch('/?sections=cartdrawer')
+            try {
+                await fetch('/cart/change.js', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: key, quantity }),
                 })
-                .then(res => res.json())
-                .then(data => {
-                    // Morph cart drawer section
-                    let cartContent = document.querySelector('#cartdrawer-content')
-                    if (!cartContent) return;
 
-                    const fragment = new DOMParser().parseFromString(data.cartdrawer, 'text/html');
+                // Re-render the cart drawer section
+                const res = await fetch('/?sections=cartdrawer')
+                const data = await res.json()
 
-                    const FragmentCartContent = fragment.querySelector('#cartdrawer-content');
-                    if (!FragmentCartContent) return;
+                const cartContent = document.querySelector('#cartdrawer-content')
+                if (!cartContent) return
 
-                    console.log();
+                const fragment = new DOMParser().parseFromString(data.cartdrawer, 'text/html')
+                const newContent = fragment.querySelector('#cartdrawer-content')
+                if (!newContent) return
 
-                    Alpine.morph(
-                        cartContent,
-                        FragmentCartContent
-                    )
-                })
-                .catch(err => console.error('Cart update failed', err))
-                .finally(() => {
-                    this.updating = false
-                })
+                Alpine.morph(cartContent, newContent)
+            } catch (err) {
+                console.error('Cart update failed', err)
+            } finally {
+                this.updating = false
+            }
         },
     }))
 })

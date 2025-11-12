@@ -1,6 +1,9 @@
 <div x-data="cartDrawer()" class="flex flex-col gap-4">
   {% for item in cart.items %}
-    <div class="flex gap-5 justify-between" x-id="['{{ item.key }}']">
+    <div
+      class="flex gap-5 justify-between"
+      x-id="['{{ item.key }}']"
+      key="{{ item.key }}">
       <div class="flex items-center gap-5">
         <!-- Cart Image -->
         <div class="size-20 rounded bg-gray-200 overflow-hidden border border-gray-200 shrink-0">
@@ -26,6 +29,7 @@
             type="text"
             value="{{ item.quantity }}"
             class="w-12 text-center p-px ring-0 outline-0 appearance-none"
+            @input="onQuantityInput($event, '{{ item.key }}')"
             @keyup="filterNumeric($event, '{{ item.key }}')" />
 
           <div class="flex flex-col justify-center items-center">
