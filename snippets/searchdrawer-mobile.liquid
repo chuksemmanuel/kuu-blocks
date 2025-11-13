@@ -1,0 +1,18 @@
+{% capture search_trigger %}
+  {% render 'button'
+  , size: 'icon'
+  , icon: 'icons/search.svg'
+  , class: ' md:size-12 rounded-full!' %}
+{% endcapture %}
+{% capture search_content %}
+  {% render 'searchdrawer-content' %}
+{% endcapture %}
+<div class="inline-block md:hidden">
+  {% render 'drawer'
+    , trigger: search_trigger
+    , content: search_content
+    , id: 'searchdrawer-mobile'
+    , from: 'top'
+    , class: 'h-1/2!'
+  %}
+</div>

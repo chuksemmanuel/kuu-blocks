@@ -1,0 +1,67 @@
+<div x-data="searchDrawer()" class=" bg-white rounded-md md:rounded-lg  overflow-hidden shadow-lg flex-1 p-5 md:p-8">
+
+  {% # Cartdrawer header %}
+  <div class="flex justify-between item-center gap-4 border-b-2 border-gray-300 pb-2 md:pb-3">
+
+    <input
+      type="text"
+      x-model="searchTerm"
+      class="flex-1 border-none ring-0 text-primary text-lg outline-0 h-8 font-semibold!">
+
+    <span
+      x-ref="searchInput"
+      @click="clearSearchTerm()"
+      class="flex flex-col justify-center items-center cursor-pointer text-sm md:text-base ">Clear</span>
+
+    <div data-drawer-close class="leading-0 flex flex-col justify-center items-center">
+      {% render 'button'
+        , icon: 'icons/cancel.svg'
+        , class: 'rounded-full! size-6! p-0! ' %}
+    </div>
+  </div>
+
+  <div class="flex flex-col py-5">
+    <script>
+        console.log('search ==>', {{search |json}})
+    </script>
+
+    {% if search.results_count > 0 %}
+      {% assign products = search.results | where: 'object_type', 'product' %}
+      <script>
+            console.log('products:',{{products | json}})
+      </script>
+    {% endif %}
+    <a href="#" class="flex flex-col  gap-5  p-4 lg:p-6 hover:bg-gray-100 transition duration-300 rounded-lg">
+
+      <div class="flex items-center gap-5">
+        <div class="block size-20 rounded bg-gray-200 overflow-hidden  shrink-0"></div>
+
+        <div class="flex flex-col gap-1">
+          <p class="font-semibold line-clamp-2 max-w-50">Cozy home wears</p>
+          <span>$77.00</span>
+        </div>
+      </div>
+
+    </a>
+
+  </div>
+</div>
+
+<script src="{{ 'js/blocks/search-drawer.js' | asset_url }}" defer></script>
+
+<script>
+  setTimeout(() =>{
+    window.dispatchEvent(new CustomEvent('drawer:open', {
+      detail:{
+        id:'searchdrawer-desktop'
+      }
+    }))
+  },1000)
+  setTimeout(() =>{
+    window.dispatchEvent(new CustomEvent('drawer:open', {
+      detail:{
+        id:'searchdrawer-mobile'
+      }
+    }))
+  },1000)
+</script>

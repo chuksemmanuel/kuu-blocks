@@ -12,7 +12,7 @@
   {% endcapture %}
   {% capture cart_content %}
 
-  <div id="cartdrawer-content" class="h-full w-full">
+  <div id="cartdrawer-content" class="h-full w-full bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg flex-1">
     {% if cart.empty? %}
         <div class="w-full h-full flex flex-col justify-center items-center gap-4">
           {% render 'button'
@@ -93,7 +93,7 @@
   {% render 'drawer'
     , trigger: cart_trigger
     , content: cart_content
-    , name: 'cartdrawer'
+    , id: 'cartdrawer'
     , from: 'right'
   %}
 </div>

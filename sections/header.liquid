@@ -4,6 +4,9 @@
     {% render 'tabbed-menu'
       , section: section %}
 
+    {% render 'searchdrawer-mobile' %}
+
+
     <h2 class="header__title uppercase font-medium text-2xl hidden md:block ">
       {{ shop.name | link_to: routes.root_url }}
     </h2>
@@ -28,6 +31,9 @@
 
 
     <div class="flex gap-4">
+
+      {% render 'searchdrawer-desktop' %}
+
       {% if shop.customer_accounts_enabled %}
         {% render 'button'
           , href: routes.account_url

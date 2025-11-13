@@ -1,21 +1,21 @@
 {% comment %} 
-          drawer.liquid
-            Accepts:
-            - trigger: {String} a Capture of the trigger (usuallly a button)
-            - content: {String} a Capture/Snippet of the drawer content
-            - from: {String} Direction the drawer slides from
-            - name: {String} Unique identifier of the drawer to target (e.g., 'cartdrawer', 'menudrawer')  used to open/close the drawer via the drawer:open and drawer:close custom Event
-            Example:
-            window.dispatchEvent(new CustomEvent('drawer:open', { detail: { name: 'cartdrawer' } }))
-            window.dispatchEvent(new CustomEvent('drawer:close', { detail: { name: 'menu' } }))
+  drawer.liquid
+    Accepts:
+    - trigger: {String} a Capture of the trigger (usuallly a button)
+    - content: {String} a Capture/Snippet of the drawer content
+    - from: {String} Direction the drawer slides from
+    - id: {String} Unique identifier of the drawer to target (e.g., 'cartdrawer', 'menudrawer')  used to open/close the drawer via the drawer:open and drawer:close custom Event
+    Example:
+    window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }))
+    window.dispatchEvent(new CustomEvent('drawer:close', { detail: { id: 'menu' } }))
 
-          Usage:
-            {% render 'drawer'
-              , trigger: cart_trigger
-              , content: cart_content
-              , name: 'cartdrawer'
-              , from: 'right'
-            %}
+  Usage:
+    {% render 'drawer'
+      , trigger: cart_trigger
+      , content: cart_content
+      , name: 'cartdrawer'
+      , from: 'right'
+    %}
 {% endcomment %}
 
 
@@ -36,12 +36,26 @@
 </style>
 
 {% assign from = from | default: 'right' %}
+{% assign base_class = 'fixed w-full h-full z-50 overflow-y-auto no-scrollbar flex justify-stretch p-2 lg:p-4 ' %}
 
-  <div
+{% case from %}
+  {% when 'top' %}
+    {% assign direction_class = 'left-0 top-0' %}
+  {% when 'bottom' %}
+    {% assign direction_class = 'left-0 bottom-0' %}
+  {% when 'left' %}
+    {% assign direction_class = 'top-0 max-w-[min(648px,100%)] left-0' %}
+  {% when 'right' %}
+    {% assign direction_class = 'top-0 max-w-[min(648px,100%)] right-0' %}
+  {% else %}
+    {% assign direction_class = 'top-0 max-w-[min(648px,100%)] right-0' %}
+{% endcase %}
+
+<div
   x-data="drawer('{{ from }}')"
   x-init="init()"
   class="ida-drawer"
-  data-drawer-name="{{name}}">
+  data-drawer-id="{{id}}">
   <!-- Trigger -->
   <div @click="openDrawer()">
     {{ trigger }}
@@ -57,14 +71,13 @@
 
   <!-- Drawer panel -->
   <div
-    class="fixed w-full z-50 overflow-y-auto no-scrollbar flex justify-stretch p-2 lg:p-4"
+    class="{{base_class}} {{direction_class}} {{class}}"
     x-cloak
     x-ref="panel"
     style="opacity: 0; visibility: hidden; will-change: transform, opacity;"
     @click.stop>
-    <div class="w-full  bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg flex-1">
-      {{ content }}
-    </div>
+
+    {{ content }}
 
   </div>
 </div>

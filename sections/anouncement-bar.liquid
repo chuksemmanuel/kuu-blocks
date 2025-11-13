@@ -6,9 +6,7 @@
 
 
 {% # Always-on Features %}
-<script type="module" src="{{ 'js/features/announcement-bar.js' | asset_url }}"></script>
-
-
+<script type="module" src="{{ 'js/blocks/announcement-bar.js' | asset_url }}"></script>
 
 
 <div
@@ -16,26 +14,25 @@
   style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.text_color }};"
   x-data="announcementBar($el)"
   x-init="init()"
-  x-on:destroy.window="destroy()"
-  >
+  x-on:destroy.window="destroy()">
   <div class="swiper mySwiper slider">
-      <div class="swiper-wrapper  flex justify-center-safe items-center w-full">
-        {% for block in section.blocks %}
+    <div class="swiper-wrapper  flex justify-center-safe items-center w-full">
+      {% for block in section.blocks %}
 
-          {% if block.type == 'announcement' %}
-                  <div class="swiper-slide w-fit flex items-center justify-center shink-0 slide px-4">
+        {% if block.type == 'announcement' %}
+          <div class="swiper-slide w-fit flex items-center justify-center shink-0 slide px-4">
             {{ block.settings.announcement_text }}
-        
+
           </div>
           {% unless forloop.last %}
             <div class="swiper-slide w-fit flex items-center justify-center shink-0 slide px-4">
               <div class="size-2 rounded-full bg-white mx-4! shrink-0 hidden lg:block  "></div>
             </div>
-            
+
           {% endunless %}
-          {% endif %}
-      
-        {% endfor %}
+        {% endif %}
+
+      {% endfor %}
     </div>
   </div>
 </div>
@@ -50,7 +47,8 @@
         "id": "background_color",
         "label": "Background Color",
         "default": "#fff"
-      }, {
+      },
+      {
         "type": "color",
         "id": "text_color",
         "label": "Text Color",

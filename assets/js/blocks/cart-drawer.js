@@ -11,6 +11,7 @@
 
 document.addEventListener('alpine:init', () => {
     const Alpine = window.Alpine
+    console.log('alpine loaded for cartdrawer now')
 
     Alpine.data('cartDrawer', () => ({
         /**

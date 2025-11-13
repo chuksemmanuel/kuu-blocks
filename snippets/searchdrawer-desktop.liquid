@@ -1,0 +1,18 @@
+{% capture search_trigger %}
+    {% render 'button'
+    , size: 'icon'
+    , icon: 'icons/search.svg'
+    , class: 'bg-white text-black hover:bg-primary hover:text-white! md:size-12 rounded-full!' %}
+{% endcapture %}
+{% capture search_content %}
+       {% render 'searchdrawer-content' %}
+{% endcapture %}
+<div class="hidden md:inline-block">
+  {% render 'drawer'
+    , trigger: search_trigger
+    , content: search_content
+    , id: 'searchdrawer-desktop'
+    , from: 'right'
+    , class: ''
+  %}
+</div>

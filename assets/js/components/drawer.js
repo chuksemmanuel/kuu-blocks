@@ -2,7 +2,7 @@
 /**
  * @typedef {'left' | 'right' | 'top' | 'bottom'} DrawerDirection
  * @typedef {Object} DrawerComponent
- * @typedef {{name:string}} DrawerEventDetail
+ * @typedef {{id:string}} DrawerEventDetail
  */
 
 
@@ -49,7 +49,7 @@ document.addEventListener('alpine:init', () => {
             /** @type {HTMLElement | null} */
             lastFocusedElement: null,
             /** @type {string} */
-            name: '',
+            id: '',
             /** @type {(e: KeyboardEvent) => void} */
             _escHandler(e) {
                 if (e.key === 'Escape' && this.open) this.closeDrawer()
@@ -58,30 +58,30 @@ document.addEventListener('alpine:init', () => {
             init() {
                 this.$overlay = this.$refs.overlay
                 this.$panel = this.$refs.panel
-                this.name = this.$el.dataset.drawerName || 'defaultDrawer'
-                // Ensure the panel has base CSS for positioning 
-                if (this.direction === 'left' || this.direction === 'right') {
+                this.id = this.$el.dataset.drawerId || 'defaultDrawer'
+                // // Ensure the panel has base CSS for positioning 
+                // if (this.direction === 'left' || this.direction === 'right') {
 
-                    Object.assign(this.$panel.style, {
-                        top: '0',
-                        height: '100vh',
-                        width: '100%',
-                        maxWidth: 'min(648px,100%)',
-                        left: this.direction === 'left' ? '0' : 'auto',
-                        right: this.direction === 'right' ? '0' : 'auto',
-                        bottom: 'auto',
-                    })
-                } else {
-                    // top / bottom
-                    Object.assign(this.$panel.style, {
-                        left: '0',
-                        width: '100vw',
-                        height: 'auto',
-                        minHeight: '30svh',
-                        top: this.direction === 'top' ? '0' : 'auto',
-                        bottom: this.direction === 'bottom' ? '0' : 'auto',
-                    })
-                }
+                //     Object.assign(this.$panel.style, {
+                //         top: '0',
+                //         // height: '100vh',
+                //         width: '100%',
+                //         maxWidth: 'min(648px,100%)',
+                //         left: this.direction === 'left' ? '0' : 'auto',
+                //         right: this.direction === 'right' ? '0' : 'auto',
+                //         bottom: 'auto',
+                //     })
+                // } else {
+                //     // top / bottom
+                //     Object.assign(this.$panel.style, {
+                //         left: '0',
+                //         // width: '100vw',
+                //         // height: '50%',
+                //         // minHeight: '30svh',
+                //         top: this.direction === 'top' ? '0' : 'auto',
+                //         bottom: this.direction === 'bottom' ? '0' : 'auto',
+                //     })
+                // }
 
                 // Put overlay & panel off-screen / hidden initially
                 gsap.set(this.$overlay, { opacity: 0, pointerEvents: 'none' })
@@ -111,12 +111,12 @@ document.addEventListener('alpine:init', () => {
                 window.addEventListener('drawer:open', (e) => {
 
                     const event = /** @type {CustomEvent<DrawerEventDetail>} */ (e)
-                    if (event.detail?.name === this.name) this.openDrawer()
+                    if (event.detail?.id === this.id) this.openDrawer()
                 })
 
                 window.addEventListener('drawer:close', (e) => {
                     const event = /** @type {CustomEvent<DrawerEventDetail>} */ (e)
-                    if (event.detail?.name === this.name) this.closeDrawer()
+                    if (event.detail?.id === this.id) this.closeDrawer()
                 })
 
             },

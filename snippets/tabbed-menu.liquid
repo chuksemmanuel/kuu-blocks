@@ -34,7 +34,7 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
    {% render 'button' variant: 'ghost' size: 'icon' icon: 'icons/hamburger.svg' class: "bg-white text-black hover:bg-primary hover:text-white! md:size-12 rounded-lg!" %}
 {% endcapture %}
 {% capture menu_content %}
-  <div class="flex flex-col w-full h-full"  x-data="{
+  <div class="flex flex-col w-full h-full  bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg flex-1"  x-data="{
         tabSelected:'{{ tab_list.first }}',
         getContentID(tabContent){
           return tabContent.id.replace('-content','')
@@ -129,10 +129,7 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
 
       </div>
 
-          {% comment %} Menu Tab Starts {% endcomment %}
-     
-     
-
+        
         {% comment %} Menu Items Starts {% endcomment %}
         <div class="flex-1 overflow-y-auto">
 
@@ -148,28 +145,29 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
                   x-transition:leave="transition ease-out "
                   x-transition:leave-start="opacity-100"
                   x-transition:leave-end="opacity-0"
-                  class="relative w-full flex flex-col gap-4">
+                  class="relative w-full flex flex-col  p-5">
                   {% for item in section.blocks %}
                     {% if item.type == 'menu_item' and item.settings.parent_tab == tab %}
                       <a
                         href="{{ item.settings.href }}"
-                        class="flex items-center gap-5   px-5 lg:px-8 pb-6"
+                        class="flex flex-col  gap-5  p-4 lg:p-6 hover:bg-gray-100 transition duration-300 rounded-lg"
                         {{ item.shopify_attributes }}>
 
-                            <div
+                        <div class="flex items-center gap-5">
+                          <div class="block size-20 rounded bg-gray-200 overflow-hidden  shrink-0"
+                          {{ item.shopify_attributes }}>
+                            <img
+                              src="{{ item.settings.image | image_url : width : 200 }}"
+                              alt="{{ item.settings.title }}"
+                              class="w-full h-full object-cover"
+                              width="80px"
+                              height="80px" />
+                            
+                          </div>
                        
-                        class="block size-20 rounded bg-gray-200 overflow-hidden  shrink-0"
-                        {{ item.shopify_attributes }}>
-                        <img
-                          src="{{ item.settings.image | image_url : width : 200 }}"
-                          alt="{{ item.settings.title }}"
-                          class="w-full h-full object-cover"
-                          width="80px"
-                          height="80px" />
-                        <p class="text-lg">{{ item.settings.title }}</p>
-                      </div>
-                       
-                        <p class="text-lg">{{ item.settings.title }}</p>
+                          <p class="text-lg">{{ item.settings.title }}</p>
+                        </div>
+             
                       </a>
                     {% endif %}
                   {% endfor %}
@@ -189,6 +187,6 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
 {% render 'drawer'
   , trigger: menu_trigger
   , content: menu_content
-  , name: 'menu'
+  , id: 'menudrawer'
   , from: 'left'
 %}
