@@ -124,6 +124,7 @@
                   , type: 'product'
                   , item: product
                   , key: forloop.index
+                  , terms: terms
                 %}
               {% endfor %}
             </div>
@@ -147,6 +148,7 @@
                   , type: 'collection'
                   , item: collection
                   , key: forloop.index
+                  , terms: terms
                 %}
               {% endfor %}
             </div>
@@ -170,6 +172,7 @@
                   , type: 'page'
                   , item: page
                   , key: forloop.index
+                  , terms: terms
                 %}
               {% endfor %}
             </div>
@@ -192,6 +195,12 @@
 
 <script src="{{ 'js/blocks/search-drawer.js' | asset_url }}" defer></script>
 
+
+<style>
+  [data-search-item] .highlight {
+    background: #ffff00
+  }
+</style>
 
 <script>
   setTimeout(() =>{

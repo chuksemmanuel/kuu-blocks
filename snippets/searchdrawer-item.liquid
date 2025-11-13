@@ -15,7 +15,7 @@
   {% endif %}
 
   <div class="flex flex-col gap-1">
-    <p class="font-semibold line-clamp-2 max-w-50">{{ item.title }}</p>
+    <p class="font-semibold line-clamp-2 max-w-60">{{ item.title | highlight: terms }}</p>
     {% if type == 'product' %}
       <span>{{ item.price | money }}</span>
     {% endif %}

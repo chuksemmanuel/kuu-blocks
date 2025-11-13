@@ -124,13 +124,13 @@ document.addEventListener('alpine:init', () => {
                         newResults
                     )
 
-
-
-                    if (!this.$searchResults.querySelector(`[data-search-tab='${this.activeTab?.trim()}']`)) {
+                    // if no products tab
+                    if (!newResults.querySelector(`[data-search-tab='products']`)) {
                         // Set first tab to active
 
-                        console.log('searching for ==>', this.$searchResults.querySelector("[data-search-tab]"))
                         this.activeTab = this.$searchResults.querySelector("[data-search-tab]")?.getAttribute('data-search-tab') ?? 'products'
+                    } else {
+                        this.activeTab = 'products'
                     }
                 } else {
 
