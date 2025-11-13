@@ -1,6 +1,5 @@
 /**
  * @typedef {'products' | 'collections' | 'pages'} tagType
- * @typedef {{defaultTab: tagType}} SearchDrawerOptions
  * @property {string} searchTerm - Current text entered in the search input
  * @property {string} defaultTab - Default result search tab
  * @property {boolean} loading - Whether a search request is currently in progress
@@ -21,7 +20,7 @@ document.addEventListener('alpine:init', () => {
      *
      * @returns {SearchDrawerComponent}
      */
-    Alpine.data('searchDrawer', (/**@type {SearchDrawerOptions} */options) => ({
+    Alpine.data('searchDrawer', () => ({
         /** @type {string} */
         searchTerm: '',
         /** @type {string | null} */
@@ -60,10 +59,6 @@ document.addEventListener('alpine:init', () => {
             this.$searchInput = this.$refs.searchInput
             this.$resultsContainer = this.$refs.resultsContainer
             this.$searchResults = this.$refs.searchResults
-
-
-            // Set first tab to active
-            this.activeTab = this.$searchResults.querySelector("[data-search-tab]")?.getAttribute('data-search-tab') ?? 'products'
 
 
             window.addEventListener('drawer:open', e => {
@@ -128,6 +123,15 @@ document.addEventListener('alpine:init', () => {
                         this.$searchResults,
                         newResults
                     )
+
+
+
+                    if (!this.$searchResults.querySelector(`[data-search-tab='${this.activeTab?.trim()}']`)) {
+                        // Set first tab to active
+
+                        console.log('searching for ==>', this.$searchResults.querySelector("[data-search-tab]"))
+                        this.activeTab = this.$searchResults.querySelector("[data-search-tab]")?.getAttribute('data-search-tab') ?? 'products'
+                    }
                 } else {
 
                 }
