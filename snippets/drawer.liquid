@@ -1,3 +1,24 @@
+{% comment %} 
+          drawer.liquid
+            Accepts:
+            - trigger: {String} a Capture of the trigger (usuallly a button)
+            - content: {String} a Capture/Snippet of the drawer content
+            - from: {String} Direction the drawer slides from
+            - name: {String} Unique identifier of the drawer to target (e.g., 'cartdrawer', 'menudrawer')  used to open/close the drawer via the drawer:open and drawer:close custom Event
+            Example:
+            window.dispatchEvent(new CustomEvent('drawer:open', { detail: { name: 'cartdrawer' } }))
+            window.dispatchEvent(new CustomEvent('drawer:close', { detail: { name: 'menu' } }))
+
+          Usage:
+            {% render 'drawer'
+              , trigger: cart_trigger
+              , content: cart_content
+              , name: 'cartdrawer'
+              , from: 'right'
+            %}
+{% endcomment %}
+
+
 <style>
   [x-cloak] {
     display: none !important;
@@ -19,7 +40,8 @@
   <div
   x-data="drawer('{{ from }}')"
   x-init="init()"
-  class="ida-drawer">
+  class="ida-drawer"
+  data-drawer-name="{{name}}">
   <!-- Trigger -->
   <div @click="openDrawer()">
     {{ trigger }}
@@ -46,159 +68,4 @@
 
   </div>
 </div>
-
-<script>
-  function drawer(direction = 'right') {
-    return {
-      open: false,
-      direction,
-      tl: null,
-      $overlay: null,
-      $panel: null,
-      lastFocusedElement: null,
-
-      init() {
-        this.$overlay = this.$refs.overlay
-        this.$panel = this.$refs.panel
-
-        // Ensure the panel has base CSS for positioning 
-        if (this.direction === 'left' || this.direction === 'right') {
-          Object.assign(this.$panel.style, {
-            top: '0',
-            height: '100vh',
-            width: '100%',
-            maxWidth:'min(648px,100%)',
-            left: this.direction === 'left' ? '0' : 'auto',
-            right: this.direction === 'right' ? '0' : 'auto',
-            bottom: 'auto',
-          })
-        } else {
-          // top / bottom
-          Object.assign(this.$panel.style, {
-            left: '0',
-            width: '100vw',
-            height: 'auto',
-            minHeight: '30svh',
-            top: this.direction === 'top' ? '0' : 'auto',
-            bottom: this.direction === 'bottom' ? '0' : 'auto',
-          })
-        }
-
-        // Put overlay & panel off-screen / hidden initially
-        gsap.set(this.$overlay, { opacity: 0, pointerEvents: 'none' })
-
-        // Set panel initial offscreen transform + hidden
-        if (this.direction === 'left') {
-          gsap.set(this.$panel, { x: '-100%', y: 0, opacity: 0, visibility: 'hidden' })
-        } else if (this.direction === 'right') {
-          gsap.set(this.$panel, { x: '100%', y: 0, opacity: 0, visibility: 'hidden' })
-        } else if (this.direction === 'top') {
-          gsap.set(this.$panel, { y: '-100%', x: 0, opacity: 0, visibility: 'hidden' })
-        } else if (this.direction === 'bottom') {
-          gsap.set(this.$panel, { y: '100%', x: 0, opacity: 0, visibility: 'hidden' })
-        }
-
-        // hook up data-drawer-close inside the panel
-        this.$panel.addEventListener('click', e => {
-          if (e.target.closest('[data-drawer-close]')) {
-            this.closeDrawer()
-          }
-        })
-
-        // ESC key to close
-        this._escHandler = (e) => {
-          if (e.key === 'Escape' && this.open) this.closeDrawer()
-        }
-        document.addEventListener('keydown', this._escHandler)
-
-        // Remove Later
-        setTimeout(() => {
-          this.openDrawer()
-        }, 500);
-      },
-
-      openDrawer() {
-        if (this.open) return
-        this.open = true
-        this.lastFocusedElement = document.activeElement
-        document.body.classList.add('drawer-open')
-
-        const overlay = this.$overlay
-        const panel = this.$panel
-
-        // make panel visible before animating so screen readers/focus can settle
-        panel.style.visibility = 'visible'
-        // allow overlay pointer events during open
-        gsap.set(overlay, { pointerEvents: 'auto' })
-
-        // Build timeline for overlay + panel
-        const tl = gsap.timeline({
-          defaults: { ease: 'power3.out' }
-        })
-
-        tl.to(overlay, { opacity: 1, duration: 0.28 }, 0)
-
-        if (this.direction === 'left' || this.direction === 'right') {
-          // animate x to 0
-          tl.to(panel, { x: '0%', opacity: 1, duration: 0.42 }, 0)
-        } else {
-          // animate y to 0
-          tl.to(panel, { y: '0%', opacity: 1, duration: 0.42 }, 0)
-        }
-
-        // Focus management: move focus into the panel after animation frame
-        tl.call(() => {
-          // try to focus the first focusable element inside panel, else panel itself
-          const focusable = panel.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
-          if (focusable) focusable.focus()
-          else panel.setAttribute('tabindex', '-1'), panel.focus()
-        }, null, '>-0.02')
-
-        this.tl = tl
-      },
-
-      closeDrawer() {
-        if (!this.open) return
-        const overlay = this.$overlay
-        const panel = this.$panel
-
-        // allow pointer events until animation finishes (we will disable after)
-        gsap.set(overlay, { pointerEvents: 'none' })
-
-        const tl = gsap.timeline({
-          defaults: { ease: 'power3.in' },
-          onComplete: () => {
-            // hide after animation
-            panel.style.visibility = 'hidden'
-            this.open = false
-            document.body.classList.remove('drawer-open')
-
-            // restore focus
-            if (this.lastFocusedElement && typeof this.lastFocusedElement.focus === 'function') {
-              this.lastFocusedElement.focus()
-            }
-          }
-        })
-
-
-        
-        if (this.direction === 'left') {
-          tl.to(panel, { x: '-100%',  duration: 0.32 }, 0)
-        } else if (this.direction === 'right') {
-          tl.to(panel, { x: '100%',  duration: 0.32 }, 0)
-        } else if (this.direction === 'top') {
-          tl.to(panel, { y: '-100%',  duration: 0.32 }, 0)
-        } else if (this.direction === 'bottom') {
-          tl.to(panel, { y: '100%',  duration: 0.32 }, 0)
-        }
-
-        tl.to(overlay, { opacity: 0, duration: 0.32 }, 0.2)
-      },
-
-      // call to clean up listeners if needed
-      destroy() {
-        document.removeEventListener('keydown', this._escHandler)
-      }
-    }
-  }
-</script>
+<script src="{{ 'js/components/drawer.js' | asset_url }}" defer></script>
