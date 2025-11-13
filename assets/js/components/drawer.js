@@ -99,7 +99,6 @@ document.addEventListener('alpine:init', () => {
 
                 // hook up data-drawer-close inside the panel
                 this.$panel.addEventListener('click', e => {
-                    console.log('click')
                     if (e.target instanceof Element && e.target?.closest('[data-drawer-close]')) {
                         this.closeDrawer()
                     }

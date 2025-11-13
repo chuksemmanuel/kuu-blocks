@@ -60,9 +60,8 @@ document.addEventListener('alpine:init', () => {
                     this.itemsQuantity[item.key] = item.quantity
                 })
 
-                console.log('items quantity', this.itemsQuantity)
             } catch (error) {
-                console.log(error)
+                // console.log(error)
             }
 
         },
@@ -201,11 +200,9 @@ document.addEventListener('alpine:init', () => {
                 // Refresh the cart drawer content
                 await this.updateCartDrawer()
             } catch (err) {
-                console.log('Cart update failed', err)
+
                 if (typeof err === 'string') {
-
                     this.setCartMessage(err, 'error', key)
-
                 } else if (err instanceof Error) {
                     this.setCartMessage(err.message, 'error', key)
                 } else {
@@ -242,8 +239,6 @@ document.addEventListener('alpine:init', () => {
                 }
             } catch (error) {
                 this.setCartMessage('Unable to update cart. Please try again.', 'error')
-
-                console.log('Failed to update cart drawer', error)
             }
 
         }
