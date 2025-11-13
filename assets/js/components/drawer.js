@@ -146,10 +146,10 @@ document.addEventListener('alpine:init', () => {
 
                 if (this.direction === 'left' || this.direction === 'right') {
                     // animate x to 0
-                    tl.to(panel, { x: '0%', opacity: 1, duration: 0.42 }, 0)
+                    tl.to(panel, { x: '0%', opacity: 1, duration: 0.60 }, 0)
                 } else {
                     // animate y to 0
-                    tl.to(panel, { y: '0%', opacity: 1, duration: 0.42 }, 0)
+                    tl.to(panel, { y: '0%', opacity: 1, duration: 0.60 }, 0)
                 }
 
                 // Focus management: move focus into the panel after animation frame
