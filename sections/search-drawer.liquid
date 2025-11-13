@@ -1,1 +1,19 @@
-{% render 'searchdrawer-content' search: search %}
+{%- if predictive_search.performed -%}
+  <div id="predictive-search-results">
+    {%- if predictive_search.resources.products.size > 0 -%}
+      {% render 'searchdrawer-content'
+        , products: predictive_search.resources.products
+        , collections: predictive_search.resources.collections
+        , pages: predictive_search.resources.pages
+      %}
+      <h3>Products</h3>
+      <ul>
+        {%- for product in predictive_search.resources.products -%}
+          <li>
+            <a href="{{ product.url }}">{{ product.title }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+{%- endif -%}

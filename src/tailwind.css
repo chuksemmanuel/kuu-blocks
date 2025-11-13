@@ -6,3 +6,7 @@
 	--color-foreground: var(--color-foreground);
 	--color-background: var(--color-background);
 }
+
+[x-cloak] {
+	display: none !important;
+}
