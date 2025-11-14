@@ -1,0 +1,65 @@
+{% # Cart Footer %}
+<div class="border-t border-gray-200 shrink-0  flex flex-col justify-between gap-4 lg:gap-6 p-4 lg:pt-6 lg:pb-8 lg:px-8 min-h-24 lg:min-h-35" id="cartdrawer-footer">
+
+
+  <!-- Total -->
+  <div class="flex flex-col gap-1">
+    <div class="flex justify-between items-center">
+      <span class="font-medium lg:text-lg">Total</span>
+
+      {% if cart.original_total_price > cart.total_price and show_compare_price %}
+        <div class="flex gap-2">
+          <span class="font-semibold lg:text-lg" style="color:{{final_price_color}}">{{ cart.total_price | money }}</span>
+          <span class=" lg:text-lg line-through">{{ cart.original_total_price | money }}</span>
+        </div>
+      {% else %}
+        <span class="font-semibold lg:text-lg">{{ cart.total_price | money }}</span>
+      {% endif %}
+
+
+    </div>
+  </div>
+
+
+  <!-- CTA -->
+  <div class="flex flex-col justify-center items-center gap-2 lg:gap-4">
+    <div class="flex gap-4 items-center w-full">
+      {% if show_secondary_footer_cta %}
+        <div
+          class="w-full hidden md:block"
+          {% unless secondary_footer_cta_link %}
+          data-drawer-close
+          {% endunless %}>
+          {% render 'button'
+            , variant: 'secondary'
+            , size: 'lg'
+            , label: secondary_footer_cta_label
+            , href: secondary_footer_cta_link
+            , class: 'w-full rounded-full!' %}
+        </div>
+      {% endif %}
+
+      {% if show_checkout_lock_icon %}
+        {% assign icon = 'icons/lock-keyhole.svg' %}
+      {% else %}
+        {% assign icon = null %}
+      {% endif %}
+
+      {% render 'button'
+        , variant: 'primary'
+        , size: 'lg'
+        , label: checkout_button_label
+        , icon: icon
+        , class: 'w-full rounded-full!'
+        , href: '/checkout' %}
+    </div>
+    {% if show_secondary_footer_cta %}
+      {% if secondary_footer_cta_link %}
+        <a class="text-center cursor-pointer md:hidden underline" href="{{secondary_footer_cta_link}}">{{ secondary_footer_cta_label }}</a>
+      {% else %}
+        <span class="text-center cursor-pointer md:hidden underline">{{ secondary_footer_cta_label }}</span>
+      {% endif %}
+
+    {% endif %}
+  </div>
+</div>

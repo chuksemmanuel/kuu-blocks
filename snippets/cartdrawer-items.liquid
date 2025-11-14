@@ -21,16 +21,39 @@
         </a>
 
         {% # Details %}
-        <div class="flex flex-col gap-px">
+        <div class="flex flex-col gap-1">
 
           {% # Title %}
           <a href="{{item.product.url}}" class="font-semibold line-clamp-2 max-w-50">{{ item.title }}</a>
 
           {% # Price %}
-          <span class="">{{ item.final_line_price | money }}</span>
 
-          {% # Variant Ttitle %}
-          {% if item.product.has_only_default_variant == false and item.item_components.size == 0 %}
+          {% if item.original_line_price != item.final_line_price and show_compare_price == true %}
+            <div class="flex flex-col md:flex-row md:items-center flex-wrap gap-x-1 gap-y-px">
+              <div class="flex  gap-2 items-center">
+                <span style="color:{{final_price_color}}">{{ item.final_line_price | money }}</span>
+                <span class="line-through text-gray-500">
+                  {{ item.original_line_price | money }}
+                </span>
+              </div>
+              {% if show_savings_badge %}
+                {% assign contrast = savings_badge_color | color_contrast: '#ffffff' %}
+                {% if contrast < 3.1 %}
+                  {% assign saving_badge_text_color = '#000000' %}
+                {% else %}
+                  {% assign saving_badge_text_color = '#ffffff' %}
+
+                {% endif %}
+                <span class="rounded-md px-1.5 py-px  text-xs w-fit shrink-0" style="background:{{savings_badge_color}}; color:{{saving_badge_text_color}}">Saved {{ item.original_line_price | minus: item.final_line_price | money }}</span>
+              {% endif %}
+            </div>
+          {% else %}
+            <span class="">{{ item.final_line_price | money }}</span>
+          {% endif %}
+
+
+          {% # Variant Title %}
+          {% if item.product.has_only_default_variant == false and item.item_components.size == 0 and show_variant_title %}
             <span class="text-gray-500 text-xs max-w-30">{{ item.variant.title }}</span>
           {% endif %}
 

@@ -1,13 +1,39 @@
 {% liquid
-  assign headless = headless | default: 'false'
+  assign headless = headless | default: false
   assign id = id | default: 'cartdrawer'
   assign sticky_header = sticky_header | default: true
+  assign sticky_footer = sticky_footer | default: true
+
+  assign show_compare_price = show_compare_price | default: false
+  assign final_price_color = final_price_color | default: '#fb2c36'
+
+  assign show_savings_badge = show_savings_badge | default: true
+  assign savings_badge_color = savings_badge_color | default: '#fb2c36'
+
+  assign show_variant_title = show_variant_title | default: true
+
+  assign show_secondary_footer_cta = show_secondary_footer_cta | default: true
+  assign secondary_footer_cta_label = secondary_cta_label | default: 'Continue Shopping'
+  assign secondary_footer_cta_link = secondary_cta_link | default: null
+
+  assign show_checkout_lock_icon = show_checkout_lock_icon | default: true
+  assign checkout_button_label = checkout_button_label | default: 'Proceed to Checkout'
 %}
 
-
-<div id="cartdrawer">
+{% capture footer %}
+    {% render 'cartdrawer-footer'
+    , show_compare_price:show_compare_price
+    , final_price_color:final_price_color
+    , show_secondary_footer_cta:show_secondary_footer_cta
+    , secondary_footer_cta_label:secondary_footer_cta_label
+    , secondary_footer_cta_link:secondary_footer_cta_link
+    , show_checkout_lock_icon: show_checkout_lock_icon
+    , checkout_button_label:checkout_button_label
+    %}
+{% endcapture %}
+<div id="cartdrawer" {{ shopify_attributes }}>
   {% capture cart_button %}
-        <span class="bg-primary flex justify-center items-center text-white z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs" data-cartdrawer-bubble >{{ cart.item_count }}</span>
+        <span class="bg-primary flex justify-center items-center text-primary-foreground z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs" data-cartdrawer-bubble >{{ cart.item_count }}</span>
         {{ 'icons/shopping-cart.svg' | inline_asset_content }}
   {% endcapture %}
   {% capture cart_trigger %}
@@ -38,14 +64,14 @@
 
   
 
-      <div class=" flex-1  {% if sticky_header %} flex flex-col overflow-hidden {% else %} overflow-y-auto {% endif %}">
+      <div class=" flex-1 flex flex-col {% if sticky_header %}  overflow-hidden {% else %} overflow-y-auto {% endif %}">
         {%# Cart Header%}
         <div class="shrink-0 flex flex-col gap-2 min-h-12 h-fit p-5 lg:p-8 pb-1 lg:pb-2 ">
             <!-- Cart Header -->
             <div class="flex justify-between items-center w-full">
                 <div class="flex items-center gap-2">
                     <p class="font-semibold lg:text-lg">Cart </p>
-                    <span class="flex justify-center items-center size-6 min-w-fit bg-primary text-white rounded-full p-px text-sm">{{cart.item_count}}</span>
+                    <span class="flex justify-center items-center size-6 min-w-fit bg-primary text-primary-foreground rounded-full p-px text-sm">{{cart.item_count}}</span>
                 </div>
 
                 <div data-drawer-close class="leading-0">
@@ -58,41 +84,38 @@
         </div>
         
         {%# Always Scrollable %}
-        <div class=" flex flex-col justify-between p-5 lg:p-8 pt-1 lg:pt-2 {% if sticky_header %}overflow-y-auto {% endif %}">
-              {%# Cart Items %}
-              {% render 'cartdrawer-items' %}
+        <div class="flex-1 flex flex-col justify-between  pt-1 lg:pt-2 {% if sticky_header %}overflow-y-auto {% endif %}">
 
-              {%# Recommended Products %}
-              <div class="bg-gray-200 animate-pulse w-full min-h-32 rounded-lg hidden"></div>
+          <div class="p-5 lg:p-8 pt-0!">
+              {%# Cart Items %}
+              {% render 'cartdrawer-items'
+              , show_compare_price:show_compare_price
+              , final_price_color:final_price_color
+              , show_savings_badge:show_savings_badge
+              , show_variant_title:show_variant_title
+              , savings_badge_color:savings_badge_color
+              %}
+          </div>
+
+
+              <div>
+                {%# Recommended Products %}
+                <div class="bg-gray-200 animate-pulse w-full min-h-32 rounded-lg hidden"></div>
+
+                {% unless sticky_footer %}
+                  {{footer}}
+                {% endunless %}
+              </div>
+           
         </div>
       </div>
 
 
-
-       {%# Cart Footer %}
-      <div class="border-t border-gray-200 shrink-0  flex flex-col justify-between gap-4 lg:gap-6 p-4 lg:pt-6 lg:pb-8 lg:px-8 min-h-35 lg:min-h-35" id="cartdrawer-footer">
-        
-
-        <!-- Total -->
-          <div class="flex flex-col gap-1">
-            <div class="flex justify-between items-center">
-                <span class="font-medium lg:text-lg">Total</span>
-                <span class="font-semibold lg:text-lg">{{ cart.total_price | money }}</span>
-            </div>
-          </div>
-
-
-          <!-- CTA -->
-          <div class="flex flex-col justify-center items-center gap-2 lg:gap-4">
-            <div class="flex gap-4 items-center w-full">
-              <div class="w-full hidden md:block" data-drawer-close>
-                {% render 'button', variant:'secondary',size:'lg', label:'Continue Shopping',  class:'w-full rounded-full!' %}
-              </div>
-              {% render 'button', variant:'primary',size:'lg', label:'Checkout', icon:'icons/lock-keyhole.svg', class:'w-full rounded-full!', href:'/checkout' %}
-            </div>
-            <span class="text-center cursor-pointer md:hidden" data-drawer-close>Continue Shoping</span>
-          </div>
-      </div>
+      {% if sticky_footer %}
+        {% comment %} {% render 'cartdrawer-footer', show_compare_price:show_compare_price, secondary_cta:secondary_cta, checkout_button_text:checkout_button_text%} {% endcomment %}
+         {{footer}}
+      {% endif %}
+    
 
       </div>
     {% endif %}
@@ -107,8 +130,8 @@
   %}
 </div>
 
-<script>
-  setTimeout(() =>{
-      window.dispatchEvent(new CustomEvent('drawer:open',{detail:{id:'cartdrawer'}}))
-  },1000)
-</script>
+{% comment %} <script>
+        setTimeout(() =>{
+            window.dispatchEvent(new CustomEvent('drawer:open',{detail:{id:'cartdrawer'}}))
+        },1000)
+</script> {% endcomment %}

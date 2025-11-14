@@ -31,7 +31,7 @@
 comment %} Get TabList from Tab items Ends {% endcomment %}
 
 {% capture menu_trigger %}
-   {% render 'button' variant: 'ghost' size: 'icon' icon: 'icons/hamburger.svg' class: "bg-white text-black hover:bg-primary hover:text-white! md:size-12 rounded-lg!" %}
+   {% render 'button' variant: 'ghost' size: 'icon' icon: 'icons/hamburger.svg' class: "bg-white text-black hover:bg-primary hover:text-primary-foreground! md:size-12 rounded-lg!" %}
 {% endcapture %}
 {% capture menu_content %}
   <div class="flex flex-col w-full h-full  bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg flex-1"  x-data="{
@@ -112,7 +112,7 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
                   :id="'{{ tab }}'"
                   @click="tabButtonClicked($el);"
                   type="button"
-                  :class="{ 'bg-primary text-white' : tabButtonActive($el) }"
+                  :class="{ 'bg-primary text-primary-foreground' : tabButtonActive($el) }"
                   x-init="tabRepositionMarker($el)"
                   class="relative z-20 bg-gray-100 inline-flex items-center justify-center w-full h-10 px-3 text-sm font-medium transition duration-300 ease-out cursor-pointer whitespace-nowrap rounded-full">
                   {{ tab }}
