@@ -32,6 +32,7 @@
 
     <div class="flex gap-4">
 
+
       {% render 'searchdrawer-desktop' %}
 
       {% if shop.customer_accounts_enabled %}
@@ -42,7 +43,18 @@
           , class: 'bg-white text-black hover:bg-primary hover:text-white! md:size-12 rounded-full!' %}
       {% endif %}
 
-      {% render 'cartdrawer' %}
+
+      {% capture cart_button %}
+        <span class="bg-primary flex justify-center items-center text-white z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs" data-cartdrawer-bubble>{{ cart.item_count }}</span>
+        {{ 'icons/shopping-cart.svg' | inline_asset_content }}
+      {% endcapture %}
+      <div x-data @click="$dispatch('drawer:open',{id:'cartdrawer'})">
+        {% render 'button'
+          , size: 'icon'
+          , content: cart_button
+          , class: 'bg-white text-black hover:bg-primary hover:text-white!  md:size-12 rounded-full! '
+        %}
+      </div>
 
     </div>
   </div>

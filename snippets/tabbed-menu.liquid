@@ -147,7 +147,7 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
                   x-transition:leave-end="opacity-0"
                   x-cloak
                   class="w-full flex flex-col  p-5"
-                  :class="!tabContentActive($el) ? 'absolute left-0' : relative "
+                  :class="!tabContentActive($el) ? 'absolute left-0' : 'relative' "
                   >
                   {% for item in section.blocks %}
                     {% if item.type == 'menu_item' and item.settings.parent_tab == tab %}

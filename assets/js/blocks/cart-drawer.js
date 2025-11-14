@@ -11,7 +11,6 @@
 
 document.addEventListener('alpine:init', () => {
     const Alpine = window.Alpine
-    console.log('alpine loaded for cartdrawer now')
 
     Alpine.data('cartDrawer', () => ({
         /**
@@ -226,17 +225,20 @@ document.addEventListener('alpine:init', () => {
                 const res = await fetch('/?sections=cartdrawer')
                 const data = await res.json()
                 const cartContent = document.querySelector('#cartdrawer-content')
-                const cartBubble = document.querySelector('#cart-bubble')
+                const cartBubbles = document.querySelectorAll('[data-cartdrawer-bubble]')
 
                 const fragment = new DOMParser().parseFromString(data.cartdrawer, 'text/html')
                 const newContent = fragment.querySelector('#cartdrawer-content')
-                const newBubble = fragment.querySelector('#cart-bubble')
-
+                const newBubble = fragment.querySelector('[data-cartdrawer-bubble]')
+                console.log(newBubble)
                 if (cartContent && newContent) {
                     Alpine.morph(cartContent, newContent)
                 }
-                if (cartBubble && newBubble) {
-                    Alpine.morph(cartBubble, newBubble)
+
+                if (cartBubbles.length > 0 && newBubble) {
+                    cartBubbles.forEach(cartBubble => {
+                        cartBubble.textContent = newBubble.textContent
+                    })
                 }
             } catch (error) {
                 this.setCartMessage('Unable to update cart. Please try again.', 'error')

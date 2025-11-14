@@ -80,8 +80,6 @@ document.addEventListener('alpine:init', () => {
          */
         handleInput() {
 
-            console.log('active_tab ==>', this.activeTab)
-
             // if (this.loading) return // Don’t interrupt active fetch
             this.loading = true
             const key = 'searchDrawer'
@@ -95,7 +93,6 @@ document.addEventListener('alpine:init', () => {
 
             // Set a new timer
             this.debounceTimers[key] = window.setTimeout(() => {
-                console.log('making debounced call now')
                 this.fetchResults()
             }, delay)
         },
@@ -116,7 +113,6 @@ document.addEventListener('alpine:init', () => {
                 const fragment = new DOMParser().parseFromString(html, 'text/html')
 
                 const newResults = fragment.querySelector('#searchdrawer-results')
-                console.log('okie', newResults)
                 if (newResults && this.$searchResults) {
 
                     Alpine.morph(

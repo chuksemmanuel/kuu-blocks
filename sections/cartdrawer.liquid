@@ -1,1 +1,9 @@
-{% render 'cartdrawer' %}
+{% render 'cartdrawer'
+  , headless: true 
+  , id: 'cartdrawer'
+%}
+
+{% # For updating cart count %}
+<div data-cartdrawer-bubble class="hidden">
+  {{ cart.item_count }}
+</div>
