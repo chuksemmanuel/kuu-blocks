@@ -1,6 +1,7 @@
 {% liquid
   assign headless = headless | default: 'false'
   assign id = id | default: 'cartdrawer'
+  assign sticky_header = sticky_header | default: true
 %}
 
 
@@ -35,41 +36,42 @@
     {% else %}
       <div class="w-full h-full flex flex-col">
 
-          <!-- Cart Scrollable -->
-          <div class=" flex-1 p-5 lg:p-8 overflow-y-auto flex flex-col justify-between">
+  
 
-            <!-- Main Content -->
-            <div>
-                <!-- Cart Top -->
-                <div class="pb-6 lg:pb-8 flex flex-col gap-2">
-                    <!-- Cart Header -->
-                    <div class="flex justify-between items-center w-full">
-                        <div class="flex items-center gap-2">
-                            <p class="font-semibold lg:text-lg">Cart </p>
-                            <span class="flex justify-center items-center size-6 min-w-fit bg-primary text-white rounded-full p-px text-sm">{{cart.item_count}}</span>
-                        </div>
-
-                        <div data-drawer-close class="leading-0">
-                            {% render 'button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ' %}
-                        </div>
-                    </div>
-
-                    <!--Placeholder for app extension -->
-                    <div class="hidden"></div>
+      <div class=" flex-1  {% if sticky_header %} flex flex-col overflow-hidden {% else %} overflow-y-auto {% endif %}">
+        {%# Cart Header%}
+        <div class="shrink-0 flex flex-col gap-2 min-h-12 h-fit p-5 lg:p-8 pb-1 lg:pb-2 ">
+            <!-- Cart Header -->
+            <div class="flex justify-between items-center w-full">
+                <div class="flex items-center gap-2">
+                    <p class="font-semibold lg:text-lg">Cart </p>
+                    <span class="flex justify-center items-center size-6 min-w-fit bg-primary text-white rounded-full p-px text-sm">{{cart.item_count}}</span>
                 </div>
 
-                <!-- Cart Items -->
-                {% render 'cartdrawer-items' %}
-
+                <div data-drawer-close class="leading-0">
+                    {% render 'button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ' %}
+                </div>
             </div>
 
-            <!-- Recommended Products -->
-            <div class="bg-gray-200 animate-pulse w-full min-h-32 rounded-lg hidden"></div>
+            <!--Placeholder for app extension -->
+            <div class="hidden"></div>
+        </div>
+        
+        {%# Always Scrollable %}
+        <div class=" flex flex-col justify-between p-5 lg:p-8 pt-1 lg:pt-2 {% if sticky_header %}overflow-y-auto {% endif %}">
+              {%# Cart Items %}
+              {% render 'cartdrawer-items' %}
 
+              {%# Recommended Products %}
+              <div class="bg-gray-200 animate-pulse w-full min-h-32 rounded-lg hidden"></div>
+        </div>
       </div>
 
-      <!-- Cart Footer -->
-      <div class="border-t border-gray-200 shrink-0 p-4 flex flex-col justify-between gap-4 lg:gap-6 lg:pt-6 lg:pb-8 lg:px-8 min-h-35 lg:min-h-35" id="cartdrawer-footer">
+
+
+       {%# Cart Footer %}
+      <div class="border-t border-gray-200 shrink-0  flex flex-col justify-between gap-4 lg:gap-6 p-4 lg:pt-6 lg:pb-8 lg:px-8 min-h-35 lg:min-h-35" id="cartdrawer-footer">
+        
 
         <!-- Total -->
           <div class="flex flex-col gap-1">
@@ -104,3 +106,9 @@
     , headless: headless
   %}
 </div>
+
+<script>
+  setTimeout(() =>{
+      window.dispatchEvent(new CustomEvent('drawer:open',{detail:{id:'cartdrawer'}}))
+  },1000)
+</script>
