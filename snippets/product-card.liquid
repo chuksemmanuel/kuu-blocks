@@ -26,7 +26,7 @@
 <div x-data="{
     adding: false,
    
-  }" class="group relative flex flex-col overflow-hidden rounded-md bg-white  transition ">
+  }" class="group relative flex flex-col overflow-hidden rounded-md transition ">
   <a href="{{ product_url }}" class="block  overflow-hidden aspect-square">
     <img
       src="{{ product_image | image_url: width: 600 }}"
@@ -49,10 +49,11 @@
       :disabled="adding">
 
       <template x-if="!adding">
-        {% render 'button' href: ''
-          , size: 'icon'
+        {% render 'button'
+          , variant: 'circled-icon'
+          , size: 'circled-icon'
           , icon: 'icons/shopping-cart.svg'
-          , class: 'bg-white text-black hover:bg-primary hover:text-white! size-10  md:size-12 shadow-sm rounded-full!'
+          , class: 'shadow-sm '
         %}
       </template>
       <template x-if="adding">

@@ -43,7 +43,10 @@
     {%- assign variant_class = 'border border-gray-300 text-gray-900 hover:bg-gray-50' -%}
   {%- when 'ghost' -%}
     {%- assign variant_class = 'bg-transparent hover:bg-gray-100' -%}
+  {% when 'circled-icon' %}
+    {% assign variant_class = 'bg-white text-black hover:bg-primary hover:text-primary-foreground  ' %}
   {%- else -%}
+
     {%- assign variant_class = '' -%}
 {%- endcase -%}
 
@@ -54,6 +57,8 @@
     {%- assign size_class = 'h-12 px-6 text-base rounded-lg' -%}
   {%- when 'icon' -%}
     {%- assign size_class = 'size-8 p-2 rounded-md' -%}
+  {% when 'circled-icon' %}
+    {% assign size_class = 'p-2 size-10  md:size-12  rounded-full' %}
   {%- else -%}
     {%- assign size_class = 'h-10 px-4 text-sm rounded-md' -%}
 {%- endcase -%}

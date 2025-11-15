@@ -6,7 +6,7 @@
     , align: section.settings.align
   %}
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
     {% assign collection_handle = section.settings.collection | default: 'all' %}
     {% assign selected_collection = collections[collection_handle] %}
     {% assign products = selected_collection.products %}
@@ -49,10 +49,12 @@
           {
             "value": "left",
             "label": "Left"
-          }, {
+          },
+          {
             "value": "center",
             "label": "Center"
-          }, {
+          },
+          {
             "value": "right",
             "label": "Right"
           }
@@ -63,7 +65,8 @@
         "type": "collection",
         "id": "collection",
         "label": "Choose a collection"
-      }, {
+      },
+      {
         "type": "select",
         "id": "filter",
         "label": "Product filter",
@@ -71,16 +74,19 @@
           {
             "value": "none",
             "label": "All products"
-          }, {
+          },
+          {
             "value": "new",
             "label": "New arrivals"
-          }, {
+          },
+          {
             "value": "bestsellers",
             "label": "Bestsellers"
           }
         ],
         "default": "none"
-      }, {
+      },
+      {
         "type": "range",
         "id": "limit",
         "label": "Number of products to display",
