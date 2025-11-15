@@ -1,12 +1,54 @@
+<div x-data="{
+    adding: false,
+  }">
 
-{% capture quick_add_content %}
-    <div id="cartdrawer-content" class="h-full w-full bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg flex-1"></div>
-{% endcapture %}
+  {% capture quick_add_trigger %}
+      <div
+        class="absolute bottom-3 right-3"
+        :disabled="adding">
 
-{% render 'drawer'
-, content:quick_add_content
-, id: 'quick-add'
-, from: 'bottom',
-, headless:true
+        <template x-if="!adding">
+          {% render 'button'
+            , variant: 'circled-icon'
+            , size: 'none'
+            , icon: 'icons/shopping-cart.svg'
+            , class: 'shadow-sm '
+          %}
+        </template>
 
-%}
+        <template x-if="adding">
+          {% render 'button'
+            , variant: 'circled-icon'
+            , size: 'none'
+            , icon: 'icons/loader-circle.svg'
+            , class: 'animate-spin bg-primary! text-primary-foreground! ' %}
+        </template>
+      </div>
+  {% endcapture %}
+  {% capture quick_add_content %}
+    <div id="quick-add-content" class="h-[508px]! flex flex-col w-full p-4 sm:p-6 bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg ">
+
+        <div class="overflow-y-auto">
+            <div class=" flex flex-col gap-2 shrink-0">
+            <h4>{{product.title}}</h4>
+            </div>
+            
+        </div>
+    </div>
+{%endcapture%}
+  {% render 'drawer'
+    , trigger: quick_add_trigger
+    , content: quick_add_content 
+    , id: 'quick-add-{{product.id}}'
+                    , from: 'bottom'
+                    , class:'min-h-80! sm:min-h-[508px]! h-auto! max-h-[60svh] sm:max-w-[528px] sm:left-auto sm:right-0 max-sm:p-0! max-sm:rounded-b-none! ' %}
+
+</div>
+
+
+<script>
+    // Todo: Remove this in production
+    setTimeout(() =>{
+        window.dispatchEvent(new CustomEvent('drawer:open',{detail:{id:'quick-add'}}))
+    },1000)
+</script>

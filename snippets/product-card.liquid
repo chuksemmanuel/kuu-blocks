@@ -23,47 +23,23 @@
 {%- assign product_image = image | default: card_product.featured_image.src -%}
 {%- assign product_url = url | default: card_product.url -%}
 
-<div x-data="{
-    adding: false,
-   
-  }" class="group relative flex flex-col overflow-hidden transition ">
-  <a href="{{ product_url }}" class="block  rounded-3xl overflow-hidden aspect-square relative">
-    <img
-      src="{{ product_image | image_url: width: 600 }}"
-      alt="{{ product_title | escape }}"
-      width="600"
-      height="600"
-      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-      loading="lazy" />
-
+<div class="group relative flex flex-col overflow-hidden transition ">
+  <div href="{{ product_url }}" class="block rounded-3xl overflow-hidden aspect-square relative">
+    <a href="{{ product_url }}">
+      <img
+        src="{{ product_image | image_url: width: 600 }}"
+        alt="{{ product_title | escape }}"
+        width="600"
+        height="600"
+        class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        loading="lazy" />
+    </a>
     {% if show_floating_cart %}
-
-
-      <div
-        @click.prevent="adding = true; $dispatch('drawer:open', { id: 'quick-add' }); setTimeout(() => adding = false, 1000)"
-        class="absolute bottom-3 right-3 "
-        :disabled="adding">
-
-        <template x-if="!adding">
-          {% render 'button'
-            , variant: 'circled-icon'
-            , size: 'none'
-            , icon: 'icons/shopping-cart.svg'
-            , class: 'shadow-sm '
-          %}
-        </template>
-        <template x-if="adding">
-          {% render 'button'
-            , variant: 'circled-icon'
-            , size: 'none'
-            , icon: 'icons/loader-circle.svg'
-            , class: 'animate-spin bg-primary! text-primary-foreground! ' %}
-
-        </template>
-      </div>
-
+      {% render 'quick-add'
+        , product: product %}
     {% endif %}
-  </a>
+  </div>
+
 
   <div class="flex flex-col gap-1 p-4">
     <a href="{{ product_url }}" class="text-xl font-medium text-foreground line-clamp-2 lg:line-clamp-1">{{ product_title }}</a>

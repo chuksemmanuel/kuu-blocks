@@ -15,7 +15,7 @@
       placeholder="Search for ..."
       class="flex-1 border-none ring-0 text-black text-lg outline-0 h-8 font-semibold!">
 
-    <span @click="clearSearchTerm" class="flex flex-col justify-center items-center cursor-pointer text-sm md:text-base text-gray-600 hover:text-primary transition">
+    <span @click="clearSearchTerm" class="flex flex-col justify-center items-center cursor-pointer text-sm md:text-base text-gray-600 hover:text-gray-700 transition">
       Clear
     </span>
 
@@ -39,7 +39,7 @@
       x-transition:leave-start="opacity-100 translate-y-0"
       x-transition:leave-end="opacity-0 translate-y-1"
       x-cloak
-      class="h-full">
+      class="h-full flex flex-col">
       {% render 'searchdrawer-content-skeleton' %}
     </div>
 
@@ -71,7 +71,7 @@
       x-transition:leave-end="opacity-0 translate-y-1"
       x-cloak
       id="searchdrawer-results"
-      class="overflow-hidden"
+      class="overflow-hidden flex flex-col"
       data-default-tab="{{default_tab}}">
 
       <div class="flex flex-col gap-4 md:gap-6 h-full overflow-hidden">

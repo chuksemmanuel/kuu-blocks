@@ -1,24 +1,29 @@
 {% liquid
-  assign headless = headless | default: false
+  assign headless = headless
   assign id = id | default: 'cartdrawer'
-  assign sticky_header = sticky_header | default: true
-  assign sticky_footer = sticky_footer | default: true
 
-  assign show_compare_price = show_compare_price | default: false
+  assign sticky_header = sticky_header
+  assign sticky_footer = sticky_footer
+
+  assign show_compare_price = show_compare_price
   assign final_price_color = final_price_color | default: '#fb2c36'
 
-  assign show_savings_badge = show_savings_badge | default: true
+  assign show_savings_badge = show_savings_badge
   assign savings_badge_color = savings_badge_color | default: '#fb2c36'
 
-  assign show_variant_title = show_variant_title | default: true
+  assign show_variant_title = show_variant_title
 
-  assign show_secondary_footer_cta = show_secondary_footer_cta | default: true
+  assign show_secondary_footer_cta = show_secondary_footer_cta
   assign secondary_footer_cta_label = secondary_cta_label | default: 'Continue Shopping'
   assign secondary_footer_cta_link = secondary_cta_link | default: null
 
-  assign show_checkout_lock_icon = show_checkout_lock_icon | default: true
+  assign show_checkout_lock_icon = show_checkout_lock_icon
   assign checkout_button_label = checkout_button_label | default: 'Proceed to Checkout'
 %}
+<script>
+  console.log('section settings ==>',{{section.settings | json}})
+  console.log('sticker_footer ===>', {{sticky_footer}})
+</script>
 
 {% capture footer %}
     {% render 'cartdrawer-footer'
@@ -63,6 +68,8 @@
   
 
       <div class=" flex-1 flex flex-col {% if sticky_header %}  overflow-hidden {% else %} overflow-y-auto {% endif %}">
+  
+      
         {%# Cart Header%}
         <div class="shrink-0 flex flex-col gap-2 min-h-12 h-fit p-5 lg:p-8 pb-1 lg:pb-2 ">
             <!-- Cart Header -->
@@ -127,8 +134,11 @@
   %}
 </div>
 
-{% comment %} <script>
-                setTimeout(() =>{
-                    window.dispatchEvent(new CustomEvent('drawer:open',{detail:{id:'cartdrawer'}}))
-                },1000)
-</script> {% endcomment %}
+{% comment %}
+  <script>
+  // Todo: Remove this in production
+  setTimeout(() =>{
+  window.dispatchEvent(new CustomEvent('drawer:open',{detail:{id:'cartdrawer'}}))
+  },1000)
+  </script>
+{% endcomment %}

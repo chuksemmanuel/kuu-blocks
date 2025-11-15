@@ -1,21 +1,21 @@
 {% comment %} 
-      drawer.liquid
-        Accepts:
-        - trigger: {String} a Capture of the trigger (usuallly a button)
-        - content: {String} a Capture/Snippet of the drawer content
-        - from: {String} Direction the drawer slides from
-        - id: {String} Unique identifier of the drawer to target (e.g., 'cartdrawer', 'menudrawer')  used to open/close the drawer via the drawer:open and drawer:close custom Event
-        Example:
-        window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }))
-        window.dispatchEvent(new CustomEvent('drawer:close', { detail: { id: 'menu' } }))
+              drawer.liquid
+                Accepts:
+                - trigger: {String} a Capture of the trigger (usuallly a button)
+                - content: {String} a Capture/Snippet of the drawer content
+                - from: {String} Direction the drawer slides from
+                - id: {String} Unique identifier of the drawer to target (e.g., 'cartdrawer', 'menudrawer')  used to open/close the drawer via the drawer:open and drawer:close custom Event
+                Example:
+                window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }))
+                window.dispatchEvent(new CustomEvent('drawer:close', { detail: { id: 'menu' } }))
 
-      Usage:
-        {% render 'drawer'
-          , trigger: cart_trigger
-          , content: cart_content
-          , name: 'cartdrawer'
-          , from: 'right'
-        %}
+              Usage:
+                {% render 'drawer'
+                  , trigger: cart_trigger
+                  , content: cart_content
+                  , name: 'cartdrawer'
+                  , from: 'right'
+                %}
 {% endcomment %}
 
 
@@ -36,7 +36,7 @@
 </style>
 
 {% assign from = from | default: 'right' %}
-{% assign base_class = 'fixed w-full h-full z-50 overflow-y-auto no-scrollbar flex justify-stretch p-2 lg:p-4 ' %}
+{% assign base_class = 'fixed  flex flex-col justify-stretch w-full h-full z-50 overflow-y-auto no-scrollbar p-2 lg:p-4 focus-visible:outline-0' %}
 
 {% case from %}
   {% when 'top' %}
