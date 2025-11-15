@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 pb-6 lg:pb-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-6 lg:py-12">
   {% for block in section.blocks %}
     {% if block.type == 'featured_item' %}
       {% render 'collection-card'
@@ -41,12 +41,14 @@
         "id": "show_button",
         "label": "Show Button on All Cards",
         "default": false
-      }, {
+      },
+      {
         "type": "checkbox",
         "id": "show_count",
         "label": "Show Product Count on All Cards",
         "default": true
-      }, {
+      },
+      {
         "type": "select",
         "id": "position",
         "label": "Content Position on Cards",
@@ -54,7 +56,8 @@
           {
             "value": "center",
             "label": "Center"
-          }, {
+          },
+          {
             "value": "bottom",
             "label": "Bottom"
           }
@@ -85,17 +88,20 @@
             "type": "text",
             "id": "title",
             "label": "Custom Title (if no collection)"
-          }, {
+          },
+          {
             "type": "url",
             "id": "href",
             "label": "Custom Link (if no collection)"
-          }, {
+          },
+          {
             "type": "number",
             "id": "count",
             "label": "Number of items (optional)"
           }
         ]
-      }, {
+      },
+      {
         "type": "cta_card",
         "name": "CTA Card",
         "settings": [
@@ -104,12 +110,14 @@
             "id": "cta_text",
             "label": "CTA Text",
             "default": "Models wearing full outfits"
-          }, {
+          },
+          {
             "type": "url",
             "id": "cta_link",
             "label": "CTA Link",
             "default": "/collections/all"
-          }, {
+          },
+          {
             "type": "text",
             "id": "cta_label",
             "label": "CTA Button Label",
@@ -126,11 +134,14 @@
         "blocks": [
           {
             "type": "featured_item"
-          }, {
+          },
+          {
             "type": "featured_item"
-          }, {
+          },
+          {
             "type": "featured_item"
-          }, {
+          },
+          {
             "type": "cta_card"
           }
         ]

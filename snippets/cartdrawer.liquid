@@ -54,9 +54,7 @@
           , class: 'bg-white text-black  size-12 rounded-full! '
           %}
           <p class="text-xl font-semibold">Your Cart is Empty</p>
-          <div data-drawer-close>
-              {% render 'button',variant:'primary', size:'lg', label:'Continue Shopping', class:'rounded-full!' %}
-          </div>
+            {% render 'button',variant:'primary', size:'lg', label:'Continue Shopping', class:'rounded-full!', props:'data-drawer-close' %}
       </div>
 
     {% else %}
@@ -73,10 +71,9 @@
                     <p class="font-semibold lg:text-lg">Cart </p>
                     <span class="flex justify-center items-center size-6 min-w-fit bg-primary text-primary-foreground rounded-full p-px text-sm">{{cart.item_count}}</span>
                 </div>
-
-                <div data-drawer-close class="leading-0">
-                    {% render 'button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ' %}
-                </div>
+                
+                {% render 'button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ', props:'data-drawer-close' %}
+                
             </div>
 
             <!--Placeholder for app extension -->
@@ -131,7 +128,7 @@
 </div>
 
 {% comment %} <script>
-        setTimeout(() =>{
-            window.dispatchEvent(new CustomEvent('drawer:open',{detail:{id:'cartdrawer'}}))
-        },1000)
+                setTimeout(() =>{
+                    window.dispatchEvent(new CustomEvent('drawer:open',{detail:{id:'cartdrawer'}}))
+                },1000)
 </script> {% endcomment %}

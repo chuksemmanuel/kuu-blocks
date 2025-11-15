@@ -1,8 +1,9 @@
 {% capture search_trigger %}
     {% render 'button'
-    , size: 'icon'
+             , variant: 'circled-icon'
+          , size: 'none'
     , icon: 'icons/search.svg'
-    , class: 'bg-white text-black hover:bg-primary hover:text-primary-foreground! md:size-12 rounded-full!' %}
+   %}
 {% endcapture %}
 {% capture search_content %}
        {% render 'searchdrawer-content' %}

@@ -8,6 +8,7 @@
   <div class="flex h-11.5 justify-between items-center gap-4 border-b-2 border-gray-300 pb-2 md:pb-3 has-focus-within:border-gray-800">
     <input
       type="text"
+      name="searchTerm"
       x-model="searchTerm"
       x-ref="searchInput"
       @input="handleInput"
@@ -18,10 +19,11 @@
       Clear
     </span>
 
-    <div data-drawer-close class="leading-0 flex flex-col justify-center items-center">
+    <div class="leading-0 flex flex-col justify-center items-center">
       {% render 'button'
         , icon: 'icons/cancel.svg'
-        , class: 'rounded-full! size-6! p-0!' %}
+        , class: 'rounded-full! size-6! p-0!'
+        , props: 'data-drawer-close' %}
     </div>
   </div>
 

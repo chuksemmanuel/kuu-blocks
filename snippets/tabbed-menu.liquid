@@ -31,7 +31,9 @@
 comment %} Get TabList from Tab items Ends {% endcomment %}
 
 {% capture menu_trigger %}
-   {% render 'button' variant: 'ghost' size: 'icon' icon: 'icons/hamburger.svg' class: "bg-white text-black hover:bg-primary hover:text-primary-foreground! md:size-12 rounded-lg!" %}
+   {% render 'button'           
+   , variant: 'circled-icon'
+   , size: 'none' icon: 'icons/hamburger.svg' class: " rounded-lg!" %}
 {% endcapture %}
 {% capture menu_content %}
   <div class="flex flex-col w-full h-full  bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg flex-1"  x-data="{
@@ -66,9 +68,12 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
           <h2 class="text-lg font-semibold">Menu</h2>
 
           {%# Close button  %}
-           <div data-drawer-close class="leading-0">
-                {% render 'button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ' %}
-            </div>
+
+          {% render 'button', 
+          icon:'icons/cancel.svg', 
+          class:'rounded-full! size-6! p-0! '
+          props: 'data-drawer-close' %}
+       
           
 
         </div>

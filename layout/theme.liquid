@@ -14,11 +14,14 @@
 
   <body>
     {% sections 'header-group' %}
-    {% section 'cartdrawer' %}
+
     {{ content_for_layout }}
 
-    {% sections 'footer-group' %}
+  {% sections 'footer-group' %}
 
+    {% # Drawers %}
+    {% section 'cartdrawer' %}
+    {% section 'quick-add' %}
 
     {% render 'js-lib' %}
   </body>

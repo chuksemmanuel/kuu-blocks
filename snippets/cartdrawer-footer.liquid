@@ -57,7 +57,7 @@
       {% if secondary_footer_cta_link %}
         <a class="text-center cursor-pointer md:hidden underline" href="{{secondary_footer_cta_link}}">{{ secondary_footer_cta_label }}</a>
       {% else %}
-        <span class="text-center cursor-pointer md:hidden underline">{{ secondary_footer_cta_label }}</span>
+        <span class="text-center cursor-pointer md:hidden underline" data-drawer-close>{{ secondary_footer_cta_label }}</span>
       {% endif %}
 
     {% endif %}

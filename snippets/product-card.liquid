@@ -26,8 +26,8 @@
 <div x-data="{
     adding: false,
    
-  }" class="group relative flex flex-col overflow-hidden rounded-md transition ">
-  <a href="{{ product_url }}" class="block  overflow-hidden aspect-square">
+  }" class="group relative flex flex-col overflow-hidden transition ">
+  <a href="{{ product_url }}" class="block  rounded-3xl overflow-hidden aspect-square relative">
     <img
       src="{{ product_image | image_url: width: 600 }}"
       alt="{{ product_title | escape }}"
@@ -35,6 +35,34 @@
       height="600"
       class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
       loading="lazy" />
+
+    {% if show_floating_cart %}
+
+
+      <div
+        @click.prevent="adding = true; $dispatch('drawer:open', { id: 'quick-add' }); setTimeout(() => adding = false, 1000)"
+        class="absolute bottom-3 right-3 "
+        :disabled="adding">
+
+        <template x-if="!adding">
+          {% render 'button'
+            , variant: 'circled-icon'
+            , size: 'none'
+            , icon: 'icons/shopping-cart.svg'
+            , class: 'shadow-sm '
+          %}
+        </template>
+        <template x-if="adding">
+          {% render 'button'
+            , variant: 'circled-icon'
+            , size: 'none'
+            , icon: 'icons/loader-circle.svg'
+            , class: 'animate-spin bg-primary! text-primary-foreground! ' %}
+
+        </template>
+      </div>
+
+    {% endif %}
   </a>
 
   <div class="flex flex-col gap-1 p-4">
@@ -42,27 +70,5 @@
     <p class="text-lg font-medium text-gray-500">{{ product_price }}</p>
   </div>
 
-  {% if show_floating_cart %}
-    <div
-      @click.prevent="adding = true; $dispatch('add-to-cart', { id: {{ card_product.variants.first.id | default: 0 }} }); setTimeout(() => adding = false, 1000)"
-      class="absolute top-3 right-3 "
-      :disabled="adding">
 
-      <template x-if="!adding">
-        {% render 'button'
-          , variant: 'circled-icon'
-          , size: 'circled-icon'
-          , icon: 'icons/shopping-cart.svg'
-          , class: 'shadow-sm '
-        %}
-      </template>
-      <template x-if="adding">
-        {% render 'button' variant: 'primary'
-          , size: 'icon'
-          , icon: 'icons/loader-circle.svg'
-          , class: ' bg-primary text-white hover:bg-primary hover:text-white! size-10  md:size-12 shadow-sm rounded-full! animate-spin ' %}
-
-      </template>
-    </div>
-  {% endif %}
 </div>

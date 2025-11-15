@@ -1,0 +1,12 @@
+
+{% capture quick_add_content %}
+    <div id="cartdrawer-content" class="h-full w-full bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg flex-1"></div>
+{% endcapture %}
+
+{% render 'drawer'
+, content:quick_add_content
+, id: 'quick-add'
+, from: 'bottom',
+, headless:true
+
+%}
