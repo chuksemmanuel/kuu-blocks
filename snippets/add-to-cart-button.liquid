@@ -1,0 +1,71 @@
+{% liquid
+  assign id = id
+  assign quantity = quantity | default: 1
+  assign button_variant = button_variant | default: 'primary'
+  assign size = size
+  assign label = label
+  assign adding_label = adding_label
+  assign icon = icon
+  assign class = class
+  assign loading_class = loading_class | default: class
+%}
+
+<div class="group" x-data="{
+    adding:false,
+    async handleAddToCart (){
+      console.log(this.adding)
+      this.adding = true
+      console.log(this.adding)
+
+      try{
+        await fetch('/cart/add.js',{
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify({
+            items:[
+              {
+                id:'{{id}}',
+                quantity:{{quantity}}
+              }
+              ]
+          })
+        })
+
+        let cartDrawer = window.theme?.cartDrawer
+        if(cartDrawer){
+          await cartDrawer.refresh()
+        }
+        cartDrawer.open()
+      }catch(e){
+        console.log(e)
+      }finally{
+         this.adding = false
+      }
+    }
+    }">
+
+  <div class="absolute bottom-3 right-3" :disabled="adding">
+    <template x-if="!adding">
+      {% render 'button'
+        , variant: button_variant
+        , size: size
+        , icon: icon
+        , class: class
+        , label: label
+        , props: '@click="handleAddToCart"' %}
+    </template>
+
+    <template x-if="adding">
+      {% render 'button'
+        , variant: button_variant
+        , size: size
+        , icon: 'icons/loader-circle.svg'
+        , loading: 'spinner'
+        , label: adding_label
+        , class: loading_class %}
+    </template>
+  </div>
+
+</div>

@@ -4,6 +4,7 @@ import type { gsap } from 'gsap';
 import type SwiperClass from 'swiper';
 import type { morph } from '@alpinejs/morph';
 import type { Cart, CartItem, CartUpdatePayload } from './types/shopify/cart';
+import type { Theme } from './types/theme';
 
 declare global {
 	interface Window {
@@ -14,6 +15,7 @@ declare global {
 		Alpine: typeof Alpine;
 		Swiper: typeof SwiperClass;
 		gsap: typeof gsap;
+		theme: Theme;
 	}
 
 	type ShopifyCart = Cart;

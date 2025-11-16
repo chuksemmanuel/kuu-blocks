@@ -46,7 +46,6 @@ document.addEventListener('alpine:init', () => {
         itemsQuantity: {},
         async init() {
             // Populate items quantity
-
             try {
                 const cartRes = await fetch('/cart.js')
                 /** @type {ShopifyCart} */
@@ -62,6 +61,21 @@ document.addEventListener('alpine:init', () => {
 
             } catch (error) {
                 // console.log(error)
+            }
+
+
+            // Add window object
+
+            /** @ts-ignore */
+            window.theme = window.theme || {}
+            window.theme.cartDrawer = {
+                open: () => {
+                    window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }))
+                },
+                close: () => {
+                    window.dispatchEvent(new CustomEvent('drawer:close', { detail: { id: 'cartdrawer' } }))
+                },
+                refresh: this.updateCartDrawer
             }
 
         },

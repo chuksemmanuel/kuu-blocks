@@ -64,17 +64,27 @@
 
 {%- assign classes = base_class | append: ' ' | append: variant_class | append: ' ' | append: size_class | append: ' ' | append: class -%}
 
+{% capture loading_spinner %}
+  <span class="animate-spin">{{ 'icons/loader-circle.svg' | inline_asset_content }}</span>
+{% endcapture %}
 {%- capture default_content -%}
-  {%- if icon -%}
-    <span class="flex items-center {% if label %}gap-2{% endif %}">
+  <span class="flex items-center {% if label %}gap-2{% endif %}">
+
+  {% if loading %}
+    {{loading_spinner}}
+  {% else %}
+    {%- if icon -%}
       {{ icon | inline_asset_content }}
-      {%- if label -%}
+    {%- endif -%}
+  {% endif %}
+
+
+ 
+  {%- if label -%}
         <span>{{ label }}</span>
-      {%- endif -%}
-    </span>
-  {%- else -%}
-    {{ label }}
-  {%- endif -%}
+    {%- endif -%}
+   
+  </span>
 {%- endcapture -%}
 {%- assign final_content = content | default: default_content -%}
 
