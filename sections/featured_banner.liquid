@@ -4,10 +4,10 @@
   {%- endcomment -%}
   <div class="w-full aspect-1400/540 hidden sm:flex justify-center items-center rounded-3xl overflow-hidden relative">
     <div class="flex flex-col items-center text-center gap-4 w-[200px] md:w-[250px]">
-      <p class="relative z-50 text-black text-shadow-xs text-shadow-white text-2xl md:text-4xl">
+      <p class="relative z-10 text-black text-shadow-xs text-shadow-white text-2xl md:text-4xl">
         {{ section.settings.heading }}
       </p>
-      <span class="relative z-50 text-black text-shadow-xs text-shadow-white">
+      <span class="relative z-10 text-black text-shadow-xs text-shadow-white">
         {{ section.settings.subtext }}
       </span>
 
@@ -16,7 +16,7 @@
         , size: 'lg'
         , href: section.settings.button_link
         , label: section.settings.button_label
-        , class: 'z-50' %}
+        , class: 'z-10' %}
     </div>
 
     {% if section.settings.desktop_image != blank %}
@@ -34,10 +34,10 @@
   {%- endcomment -%}
   <div class="w-full aspect-360/540 max-h-[540px] flex justify-center p-8 sm:hidden rounded-3xl overflow-hidden relative">
     <div class="flex flex-col items-center text-center gap-4 w-[250px]">
-      <p class="relative z-50 text-black text-shadow-xs text-shadow-white text-4xl">
+      <p class="relative z-10 text-black text-shadow-xs text-shadow-white text-4xl">
         {{ section.settings.heading }}
       </p>
-      <span class="relative z-50 text-black text-shadow-xs text-shadow-white">
+      <span class="relative z-10 text-black text-shadow-xs text-shadow-white">
         {{ section.settings.subtext }}
       </span>
 
@@ -46,7 +46,7 @@
         , size: 'lg'
         , href: section.settings.button_link
         , label: section.settings.button_label
-        , class: 'z-50' %}
+        , class: 'z-10' %}
     </div>
 
     {% if section.settings.mobile_image != blank %}
@@ -87,12 +87,14 @@
         "id": "subtext",
         "label": "Subtext",
         "default": "for all new products purchases min. purchase $450"
-      }, {
+      },
+      {
         "type": "text",
         "id": "button_label",
         "label": "Button Label",
         "default": "Shop Now"
-      }, {
+      },
+      {
         "type": "url",
         "id": "button_link",
         "label": "Button Link"

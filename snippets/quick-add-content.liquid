@@ -48,7 +48,11 @@
 %}
 
 
-<div id="quick-add-content" class="h-[460px]! flex flex-col w-full p-4 sm:p-6 bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg ">
+<div
+  data-quick-add-form-id="{{product.id}}"
+  x-data="quickAddForm{{product.id}}"
+  id="quick-add-content"
+  class="h-[460px]! flex flex-col w-full p-4 sm:p-6 bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg ">
 
 
   <div class=" flex flex-col justify-between h-full gap-4 shrink-0 overflow-y-auto">
@@ -59,6 +63,8 @@
       <a href="{{product.url}}" class="block size-20 rounded bg-gray-200 overflow-hidden  shrink-0">
         <img
           src="{{ variant_to_use.featured_image | image_url: width: 200 }}"
+          :src="featuredImage"
+          x-ref="image"
           alt="{{ product.title | escape }}"
           class="w-full h-full object-cover"
           width="80px"
@@ -91,94 +97,141 @@
     </div>
 
 
-    {% # Variant Selectors %}
-    <div class="flex flex-col gap-8  justify-center items-center">
+    <form action="" class="flex flex-col justify-between  gap-4 shrink-0">
 
-      {% for product_option_value in product.options_with_values %}
-        {% assign option_name = product_option_value.name | downcase %}
+      {% # Variant Selectors %}
+      <div class="flex flex-col gap-8  justify-center items-center">
 
-        {% # Variant Selector %}
-        <div class="flex flex-col gap-2">
-          {% # Variant label %}
-          <div class="flex justify-center items-center gap-1">
-            <label for="{{product_option_value.name}}" class="text-gray-600">{{ product_option_value.name }}:
-            </label>
-
-            <span>
-              {% for option in variant_to_use.options %}
-                {% if forloop.index == product_option_value.position %}
-                  {{ option }}
-                {% endif %}
-              {% endfor %}
-            </span>
-          </div>
+        {% for product_option_value in product.options_with_values %}
+          {% assign option_name = product_option_value.name | downcase %}
+          {% assign option_index = forloop.index0 %}
 
 
-          {% # Variant picker %}
-          {% if product_option_value.values[0].swatch %}
-            {% # Swatch picker %}
-            <div class=" flex items-center justify-center gap-4">
-              {% for option_value in product_option_value.values %}
+          {% # Variant Selector %}
+          <div class="flex flex-col gap-2">
+            {% # Variant label %}
+            <div class="flex justify-center items-center gap-1">
+              <label for="{{product_option_value.name}}" class="text-gray-600">{{ product_option_value.name }}:
+              </label>
 
-                {% if option_value.swatch.color %}
-                  <div class="size-7 rounded-full" style="background:{{option_value.swatch.color}};}"></div>
-                {% else %}
-                  <div class="size-7 rounded-full relative overflow-hidden">
-                    <img
-                      src="{{option_valye.swatch.image |  image_url : width: 48}}"
-                      alt=""
-                      width="28"
-                      height="28"
-                      class="w-full h-full object-cover">
-                  </div>
-                {% endif %}
-
-              {% endfor %}
-            </div>
-          {% elsif option_name == 'size' %}
-            {% # Size Picker %}
-            <div class="flex gap-2 justify-center items-center flex-wrap">
-              {% for option_value in product_option_value.values %}
-                <div class="shrink-0 flex justify-center items-center rounded-full px-3 py-1 w-fit min-w-[54px] border-2 border-gray-400 cursor-pointer hover:border-black transition">{{ option_value.name }}</div>
-              {% endfor %}
-            </div>
-          {% else %}
-            {% # Select Element %}
-            <div class="relative w-full">
-              <select
-                name="{{product_option_value.name}}"
-                id="product_option_value.name"
-                class="shink-0 flex justify-center items-center rounded-full! px-3 py-1 w-fit min-w-[54px] border-2 border-gray-400 cursor-pointer hover:border-black transition outline-none ring-0 appearance-none ">
-                {% for option_value in product_option_value.values %}
-                  <option value="{{option_value.name}}">{{ option_value.name }}</option>
+              <span>
+                {% for option in variant_to_use.options %}
+                  {% if forloop.index == product_option_value.position %}
+                    {{ option }}
+                  {% endif %}
                 {% endfor %}
-              </select>
-
-              <span class="absolute h-full top-0 right-2 flex flex-col justify-center items-center  ">
-                {{ 'icons/chevron-down.svg' | inline_asset_content }}
               </span>
             </div>
-          {% endif %}
 
 
-        </div>
-      {% endfor %}
+            {% # Variant picker %}
+            {% if product_option_value.values[0].swatch %}
+              {% # Swatch picker %}
+              <div class=" flex items-center justify-center gap-4">
+                {% for option_value in product_option_value.values %}
+                  {% if variant_to_use.options[option_index] == option_value.name %}
+                    {% assign is_selected = true %}
+                  {% else %}
+                    {% assign is_selected = false %}
+                  {% endif %}
 
-    </div>
+                  <input
+                    type="radio"
+                    name="{{product_option_value.name}}"
+                    id="{{product.id}}-{{option_value.name}}"
+                    value="{{option_value.name}}"
+                    x-model="options.{{product_option_value.name}}.value"
+                    {% if is_selected %}
+                    checked
+                    {% endif %} />
+                  <label for="{{product.id}}-{{option_value.name}}">
+                    {% if option_value.swatch.color %}
+                      <div class="size-7 rounded-full" style="background:{{option_value.swatch.color}};}"></div>
+                    {% else %}
+                      <div class="size-7 rounded-full relative overflow-hidden">
+                        <img
+                          src="{{option_value.swatch.image |  image_url : width: 48}}"
+                          alt="{{product.title | escape}}"
+                          width="28"
+                          height="28"
+                          class="w-full h-full object-cover">
+                      </div>
+                    {% endif %}
+                  </label>
+                {% endfor %}
+              </div>
+            {% elsif option_name == 'size' %}
+              {% # Size Picker %}
+              <div class="flex gap-2 justify-center items-center flex-wrap">
+                {% for option_value in product_option_value.values %}
+                  {% if variant_to_use.options[option_index] == option_value.name %}
+                    {% assign is_selected = true %}
+                  {% else %}
+                    {% assign is_selected = false %}
+                  {% endif %}
+                  <input
+                    type="radio"
+                    name="{{product_option_value.name}}"
+                    id="{{product.id}}-{{option_value.name}}"
+                    value="{{option_value.name}}"
+                    x-model="options.{{product_option_value.name}}.value"
+                    {% if is_selected %}
+                    checked
+                    {% endif %} />
+                  <label for="{{product.id}}-{{option_value.name}}" class="shrink-0 flex justify-center items-center rounded-full px-3 py-1 w-fit min-w-[54px] border-2 border-gray-400 cursor-pointer hover:border-black transition">{{ option_value.name }}</label>
+                {% endfor %}
+              </div>
+            {% else %}
+              {% # Select Element %}
+              <div class="relative w-full">
+
+                <select
+                  name="{{product_option_value.name}}"
+                  class="shink-0 flex justify-center items-center rounded-full! px-3 py-1 w-fit min-w-[54px] border-2 border-gray-400 cursor-pointer hover:border-black transition outline-none ring-0 appearance-none"
+                  x-model="options.{{product_option_value.name}}.value">
+                  {% for option_value in product_option_value.values %}
+                    {% if variant_to_use.options[option_index] == option_value.name %}
+                      {% assign is_selected = true %}
+                    {% else %}
+                      {% assign is_selected = false %}
+                    {% endif %}
+                    <option
+                      value="{{option_value.name}}"
+                      {% if is_selected %}
+                      selected
+                      {% endif %}>{{ option_value.name }}</option>
+                  {% endfor %}
+                </select>
+
+                <span class="absolute h-full top-0 right-2 flex flex-col justify-center items-center  ">
+                  {{ 'icons/chevron-down.svg' | inline_asset_content }}
+                </span>
+              </div>
+            {% endif %}
 
 
-    {% # Add to Cart Button %}
-    <div class="shrink-0 w-full ">
-      {% render 'add-to-cart-button'
-        , id: product.first_available_variant.id
-        , quantity: 1
-        , button_variant: 'primary'
-        , size: 'lg'
-        , label: "Add to cart"
-        , class: 'shadow-sm  '
-      %}
-    </div>
+          </div>
+        {% endfor %}
 
+      </div>
+
+
+      {% # Add to Cart Button %}
+      <div class="shrink-0 w-full ">
+        {% render 'add-to-cart-button'
+          , id: product.first_available_variant.id
+          , quantity: 1
+          , button_variant: 'primary'
+          , size: 'lg'
+          , label: "Add to cart"
+          , class: 'shadow-sm  '
+        %}
+      </div>
+
+
+    </form>
+
+    <div class="w-full h-60 bg-red-500 shrink-0 hidden"></div>
 
   </div>
 
@@ -207,4 +260,100 @@
         
 
   console.log(window.quickAddProducts)
+
+
+
+  document.addEventListener('alpine:init', () => {
+    const Alpine = window.Alpine
+            console.clear()
+    Alpine.data('quickAddForm{{product.id}}', () => ({
+        productId:null,
+        product:null,
+        selectedVariant:null,
+        options:{},
+        featuredImage:null,
+        $image:null,
+        preloaded:false,
+        init(){
+           const {product,variant_to_use}  = window.quickAddProducts['{{product.id}}'] || {}
+            this.product = product
+            this.selectedVariant = variant_to_use
+            this.featuredImage = this.getFeaturedImage()
+            this.$image = this.$refs.image
+            this.productId = this.$el.dataset.quickAddFormId
+
+            console.log('this.productId ===>',this.productId)
+            
+            // Set Options
+            for(let i = 0; i < this.product.options.length; i++){
+                this.options[product.options[i]] = {
+                    value:this.selectedVariant.options[i],
+                    position:i
+                }
+            }
+
+   
+
+            
+
+
+            // Watch for options changes
+            this.$watch('options', () =>{
+        
+                const sortedOptions = Object.values(this.options).sort((a,b) => a.position - b.position).map(optionValue =>{
+                    return optionValue.value
+                })
+
+                const newSelectedVariant = this.product.variants.find(variant => {
+                    return variant.options.join(',') === sortedOptions.join(',')
+
+                })
+
+                this.selectedVariant = newSelectedVariant ?? this.selectedVariant
+                let newFeaturedImage = this.getFeaturedImage(newSelectedVariant)
+
+                if(this.featuredImage != newFeaturedImage){
+                    this.featuredImage = newFeaturedImage
+                    if(this.$image){
+                        this.$image.src = this.featuredImage
+                    }
+                }
+
+            })
+
+            // Prelaod variant images on drawer open
+
+            function preloadImages(e){
+                console.log(this.$el)
+                console.log(e.detail?.id,`quick-add-${this.productId}`,this.$el.dataset.quickAddFormId)
+                if(e.detail?.id === `quick-add-${this.productId}`){
+                    console.log('we should preload')
+                }
+
+                this.preloaded = true
+
+            }
+            window.addEventListener('drawer:opened', preloadImages)
+            // Remove event listener after preload
+            this.$watch('preloaded', () =>{
+                if(this.preloaded == true){
+                    console.log('removing event listner')
+                    window.removeEventListener('drawer:opened',preloadImages)
+                }
+            })
+
+
+        },
+        getFeaturedImage(v){
+            console.log('v ===>',v)
+            const variant = v || this.selectedVariant
+            console.log('variante ==>', variant?.featured_image?.src)
+            return variant?.featured_image?.src || this.product?.featured_image || this.product.images[0]
+        },
+        
+   
+    }))
+
+    
+  });
 </script>

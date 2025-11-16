@@ -161,6 +161,8 @@ document.addEventListener('alpine:init', () => {
                 }, undefined, '>-0.02')
 
                 this.tl = tl
+
+                window.dispatchEvent(new CustomEvent('drawer:opened', { detail: { id: this.id } }))
             },
 
             closeDrawer() {
@@ -201,6 +203,8 @@ document.addEventListener('alpine:init', () => {
                 }
 
                 tl.to(overlay, { opacity: 0, duration: 0.32 }, 0.2)
+
+                window.dispatchEvent(new CustomEvent('drawer:closed', { detail: { id: this.id } }))
             },
 
             // call to clean up listeners if needed

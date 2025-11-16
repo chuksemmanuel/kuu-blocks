@@ -1,3 +1,4 @@
+
 <div data-quick-add="{{product.id}}">
 
   {% if product.has_only_default_variant %}
@@ -35,11 +36,18 @@
     {% endcapture %}
     {% capture quick_add_content %}
       {% render 'quick-add-content', product: product %}
-    {%endcapture%}
+    {% endcapture %}
+
+    
+
+ {% assign quick_add_id = 'quick-add-' |  append: product.id  %}
+    {{quick_add_id}}
     {% render 'drawer'
       , trigger: quick_add_trigger
       , content: quick_add_content 
-      , id: 'quick-add-{{product.id}}', from: 'bottom' , class:'min-h-[460px]! sm:min-h-[460px]! h-auto! max-h-screen sm:max-w-[528px] sm:left-auto sm:right-0 max-sm:p-0! max-sm:rounded-b-none! ' %}
+      , id:quick_add_id,
+      from: 'bottom',
+      class:'min-h-[460px]! sm:min-h-[460px]! h-auto! max-h-screen sm:max-w-[528px] sm:left-auto sm:right-0 max-sm:p-0! max-sm:rounded-b-none!' %}
 
   {% endif %}
 
@@ -49,6 +57,6 @@
     // Todo: Remove this in production
     setTimeout(() =>{
       document.querySelector('.products-grid > div:nth-child(4) [data-drawer-id*="quick-add"] > div').click()
-    },1000)
+    },2000)
 
 </script>
