@@ -8,6 +8,12 @@
 	--color-background: var(--color-background);
 }
 
+@layer base {
+	*:focus-visible {
+		@apply ring-0! outline-0!;
+	}
+}
+
 [x-cloak] {
 	display: none !important;
 }

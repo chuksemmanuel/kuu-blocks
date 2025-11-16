@@ -10,43 +10,9 @@
   assign loading_class = loading_class | default: class
 %}
 
-<div class="group" x-data="{
-    adding:false,
-    async handleAddToCart (){
-      console.log(this.adding)
-      this.adding = true
-      console.log(this.adding)
+<div class="group" x-data="quickadd{{id}}">
 
-      try{
-        await fetch('/cart/add.js',{
-          method:'POST',
-          headers:{
-            'Content-Type':'application/json'
-          },
-          body:JSON.stringify({
-            items:[
-              {
-                id:'{{id}}',
-                quantity:{{quantity}}
-              }
-              ]
-          })
-        })
-
-        let cartDrawer = window.theme?.cartDrawer
-        if(cartDrawer){
-          await cartDrawer.refresh()
-        }
-        cartDrawer.open()
-      }catch(e){
-        console.log(e)
-      }finally{
-         this.adding = false
-      }
-    }
-    }">
-
-  <div class="absolute bottom-3 right-3" :disabled="adding">
+  <div :disabled="adding" class="w-full flex flex-col">
     <template x-if="!adding">
       {% render 'button'
         , variant: button_variant
@@ -69,3 +35,44 @@
   </div>
 
 </div>
+
+<script>
+   document.addEventListener('alpine:init', () => {
+    const Alpine = window.Alpine
+    Alpine.data('quickadd{{id}}', () => ({
+        adding: false,
+        async handleAddToCart() {
+            console.log(this.adding)
+            this.adding = true
+            console.log(this.adding)
+
+            try {
+                await fetch('/cart/add.js', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        items: [
+                            {
+                                id: '{{id}}',
+                                quantity: '{{quantity}}'
+                            }
+                        ]
+                    })
+                })
+
+                let cartDrawer = window.theme?.cartDrawer
+                if (cartDrawer) {
+                    await cartDrawer.refresh()
+                }
+                cartDrawer.open()
+            } catch (e) {
+                console.log(e)
+            } finally {
+                this.adding = false
+            }
+        }
+    }))
+  });
+</script>

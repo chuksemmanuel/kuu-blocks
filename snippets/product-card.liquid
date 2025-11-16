@@ -35,8 +35,11 @@
         loading="lazy" />
     </a>
     {% if show_floating_cart %}
-      {% render 'quick-add'
-        , product: product %}
+      <div class="absolute bottom-3 right-3">
+        {% render 'quick-add'
+          , product: product %}
+      </div>
+
     {% endif %}
   </div>
 
