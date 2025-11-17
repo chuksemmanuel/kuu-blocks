@@ -1,55 +1,12 @@
 {% liquid
   assign variant_to_use = product.selected_or_first_available_variant
-  assign combined_listing_count = product.options_with_values | map: 'values' | map: 'product_url' | compact | size
-
-  unless combined_listing_count > 0
-    assign first_image = product.media.first
-    assign variant_images = product.images | where: 'attached_to_variant?', true
-
-    assign swatch_variant_picker = null
-    for option in product.options_with_values
-      assign swatch_count = option.values | map: 'swatch' | compact | size
-      if swatch_count > 0
-        assign swatch_variant_picker = option
-        break
-      endif
-    endfor
-
-    if swatch_variant_picker
-      assign swatch_count = swatch_variant_picker.values | map: 'swatch' | compact | size
-
-      if swatch_count == 1
-        # Single swatch: use that variant
-        assign variant_to_use = swatch_variant_picker.values.first.variant
-      elsif swatch_count > 1
-        if first_image and variant_images contains first_image
-          # First image is a variant image - find which variant it belongs to
-          for option_value in swatch_variant_picker.values
-            if option_value.variant.featured_media.id == first_image.id
-              assign variant_to_use = option_value.variant
-              break
-            endif
-          endfor
-        elsif variant_images.size == 0
-          # No variants have images - use first swatch variant
-          assign variant_to_use = swatch_variant_picker.values.first.variant
-        endif
-        # else: First image is NOT a variant image - keep default (selected_or_first_available_variant)
-      endif
-
-    endif
-  endunless
-
-  if variant_to_use.available
-    assign can_add_to_cart = true
-  else
-    assign can_add_to_cart = false
-  endif
+  assign variant_images = product.images | where: 'attached_to_variant?', true
+  assign options_with_values = product.options_with_values
 %}
 
 
 <div
-  data-quick-add-form-id="{{product.id}}"
+  data-quick-add-form="{{product.id}}"
   x-data="quickAddForm{{product.id}}"
   id="quick-add-content"
   class="h-[460px]! flex flex-col w-full p-4 sm:p-6 bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg ">
@@ -244,28 +201,14 @@
 
   window.quickAddProducts['{{product.id}}'] = {
     product:{{product | json}},
-    combined_listing_count:{{combined_listing_count}},
-    first_image:{{first_image |  json}},
     variant_images:{{variant_images | json}},
     variant_to_use:{{variant_to_use | json}},
-    swatch_variant_picker:{{swatch_variant_picker.values | json}},
-    can_add_to_cart:{{can_add_to_cart}}
+    options_with_values:{{options_with_values | json}}
   }
-
-  console.clear()
-          console.log({{product.options_with_values | json}})
-          {% for product_option_value in product.options_with_values %}
-                  console.log({{product_option_value.swatch | json}})
-            {% endfor %}
-        
-
-  console.log(window.quickAddProducts)
-
-
 
   document.addEventListener('alpine:init', () => {
     const Alpine = window.Alpine
-            console.clear()
+    console.clear()
     Alpine.data('quickAddForm{{product.id}}', () => ({
         productId:null,
         product:null,
@@ -274,15 +217,15 @@
         featuredImage:null,
         $image:null,
         preloaded:false,
+        compatible:{},
         init(){
-           const {product,variant_to_use}  = window.quickAddProducts['{{product.id}}'] || {}
+           const {product,variant_to_use, variant_images, options_with_values}  = window.quickAddProducts['{{product.id}}'] || {}
             this.product = product
             this.selectedVariant = variant_to_use
             this.featuredImage = this.getFeaturedImage()
             this.$image = this.$refs.image
-            this.productId = this.$el.dataset.quickAddFormId
+            this.productId = this.$el.dataset.quickAddForm
 
-            console.log('this.productId ===>',this.productId)
             
             // Set Options
             for(let i = 0; i < this.product.options.length; i++){
@@ -291,11 +234,6 @@
                     position:i
                 }
             }
-
-   
-
-            
-
 
             // Watch for options changes
             this.$watch('options', () =>{
@@ -309,6 +247,8 @@
 
                 })
 
+                console.log('newSelectedVariant ==>',newSelectedVariant)
+
                 this.selectedVariant = newSelectedVariant ?? this.selectedVariant
                 let newFeaturedImage = this.getFeaturedImage(newSelectedVariant)
 
@@ -319,22 +259,55 @@
                     }
                 }
 
+                this.updateDisabledOptions()
             })
 
-            // Prelaod variant images on drawer open
+            // Build compatibility lookup
+            this.product.options.forEach((optionName, idx) => {
+            this.compatible[optionName] = {}
 
-            function preloadImages(e){
-                console.log(this.$el)
-                console.log(e.detail?.id,`quick-add-${this.productId}`,this.$el.dataset.quickAddFormId)
-                if(e.detail?.id === `quick-add-${this.productId}`){
-                    console.log('we should preload')
+            // For every possible value of this option
+            options_with_values[idx].values.forEach(v => {
+              const val = v
+              this.compatible[optionName][val] = []
+
+              // Find variants which contain this value at this position
+              this.product.variants.forEach(variant => {
+                if (variant.options[idx] === val) {
+                  // Add corresponding values of ALL OTHER options
+                  this.product.options.forEach((otherOptName, otherIdx) => {
+                    if (otherIdx !== idx) {
+                      const otherValue = variant.options[otherIdx]
+                      if (!this.compatible[optionName][val].includes(otherValue)) {
+                        this.compatible[optionName][val].push(otherValue)
+                      }
+                    }
+                  })
                 }
+              })
+            })
+          })
 
-                this.preloaded = true
+          console.log(this.compatible)
 
+
+
+
+
+            // Prelaod variant images on intial drawer open
+            const preloadImages = (e) =>{
+                if(e.detail?.id === `quick-add-${this.productId}`){
+                    (variant_images || []).forEach(variantImage =>{
+                      const img = new Image()
+                      img.src = variantImage
+                    })
+
+                     this.preloaded = true
+                }
             }
             window.addEventListener('drawer:opened', preloadImages)
-            // Remove event listener after preload
+
+            // Remove event listener after variant images are preloaded
             this.$watch('preloaded', () =>{
                 if(this.preloaded == true){
                     console.log('removing event listner')
@@ -342,14 +315,65 @@
                 }
             })
 
-
+            this.updateDisabledOptions()
         },
         getFeaturedImage(v){
-            console.log('v ===>',v)
             const variant = v || this.selectedVariant
-            console.log('variante ==>', variant?.featured_image?.src)
             return variant?.featured_image?.src || this.product?.featured_image || this.product.images[0]
         },
+        updateDisabledOptions() {
+        const selections = Object.fromEntries(
+          Object.entries(this.options).map(([k, v]) => [k, v.value])
+        )
+
+
+
+        // For each option group (Color, Size, Material...)
+        this.product.options.forEach((optionName, idx) => {
+          const currentlySelected = selections[optionName]
+
+          // Determine allowed values based on OTHER selections
+          let allowed = []
+
+          // For each value in this option
+          Object.keys(this.compatible[optionName]).forEach(value => {
+            let isCompatible = true
+
+            // Check compatibility with all other options
+            this.product.options.forEach((otherName, otherIdx) => {
+              if (otherName === optionName) return
+
+              const selectedOther = selections[otherName]
+              if (!selectedOther) return
+
+              // Check if this value is compatible with the selected value of the other option
+              if (!this.compatible[otherName][selectedOther].includes(value)) {
+                isCompatible = false
+              }
+            })
+
+            if (isCompatible) allowed.push(value)
+          })
+
+          // Disable incompatible DOM inputs
+          const inputs = this.$root.querySelectorAll(
+            `input[name="${optionName}"], select[name="${optionName}"] option`
+          )
+
+          inputs.forEach(input => {
+            const val = input.value
+            const isAllowed = allowed.includes(val)
+            input.disabled = !isAllowed
+
+            // OPTIONAL: add CSS class to disabled items
+            if (!isAllowed) {
+              input.closest("label")?.classList.add("opacity-30", "pointer-events-none")
+            } else {
+              input.closest("label")?.classList.remove("opacity-30", "pointer-events-none")
+            }
+          })
+        })
+        }
         
    
     }))
