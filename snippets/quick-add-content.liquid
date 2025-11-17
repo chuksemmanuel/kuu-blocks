@@ -9,10 +9,10 @@
   data-quick-add-form="{{product.id}}"
   x-data="quickAddForm{{product.id}}"
   id="quick-add-content"
-  class="h-[460px]! flex flex-col w-full p-4 sm:p-6 bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg ">
+  class="flex flex-col w-full p-4 sm:p-6 bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg self-end ">
 
 
-  <div class=" flex flex-col justify-between h-full gap-4 shrink-0 overflow-y-auto">
+  <div x-ref="quickAddInner" class=" flex flex-col justify-between h-full gap-4 shrink-0 overflow-y-auto">
 
     {% # Product Info %}
     <div class="flex gap-6">
@@ -35,19 +35,21 @@
 
         {% # Price %}
 
-        {% if variant_to_use.price != variant_to_use.compare_at_price %}
+        <template x-if="selectedVariant.price != selectedVariant.compare_at_price">
           <div class="flex flex-col md:flex-row md:items-center flex-wrap gap-x-1 gap-y-px">
             <div class="flex  gap-2 items-center">
-              <span style="color:red">{{ variant_to_use.price | money }}</span>
-              <span class="line-through text-gray-500">
+              <span x-text="formatMoney(selectedVariant.price)" style="color:red">{{ variant_to_use.price | money }}</span>
+              <span x-text="formatMoney(selectedVariant.compare_at_price)" class="line-through text-gray-500">
                 {{ variant_to_use.compare_at_price | money }}
               </span>
             </div>
 
           </div>
-        {% else %}
-          <span class="">{{ variant_to_use.price | money }}</span>
-        {% endif %}
+        </template>
+
+        <template x-if="!selectedVariant.compare_at_price || selectedVariant.price == selectedVariant.compare_at_price ">
+          <span x-text="formatMoney(selectedVariant.price)" class="">{{ variant_to_use.price | money }}</span>
+        </template>
       </div>
 
 
@@ -74,7 +76,7 @@
               <label for="{{product_option_value.name}}" class="text-gray-600">{{ product_option_value.name }}:
               </label>
 
-              <span>
+              <span x-text="options['{{product_option_value.name}}'].value">
                 {% for option in variant_to_use.options %}
                   {% if forloop.index == product_option_value.position %}
                     {{ option }}
@@ -87,6 +89,19 @@
             {% # Variant picker %}
             {% if product_option_value.values[0].swatch %}
               {% # Swatch picker %}
+
+              <style>
+                #quick-add-content input:disabled + label {
+                  opacity: 0.5;
+                  cursor: not-allowed;
+                  pointer-events: none;
+                }
+                #quick-add-content input:checked + label.quick-add-size {
+                  border-color: #000;
+                }
+
+
+              </style>
               <div class=" flex items-center justify-center gap-4">
                 {% for option_value in product_option_value.values %}
                   {% if variant_to_use.options[option_index] == option_value.name %}
@@ -95,29 +110,34 @@
                     {% assign is_selected = false %}
                   {% endif %}
 
-                  <input
-                    type="radio"
-                    name="{{product_option_value.name}}"
-                    id="{{product.id}}-{{option_value.name}}"
-                    value="{{option_value.name}}"
-                    x-model="options.{{product_option_value.name}}.value"
-                    {% if is_selected %}
-                    checked
-                    {% endif %} />
-                  <label for="{{product.id}}-{{option_value.name}}">
-                    {% if option_value.swatch.color %}
-                      <div class="size-7 rounded-full" style="background:{{option_value.swatch.color}};}"></div>
-                    {% else %}
-                      <div class="size-7 rounded-full relative overflow-hidden">
-                        <img
-                          src="{{option_value.swatch.image |  image_url : width: 48}}"
-                          alt="{{product.title | escape}}"
-                          width="28"
-                          height="28"
-                          class="w-full h-full object-cover">
-                      </div>
-                    {% endif %}
-                  </label>
+                  <div class="group/swatch">
+                    <input
+                      type="radio"
+                      name="{{product_option_value.name}}"
+                      id="{{product.id}}-{{option_value.name}}"
+                      value="{{option_value.name}}"
+                      x-model="options.{{product_option_value.name}}.value"
+                      class="hidden!"
+                      {% if is_selected %}
+                      checked
+                      {% endif %} />
+                    <label for="{{product.id}}-{{option_value.name}}" class="cursor-pointer size-9">
+                      {% if option_value.swatch.color %}
+                        <div class="quick-add-swatch flex flex-col justify-center items-center size-7 rounded-full group-has-checked/swatch:border-2 group-has-checked/swatch:border-black group-has-checked/swatch:size-9">
+                          <div class="rounded-full size-7 shrink-0" style="background:{{option_value.swatch.color}};}"></div>
+                        </div>
+                      {% else %}
+                        <div class="quick-add-swatch size-7 rounded-full relative overflow-hidden">
+                          <img
+                            src="{{option_value.swatch.image |  image_url : width: 48}}"
+                            alt="{{product.title | escape}}"
+                            width="28"
+                            height="28"
+                            class="w-full h-full object-cover">
+                        </div>
+                      {% endif %}
+                    </label>
+                  </div>
                 {% endfor %}
               </div>
             {% elsif option_name == 'size' %}
@@ -135,10 +155,11 @@
                     id="{{product.id}}-{{option_value.name}}"
                     value="{{option_value.name}}"
                     x-model="options.{{product_option_value.name}}.value"
+                    class="hidden!"
                     {% if is_selected %}
                     checked
                     {% endif %} />
-                  <label for="{{product.id}}-{{option_value.name}}" class="shrink-0 flex justify-center items-center rounded-full px-3 py-1 w-fit min-w-[54px] border-2 border-gray-400 cursor-pointer hover:border-black transition">{{ option_value.name }}</label>
+                  <label for="{{product.id}}-{{option_value.name}}" class="quick-add-size shrink-0 flex justify-center items-center rounded-full px-3 py-1 w-fit min-w-[54px] border-2 border-gray-400 cursor-pointer hover:border-black transition">{{ option_value.name }}</label>
                 {% endfor %}
               </div>
             {% else %}
@@ -253,6 +274,15 @@
             this.$image = this.$refs.image
             this.productId = this.$el.dataset.quickAddForm
 
+            // Adjust drawer content height
+            setTimeout( () =>{
+              let $innerContent = this.$refs.quickAddInner
+              console.log(this.$el.scrollHeight)
+              console.log(Math.min($innerContent.scrollHeight+48))
+              this.$el.style.setProperty('height',`${Math.min($innerContent.scrollHeight+48,460)}px`,'important');
+            },500)
+          
+
             
             // Set Options
             for(let i = 0; i < this.product.options.length; i++){
@@ -261,6 +291,8 @@
                     position:i
                 }
             }
+
+            console.log(this.options)
 
             // Watch for options changes
             this.$watch('options', () =>{
@@ -315,9 +347,6 @@
             })
           })
 
-          console.log(this.compatible)
-
-
 
 
 
@@ -371,15 +400,16 @@
                 if (cartDrawer) {
                     await cartDrawer.refresh()
                 }
-                cartDrawer.open()
-            } catch (e) {
-                console.log(e)
-            } finally {
                 window.dispatchEvent(new CustomEvent('drawer:close', {
                   detail:{
                     id:`quick-add-${this.productId}`
                   }
                 }))
+                cartDrawer.open()
+            } catch (e) {
+                console.log(e)
+            } finally {
+             
                 this.adding = false
             }
 
@@ -432,14 +462,23 @@
               const isAllowed = allowed.includes(val)
               input.disabled = !isAllowed
 
-              // OPTIONAL: add CSS class to disabled items
-              if (!isAllowed) {
-                input.closest("label")?.classList.add("opacity-30", "pointer-events-none")
-              } else {
-                input.closest("label")?.classList.remove("opacity-30", "pointer-events-none")
-              }
+           
             })
           })
+        },
+        formatMoney(amount, currency, locale) {
+          // Shopify gives prices in cents, so convert if number is large
+
+          currency = currency ??  window?.Shopify?.currency?.active ?? 'USD'
+          locale = locale ?? window?.Shopify?.locale ?? 'en-US'
+          const value = typeof amount === "number"
+            ? amount / 100
+            : parseFloat(amount) / 100;
+
+          return new Intl.NumberFormat(locale , {
+            style: "currency",
+            currency: currency ,
+          }).format(value);
         }
         
    

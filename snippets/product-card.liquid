@@ -34,7 +34,7 @@
         class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         loading="lazy" />
     </a>
-    {% if show_floating_cart %}
+    {% if show_floating_cart and product.available %}
       <div class="absolute bottom-3 right-3">
         {% render 'quick-add'
           , product: product %}

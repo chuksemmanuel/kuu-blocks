@@ -59,29 +59,7 @@ document.addEventListener('alpine:init', () => {
                 this.$overlay = this.$refs.overlay
                 this.$panel = this.$refs.panel
                 this.id = this.$el.dataset.drawerId || 'defaultDrawer'
-                // // Ensure the panel has base CSS for positioning 
-                // if (this.direction === 'left' || this.direction === 'right') {
 
-                //     Object.assign(this.$panel.style, {
-                //         top: '0',
-                //         // height: '100vh',
-                //         width: '100%',
-                //         maxWidth: 'min(648px,100%)',
-                //         left: this.direction === 'left' ? '0' : 'auto',
-                //         right: this.direction === 'right' ? '0' : 'auto',
-                //         bottom: 'auto',
-                //     })
-                // } else {
-                //     // top / bottom
-                //     Object.assign(this.$panel.style, {
-                //         left: '0',
-                //         // width: '100vw',
-                //         // height: '50%',
-                //         // minHeight: '30svh',
-                //         top: this.direction === 'top' ? '0' : 'auto',
-                //         bottom: this.direction === 'bottom' ? '0' : 'auto',
-                //     })
-                // }
 
                 // Put overlay & panel off-screen / hidden initially
                 gsap.set(this.$overlay, { opacity: 0, pointerEvents: 'none' })
