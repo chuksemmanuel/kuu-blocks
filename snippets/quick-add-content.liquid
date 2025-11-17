@@ -54,7 +54,10 @@
     </div>
 
 
-    <form action="" class="flex flex-col justify-between  gap-4 shrink-0">
+    <form
+      @submit.prevent="handleAddToCart"
+      action=""
+      class="flex flex-col justify-between  gap-4 shrink-0">
 
       {% # Variant Selectors %}
       <div class="flex flex-col gap-8  justify-center items-center">
@@ -144,7 +147,7 @@
 
                 <select
                   name="{{product_option_value.name}}"
-                  class="shink-0 flex justify-center items-center rounded-full! px-3 py-1 w-fit min-w-[54px] border-2 border-gray-400 cursor-pointer hover:border-black transition outline-none ring-0 appearance-none"
+                  class="shink-0 flex justify-center items-center rounded-full! px-3 py-1  min-w-[54px] border-2 border-gray-400 cursor-pointer hover:border-black transition outline-none ring-0 appearance-none w-full"
                   x-model="options.{{product_option_value.name}}.value">
                   {% for option_value in product_option_value.values %}
                     {% if variant_to_use.options[option_index] == option_value.name %}
@@ -175,14 +178,37 @@
 
       {% # Add to Cart Button %}
       <div class="shrink-0 w-full ">
-        {% render 'add-to-cart-button'
-          , id: product.first_available_variant.id
-          , quantity: 1
-          , button_variant: 'primary'
-          , size: 'lg'
-          , label: "Add to cart"
-          , class: 'shadow-sm  '
-        %}
+
+        <template x-if="selectedVariant.available != true">
+          {% render 'button'
+            , variant: 'primary'
+            , size: 'lg'
+            , label: "Out of stock"
+            , class: 'shadow-sm  w-full!'
+            , props: 'disabled'
+          %}
+        </template>
+
+        <template x-if="!adding">
+          {% render 'button'
+            , variant: 'primary'
+            , size: 'lg'
+            , label: 'Add to Cart'
+            , type: 'submit'
+            , class: 'shadow-sm  w-full!'
+          %}
+        </template>
+
+        <template x-if="adding">
+          {% render 'button'
+            , variant: 'primary'
+            , size: 'lg'
+            , loading: 'spinner'
+            , class: 'shadow-sm  w-full!'
+          %}
+        </template>
+
+
       </div>
 
 
@@ -210,6 +236,7 @@
     const Alpine = window.Alpine
     console.clear()
     Alpine.data('quickAddForm{{product.id}}', () => ({
+        adding:false,
         productId:null,
         product:null,
         selectedVariant:null,
@@ -317,62 +344,102 @@
 
             this.updateDisabledOptions()
         },
+        async handleAddToCart(){
+          console.log('handdling add to cart')
+  
+          const quantity = this.selectedVariant?.quantity_rule?.min || 1;
+          const id = this.selectedVariant.id
+
+              try {
+                this.adding = true
+                await fetch('/cart/add.js', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        items: [
+                            {
+                                id: id,
+                                quantity: quantity
+                            }
+                        ]
+                    })
+                })
+
+                let cartDrawer = window.theme?.cartDrawer
+                if (cartDrawer) {
+                    await cartDrawer.refresh()
+                }
+                cartDrawer.open()
+            } catch (e) {
+                console.log(e)
+            } finally {
+                window.dispatchEvent(new CustomEvent('drawer:close', {
+                  detail:{
+                    id:`quick-add-${this.productId}`
+                  }
+                }))
+                this.adding = false
+            }
+
+        },
         getFeaturedImage(v){
             const variant = v || this.selectedVariant
             return variant?.featured_image?.src || this.product?.featured_image || this.product.images[0]
         },
         updateDisabledOptions() {
-        const selections = Object.fromEntries(
-          Object.entries(this.options).map(([k, v]) => [k, v.value])
-        )
-
-
-
-        // For each option group (Color, Size, Material...)
-        this.product.options.forEach((optionName, idx) => {
-          const currentlySelected = selections[optionName]
-
-          // Determine allowed values based on OTHER selections
-          let allowed = []
-
-          // For each value in this option
-          Object.keys(this.compatible[optionName]).forEach(value => {
-            let isCompatible = true
-
-            // Check compatibility with all other options
-            this.product.options.forEach((otherName, otherIdx) => {
-              if (otherName === optionName) return
-
-              const selectedOther = selections[otherName]
-              if (!selectedOther) return
-
-              // Check if this value is compatible with the selected value of the other option
-              if (!this.compatible[otherName][selectedOther].includes(value)) {
-                isCompatible = false
-              }
-            })
-
-            if (isCompatible) allowed.push(value)
-          })
-
-          // Disable incompatible DOM inputs
-          const inputs = this.$root.querySelectorAll(
-            `input[name="${optionName}"], select[name="${optionName}"] option`
+          const selections = Object.fromEntries(
+            Object.entries(this.options).map(([k, v]) => [k, v.value])
           )
 
-          inputs.forEach(input => {
-            const val = input.value
-            const isAllowed = allowed.includes(val)
-            input.disabled = !isAllowed
 
-            // OPTIONAL: add CSS class to disabled items
-            if (!isAllowed) {
-              input.closest("label")?.classList.add("opacity-30", "pointer-events-none")
-            } else {
-              input.closest("label")?.classList.remove("opacity-30", "pointer-events-none")
-            }
+
+          // For each option group (Color, Size, Material...)
+          this.product.options.forEach((optionName, idx) => {
+            const currentlySelected = selections[optionName]
+
+            // Determine allowed values based on OTHER selections
+            let allowed = []
+
+            // For each value in this option
+            Object.keys(this.compatible[optionName]).forEach(value => {
+              let isCompatible = true
+
+              // Check compatibility with all other options
+              this.product.options.forEach((otherName, otherIdx) => {
+                if (otherName === optionName) return
+
+                const selectedOther = selections[otherName]
+                if (!selectedOther) return
+
+                // Check if this value is compatible with the selected value of the other option
+                if (!this.compatible[otherName][selectedOther].includes(value)) {
+                  isCompatible = false
+                }
+              })
+
+              if (isCompatible) allowed.push(value)
+            })
+
+            // Disable incompatible DOM inputs
+            const inputs = this.$root.querySelectorAll(
+              `input[name="${optionName}"], select[name="${optionName}"] option`
+            )
+
+            inputs.forEach(input => {
+              const val = input.value
+              const isAllowed = allowed.includes(val)
+              input.disabled = !isAllowed
+
+              // OPTIONAL: add CSS class to disabled items
+              if (!isAllowed) {
+                input.closest("label")?.classList.add("opacity-30", "pointer-events-none")
+              } else {
+                input.closest("label")?.classList.remove("opacity-30", "pointer-events-none")
+              }
+            })
           })
-        })
         }
         
    
