@@ -52,7 +52,7 @@ document.addEventListener('alpine:init', () => {
             try {
                 // Populate items quantity
                 const cartRes = await fetch('/cart.js')
-                /** @type {ShopifyCart} */
+                /** @type {Cart} */
                 const cart = await cartRes.json()
                 if (!cartRes.ok) {
                     const cartErr = await cartRes.json()
@@ -208,7 +208,7 @@ document.addEventListener('alpine:init', () => {
                     throw new Error(`${cartErr?.message || 'Failed to update cart'}`)
                 }
 
-                /** @type {ShopifyCart} */
+                /** @type {Cart} */
                 const cart = await cartRes.json()
 
                 // Update ItemsQuantity
