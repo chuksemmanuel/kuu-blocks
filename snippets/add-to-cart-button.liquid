@@ -8,11 +8,17 @@
   assign icon = icon
   assign class = class
   assign loading_class = loading_class | default: class
+  assign aria_label = aria_label | default: label | default: null
 %}
 
 <div class="group" x-data="quickadd{{id}}">
 
-  <div :disabled="adding" class="w-full flex flex-col">
+  <div
+    role="button"
+    aria_label="{{aria_label}}"
+    :disabled="adding"
+    class="w-full flex flex-col"
+    @click="handleAddToCart">
     <template x-if="!adding">
       {% render 'button'
         , variant: button_variant
@@ -20,7 +26,8 @@
         , icon: icon
         , class: class
         , label: label
-        , props: '@click="handleAddToCart"' %}
+        , aria_label: aria_label
+        , props: '' %}
     </template>
 
     <template x-if="adding">
@@ -30,6 +37,7 @@
         , icon: 'icons/loader-circle.svg'
         , loading: 'spinner'
         , label: adding_label
+        , aria_label: aria_label
         , class: loading_class %}
     </template>
   </div>

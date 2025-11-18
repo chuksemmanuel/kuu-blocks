@@ -87,7 +87,7 @@
   </span>
 {%- endcapture -%}
 {%- assign final_content = content | default: default_content -%}
-
+{% assign aria_label = aria_label | default: label | default: null %}
 {%- if href -%}
   <a
     href="{{ href }}"

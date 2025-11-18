@@ -16,22 +16,28 @@
       placeholder="Search for ..."
       class="flex-1 border-none ring-0 text-black text-lg outline-0 h-8 font-semibold!">
 
-    <span @click="clearSearchTerm" class="flex flex-col justify-center items-center cursor-pointer text-sm md:text-base text-gray-600 hover:text-gray-700 transition">
+    <button
+      aria-label="clear search input"
+      @click="clearSearchTerm"
+      class="flex flex-col justify-center items-center cursor-pointer text-sm md:text-base text-gray-600 hover:text-gray-700 transition">
       Clear
-    </span>
+    </button>
 
     <div class="leading-0 flex flex-col justify-center items-center">
       {% render 'button'
         , icon: 'icons/cancel.svg'
         , class: 'rounded-full! size-6! p-0!'
-        , props: 'data-drawer-close' %}
+        , props: 'data-drawer-close'
+        , aria_label: 'close search drawer'
+      %}
     </div>
   </div>
 
   <!-- Results Container -->
-  <div class="flex  flex-col flex-1 h-full overflow-hidden py-4 md:py-6 " x-ref="resultsContainer">
+  <div class="flex flex-col flex-1 h-full overflow-hidden py-4 md:py-6 " x-ref="resultsContainer">
 
     <div
+      aria-hidden="true"
       x-show="loading"
       x-transition:enter="transition ease-out duration-300 "
       x-transition:enter-start="opacity-0 translate-y-1"
@@ -77,38 +83,51 @@
 
       <div class="flex flex-col gap-4 md:gap-6 h-full overflow-hidden">
         {% # tab trigger %}
-        <div class="relative flex gap-4 shrink-0 items-center z-30 overflow-hidden  text-gray-500 bg-white select-none overflow-x-auto w-full no-scrollbar h-6 md:h-7 ">
+
+        <div role="tablist" class="relative flex gap-4 shrink-0 items-center z-30 overflow-hidden  text-gray-500 bg-white select-none overflow-x-auto w-full no-scrollbar h-6 md:h-7 ">
           {% assign tab_title_class = "div shrink-0 text-lg font-semibold text-gray-300 hover:text-black  cursor-pointer transition" %}
           {% if products.size > 0 %}
 
-            <span
+            <button
+              role="tab"
+              aria-label="products"
+              :aria-selected="activeTab === 'products'"
+              aria-controls="searchdrawer-products-tab"
               key="products-title"
               data-search-tab="products"
               class="{{tab_title_class}}"
               :class="activeTab === 'products' && 'text-black!' "
               @click="() => setActiveTab('products')">
               Products
-            </span>
+            </button>
           {% endif %}
           {% if collections.size > 0 %}
-            <span
+            <button
+              role="tab"
+              aria-label="collections"
+              :aria-selected="activeTab === 'collections'"
+              aria-controls="searchdrawer-collections-tab"
               key="collections-title"
               data-search-tab="collections"
               class="{{tab_title_class}}"
               :class="activeTab === 'collections' && 'text-black!'  "
               @click="() => setActiveTab('collections')">
               Collections
-            </span>
+            </button>
           {% endif %}
           {% if pages.size > 0 %}
-            <span
+            <button
+              role="tab"
+              aria-label="pages"
+              :aria-selected="activeTab === 'pages'"
+              aria-controls="searchdrawer-pages-tab"
               key="pages-title"
               data-search-tab="pages"
               class="{{tab_title_class}}"
               :class="activeTab === 'pages' && 'text-black!'  "
               @click="() => setActiveTab('pages')">
               Pages
-            </span>
+            </button>
           {% endif %}
         </div>
 
@@ -116,6 +135,8 @@
         <div class="relative flex flex-col flex-1 overflow-y-auto">
           {% # Product tab %}
           <div
+            role="tabpanel"
+            id="searchdrawer-products-tab"
             x-show="activeTab === 'products'"
             x-transition:enter="transition ease-out duration-300 delay-300"
             x-transition:enter-start="opacity-0"
@@ -127,7 +148,7 @@
             data-search-list="products"
             :class="activeTab !== 'products' ? 'absolute left-0' : 'relative' ">
             {% if products.size > 0 %}
-              <div class="flex flex-col gap-5">
+              <div role="list" class="flex flex-col gap-5">
                 {% for product in products %}
                   {% render 'searchdrawer-item'
                     , type: 'product'
@@ -146,6 +167,8 @@
 
           {% # Collections tab %}
           <div
+            role="tabpanel"
+            id="searchdrawer-collections-tab"
             x-show="activeTab === 'collections'"
             x-transition:enter="transition ease-out duration-300 delay-300"
             x-transition:enter-start="opacity-0"
@@ -157,7 +180,7 @@
             data-search-list="collections"
             :class="activeTab !== 'collections' ? 'absolute left-0' : 'relative' ">
             {% if collections.size > 0 %}
-              <div class="flex flex-col gap-5">
+              <div role="list" class="flex flex-col gap-5">
                 {% for collection in collections %}
                   {% render 'searchdrawer-item'
                     , type: 'collection'
@@ -176,6 +199,8 @@
 
           {% # Pages tab %}
           <div
+            role="tabpanel"
+            id="searchdrawer-pages-tab"
             x-show="activeTab === 'pages'"
             x-transition:enter="transition ease-out duration-300 delay-300"
             x-transition:enter-start="opacity-0"
@@ -187,7 +212,7 @@
             data-search-list="pages"
             :class="activeTab !== 'pages' ? 'absolute left-0' : 'relative' ">
             {% if pages.size > 0 %}
-              <div class="flex flex-col gap-5">
+              <div role="list" class="flex flex-col gap-5">
                 {% for page in pages %}
                   {% render 'searchdrawer-item'
                     , type: 'page'

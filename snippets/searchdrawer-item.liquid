@@ -2,6 +2,7 @@
   href="{{ item.url }}"
   key="{{ key }}"
   data-search-item="{{type}}"
+  aria-label="{{ item.title }}"
   class="flex items-center gap-5 p-4 md:p-6 hover:bg-gray-100 transition duration-300 rounded-lg">
   {% if item.featured_image != blank %}
     <div class="block size-20 rounded bg-gray-200 overflow-hidden shrink-0">

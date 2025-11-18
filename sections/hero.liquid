@@ -1,4 +1,4 @@
-<div class="w-full overflow-hidden lg:h-[calc(80svh-148px)] lg:min-h-[640px]">
+<section class="w-full overflow-hidden lg:h-[calc(80svh-148px)] lg:min-h-[640px]">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-3xl bg-white w-full h-full p-4 lg:p-6">
     <div class="h-full flex flex-col justify-between gap-6 max-md:order-1">
 
@@ -68,7 +68,7 @@
           -translate-x-[calc(4*6px)]
           -translate-x-[calc(5*6px)]
         -->
-        <div class="flex translate-x-1.5">
+        <div class="flex translate-x-1.5" aria-hidden="hidden">
           {% for block in section.blocks %}
             {% if block.type == 'avatar' %}
               <div class="rounded-full size-12 bg-gray-200 border-2 border-white overflow-hidden -translate-x-[calc({{ forloop.index0 }}*6px)]" {{ block.shopify_attributes }}>
@@ -104,7 +104,7 @@
 
     </div>
   </div>
-</div>
+</section>
 
 {% schema %}
   {

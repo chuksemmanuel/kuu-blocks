@@ -2,7 +2,6 @@
 <div data-quick-add="{{product.id}}">
 
   {% if product.has_only_default_variant %}
-
       {% render 'add-to-cart-button'
       , id: product.first_available_variant.id
       , quantity: 1
@@ -11,6 +10,7 @@
       , icon:'icons/shopping-cart.svg',
       , class: 'shadow-sm '
       , loading_class:'bg-primary! text-primary-foreground! shadow-sm'
+      , aria_label:'Add product to cart'
     %}
 
   {% elsif product.variants.size > 1 and product.selected_or_first_available_variant.available %}
@@ -22,8 +22,8 @@
             , variant: 'circled-icon'
             , size: 'none'
             , icon: 'icons/shopping-cart.svg'
-            , class: 'shadow-sm '
-            , aria_label: 'Quick add to cart'
+            , class: 'shadow-sm'
+            , aria_label: 'Click to select a product variant '
           %}
       </div>
     {% endcapture %}

@@ -1,4 +1,5 @@
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-6 lg:py-12">
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4 py-6 lg:py-12">
+  <span class="sr-only">Our Top Categories</span>
   {% for block in section.blocks %}
     {% if block.type == 'featured_item' %}
       {% render 'collection-card'
@@ -30,7 +31,7 @@
       </div>
     {% endif %}
   {% endfor %}
-</div>
+</section>
 
 {% schema %}
   {
