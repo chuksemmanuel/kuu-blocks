@@ -255,7 +255,7 @@
 
   document.addEventListener('alpine:init', () => {
     const Alpine = window.Alpine
-    console.clear()
+    
     Alpine.data('quickAddForm{{product.id}}', () => ({
         adding:false,
         productId:null,
@@ -277,8 +277,6 @@
             // Adjust drawer content height
             setTimeout( () =>{
               let $innerContent = this.$refs.quickAddInner
-              console.log(this.$el.scrollHeight)
-              console.log(Math.min($innerContent.scrollHeight+48))
               this.$el.style.setProperty('height',`${Math.min($innerContent.scrollHeight+48,460)}px`,'important');
             },500)
           
@@ -292,7 +290,7 @@
                 }
             }
 
-            console.log(this.options)
+         
 
             // Watch for options changes
             this.$watch('options', () =>{
@@ -305,8 +303,6 @@
                     return variant.options.join(',') === sortedOptions.join(',')
 
                 })
-
-                console.log('newSelectedVariant ==>',newSelectedVariant)
 
                 this.selectedVariant = newSelectedVariant ?? this.selectedVariant
                 let newFeaturedImage = this.getFeaturedImage(newSelectedVariant)
@@ -366,7 +362,7 @@
             // Remove event listener after variant images are preloaded
             this.$watch('preloaded', () =>{
                 if(this.preloaded == true){
-                    console.log('removing event listner')
+         
                     window.removeEventListener('drawer:opened',preloadImages)
                 }
             })
@@ -374,7 +370,6 @@
             this.updateDisabledOptions()
         },
         async handleAddToCart(){
-          console.log('handdling add to cart')
   
           const quantity = this.selectedVariant?.quantity_rule?.min || 1;
           const id = this.selectedVariant.id

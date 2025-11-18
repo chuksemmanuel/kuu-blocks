@@ -1,4 +1,7 @@
-<header class="grid grid-cols-3 place-content-between w-full py-6">
+<header
+class="grid grid-cols-3 place-content-between w-full py-6">
+  {% # Annoucement snippet for screen readers %}
+  {% render 'announcement' %}
 
   <div class="flex items-center gap-2 shrink-0">
     {% render 'tabbed-menu'
@@ -15,15 +18,18 @@
 
 
   <div class="flex items-center justify-center  shrink-0">
-    <h2 class="header__title uppercase text-center font-medium text-lg md:text-2xl  md:hidden">
+    <h2 class="header__title uppercase text-center font-medium text-lg md:text-2xl  md:hidden" aria-label="site logo">
       {{ shop.name | link_to: routes.root_url }}
     </h2>
 
-    <div class=" justify-between gap-8 hidden md:flex font-medium">
+    <ul aria-label="menu items" class=" justify-between gap-8 hidden md:flex font-medium">
       {% for link in section.settings.menu.links %}
-        {{ link.title | link_to: link.url }}
+        <li>
+          {{ link.title | link_to: link.url }}
+        </li>
+
       {% endfor %}
-    </div>
+    </ul>
   </div>
 
 
@@ -41,6 +47,7 @@
           , variant: 'circled-icon'
           , size: 'none'
           , icon: 'icons/user.svg'
+          , aria_label: 'Open Account'
         %}
       {% endif %}
 
@@ -53,6 +60,7 @@
         , variant: 'circled-icon'
         , size: 'none'
         , content: cart_button
+        , aria_label: 'Open Shopping cart'
         , props: 'x-data @click="$dispatch(`drawer:open`,{id:`cartdrawer`})"'
       %}
 

@@ -20,10 +20,7 @@
   assign show_checkout_lock_icon = show_checkout_lock_icon
   assign checkout_button_label = checkout_button_label | default: 'Proceed to Checkout'
 %}
-<script>
-  console.log('section settings ==>',{{section.settings | json}})
-  console.log('sticker_footer ===>', {{sticky_footer}})
-</script>
+
 
 {% capture footer %}
     {% render 'cartdrawer-footer'
@@ -36,7 +33,12 @@
     , checkout_button_label:checkout_button_label
     %}
 {% endcapture %}
-<div id="cartdrawer" {{ shopify_attributes }}>
+<div
+  id="cartdrawer"
+  x-data="cartDrawer()"
+  {{ shopify_attributes }}>
+
+
   {% capture cart_button %}
         <span class="bg-primary flex justify-center items-center text-primary-foreground z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs" data-cartdrawer-bubble >{{ cart.item_count }}</span>
         {{ 'icons/shopping-cart.svg' | inline_asset_content }}
@@ -46,9 +48,14 @@
         , size: 'icon'
         , content: cart_button
         , class: 'bg-white text-black hover:bg-primary hover:text-white!  md:size-12 rounded-full! '
+         , aria_label: 'Open Shopping cart'
       %}
   {% endcapture %}
   {% capture cart_content %}
+  
+  <div role="status" aria-live="assertive" class="sr-only" id="cartdrawer-live-region" aria-atomic="true" data-drawer-live-region></div>
+  <h2 id="drawer-title" class="sr-only">Cart Drawer</h2>
+  <p  id="drawer-description" class="sr-only"> Your shopping cart with {{ cart.item_count }} items.</p>
 
   <div id="cartdrawer-content" class="h-full w-full bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg flex-1">
     {% if cart.empty? %}
@@ -70,16 +77,19 @@
       <div class=" flex-1 flex flex-col {% if sticky_header %}  overflow-hidden {% else %} overflow-y-auto {% endif %}">
   
       
-        {%# Cart Header%}
-        <div class="shrink-0 flex flex-col gap-2 min-h-12 h-fit p-5 lg:p-8 pb-1 lg:pb-2 ">
-            <!-- Cart Header -->
-            <div class="flex justify-between items-center w-full">
-                <div class="flex items-center gap-2">
-                    <p class="font-semibold lg:text-lg">Cart </p>
-                    <span class="flex justify-center items-center size-6 min-w-fit bg-primary text-primary-foreground rounded-full p-px text-sm">{{cart.item_count}}</span>
-                </div>
+        <!-- Cart Header -->
+        <div id="cartdrawer-header" class="shrink-0 flex flex-col gap-2 min-h-12 h-fit p-5 lg:p-8 pb-1 lg:pb-2" aria-label="Cart Drawer Header" tabindex="0">
+            
+            <div class="flex justify-between items-center w-full" >
+
+              <div class="flex items-center gap-2" role="presentation">
+                    <span class="sr-only">You have {{cart.item_count}} items in cart</span>
+                    <p  aria-hidden="true" class="font-semibold lg:text-lg">Cart </p>
+                    <span  aria-hidden="true" class="flex justify-center items-center size-6 min-w-fit bg-primary text-primary-foreground rounded-full p-px text-sm">{{cart.item_count}}</span>
+                    
+              </div>
                 
-                {% render 'button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ', props:'data-drawer-close' %}
+                {% render 'button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ', props:'data-drawer-close', aria_label:'Close Cart Drawer' %}
                 
             </div>
 
@@ -90,7 +100,7 @@
         {%# Always Scrollable %}
         <div class="flex-1 flex flex-col justify-between  pt-1 lg:pt-2 {% if sticky_header %}overflow-y-auto {% endif %}">
 
-          <div class="p-5 lg:p-8 pt-0!">
+          <div class="pb-5 lg:pb-8">
               {%# Cart Items %}
               {% render 'cartdrawer-items'
               , show_compare_price:show_compare_price
@@ -134,11 +144,9 @@
   %}
 </div>
 
-{% comment %}
-  <script>
-  // Todo: Remove this in production
-  setTimeout(() =>{
-  window.dispatchEvent(new CustomEvent('drawer:open',{detail:{id:'cartdrawer'}}))
-  },1000)
-  </script>
-{% endcomment %}
+<script src="{{ 'js/blocks/cartdrawer.js' | asset_url }}" defer></script>
+{% comment %} <script>
+    setTimeout(() =>{
+    window.dispatchEvent(new CustomEvent('drawer:open',{detail:{id:'cartdrawer'}}))
+    },1000)
+</script> {% endcomment %}

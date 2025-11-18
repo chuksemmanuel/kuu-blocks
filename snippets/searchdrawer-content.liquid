@@ -1,6 +1,7 @@
-{{  }}
-
-  <div
+<h2 id="drawer-title" class="sr-only">Search</h2>
+<p id="drawer-description" class="sr-only">
+  Search across product,collections and pages</p>
+<div
   x-data="searchDrawer()"
   class="bg-white rounded-md md:rounded-lg overflow-hidden shadow-lg flex-1 p-5 md:p-8 flex flex-col"
   id="searchdrawer-content">
@@ -213,7 +214,7 @@
 </div>
 
 
-<script src="{{ 'js/blocks/search-drawer.js' | asset_url }}" defer></script>
+<script src="{{ 'js/blocks/searchdrawer.js' | asset_url }}" defer></script>
 
 
 <style>

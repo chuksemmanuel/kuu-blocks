@@ -23,6 +23,7 @@
             , size: 'none'
             , icon: 'icons/shopping-cart.svg'
             , class: 'shadow-sm '
+            , aria_label: 'Quick add to cart'
           %}
       </div>
     {% endcapture %}
@@ -43,11 +44,11 @@
   {% endif %}
 
 </div>
-
-<script>
-    // Todo: Remove this in production
+{% comment %}
+  Opens quickadd on page load - for development only
+  <script>
     setTimeout(() =>{
       document.querySelector('.products-grid > div:nth-child(4) [data-drawer-id*="quick-add"] > div').click()
     },2000)
-
 </script>
+{% endcomment %}

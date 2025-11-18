@@ -1,134 +1,187 @@
-<div
-  x-data="cartDrawer()"
+<ul
   class="flex flex-col gap-4 lg:gap-6"
-  id="cartdrawer-content">
+  id="cartdrawer-content"
+  aria-label="cart items">
   {% for item in cart.items %}
-    <div
-      class="flex gap-5 justify-between relative "
-      x-id="['{{ item.key }}']"
+    <li
+      aria-labelledby="cart-item-{{ item.key }}-title"
+      data-product-id="{{ item.product.id }}"
+      data-variant-id="{{item.variant.id}}"
+      data-line="{{item.id}}"
       key="{{ item.key }}"
-      :class="{ 'opacity-95 pointer-events-none': updatingKey === '{{ item.key }}' }">
+      aria-label="{{product.title}}"
+      class="focus:outline-none"
+      tabindex="-1">
+      <div
+        class="flex gap-5 justify-between relative px-5 lg:px-8"
+        x-id="['{{ item.key }}']"
+        :class="{ 'opacity-95 pointer-events-none': updatingKey === '{{ item.key }}' }">
 
-      <div class="flex items-center gap-5">
-        <!-- Cart Image -->
-        <a href="{{item.product.url}}" class="block size-20 rounded bg-gray-200 overflow-hidden  shrink-0">
-          <img
-            src="{{ item.image | image_url: width: 200 }}"
-            alt="{{ item.title | escape }}"
-            class="w-full h-full object-cover"
-            width="80px"
-            height="80px" />
-        </a>
+        <!-- LEFT SIDE: IMAGE + DETAILS -->
+        <div class="flex items-center gap-5">
+          <!-- Product image -->
+          <a
+            href="{{item.product.url}}"
+            aria-labelledby="cart-item-{{ item.key }}-title"
+            class="block size-20 rounded bg-gray-200 overflow-hidden  shrink-0">
+            <img
+              src="{{ item.image | image_url: width: 200 }}"
+              alt="{{ item.title | escape }}"
+              class="w-full h-full object-cover"
+              width="80px"
+              height="80px"
+              aria-hidden="true">
+          </a>
 
-        {% # Details %}
-        <div class="flex flex-col gap-1">
+          <!-- Product details -->
+          <div class="flex flex-col gap-1">
 
-          {% # Title %}
-          <a href="{{item.product.url}}" class="font-semibold line-clamp-2 max-w-50">{{ item.title }}</a>
+            <!-- Product Title -->
+            <a
+              id="cart-item-{{ item.key }}-title"
+              href="{{item.product.url}}"
+              class="font-semibold line-clamp-2 max-w-50">{{ item.title }}</a>
 
-          {% # Price %}
 
-          {% if item.original_line_price != item.final_line_price and show_compare_price == true %}
-            <div class="flex flex-col md:flex-row md:items-center flex-wrap gap-x-1 gap-y-px">
-              <div class="flex  gap-2 items-center">
-                <span style="color:{{final_price_color}}">{{ item.final_line_price | money }}</span>
-                <span class="line-through text-gray-500">
-                  {{ item.original_line_price | money }}
-                </span>
-              </div>
-              {% if show_savings_badge %}
-                {% assign contrast = savings_badge_color | color_contrast: '#ffffff' %}
-                {% if contrast < 3.1 %}
-                  {% assign saving_badge_text_color = '#000000' %}
-                {% else %}
-                  {% assign saving_badge_text_color = '#ffffff' %}
+            <!-- Price -->
+            {% if item.original_line_price != item.final_line_price and show_compare_price == true %}
+              <div class="flex flex-col md:flex-row md:items-center flex-wrap gap-x-1 gap-y-px" :class="updatingKey == '{{item.key}}' && 'animate-pulse'">
 
+                <div class="flex  gap-2 items-center">
+                  <span class="sr-only">Discounted price</span>
+                  <span style="color:{{final_price_color}}">{{ item.final_line_price | money }}</span>
+
+                  <span class="sr-only">Original price</span>
+                  <span class="line-through text-gray-500">
+                    {{ item.original_line_price | money }}
+                  </span>
+                </div>
+
+                {% if show_savings_badge %}
+                  {% assign contrast = savings_badge_color | color_contrast: '#ffffff' %}
+                  {% if contrast < 3.1 %}
+                    {% assign saving_badge_text_color = '#000000' %}
+                  {% else %}
+                    {% assign saving_badge_text_color = '#ffffff' %}
+                  {% endif %}
+
+                  <span class="rounded-md px-1.5 py-px  text-xs w-fit shrink-0" style="background:{{savings_badge_color}}; color:{{saving_badge_text_color}}">
+                    Saved {{ item.original_line_price | minus: item.final_line_price | money }}
+                  </span>
                 {% endif %}
-                <span class="rounded-md px-1.5 py-px  text-xs w-fit shrink-0" style="background:{{savings_badge_color}}; color:{{saving_badge_text_color}}">Saved {{ item.original_line_price | minus: item.final_line_price | money }}</span>
-              {% endif %}
-            </div>
-          {% else %}
-            <span class="">{{ item.final_line_price | money }}</span>
-          {% endif %}
+              </div>
+            {% else %}
+              <span :class="updatingKey == '{{item.key}}' && 'animate-pulse'">{{ item.final_line_price | money }}</span>
+            {% endif %}
 
 
-          {% # Variant Title %}
-          {% if item.product.has_only_default_variant == false and item.item_components.size == 0 and show_variant_title %}
-            <span class="text-gray-500 text-xs max-w-30">{{ item.variant.title }}</span>
-          {% endif %}
+            <!-- Variant options (Color: Red, Size: M, etc.) -->
+            {% if item.product.has_only_default_variant == false and item.item_components.size == 0 and show_variant_title %}
+              <span class="text-gray-500 text-xs max-w-30" aria-hidden="true">{{ item.variant.title }}</span>
 
-          {% # Error Message %}
-          <template x-if="cartMessage && cartMessage.key === '{{ item.key }}'">
-            <div class=" text-sm min-h-5 " :class="cartMessage.type === 'warning'? 'text-amber-500': cartMessage.type === 'success' ? 'text-green-500':'text-red-500'">
-              <style>
-                .cart-message-icon > svg {
-                  width: 14px;
-                  display: inline;
-                }
-              </style>
-              <span class="shrink-0 cart-message-icon" x-show="cartMessage.type === 'warning'">
-                {{ 'icons/circle-alert.svg' | inline_asset_content }}
-              </span>
-              <span class="shrink-0 cart-message-icon" x-show="cartMessage.type === 'success'">
-                {{ 'icons/circle-check.svg' | inline_asset_content }}
-              </span>
-              <span class="shrink-0 cart-message-icon" x-show="cartMessage.type === 'error'">
-                {{ 'icons/circle-x.svg' | inline_asset_content }}
-              </span>
-              <span x-text="cartMessage.message" class="text-sm"></span>
-              <span
-                @click="clearCartMessage()"
-                class="underline cursor-pointer"
-                title="Click to clear error">Clear</span>
-            </div>
-          </template>
+              {% for option in item.options_with_values %}
+                <span class="sr-only">
+                  {{ option.name }}: {{ option.value }}
+                </span>
+              {% endfor %}
+
+            {% endif %}
+
+            <!-- Error Messages -->
+            <template x-if="cartMessage && cartMessage.key === '{{ item.key }}'">
+              <div class=" text-sm min-h-5 " :class="cartMessage.type === 'warning'? 'text-amber-500': cartMessage.type === 'success' ? 'text-green-500':'text-red-500'">
+                <style>
+                  .cart-message-icon > svg {
+                    width: 14px;
+                    display: inline;
+                  }
+                </style>
 
 
-        </div>
-      </div>
+                <span class="shrink-0 cart-message-icon" aria-hidden="true">
+                  <template x-if="cartMessage.type === 'warning'">
+                    {{ 'icons/circle-alert.svg' | inline_asset_content }}
+                  </template>
+                  <template x-if="cartMessage.type === 'success'">
+                    {{ 'icons/circle-check.svg' | inline_asset_content }}
+                  </template>
+                  <template x-if="cartMessage.type === 'error'">
+                    {{ 'icons/circle-x.svg' | inline_asset_content }}
+                  </template>
+                </span>
+                <span class="sr-only" x-text="cartMessage.type"></span>
+                <span x-text="cartMessage.message" class="text-sm"></span>
+                <button
+                  @click="clearCartMessage()"
+                  class="underline cursor-pointer ml-1"
+                  title="Click to clear error">Clear</button>
+              </div>
+            </template>
 
-      <!-- Quantity Controls -->
-      <div class="flex flex-col justify-center items-center shrink-0 gap-2">
-        <div class="border border-gray-200 rounded flex justify-center items-center p-px h-10 overflow-hidden">
-          <input
-            type="text"
-            value="{{ item.quantity }}"
-            class="w-12 text-center p-px ring-0 outline-0 appearance-none"
-            @change="onQuantityInput($event, '{{ item.key }}')"
-            @keyup="filterNumeric($event, '{{ item.key }}')" />
 
-          <div class="hidden md:flex flex-col justify-center items-center ">
-            <button class="bg-gray-50 transition ease-out duration-400 hover:bg-gray-200 text-gray-400 size-5 flex justify-center items-center hover:text-gray-700" @click="onQuantityClick('{{ item.key }}', Number($event.target.closest('[key]').querySelector('input').value) + 1)">
-              {{ 'icons/chevron-up.svg' | inline_asset_content }}
-            </button>
-
-            <button
-              class="bg-gray-50 transition ease-out duration-400 hover:bg-gray-200 text-gray-400 size-5 flex justify-center items-center hover:text-gray-700 disabled:opacity-50 disabled:pointer-events-none"
-              @click="onQuantityClick('{{ item.key }}', Math.max(1, Number($event.target.closest('[key]').querySelector('input').value) - 1))"
-              {%- if item.quantity == 1 -%}
-              disabled
-              {%- endif -%}>
-              {{ 'icons/chevron-down.svg' | inline_asset_content }}
-            </button>
           </div>
         </div>
 
-        <button
-          x-show="updatingKey !== '{{ item.key }}'"
-          class="text-xs text-right underline text-gray-500 hover:text-black h-5"
-          @click="updateQuantity('{{ item.key }}', 0)">
-          Remove
-        </button>
+        <!-- RIGHT SIDE: QUANTITY + REMOVE -->
+        <div class="flex flex-col justify-center items-center shrink-0 gap-2">
 
-        <!-- Spinner for currently updating item -->
-        <template x-if="updatingKey === '{{ item.key }}'">
-          <button class=" text-gray-500 transition  animate-spin [animation-duration:0.5s] self-end  size-5" @click="updateQuantity('{{ item.key }}', 0)">
-            {{ 'icons/loader-circle.svg' | inline_asset_content }}
+          <!-- Quantity control -->
+          <div class="border border-gray-200 rounded flex justify-center items-center p-px h-10 overflow-hidden">
+            <label for="qty-{{ item.id }}" class="sr-only">Quantity for {{ item.title }}</label>
+            <input
+              id="qty-{{ item.id }}"
+              name="{{item.key}}"
+              type="text"
+              value="{{ item.quantity }}"
+              class="w-12 text-center p-px ring-0 outline-0 appearance-none"
+              @change="onQuantityInput($event, '{{ item.key }}')"
+              @keyup="filterNumeric($event, '{{ item.key }}')" />
+
+
+            <div class="hidden md:flex flex-col justify-center items-center ">
+              <button
+                data-qty-increase="{{ item.id }}"
+                aria-label="Increase quantity for {{ item.title }}"
+                class="bg-gray-50 transition ease-out duration-400 hover:bg-gray-200 text-gray-400 size-5 flex justify-center items-center hover:text-gray-700"
+                @click="onQuantityClick('{{ item.key }}', Number($event.target.closest('[key]').querySelector('input').value) + 1)">
+                {{ 'icons/chevron-up.svg' | inline_asset_content }}
+              </button>
+
+              <button
+                data-qty-decrease="{{ item.id }}"
+                aria-label="Decrease quantity for {{ item.title }}"
+                class="bg-gray-50 transition ease-out duration-400 hover:bg-gray-200 text-gray-400 size-5 flex justify-center items-center hover:text-gray-700 disabled:opacity-50 disabled:pointer-events-none"
+                @click="onQuantityClick('{{ item.key }}', Math.max(1, Number($event.target.closest('[key]').querySelector('input').value) - 1))"
+                {%- if item.quantity == 1 -%}
+                disabled
+                {%- endif -%}>
+                {{ 'icons/chevron-down.svg' | inline_asset_content }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Remove -->
+          <button
+            data-qty-remove="{{ item.id }}"
+            aria-label="Remove {{ item.title }} from cart"
+            x-show="updatingKey !== '{{ item.key }}'"
+            class="text-xs text-right underline text-gray-500 hover:text-black h-5"
+            @click="updateQuantity('{{ item.key }}', 0)">
+            Remove
           </button>
-        </template>
-      </div>
-    </div>
-  {% endfor %}
-</div>
 
-<script src="{{ 'js/blocks/cart-drawer.js' | asset_url }}" defer></script>
+          <!-- Spinner for currently updating item -->
+          <template x-if="updatingKey === '{{ item.key }}'">
+            <span
+              aria-hidden="true"
+              class=" text-gray-500 transition  animate-spin [animation-duration:0.5s] self-end  size-5"
+              @click="updateQuantity('{{ item.key }}', 0)">
+              {{ 'icons/loader-circle.svg' | inline_asset_content }}
+            </span>
+          </template>
+        </div>
+      </div>
+    </li>
+
+  {% endfor %}
+</ul>

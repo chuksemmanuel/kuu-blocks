@@ -2,12 +2,15 @@
  * Alpine component for managing the Shopify cart drawer.
  * Handles optimistic quantity updates, debounced network syncs,
  * and per-item loading indicators.
- *
- * UX goals:
- * - Instant feedback on input or button clicks (no lag)
- * - Debounced requests to avoid flooding Shopify's API
- * - Spinner only on the currently updating item
  */
+
+
+
+/**
+ * @typedef {'cartdrawer:updating' | 'cartdrawer:init'} CartdrawerEvents
+ * @typedef {{message: string, type: 'warning'|'success'|'error', key?: string|null,}} CartMessage
+ */
+
 
 document.addEventListener('alpine:init', () => {
     const Alpine = window.Alpine
@@ -22,7 +25,7 @@ document.addEventListener('alpine:init', () => {
 
         /**
          * The cart update message.
-         * @type {{message: string|null, key: string|null, type: 'warning'|'success'|'error'} | null}
+         * @type {CartMessage | null}
          */
         cartMessage: null,
         /**
@@ -45,13 +48,13 @@ document.addEventListener('alpine:init', () => {
          */
         itemsQuantity: {},
         async init() {
-            // Populate items quantity
+
             try {
+                // Populate items quantity
                 const cartRes = await fetch('/cart.js')
                 /** @type {ShopifyCart} */
                 const cart = await cartRes.json()
                 if (!cartRes.ok) {
-
                     const cartErr = await cartRes.json()
                     throw new Error(`${cartErr?.message || 'Failed to fetch cart'}`)
                 }
@@ -59,24 +62,15 @@ document.addEventListener('alpine:init', () => {
                     this.itemsQuantity[item.key] = item.quantity
                 })
 
+                // Add window object
+                this.addWindowObject()
+
+                this.dispatchEvent('cartdrawer:init', {})
             } catch (error) {
+                this.dispatchEvent('cartdrawer:init', { error })
                 // console.log(error)
             }
 
-
-            // Add window object
-
-            /** @ts-ignore */
-            window.theme = window.theme || {}
-            window.theme.cartDrawer = {
-                open: () => {
-                    window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }))
-                },
-                close: () => {
-                    window.dispatchEvent(new CustomEvent('drawer:close', { detail: { id: 'cartdrawer' } }))
-                },
-                refresh: this.updateCartDrawer
-            }
 
         },
         /**
@@ -92,16 +86,32 @@ document.addEventListener('alpine:init', () => {
          * Clear the cart update message.
          */
         clearCartMessage() {
+            let restoreSelector = this.getActiveElementSelector()
             this.cartMessage = null
+
+            // Restore focus
+            if (restoreSelector) {
+                const el = document.querySelector(restoreSelector)
+
+                if (el instanceof HTMLInputElement || el instanceof HTMLButtonElement) {
+                    el.focus()
+                }
+            }
+
         },
         /**
          * Add a message to the cart drawer.
-         * @param {string} message - Message to display
-         * @param {'warning'|'success'|'error'} type - Message type
-         * @param {string | null} key - Unique cart item key
+         * @param {CartMessage} cartMessage 
          */
-        setCartMessage(message, type = "error", key = null) {
+        setCartMessage(cartMessage, skipAnnouncement = false) {
+            const { message, type, key, } = cartMessage
             this.cartMessage = { message, type, key }
+
+            // Annouce message to screen readers
+            if (!skipAnnouncement) {
+                this.announce(cartMessage.message)
+            }
+
         },
 
         /**
@@ -115,7 +125,6 @@ document.addEventListener('alpine:init', () => {
             const el = event.target
             if (!(el instanceof HTMLInputElement)) return
             const value = el.value.trim()
-
 
             if (value.length === 0) {
                 this.updateQuantityValue(key, this.itemsQuantity[key] || 1)
@@ -143,15 +152,21 @@ document.addEventListener('alpine:init', () => {
 
         /**
          * Updates the quantity input value optimistically.
-         * @param {*} key - Unique cart item key
-         * @param {*} newQuantity - New quantity after click
+         * @param {string} key - Unique cart item key
+         * @param {string | number} newQuantity - New quantity after click
          */
         updateQuantityValue(key, newQuantity) {
+
             const cartItem = document.querySelector(`[key="${key}"]`)
+
 
             /** @type {HTMLInputElement|null|undefined} */
             const input = cartItem?.querySelector('input[type="text"]')
-            if (input) input.value = newQuantity
+
+
+            if (input) {
+                input.value = newQuantity.toString()
+            }
         },
 
         /**
@@ -190,8 +205,6 @@ document.addEventListener('alpine:init', () => {
                 })
 
                 if (!cartRes.ok) {
-                    // Revert optimistic update on error
-                    this.updateQuantityValue(key, this.itemsQuantity[key] || 1)
                     const cartErr = await cartRes.json()
                     throw new Error(`${cartErr?.message || 'Failed to update cart'}`)
                 }
@@ -207,8 +220,10 @@ document.addEventListener('alpine:init', () => {
                 // Reflect the confirmed quantity from server
                 const newQuantity = cart?.items?.find((item) => item.key === key)?.quantity ?? null
                 if (newQuantity && newQuantity !== quantity) {
-                    this.setCartMessage(`Only ${newQuantity} item${newQuantity > 1 ? 's' : ''} left in stock`, 'warning', key)
+                    this.setCartMessage({ message: `Only ${newQuantity} item${newQuantity > 1 ? 's' : ''} left in stock`, type: 'warning', key })
                     this.updateQuantityValue(key, newQuantity)
+                } else {
+                    this.announce('Cart Quantity updated')
                 }
 
                 // Refresh the cart drawer content
@@ -216,11 +231,11 @@ document.addEventListener('alpine:init', () => {
             } catch (err) {
 
                 if (typeof err === 'string') {
-                    this.setCartMessage(err, 'error', key)
+                    this.setCartMessage({ message: err, type: 'error', key })
                 } else if (err instanceof Error) {
-                    this.setCartMessage(err.message, 'error', key)
+                    this.setCartMessage({ message: err.message, type: 'error', key })
                 } else {
-                    this.setCartMessage('Unable to update cart. Please try again.', 'error', key)
+                    this.setCartMessage({ message: 'Unable to update cart. Please try again.', type: 'error', key })
 
                 }
 
@@ -229,12 +244,25 @@ document.addEventListener('alpine:init', () => {
                 this.updateQuantityValue(key, this.itemsQuantity[key] || 1)
 
 
+
             } finally {
                 this.updatingKey = null
             }
         },
-        async updateCartDrawer() {
+        /** 
+         * @param {UpdateOptions } [options]
+        */
+        async updateCartDrawer(options) {
+            const beforeUpdate = options?.beforeUpdate
+            const afterUpdate = options?.afterUpdate
+
             try {
+
+                //CAPTURE CURRENT FOCUS USING data-line ATTRIBUTE
+                const active = document.activeElement;
+                let restoreSelector = this.getActiveElementSelector()
+
+
                 // Fetch updated cart drawer section
                 const res = await fetch('/?sections=cartdrawer')
                 const data = await res.json()
@@ -242,11 +270,43 @@ document.addEventListener('alpine:init', () => {
                 const cartBubbles = document.querySelectorAll('[data-cartdrawer-bubble]')
 
                 const fragment = new DOMParser().parseFromString(data.cartdrawer, 'text/html')
+                const newCartDrawer = fragment.querySelector('#cartdrawer')
                 const newContent = fragment.querySelector('#cartdrawer-content')
                 const newBubble = fragment.querySelector('[data-cartdrawer-bubble]')
-                console.log(newBubble)
+
+                this.dispatchEvent('cartdrawer:updating', {
+                    cartDrawer: newCartDrawer
+                })
+
+                if (beforeUpdate) {
+                    beforeUpdate(newCartDrawer)
+                }
+
                 if (cartContent && newContent) {
-                    Alpine.morph(cartContent, newContent)
+                    cartContent.outerHTML = newContent.outerHTML
+                    // Alpine.morph(cartContent, newContent, {
+                    //     updating: (el, toEl, childrenOnly, skip) => {
+
+                    //         if (el.nodeName === 'INPUT') {
+                    //             console.log('skipping this one')
+                    //             skip()
+                    //         }
+
+                    //     }
+                    // })
+
+                    // RESTORE FOCUS
+                    if (restoreSelector) {
+                        const target = document.querySelector(restoreSelector);
+                        if (target && (target.matches('input') || target.matches('button'))) {
+                            target.focus();
+                        }
+                    }
+
+                }
+
+                if (afterUpdate) {
+                    afterUpdate(document.querySelector('#cartdrawer'))
                 }
 
                 if (cartBubbles.length > 0 && newBubble) {
@@ -255,57 +315,90 @@ document.addEventListener('alpine:init', () => {
                     })
                 }
             } catch (error) {
-                this.setCartMessage('Unable to update cart. Please try again.', 'error')
+                this.setCartMessage({ message: 'Unable to update cart. Please try again.', type: 'error' })
             }
 
-        }
-    }))
-})
+        },
+        /**
+         * dispatch cartdrawer events
+         * @param {CartdrawerEvents} event 
+         * @param {Object} detail 
+         */
+        dispatchEvent(event, detail) {
+            window.dispatchEvent(new CustomEvent(event, {
+                detail
+            }))
+        },
+        addWindowObject() {
+
+            /** 
+             * @type {CartDrawer}
+            */
+            // @ts-ignore
+            const cartdrawer = window.theme?.cartDrawer || {}
+
+            cartdrawer['open'] = () => {
+                window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }))
+            }
+
+            cartdrawer['close'] = () => {
+                window.dispatchEvent(new CustomEvent('drawer:close', { detail: { id: 'cartdrawer' } }))
+            }
+
+            cartdrawer['refresh'] = this.updateCartDrawer.bind(this)
 
 
+            window.theme.cartDrawer = cartdrawer
 
+        },
+        getActiveElementSelector() {
+            // --- CAPTURE CURRENT FOCUS USING data-line ATTRIBUTE ---
+            const active = document.activeElement;
+            let restoreSelector = null;
 
-
-
-
-
-
-
-document.addEventListener('alpine:init', () => {
-    const Alpine = window.Alpine
-    Alpine.data('quick-add{{id}}', () => ({
-        adding: false,
-        async handleAddToCart() {
-            console.log(this.adding)
-            this.adding = true
-            console.log(this.adding)
-
-            try {
-                await fetch('/cart/add.js', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        items: [
-                            {
-                                id: '{{id}}',
-                                quantity: 1
-                            }
-                        ]
-                    })
-                })
-
-                let cartDrawer = window.theme?.cartDrawer
-                if (cartDrawer) {
-                    await cartDrawer.refresh()
+            if (active) {
+                const lineEl = active.closest('[data-line]');
+                if (lineEl) {
+                    const line = lineEl.getAttribute('data-line');
+                    if (line) {
+                        if (active.matches('input')) {
+                            restoreSelector = `[data-line="${line}"] input`;
+                        } else if (active.matches('button[data-qty-increase]')) {
+                            restoreSelector = `[data-line="${line}"] button[data-qty-increase]`;
+                        } else if (active.matches('button[data-qty-decrease]')) {
+                            restoreSelector = `[data-line="${line}"] button[data-qty-decrease]`;
+                        } else if (active.matches('button[data-qty-remove]')) {  // optional: add data attribute to remove button for consistency
+                            restoreSelector = `[data-line="${line}"] button[data-qty-remove]`;
+                        } else {
+                            // fallback - focus on entire line container
+                            restoreSelector = `[data-line="${line}"]`;
+                        }
+                    }
                 }
-                cartDrawer.open()
-            } catch (e) {
-                console.log(e)
-            } finally {
-                this.adding = false
+            }
+
+            return restoreSelector
+        },
+        /**
+         * Announce a message for screen readers
+         * @param {string} message 
+         */
+        announce(message) {
+            const cartDrawerRegion = document.querySelector('#cartdrawer-live-region')
+            if (cartDrawerRegion) {
+                cartDrawerRegion.textContent = ''
+
+                setTimeout(() => {
+                    cartDrawerRegion.textContent = message
+                }, 100)
             }
         }
     }))
 })
+
+
+
+
+
+
+

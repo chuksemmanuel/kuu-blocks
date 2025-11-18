@@ -102,7 +102,7 @@ document.addEventListener('alpine:init', () => {
             openDrawer() {
                 if (this.open) return
                 this.open = true
-                this.lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null
+                // this.lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null
                 document.body.classList.add('drawer-open')
 
                 const overlay = this.$overlay
@@ -162,9 +162,9 @@ document.addEventListener('alpine:init', () => {
                         document.body.classList.remove('drawer-open')
 
                         // restore focus
-                        if (this.lastFocusedElement && typeof this.lastFocusedElement.focus === 'function') {
-                            this.lastFocusedElement.focus()
-                        }
+                        // if (this.lastFocusedElement && typeof this.lastFocusedElement.focus === 'function') {
+                        //     this.lastFocusedElement.focus()
+                        // }
                     }
                 })
 
@@ -181,6 +181,11 @@ document.addEventListener('alpine:init', () => {
                 }
 
                 tl.to(overlay, { opacity: 0, duration: 0.32 }, 0.2)
+
+
+                // Clear sr live region
+                const liveRegion = document.querySelector(`#${this.id} [data-drawer-live-region]`)
+                if (liveRegion) liveRegion.textContent = ''
 
                 window.dispatchEvent(new CustomEvent('drawer:closed', { detail: { id: this.id } }))
             },

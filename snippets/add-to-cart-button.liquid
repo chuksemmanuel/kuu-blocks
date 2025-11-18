@@ -42,9 +42,7 @@
     Alpine.data('quickadd{{id}}', () => ({
         adding: false,
         async handleAddToCart() {
-            console.log(this.adding)
             this.adding = true
-            console.log(this.adding)
 
             try {
                 await fetch('/cart/add.js', {

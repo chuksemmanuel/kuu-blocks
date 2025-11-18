@@ -22,8 +22,9 @@
 {%- assign product_price = price | default: card_product.price | money -%}
 {%- assign product_image = image | default: card_product.featured_image.src -%}
 {%- assign product_url = url | default: card_product.url -%}
+{% assign props = props | default: null %}
 
-<div class="group relative flex flex-col overflow-hidden transition ">
+<div class="group relative flex flex-col overflow-hidden transition " {{ props }}>
   <div href="{{ product_url }}" class="block rounded-3xl overflow-hidden aspect-square relative">
     <a href="{{ product_url }}">
       <img

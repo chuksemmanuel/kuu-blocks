@@ -33,7 +33,10 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
 {% capture menu_trigger %}
    {% render 'button'           
    , variant: 'circled-icon'
-   , size: 'none' icon: 'icons/hamburger.svg' class: " rounded-lg!" %}
+   , size: 'none'
+  , icon: 'icons/hamburger.svg'
+   , class: " rounded-lg!"
+   , aria_label: 'Open Menu' %}
 {% endcapture %}
 {% capture menu_content %}
   <div class="flex flex-col w-full h-full  bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg flex-1"  x-data="{
@@ -65,14 +68,17 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
 
          {%# Menu Header  %}
         <div class="flex items-center justify-between mb-6 p-5 lg:p-5">
-          <h2 class="text-lg font-semibold">Menu</h2>
+          <div class="sr-only" id="drawer-title">Menu</div>
+          <span class="text-lg font-semibold " aria-label="menu">Menu</span>
 
           {%# Close button  %}
 
           {% render 'button', 
           icon:'icons/cancel.svg', 
-          class:'rounded-full! size-6! p-0! '
-          props: 'data-drawer-close' %}
+          class:'rounded-full! size-6! p-0! ',
+          props: 'data-drawer-close',
+          aria_label:'Close Menu'
+          %}
        
           
 
@@ -82,7 +88,8 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
        
           <div
             x-ref="tabButtons"
-            
+            role="tablist"
+            aria-label="Collection tabs"
             :class="`tabsButton relative pl-5 flex gap-4 shrink-0 items-center  justify-center-safe h-10 z-30 overflow-hidden  text-gray-500 bg-white select-none overflow-x-auto w-full no-scrollbar   ${!isDragging ? 'cursor-grap': 'cursor-grabbing'}`  "
             x-data="{
               isDragging: false,
@@ -114,6 +121,10 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
             @mousemove="drag">
               {% for tab in tab_list %}
                 <button
+                  role="tab"
+                  aria-label="{{tab}}"
+                  :aria-selected="tabSelected == '{{tab}}'"
+                  aria-controls="{{ tab }}-content"
                   :id="'{{ tab }}'"
                   @click="tabButtonClicked($el);"
                   type="button"
@@ -136,7 +147,7 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
 
         
         {% comment %} Menu Items Starts {% endcomment %}
-        <div class="flex-1 overflow-y-auto flex relative">
+        <div class="flex-1 overflow-y-auto flex relative" >
 
             {% for tab in tab_list %}
               {% if tab != blank %}
@@ -153,10 +164,13 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
                   x-cloak
                   class="w-full flex flex-col  p-5"
                   :class="!tabContentActive($el) ? 'absolute left-0' : 'relative' "
+                  role="tabpanel" aria-label="{{item.settings.parent_tab}} tab panel"
                   >
                   {% for item in section.blocks %}
                     {% if item.type == 'menu_item' and item.settings.parent_tab == tab %}
                       <a
+                        aria-label="{{item.settings.title}}"
+                        role="listitem"
                         href="{{ item.settings.href }}"
                         class="flex flex-col  gap-5  p-4 lg:p-6 hover:bg-gray-100 transition duration-300 rounded-lg"
                         {{ item.shopify_attributes }}>
