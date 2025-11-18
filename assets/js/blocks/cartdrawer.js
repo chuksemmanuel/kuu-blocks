@@ -68,7 +68,6 @@ document.addEventListener('alpine:init', () => {
                 this.dispatchEvent('cartdrawer:init', {})
             } catch (error) {
                 this.dispatchEvent('cartdrawer:init', { error })
-                // console.log(error)
             }
 
 
@@ -283,17 +282,7 @@ document.addEventListener('alpine:init', () => {
                 }
 
                 if (cartContent && newContent) {
-                    cartContent.outerHTML = newContent.outerHTML
-                    // Alpine.morph(cartContent, newContent, {
-                    //     updating: (el, toEl, childrenOnly, skip) => {
-
-                    //         if (el.nodeName === 'INPUT') {
-                    //             console.log('skipping this one')
-                    //             skip()
-                    //         }
-
-                    //     }
-                    // })
+                    cartContent.innerHTML = newContent.innerHTML
 
                     // RESTORE FOCUS
                     if (restoreSelector) {

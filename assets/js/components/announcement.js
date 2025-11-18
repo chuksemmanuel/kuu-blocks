@@ -24,7 +24,6 @@ document.addEventListener('alpine:init', () => {
             setTimeout(() => {
                 this.announcement = message;
                 annoucementEl.textContent = message
-                console.log('announcement', this.announcement)
             }, 500);
         }
     }))
