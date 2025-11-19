@@ -4,9 +4,6 @@
   assign block_settings = block.settings
   assign image = block.settings.logo
 
-  if block_settings.inverse and settings.logo_inverse
-    assign image = settings.logo_inverse
-  endif
 
 
 %}
@@ -42,7 +39,7 @@
 <div
   class="
     logo-block
-    spacing-style
+    shrink-0 justify-center items-center
     {{ display_class }}
   "
   style="
@@ -79,28 +76,24 @@
       {{ logo_image }}
     </div>
   {% else %}
-      <h2 class="header__title uppercase text-center font-medium text-lg md:text-2xl  " aria-label="site logo">
-      {{ shop.name | link_to: routes.root_url }}
-    </h2>
+      <a href="{{routes.root_url}}" class="uppercase text-center font-medium" aria-label="site logo">
+      {{ shop.name}}
+    </a>
   {% endif %}
 </div>
 
 {% stylesheet %}
   .logo-block {
-    width: calc(var(--logo-width) + var(--padding-inline-start) + var(--padding-inline-end));
+    width: var(--logo-width);
     max-width: 100%;
-    max-height: calc(var(--logo-height, 100%) + var(--padding-block-start) + var(--padding-block-end));
-    font-size: var(--logo-height);
+    max-height: var(--logo-height, 100%);
+    font-size: var(--logo-height, inherit);
   
 
     @media screen and (max-width: 750px) {
-      max-height: calc(
-        var(--logo-height-mobile, var(--logo-height, 100%)) + var(--padding-block-start) + var(--padding-block-end)
-      );
+      max-height:var(--logo-height-mobile, var(--logo-height, 100%));
       font-size: var(--logo-height-mobile, var(--logo-height));
-      width: calc(
-        var(--logo-width-mobile, var(--logo-width)) + var(--padding-inline-start) + var(--padding-inline-end)
-      );
+      width: var(--logo-width-mobile, var(--logo-width));
     }
   }
 
@@ -150,50 +143,21 @@
       "info": "Leave blank to use shop name"
     },
     {
-      "type": "select",
-      "id": "font",
-      "label": "t:settings.font",
-      "options": [
-        {
-          "value": "body",
-          "label": "t:options.body"
-        },
-        {
-          "value": "subheading",
-          "label": "t:options.subheading"
-        },
-        {
-          "value": "heading",
-          "label": "t:options.heading"
-        },
-        {
-          "value": "accent",
-          "label": "t:options.accent"
-        }
-      ],
-      "default": "heading",
-      "visible_if": "{{ block.settings.logo == blank}}"
-    },
-    {
-      "type": "paragraph",
-      "content": "t:content.edit_logo_in_theme_settings"
-    },
-    {
       "type": "header",
-      "content": "t:content.size"
+      "content": "Size"
     },
     {
       "type": "select",
       "id": "unit",
-      "label": "t:settings.unit",
+      "label": "Unit",
       "options": [
         {
           "value": "pixel",
-          "label": "t:options.pixel"
+          "label": "Pixel"
         },
         {
           "value": "percent",
-          "label": "t:options.percent"
+          "label": "Percent"
         }
       ],
       "default": "percent"
@@ -201,7 +165,7 @@
     {
       "type": "range",
       "id": "percent_width",
-      "label": "t:settings.width",
+      "label": "Width",
       "min": 10,
       "max": 100,
       "step": 1,
@@ -212,7 +176,7 @@
     {
       "type": "range",
       "id": "pixel_height",
-      "label": "t:settings.height",
+      "label": "Height",
       "min": 16,
       "max": 320,
       "step": 8,
@@ -223,26 +187,26 @@
     {
       "type": "checkbox",
       "id": "custom_mobile_size",
-      "label": "t:settings.custom_mobile_size",
+      "label": "Custom mobile size",
       "default": false
     },
     {
       "type": "header",
-      "content": "t:content.mobile_size",
+      "content": "Mobile Size",
       "visible_if": "{{ block.settings.custom_mobile_size == true }}"
     },
     {
       "type": "select",
       "id": "unit_mobile",
-      "label": "t:settings.unit",
+      "label": "Unit",
       "options": [
         {
           "value": "pixel",
-          "label": "t:options.pixel"
+          "label": "Pixel"
         },
         {
           "value": "percent",
-          "label": "t:options.percent"
+          "label": "Percent"
         }
       ],
       "default": "percent",
@@ -251,7 +215,7 @@
     {
       "type": "range",
       "id": "percent_width_mobile",
-      "label": "t:settings.width",
+      "label": "Width",
       "min": 10,
       "max": 100,
       "step": 1,
@@ -262,63 +226,19 @@
     {
       "type": "range",
       "id": "pixel_height_mobile",
-      "label": "t:settings.height",
+      "label": "Height",
       "min": 16,
       "max": 160,
       "step": 8,
       "unit": "px",
       "default": 120,
       "visible_if": "{{ block.settings.unit_mobile == 'pixel' and block.settings.custom_mobile_size == true}}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.padding"
-    },
-    {
-      "type": "range",
-      "id": "padding-block-start",
-      "label": "t:settings.top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding-block-end",
-      "label": "t:settings.bottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding-inline-start",
-      "label": "t:settings.left",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding-inline-end",
-      "label": "t:settings.right",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
     }
   ],
   "presets": [
     {
-      "name": "t:names.logo",
-      "category": "t:categories.basic",
+      "name": "Logo",
+      "category": "Basic",
       "settings": {
         "unit": "pixel",
         "pixel_height": 48
