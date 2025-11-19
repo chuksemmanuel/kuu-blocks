@@ -8,15 +8,14 @@ declare global {
 		open: () => void;
 		close: () => void;
 		refresh: (updateOptions?: CartDrawerUpdateOptions) => Promise<void>;
-		beforeUpdate?: (cartDrawerEl: Element | null) => {};
-		afterUpdate?: (cartDrawerEl: Element | null) => {};
 		settings: CartDrawerSettings;
 		updateSettings: (settings: any) => void;
 		getSettings: () => CartDrawerSettings;
 	};
+
 	type CartDrawerUpdateOptions = {
-		beforeUpdate?: (cartDrawerEl: Element | null) => {};
-		afterUpdate?: (cartDrawerEl: Element | null) => {};
+		beforeRefresh?: (cartDrawerEl: Element | null, cart: Cart | null) => {};
+		afterRefresh?: (cartDrawerEl: Element | null, cart: Cart | null) => {};
 		skipAnnouncement?: boolean;
 	};
 	interface CartDrawerSettings {

@@ -19,6 +19,8 @@ document.addEventListener('alpine:init', () => {
     const Alpine = window.Alpine
 
     Alpine.data('cartDrawer', () => ({
+        /** @type {string} */
+        sectionId: '',
         /**
          * The key of the item currently being updated.
          * Used to show per-item spinners.
@@ -50,6 +52,8 @@ document.addEventListener('alpine:init', () => {
          * @type {Record<string, number|string>}
          */
         itemsQuantity: {},
+        /** @type {Cart | null} */
+        cart: null,
         /**
          * @type {CartDrawerSettings}
          */
@@ -64,6 +68,8 @@ document.addEventListener('alpine:init', () => {
         },
         async init() {
 
+            this.sectionId = this.$el.dataset.sectionId || ''
+
             const script = document.getElementById(`cartdrawer-settings`)
             if (!script) {
                 return
@@ -71,7 +77,7 @@ document.addEventListener('alpine:init', () => {
 
             this.settings = JSON.parse(script.textContent)
 
-            console.log(this.settings)
+
 
 
             try {
@@ -79,6 +85,9 @@ document.addEventListener('alpine:init', () => {
                 const cartRes = await fetch('/cart.js')
                 /** @type {Cart} */
                 const cart = await cartRes.json()
+
+                this.cart = cart
+
                 if (!cartRes.ok) {
                     const cartErr = await cartRes.json()
                     throw new Error(`${cartErr?.message || 'Failed to fetch cart'}`)
@@ -236,6 +245,8 @@ document.addEventListener('alpine:init', () => {
                 /** @type {Cart} */
                 const cart = await cartRes.json()
 
+                this.cart = cart
+
                 // Update ItemsQuantity
                 cart.items.forEach((item) => {
                     this.itemsQuantity[item.key] = item.quantity
@@ -278,8 +289,8 @@ document.addEventListener('alpine:init', () => {
          * @param {CartDrawerUpdateOptions } [options]
         */
         async updateCartDrawer(options) {
-            const beforeUpdate = options?.beforeUpdate
-            const afterUpdate = options?.afterUpdate
+            const beforeRefresh = options?.beforeRefresh
+            const afterRefresh = options?.afterRefresh
 
             try {
 
@@ -289,12 +300,12 @@ document.addEventListener('alpine:init', () => {
 
 
                 // Fetch updated cart drawer section
-                const res = await fetch('/?sections=cartdrawer')
+                const res = await fetch(`/?sections=${this.sectionId}`)
                 const data = await res.json()
                 const cartContent = document.querySelector('#cartdrawer-content')
                 const cartBubbles = document.querySelectorAll('[data-cartdrawer-bubble]')
 
-                const fragment = new DOMParser().parseFromString(data.cartdrawer, 'text/html')
+                const fragment = new DOMParser().parseFromString(data[this.sectionId], 'text/html')
                 const newCartDrawer = fragment.querySelector('#cartdrawer')
                 const newContent = fragment.querySelector('#cartdrawer-content')
                 const newBubble = fragment.querySelector('[data-cartdrawer-bubble]')
@@ -303,12 +314,12 @@ document.addEventListener('alpine:init', () => {
                     cartDrawer: newCartDrawer
                 })
 
-                if (beforeUpdate) {
-                    beforeUpdate(newCartDrawer)
+                if (beforeRefresh) {
+                    beforeRefresh(newCartDrawer, this.cart)
                 }
 
                 if (cartContent && newContent) {
-                    cartContent.innerHTML = newContent.innerHTML
+                    Alpine.morph(cartContent, newContent)
 
                     // RESTORE FOCUS
                     if (restoreSelector) {
@@ -320,8 +331,8 @@ document.addEventListener('alpine:init', () => {
 
                 }
 
-                if (afterUpdate) {
-                    afterUpdate(document.querySelector('#cartdrawer'))
+                if (afterRefresh) {
+                    afterRefresh(document.querySelector('#cartdrawer'), this.cart)
                 }
 
                 if (cartBubbles.length > 0 && newBubble) {

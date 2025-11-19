@@ -35,22 +35,21 @@
 <div
   id="cartdrawer"
   x-data="cartDrawer()"
+  data-section-id="{{ section_id }}"
   {{ shopify_attributes }}>
+
   {% capture cart_button %}
-        <span class="bg-primary flex justify-center items-center text-primary-foreground z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs" data-cartdrawer-bubble aria-hidden="true">
-          {{ cart.item_count }}
-          
-        </span>
-        <span aria-hidden="true"> {{ 'icons/shopping-cart.svg' | inline_asset_content }}</span>
-       
+        <span class="bg-primary flex justify-center items-center text-primary-foreground z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs" data-cartdrawer-bubble>{{ cart.item_count }}</span>
+          <span aria-hidden="true"> {{ 'icons/shopping-cart.svg' | inline_asset_content }}</span>
   {% endcapture %}
   {% capture cart_trigger %}
-           {% render 'button'
-        , size: 'icon'
-        , content: cart_button
-        , class: 'bg-white text-black hover:bg-primary hover:text-white!  md:size-12 rounded-full! '
-         , aria_label: 'Open Shopping cart'
-      %}
+       {% render 'button'
+  , variant: 'circled-icon'
+  , size: 'none'
+  , content: cart_button
+  , aria_label: 'Open Shopping cart'
+  , props: 'x-data @click="$dispatch(`drawer:open`,{id:`cartdrawer`})"'
+%}
   {% endcapture %}
   {% capture cart_content %}
   
@@ -163,7 +162,7 @@
 <script src="{{ 'js/blocks/cartdrawer.js' | asset_url }}" defer></script>
 
 {% comment %} <script>
-    setTimeout(() => {
-      window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }));
-    }, 1000);
+          setTimeout(() => {
+            window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }));
+          }, 1000);
 </script> {% endcomment %}
