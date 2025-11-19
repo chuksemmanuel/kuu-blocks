@@ -1,0 +1,14 @@
+{% render 'button' 
+  , variant: 'circled-icon'
+  , size: 'none'
+  , icon: 'icons/hamburger.svg'
+  , class: " rounded-lg!"
+  , aria_label: 'Open Menu'
+  , props: 'x-data @click="$dispatch(`drawer:open`,{id:`menu-drawer`})"' %}
+
+{% schema %}
+  {
+    "name": "Tabbed Menu",
+    "settings": []
+  }
+{% endschema %}

@@ -1,4 +1,15 @@
-<h1>CartDrawer</h1>
+{% capture cart_button %}
+        <span class="bg-primary flex justify-center items-center text-primary-foreground z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs" data-cartdrawer-bubble>{{ cart.item_count }}</span>
+        {{ 'icons/shopping-cart.svg' | inline_asset_content }}
+    {% endcapture %}
+{% render 'button'
+  , variant: 'circled-icon'
+  , size: 'none'
+  , content: cart_button
+  , aria_label: 'Open Shopping cart'
+  , props: 'x-data @click="$dispatch(`drawer:open`,{id:`cartdrawer`})"'
+%}
+
 
 {% schema %}
   {

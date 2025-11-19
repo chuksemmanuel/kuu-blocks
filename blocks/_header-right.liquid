@@ -1,0 +1,46 @@
+<div class="flex gap-4">
+
+  {% content_for 'blocks' %}
+
+
+</div>
+
+{% schema %}
+  {
+    "name": "Header Right",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "@app"
+      },
+      {
+        "type": "_searchdrawer",
+      },
+      {
+        "type": "_account-button"
+      },
+        {
+        "type": "_cartdrawer"
+      },
+    ],
+    "presets": [
+      {
+        "name": "header right",
+        "blocks": [
+            {
+                "type": "_searchdrawer",
+                "settings": {}
+            },
+            {
+                "type": "_account-button",
+                "settings": {}
+            },
+            {
+                "type": "_account-button",
+                "settings": {}
+            }
+            ]
+      }
+    ]
+  }
+{% endschema %}

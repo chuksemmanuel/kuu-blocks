@@ -4,8 +4,17 @@ class="grid grid-cols-3 place-content-between w-full py-6">
   {% render 'announcement' %}
 
   <div class="flex items-center gap-2 shrink-0">
-    {% render 'tabbed-menu'
-      , section: section %}
+
+      {% content_for 'block'
+      , id:'menu-drawer'
+      , type: '_tabbed-menu'
+      %}
+      {% for block in section.blocks %}
+      {% case block.type %}
+        {% when '@app' %}
+          {% render block %}
+      {% endcase %}
+    {% endfor %}
 
     {% render 'searchdrawer-mobile' %}
 
@@ -34,38 +43,7 @@ class="grid grid-cols-3 place-content-between w-full py-6">
 
 
   <div class="flex justify-end items-center  md:gap-16">
-
-
-    <div class="flex gap-4">
-
-
-      {% render 'searchdrawer-desktop' %}
-
-      {% if shop.customer_accounts_enabled %}
-        {% render 'button'
-          , href: routes.account_url
-          , variant: 'circled-icon'
-          , size: 'none'
-          , icon: 'icons/user.svg'
-          , aria_label: 'Open Account'
-        %}
-      {% endif %}
-
-
-      {% capture cart_button %}
-        <span class="bg-primary flex justify-center items-center text-primary-foreground z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs" data-cartdrawer-bubble>{{ cart.item_count }}</span>
-        {{ 'icons/shopping-cart.svg' | inline_asset_content }}
-      {% endcapture %}
-      {% render 'button'
-        , variant: 'circled-icon'
-        , size: 'none'
-        , content: cart_button
-        , aria_label: 'Open Shopping cart'
-        , props: 'x-data @click="$dispatch(`drawer:open`,{id:`cartdrawer`})"'
-      %}
-
-
-    </div>
+      {% content_for 'block', id: 'header-right', type:"_header-right" %}
   </div>
 
 </header>
@@ -83,38 +61,13 @@ class="grid grid-cols-3 place-content-between w-full py-6">
     ],
     "blocks": [
       {
-        "type": "menu_item",
-        "name": "Menu Item",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Item Image"
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Item Title"
-          },
-          {
-            "type": "url",
-            "id": "href",
-            "label": "Item Link"
-          },
-          {
-            "type": "text",
-            "id": "parent_tab",
-            "label": "Parent Tab (must match tab title)"
-          }
-        ]
+        "type": "_tabbed-menu"
+      },
+      {
+        "type": "_header-right"
       },
       {
         "type": "@app"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Tabbed Menu"
       }
     ]
 

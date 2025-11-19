@@ -1,0 +1,20 @@
+{% if shop.customer_accounts_enabled %}
+  {% render 'button'
+    , href: routes.account_url
+    , variant: 'circled-icon'
+    , size: 'none'
+    , icon: 'icons/user.svg'
+    , aria_label: 'Open Account'
+  %}
+{% endif %}
+{% schema %}
+  {
+    "name": "Account Button",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Account Button"
+      }
+    ]
+  }
+{% endschema %}

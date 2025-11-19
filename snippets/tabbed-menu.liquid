@@ -1,3 +1,7 @@
+{% liquid
+  assign headless = headless
+%}
+
 <style>
   button {
     cursor: pointer;
@@ -211,4 +215,5 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
   , content: menu_content
   , id: 'menu-drawer'
   , from: 'left'
+  , headless: headless
 %}
