@@ -3,48 +3,21 @@ class="grid grid-cols-3 place-content-between w-full py-6">
   {% # Annoucement snippet for screen readers %}
   {% render 'announcement' %}
 
-  <div class="flex items-center gap-2 shrink-0">
 
-      {% content_for 'block'
-      , id:'menu-drawer'
-      , type: '_tabbed-menu'
-      %}
-      {% for block in section.blocks %}
-      {% case block.type %}
-        {% when '@app' %}
-          {% render block %}
-      {% endcase %}
-    {% endfor %}
-
-    {% render 'searchdrawer-mobile' %}
+  {% content_for 'block'
+    , id: 'header-left'
+    , type: "_header-left" %}
 
 
-    <h2 class="header__title uppercase font-medium text-2xl hidden md:block ">
-      {{ shop.name | link_to: routes.root_url }}
-    </h2>
-
-  </div>
+  {% content_for 'block'
+    , id: 'header-center'
+    , type: "_header-center" %}
 
 
-  <div class="flex items-center justify-center  shrink-0">
-    <h2 class="header__title uppercase text-center font-medium text-lg md:text-2xl  md:hidden" aria-label="site logo">
-      {{ shop.name | link_to: routes.root_url }}
-    </h2>
+  {% content_for 'block'
+    , id: 'header-right'
+    , type: "_header-right" %}
 
-    <ul aria-label="menu items" class=" justify-between gap-8 hidden md:flex font-medium">
-      {% for link in section.settings.menu.links %}
-        <li>
-          {{ link.title | link_to: link.url }}
-        </li>
-
-      {% endfor %}
-    </ul>
-  </div>
-
-
-  <div class="flex justify-end items-center  md:gap-16">
-      {% content_for 'block', id: 'header-right', type:"_header-right" %}
-  </div>
 
 </header>
 
@@ -53,21 +26,17 @@ class="grid grid-cols-3 place-content-between w-full py-6">
   {
     "name": "t:general.header",
     "settings": [
-      {
-        "type": "link_list",
-        "id": "menu",
-        "label": "t:labels.menu"
-      }
+    
     ],
     "blocks": [
       {
-        "type": "_tabbed-menu"
+        "type": "_header-left"
+      },
+      {
+        "type": "_header-center"
       },
       {
         "type": "_header-right"
-      },
-      {
-        "type": "@app"
       }
     ]
 

@@ -1,8 +1,10 @@
-<div class="flex gap-4">
+<div class="flex justify-end items-center  md:gap-16">
+  <div class="flex gap-4">
 
-  {% content_for 'blocks' %}
+    {% content_for 'blocks' %}
 
 
+  </div>
 </div>
 
 {% schema %}
@@ -14,32 +16,32 @@
         "type": "@app"
       },
       {
-        "type": "_searchdrawer",
+        "type": "_searchdrawer"
       },
       {
         "type": "_account-button"
       },
-        {
+      {
         "type": "_cartdrawer"
-      },
+      }
     ],
     "presets": [
       {
         "name": "header right",
         "blocks": [
-            {
-                "type": "_searchdrawer",
-                "settings": {}
-            },
-            {
-                "type": "_account-button",
-                "settings": {}
-            },
-            {
-                "type": "_account-button",
-                "settings": {}
-            }
-            ]
+          {
+            "type": "_searchdrawer",
+            "settings": {}
+          },
+          {
+            "type": "_account-button",
+            "settings": {}
+          },
+          {
+            "type": "_cartdrawer",
+            "settings": {}
+          }
+        ]
       }
     ]
   }

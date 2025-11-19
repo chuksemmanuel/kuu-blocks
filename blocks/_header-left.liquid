@@ -1,0 +1,38 @@
+<div class="flex items-center gap-2 shrink-0">
+
+  {% content_for 'block'
+    , id: 'menu-drawer'
+    , type: '_tabbed-menu'
+  %}
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when '@app' %}
+        {% render block %}
+    {% endcase %}
+  {% endfor %}
+
+  {% render 'searchdrawer-mobile' %}
+
+  {% content_for 'block'
+    , id: 'site-logo'
+    , type: 'logo'
+  %}
+
+</div>
+
+{% schema %}
+  {
+    "name": "Header Left",
+    "blocks": [
+      {
+        "type": "logo"
+      },
+      {
+        "type": "_tabbed-menu"
+      },
+      {
+        "type": "@app"
+      }
+    ]
+  }
+{% endschema %}
