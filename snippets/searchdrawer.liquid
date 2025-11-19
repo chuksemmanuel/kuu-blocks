@@ -1,4 +1,17 @@
-{% capture search_trigger %}
+{% liquid
+  assign id = id | default: 'searchdrawer'
+  assign variant = variant | default: 'circled'
+  assign direction = direction | default: 'right'
+  assign device = device | default: 'all'
+
+  if device == 'mobile'
+    assign = mobile_direction = direction
+  else
+    assign = mobile_direction = mobile_direction | default: direction
+  endif
+%}
+
+{% capture search_trigger_circled %}
     {% render 'button'
              , variant: 'circled-icon'
           , size: 'none'
@@ -7,6 +20,24 @@
     , props:'{{ shopify_attributes }}'
    %}
 {% endcapture %}
+
+{% capture search_trigger_ghost %}
+    {% render 'button'
+      variant: 'circled-icon',
+        size: 'none',
+    , icon: 'icons/search.svg'
+    , class: 'rounded-lg! bg-transparent!'
+    , aria_label:'Search button'
+    , props:'{{ shopify_attributes }}' %}
+  {% endcapture %}
+
+{% if variant == 'circled' %}
+  {% assign search_trigger = search_trigger_circled %}
+
+{% else %}
+  {% assign search_trigger = search_trigger_ghost %}
+{% endif %}
+
 {% capture search_content %}
        {% render 'searchdrawer-content' %}
 {% endcapture %}
@@ -15,8 +46,8 @@
   trigger: search_trigger,
   content: search_content,
   id: id,
-  from: 'right',
-  mobileFrom: 'top',
+  from: direction,
+  mobileFrom: mobile_direction,
   class: ''
 %}
 

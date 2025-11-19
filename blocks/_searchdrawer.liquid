@@ -9,7 +9,13 @@
 {% endcase %}
 
 <div class="{{ display_class }}">
-  {% render 'searchdrawer', id: block.id %}
+  {% render 'searchdrawer',
+    id: block.id,
+    device: block.settings.device,
+    variant: block.settings.variant,
+    direction: block.settings.direction,
+    mobile_direction: block.settings.mobile_direction
+  %}
 </div>
 {% schema %}
 {
@@ -18,7 +24,7 @@
     {
       "type": "select",
       "id": "device",
-      "label": "Show Logo on",
+      "label": "Show Drawer on",
       "options": [
         {
           "value": "all",
@@ -34,6 +40,72 @@
         }
       ],
       "default": "all"
+    },
+    {
+      "type": "select",
+      "id": "variant",
+      "label": "Button Variant",
+      "options": [
+        {
+          "value": "circled",
+          "label": "Circled"
+        },
+        {
+          "value": "ghost",
+          "label": "Ghost"
+        }
+      ],
+      "default": "circled"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Drawer Direction",
+      "info": "Direction the drawer animates from",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "select",
+      "id": "mobile_direction",
+      "label": "Mobile Direction",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "top",
+      "visible_if": "{{block.settings.device == 'all'}}"
     }
   ],
   "presets": [
