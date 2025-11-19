@@ -93,7 +93,7 @@ document.addEventListener('alpine:init', () => {
                 gsap.set(this.$overlay, { opacity: 0, pointerEvents: 'none' });
 
                 // Set panel initial offscreen transform + hidden
-                this.setIntialDrawerTransform()
+                this.resetDrawerTransform()
 
                 // hook up data-drawer-close inside the panel
                 this.$panel.addEventListener('click', e => {
@@ -241,7 +241,7 @@ document.addEventListener('alpine:init', () => {
 
                         // only update if the directionClass changes
                         if (oldDirectionClass != this.directionClass) {
-                            this.setIntialDrawerTransform()
+                            this.resetDrawerTransform()
                             this.$panel?.setAttribute('class', this.directionClass)
                         }
                     }
@@ -265,7 +265,7 @@ document.addEventListener('alpine:init', () => {
 
             },
 
-            setIntialDrawerTransform() {
+            resetDrawerTransform() {
                 // Set panel initial offscreen transform + hidden
                 if (this.direction === 'left') {
                     gsap.set(this.$panel, { x: '-100%', y: 0, opacity: 0, visibility: 'hidden' });
