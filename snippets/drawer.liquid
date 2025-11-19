@@ -35,26 +35,49 @@
 </style>
 
 {% assign from = from | default: 'right' %}
-{% assign base_class = 'fixed  flex flex-col justify-stretch w-full h-full z-50 overflow-y-auto no-scrollbar p-2 lg:p-4 focus-visible:outline-0' %}
+{% assign base_class = 'fixed  flex flex-col justify-stretch w-full  z-50 overflow-y-auto no-scrollbar p-2 lg:p-4 focus-visible:outline-0' %}
+
+{% liquid
+  assign vertical_direction = 'h-fit min-h-120 max-h-full left-0'
+  assign horizontal_direction = 'h-full top-0 max-w-[min(648px,100%)]'
+
+  assign top_direction = vertical_direction | append: 'top-0'
+  assign bottom_direction = vertical_direction | append: 'bottom-0'
+  assign left_direction = horizontal_direction | append: 'left-0'
+  assign right_direction = horizontal_direction | append: 'right-0'
+%}
+
+<script type="application/json" data-drawer-script="{{id}}">
+  {
+    "top":{{top_direction |  json}},
+    "bottom":{{bottom_direction | json}},
+    "left":{{left_direction | json}},
+    "right":{{right_direction | json}}
+  }
+</script>
 
 {% case from %}
   {% when 'top' %}
-    {% assign direction_class = 'left-0 top-0' %}
+    {% assign direction_class = 'h-fit min-h-120 max-h-full left-0 top-0' %}
   {% when 'bottom' %}
-    {% assign direction_class = 'left-0 bottom-0' %}
+    {% assign direction_class = 'h-fit min-h-120 max-h-full left-0 bottom-0' %}
   {% when 'left' %}
-    {% assign direction_class = 'top-0 max-w-[min(648px,100%)] left-0' %}
+    {% assign direction_class = 'h-full top-0 max-w-[min(648px,100%)] left-0' %}
   {% when 'right' %}
-    {% assign direction_class = 'top-0 max-w-[min(648px,100%)] right-0' %}
+    {% assign direction_class = 'h-full top-0 max-w-[min(648px,100%)] right-0' %}
   {% else %}
     {% assign direction_class = 'top-0 max-w-[min(648px,100%)] right-0' %}
 {% endcase %}
 
 <div
-  x-data="drawer('{{ from }}')"
+  x-data="drawer"
   x-init="init()"
   class="ida-drawer"
   data-drawer-id="{{id}}"
+  data-direction="{{from}}"
+  data-base-class="{{ base_class }}"
+  data-custom-class="{{class}}"
+  data-mobile-direction="{{mobileFrom}}"
 >
   <!-- Trigger -->
   {% if headless != true %}
@@ -75,6 +98,7 @@
   <!-- Drawer panel -->
   <div
     class="{{base_class}} {{direction_class}} {{class}}"
+
     x-cloak
     x-ref="panel"
     style="opacity: 0; visibility: hidden; will-change: transform, opacity;"

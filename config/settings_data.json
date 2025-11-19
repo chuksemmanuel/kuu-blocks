@@ -14,26 +14,6 @@
     "secondary_color": "#f3f4f6",
     "background_color": "#f5f5f5",
     "foreground_color": "#393838",
-    "sections": {
-      "cartdrawer": {
-        "type": "cartdrawer",
-        "settings": {
-          "sticky_header": true,
-          "sticky_footer": true,
-          "show_variant_title": true,
-          "show_compare_price": false,
-          "final_price_color": "#fb2c36",
-          "show_savings_badge": false,
-          "savings_badge_color": "#fb2c36",
-          "show_checkout_lock_icon": true,
-          "checkout_button_label": "Proceed to Checkout",
-          "show_secondary_footer_cta": true,
-          "secondary_footer_cta_label": "Continue Shopping",
-          "secondary_footer_cta_action": "close-drawer",
-          "secondary_footer_cta_link": "/"
-        }
-      }
-    },
     "content_for_index": []
   }
 }

@@ -10,15 +10,15 @@
 {% capture search_content %}
        {% render 'searchdrawer-content' %}
 {% endcapture %}
-<div class="hidden md:inline-block">
-  {% render 'drawer',
-    trigger: search_trigger,
-    content: search_content,
-    id: 'searchdrawer-desktop',
-    from: 'right',
-    class: ''
-  %}
-</div>
+
+{% render 'drawer',
+  trigger: search_trigger,
+  content: search_content,
+  id: id,
+  from: 'right',
+  mobileFrom: 'top',
+  class: ''
+%}
 
 {% comment %}
   {% capture search_trigger %}

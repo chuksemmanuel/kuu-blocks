@@ -1,9 +1,41 @@
-{% render 'searchdrawer' %}
+{% case block.settings.device %}
+  {% when 'mobile' %}
+    {% assign display_class = 'flex md:hidden' %}
 
+  {% when 'desktop' %}
+    {% assign display_class = 'hidden md:flex' %}
+  {% else %}
+    {% assign display_class = 'flex' %}
+{% endcase %}
+
+<div class="{{ display_class }}">
+  {% render 'searchdrawer', id: block.id %}
+</div>
 {% schema %}
 {
   "name": "Search Drawer",
-  "settings": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "device",
+      "label": "Show Logo on",
+      "options": [
+        {
+          "value": "all",
+          "label": "All Devices"
+        },
+        {
+          "value": "mobile",
+          "label": "Mobile  Devices Only"
+        },
+        {
+          "value": "desktop",
+          "label": "Desktop Devices  Only"
+        }
+      ],
+      "default": "all"
+    }
+  ],
   "presets": [
     {
       "name": "Search Drawer",
