@@ -42,8 +42,6 @@ document.addEventListener('alpine:init', () => {
             this.productId = this.$el.dataset.quickAddForm
 
 
-            console.log(this.optionWithValues)
-            console.log(product)
 
             // Adjust drawer content height
             setTimeout(() => {
@@ -122,7 +120,7 @@ document.addEventListener('alpine:init', () => {
                     })
                 })
 
-                console.log('this.compatible', this.compatible)
+
 
             }
 

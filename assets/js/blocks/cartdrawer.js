@@ -6,6 +6,38 @@
 
 
 
+
+/**
+ * CartDrawer Settings
+ * @typedef {Object} CartDrawerSettings
+ * @property {boolean} stickyHeader
+ *   Whether the cart drawer header should remain fixed at the top.
+ * @property {boolean} stickyFooter
+ *   Whether the cart drawer footer should remain fixed at the bottom.
+ * @property {boolean} showComparePrice
+ *   Whether to display the compare-at price for each product.
+ * @property {string} finalPriceColor
+ *   HEX color used to display the final price (e.g. "#fb2c36").
+ * @property {boolean} showSavingsBadge
+ *   Whether to display the savings badge (e.g. "-20%").
+ * @property {string} savingsBadgeColor
+ *   HEX color for the savings badge.
+ * @property {boolean} showVariantTitle
+ *   Whether to display the selected variant title under product names.
+ * @property {boolean} showSecondaryFooterCTA
+ *   Whether to show the secondary footer call-to-action button.
+ * @property {string} secondaryFooterCTALabel
+ *   Label text for the secondary CTA button (e.g. "Continue Shopping").
+ * @property {string|null} secondaryFooterCTALink
+ *   Link URL for the secondary CTA button. Can be null.
+ * @property {boolean} showCheckoutLockIcon
+ *   Whether to display the lock icon on the checkout button.
+ * @property {string} checkoutButtonLabel
+ *   Label text displayed on the checkout button.
+ */
+
+
+
 /**
  * @typedef {'cartdrawer:updating' | 'cartdrawer:init'} CartdrawerEvents
  * @typedef {{message: string, type: 'warning'|'success'|'error', key?: string|null,}} CartMessage
@@ -47,7 +79,32 @@ document.addEventListener('alpine:init', () => {
          * @type {Record<string, number|string>}
          */
         itemsQuantity: {},
+        CartDrawerSettings: {},
+        settings: {
+            stickyHeader: true,
+            stickyFooter: true,
+            showComparePrice: false,
+            finalPriceColor: "#fb2c36",
+            showSavingsBadge: false,
+            savingsBadgeColor: "#fb2c36",
+            showVariantTitle: true,
+            showSecondaryFooterCTA: true,
+            secondaryFooterCTALabel: "Continue Shopping",
+            secondaryFooterCTALink: null,
+            showCheckoutLockIcon: true,
+            checkoutButtonLabel: "Proceed to Checkout"
+        },
         async init() {
+
+            const script = document.getElementById(`cartdrawer-settings`)
+            if (!script) {
+                return
+            }
+
+            this.settings = JSON.parse(script.textContent)
+
+
+            console.log('cartdrawer settings ==>', this.settings)
 
             try {
                 // Populate items quantity
