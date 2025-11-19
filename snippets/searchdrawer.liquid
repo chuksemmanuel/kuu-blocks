@@ -1,0 +1,42 @@
+{% capture search_trigger %}
+    {% render 'button'
+             , variant: 'circled-icon'
+          , size: 'none'
+    , icon: 'icons/search.svg'
+    , aria_label:'Search button'
+    , props:'{{ shopify_attributes }}'
+   %}
+{% endcapture %}
+{% capture search_content %}
+       {% render 'searchdrawer-content' %}
+{% endcapture %}
+<div class="hidden md:inline-block">
+  {% render 'drawer',
+    trigger: search_trigger,
+    content: search_content,
+    id: 'searchdrawer-desktop',
+    from: 'right',
+    class: ''
+  %}
+</div>
+
+{% comment %}
+  {% capture search_trigger %}
+    {% render 'button'
+    , size: 'icon'
+    , icon: 'icons/search.svg'
+    , class: ' md:size-12 rounded-full!' %}
+  {% endcapture %}
+  {% capture search_content %}
+    {% render 'searchdrawer-content' %}
+  {% endcapture %}
+  <div class="inline-block md:hidden">
+    {% render 'drawer'
+      , trigger: search_trigger
+      , content: search_content
+      , id: 'searchdrawer-mobile'
+      , from: 'top'
+      , class: 'h-fit! min-h-80! max-h-full!'
+    %}
+  </div>
+{% endcomment %}

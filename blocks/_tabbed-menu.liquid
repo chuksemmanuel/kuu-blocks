@@ -1,14 +1,21 @@
-{% render 'button' 
-  , variant: 'circled-icon'
-  , size: 'none'
-  , icon: 'icons/hamburger.svg'
-  , class: " rounded-lg!"
-  , aria_label: 'Open Menu'
-  , props: 'x-data @click="$dispatch(`drawer:open`,{id:`menu-drawer`})"' %}
+{% render 'button',
+  variant: 'circled-icon',
+  size: 'none',
+  icon: 'icons/hamburger.svg',
+  class: ' rounded-lg!',
+  aria_label: 'Open Menu',
+  props: 'x-data @click="$dispatch(`drawer:open`,{id:`menu-drawer`})"'
+%}
 
 {% schema %}
-  {
-    "name": "Tabbed Menu",
-    "settings": []
-  }
+{
+  "name": "Tabbed Menu",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Tabbed Menu",
+      "category": "Drawers"
+    }
+  ]
+}
 {% endschema %}

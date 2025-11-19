@@ -1,23 +1,22 @@
-{% comment %} 
-                                drawer.liquid
-                                  Accepts:
-                                  - trigger: {String} a Capture of the trigger (usuallly a button)
-                                  - content: {String} a Capture/Snippet of the drawer content
-                                  - from: {String} Direction the drawer slides from
-                                  - id: {String} Unique identifier of the drawer to target (e.g., 'cartdrawer', 'menudrawer')  used to open/close the drawer via the drawer:open and drawer:close custom Event
-                                  Example:
-                                  window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }))
-                                  window.dispatchEvent(new CustomEvent('drawer:close', { detail: { id: 'menu' } }))
+{% comment %}
+  drawer.liquid
+    Accepts:
+    - trigger: {String} a Capture of the trigger (usuallly a button)
+    - content: {String} a Capture/Snippet of the drawer content
+    - from: {String} Direction the drawer slides from
+    - id: {String} Unique identifier of the drawer to target (e.g., 'cartdrawer', 'menudrawer')  used to open/close the drawer via the drawer:open and drawer:close custom Event
+    Example:
+    window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }))
+    window.dispatchEvent(new CustomEvent('drawer:close', { detail: { id: 'menu' } }))
 
-                                Usage:
-                                  {% render 'drawer'
-                                    , trigger: cart_trigger
-                                    , content: cart_content
-                                    , name: 'cartdrawer'
-                                    , from: 'right'
-                                  %}
+  Usage:
+    {% render 'drawer'
+      , trigger: cart_trigger
+      , content: cart_content
+      , name: 'cartdrawer'
+      , from: 'right'
+    %}
 {% endcomment %}
-
 
 <style>
   [x-cloak] {
@@ -55,7 +54,8 @@
   x-data="drawer('{{ from }}')"
   x-init="init()"
   class="ida-drawer"
-  data-drawer-id="{{id}}">
+  data-drawer-id="{{id}}"
+>
   <!-- Trigger -->
   {% if headless != true %}
     <div @click="openDrawer()">
@@ -63,14 +63,14 @@
     </div>
   {% endif %}
 
-
   <!-- Overlay -->
   <div
     class="fixed inset-0 bg-black/50 z-40"
     x-cloak
     x-ref="overlay"
     style="pointer-events: none; opacity: 0;"
-    @click="closeDrawer()"></div>
+    @click="closeDrawer()"
+  ></div>
 
   <!-- Drawer panel -->
   <div
@@ -83,10 +83,9 @@
     aria-modal="true"
     aria-lablledby="drawer-title"
     aria-describedby="drawer-description"
-    x-trap="open">
-
+    x-trap="open"
+  >
     {{ content }}
-
   </div>
 </div>
 <script src="{{ 'js/components/drawer.js' | asset_url }}" defer></script>
