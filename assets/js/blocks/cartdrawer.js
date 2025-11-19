@@ -7,35 +7,6 @@
 
 
 
-/**
- * CartDrawer Settings
- * @typedef {Object} CartDrawerSettings
- * @property {boolean} stickyHeader
- *   Whether the cart drawer header should remain fixed at the top.
- * @property {boolean} stickyFooter
- *   Whether the cart drawer footer should remain fixed at the bottom.
- * @property {boolean} showComparePrice
- *   Whether to display the compare-at price for each product.
- * @property {string} finalPriceColor
- *   HEX color used to display the final price (e.g. "#fb2c36").
- * @property {boolean} showSavingsBadge
- *   Whether to display the savings badge (e.g. "-20%").
- * @property {string} savingsBadgeColor
- *   HEX color for the savings badge.
- * @property {boolean} showVariantTitle
- *   Whether to display the selected variant title under product names.
- * @property {boolean} showSecondaryFooterCTA
- *   Whether to show the secondary footer call-to-action button.
- * @property {string} secondaryFooterCTALabel
- *   Label text for the secondary CTA button (e.g. "Continue Shopping").
- * @property {string|null} secondaryFooterCTALink
- *   Link URL for the secondary CTA button. Can be null.
- * @property {boolean} showCheckoutLockIcon
- *   Whether to display the lock icon on the checkout button.
- * @property {string} checkoutButtonLabel
- *   Label text displayed on the checkout button.
- */
-
 
 
 /**
@@ -79,20 +50,17 @@ document.addEventListener('alpine:init', () => {
          * @type {Record<string, number|string>}
          */
         itemsQuantity: {},
-        CartDrawerSettings: {},
+        /**
+         * @type {CartDrawerSettings}
+         */
         settings: {
             stickyHeader: true,
             stickyFooter: true,
             showComparePrice: false,
             finalPriceColor: "#fb2c36",
+            showVariantTitle: true,
             showSavingsBadge: false,
             savingsBadgeColor: "#fb2c36",
-            showVariantTitle: true,
-            showSecondaryFooterCTA: true,
-            secondaryFooterCTALabel: "Continue Shopping",
-            secondaryFooterCTALink: null,
-            showCheckoutLockIcon: true,
-            checkoutButtonLabel: "Proceed to Checkout"
         },
         async init() {
 
@@ -103,8 +71,8 @@ document.addEventListener('alpine:init', () => {
 
             this.settings = JSON.parse(script.textContent)
 
+            console.log(this.settings)
 
-            console.log('cartdrawer settings ==>', this.settings)
 
             try {
                 // Populate items quantity
@@ -285,6 +253,7 @@ document.addEventListener('alpine:init', () => {
                 // Refresh the cart drawer content
                 await this.updateCartDrawer()
             } catch (err) {
+                await this.updateCartDrawer()
 
                 if (typeof err === 'string') {
                     this.setCartMessage({ message: err, type: 'error', key })
@@ -306,7 +275,7 @@ document.addEventListener('alpine:init', () => {
             }
         },
         /** 
-         * @param {UpdateOptions } [options]
+         * @param {CartDrawerUpdateOptions } [options]
         */
         async updateCartDrawer(options) {
             const beforeUpdate = options?.beforeUpdate
@@ -366,6 +335,18 @@ document.addEventListener('alpine:init', () => {
 
         },
         /**
+         * 
+         * @param {Partial<CartDrawerSettings>} newSettings 
+         */
+        updateSettings(newSettings) {
+            const updatedSettings = {
+                ...this.settings,
+                ...newSettings
+            }
+            this.settings = updatedSettings
+            console.log('updated, settings ==>', this.settings)
+        },
+        /**
          * dispatch cartdrawer events
          * @param {CartdrawerEvents} event 
          * @param {Object} detail 
@@ -392,6 +373,12 @@ document.addEventListener('alpine:init', () => {
             }
 
             cartdrawer['refresh'] = this.updateCartDrawer.bind(this)
+
+            cartdrawer['settings'] = this.settings
+
+            cartdrawer['updateSettings'] = this.updateSettings.bind(this)
+
+            cartdrawer['getSettings'] = this._getSettings.bind(this)
 
 
             window.theme.cartDrawer = cartdrawer
@@ -438,6 +425,16 @@ document.addEventListener('alpine:init', () => {
                     cartDrawerRegion.textContent = message
                 }, 100)
             }
+        },
+        /**
+         * Returns the contrast color (Black/White) based on the given HEX color.
+         * @param {string} hex 
+         */
+        _getContrastColor(hex) {
+            return window.Sleek?.utils?.getContrastColor(hex) || '#000000';
+        },
+        _getSettings() {
+            return this.settings
         }
     }))
 })

@@ -11,6 +11,15 @@ declare global {
 		App: {
 			init: () => void;
 		};
+
+		// Sleek
+		Sleek?: {
+			utils?: {
+				getContrastRatio: typeof getContrastRatio;
+				getContrastColor: typeof getContrastColor;
+			};
+		};
+		getContrastRatio: typeof getContrastRatio;
 		// Libraries
 		Alpine: typeof Alpine;
 		Swiper: typeof SwiperClass;

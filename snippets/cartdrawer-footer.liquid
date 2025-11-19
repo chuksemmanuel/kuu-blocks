@@ -8,15 +8,23 @@
       <div class="flex justify-between items-center">
         <span class="font-medium lg:text-lg">Total</span>
 
-        {% if cart.original_total_price > cart.total_price and show_compare_price %}
-          <div class="flex gap-2" :class="updatingKey && 'animate-pulse'">
-            <span class="font-semibold lg:text-lg" style="color:{{final_price_color}}">{{ cart.total_price | money }}</span>
-            <span class=" lg:text-lg line-through">{{ cart.original_total_price | money }}</span>
-          </div>
-        {% else %}
-          <span class="font-semibold lg:text-lg" :class="updatingKey && 'animate-pulse'">{{ cart.total_price | money }}</span>
-        {% endif %}
+        <template x-if="settings.showComparePrice">
+          {% if cart.original_total_price > cart.total_price %}
+            <div class="flex gap-2" :class="updatingKey && 'animate-pulse'">
+              <span
+                class="font-semibold lg:text-lg"
+                style="color:{{final_price_color}}"
+                :style="{color: settings.finalPriceColor}">{{ cart.total_price | money }}</span>
+              <span class=" lg:text-lg line-through">{{ cart.original_total_price | money }}</span>
+            </div>
+          {% else %}
+            <span class="font-semibold lg:text-lg" :class="updatingKey && 'animate-pulse'">{{ cart.total_price | money }}</span>
+          {% endif %}
+        </template>
 
+        <template x-if="!settings.showComparePrice">
+          <span class="font-semibold lg:text-lg" :class="updatingKey && 'animate-pulse'">{{ cart.total_price | money }}</span>
+        </template>
 
       </div>
     </div>

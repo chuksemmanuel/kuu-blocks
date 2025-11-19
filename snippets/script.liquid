@@ -1,19 +1,6 @@
-<script type="importmap">
-    {
-        "imports":{
-
-        }
-    }
-</script>
-
 {%- comment -%}
   Module preload critical scripts
 {%- endcomment -%}
-<link rel="modulepreload" href="{{ 'js/core/init.js' | asset_url }}">
-<link rel="modulepreload" href="{{ 'js/core/globals.js' | asset_url }}">
+<link rel="modulepreload" href="{{ 'js/core/utils.js' | asset_url }}">
 
-
-
-
-
-
+<script src="{{'js/core/utils.js' |  asset_url}}" defer></script>
