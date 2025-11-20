@@ -1,0 +1,22 @@
+  {% assign hidden = true %}
+  {% capture content %}
+    {% capture horizontal_scroll_content %}
+        {% for i in (1..10) %}
+                <button
+                  class="relative z-20 bg-gray-100 inline-flex items-center justify-center w-full h-10 px-3 text-sm font-medium transition duration-300 ease-out cursor-pointer whitespace-nowrap rounded-full">
+                  Button {{ i }}
+                </button>
+              {% endfor %}
+    {% endcapture %}
+    {% render 'horizontal-scroll', content: horizontal_scroll_content %}
+  {% endcapture %}
+  
+  
+  {% comment %} Place holder for tab {% endcomment %}
+<div class="fixed inset-0 z-50 flex items-start justify-center w-screen h-screen p-4 bg-gray-600" x-data="{hidden: {{hidden}}}" x-show="!hidden">
+    <div class="relative w-full mx-auto max-w-3xl rounded bg-white p-12">
+        <div class="relative min-h-[120px] shrink-0">
+          {{content}}
+        </div>
+    </div>
+</div>

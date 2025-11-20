@@ -15,19 +15,18 @@
   <body>
     <a href="#main-content" class="sr-only">Skip to main content</a>
 
-
     {% sections 'header-group' %}
 
     <main id="main-content" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
-  {% sections 'footer-group' %}
+    {% sections 'footer-group' %}
 
-    {% # Drawers %}
-    {% comment %} {% section 'cartdrawer' %} {% endcomment %}
-    {% section 'tabbed-menu' %}
+     {% section 'tabbed-menu' %}
 
+    {%# Playground - for testing components %}
+    {% render 'playground' %}
     {% render 'js-lib' %}
   </body>
 </html>

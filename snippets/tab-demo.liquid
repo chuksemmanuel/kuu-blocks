@@ -1,0 +1,39 @@
+{% capture tab_triggers %}
+  <button data-tab-trigger="tab-1" class="px-4 py-2 font-semibold border-b-2 border-transparent hover:border-gray-300 aria-selected:border-black aria-selected:text-black">
+    Description
+  </button>
+  <button data-tab-trigger="tab-2" class="px-4 py-2 font-semibold border-b-2 border-transparent hover:border-gray-300 aria-selected:border-black aria-selected:text-black">
+    Specifications
+  </button>
+  <button data-tab-trigger="tab-3" class="px-4 py-2 font-semibold border-b-2 border-transparent hover:border-gray-300 aria-selected:border-black aria-selected:text-black">
+    Reviews
+  </button>
+{% endcapture %}
+
+{% capture tab_contents %}
+  <div data-tab-content="tab-1" class="p-4">
+    <h3 class="text-lg font-bold">Product Description</h3>
+    <p>This is the description content.</p>
+  </div>
+  <div data-tab-content="tab-2" class="p-4">
+    <h3 class="text-lg font-bold">Product Specs</h3>
+    <ul>
+      <li>Material: Cotton</li>
+      <li>Size: L</li>
+    </ul>
+  </div>
+  <div data-tab-content="tab-3" class="p-4">
+    <h3 class="text-lg font-bold">Customer Reviews</h3>
+    <p>★★★★★ Great product!</p>
+  </div>
+{% endcapture %}
+
+{% render 'tab',
+  triggers: tab_triggers,
+  contents: tab_contents,
+  id: 'product-tabs',
+  default_active: 'tab-1',
+  class: 'w-full max-w-2xl mx-auto',
+  trigger_class: 'flex border-b border-gray-200',
+  content_class: 'mt-4'
+%}

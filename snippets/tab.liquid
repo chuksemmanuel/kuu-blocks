@@ -1,0 +1,26 @@
+{% liquid
+  assign id = id | default: 'tab'
+  assign default_active = default_active | default: 'tab-1'
+%}
+
+<div
+  data-tab-id="{{id}}"
+  data-default-active="{{default_active}}"
+  x-data="tab"
+  class="{{class}}"
+>
+  <!-- Triggers -->
+  <div
+    role="tablist"
+    class="{{trigger_class}}"
+  >
+    {{ triggers }}
+  </div>
+
+  <!-- Contents -->
+  <div class="{{content_class}}">
+    {{ contents }}
+  </div>
+</div>
+
+<script src="{{'js/components/tab.js' | asset_url}}" defer></script>

@@ -1,7 +1,5 @@
-{% liquid
-  assign headless = headless
-%}
 
+ 
 <style>
   button {
     cursor: pointer;
@@ -42,86 +40,32 @@
    , aria_label: 'Open Menu' %}
 {% endcapture %}
 {% capture menu_content %}
-  <div class="flex flex-col w-full h-full  bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg flex-1"  x-data="{
-        tabSelected:'{{ tab_list.first }}',
-        getContentID(tabContent){
-          return tabContent.id.replace('-content','')
-        },
-        tabButtonClicked(tabButton){
-            this.tabSelected = tabButton.id;
-            this.tabRepositionMarker(tabButton);
-        },
-        tabRepositionMarker(tabButton){
-        
-        if(tabButton)
-            this.$refs.tabMarker.style.width=tabButton.offsetWidth + 'px';
-            this.$refs.tabMarker.style.height=tabButton.offsetHeight + 'px';
-            this.$refs.tabMarker.style.left=tabButton.offsetLeft + 'px';
-        },
-        tabContentActive(tabContent){
-            return this.tabSelected == this.getContentID(tabContent);
-        },
-        tabButtonActive(tabContent){
-            const tabId = this.getContentID(tabContent);
-            return this.tabSelected == tabId;
-        }
-    }">
+  <div class="flex flex-col w-full h-full  bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg flex-1"  x-data="tabbedMenu()">
       {%# Menu Top %}
       <div class="min-h-[120px] shrink-0">
 
          {%# Menu Header  %}
-        <div class="flex items-center justify-between mb-6 p-5 lg:p-5">
-          <div class="sr-only" id="drawer-title">Menu</div>
-          <span class="text-lg font-semibold " aria-label="menu">Menu</span>
+          <div class="flex items-center justify-between mb-6 p-5 lg:p-5">
+            <div class="sr-only" id="drawer-title">Menu</div>
+            <span class="text-lg font-semibold " aria-label="menu">Menu</span>
 
-          {%# Close button  %}
-
-          {% render 'button', 
-          icon:'icons/cancel.svg', 
-          class:'rounded-full! size-6! p-0! ',
-          props: 'data-drawer-close',
-          aria_label:'Close Menu'
-          %}
-       
-          
-
-        </div>
+            {%# Close button  %}
+            {% render 'button', 
+            icon:'icons/cancel.svg', 
+            class:'rounded-full! size-6! p-0! ',
+            props: 'data-drawer-close',
+            aria_label:'Close Menu'
+            %}
+          </div>
 
         {%# Tab List Starts%}
-       
-          <div
-            x-ref="tabButtons"
-            role="tablist"
-            aria-label="Collection tabs"
-            :class="`tabsButton relative pl-5 flex gap-4 shrink-0 items-center  justify-center-safe h-10 z-30 overflow-hidden  text-gray-500 bg-white select-none overflow-x-auto w-full no-scrollbar   ${!isDragging ? 'cursor-grap': 'cursor-grabbing'}`  "
-            x-data="{
-              isDragging: false,
-              startX: 0,
-              scrollLeft: 0,
-              init() {
-                $el.style.scrollBehavior = 'auto'; // Disable smooth scrolling for better drag fe$el
-              },
-              startDragging(e) {
-                this.isDragging = true;
-                this.startX = e.pageX - $el.offsetLeft;
-                this.scrollLeft = $el.scrollLeft;
-              },
-              stopDragging() {
-                this.isDragging = false;
-              },
-              drag(e) {
-                if (!this.isDragging) return;
-                e.preventDefault();
-                const x = e.pageX - $el.offsetLeft;
-                const walk = (x - this.startX) * 1.5; // Adjust multiplier for desired scroll speed
-                $el.scrollLeft = this.scrollLeft - walk;
-              },
-            }"
-            x-init="init()"
-            @mousedown="startDragging"
-            @mouseup="stopDragging"
-            @mouseleave="stopDragging"
-            @mousemove="drag">
+
+
+       {% capture tab_button_list %}
+ 
+
+
+            
               {% for tab in tab_list %}
                 <button
                   role="tab"
@@ -138,13 +82,16 @@
                 </button>
               {% endfor %}
 
-              <div
-                x-ref="tabMarker"
-                class="absolute left-0 z-10 w-1/2 h-full duration-300 linear hidden"
-                x-cloak>
-                <div class="w-full h-full bg-primary rounded-full"></div>
-              </div>
-          </div>
+       
+       {% endcapture %}
+
+      {% render 'horizontal-scroll', content: tab_button_list , props: '  
+        x-ref="tabButtons"
+        role="tablist"
+        aria-label="Collection tabs"
+      ' %}
+
+        
 
       </div>
 
@@ -209,4 +156,7 @@
 
   
 {% endcapture %}
-{% render 'drawer', trigger: menu_trigger, content: menu_content, id: 'menu-drawer', from: 'left', headless: headless %}
+{% render 'drawer', trigger: menu_trigger, content: menu_content, id: 'menu-drawer', from: 'left'%}
+
+
+<script src="{{ 'js/blocks/tabbed-menu.js' | asset_url }}" defer></script>
