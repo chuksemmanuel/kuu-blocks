@@ -205,12 +205,7 @@
     {
       "type": "checkbox",
       "id": "custom_icon",
-      "label": "Add Custom Icon"
-    },
-    {
-      "type": "paragraph",
-      "content": "Enter the name of a Lucide icon in the field below. Browse available icons at [lucide.dev/icons](https://lucide.dev/icons).",
-      "visible_if": "{{block.settings.custom_icon}}"
+      "label": "Adjust Icon"
     },
     {
       "type": "text",
@@ -218,7 +213,7 @@
       "label": "Icon Name",
       "placeholder": "E.g shopping-cart",
       "visible_if": "{{block.settings.custom_icon}}",
-      "info": "If the icon doesn't appear immediately, click Save to apply the change."
+      "info": "Enter the name of a Lucide icon in the field below. Browse available icons at [lucide.dev/icons](https://lucide.dev/icons)."
     },
     {
       "type": "select",
@@ -234,8 +229,7 @@
           "label": "Right"
         }
       ],
-      "visible_if": "{{block.settings.custom_icon}}",
-      "info": "If the icon doesn't appear immediately, click Save to apply the change."
+      "visible_if": "{{block.settings.custom_icon}}"
     },
     {
       "type": "header",

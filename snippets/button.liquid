@@ -1,4 +1,8 @@
 
+{%# if only icon is passed and no size or label props, set button size to icon %}
+{% if label == blank and size == blank %}
+  {% assign size = 'icon' %}
+{% endif %}
 
 {% capture inline_styles %}
   {% if width %}
@@ -68,6 +72,10 @@
 
 {% endcapture %}
 
+{% if block.id != blank %}
+  {% assign button_class = 'button' |  append:block.id %}
+{% endif %}
+
 {%- assign base_class = 'button relative inline-flex items-center justify-center font-medium transition-colors focus:outline-none  disabled:opacity-50 disabled:pointer-events-none ' -%}
 
 {%- case variant -%}
@@ -76,7 +84,7 @@
   {%- when 'secondary' -%}
     {%- assign variant_class = 'bg-gray-100 text-gray-900 hover:bg-gray-200' -%}
   {%- when 'outline' -%}
-    {%- assign variant_class = 'border border-gray-300 text-gray-900 hover:bg-gray-50' -%}
+    {%- assign variant_class = 'border border-primary text-gray-900 hover:bg-gray-50' -%}
   {%- when 'ghost' -%}
     {%- assign variant_class = 'bg-transparent hover:bg-gray-100' -%}
   {% when 'white' %}
@@ -86,10 +94,7 @@
 {%- endcase -%}
 
 
-{%# if only icon is passed and no size or label props, set button size to icon %}
-{% if label == blank and size == blank %}
-  {% assign size = 'icon' %}
-{% endif %}
+
 
 {%- case size -%}
   {%- when 'sm' -%}
@@ -105,7 +110,7 @@
 {%- endcase -%}
   
 
-{%- assign classes = base_class | append: ' ' | append: variant_class | append: ' ' | append: size_class | append: ' ' | append: class
+{%- assign classes = button_class | append: ' ' |  append: base_class | append: ' ' | append: variant_class | append: ' ' | append: size_class | append: ' ' | append: class
 -%}
 
 {% assign icon_position = icon_position |  default: 'left' %}
@@ -205,17 +210,19 @@
   }
   {% endif %}
   
-  .button{
+  .{{button_class}}{
+    
     width: var(--width, var(--fallback-width, auto));
-    height: var(--height, var(--fallback-height, auto));
+    height:var(--height, var(--fallback-height, auto));
+    border-radius: var(--br,0);
     padding-left: var(--pl, var(--fallback-pl, 0));
     padding-right: var(--pr, var(--fallback-pr, 0));
     padding-top: var(--pt, var(--fallback-pt, 0));
     padding-bottom: var(--pb, var(--fallback-pb, 0));
 
     @media (max-width:768px) {
-       width: var(--mobile-width, var(--fallback-width, auto));
-       height: var(--mobile-height, var(--fallback-height, auto));
+    width: var(--mobile-width, var(--width, var(--fallback-width, auto)));
+    height: var(--mobile-height, var(--height, var(--fallback-height, auto)));
     }
   }
 
@@ -224,7 +231,7 @@
 
   .button svg {
     color: currentColor;
-    shrink: 0 !important;
+    flex-shrink: 0 !important;
   }
 </style>
 
