@@ -28,7 +28,12 @@
             "searchdrawer_3ECJdH": {
               "type": "_searchdrawer",
               "name": "Search Drawer",
-              "settings": {},
+              "settings": {
+                "device": "mobile",
+                "variant": "ghost",
+                "direction": "top",
+                "mobile_direction": "top"
+              },
               "blocks": {}
             },
             "logo_MW8JVk": {
@@ -83,16 +88,21 @@
           "static": true,
           "settings": {},
           "blocks": {
-            "searchdrawer_8DPf9q": {
-              "type": "_searchdrawer",
-              "name": "Search Drawer",
-              "settings": {},
-              "blocks": {}
-            },
             "account_button_hXdMCB": {
               "type": "_account-button",
               "name": "Account Button",
               "settings": {},
+              "blocks": {}
+            },
+            "searchdrawer_8DPf9q": {
+              "type": "_searchdrawer",
+              "name": "Search Drawer",
+              "settings": {
+                "device": "desktop",
+                "variant": "circled",
+                "direction": "right",
+                "mobile_direction": "top"
+              },
               "blocks": {}
             },
             "cartdrawer_ehUNqT": {
@@ -117,8 +127,8 @@
             }
           },
           "block_order": [
-            "searchdrawer_8DPf9q",
             "account_button_hXdMCB",
+            "searchdrawer_8DPf9q",
             "cartdrawer_ehUNqT"
           ]
         }
