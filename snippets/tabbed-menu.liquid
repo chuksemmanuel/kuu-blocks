@@ -17,27 +17,26 @@
 
   [x-cloak] {
     display: none !important;
-  }</style>
+  }
+</style>
 
 {% comment %} Get TabList from Tab items by extracting and de-duplicating the parent_tab value {% endcomment %}
-{% assign tabs = "" %}
+{% assign tabs = '' %}
 {% for item in section.blocks %}
   {% if item.type == 'menu_item' %}
     {% assign current_tab = item.settings.parent_tab %}
     {% unless tabs contains current_tab %}
-      {%
-        assign tabs = tabs | append: current_tab | append: ',' %}
+      {% assign tabs = tabs | append: current_tab | append: ',' %}
     {% endunless %}
   {% endif %}
 {% endfor %}
 {% assign tab_list = tabs | split: ',' %}
-{%
-comment %} Get TabList from Tab items Ends {% endcomment %}
+{% comment %} Get TabList from Tab items Ends {% endcomment %}
 
 {% capture menu_trigger %}
    {% render 'button'           
-   , variant: 'circled-icon'
-   , size: 'none'
+   , variant: 'white'
+   , size: 'icon'
   , icon: 'icons/hamburger.svg'
    , class: " rounded-lg!"
    , aria_label: 'Open Menu' %}
@@ -210,10 +209,4 @@ comment %} Get TabList from Tab items Ends {% endcomment %}
 
   
 {% endcapture %}
-{% render 'drawer'
-  , trigger: menu_trigger
-  , content: menu_content
-  , id: 'menu-drawer'
-  , from: 'left'
-  , headless: headless
-%}
+{% render 'drawer', trigger: menu_trigger, content: menu_content, id: 'menu-drawer', from: 'left', headless: headless %}

@@ -1,0 +1,332 @@
+{% liquid
+  if block.settings.label == blank
+    assign label = label
+  else
+    assign label = block.settings.label
+  endif
+
+  if block.settings.size == blank
+    assign size = size 
+  else
+    assign size = block.settings.size
+  endif
+
+  if block.settings.variant == 'default'
+    assign variant = variant | default: 'primary'
+  else
+    assign variant = block.settings.variant
+  endif
+
+  if block.settings.href == blank
+    assign href = href
+  else
+    assign href = block.settings.href
+  endif
+
+  if block.settings.id == blank
+    assign id = id
+  else
+    assign id = block.settings.id
+  endif
+  if block.settings.class == blank
+    assign class = class
+  else
+    assign class = block.settings.class
+  endif
+
+  if block.settings.props == blank
+    assign props = props | default: ''
+  else
+    assign props = block.settings.props
+  endif
+
+  if block.settings.custom_radius == true
+    assign radius = block.settings.radius | append: 'px'
+  else
+    assign radius = radius
+  endif
+
+  # if block custom width is checked
+  if block.settings.custom_width == true
+    # check if the selected unit is pixel or pecent
+    if block.settings.unit == 'pixel'
+      assign width = block.settings.pexel_width | append: 'px'
+    else
+      assign width = block.settings.percent_width | append: '%'
+    endif
+  else
+
+    # if block settins custom width isn't checked, we use block properties
+    assign width = width
+
+  endif
+
+  if block.settings.custom_padding == true
+    assign padding_top = block.settings.padding_top | append: 'px'
+    assign padding_bottom = block.settings.padding_bottom | append: 'px'
+    assign padding_left = block.settings.padding_left | append: 'px'
+    assign padding_right = block.settings.padding_right | append: 'px'
+  else
+    assign padding_top = padding_top
+    assign padding_bottom = padding_bottom
+    assign padding_left = padding_left
+    assign padding_right = padding_right
+  endif
+
+  if block.settings.custom_alignment
+    assign align = block.settings.alignment
+  else 
+    assign align = align
+  endif
+
+  if block.settings.custom_icon and block.settings.lucide_icon != blank 
+    assign lucide_icon =  block.settings.lucide_icon
+  else 
+    assign lucide_icon = lucide_icon
+  endif
+
+  %}
+
+  {% render 'button'
+  , variant: variant
+  , align: align
+  , size: size
+  , href: href
+  , label: label
+  , id: id
+  , class: class
+  , props: props
+  , radius: radius
+  , width: width
+  , padding_top: padding_top
+  , padding_bottom: padding_bottom
+  , padding_left: padding_left
+  , padding_right: padding_right
+  , icon: icon
+  , lucide_icon: lucide_icon
+  %}
+
+  {% schema %}
+  {
+  "name": "Button",
+  "settings": [
+  {
+  "type": "text",
+  "id": "label",
+  "label": "Label"
+  },
+  {
+  "type": "url",
+  "id": "href",
+  "label": "Link"
+  },
+  {
+  "type": "select",
+  "id": "variant",
+  "label": "Variant",
+  "options": [
+  {
+  "value": "default",
+  "label": "Default"
+  },
+  {
+  "value": "primary",
+  "label": "Primary"
+  },
+  {
+  "value": "secondary",
+  "label": "Secondary"
+  },
+  {
+  "value": "white",
+  "label": "White"
+  },
+  {
+  "value": "outline",
+  "label": "Outline"
+  },
+  {
+  "value": "ghost",
+  "label": "Ghost"
+  }
+  ]
+  },
+    {
+  "type": "header",
+  "content": "Icon"
+  },
+  {
+  "type": "checkbox",
+  "id": "custom_icon",
+  "label": "Add Custom Icon"
+  },
+  {
+  "type": "paragraph",
+  "content": "Enter the name of a Lucide icon in the field below. Browse available icons at [lucide.dev/icons](https://lucide.dev/icons).",
+  "visible_if": "{{block.settings.custom_icon}}"
+  },
+  {
+    "type": "text",
+    "id":"lucide_icon",
+    "label": "Icon",
+    "placeholder": "E.g shopping-cart",
+     "visible_if": "{{block.settings.custom_icon}}",
+     "info": "If the icon doesn't appear immediately, click Save to apply the change."
+  },
+  {
+  "type": "header",
+  "content": "Width"
+  },
+  {
+  "type": "checkbox",
+  "id": "custom_width",
+  "label": "Adjust Width"
+  },
+  {
+  "type": "select",
+  "id": "unit",
+  "label": "Unit",
+  "options": [
+  {
+  "value": "pixel",
+  "label": "Pixel"
+  },
+  {
+  "value": "percent",
+  "label": "Percent"
+  }
+  ],
+  "default": "percent",
+  "visible_if": "{{ block.settings.custom_width }}"
+  },
+  {
+  "type": "range",
+  "id": "percent_width",
+  "label": "Width",
+  "min": 10,
+  "max": 100,
+  "step": 1,
+  "unit": "%",
+  "default": 100,
+  "visible_if": "{{ block.settings.custom_width and block.settings.unit == 'percent' }}"
+  },
+  {
+  "type": "range",
+  "id": "pexel_width",
+  "label": "Width",
+  "min": 10,
+  "max": 500,
+  "step": 5,
+  "unit": "px",
+  "default": 100,
+  "visible_if": "{{ block.settings.custom_width and block.settings.unit == 'pixel' }}"
+  },
+  {
+  "type": "header",
+  "content": "Border Radius"
+  },
+  {
+  "type": "checkbox",
+  "id": "custom_radius",
+  "label": "Add Border Radius"
+  },
+  {
+  "type": "range",
+  "id": "radius",
+  "label": "Roundeness",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "default": 0,
+  "unit": "px",
+  "visible_if": "{{ block.settings.custom_radius == true }}"
+  },
+    {
+  "type": "header",
+  "content": "Alignment"
+  },
+  {
+  "type": "checkbox",
+  "id": "custom_alignment",
+  "label": "Align Button"
+  },
+  {
+    "type": "text_alignment",
+    "id":"alignment",
+    "label": "Align Button",
+    "default":"left",
+    "visible_if": "{{block.settings.custom_alignment}}"
+  },
+  {
+  "type": "header",
+  "content": "Padding"
+  },
+  {
+  "type": "checkbox",
+  "id": "custom_padding",
+  "label": "Add Padding"
+  },
+
+  {
+  "type": "range",
+  "id": "padding_top",
+  "label": "Padding Top",
+  "min": 1,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "default": 1,
+  "visible_if": "{{ block.settings.custom_padding == true }}"
+  },
+  {
+  "type": "range",
+  "id": "padding_bottom",
+  "label": "Padding Bottom",
+  "min": 1,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "default": 1,
+  "visible_if": "{{ block.settings.custom_padding == true }}"
+  },
+  {
+  "type": "range",
+  "id": "padding_left",
+  "label": "Padding Left",
+  "min": 1,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "default": 24,
+  "visible_if": "{{ block.settings.custom_padding == true }}"
+  },
+  {
+  "type": "range",
+  "id": "padding_right",
+  "label": "Padding Right",
+  "min": 1,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "default": 24,
+  "visible_if": "{{ block.settings.custom_padding == true }}"
+  },
+  {
+  "type": "header",
+  "content": "Class and ID"
+  },
+  {
+  "type": "text",
+  "id": "id",
+  "label": "Add button ID",
+  "placeholder": "E.g add-to-cart "
+  },
+  {
+  "type": "text",
+  "id": "class",
+  "label": "Additional Classes",
+  "placeholder": "E.g rounded-full! "
+  }
+  ]
+  }
+  {% endschema%}

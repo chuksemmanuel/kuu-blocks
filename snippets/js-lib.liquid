@@ -10,3 +10,14 @@
 <script src="{{'js/lib/alpinejs-focus@3.min.js' |  asset_url}}" defer></script>
 {% # Alpine Core %}
 <script src="{{ 'js/lib/alpinejs@3.15.1.min.js' |  asset_url }}" defer></script>
+
+
+{%# Lucide icons%}
+
+  <script src="{{  'js/lib/lucide.js' |  asset_url }}" defer></script>
+ <script>
+     document.addEventListener('DOMContentLoaded', () =>{
+        lucide.createIcons();
+     });
+    
+  </script>

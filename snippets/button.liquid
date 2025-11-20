@@ -32,6 +32,51 @@
   , class: 'bg-white text-black hover:text-white!' %}
 {% endcomment %}
 
+{% capture inline_styles %}
+  {% if width %}
+    --width: {{width}};
+  {% endif %}
+    
+  {% if radius %}
+    --border-radius:{{radius}};
+  {% endif %}
+
+  {% if padding_top %}
+    --padding-top:{{padding_top}};
+  {% endif %}
+  
+
+  {% if padding_bottom %}
+    --padding-bottom:{{padding_bottom}};
+  {% endif %}
+
+  {% if padding_left %}
+    --padding-left:{{padding_left}};
+  {% endif %}
+
+  {% if padding_right %}
+    --padding-right:{{padding_right}};
+  {% endif %}
+
+  {%- case size -%}
+    {%- when 'sm' -%}
+      height:'32px';
+    
+    {%- when 'lg' -%}
+      height:'48px';
+    
+    {%- when 'icon' -%}
+      height:'48px';
+
+    {%- when 'none' -%}
+      
+    {%- else -%}
+    height:'40px';
+      
+  {%- endcase -%}
+
+{% endcapture %}
+
 {%- assign base_class = 'button relative inline-flex items-center justify-center font-medium transition-colors focus:outline-none  disabled:opacity-50 disabled:pointer-events-none ' -%}
 
 {%- case variant -%}
@@ -43,51 +88,75 @@
     {%- assign variant_class = 'border border-gray-300 text-gray-900 hover:bg-gray-50' -%}
   {%- when 'ghost' -%}
     {%- assign variant_class = 'bg-transparent hover:bg-gray-100' -%}
-  {% when 'circled-icon' %}
-    {% assign variant_class = 'bg-white text-black hover:bg-primary hover:text-primary-foreground  p-2 size-12  rounded-full' %}
+  {% when 'white' %}
+    {% assign variant_class = 'bg-white text-black hover:bg-primary hover:text-primary-foreground ' %}
   {%- else -%}
     {%- assign variant_class = '' -%}
 {%- endcase -%}
 
+
+{%# Use icon size if no label %}
+{% if label == blank and size == blank %}
+  {% assign size = 'icon' %}
+{% endif %}
+
 {%- case size -%}
   {%- when 'sm' -%}
-    {%- assign size_class = 'h-8 px-3 text-sm rounded-md' -%}
+    {%- assign size_class = 'h-8 px-3 text-sm ' -%}
   {%- when 'lg' -%}
-    {%- assign size_class = 'h-12 px-6 text-base rounded-lg' -%}
+    {%- assign size_class = 'h-12 px-6 text-base' -%}
   {%- when 'icon' -%}
-    {%- assign size_class = 'size-8 p-2 rounded-md' -%}
+    {%- assign size_class = 'p-2 size-12' -%}
   {%- when 'none' -%}
     {%- assign size_class = '' -%}
   {%- else -%}
-    {%- assign size_class = 'h-10 px-4 text-sm rounded-md' -%}
+     {%- assign size_class = 'h-10 px-4 text-sm rounded-md' -%}
 {%- endcase -%}
+  
 
-{%- assign classes = base_class | append: ' ' | append: variant_class | append: ' ' | append: size_class | append: ' ' | append: class -%}
+
+{%- assign classes = base_class | append: ' ' | append: variant_class | append: ' ' | append: size_class | append: ' ' | append: class
+-%}
 
 {% capture loading_spinner %}
   <span aria-hidden="true" class="animate-spin">{{ 'icons/loader-circle.svg' | inline_asset_content }}</span>
 {% endcapture %}
+
+{% capture icon %}
+  {% if lucide_icon %}
+     <i data-lucide="{{lucide_icon}}"></i>
+     {% elsif icon %}
+       {{ icon | inline_asset_content }}
+  {% endif %}
+{% endcapture %}
+
 {%- capture default_content -%}
   <span aria-hidden="true" class="flex items-center {% if label %}gap-2{% endif %}">
 
   {% if loading %}
     {{loading_spinner}}
   {% else %}
-    {%- if icon -%}
-      {{ icon | inline_asset_content }}
-    {%- endif -%}
+    {{icon}}
   {% endif %}
 
-
- 
   {%- if label -%}
         <span>{{ label }}</span>
     {%- endif -%}
    
   </span>
 {%- endcapture -%}
+
 {%- assign final_content = content | default: default_content -%}
 {% assign aria_label = aria_label | default: label | default: null %}
+
+
+<div class="flex shrink-0"
+{% if align %}
+    style="justify-content:{{align}}";
+{% endif %}
+>
+
+
 {%- if href -%}
   <a
     href="{{ href }}"
@@ -100,6 +169,12 @@
     {% endif %}
     {% if aria_label %}
     aria-label="{{ aria_label }}"
+    {% endif %}
+    {% if props %}
+    {{ props }}
+    {% endif %}
+    {% if radius %}
+    style="{{inline_styles |  escape}}"
     {% endif %}>
     {{ final_content }}
   </a>
@@ -118,14 +193,24 @@
     {% endif %}
     {% if props %}
     {{ props }}
+    {% endif %}
+    {% if radius %}
+    style="{{inline_styles |  escape}}"
     {% endif %}>
     {{ final_content }}
   </button>
 {%- endif -%}
 
 {% style %}
+
+  .button{
+    border-radius:var(--border-radius,8px)
+  }
+
   .button svg {
     color: currentColor;
     shrink: 0 !important;
   }
 {% endstyle %}
+
+</div>

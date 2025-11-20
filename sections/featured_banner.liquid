@@ -11,12 +11,13 @@
         {{ section.settings.subtext }}
       </span>
 
-      {% render 'button'
-        , variant: 'primary'
-        , size: 'lg'
-        , href: section.settings.button_link
-        , label: section.settings.button_label
-        , class: 'z-10' %}
+      {% render 'button',
+        variant: 'primary',
+        size: 'lg',
+        href: section.settings.button_link,
+        label: section.settings.button_label,
+        class: 'z-10 rounded-full!'
+      %}
     </div>
 
     {% if section.settings.desktop_image != blank %}
@@ -25,7 +26,8 @@
         alt="{{ section.settings.heading | escape }}"
         width="1400"
         height="540"
-        class="absolute inset-0 h-full! w-full object-cover z-5 transition duration-300 ease-out group-hover:scale-105 group-active:scale-100">
+        class="absolute inset-0 h-full! w-full object-cover z-5 transition duration-300 ease-out group-hover:scale-105 group-active:scale-100"
+      >
     {% endif %}
   </div>
 
@@ -41,12 +43,13 @@
         {{ section.settings.subtext }}
       </span>
 
-      {% render 'button'
-        , variant: 'primary'
-        , size: 'lg'
-        , href: section.settings.button_link
-        , label: section.settings.button_label
-        , class: 'z-10' %}
+      {% render 'button',
+        variant: 'primary',
+        size: 'lg',
+        href: section.settings.button_link,
+        label: section.settings.button_label,
+        class: 'z-10 rounded-full!'
+      %}
     </div>
 
     {% if section.settings.mobile_image != blank %}
@@ -55,56 +58,57 @@
         alt="{{ section.settings.heading | escape }}"
         width="360"
         height="540"
-        class="absolute inset-0 h-full! w-full object-cover z-5 transition duration-300 ease-out group-hover:scale-105 group-active:scale-100">
+        class="absolute inset-0 h-full! w-full object-cover z-5 transition duration-300 ease-out group-hover:scale-105 group-active:scale-100"
+      >
     {% endif %}
   </div>
 </div>
 
 {% schema %}
-  {
-    "name": "Featured Banner",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "desktop_image",
-        "label": "Desktop Banner Image",
-        "info": "Recommended size: 1400 x 540 px"
-      },
-      {
-        "type": "image_picker",
-        "id": "mobile_image",
-        "label": "Mobile Banner Image",
-        "info": "Recommended size: 360 x 540 px"
-      },
-      {
-        "type": "text",
-        "id": "heading",
-        "label": "Heading",
-        "default": "Get 50% Off"
-      },
-      {
-        "type": "text",
-        "id": "subtext",
-        "label": "Subtext",
-        "default": "for all new products purchases min. purchase $450"
-      },
-      {
-        "type": "text",
-        "id": "button_label",
-        "label": "Button Label",
-        "default": "Shop Now"
-      },
-      {
-        "type": "url",
-        "id": "button_link",
-        "label": "Button Link"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Featured Banner",
-        "category": "Image"
-      }
-    ]
-  }
+{
+  "name": "Featured Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Banner Image",
+      "info": "Recommended size: 1400 x 540 px"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Banner Image",
+      "info": "Recommended size: 360 x 540 px"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get 50% Off"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "for all new products purchases min. purchase $450"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Banner",
+      "category": "Image"
+    }
+  ]
+}
 {% endschema %}
