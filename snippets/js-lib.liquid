@@ -11,13 +11,20 @@
 {% # Alpine Core %}
 <script src="{{ 'js/lib/alpinejs@3.15.1.min.js' |  asset_url }}" defer></script>
 
+{% # Lucide icons %}
+<script src="{{  'js/lib/lucide.js' |  asset_url }}" defer></script>
+<script>
+       document.addEventListener('DOMContentLoaded', () =>{
+           // create icons once in storefront
+          lucide.createIcons();
 
-{%# Lucide icons%}
-
-  <script src="{{  'js/lib/lucide.js' |  asset_url }}" defer></script>
- <script>
-     document.addEventListener('DOMContentLoaded', () =>{
-        lucide.createIcons();
-     });
-    
-  </script>
+        // in theme editor, recreate icons when the editor updates
+        {% if request.design_mode %}
+               window.addEventListener('shopify:section:load', () =>{
+              if(window.lucide){
+                 lucide.createIcons();
+              }
+         })
+        {% endif %}
+       });
+</script>

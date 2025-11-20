@@ -39,7 +39,7 @@
   {{ shopify_attributes }}
 >
   {% capture cart_button %}
-        <span class="bg-primary flex justify-center items-center text-primary-foreground z-20 absolute rounded-full size-6 -top-2 -right-2 p-1 text-xs" data-cartdrawer-bubble>{{ cart.item_count }}</span>
+        <span class="bg-primary flex justify-center items-center text-primary-foreground z-20 absolute rounded-full! size-6 -top-2 -right-2 p-1 text-xs" data-cartdrawer-bubble>{{ cart.item_count }}</span>
           <span aria-hidden="true"> {{ 'icons/shopping-cart.svg' | inline_asset_content }}</span>
   {% endcapture %}
   {% capture cart_trigger %}
@@ -47,7 +47,7 @@
   , variant: 'white'
   , size: 'icon'
   , content: cart_button
-  , class:'rounded-full'
+  , class:'rounded-full!'
   , aria_label: 'Open Shopping cart'
   , props: 'x-data @click="$dispatch(`drawer:open`,{id:`cartdrawer`})"'
 %}

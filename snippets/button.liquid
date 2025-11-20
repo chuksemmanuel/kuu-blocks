@@ -1,77 +1,68 @@
-{% comment %}
-  Button Component (inspired by shadcn/ui)
-  Supports dynamic attributes like onclick, id, aria-label, etc.
-  Usage Examples:
-  1️⃣ Basic:
-  {% render 'button', label: 'Add to cart' %}
 
-  2️⃣ With icon and href:
-  {% render 'button',
-  href: routes.account_url,
-  variant: 'primary',
-  size: 'icon',
-  class: 'rounded-full',
-  icon: 'icon-account.svg',
-  label: 'Account',
-  onclick: 'toggleCartDrawer()',
-  id: 'add-to-cart-btn'
-  %}
-
-  3️⃣ With custom inner content override:
-  {% capture cart_content %}
-  {% if cart.item_count > 0 %}
-  <sup>{{ cart.item_count }}</sup>
-  {% endif %}
-
-  {{ 'icon-cart.svg' | inline_asset_content }}
-  {% endcapture %}
-  {% render 'button'
-  , href: routes.cart_url
-  , size: 'icon'
-  , content: cart_content
-  , class: 'bg-white text-black hover:text-white!' %}
-{% endcomment %}
 
 {% capture inline_styles %}
   {% if width %}
     --width: {{width}};
   {% endif %}
-    
+  {% if mobile_width %}
+    --mobile-width: {{mobile_width}};
+  {% endif %}
+
+  {% if height %}
+    --height: {{height}};
+  {% endif %}
+  {% if mobile_height %}
+    --mobile-height: {{mobile_height}};
+  {% endif %}
+
+
+
   {% if radius %}
-    --border-radius:{{radius}};
+    --br:{{radius}};
   {% endif %}
 
   {% if padding_top %}
-    --padding-top:{{padding_top}};
+    --pt:{{padding_top}};
   {% endif %}
   
 
   {% if padding_bottom %}
-    --padding-bottom:{{padding_bottom}};
+    --pb:{{padding_bottom}};
   {% endif %}
 
   {% if padding_left %}
-    --padding-left:{{padding_left}};
+    --pl:{{padding_left}};
   {% endif %}
 
   {% if padding_right %}
-    --padding-right:{{padding_right}};
+    --pr:{{padding_right}};
   {% endif %}
 
   {%- case size -%}
     {%- when 'sm' -%}
-      height:'32px';
+      --fallback-height:32px;
+      --fallback-pr:12px;
+      --fallback-pl:12px;
     
     {%- when 'lg' -%}
-      height:'48px';
+      --fallback-height:48px;
+      --fallback-pr:24px;
+      --fallback-pl:24px;
     
     {%- when 'icon' -%}
-      height:'48px';
+      --fallback-width:48px;
+      --fallback-height:48px;
+      --fallback-pt:8px;
+      --fallback-pb:8px;
+      --fallback-pr:8px;
+      --fallback-pl:8px;
 
     {%- when 'none' -%}
       
     {%- else -%}
-    height:'40px';
+      --fallback-height:40px;
+      --fallback-pr:16px;
+      --fallback-pl:16px;
       
   {%- endcase -%}
 
@@ -95,7 +86,7 @@
 {%- endcase -%}
 
 
-{%# Use icon size if no label %}
+{%# if only icon is passed and no size or label props, set button size to icon %}
 {% if label == blank and size == blank %}
   {% assign size = 'icon' %}
 {% endif %}
@@ -114,9 +105,10 @@
 {%- endcase -%}
   
 
-
 {%- assign classes = base_class | append: ' ' | append: variant_class | append: ' ' | append: size_class | append: ' ' | append: class
 -%}
+
+{% assign icon_position = icon_position |  default: 'left' %}
 
 {% capture loading_spinner %}
   <span aria-hidden="true" class="animate-spin">{{ 'icons/loader-circle.svg' | inline_asset_content }}</span>
@@ -130,18 +122,28 @@
   {% endif %}
 {% endcapture %}
 
-{%- capture default_content -%}
-  <span aria-hidden="true" class="flex items-center {% if label %}gap-2{% endif %}">
-
-  {% if loading %}
+{% capture icon_content %}
+    {% if loading %}
     {{loading_spinner}}
   {% else %}
     {{icon}}
   {% endif %}
+{% endcapture %}
+
+{%- capture default_content -%}
+  <span aria-hidden="true" class="flex items-center {% if label %}gap-2{% endif %}">
+
+  {% if icon_position == 'left' %}
+    {{icon_content}}
+  {% endif %}
 
   {%- if label -%}
         <span>{{ label }}</span>
-    {%- endif -%}
+  {%- endif -%}
+
+  {% if icon_position == 'right' %}
+    {{icon_content}}
+  {% endif %}
    
   </span>
 {%- endcapture -%}
@@ -156,11 +158,8 @@
 {% endif %}
 >
 
-
-{%- if href -%}
-  <a
-    href="{{ href }}"
-    class="{{ classes }}"
+{% capture button_props %}
+   class="{{ classes }}"
     {% if id %}
     id="{{ id }}"
     {% endif %}
@@ -173,44 +172,60 @@
     {% if props %}
     {{ props }}
     {% endif %}
-    {% if radius %}
-    style="{{inline_styles |  escape}}"
-    {% endif %}>
+    style="{{inline_styles | strip}}"
+     x-data
+   
+{% endcapture %}
+
+{%- if href -%}
+  <a
+    href="{{ href }}"
+    {{ button_props }}
+    >
+    
     {{ final_content }}
   </a>
 {%- else -%}
   <button
     type="{{ type | default: 'button' }}"
-    class="{{ classes }}"
-    {% if id %}
-    id="{{ id }}"
-    {% endif %}
-    {% if onclick %}
-    onclick="{{ onclick }}"
-    {% endif %}
-    {% if aria_label %}
-    aria-label="{{ aria_label }}"
-    {% endif %}
-    {% if props %}
-    {{ props }}
-    {% endif %}
-    {% if radius %}
-    style="{{inline_styles |  escape}}"
-    {% endif %}>
+     {{ button_props }}
+    >
     {{ final_content }}
   </button>
 {%- endif -%}
 
-{% style %}
 
-  .button{
-    border-radius:var(--border-radius,8px)
+<style>
+
+  {% if  mobile_width %}
+  @media(max-width:768px){
+    .button{
+      width: var(--mobile-width, var(--fallback-width)) ;
+    }
   }
+  {% endif %}
+  
+  .button{
+    width: var(--width, var(--fallback-width, auto));
+    height: var(--height, var(--fallback-height, auto));
+    padding-left: var(--pl, var(--fallback-pl, 0));
+    padding-right: var(--pr, var(--fallback-pr, 0));
+    padding-top: var(--pt, var(--fallback-pt, 0));
+    padding-bottom: var(--pb, var(--fallback-pb, 0));
+
+    @media (max-width:768px) {
+       width: var(--mobile-width, var(--fallback-width, auto));
+       height: var(--mobile-height, var(--fallback-height, auto));
+    }
+  }
+
+
+ 
 
   .button svg {
     color: currentColor;
     shrink: 0 !important;
   }
-{% endstyle %}
+</style>
 
 </div>

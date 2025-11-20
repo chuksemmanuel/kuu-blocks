@@ -226,12 +226,9 @@ document.addEventListener('alpine:init', () => {
                     if (window.innerWidth < 768) {
                         this.direction = mobileDirection;
                         this.directionClass = directionClassObject[mobileDirection];
-                        console.log('update mobile')
-                        console.log(this.directionClass)
                     } else {
                         this.direction = this.desktopDirection;
                         this.directionClass = directionClassObject[this.desktopDirection];
-                        console.log('update desktop')
                     }
 
                     // Close the drawer if the direction changes

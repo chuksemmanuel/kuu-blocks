@@ -11,7 +11,16 @@
   {% content_for 'block', id: 'header-right', type: '_header-right' %}
 </header>
 
-{% content_for 'block', id: 'hero-buttonw', type: 'button',  radius: '10px', variant: 'primary', icon:'icons/shopping-cart.svg' %}
+<div class="flex gap-2">
+  {% content_for 'block', id: 'hero-button-1', type: 'button',  radius: '10px', variant: 'primary', icon:'icons/shopping-cart.svg' %}
+
+  {% content_for 'block', id: 'hero-button-2', type: 'button',  radius: '10px', variant: 'primary', icon:'icons/shopping-cart.svg' %}
+
+  {% content_for 'block', id: 'hero-button-3', type: 'button', icon:"icons/shopping-cart.svg" , lucide_icon:'shopping-bag' %}
+
+</div>
+
+{% content_for 'block', id: 'hero-button-4', type: 'button',  radius: '100px', variant: 'primary', icon:'icons/cancel.svg', label:'Icon Label', icon_position: 'right' %}
 
 {% schema %}
 {
