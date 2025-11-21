@@ -156,8 +156,10 @@
 </script>
 <script src="{{ 'js/blocks/cartdrawer.js' | asset_url }}" defer></script>
 
-<script>
-  setTimeout(() => {
-    window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }));
-  }, 1000);
-</script>
+{% comment %}
+  <script>
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }));
+    }, 1000);
+  </script>
+{% endcomment %}

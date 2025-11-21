@@ -1,6 +1,6 @@
 {% comment %} Get TabList from Tab items by extracting and de-duplicating the parent_tab value {% endcomment %}
 {% assign tabs = '' %}
-{% for item in section.blocks %}
+{% for item in blocks %}
   {% if item.type == 'menu_item' %}
     {% assign current_tab = item.settings.parent_tab %}
     {% unless tabs contains current_tab %}
@@ -11,40 +11,8 @@
 {% assign tab_list = tabs | split: ',' %}
 {% comment %} Get TabList from Tab items Ends {% endcomment %}
 
-{% capture menu_trigger %}
-   {% render 'button'           
-   , variant: 'white'
-   , size: 'icon'
-  , icon: 'icons/hamburger.svg'
-   , class: "rounded-lg!"
-   , aria_label: 'Open Menu' %}
-{% endcapture %}
-
-{% capture menu_content %}
-
-     <div data-menu class="flex h-full w-full flex-1  flex-col overflow-hidden overflow-x-hidden  rounded-md bg-white shadow-lg lg:rounded-lg"  >
-        <!-- Menu Header -->
-            <div data-menu-header class="shrink-0">
-        <div class="mb-6 flex items-center justify-between p-5 lg:p-5">
-          <!-- Menu Header - Title -->
-           
-             <div class="sr-only" id="drawer-title">Menu</div>
-          <span class="text-lg font-semibold " aria-label="menu">Menu</span>
-
-         <!-- Menu Header - Close button --> 
-          {% render 'button', 
-          icon:'icons/cancel.svg', 
-          class:'rounded-full! size-6! p-0! ',
-          props: 'data-drawer-close',
-          aria_label:'Close Menu'
-          %}
-        </div>
-      </div>
-
-      <!-- Menu Content - displayed as a tab -->
-      <div class="relative flex  flex-1 overflow-y-auto " >
-        {%# Tag triggers buttons %}
-        {% capture tab_button_list %}
+{% # Tag triggers buttons %}
+{% capture tab_button_list %}
           {% for tab in tab_list %}
             <button
               data-tab-trigger="{{tab}}"
@@ -61,31 +29,36 @@
           {% endfor %}
         {% endcapture %}
 
-        {%# Tag triggers -  horizontally scrollable %}
-        {% capture tab_triggers %}
+{% # Tag triggers -  horizontally scrollable %}
+{% capture tab_triggers %}
          
-            {% render 'horizontal-scroll', content: tab_button_list , id:'menu-tablist' props: '  
+            {% render 'horizontal-scroll',
+            content: tab_button_list,
+            id:'menu-tablist',
+            props: '  
                   x-ref="tabButtons"
                   role="tablist"
                   aria-label="Collection tabs"
-                ' %}
+                ',
+            class: ' pl-3 lg:pl-5 text-gray-500 select-none'
+                %}
             
         {% endcapture %}
 
-        {% capture tab_content %}
-          {%# Menu/Tab Content  %}
+{% capture tab_content %}
+          {%# Tab Content  %}
             {% for tab in tab_list %}
               {% if tab != blank %}
 
                 <div 
                   data-tab-content="{{tab}}" 
                   x-cloak
-                  class="flex w-full flex-col  p-5"
+                  class="flex w-full flex-col px-3 lg:px-5"
                   :class="!tabContentActive($el) ? 'absolute left-0' : 'relative' "
                   role="tabpanel"
                   aria-label="{{item.settings.parent_tab}} tab panel"
                   >
-                    {% for item in section.blocks %}
+                    {% for item in blocks %}
                       {% if item.type == 'menu_item' and item.settings.parent_tab == tab %}
                         <a
                           aria-label="{{item.settings.title}}"
@@ -118,23 +91,11 @@
             {% endfor %}
         {% endcapture %}
 
-        {% render 'tab', 
-        triggers:tab_triggers,
-        contents: tab_content,
-        id: 'menu-tablist',
-        %}
-      </div>
-
-  </div>
-       
-{% endcapture %}
-
-{% render 'drawer', trigger: menu_trigger, content: menu_content, id: 'menu-drawer', from: 'left' %}
-
-{% comment %}
-  <script>
-    setTimeout(() => {
-      window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'menu-drawer' } }));
-    }, 2000);
-  </script>
-{% endcomment %}
+{% render 'tab',
+  triggers: tab_triggers,
+  contents: tab_content,
+  class: 'h-full flex flex-col overflow-hidden',
+  trigger_class: 'shrink-0 pb-2',
+  content_class: 'flex-1 overflow-y-auto',
+  id: 'menu-tablist'
+%}
