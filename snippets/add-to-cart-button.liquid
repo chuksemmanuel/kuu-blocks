@@ -1,51 +1,53 @@
 {% liquid
-  assign id = id
-  assign quantity = quantity | default: 1
-  assign button_variant = button_variant | default: 'primary'
-  assign size = size
-  assign label = label
-  assign adding_label = adding_label
-  assign icon = icon
-  assign class = class
-  assign loading_class = loading_class | default: class
-  assign aria_label = aria_label | default: label | default: null
+	assign id = id
+	assign quantity = quantity | default: 1
+	assign button_variant = button_variant | default: 'primary'
+	assign size = size
+	assign label = label
+	assign adding_label = adding_label
+	assign icon = icon
+	assign class = class
+	assign loading_class = loading_class | default: class
+	assign aria_label = aria_label | default: label | default: null
 %}
 
 <div
-  class="group"
-  x-data="quickadd($el)"
-  data-id="{{id}}"
-  data-quantity="{{quantity}}">
+	class='group'
+	x-data='quickadd($el)'
+	data-id='{{id}}'
+	data-quantity='{{quantity}}'
+>
+	<div
+		role='button'
+		aria_label='{{aria_label}}'
+		:disabled='adding'
+		class='flex w-full flex-col'
+		@click='handleAddToCart'
+	>
+		<template x-if='!adding'>
+			{% render 'button',
+				variant: button_variant,
+				size: size,
+				icon: icon,
+				class: class,
+				label: label,
+				aria_label: aria_label,
+				props: ''
+			%}
+		</template>
 
-  <div
-    role="button"
-    aria_label="{{aria_label}}"
-    :disabled="adding"
-    class="w-full flex flex-col"
-    @click="handleAddToCart">
-    <template x-if="!adding">
-      {% render 'button'
-        , variant: button_variant
-        , size: size
-        , icon: icon
-        , class: class
-        , label: label
-        , aria_label: aria_label
-        , props: '' %}
-    </template>
-
-    <template x-if="adding">
-      {% render 'button'
-        , variant: button_variant
-        , size: size
-        , icon: 'icons/loader-circle.svg'
-        , loading: 'spinner'
-        , label: adding_label
-        , aria_label: aria_label
-        , class: loading_class %}
-    </template>
-  </div>
-
+		<template x-if='adding'>
+			{% render 'button',
+				variant: button_variant,
+				size: size,
+				icon: 'icons/loader-circle.svg',
+				loading: 'spinner',
+				label: adding_label,
+				aria_label: aria_label,
+				class: loading_class
+			%}
+		</template>
+	</div>
 </div>
 
-<script src="{{'js/components/add-to-cart-btn.js' |  asset_url}}" defer></script>
+<script src='{{'js/components/add-to-cart-btn.js' |  asset_url}}' defer></script>

@@ -1,21 +1,21 @@
 {% if shop.customer_accounts_enabled %}
-  {% render 'button',
-    href: routes.account_url,
-    icon: 'icons/user.svg',
-    variant: 'ghost',
-    size: 'icon',
-    class: 'rounded-full',
-    aria_label: 'Open Account'
-  %}
+	{% render 'button',
+		href: routes.account_url,
+		icon: 'icons/user.svg',
+		variant: 'ghost',
+		size: 'icon',
+		class: 'rounded-full',
+		aria_label: 'Open Account'
+	%}
 {% endif %}
 {% schema %}
-{
-  "name": "Account Button",
-  "settings": [],
-  "presets": [
-    {
-      "name": "Account Button"
-    }
-  ]
-}
+	{
+		"name": "Account Button",
+		"settings": [],
+		"presets": [
+			{
+				"name": "Account Button"
+			}
+		]
+	}
 {% endschema %}

@@ -1,20 +1,20 @@
 {% comment %}
-  Product Card Component with GSAP Animation
-  ------------------------------------------
-  Usage:
+	Product Card Component with GSAP Animation
+	------------------------------------------
+	Usage:
 
-  {% render 'product-card',
-  product: product,
-  show_floating_cart: true
-  %}
+	{% render 'product-card',
+	product: product,
+	show_floating_cart: true
+	%}
 
-  or for manual custom content:
-  {% render 'product-card',
-  title: 'Plain White Shirt',
-  price: 29,
-  image: 'shopify://shop_images/shirt.jpg',
-  url: '/products/plain-white-shirt'
-  %}
+	or for manual custom content:
+	{% render 'product-card',
+	title: 'Plain White Shirt',
+	price: 29,
+	image: 'shopify://shop_images/shirt.jpg',
+	url: '/products/plain-white-shirt'
+	%}
 {% endcomment %}
 
 {%- assign card_product = product | default: null -%}
@@ -24,33 +24,30 @@
 {%- assign product_url = url | default: card_product.url -%}
 {% assign props = props | default: null %}
 
-<div class="group relative flex flex-col overflow-hidden transition " {{ props }}>
-  <div href="{{ product_url }}" class="block rounded-3xl overflow-hidden aspect-square relative">
-    <a href="{{ product_url }}">
-      <img
-        src="{{ product_image | image_url: width: 600 }}"
-        alt="{{ product_title | escape }}"
-        width="600"
-        height="600"
-        class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-        loading="lazy" />
-    </a>
-    {% if show_floating_cart and product.available %}
-      <div class="absolute bottom-3 right-3">
-        {% render 'quick-add'
-          , product: product %}
-      </div>
+<div class='group relative flex flex-col overflow-hidden transition ' {{ props }}>
+	<div href='{{ product_url }}' class='relative block aspect-square overflow-hidden rounded-3xl'>
+		<a href='{{ product_url }}'>
+			<img
+				src='{{ product_image | image_url: width: 600 }}'
+				alt='{{ product_title | escape }}'
+				width='600'
+				height='600'
+				class='h-full w-full object-cover transition-transform duration-300 group-hover:scale-105'
+				loading='lazy'
+			>
+		</a>
+		{% if show_floating_cart and product.available %}
+			<div class='absolute right-3 bottom-3'>
+				{% render 'quick-add', product: product %}
+			</div>
+		{% endif %}
+	</div>
 
-    {% endif %}
-  </div>
-
-
-  <div class="flex flex-col gap-1 p-4">
-    <a href="{{ product_url }}" class="text-xl font-medium text-foreground line-clamp-2 lg:line-clamp-1">{{ product_title }}</a>
-    <span class="sr-only">
-      Price {{ product_price }}</span>
-    <p class="text-lg font-medium text-gray-500" aria-hidden="true">{{ product_price }}</p>
-  </div>
-
-
+	<div class='flex flex-col gap-1 p-4'>
+		<a href='{{ product_url }}' class='text-foreground line-clamp-2 text-xl font-medium lg:line-clamp-1'>
+			{{- product_title -}}
+		</a>
+		<span class='sr-only'> Price {{ product_price }}</span>
+		<p class='text-lg font-medium text-gray-500' aria-hidden='true'>{{ product_price }}</p>
+	</div>
 </div>

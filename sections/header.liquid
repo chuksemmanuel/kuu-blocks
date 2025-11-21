@@ -1,32 +1,30 @@
 <header
-  class="grid grid-cols-3 place-content-between w-full py-6"
+	class='grid w-full grid-cols-3 place-content-between py-6'
 >
-  {% # Annoucement snippet for screen readers %}
-  {% render 'announcement' %}
+	{% # Annoucement snippet for screen readers %}
+	{% render 'announcement' %}
 
-  {% content_for 'block', id: 'header-left', type: '_header-left' %}
+	{% content_for 'block', id: 'header-left', type: '_header-left' %}
 
-  {% content_for 'block', id: 'header-center', type: '_header-center' %}
+	{% content_for 'block', id: 'header-center', type: '_header-center' %}
 
-  {% content_for 'block', id: 'header-right', type: '_header-right' %}
+	{% content_for 'block', id: 'header-right', type: '_header-right' %}
 </header>
 
-
-
 {% schema %}
-{
-  "name": "t:general.header",
-  "settings": [],
-  "blocks": [
-    {
-      "type": "_header-left"
-    },
-    {
-      "type": "_header-center"
-    },
-    {
-      "type": "_header-right"
-    }
-  ]
-}
+	{
+		"name": "t:general.header",
+		"settings": [],
+		"blocks": [
+			{
+				"type": "_header-left"
+			},
+			{
+				"type": "_header-center"
+			},
+			{
+				"type": "_header-right"
+			}
+		]
+	}
 {% endschema %}

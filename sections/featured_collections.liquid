@@ -1,160 +1,174 @@
-<div class="py-6 lg:py-12 flex flex-col gap-4 md:gap-6 lg:gap-12">
-  {% if section.settings.heading_title != blank %}
-    {% render 'heading'
-      , tag: 'h2'
-      , title: section.settings.heading_title
-      , subheading: section.settings.heading_subtitle
-      , align: section.settings.heading_align %}
-  {% endif %}
+<div class='flex flex-col gap-4 py-6 md:gap-6 lg:gap-12 lg:py-12'>
+	{% if section.settings.heading_title != blank %}
+		{% render 'heading',
+			tag: 'h2',
+			title: section.settings.heading_title,
+			subheading: section.settings.heading_subtitle,
+			align: section.settings.heading_align
+		%}
+	{% endif %}
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-rows-2 lg:h-[700px] gap-4">
-    {% assign len = section.blocks.size %}
-    {% for block in section.blocks %}
-      <div class="rounded-3xl h-full md:min-h-[350px] min-h-[250px] overflow-hidden
-        {% if forloop.index == 2 and len == 5 %} md:row-span-2 {% endif %} w-full">
-        {% render 'collection-card'
-          , collection: block.settings.collection
-          , image: block.settings.image
-          , title: block.settings.title
-          , href: block.settings.href
-          , count: block.settings.count
-          , height: section.settings.card_height
-          , width: section.settings.card_width
-          , class: 'h-full max-md:h-60!'
-          , show_button: section.settings.show_button
-          , show_count: section.settings.show_count
-          , position: section.settings.position
-          , block: block
-        %}
-      </div>
-    {% endfor %}
-  </div>
+	<div class='grid grid-cols-1 grid-rows-2 gap-4 sm:grid-cols-2 lg:h-[700px] lg:grid-cols-3'>
+		{% assign len = section.blocks.size %}
+		{% for block in section.blocks %}
+			<div
+				class='
+					h-full min-h-[250px] overflow-hidden rounded-3xl md:min-h-[350px]
+					{% if forloop.index == 2 and len == 5 %} md:row-span-2 {% endif %} w-full
+				'
+			>
+				{% render 'collection-card',
+					collection: block.settings.collection,
+					image: block.settings.image,
+					title: block.settings.title,
+					href: block.settings.href,
+					count: block.settings.count,
+					height: section.settings.card_height,
+					width: section.settings.card_width,
+					class: 'h-full max-md:h-60!',
+					show_button: section.settings.show_button,
+					show_count: section.settings.show_count,
+					position: section.settings.position,
+					block: block
+				%}
+			</div>
+		{% endfor %}
+	</div>
 </div>
 
 {% schema %}
-  {
-    "name": "Featured Collections",
-    "settings": [
-      {
-        "type": "text",
-        "id": "heading_title",
-        "label": "Section Heading",
-        "default": "Our Featured Collections"
-      },
-      {
-        "type": "text",
-        "id": "heading_subtitle",
-        "label": "Subheading (optional)",
-        "default": "Best sellers"
-      },
-      {
-        "type": "select",
-        "id": "heading_align",
-        "label": "Heading Alignment",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left"
-          }, {
-            "value": "center",
-            "label": "Center"
-          }, {
-            "value": "right",
-            "label": "Right"
-          }
-        ],
-        "default": "center"
-      },
-      {
-        "type": "text",
-        "id": "card_width",
-        "label": "Card Width (px)",
-        "default": "440"
-      }, {
-        "type": "text",
-        "id": "card_height",
-        "label": "Card Height (px)",
-        "default": "460"
-      }, {
-        "type": "checkbox",
-        "id": "show_button",
-        "label": "Show Button on All Cards",
-        "default": true
-      }, {
-        "type": "checkbox",
-        "id": "show_count",
-        "label": "Show Product Count on All Cards",
-        "default": true
-      }, {
-        "type": "select",
-        "id": "position",
-        "label": "Content Position on Cards",
-        "options": [
-          {
-            "value": "center",
-            "label": "Center"
-          }, {
-            "value": "bottom",
-            "label": "Bottom"
-          }
-        ],
-        "default": "bottom"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "featured_collection",
-        "name": "Collection Card",
-        "settings": [
-          {
-            "type": "collection",
-            "id": "collection",
-            "label": "Choose Collection (optional)"
-          },
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Custom Image (if no collection)"
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Custom Title (if no collection)"
-          },
-          {
-            "type": "url",
-            "id": "href",
-            "label": "Custom Link (if no collection)"
-          }, {
-            "type": "number",
-            "id": "count",
-            "label": "Number of items (optional)"
-          }
-        ]
-      }
-    ],
-    "max_blocks": 5,
-    "presets": [
-      {
-        "name": "Featured Collections",
-        "category": "Home page",
-        "blocks": [
-          {
-            "type": "featured_collection"
-          },
-          {
-            "type": "featured_collection"
-          },
-          {
-            "type": "featured_collection"
-          },
-          {
-            "type": "featured_collection"
-          }, {
-            "type": "featured_collection"
-          }
-        ]
-      }
-    ]
-  }
+	{
+		"name": "Featured Collections",
+		"settings": [
+			{
+				"type": "text",
+				"id": "heading_title",
+				"label": "Section Heading",
+				"default": "Our Featured Collections"
+			},
+			{
+				"type": "text",
+				"id": "heading_subtitle",
+				"label": "Subheading (optional)",
+				"default": "Best sellers"
+			},
+			{
+				"type": "select",
+				"id": "heading_align",
+				"label": "Heading Alignment",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					}
+				],
+				"default": "center"
+			},
+			{
+				"type": "text",
+				"id": "card_width",
+				"label": "Card Width (px)",
+				"default": "440"
+			},
+			{
+				"type": "text",
+				"id": "card_height",
+				"label": "Card Height (px)",
+				"default": "460"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_button",
+				"label": "Show Button on All Cards",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "show_count",
+				"label": "Show Product Count on All Cards",
+				"default": true
+			},
+			{
+				"type": "select",
+				"id": "position",
+				"label": "Content Position on Cards",
+				"options": [
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "bottom",
+						"label": "Bottom"
+					}
+				],
+				"default": "bottom"
+			}
+		],
+		"blocks": [
+			{
+				"type": "featured_collection",
+				"name": "Collection Card",
+				"settings": [
+					{
+						"type": "collection",
+						"id": "collection",
+						"label": "Choose Collection (optional)"
+					},
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Custom Image (if no collection)"
+					},
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Custom Title (if no collection)"
+					},
+					{
+						"type": "url",
+						"id": "href",
+						"label": "Custom Link (if no collection)"
+					},
+					{
+						"type": "number",
+						"id": "count",
+						"label": "Number of items (optional)"
+					}
+				]
+			}
+		],
+		"max_blocks": 5,
+		"presets": [
+			{
+				"name": "Featured Collections",
+				"category": "Home page",
+				"blocks": [
+					{
+						"type": "featured_collection"
+					},
+					{
+						"type": "featured_collection"
+					},
+					{
+						"type": "featured_collection"
+					},
+					{
+						"type": "featured_collection"
+					},
+					{
+						"type": "featured_collection"
+					}
+				]
+			}
+		]
+	}
 {% endschema %}

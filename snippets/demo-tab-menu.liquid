@@ -1,16 +1,16 @@
-  {% capture tab_list %}
+{% capture tab_list %}
                {% for tab in tab_list %}
                 <button
                   role="tab"
                   data-tab-trigger="{{tab}}"
                   :class="{ 'bg-primary text-primary-foreground' : isActive == '{{tab}}' }"
-                  class="relative z-20 bg-gray-100 inline-flex items-center justify-center w-full h-10 px-3 text-sm font-medium transition duration-300 ease-out cursor-pointer whitespace-nowrap rounded-full">
+                  class="relative z-20 inline-flex h-10 w-full cursor-pointer items-center justify-center rounded-full bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out">
                   {{ tab }}
                 </button>
               {% endfor %}
         {% endcapture %}
 
-        {% capture tab_contents %}
+{% capture tab_contents %}
           {% for tab in tab_list %}
                   {% if tab != blank %}
 
@@ -24,7 +24,7 @@
                       x-transition:leave-start="opacity-100"
                       x-transition:leave-end="opacity-0"
                       x-cloak
-                      class="w-full flex flex-col  p-5"
+                      class="flex w-full flex-col  p-5"
                       :class="isActive == '{{tab}}' ? 'absolute left-0' : 'relative' "
                       role="tabpanel" aria-label="{{item.settings.parent_tab}} tab panel"
                       >
@@ -34,16 +34,16 @@
                             aria-label="{{item.settings.title}}"
                             role="listitem"
                             href="{{ item.settings.href }}"
-                            class="flex flex-col  gap-5  p-4 lg:p-6 hover:bg-gray-100 transition duration-300 rounded-lg"
+                            class="flex flex-col  gap-5  rounded-lg p-4 transition duration-300 hover:bg-gray-100 lg:p-6"
                             {{ item.shopify_attributes }}>
 
                             <div class="flex items-center gap-5">
-                              <div class="block size-20 rounded bg-gray-200 overflow-hidden  shrink-0"
+                              <div class="block size-20 shrink-0 overflow-hidden rounded  bg-gray-200"
                               {{ item.shopify_attributes }}>
                                 <img
                                   src="{{ item.settings.image | image_url : width : 200 }}"
                                   alt="{{ item.settings.title }}"
-                                  class="w-full h-full object-cover"
+                                  class="h-full w-full object-cover"
                                   width="80px"
                                   height="80px" />
                                 
@@ -61,4 +61,4 @@
                 {% endfor %}
         {% endcapture %}
 
-        {% render 'tab', triggers: tab_list, contents: tab_contents, id: 'tabbed-menu' %}
+{% render 'tab', triggers: tab_list, contents: tab_contents, id: 'tabbed-menu' %}

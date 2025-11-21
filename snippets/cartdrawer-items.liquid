@@ -1,197 +1,205 @@
 <ul
-  class="flex flex-col gap-4 lg:gap-6"
-  id="cartdrawer-content"
-  aria-label="cart items">
-  {% for item in cart.items %}
-    <li
-      aria-labelledby="cart-item-{{ item.key }}-title"
-      data-product-id="{{ item.product.id }}"
-      data-variant-id="{{item.variant.id}}"
-      data-line="{{item.id}}"
-      key="{{ item.key }}"
-      aria-label="{{product.title}}"
-      class="focus:outline-none"
-      tabindex="-1">
-      <div
-        class="flex gap-5 justify-between relative px-5 lg:px-8"
-        x-id="['{{ item.key }}']"
-        :class="{ 'opacity-95 pointer-events-none': updatingKey === '{{ item.key }}' }">
+	class='flex flex-col gap-4 lg:gap-6'
+	id='cartdrawer-content'
+	aria-label='cart items'
+>
+	{% for item in cart.items %}
+		<li
+			aria-labelledby='cart-item-{{ item.key }}-title'
+			data-product-id='{{ item.product.id }}'
+			data-variant-id='{{item.variant.id}}'
+			data-line='{{item.id}}'
+			key='{{ item.key }}'
+			aria-label='{{product.title}}'
+			class='focus:outline-none'
+			tabindex='-1'
+		>
+			<div
+				class='relative flex justify-between gap-5 px-5 lg:px-8'
+				x-id="['{{ item.key }}']"
+				:class="{ 'opacity-95 pointer-events-none': updatingKey === '{{ item.key }}' }"
+			>
+				<!-- LEFT SIDE: IMAGE + DETAILS -->
+				<div class='flex  gap-5'>
+					<!-- Product image -->
+					<a
+						href='{{item.product.url}}'
+						aria-labelledby='cart-item-{{ item.key }}-title'
+						class='block size-20 shrink-0 overflow-hidden rounded  bg-gray-200'
+					>
+						<img
+							src='{{ item.image | image_url: width: 200 }}'
+							alt='{{ item.title | escape }}'
+							class='h-full w-full object-cover'
+							width='80px'
+							height='80px'
+							aria-hidden='true'
+						>
+					</a>
 
-        <!-- LEFT SIDE: IMAGE + DETAILS -->
-        <div class="flex  gap-5">
-          <!-- Product image -->
-          <a
-            href="{{item.product.url}}"
-            aria-labelledby="cart-item-{{ item.key }}-title"
-            class="block size-20 rounded bg-gray-200 overflow-hidden  shrink-0">
-            <img
-              src="{{ item.image | image_url: width: 200 }}"
-              alt="{{ item.title | escape }}"
-              class="w-full h-full object-cover"
-              width="80px"
-              height="80px"
-              aria-hidden="true">
-          </a>
+					<!-- Product details -->
+					<div class='flex flex-col gap-1'>
+						<!-- Product Title -->
+						<a
+							id='cart-item-{{ item.key }}-title'
+							href='{{item.product.url}}'
+							class='line-clamp-2 max-w-50 font-semibold'
+						>
+							{{- item.title -}}
+						</a>
 
-          <!-- Product details -->
-          <div class="flex flex-col gap-1">
+						<!-- Price -->
 
-            <!-- Product Title -->
-            <a
-              id="cart-item-{{ item.key }}-title"
-              href="{{item.product.url}}"
-              class="font-semibold line-clamp-2 max-w-50">{{ item.title }}</a>
+						<template x-if='settings.showComparePrice'>
+							{% if item.original_line_price != item.final_line_price %}
+								<div
+									class='flex flex-col flex-wrap gap-x-1 gap-y-px md:flex-row md:items-center'
+									:class="updatingKey == '{{item.key}}' && 'animate-pulse'"
+								>
+									<div class='flex  items-center gap-2'>
+										<span class='sr-only'>Discounted price</span>
+										<span style='color:{{final_price_color}}' :style='{color: settings.finalPriceColor}'>
+											{{- item.final_line_price | money -}}
+										</span>
 
+										<span class='sr-only'>Original price</span>
+										<span class='text-gray-500 line-through'>
+											{{ item.original_line_price | money }}
+										</span>
+									</div>
 
-            <!-- Price -->
+									<template x-if='settings.showSavingsBadge'>
+										<span
+											class='w-fit shrink-0 rounded-md  px-1.5 py-px text-xs'
+											:style='{background:settings.savingsBadgeColor, color:_getContrastColor(settings.savingsBadgeColor)}'
+											data-savings-badge
+										>
+											Saved {{ item.original_line_price | minus: item.final_line_price | money }}
+										</span>
+									</template>
+								</div>
+							{% else %}
+								<span :class="updatingKey == '{{item.key}}' && 'animate-pulse'">
+									{{- item.final_line_price | money -}}
+								</span>
+							{% endif %}
+						</template>
 
-            <template x-if="settings.showComparePrice">
-              {% if item.original_line_price != item.final_line_price %}
+						<template x-if='!settings.showComparePrice'>
+							<span :class="updatingKey == '{{item.key}}' && 'animate-pulse'">{{ item.final_line_price | money }}</span>
+						</template>
 
+						<!-- Variant options (Color: Red, Size: M, etc.) -->
+						<template x-if='settings.showVariantTitle'>
+							{% if item.product.has_only_default_variant == false and item.item_components.size == 0 %}
+								<span class='max-w-30 text-xs text-gray-500' aria-hidden='true'>{{ item.variant.title }}</span>
 
-                <div class="flex flex-col md:flex-row md:items-center flex-wrap gap-x-1 gap-y-px" :class="updatingKey == '{{item.key}}' && 'animate-pulse'">
+								{% for option in item.options_with_values %}
+									<span class='sr-only'> {{ option.name }}: {{ option.value }} </span>
+								{% endfor %}
+							{% endif %}
+						</template>
 
-                  <div class="flex  gap-2 items-center">
-                    <span class="sr-only">Discounted price</span>
-                    <span style="color:{{final_price_color}}" :style="{color: settings.finalPriceColor}">{{ item.final_line_price | money }}</span>
+						<!-- Error Messages -->
+						<template x-if="cartMessage && cartMessage.key === '{{ item.key }}'">
+							<div
+								class=' min-h-5 text-sm '
+								:class="cartMessage.type === 'warning'? 'text-amber-500': cartMessage.type === 'success' ? 'text-green-500':'text-red-500'"
+							>
+								<style>
+									.cart-message-icon > svg {
+										width: 14px;
+										display: inline;
+									}
+								</style>
 
-                    <span class="sr-only">Original price</span>
-                    <span class="line-through text-gray-500">
-                      {{ item.original_line_price | money }}
-                    </span>
-                  </div>
+								<span class='cart-message-icon shrink-0' aria-hidden='true'>
+									<template x-if="cartMessage.type === 'warning'">
+										{{ 'icons/circle-alert.svg' | inline_asset_content }}
+									</template>
+									<template x-if="cartMessage.type === 'success'">
+										{{ 'icons/circle-check.svg' | inline_asset_content }}
+									</template>
+									<template x-if="cartMessage.type === 'error'">
+										{{ 'icons/circle-x.svg' | inline_asset_content }}
+									</template>
+								</span>
+								<span class='sr-only' x-text='cartMessage.type'></span>
+								<span x-text='cartMessage.message' class='text-sm'></span>
+								<button
+									@click='clearCartMessage()'
+									class='ml-1 cursor-pointer underline'
+									title='Click to clear error'
+								>
+									Clear
+								</button>
+							</div>
+						</template>
+					</div>
+				</div>
 
+				<!-- RIGHT SIDE: QUANTITY + REMOVE -->
+				<div class='flex shrink-0 flex-col items-center justify-center gap-2'>
+					<!-- Quantity control -->
+					<div class='flex h-10 items-center justify-center overflow-hidden rounded border border-gray-200 p-px'>
+						<label for='qty-{{ item.id }}' class='sr-only'>Quantity for {{ item.title }}</label>
+						<input
+							id='qty-{{ item.id }}'
+							name='{{item.key}}'
+							type='text'
+							value='{{ item.quantity }}'
+							class='w-12 appearance-none p-px text-center ring-0 outline-0'
+							@change="onQuantityInput($event, '{{ item.key }}')"
+							@keyup="filterNumeric($event, '{{ item.key }}')"
+						>
 
-                  <template x-if="settings.showSavingsBadge">
-                    <span
-                      class="rounded-md px-1.5 py-px  text-xs w-fit shrink-0"
-                      :style="{background:settings.savingsBadgeColor, color:_getContrastColor(settings.savingsBadgeColor)}"
-                      data-savings-badge>
-                      Saved {{ item.original_line_price | minus: item.final_line_price | money }}
-                    </span>
-                  </template>
+						<div class='hidden flex-col items-center justify-center md:flex '>
+							<button
+								data-qty-increase='{{ item.id }}'
+								aria-label='Increase quantity for {{ item.title }}'
+								class='flex size-5 items-center justify-center bg-gray-50 text-gray-400 transition duration-400 ease-out hover:bg-gray-200 hover:text-gray-700'
+								@click="onQuantityClick('{{ item.key }}', Number($event.target.closest('[key]').querySelector('input').value) + 1)"
+							>
+								{{ 'icons/chevron-up.svg' | inline_asset_content }}
+							</button>
 
+							<button
+								data-qty-decrease='{{ item.id }}'
+								aria-label='Decrease quantity for {{ item.title }}'
+								class='flex size-5 items-center justify-center bg-gray-50 text-gray-400 transition duration-400 ease-out hover:bg-gray-200 hover:text-gray-700 disabled:pointer-events-none disabled:opacity-50'
+								@click="onQuantityClick('{{ item.key }}', Math.max(1, Number($event.target.closest('[key]').querySelector('input').value) - 1))"
+								{%- if item.quantity == 1 -%}
+									disabled
+								{%- endif -%}
+							>
+								{{ 'icons/chevron-down.svg' | inline_asset_content }}
+							</button>
+						</div>
+					</div>
 
-                </div>
-              {% else %}
-                <span :class="updatingKey == '{{item.key}}' && 'animate-pulse'">{{ item.final_line_price | money }}</span>
-              {% endif %}
-            </template>
+					<!-- Remove -->
+					<button
+						data-qty-remove='{{ item.id }}'
+						aria-label='Remove {{ item.title }} from cart'
+						x-show="updatingKey !== '{{ item.key }}'"
+						class='h-5 text-right text-xs text-gray-500 underline hover:text-black'
+						@click="updateQuantity('{{ item.key }}', 0)"
+					>
+						Remove
+					</button>
 
-            <template x-if="!settings.showComparePrice">
-              <span :class="updatingKey == '{{item.key}}' && 'animate-pulse'">{{ item.final_line_price | money }}</span>
-            </template>
-
-
-            <!-- Variant options (Color: Red, Size: M, etc.) -->
-            <template x-if="settings.showVariantTitle">
-              {% if item.product.has_only_default_variant == false and item.item_components.size == 0 %}
-                <span class="text-gray-500 text-xs max-w-30" aria-hidden="true">{{ item.variant.title }}</span>
-
-                {% for option in item.options_with_values %}
-                  <span class="sr-only">
-                    {{ option.name }}: {{ option.value }}
-                  </span>
-                {% endfor %}
-
-              {% endif %}
-            </template>
-
-            <!-- Error Messages -->
-            <template x-if="cartMessage && cartMessage.key === '{{ item.key }}'">
-              <div class=" text-sm min-h-5 " :class="cartMessage.type === 'warning'? 'text-amber-500': cartMessage.type === 'success' ? 'text-green-500':'text-red-500'">
-                <style>
-                  .cart-message-icon > svg {
-                    width: 14px;
-                    display: inline;
-                  }
-                </style>
-
-
-                <span class="shrink-0 cart-message-icon" aria-hidden="true">
-                  <template x-if="cartMessage.type === 'warning'">
-                    {{ 'icons/circle-alert.svg' | inline_asset_content }}
-                  </template>
-                  <template x-if="cartMessage.type === 'success'">
-                    {{ 'icons/circle-check.svg' | inline_asset_content }}
-                  </template>
-                  <template x-if="cartMessage.type === 'error'">
-                    {{ 'icons/circle-x.svg' | inline_asset_content }}
-                  </template>
-                </span>
-                <span class="sr-only" x-text="cartMessage.type"></span>
-                <span x-text="cartMessage.message" class="text-sm"></span>
-                <button
-                  @click="clearCartMessage()"
-                  class="underline cursor-pointer ml-1"
-                  title="Click to clear error">Clear</button>
-              </div>
-            </template>
-
-
-          </div>
-        </div>
-
-        <!-- RIGHT SIDE: QUANTITY + REMOVE -->
-        <div class="flex flex-col justify-center items-center shrink-0 gap-2">
-
-          <!-- Quantity control -->
-          <div class="border border-gray-200 rounded flex justify-center items-center p-px h-10 overflow-hidden">
-            <label for="qty-{{ item.id }}" class="sr-only">Quantity for {{ item.title }}</label>
-            <input
-              id="qty-{{ item.id }}"
-              name="{{item.key}}"
-              type="text"
-              value="{{ item.quantity }}"
-              class="w-12 text-center p-px ring-0 outline-0 appearance-none"
-              @change="onQuantityInput($event, '{{ item.key }}')"
-              @keyup="filterNumeric($event, '{{ item.key }}')" />
-
-
-            <div class="hidden md:flex flex-col justify-center items-center ">
-              <button
-                data-qty-increase="{{ item.id }}"
-                aria-label="Increase quantity for {{ item.title }}"
-                class="bg-gray-50 transition ease-out duration-400 hover:bg-gray-200 text-gray-400 size-5 flex justify-center items-center hover:text-gray-700"
-                @click="onQuantityClick('{{ item.key }}', Number($event.target.closest('[key]').querySelector('input').value) + 1)">
-                {{ 'icons/chevron-up.svg' | inline_asset_content }}
-              </button>
-
-              <button
-                data-qty-decrease="{{ item.id }}"
-                aria-label="Decrease quantity for {{ item.title }}"
-                class="bg-gray-50 transition ease-out duration-400 hover:bg-gray-200 text-gray-400 size-5 flex justify-center items-center hover:text-gray-700 disabled:opacity-50 disabled:pointer-events-none"
-                @click="onQuantityClick('{{ item.key }}', Math.max(1, Number($event.target.closest('[key]').querySelector('input').value) - 1))"
-                {%- if item.quantity == 1 -%}
-                disabled
-                {%- endif -%}>
-                {{ 'icons/chevron-down.svg' | inline_asset_content }}
-              </button>
-            </div>
-          </div>
-
-          <!-- Remove -->
-          <button
-            data-qty-remove="{{ item.id }}"
-            aria-label="Remove {{ item.title }} from cart"
-            x-show="updatingKey !== '{{ item.key }}'"
-            class="text-xs text-right underline text-gray-500 hover:text-black h-5"
-            @click="updateQuantity('{{ item.key }}', 0)">
-            Remove
-          </button>
-
-          <!-- Spinner for currently updating item -->
-          <template x-if="updatingKey === '{{ item.key }}'">
-            <span
-              aria-hidden="true"
-              class=" text-gray-500 transition  animate-spin [animation-duration:0.5s] self-end  size-5"
-              @click="updateQuantity('{{ item.key }}', 0)">
-              {{ 'icons/loader-circle.svg' | inline_asset_content }}
-            </span>
-          </template>
-        </div>
-      </div>
-    </li>
-
-  {% endfor %}
+					<!-- Spinner for currently updating item -->
+					<template x-if="updatingKey === '{{ item.key }}'">
+						<span
+							aria-hidden='true'
+							class=' size-5 animate-spin  self-end text-gray-500 transition  [animation-duration:0.5s]'
+							@click="updateQuantity('{{ item.key }}', 0)"
+						>
+							{{ 'icons/loader-circle.svg' | inline_asset_content }}
+						</span>
+					</template>
+				</div>
+			</div>
+		</li>
+	{% endfor %}
 </ul>

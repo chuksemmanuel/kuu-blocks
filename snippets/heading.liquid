@@ -1,16 +1,16 @@
 {% comment %}
-  Heading Component
-  -----------------
-  Usage examples:
+	Heading Component
+	-----------------
+	Usage examples:
 
-  {% render 'heading', title: 'Our Products' %}
+	{% render 'heading', title: 'Our Products' %}
 
-  {% render 'heading',
-  title: 'Our Products',
-  subheading: 'Recently added shirts!',
-  tag: 'h2',
-  align: 'center'
-  %}
+	{% render 'heading',
+	title: 'Our Products',
+	subheading: 'Recently added shirts!',
+	tag: 'h2',
+	align: 'center'
+	%}
 {% endcomment %}
 
 {%- assign heading_text = title | default: 'Heading Text' -%}
@@ -18,16 +18,14 @@
 {%- assign heading_tag = tag | default: 'h2' -%}
 
 {% case align %}
-  {% when 'left' %}
-    {%- assign align_class = 'text-left' -%}
-  {% when 'center' %}
-    {%- assign align_class = 'text-center' -%}
-  {% when 'right' %}
-    {%- assign align_class = 'text-right' -%}
-  {% else %}
-    {%- assign align_class = 'text-left' -%}
-
-
+	{% when 'left' %}
+		{%- assign align_class = 'text-left' -%}
+	{% when 'center' %}
+		{%- assign align_class = 'text-center' -%}
+	{% when 'right' %}
+		{%- assign align_class = 'text-right' -%}
+	{% else %}
+		{%- assign align_class = 'text-left' -%}
 {% endcase %}
 
 {%- capture heading_size -%}
@@ -48,14 +46,14 @@
     {%- else -%} text-sm text-gray-500
   {%- endcase -%}
 {%- endcapture -%}
-<div class="{{ align_class }} space-y-2">
-  <{{ heading_tag }} class="{{ heading_size | strip }}">
-    {{ heading_text }}
-    </{{ heading_tag }}>
+<div class='{{ align_class }} space-y-2'>
+	<{{ heading_tag }} class='{{ heading_size | strip }}'>
+		{{ heading_text }}
+	</{{ heading_tag }}>
 
-    {% if sub_text %}
-      <p class="{{ subheading_size | strip }}">
-        {{ sub_text }}
-      </p>
-    {% endif %}
-  </div>
+	{% if sub_text %}
+		<p class='{{ subheading_size | strip }}'>
+			{{ sub_text }}
+		</p>
+	{% endif %}
+</div>

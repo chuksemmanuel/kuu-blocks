@@ -1,12 +1,12 @@
 <h2 id="drawer-title" class="sr-only">Search</h2>
-<p id="drawer-description" class="sr-only">
-  Search across product,collections and pages</p>
+<p id="drawer-description" class="sr-only">Search across product,collections and pages</p>
 <div
   x-data="searchDrawer()"
-  class="bg-white rounded-md md:rounded-lg overflow-hidden shadow-lg flex-1 p-5 md:p-8 flex flex-col"
-  id="searchdrawer-content">
+  class="flex flex-1 flex-col overflow-hidden rounded-md bg-white p-5 shadow-lg md:rounded-lg md:p-8"
+  id="searchdrawer-content"
+>
   <!-- Header -->
-  <div class="flex h-11.5 justify-between items-center gap-4 border-b-2 border-gray-300 pb-2 md:pb-3 has-focus-within:border-gray-800">
+  <div class="flex h-11.5 items-center justify-between gap-4 border-b-2 border-gray-300 pb-2 has-focus-within:border-gray-800 md:pb-3">
     <input
       type="text"
       name="searchTerm"
@@ -14,28 +14,29 @@
       x-ref="searchInput"
       @input="handleInput"
       placeholder="Search for ..."
-      class="flex-1 border-none ring-0 text-black text-lg outline-0 h-8 font-semibold!">
+      class="h-8 flex-1 border-none text-lg font-semibold! text-black ring-0 outline-0"
+    >
 
     <button
       aria-label="clear search input"
       @click="clearSearchTerm"
-      class="flex flex-col justify-center items-center cursor-pointer text-sm md:text-base text-gray-600 hover:text-gray-700 transition">
+      class="flex cursor-pointer flex-col items-center justify-center text-sm text-gray-600 transition hover:text-gray-700 md:text-base"
+    >
       Clear
     </button>
 
-    <div class="leading-0 flex flex-col justify-center items-center">
-      {% render 'button'
-        , icon: 'icons/cancel.svg'
-        , class: 'rounded-full! size-6! p-0!'
-        , props: 'data-drawer-close'
-        , aria_label: 'close search drawer'
+    <div class="flex flex-col items-center justify-center leading-0">
+      {% render 'button',
+        icon: 'icons/cancel.svg',
+        class: 'rounded-full! size-6! p-0!',
+        props: 'data-drawer-close',
+        aria_label: 'close search drawer'
       %}
     </div>
   </div>
 
   <!-- Results Container -->
-  <div class="flex flex-col flex-1 h-full overflow-hidden py-4 md:py-6 " x-ref="resultsContainer">
-
+  <div class="flex h-full flex-1 flex-col overflow-hidden py-4 md:py-6 " x-ref="resultsContainer">
     <div
       aria-hidden="true"
       x-show="loading"
@@ -46,10 +47,10 @@
       x-transition:leave-start="opacity-100 translate-y-0"
       x-transition:leave-end="opacity-0 translate-y-1"
       x-cloak
-      class="h-full flex flex-col">
+      class="flex h-full flex-col"
+    >
       {% render 'searchdrawer-content-skeleton' %}
     </div>
-
 
     <div
       x-show="!loading && isSearchEmpty()"
@@ -60,10 +61,10 @@
       x-transition:leave-start="opacity-100 translate-y-0"
       x-transition:leave-end="opacity-0 translate-y-1"
       x-cloak
-      class="flex flex-col items-center justify-center py-10 text-gray-400">
+      class="flex flex-col items-center justify-center py-10 text-gray-400"
+    >
       <p>Start typing to search products...</p>
     </div>
-
 
     <!-- Results will be morphed here -->
 
@@ -78,16 +79,18 @@
       x-transition:leave-end="opacity-0 translate-y-1"
       x-cloak
       id="searchdrawer-results"
-      class="overflow-hidden flex flex-col"
-      data-default-tab="{{default_tab}}">
-
-      <div class="flex flex-col gap-4 md:gap-6 h-full overflow-hidden">
+      class="flex flex-col overflow-hidden"
+      data-default-tab="{{default_tab}}"
+    >
+      <div class="flex h-full flex-col gap-4 overflow-hidden md:gap-6">
         {% # tab trigger %}
 
-        <div role="tablist" class="relative flex gap-4 shrink-0 items-center z-30 overflow-hidden  text-gray-500 bg-white select-none overflow-x-auto w-full no-scrollbar h-6 md:h-7 ">
-          {% assign tab_title_class = "div shrink-0 text-lg font-semibold text-gray-300 hover:text-black  cursor-pointer transition" %}
+        <div
+          role="tablist"
+          class="no-scrollbar relative z-30 flex h-6 w-full shrink-0  items-center gap-4 overflow-hidden overflow-x-auto bg-white text-gray-500 select-none md:h-7 "
+        >
+          {% assign tab_title_class = 'div shrink-0 text-lg font-semibold text-gray-300 hover:text-black  cursor-pointer transition' %}
           {% if products.size > 0 %}
-
             <button
               role="tab"
               aria-label="products"
@@ -97,7 +100,8 @@
               data-search-tab="products"
               class="{{tab_title_class}}"
               :class="activeTab === 'products' && 'text-black!' "
-              @click="() => setActiveTab('products')">
+              @click="() => setActiveTab('products')"
+            >
               Products
             </button>
           {% endif %}
@@ -111,7 +115,8 @@
               data-search-tab="collections"
               class="{{tab_title_class}}"
               :class="activeTab === 'collections' && 'text-black!'  "
-              @click="() => setActiveTab('collections')">
+              @click="() => setActiveTab('collections')"
+            >
               Collections
             </button>
           {% endif %}
@@ -125,14 +130,15 @@
               data-search-tab="pages"
               class="{{tab_title_class}}"
               :class="activeTab === 'pages' && 'text-black!'  "
-              @click="() => setActiveTab('pages')">
+              @click="() => setActiveTab('pages')"
+            >
               Pages
             </button>
           {% endif %}
         </div>
 
         {% # tab list %}
-        <div class="relative flex flex-col flex-1 overflow-y-auto">
+        <div class="relative flex flex-1 flex-col overflow-y-auto">
           {% # Product tab %}
           <div
             role="tabpanel"
@@ -146,16 +152,12 @@
             x-transition:leave-end="opacity-0"
             x-cloak
             data-search-list="products"
-            :class="activeTab !== 'products' ? 'absolute left-0' : 'relative' ">
+            :class="activeTab !== 'products' ? 'absolute left-0' : 'relative' "
+          >
             {% if products.size > 0 %}
               <div role="list" class="flex flex-col gap-5">
                 {% for product in products %}
-                  {% render 'searchdrawer-item'
-                    , type: 'product'
-                    , item: product
-                    , key: forloop.index
-                    , terms: terms
-                  %}
+                  {% render 'searchdrawer-item', type: 'product', item: product, key: forloop.index, terms: terms %}
                 {% endfor %}
               </div>
             {% else %}
@@ -178,15 +180,16 @@
             x-transition:leave-end="opacity-0"
             x-cloak
             data-search-list="collections"
-            :class="activeTab !== 'collections' ? 'absolute left-0' : 'relative' ">
+            :class="activeTab !== 'collections' ? 'absolute left-0' : 'relative' "
+          >
             {% if collections.size > 0 %}
               <div role="list" class="flex flex-col gap-5">
                 {% for collection in collections %}
-                  {% render 'searchdrawer-item'
-                    , type: 'collection'
-                    , item: collection
-                    , key: forloop.index
-                    , terms: terms
+                  {% render 'searchdrawer-item',
+                    type: 'collection',
+                    item: collection,
+                    key: forloop.index,
+                    terms: terms
                   %}
                 {% endfor %}
               </div>
@@ -210,16 +213,12 @@
             x-transition:leave-end="opacity-0"
             x-cloak
             data-search-list="pages"
-            :class="activeTab !== 'pages' ? 'absolute left-0' : 'relative' ">
+            :class="activeTab !== 'pages' ? 'absolute left-0' : 'relative' "
+          >
             {% if pages.size > 0 %}
               <div role="list" class="flex flex-col gap-5">
                 {% for page in pages %}
-                  {% render 'searchdrawer-item'
-                    , type: 'page'
-                    , item: page
-                    , key: forloop.index
-                    , terms: terms
-                  %}
+                  {% render 'searchdrawer-item', type: 'page', item: page, key: forloop.index, terms: terms %}
                 {% endfor %}
               </div>
             {% else %}
@@ -229,21 +228,13 @@
             {% endif %}
           </div>
         </div>
-
       </div>
-
-
     </div>
-
   </div>
 </div>
 
-
-<script src="{{ 'js/blocks/searchdrawer.js' | asset_url }}" defer></script>
-
-
 <style>
   [data-search-item] .highlight {
-    background: #ffff00
+    background: #ffff00;
   }
 </style>

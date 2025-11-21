@@ -1,13 +1,13 @@
 {% liquid
   assign id = id | default: 'tab'
-  assign default_active = default_active | default: 'tab-1'
+  assign default_active = default_active
 %}
 
 <div
   data-tab-id="{{id}}"
   data-default-active="{{default_active}}"
   x-data="tab"
-  class="{{class}}"
+  class="w-full{{class}}"
 >
   <!-- Triggers -->
   <div
@@ -22,5 +22,3 @@
     {{ contents }}
   </div>
 </div>
-
-<script src="{{'js/components/tab.js' | asset_url}}" defer></script>

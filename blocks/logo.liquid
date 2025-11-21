@@ -1,11 +1,9 @@
-
-
 {% liquid
-  assign image = block.settings.logo
+	assign image = block.settings.logo
 %}
 
 {%- if image -%}
-  {% capture logo_image %}
+	{% capture logo_image %}
     {{-
       image
       | image_url: width: 3840
@@ -20,226 +18,221 @@
   {% endcapture %}
 {%- endif -%}
 
-
 {% case block.settings.device %}
-  {% when "mobile" %}
-    {% assign display_class = 'flex md:hidden' %}
-  
-  {% when "desktop" %}
-     {% assign display_class = 'hidden md:flex' %}
-  {% else %}
-     {% assign display_class = 'flex' %}
+	{% when 'mobile' %}
+		{% assign display_class = 'flex md:hidden' %}
+
+	{% when 'desktop' %}
+		{% assign display_class = 'hidden md:flex' %}
+	{% else %}
+		{% assign display_class = 'flex' %}
 {% endcase %}
 
-
 <div
-  class="
-    logo-block
-    shrink-0 justify-center items-center
-    {{ display_class }}
-  "
-  style="
-    {% if block.settings.unit == 'percent' %}
-      --logo-width: {{ block.settings.percent_width }}%;
-    {% else %}
-      {% if image %}
-        --logo-width: {{ image.width | times: 1.00 | divided_by: image.height | times: block.settings.pixel_height }}px;
-      {% else %}
-        --logo-width: {{ shop.name.size }}ch;
-        --logo-height: {{ block.settings.pixel_height }}px;
-      {% endif %}
-    {% endif %}
+	class='
+		logo-block
+		shrink-0 items-center justify-center
+		{{ display_class }}
+	'
+	style='
+		{% if block.settings.unit == 'percent' %}
+		  --logo-width: {{ block.settings.percent_width }}%;
+		{% else %}
+		  {% if image %}
+		    --logo-width: {{ image.width | times: 1.00 | divided_by: image.height | times: block.settings.pixel_height }}px;
+		  {% else %}
+		    --logo-width: {{ shop.name.size }}ch;
+		    --logo-height: {{ block.settings.pixel_height }}px;
+		  {% endif %}
+		{% endif %}
 
-    {% if block.settings.custom_mobile_size %}
-      {% if block.settings.unit_mobile == 'percent' %}
-        --logo-width-mobile: {{ block.settings.percent_width_mobile }}%;
-        --logo-height-mobile: auto;
-      {% else %}
-        {% if image %}
-          --logo-width-mobile: {{ image.width | times: 1.00 | divided_by: image.height | times: block.settings.pixel_height_mobile }}px;
-          {% else %}
-            --logo-width-mobile: {{ shop.name.size }}ch;
-            --logo-height-mobile: {{ block.settings.pixel_height_mobile }}px;
-        {% endif %}
-      {% endif %}
-    {% endif %}
-  
-  "
-  {{ block.shopify_attributes }}
+		{% if block.settings.custom_mobile_size %}
+		  {% if block.settings.unit_mobile == 'percent' %}
+		    --logo-width-mobile: {{ block.settings.percent_width_mobile }}%;
+		    --logo-height-mobile: auto;
+		  {% else %}
+		    {% if image %}
+		      --logo-width-mobile: {{ image.width | times: 1.00 | divided_by: image.height | times: block.settings.pixel_height_mobile }}px;
+		      {% else %}
+		        --logo-width-mobile: {{ shop.name.size }}ch;
+		        --logo-height-mobile: {{ block.settings.pixel_height_mobile }}px;
+		    {% endif %}
+		  {% endif %}
+		{% endif %}
+	'
+	{{ block.shopify_attributes }}
 >
-  {% if logo_image %}
-    <div class="logo-block__image-wrapper">
-      {{ logo_image }}
-    </div>
-  {% else %}
-      <a href="{{routes.root_url}}" class="uppercase text-center font-medium" aria-label="site logo">
-      {{ shop.name}}
-    </a>
-  {% endif %}
+	{% if logo_image %}
+		<div class='logo-block__image-wrapper'>
+			{{ logo_image }}
+		</div>
+	{% else %}
+		<a href='{{routes.root_url}}' class='text-center font-medium uppercase' aria-label='site logo'>
+			{{ shop.name }}
+		</a>
+	{% endif %}
 </div>
 
 {% stylesheet %}
-  .logo-block {
-    width: var(--logo-width);
-    max-width: 100%;
-    max-height: var(--logo-height, 100%);
-    font-size: var(--logo-height, inherit);
-  
+	.logo-block {
+		width: var(--logo-width);
+		max-width: 100%;
+		max-height: var(--logo-height, 100%);
+		font-size: var(--logo-height, inherit);
 
-    @media screen and (max-width: 750px) {
-      max-height:var(--logo-height-mobile, var(--logo-height, 100%));
-      font-size: var(--logo-height-mobile, var(--logo-height));
-      width: var(--logo-width-mobile, var(--logo-width));
-    }
-  }
+		@media screen and (max-width: 750px) {
+			max-height: var(--logo-height-mobile, var(--logo-height, 100%));
+			font-size: var(--logo-height-mobile, var(--logo-height));
+			width: var(--logo-width-mobile, var(--logo-width));
+		}
+	}
 
-  .logo-block__image-wrapper {
-    display: flex;
-    width: 100%;
-    max-width: 100%;
-    max-height: 100%;
-  }
+	.logo-block__image-wrapper {
+		display: flex;
+		width: 100%;
+		max-width: 100%;
+		max-height: 100%;
+	}
 
-  .logo-block__image {
-    object-fit: contain;
-    width: 100%;
-  }
+	.logo-block__image {
+		object-fit: contain;
+		width: 100%;
+	}
 {% endstylesheet %}
 
 {% schema %}
-{
-  "name": "Logo",
-  "tag": null,
-  "settings": [
-    {
-      "type": "select",
-      "id":"device",
-      "label": "Show Logo on",
-      "options": [
-              {
-          "value":"all",
-          "label": "All Devices"
-        },
-        {
-          "value":"mobile",
-          "label": "Mobile  Devices Only"
-        },
-        {
-          "value":"desktop",
-          "label": "Desktop Devices  Only"
-        }
-  
-      ],
-      "default":"all"
-    },
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Logo",
-      "info": "Leave blank to use shop name"
-    },
-    {
-      "type": "header",
-      "content": "Size"
-    },
-    {
-      "type": "select",
-      "id": "unit",
-      "label": "Unit",
-      "options": [
-        {
-          "value": "pixel",
-          "label": "Pixel"
-        },
-        {
-          "value": "percent",
-          "label": "Percent"
-        }
-      ],
-      "default": "percent"
-    },
-    {
-      "type": "range",
-      "id": "percent_width",
-      "label": "Width",
-      "min": 10,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 100,
-      "visible_if": "{{ block.settings.unit == 'percent' }}"
-    },
-    {
-      "type": "range",
-      "id": "pixel_height",
-      "label": "Height",
-      "min": 16,
-      "max": 320,
-      "step": 8,
-      "unit": "px",
-      "default": 48,
-      "visible_if": "{{ block.settings.unit == 'pixel' }}"
-    },
-    {
-      "type": "checkbox",
-      "id": "custom_mobile_size",
-      "label": "Custom mobile size",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Mobile Size",
-      "visible_if": "{{ block.settings.custom_mobile_size == true }}"
-    },
-    {
-      "type": "select",
-      "id": "unit_mobile",
-      "label": "Unit",
-      "options": [
-        {
-          "value": "pixel",
-          "label": "Pixel"
-        },
-        {
-          "value": "percent",
-          "label": "Percent"
-        }
-      ],
-      "default": "percent",
-      "visible_if": "{{ block.settings.custom_mobile_size == true }}"
-    },
-    {
-      "type": "range",
-      "id": "percent_width_mobile",
-      "label": "Width",
-      "min": 10,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 100,
-      "visible_if": "{{ block.settings.unit_mobile == 'percent' and block.settings.custom_mobile_size == true}}"
-    },
-    {
-      "type": "range",
-      "id": "pixel_height_mobile",
-      "label": "Height",
-      "min": 16,
-      "max": 160,
-      "step": 8,
-      "unit": "px",
-      "default": 120,
-      "visible_if": "{{ block.settings.unit_mobile == 'pixel' and block.settings.custom_mobile_size == true}}"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Logo",
-      "category": "Basic",
-      "settings": {
-        "unit": "pixel",
-        "pixel_height": 48
-      }
-    }
-  ]
-}
+	{
+		"name": "Logo",
+		"tag": null,
+		"settings": [
+			{
+				"type": "select",
+				"id": "device",
+				"label": "Show Logo on",
+				"options": [
+					{
+						"value": "all",
+						"label": "All Devices"
+					},
+					{
+						"value": "mobile",
+						"label": "Mobile  Devices Only"
+					},
+					{
+						"value": "desktop",
+						"label": "Desktop Devices  Only"
+					}
+				],
+				"default": "all"
+			},
+			{
+				"type": "image_picker",
+				"id": "logo",
+				"label": "Logo",
+				"info": "Leave blank to use shop name"
+			},
+			{
+				"type": "header",
+				"content": "Size"
+			},
+			{
+				"type": "select",
+				"id": "unit",
+				"label": "Unit",
+				"options": [
+					{
+						"value": "pixel",
+						"label": "Pixel"
+					},
+					{
+						"value": "percent",
+						"label": "Percent"
+					}
+				],
+				"default": "percent"
+			},
+			{
+				"type": "range",
+				"id": "percent_width",
+				"label": "Width",
+				"min": 10,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"default": 100,
+				"visible_if": "{{ block.settings.unit == 'percent' }}"
+			},
+			{
+				"type": "range",
+				"id": "pixel_height",
+				"label": "Height",
+				"min": 16,
+				"max": 320,
+				"step": 8,
+				"unit": "px",
+				"default": 48,
+				"visible_if": "{{ block.settings.unit == 'pixel' }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_mobile_size",
+				"label": "Custom mobile size",
+				"default": false
+			},
+			{
+				"type": "header",
+				"content": "Mobile Size",
+				"visible_if": "{{ block.settings.custom_mobile_size == true }}"
+			},
+			{
+				"type": "select",
+				"id": "unit_mobile",
+				"label": "Unit",
+				"options": [
+					{
+						"value": "pixel",
+						"label": "Pixel"
+					},
+					{
+						"value": "percent",
+						"label": "Percent"
+					}
+				],
+				"default": "percent",
+				"visible_if": "{{ block.settings.custom_mobile_size == true }}"
+			},
+			{
+				"type": "range",
+				"id": "percent_width_mobile",
+				"label": "Width",
+				"min": 10,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"default": 100,
+				"visible_if": "{{ block.settings.unit_mobile == 'percent' and block.settings.custom_mobile_size == true}}"
+			},
+			{
+				"type": "range",
+				"id": "pixel_height_mobile",
+				"label": "Height",
+				"min": 16,
+				"max": 160,
+				"step": 8,
+				"unit": "px",
+				"default": 120,
+				"visible_if": "{{ block.settings.unit_mobile == 'pixel' and block.settings.custom_mobile_size == true}}"
+			}
+		],
+		"presets": [
+			{
+				"name": "Logo",
+				"category": "Basic",
+				"settings": {
+					"unit": "pixel",
+					"pixel_height": 48
+				}
+			}
+		]
+	}
 {% endschema %}

@@ -1,255 +1,246 @@
 {% liquid
-  assign variant_to_use = product.selected_or_first_available_variant
-  assign variant_images = product.images | where: 'attached_to_variant?', true
-  assign options_with_values = product.options_with_values
+	assign variant_to_use = product.selected_or_first_available_variant
+	assign variant_images = product.images | where: 'attached_to_variant?', true
+	assign options_with_values = product.options_with_values
 %}
 
-
 <div
-  data-quick-add-form="{{product.id}}"
-  x-data="quickAddForm"
-  data-product-id="{{ product.id }}"
-  id="quick-add-content"
-  class="flex flex-col w-full p-4 sm:p-6 bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg self-end ">
+	data-quick-add-form='{{product.id}}'
+	x-data='quickAddForm'
+	data-product-id='{{ product.id }}'
+	id='quick-add-content'
+	class='flex w-full flex-col self-end overflow-hidden rounded-md bg-white p-4  shadow-lg sm:p-6 lg:rounded-lg '
+>
+	<div x-ref='quickAddInner' class=' flex h-full shrink-0 flex-col justify-between gap-4 overflow-y-auto'>
+		{% # Product Info %}
+		<div class='flex gap-6'>
+			{% # Image %}
+			<a href='{{product.url}}' class='block size-20 shrink-0 overflow-hidden rounded  bg-gray-200'>
+				<img
+					src='{{ variant_to_use.featured_image | image_url: width: 200 }}'
+					:src='featuredImageSrc'
+					x-ref='image'
+					alt='{{ product.title | escape }}'
+					class='h-full w-full object-cover'
+					width='80px'
+					height='80px'
+				>
+			</a>
 
+			<div class='flex flex-col gap-1'>
+				{% # Title %}
+				<a href='{{product.url}}' class='line-clamp-2 max-w-50 font-semibold'>{{ product.title }}</a>
 
-  <div x-ref="quickAddInner" class=" flex flex-col justify-between h-full gap-4 shrink-0 overflow-y-auto">
+				{% # Price %}
 
-    {% # Product Info %}
-    <div class="flex gap-6">
-      {% # Image %}
-      <a href="{{product.url}}" class="block size-20 rounded bg-gray-200 overflow-hidden  shrink-0">
-        <img
-          src="{{ variant_to_use.featured_image | image_url: width: 200 }}"
-          :src="featuredImageSrc"
-          x-ref="image"
-          alt="{{ product.title | escape }}"
-          class="w-full h-full object-cover"
-          width="80px"
-          height="80px" />
-      </a>
+				<template x-if='selectedVariant.price != selectedVariant.compare_at_price'>
+					<div class='flex flex-col flex-wrap gap-x-1 gap-y-px md:flex-row md:items-center'>
+						<div class='flex  items-center gap-2'>
+							<span x-text='formatMoney(selectedVariant.price)' style='color:red'>
+								{{- variant_to_use.price | money -}}
+							</span>
+							<span x-text='formatMoney(selectedVariant.compare_at_price)' class='text-gray-500 line-through'>
+								{{ variant_to_use.compare_at_price | money }}
+							</span>
+						</div>
+					</div>
+				</template>
 
-      <div class="flex flex-col gap-1">
-        {% # Title %}
-        <a href="{{product.url}}" class="font-semibold line-clamp-2 max-w-50">{{ product.title }}</a>
+				<template x-if='!selectedVariant.compare_at_price || selectedVariant.price == selectedVariant.compare_at_price '>
+					<span x-text='formatMoney(selectedVariant.price)' class=''>{{ variant_to_use.price | money }}</span>
+				</template>
+			</div>
+		</div>
 
+		<form
+			@submit.prevent='handleAddToCart'
+			action=''
+			class='flex shrink-0 flex-col  justify-between gap-4'
+		>
+			{% # Variant Selectors %}
+			<div class='flex flex-col items-center  justify-center gap-8'>
+				{% for product_option_value in product.options_with_values %}
+					{% assign option_name = product_option_value.name | downcase %}
+					{% assign option_index = forloop.index0 %}
 
-        {% # Price %}
+					{% # Variant Selector %}
+					<div class='flex flex-col gap-2'>
+						{% # Variant label %}
+						<div class='flex items-center justify-center gap-1'>
+							<label for='{{product_option_value.name}}' class='text-gray-600'>{{ product_option_value.name }}: </label>
 
-        <template x-if="selectedVariant.price != selectedVariant.compare_at_price">
-          <div class="flex flex-col md:flex-row md:items-center flex-wrap gap-x-1 gap-y-px">
-            <div class="flex  gap-2 items-center">
-              <span x-text="formatMoney(selectedVariant.price)" style="color:red">{{ variant_to_use.price | money }}</span>
-              <span x-text="formatMoney(selectedVariant.compare_at_price)" class="line-through text-gray-500">
-                {{ variant_to_use.compare_at_price | money }}
-              </span>
-            </div>
+							<span x-text="options['{{product_option_value.name}}'].value">
+								{% for option in variant_to_use.options %}
+									{% if forloop.index == product_option_value.position %}
+										{{ option }}
+									{% endif %}
+								{% endfor %}
+							</span>
+						</div>
 
-          </div>
-        </template>
+						{% # Variant picker %}
+						{% if product_option_value.values[0].swatch %}
+							{% # Swatch picker %}
 
-        <template x-if="!selectedVariant.compare_at_price || selectedVariant.price == selectedVariant.compare_at_price ">
-          <span x-text="formatMoney(selectedVariant.price)" class="">{{ variant_to_use.price | money }}</span>
-        </template>
-      </div>
+							<style>
+								#quick-add-content input:disabled + label {
+									opacity: 0.5;
+									cursor: not-allowed;
+									pointer-events: none;
+								}
+								#quick-add-content input:checked + label.quick-add-size {
+									border-color: #000;
+								}
+							</style>
+							<div class=' flex items-center justify-center gap-4'>
+								{% for option_value in product_option_value.values %}
+									{% if variant_to_use.options[option_index] == option_value.name %}
+										{% assign is_selected = true %}
+									{% else %}
+										{% assign is_selected = false %}
+									{% endif %}
 
+									<div class='group/swatch'>
+										<input
+											type='radio'
+											name='{{product_option_value.name}}'
+											id='{{product.id}}-{{option_value.name}}'
+											value='{{option_value.name}}'
+											x-model='options.{{product_option_value.name}}.value'
+											class='hidden!'
+											{% if is_selected %}
+												checked
+											{% endif %}
+										>
+										<label for='{{product.id}}-{{option_value.name}}' class='size-9 cursor-pointer'>
+											{% if option_value.swatch.color %}
+												<div class='quick-add-swatch flex size-7 flex-col items-center justify-center rounded-full group-has-checked/swatch:size-9 group-has-checked/swatch:border-2 group-has-checked/swatch:border-black'>
+													<div
+														class='size-7 shrink-0 rounded-full'
+														style='background:{{option_value.swatch.color}};}'
+													></div>
+												</div>
+											{% else %}
+												<div class='quick-add-swatch relative size-7 overflow-hidden rounded-full'>
+													<img
+														src='{{option_value.swatch.image |  image_url : width: 48}}'
+														alt='{{product.title | escape}}'
+														width='28'
+														height='28'
+														class='h-full w-full object-cover'
+													>
+												</div>
+											{% endif %}
+										</label>
+									</div>
+								{% endfor %}
+							</div>
+						{% elsif option_name == 'size' %}
+							{% # Size Picker %}
+							<div class='flex flex-wrap items-center justify-center gap-2'>
+								{% for option_value in product_option_value.values %}
+									{% if variant_to_use.options[option_index] == option_value.name %}
+										{% assign is_selected = true %}
+									{% else %}
+										{% assign is_selected = false %}
+									{% endif %}
+									<input
+										type='radio'
+										name='{{product_option_value.name}}'
+										id='{{product.id}}-{{option_value.name}}'
+										value='{{option_value.name}}'
+										x-model='options.{{product_option_value.name}}.value'
+										class='hidden!'
+										{% if is_selected %}
+											checked
+										{% endif %}
+									>
+									<label
+										for='{{product.id}}-{{option_value.name}}'
+										class='quick-add-size flex w-fit min-w-[54px] shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-gray-400 px-3 py-1 transition hover:border-black'
+									>
+										{{- option_value.name -}}
+									</label>
+								{% endfor %}
+							</div>
+						{% else %}
+							{% # Select Element %}
+							<div class='relative w-full'>
+								<select
+									name='{{product_option_value.name}}'
+									class='shink-0 flex w-full min-w-[54px] cursor-pointer appearance-none items-center  justify-center rounded-full! border-2 border-gray-400 px-3 py-1 ring-0 transition outline-none hover:border-black'
+									x-model='options.{{product_option_value.name}}.value'
+								>
+									{% for option_value in product_option_value.values %}
+										{% if variant_to_use.options[option_index] == option_value.name %}
+											{% assign is_selected = true %}
+										{% else %}
+											{% assign is_selected = false %}
+										{% endif %}
+										<option
+											value='{{option_value.name}}'
+											{% if is_selected %}
+												selected
+											{% endif %}
+										>
+											{{ option_value.name }}
+										</option>
+									{% endfor %}
+								</select>
 
-    </div>
+								<span class='absolute top-0 right-2 flex h-full flex-col items-center justify-center  '>
+									{{ 'icons/chevron-down.svg' | inline_asset_content }}
+								</span>
+							</div>
+						{% endif %}
+					</div>
+				{% endfor %}
+			</div>
 
+			{% # Add to Cart Button %}
+			<div class='w-full shrink-0 '>
+				<template x-if='selectedVariant.available != true'>
+					{% render 'button',
+						variant: 'primary',
+						size: 'lg',
+						label: 'Out of stock',
+						class: 'shadow-sm  w-full! rounded-full!',
+						props: 'disabled'
+					%}
+				</template>
 
-    <form
-      @submit.prevent="handleAddToCart"
-      action=""
-      class="flex flex-col justify-between  gap-4 shrink-0">
+				<template x-if='!adding'>
+					{% render 'button',
+						variant: 'primary',
+						size: 'lg',
+						label: 'Add to Cart',
+						type: 'submit',
+						class: 'shadow-sm  w-full! rounded-full!'
+					%}
+				</template>
 
-      {% # Variant Selectors %}
-      <div class="flex flex-col gap-8  justify-center items-center">
+				<template x-if='adding'>
+					{% render 'button',
+						variant: 'primary',
+						size: 'lg',
+						loading: 'spinner',
+						class: 'shadow-sm  w-full! rounded-full!'
+					%}
+				</template>
+			</div>
+		</form>
 
-        {% for product_option_value in product.options_with_values %}
-          {% assign option_name = product_option_value.name | downcase %}
-          {% assign option_index = forloop.index0 %}
-
-
-          {% # Variant Selector %}
-          <div class="flex flex-col gap-2">
-            {% # Variant label %}
-            <div class="flex justify-center items-center gap-1">
-              <label for="{{product_option_value.name}}" class="text-gray-600">{{ product_option_value.name }}:
-              </label>
-
-              <span x-text="options['{{product_option_value.name}}'].value">
-                {% for option in variant_to_use.options %}
-                  {% if forloop.index == product_option_value.position %}
-                    {{ option }}
-                  {% endif %}
-                {% endfor %}
-              </span>
-            </div>
-
-
-            {% # Variant picker %}
-            {% if product_option_value.values[0].swatch %}
-              {% # Swatch picker %}
-
-              <style>
-                #quick-add-content input:disabled + label {
-                  opacity: 0.5;
-                  cursor: not-allowed;
-                  pointer-events: none;
-                }
-                #quick-add-content input:checked + label.quick-add-size {
-                  border-color: #000;
-                }
-
-
-              </style>
-              <div class=" flex items-center justify-center gap-4">
-                {% for option_value in product_option_value.values %}
-                  {% if variant_to_use.options[option_index] == option_value.name %}
-                    {% assign is_selected = true %}
-                  {% else %}
-                    {% assign is_selected = false %}
-                  {% endif %}
-
-                  <div class="group/swatch">
-                    <input
-                      type="radio"
-                      name="{{product_option_value.name}}"
-                      id="{{product.id}}-{{option_value.name}}"
-                      value="{{option_value.name}}"
-                      x-model="options.{{product_option_value.name}}.value"
-                      class="hidden!"
-                      {% if is_selected %}
-                      checked
-                      {% endif %} />
-                    <label for="{{product.id}}-{{option_value.name}}" class="cursor-pointer size-9">
-                      {% if option_value.swatch.color %}
-                        <div class="quick-add-swatch flex flex-col justify-center items-center size-7 rounded-full group-has-checked/swatch:border-2 group-has-checked/swatch:border-black group-has-checked/swatch:size-9">
-                          <div class="rounded-full size-7 shrink-0" style="background:{{option_value.swatch.color}};}"></div>
-                        </div>
-                      {% else %}
-                        <div class="quick-add-swatch size-7 rounded-full relative overflow-hidden">
-                          <img
-                            src="{{option_value.swatch.image |  image_url : width: 48}}"
-                            alt="{{product.title | escape}}"
-                            width="28"
-                            height="28"
-                            class="w-full h-full object-cover">
-                        </div>
-                      {% endif %}
-                    </label>
-                  </div>
-                {% endfor %}
-              </div>
-            {% elsif option_name == 'size' %}
-              {% # Size Picker %}
-              <div class="flex gap-2 justify-center items-center flex-wrap">
-                {% for option_value in product_option_value.values %}
-                  {% if variant_to_use.options[option_index] == option_value.name %}
-                    {% assign is_selected = true %}
-                  {% else %}
-                    {% assign is_selected = false %}
-                  {% endif %}
-                  <input
-                    type="radio"
-                    name="{{product_option_value.name}}"
-                    id="{{product.id}}-{{option_value.name}}"
-                    value="{{option_value.name}}"
-                    x-model="options.{{product_option_value.name}}.value"
-                    class="hidden!"
-                    {% if is_selected %}
-                    checked
-                    {% endif %} />
-                  <label for="{{product.id}}-{{option_value.name}}" class="quick-add-size shrink-0 flex justify-center items-center rounded-full px-3 py-1 w-fit min-w-[54px] border-2 border-gray-400 cursor-pointer hover:border-black transition">{{ option_value.name }}</label>
-                {% endfor %}
-              </div>
-            {% else %}
-              {% # Select Element %}
-              <div class="relative w-full">
-
-                <select
-                  name="{{product_option_value.name}}"
-                  class="shink-0 flex justify-center items-center rounded-full! px-3 py-1  min-w-[54px] border-2 border-gray-400 cursor-pointer hover:border-black transition outline-none ring-0 appearance-none w-full"
-                  x-model="options.{{product_option_value.name}}.value">
-                  {% for option_value in product_option_value.values %}
-                    {% if variant_to_use.options[option_index] == option_value.name %}
-                      {% assign is_selected = true %}
-                    {% else %}
-                      {% assign is_selected = false %}
-                    {% endif %}
-                    <option
-                      value="{{option_value.name}}"
-                      {% if is_selected %}
-                      selected
-                      {% endif %}>{{ option_value.name }}</option>
-                  {% endfor %}
-                </select>
-
-                <span class="absolute h-full top-0 right-2 flex flex-col justify-center items-center  ">
-                  {{ 'icons/chevron-down.svg' | inline_asset_content }}
-                </span>
-              </div>
-            {% endif %}
-
-
-          </div>
-        {% endfor %}
-
-      </div>
-
-
-      {% # Add to Cart Button %}
-      <div class="shrink-0 w-full ">
-
-        <template x-if="selectedVariant.available != true">
-          {% render 'button'
-            , variant: 'primary'
-            , size: 'lg'
-            , label: "Out of stock"
-            , class: 'shadow-sm  w-full! rounded-full!'
-            , props: 'disabled'
-          %}
-        </template>
-
-        <template x-if="!adding">
-          {% render 'button'
-            , variant: 'primary'
-            , size: 'lg'
-            , label: 'Add to Cart'
-            , type: 'submit'
-            , class: 'shadow-sm  w-full! rounded-full!'
-          %}
-        </template>
-
-        <template x-if="adding">
-          {% render 'button'
-            , variant: 'primary'
-            , size: 'lg'
-            , loading: 'spinner'
-            , class: 'shadow-sm  w-full! rounded-full!'
-          %}
-        </template>
-
-
-      </div>
-
-
-    </form>
-
-    <div class="w-full h-60 bg-red-500 shrink-0 hidden"></div>
-
-  </div>
-
+		<div class='hidden h-60 w-full shrink-0 bg-red-500'></div>
+	</div>
 </div>
 
-
-<script type="application/json" id="quick-add-data-{{ product.id }}">
-  {
-    "product": {{ product | json }},
-    "variant_images": {{ variant_images | json }},
-    "variant_to_use": {{ variant_to_use | json }},
-    "options_with_values": {{ options_with_values | json }}
-  }
+<script type='application/json' id='quick-add-data-{{ product.id }}'>
+	{
+	  "product": {{ product | json }},
+	  "variant_images": {{ variant_images | json }},
+	  "variant_to_use": {{ variant_to_use | json }},
+	  "options_with_values": {{ options_with_values | json }}
+	}
 </script>
 
-<script src="{{ 'js/blocks/quick-add.js' |  asset_url }}" defer></script>
+<script src='{{ 'js/blocks/quick-add.js' |  asset_url }}' defer></script>

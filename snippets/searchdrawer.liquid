@@ -1,14 +1,14 @@
 {% liquid
-  assign id = id | default: 'searchdrawer'
-  assign variant = variant | default: 'circled'
-  assign direction = direction | default: 'right'
-  assign device = device | default: 'all'
+	assign id = id | default: 'searchdrawer'
+	assign variant = variant | default: 'circled'
+	assign direction = direction | default: 'right'
+	assign device = device | default: 'all'
 
-  if device == 'mobile'
-    assign = mobile_direction = direction
-  else
-    assign = mobile_direction = mobile_direction | default: direction
-  endif
+	if device == 'mobile'
+		assign = mobile_direction = direction
+	else
+		assign = mobile_direction = mobile_direction | default: direction
+	endif
 %}
 
 {% capture search_trigger_circled %}
@@ -33,10 +33,10 @@
   {% endcapture %}
 
 {% if variant == 'circled' %}
-  {% assign search_trigger = search_trigger_circled %}
+	{% assign search_trigger = search_trigger_circled %}
 
 {% else %}
-  {% assign search_trigger = search_trigger_ghost %}
+	{% assign search_trigger = search_trigger_ghost %}
 {% endif %}
 
 {% capture search_content %}
@@ -44,31 +44,31 @@
 {% endcapture %}
 
 {% render 'drawer',
-  trigger: search_trigger,
-  content: search_content,
-  id: id,
-  from: direction,
-  mobileFrom: mobile_direction,
-  class: ''
+	trigger: search_trigger,
+	content: search_content,
+	id: id,
+	from: direction,
+	mobileFrom: mobile_direction,
+	class: ''
 %}
 
 {% comment %}
-  {% capture search_trigger %}
-    {% render 'button'
-    , size: 'icon'
-    , icon: 'icons/search.svg'
-    , class: ' md:size-12 rounded-full!' %}
-  {% endcapture %}
-  {% capture search_content %}
-    {% render 'searchdrawer-content' %}
-  {% endcapture %}
-  <div class="inline-block md:hidden">
-    {% render 'drawer'
-      , trigger: search_trigger
-      , content: search_content
-      , id: 'searchdrawer-mobile'
-      , from: 'top'
-      , class: 'h-fit! min-h-80! max-h-full!'
-    %}
-  </div>
+	{% capture search_trigger %}
+	  {% render 'button'
+	  , size: 'icon'
+	  , icon: 'icons/search.svg'
+	  , class: ' md:size-12 rounded-full!' %}
+	{% endcapture %}
+	{% capture search_content %}
+	  {% render 'searchdrawer-content' %}
+	{% endcapture %}
+	<div class="inline-block md:hidden">
+	  {% render 'drawer'
+	    , trigger: search_trigger
+	    , content: search_content
+	    , id: 'searchdrawer-mobile'
+	    , from: 'top'
+	    , class: 'h-fit! min-h-80! max-h-full!'
+	  %}
+	</div>
 {% endcomment %}

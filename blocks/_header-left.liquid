@@ -1,40 +1,40 @@
-<div class="flex items-center gap-2 shrink-0">
-  {% content_for 'blocks' %}
+<div class='flex shrink-0 items-center gap-2'>
+	{% content_for 'blocks' %}
 </div>
 
 {% schema %}
-{
-  "name": "Header Left",
-  "blocks": [
-    {
-      "type": "_tabbed-menu"
-    },
-    {
-      "type": "_searchdrawer"
-    },
-    {
-      "type": "logo"
-    },
+	{
+		"name": "Header Left",
+		"blocks": [
+			{
+				"type": "_tabbed-menu"
+			},
+			{
+				"type": "_searchdrawer"
+			},
+			{
+				"type": "logo"
+			},
 
-    {
-      "type": "@app"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Header Left",
-      "blocks": [
-        {
-          "type": "_tabbed-menu"
-        },
-        {
-          "type": "logo"
-        },
-        {
-          "type": "_searchdrawer"
-        }
-      ]
-    }
-  ]
-}
+			{
+				"type": "@app"
+			}
+		],
+		"presets": [
+			{
+				"name": "Header Left",
+				"blocks": [
+					{
+						"type": "_tabbed-menu"
+					},
+					{
+						"type": "logo"
+					},
+					{
+						"type": "_searchdrawer"
+					}
+				]
+			}
+		]
+	}
 {% endschema %}

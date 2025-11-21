@@ -1,9 +1,9 @@
 <section class="w-full overflow-hidden lg:h-[calc(80svh-148px)] lg:min-h-[640px]">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 rounded-3xl bg-white w-full h-full p-4 lg:p-6">
-    <div class="h-full flex flex-col justify-between gap-6 max-md:order-1">
+  <div class="grid h-full w-full grid-cols-1 gap-4 rounded-3xl bg-white p-4 md:grid-cols-2 lg:p-6">
+    <div class="flex h-full flex-col justify-between gap-6 max-md:order-1">
       {%- comment -%} Main Content {%- endcomment -%}
-      <div class="flex flex-col gap-4 md:gap-6 lg:gap-8 pt-4">
-        <h1 class="text-3xl md:text-4xl lg:text-6xl font-medium">
+      <div class="flex flex-col gap-4 pt-4 md:gap-6 lg:gap-8">
+        <h1 class="text-3xl font-medium md:text-4xl lg:text-6xl">
           {{ section.settings.heading }}
         </h1>
 
@@ -45,8 +45,8 @@
       </div>
 
       {%- comment -%} Hero Review {%- endcomment -%}
-      <div class="flex flex-col gap-2 lg:flex-row justify-between lg:items-end">
-        <div class="flex flex-col gap-2 lg:gap-6 max-w-[360px]">
+      <div class="flex flex-col justify-between gap-2 lg:flex-row lg:items-end">
+        <div class="flex max-w-[360px] flex-col gap-2 lg:gap-6">
           <h3 class="text-4xl font-semibold">
             {{ section.settings.review_heading }}
           </h3>
@@ -69,7 +69,7 @@
           {% for block in section.blocks %}
             {% if block.type == 'avatar' %}
               <div
-                class="rounded-full size-12 bg-gray-200 border-2 border-white overflow-hidden -translate-x-[calc({{ forloop.index0 }}*6px)]"
+                class="size-12 overflow-hidden rounded-full border-2 border-white bg-gray-200 -translate-x-[calc({{ forloop.index0 }}*6px)]"
                 {{ block.shopify_attributes }}
               >
                 <img
@@ -78,6 +78,7 @@
                   width="48"
                   height="48"
                   class="object-fit"
+                  fetchpriority="high"
                 >
               </div>
             {% endif %}
@@ -87,7 +88,7 @@
     </div>
 
     {%- comment -%} Featured Image {%- endcomment -%}
-    <div class="rounded-3xl aspect-660/600 w-full bg-[linear-gradient(45deg,rgba(230,232,235,1)_0%,rgba(211,219,227,1)_51%,rgba(255,255,255,1)_100%)] overflow-hidden">
+    <div class="aspect-660/600 w-full overflow-hidden rounded-3xl bg-[linear-gradient(45deg,rgba(230,232,235,1)_0%,rgba(211,219,227,1)_51%,rgba(255,255,255,1)_100%)]">
       {% if section.settings.hero_image %}
         <img
           src="{{ section.settings.hero_image | image_url: width: 614 }}"

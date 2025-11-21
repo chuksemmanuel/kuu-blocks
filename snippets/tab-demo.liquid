@@ -1,11 +1,11 @@
 {% capture tab_triggers %}
-  <button data-tab-trigger="tab-1" class="px-4 py-2 font-semibold border-b-2 border-transparent hover:border-gray-300 aria-selected:border-black aria-selected:text-black">
+  <button data-tab-trigger="tab-1" class="border-b-2 border-transparent px-4 py-2 font-semibold hover:border-gray-300 aria-selected:border-black aria-selected:text-black">
     Description
   </button>
-  <button data-tab-trigger="tab-2" class="px-4 py-2 font-semibold border-b-2 border-transparent hover:border-gray-300 aria-selected:border-black aria-selected:text-black">
+  <button data-tab-trigger="tab-2" class="border-b-2 border-transparent px-4 py-2 font-semibold hover:border-gray-300 aria-selected:border-black aria-selected:text-black">
     Specifications
   </button>
-  <button data-tab-trigger="tab-3" class="px-4 py-2 font-semibold border-b-2 border-transparent hover:border-gray-300 aria-selected:border-black aria-selected:text-black">
+  <button data-tab-trigger="tab-3" class="border-b-2 border-transparent px-4 py-2 font-semibold hover:border-gray-300 aria-selected:border-black aria-selected:text-black">
     Reviews
   </button>
 {% endcapture %}
@@ -29,11 +29,11 @@
 {% endcapture %}
 
 {% render 'tab',
-  triggers: tab_triggers,
-  contents: tab_contents,
-  id: 'product-tabs',
-  default_active: 'tab-1',
-  class: 'w-full max-w-2xl mx-auto',
-  trigger_class: 'flex border-b border-gray-200',
-  content_class: 'mt-4'
+	triggers: tab_triggers,
+	contents: tab_contents,
+	id: 'product-tabs',
+	default_active: 'tab-1',
+	class: 'w-full max-w-2xl mx-auto',
+	trigger_class: 'flex border-b border-gray-200',
+	content_class: 'mt-4'
 %}

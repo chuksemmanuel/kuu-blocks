@@ -1,46 +1,40 @@
-<div class="flex justify-center items-center w-full  h-full gap-2 shrink-0">
-  <div class="flex items-center justify-center  shrink-0">
-    
-    {% content_for 'block'
-      , id: 'site-logo'
-      , type: 'logo'
-    %}
+<div class='flex h-full w-full shrink-0  items-center justify-center gap-2'>
+	<div class='flex shrink-0 items-center  justify-center'>
+		{% content_for 'block', id: 'site-logo', type: 'logo' %}
 
-    <ul aria-label="menu items" class=" justify-between gap-8 hidden md:flex font-medium">
-      {% for link in block.settings.menu.links limit: 5 %}
-        <li>
-          {{ link.title | link_to: link.url }}
-        </li>
-
-      {% endfor %}
-    </ul>
-  </div>
+		<ul aria-label='menu items' class=' hidden justify-between gap-8 font-medium md:flex'>
+			{% for link in block.settings.menu.links limit: 5 %}
+				<li>
+					{{ link.title | link_to: link.url }}
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
 </div>
 
-
 {% schema %}
-  {
-    "name": "Header Center",
-    "settings": [
-      {
-        "type": "link_list",
-        "id": "menu",
-        "label": "t:labels.menu",
-        "default": "main-menu"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "logo"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Header Center",
-        "settings": {
-          "menu": "main-menu"
-        }
-      }
-    ]
-  }
+	{
+		"name": "Header Center",
+		"settings": [
+			{
+				"type": "link_list",
+				"id": "menu",
+				"label": "t:labels.menu",
+				"default": "main-menu"
+			}
+		],
+		"blocks": [
+			{
+				"type": "logo"
+			}
+		],
+		"presets": [
+			{
+				"name": "Header Center",
+				"settings": {
+					"menu": "main-menu"
+				}
+			}
+		]
+	}
 {% endschema %}

@@ -1,152 +1,155 @@
-<section class="grid grid-cols-1 md:grid-cols-3 gap-4 py-6 lg:py-12">
-  <span class="sr-only">Our Top Categories</span>
-  {% for block in section.blocks %}
-    {% if block.type == 'featured_item' %}
-      {% render 'collection-card'
-        , collection: block.settings.collection
-        , image: block.settings.image
-        , title: block.settings.title
-        , href: block.settings.href
-        , count: block.settings.count
-        , height: '250'
-        , width: '415.33'
-        , class: 'h-60! md:h-[250px]!'
-        , show_button: section.settings.show_button
-        , show_count: section.settings.show_count
-        , position: section.settings.position
-        , block: block
-      %}
-    {% elsif block.type == 'cta_card' %}
-      <div {{ block.shopify_attributes }} class="bg-white rounded-3xl w-full h-40 md:h-[250px] flex flex-col justify-center items-center gap-4">
-        <p class="text-2xl text-center font-medium max-w-[200px]">
-          {{ block.settings.cta_text }}
-        </p>
+<section class='grid grid-cols-1 gap-4 py-6 md:grid-cols-3 lg:py-12'>
+	<span class='sr-only'>Our Top Categories</span>
+	{% for block in section.blocks %}
+		{% if block.type == 'featured_item' %}
+			{% render 'collection-card',
+				collection: block.settings.collection,
+				image: block.settings.image,
+				title: block.settings.title,
+				href: block.settings.href,
+				count: block.settings.count,
+				height: '250',
+				width: '415.33',
+				class: 'h-60! md:h-[250px]!',
+				show_button: section.settings.show_button,
+				show_count: section.settings.show_count,
+				position: section.settings.position,
+				block: block
+			%}
+		{% elsif block.type == 'cta_card' %}
+			<div
+				{{ block.shopify_attributes }}
+				class='flex h-40 w-full flex-col items-center justify-center gap-4 rounded-3xl bg-white md:h-[250px]'
+			>
+				<p class='max-w-[200px] text-center text-2xl font-medium'>
+					{{ block.settings.cta_text }}
+				</p>
 
-        {% render 'button'
-          , variant: 'primary'
-          , href: block.settings.cta_link
-          , label: block.settings.cta_label
-          , class: 'rounded-full!'
-        %}
-      </div>
-    {% endif %}
-  {% endfor %}
+				{% render 'button',
+					variant: 'primary',
+					href: block.settings.cta_link,
+					label: block.settings.cta_label,
+					class: 'rounded-full!'
+				%}
+			</div>
+		{% endif %}
+	{% endfor %}
 </section>
 
 {% schema %}
-  {
-    "name": "Featured",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "show_button",
-        "label": "Show Button on All Cards",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "show_count",
-        "label": "Show Product Count on All Cards",
-        "default": true
-      },
-      {
-        "type": "select",
-        "id": "position",
-        "label": "Content Position on Cards",
-        "options": [
-          {
-            "value": "center",
-            "label": "Center"
-          },
-          {
-            "value": "bottom",
-            "label": "Bottom"
-          }
-        ],
-        "default": "center"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "featured_item",
-        "name": "Featured Item",
-        "settings": [
-          {
-            "type": "collection",
-            "id": "collection",
-            "label": "Choose Collection"
-          },
-          {
-            "type": "header",
-            "content": "Or manually Enter Collection data "
-          },
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Custom Image (if no collection)"
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Custom Title (if no collection)"
-          },
-          {
-            "type": "url",
-            "id": "href",
-            "label": "Custom Link (if no collection)"
-          },
-          {
-            "type": "number",
-            "id": "count",
-            "label": "Number of items (optional)"
-          }
-        ]
-      },
-      {
-        "type": "cta_card",
-        "name": "CTA Card",
-        "settings": [
-          {
-            "type": "text",
-            "id": "cta_text",
-            "label": "CTA Text",
-            "default": "Models wearing full outfits"
-          },
-          {
-            "type": "url",
-            "id": "cta_link",
-            "label": "CTA Link",
-            "default": "/collections/all"
-          },
-          {
-            "type": "text",
-            "id": "cta_label",
-            "label": "CTA Button Label",
-            "default": "Explore more"
-          }
-        ]
-      }
-    ],
-    "max_blocks": 6,
-    "presets": [
-      {
-        "name": "Featured Section",
-        "category": "Home page",
-        "blocks": [
-          {
-            "type": "featured_item"
-          },
-          {
-            "type": "featured_item"
-          },
-          {
-            "type": "featured_item"
-          },
-          {
-            "type": "cta_card"
-          }
-        ]
-      }
-    ]
-  }
+	{
+		"name": "Featured",
+		"settings": [
+			{
+				"type": "checkbox",
+				"id": "show_button",
+				"label": "Show Button on All Cards",
+				"default": false
+			},
+			{
+				"type": "checkbox",
+				"id": "show_count",
+				"label": "Show Product Count on All Cards",
+				"default": true
+			},
+			{
+				"type": "select",
+				"id": "position",
+				"label": "Content Position on Cards",
+				"options": [
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "bottom",
+						"label": "Bottom"
+					}
+				],
+				"default": "center"
+			}
+		],
+		"blocks": [
+			{
+				"type": "featured_item",
+				"name": "Featured Item",
+				"settings": [
+					{
+						"type": "collection",
+						"id": "collection",
+						"label": "Choose Collection"
+					},
+					{
+						"type": "header",
+						"content": "Or manually Enter Collection data "
+					},
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Custom Image (if no collection)"
+					},
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Custom Title (if no collection)"
+					},
+					{
+						"type": "url",
+						"id": "href",
+						"label": "Custom Link (if no collection)"
+					},
+					{
+						"type": "number",
+						"id": "count",
+						"label": "Number of items (optional)"
+					}
+				]
+			},
+			{
+				"type": "cta_card",
+				"name": "CTA Card",
+				"settings": [
+					{
+						"type": "text",
+						"id": "cta_text",
+						"label": "CTA Text",
+						"default": "Models wearing full outfits"
+					},
+					{
+						"type": "url",
+						"id": "cta_link",
+						"label": "CTA Link",
+						"default": "/collections/all"
+					},
+					{
+						"type": "text",
+						"id": "cta_label",
+						"label": "CTA Button Label",
+						"default": "Explore more"
+					}
+				]
+			}
+		],
+		"max_blocks": 6,
+		"presets": [
+			{
+				"name": "Featured Section",
+				"category": "Home page",
+				"blocks": [
+					{
+						"type": "featured_item"
+					},
+					{
+						"type": "featured_item"
+					},
+					{
+						"type": "featured_item"
+					},
+					{
+						"type": "cta_card"
+					}
+				]
+			}
+		]
+	}
 {% endschema %}

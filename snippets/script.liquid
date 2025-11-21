@@ -3,4 +3,12 @@
 {%- endcomment -%}
 <link rel="modulepreload" href="{{ 'js/core/utils.js' | asset_url }}">
 
+{% # Global Utilities %}
 <script src="{{'js/core/utils.js' |  asset_url}}" defer></script>
+
+{% # COMPONENT %}
+<script src="{{'js/components/tab.js' | asset_url}}" defer></script>
+<script src="{{ 'js/components/drawer.js' | asset_url }}" defer></script>
+
+{% # Blocks %}
+<script src="{{ 'js/blocks/searchdrawer.js' | asset_url }}" defer></script>

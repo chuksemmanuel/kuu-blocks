@@ -1,30 +1,30 @@
 {% comment %} External Libraries {% endcomment %}
 
 {% # Gsap.js %}
-<script src="{{ 'js/lib/gsap@3.13.0.min.js' |  asset_url }}" defer></script>
+<script src='{{ 'js/lib/gsap@3.13.0.min.js' |  asset_url }}' defer></script>
 {% # Swiper.js %}
-<script src="{{ 'js/lib/swiperjs@12.0.3.min.js' |  asset_url }}" defer></script>
+<script src='{{ 'js/lib/swiperjs@12.0.3.min.js' |  asset_url }}' defer></script>
 
 {% # Alpine Plugins %}
-<script src="{{'js/lib/alpinejs-morph@3.min.js' |  asset_url}}" defer></script>
-<script src="{{'js/lib/alpinejs-focus@3.min.js' |  asset_url}}" defer></script>
+<script src='{{'js/lib/alpinejs-morph@3.min.js' |  asset_url}}' defer></script>
+<script src='{{'js/lib/alpinejs-focus@3.min.js' |  asset_url}}' defer></script>
 {% # Alpine Core %}
-<script src="{{ 'js/lib/alpinejs@3.15.1.min.js' |  asset_url }}" defer></script>
+<script src='{{ 'js/lib/alpinejs@3.15.1.min.js' |  asset_url }}' defer></script>
 
 {% # Lucide icons %}
-<script src="{{  'js/lib/lucide.js' |  asset_url }}" defer></script>
+<script src='{{  'js/lib/lucide.js' |  asset_url }}' defer></script>
 <script>
-       document.addEventListener('DOMContentLoaded', () =>{
-           // create icons once in storefront
-          lucide.createIcons();
+	document.addEventListener('DOMContentLoaded', () =>{
+	    // create icons once in storefront
+	   lucide.createIcons();
 
-        // in theme editor, recreate icons when the editor updates
-        {% if request.design_mode %}
-               window.addEventListener('shopify:section:load', () =>{
-              if(window.lucide){
-                 lucide.createIcons();
-              }
-         })
-        {% endif %}
-       });
+	 // in theme editor, recreate icons when the editor updates
+	 {% if request.design_mode %}
+	        window.addEventListener('shopify:section:load', () =>{
+	       if(window.lucide){
+	          lucide.createIcons();
+	       }
+	  })
+	 {% endif %}
+	});
 </script>

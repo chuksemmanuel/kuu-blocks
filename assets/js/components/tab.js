@@ -9,9 +9,12 @@ document.addEventListener('alpine:init', () => {
             // Initialize active tab from data attribute or default
             // @ts-ignore
             this.activeTab = this.$el.dataset.defaultActive;
-
+            console.clear()
+            console.log(this.$el.dataset.defaultActive)
             // If no default active is set, try to find the first trigger
             if (!this.activeTab) {
+                console.clear()
+                console.log(this.activeTab)
                 const firstTrigger = this.$el.querySelector('[data-tab-trigger]');
                 if (firstTrigger instanceof HTMLElement) {
                     this.activeTab = firstTrigger.dataset.tabTrigger || '';
@@ -39,7 +42,22 @@ document.addEventListener('alpine:init', () => {
         setActiveTab(tabId) {
             this.activeTab = tabId;
         },
-
+        /**
+         * 
+         * @param {HTMLElement} button 
+         * @returns 
+         */
+        tabButtonActive(button) {
+            return button.dataset.tabTrigger === this.activeTab;
+        },
+        /**
+     * 
+     * @param {HTMLElement} content 
+     * @returns 
+     */
+        tabContentActive(content) {
+            return content.dataset.tabContent === this.activeTab;
+        },
         updateAttributes() {
             // Update Triggers
             const triggers = this.$el.querySelectorAll('[data-tab-trigger]');

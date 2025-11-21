@@ -1,45 +1,45 @@
-<div class="flex justify-end items-center  md:gap-16">
-  <div class="flex gap-2 md:gap-4">
-    {% content_for 'blocks' %}
-  </div>
+<div class='flex items-center justify-end  md:gap-16'>
+	<div class='flex gap-2 md:gap-4'>
+		{% content_for 'blocks' %}
+	</div>
 </div>
 
 {% schema %}
-{
-  "name": "Header Right",
-  "settings": [],
-  "blocks": [
-    {
-      "type": "@app"
-    },
-    {
-      "type": "_searchdrawer"
-    },
-    {
-      "type": "_account-button"
-    },
-    {
-      "type": "_cartdrawer"
-    }
-  ],
-  "presets": [
-    {
-      "name": "header right",
-      "blocks": [
-        {
-          "type": "_searchdrawer",
-          "settings": {}
-        },
-        {
-          "type": "_account-button",
-          "settings": {}
-        },
-        {
-          "type": "_cartdrawer",
-          "settings": {}
-        }
-      ]
-    }
-  ]
-}
+	{
+		"name": "Header Right",
+		"settings": [],
+		"blocks": [
+			{
+				"type": "@app"
+			},
+			{
+				"type": "_searchdrawer"
+			},
+			{
+				"type": "_account-button"
+			},
+			{
+				"type": "_cartdrawer"
+			}
+		],
+		"presets": [
+			{
+				"name": "header right",
+				"blocks": [
+					{
+						"type": "_searchdrawer",
+						"settings": {}
+					},
+					{
+						"type": "_account-button",
+						"settings": {}
+					},
+					{
+						"type": "_cartdrawer",
+						"settings": {}
+					}
+				]
+			}
+		]
+	}
 {% endschema %}

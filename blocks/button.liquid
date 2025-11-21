@@ -1,472 +1,472 @@
 {% liquid
-  # label
-  if block.settings.label == blank
-    assign label = label
-  else
-    assign label = block.settings.label
-  endif
+	# label
+	if block.settings.label == blank
+		assign label = label
+	else
+		assign label = block.settings.label
+	endif
 
-  # variant
-  if block.settings.size == blank
-    assign size = size
-  else
-    assign size = block.settings.size
-  endif
+	# variant
+	if block.settings.size == blank
+		assign size = size
+	else
+		assign size = block.settings.size
+	endif
 
-  if block.settings.variant == 'default'
-    assign variant = variant | default: 'primary'
-  else
-    assign variant = block.settings.variant
-  endif
+	if block.settings.variant == 'default'
+		assign variant = variant | default: 'primary'
+	else
+		assign variant = block.settings.variant
+	endif
 
-  # href
-  if block.settings.href == blank
-    assign href = href
-  else
-    assign href = block.settings.href
-  endif
+	# href
+	if block.settings.href == blank
+		assign href = href
+	else
+		assign href = block.settings.href
+	endif
 
-  # ID
-  if block.settings.id == blank
-    assign id = id
-  else
-    assign id = block.settings.id
-  endif
+	# ID
+	if block.settings.id == blank
+		assign id = id
+	else
+		assign id = block.settings.id
+	endif
 
-  # Class
-  if block.settings.class == blank
-    assign class = class
-  else
-    assign class = block.settings.class
-  endif
+	# Class
+	if block.settings.class == blank
+		assign class = class
+	else
+		assign class = block.settings.class
+	endif
 
-# Custom props
-  if block.settings.props == blank
-    assign props = props | default: ''
-  else
-    assign props = block.settings.props
-  endif
+	# Custom props
+	if block.settings.props == blank
+		assign props = props | default: ''
+	else
+		assign props = block.settings.props
+	endif
 
-  # Border radius
-  if block.settings.custom_radius == true
-    assign radius = block.settings.radius | append: 'px'
-  else
-    assign radius = radius
-  endif
+	# Border radius
+	if block.settings.custom_radius == true
+		assign radius = block.settings.radius | append: 'px'
+	else
+		assign radius = radius
+	endif
 
-  # width 
-  if block.settings.custom_width == true
-    # check if the selected unit is pixel or pecent
-    if block.settings.unit == 'pixel'
-      assign width = block.settings.pexel_width | append: 'px'
-    else
-      assign width = block.settings.percent_width | append: '%'
-    endif
-  else
-    # if block settings custom width isn't checked, we use block properties
-    assign width = width
-  endif
+	# width
+	if block.settings.custom_width == true
+		# check if the selected unit is pixel or pecent
+		if block.settings.unit == 'pixel'
+			assign width = block.settings.pexel_width | append: 'px'
+		else
+			assign width = block.settings.percent_width | append: '%'
+		endif
+	else
+		# if block settings custom width isn't checked, we use block properties
+		assign width = width
+	endif
 
-  # mobile width
-  if block.settings.custom_mobile_width == true
-    if block.settings.mobile_unit == 'pixel'
-      assign mobile_width = block.settings.mobile_pexel_width | append: 'px'
-    else
-      assign mobile_width = block.settings.mobile_pexel_width | append: '%'
-    endif
-  else
-    # if block settings custom width isn't checked, we use block properties
-    assign mobile_width = mobile_width
-  endif
+	# mobile width
+	if block.settings.custom_mobile_width == true
+		if block.settings.mobile_unit == 'pixel'
+			assign mobile_width = block.settings.mobile_pexel_width | append: 'px'
+		else
+			assign mobile_width = block.settings.mobile_pexel_width | append: '%'
+		endif
+	else
+		# if block settings custom width isn't checked, we use block properties
+		assign mobile_width = mobile_width
+	endif
 
-  # height
-  if block.settings.custom_height == true
-    assign height = block.settings.height | append: 'px'
-  else
-    # if block settings custom width isn't checked, we use block properties
-    assign height = height
-  endif
+	# height
+	if block.settings.custom_height == true
+		assign height = block.settings.height | append: 'px'
+	else
+		# if block settings custom width isn't checked, we use block properties
+		assign height = height
+	endif
 
-  # mobile height
-  if block.settings.custom_mobile_height == true
-    assign mobile_height = block.settings.mobile_height | append: 'px'
-  else
-    # if block settings custom width isn't checked, we use block properties
-    assign mobile_height = mobile_height
-  endif
+	# mobile height
+	if block.settings.custom_mobile_height == true
+		assign mobile_height = block.settings.mobile_height | append: 'px'
+	else
+		# if block settings custom width isn't checked, we use block properties
+		assign mobile_height = mobile_height
+	endif
 
-  # custom padding
-  if block.settings.custom_padding == true
-    assign padding_top = block.settings.padding_top | append: 'px'
-    assign padding_bottom = block.settings.padding_bottom | append: 'px'
-    assign padding_left = block.settings.padding_left | append: 'px'
-    assign padding_right = block.settings.padding_right | append: 'px'
-  else
-    assign padding_top = padding_top
-    assign padding_bottom = padding_bottom
-    assign padding_left = padding_left
-    assign padding_right = padding_right
-  endif
+	# custom padding
+	if block.settings.custom_padding == true
+		assign padding_top = block.settings.padding_top | append: 'px'
+		assign padding_bottom = block.settings.padding_bottom | append: 'px'
+		assign padding_left = block.settings.padding_left | append: 'px'
+		assign padding_right = block.settings.padding_right | append: 'px'
+	else
+		assign padding_top = padding_top
+		assign padding_bottom = padding_bottom
+		assign padding_left = padding_left
+		assign padding_right = padding_right
+	endif
 
-  # button alignment
-  if block.settings.custom_alignment
-    assign align = block.settings.alignment
-  else
-    assign align = align
-  endif
+	# button alignment
+	if block.settings.custom_alignment
+		assign align = block.settings.alignment
+	else
+		assign align = align
+	endif
 
-  # lucide icon
-  if block.settings.custom_icon and block.settings.lucide_icon != blank
-    assign lucide_icon = block.settings.lucide_icon
-  else
-    assign lucide_icon = lucide_icon
-  endif
+	# lucide icon
+	if block.settings.custom_icon and block.settings.lucide_icon != blank
+		assign lucide_icon = block.settings.lucide_icon
+	else
+		assign lucide_icon = lucide_icon
+	endif
 
-  # icon position
-  if block.settings.custom_icon 
-    assign icon_position = block.settings.icon_position
-  else
-    assign icon_position = icon_position
-  endif
+	# icon position
+	if block.settings.custom_icon
+		assign icon_position = block.settings.icon_position
+	else
+		assign icon_position = icon_position
+	endif
 %}
 
 {% render 'button',
-  variant: variant,
-  align: align,
-  size: size,
-  href: href,
-  label: label,
-  id: id,
-  class: class,
-  props: props,
-  radius: radius,
-  width: width,
-  mobile_width: mobile_width,
-  height: height,
-  mobile_height: mobile_height,
-  padding_top: padding_top,
-  padding_bottom: padding_bottom,
-  padding_left: padding_left,
-  padding_right: padding_right,
-  icon: icon,
-  lucide_icon: lucide_icon,
-  icon_position: icon_position
+	variant: variant,
+	align: align,
+	size: size,
+	href: href,
+	label: label,
+	id: id,
+	class: class,
+	props: props,
+	radius: radius,
+	width: width,
+	mobile_width: mobile_width,
+	height: height,
+	mobile_height: mobile_height,
+	padding_top: padding_top,
+	padding_bottom: padding_bottom,
+	padding_left: padding_left,
+	padding_right: padding_right,
+	icon: icon,
+	lucide_icon: lucide_icon,
+	icon_position: icon_position
 %}
 
 {% schema %}
-{
-  "name": "Button",
-  "settings": [
-    {
-      "type": "text",
-      "id": "label",
-      "label": "Label"
-    },
-    {
-      "type": "url",
-      "id": "href",
-      "label": "Link"
-    },
-    {
-      "type": "select",
-      "id": "variant",
-      "label": "Variant",
-      "options": [
-        {
-          "value": "default",
-          "label": "Default"
-        },
-        {
-          "value": "primary",
-          "label": "Primary"
-        },
-        {
-          "value": "secondary",
-          "label": "Secondary"
-        },
-        {
-          "value": "white",
-          "label": "White"
-        },
-        {
-          "value": "outline",
-          "label": "Outline"
-        },
-        {
-          "value": "ghost",
-          "label": "Ghost"
-        }
-      ]
-    },
-    {
-      "type": "header",
-      "content": "Icon"
-    },
-    {
-      "type": "checkbox",
-      "id": "custom_icon",
-      "label": "Adjust Icon"
-    },
-    {
-      "type": "text",
-      "id": "lucide_icon",
-      "label": "Icon Name",
-      "placeholder": "E.g shopping-cart",
-      "visible_if": "{{block.settings.custom_icon}}",
-      "info": "Enter the name of a Lucide icon in the field below. Browse available icons at [lucide.dev/icons](https://lucide.dev/icons)."
-    },
-    {
-      "type": "select",
-      "id": "icon_position",
-      "label": "Icon Position",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "visible_if": "{{block.settings.custom_icon}}"
-    },
-    {
-      "type": "header",
-      "content": "Width"
-    },
-    {
-      "type": "checkbox",
-      "id": "custom_width",
-      "label": "Adjust Width"
-    },
-    {
-      "type": "select",
-      "id": "unit",
-      "label": "Unit",
-      "options": [
-        {
-          "value": "pixel",
-          "label": "Pixel"
-        },
-        {
-          "value": "percent",
-          "label": "Percent"
-        }
-      ],
-      "default": "percent",
-      "visible_if": "{{ block.settings.custom_width }}"
-    },
-    {
-      "type": "range",
-      "id": "percent_width",
-      "label": "Width",
-      "min": 10,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 100,
-      "visible_if": "{{ block.settings.custom_width and block.settings.unit == 'percent' }}"
-    },
-    {
-      "type": "range",
-      "id": "pexel_width",
-      "label": "Width",
-      "min": 10,
-      "max": 500,
-      "step": 5,
-      "unit": "px",
-      "default": 100,
-      "visible_if": "{{ block.settings.custom_width and block.settings.unit == 'pixel' }}"
-    },
-    {
-      "type": "checkbox",
-      "id": "custom_mobile_width",
-      "label": "Custom Mobile Width",
-      "visible_if": "{{ block.settings.custom_width}}"
-    },
-    {
-      "type": "select",
-      "id": "mobile_unit",
-      "label": "Mobile Unit",
-      "options": [
-        {
-          "value": "pixel",
-          "label": "Pixel"
-        },
-        {
-          "value": "percent",
-          "label": "Percent"
-        }
-      ],
-      "default": "percent",
-      "visible_if": "{{ block.settings.custom_mobile_width }}"
-    },
-    {
-      "type": "range",
-      "id": "mobile_percent_width",
-      "label": "Mobile Width",
-      "min": 10,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 100,
-      "visible_if": "{{ block.settings.custom_mobile_width and block.settings.mobile_unit == 'percent' }}"
-    },
-    {
-      "type": "range",
-      "id": "mobile_pexel_width",
-      "label": "Mobile Width",
-      "min": 10,
-      "max": 500,
-      "step": 5,
-      "unit": "px",
-      "default": 100,
-      "visible_if": "{{ block.settings.custom_mobile_width and block.settings.mobile_unit == 'pixel' }}"
-    },
-    {
-      "type": "header",
-      "content": "Height"
-    },
-    {
-      "type": "checkbox",
-      "id": "custom_height",
-      "label": "Adjust Height"
-    },
-    {
-      "type": "range",
-      "id": "height",
-      "label": "Height",
-      "min": 10,
-      "max": 500,
-      "step": 5,
-      "unit": "px",
-      "default": 100,
-      "visible_if": "{{ block.settings.custom_height }}"
-    },
-    {
-      "type": "checkbox",
-      "id": "custom_mobile_height",
-      "label": "Custom Mobile Height",
-      "visible_if": "{{ block.settings.custom_height }}"
-    },
-    {
-      "type": "range",
-      "id": "mobile_height",
-      "label": "Mobile Height",
-      "min": 10,
-      "max": 500,
-      "step": 5,
-      "unit": "px",
-      "default": 100,
-      "visible_if": "{{ block.settings.custom_mobile_height }}"
-    },
-    {
-      "type": "header",
-      "content": "Border Radius"
-    },
-    {
-      "type": "checkbox",
-      "id": "custom_radius",
-      "label": "Adjust Border Radius"
-    },
-    {
-      "type": "range",
-      "id": "radius",
-      "label": "Roundeness",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 0,
-      "unit": "px",
-      "visible_if": "{{ block.settings.custom_radius == true }}"
-    },
-    {
-      "type": "header",
-      "content": "Alignment"
-    },
-    {
-      "type": "checkbox",
-      "id": "custom_alignment",
-      "label": "Align Button"
-    },
-    {
-      "type": "text_alignment",
-      "id": "alignment",
-      "label": "Align Button",
-      "default": "left",
-      "visible_if": "{{block.settings.custom_alignment}}"
-    },
-    {
-      "type": "header",
-      "content": "Padding"
-    },
-    {
-      "type": "checkbox",
-      "id": "custom_padding",
-      "label": "Add Padding"
-    },
+	{
+		"name": "Button",
+		"settings": [
+			{
+				"type": "text",
+				"id": "label",
+				"label": "Label"
+			},
+			{
+				"type": "url",
+				"id": "href",
+				"label": "Link"
+			},
+			{
+				"type": "select",
+				"id": "variant",
+				"label": "Variant",
+				"options": [
+					{
+						"value": "default",
+						"label": "Default"
+					},
+					{
+						"value": "primary",
+						"label": "Primary"
+					},
+					{
+						"value": "secondary",
+						"label": "Secondary"
+					},
+					{
+						"value": "white",
+						"label": "White"
+					},
+					{
+						"value": "outline",
+						"label": "Outline"
+					},
+					{
+						"value": "ghost",
+						"label": "Ghost"
+					}
+				]
+			},
+			{
+				"type": "header",
+				"content": "Icon"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_icon",
+				"label": "Adjust Icon"
+			},
+			{
+				"type": "text",
+				"id": "lucide_icon",
+				"label": "Icon Name",
+				"placeholder": "E.g shopping-cart",
+				"visible_if": "{{block.settings.custom_icon}}",
+				"info": "Enter the name of a Lucide icon in the field below. Browse available icons at [lucide.dev/icons](https://lucide.dev/icons)."
+			},
+			{
+				"type": "select",
+				"id": "icon_position",
+				"label": "Icon Position",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					}
+				],
+				"visible_if": "{{block.settings.custom_icon}}"
+			},
+			{
+				"type": "header",
+				"content": "Width"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_width",
+				"label": "Adjust Width"
+			},
+			{
+				"type": "select",
+				"id": "unit",
+				"label": "Unit",
+				"options": [
+					{
+						"value": "pixel",
+						"label": "Pixel"
+					},
+					{
+						"value": "percent",
+						"label": "Percent"
+					}
+				],
+				"default": "percent",
+				"visible_if": "{{ block.settings.custom_width }}"
+			},
+			{
+				"type": "range",
+				"id": "percent_width",
+				"label": "Width",
+				"min": 10,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"default": 100,
+				"visible_if": "{{ block.settings.custom_width and block.settings.unit == 'percent' }}"
+			},
+			{
+				"type": "range",
+				"id": "pexel_width",
+				"label": "Width",
+				"min": 10,
+				"max": 500,
+				"step": 5,
+				"unit": "px",
+				"default": 100,
+				"visible_if": "{{ block.settings.custom_width and block.settings.unit == 'pixel' }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_mobile_width",
+				"label": "Custom Mobile Width",
+				"visible_if": "{{ block.settings.custom_width}}"
+			},
+			{
+				"type": "select",
+				"id": "mobile_unit",
+				"label": "Mobile Unit",
+				"options": [
+					{
+						"value": "pixel",
+						"label": "Pixel"
+					},
+					{
+						"value": "percent",
+						"label": "Percent"
+					}
+				],
+				"default": "percent",
+				"visible_if": "{{ block.settings.custom_mobile_width }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile_percent_width",
+				"label": "Mobile Width",
+				"min": 10,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"default": 100,
+				"visible_if": "{{ block.settings.custom_mobile_width and block.settings.mobile_unit == 'percent' }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile_pexel_width",
+				"label": "Mobile Width",
+				"min": 10,
+				"max": 500,
+				"step": 5,
+				"unit": "px",
+				"default": 100,
+				"visible_if": "{{ block.settings.custom_mobile_width and block.settings.mobile_unit == 'pixel' }}"
+			},
+			{
+				"type": "header",
+				"content": "Height"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_height",
+				"label": "Adjust Height"
+			},
+			{
+				"type": "range",
+				"id": "height",
+				"label": "Height",
+				"min": 10,
+				"max": 500,
+				"step": 5,
+				"unit": "px",
+				"default": 100,
+				"visible_if": "{{ block.settings.custom_height }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_mobile_height",
+				"label": "Custom Mobile Height",
+				"visible_if": "{{ block.settings.custom_height }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile_height",
+				"label": "Mobile Height",
+				"min": 10,
+				"max": 500,
+				"step": 5,
+				"unit": "px",
+				"default": 100,
+				"visible_if": "{{ block.settings.custom_mobile_height }}"
+			},
+			{
+				"type": "header",
+				"content": "Border Radius"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_radius",
+				"label": "Adjust Border Radius"
+			},
+			{
+				"type": "range",
+				"id": "radius",
+				"label": "Roundeness",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"default": 0,
+				"unit": "px",
+				"visible_if": "{{ block.settings.custom_radius == true }}"
+			},
+			{
+				"type": "header",
+				"content": "Alignment"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_alignment",
+				"label": "Align Button"
+			},
+			{
+				"type": "text_alignment",
+				"id": "alignment",
+				"label": "Align Button",
+				"default": "left",
+				"visible_if": "{{block.settings.custom_alignment}}"
+			},
+			{
+				"type": "header",
+				"content": "Padding"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_padding",
+				"label": "Add Padding"
+			},
 
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top",
-      "min": 1,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 1,
-      "visible_if": "{{ block.settings.custom_padding == true }}"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom",
-      "min": 1,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 1,
-      "visible_if": "{{ block.settings.custom_padding == true }}"
-    },
-    {
-      "type": "range",
-      "id": "padding_left",
-      "label": "Padding Left",
-      "min": 1,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 24,
-      "visible_if": "{{ block.settings.custom_padding == true }}"
-    },
-    {
-      "type": "range",
-      "id": "padding_right",
-      "label": "Padding Right",
-      "min": 1,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 24,
-      "visible_if": "{{ block.settings.custom_padding == true }}"
-    },
-    {
-      "type": "header",
-      "content": "Class and ID"
-    },
-    {
-      "type": "text",
-      "id": "id",
-      "label": "Add button ID",
-      "placeholder": "E.g add-to-cart "
-    },
-    {
-      "type": "text",
-      "id": "class",
-      "label": "Additional Classes",
-      "placeholder": "E.g rounded-full! "
-    }
-  ]
-}
+			{
+				"type": "range",
+				"id": "padding_top",
+				"label": "Padding Top",
+				"min": 1,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 1,
+				"visible_if": "{{ block.settings.custom_padding == true }}"
+			},
+			{
+				"type": "range",
+				"id": "padding_bottom",
+				"label": "Padding Bottom",
+				"min": 1,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 1,
+				"visible_if": "{{ block.settings.custom_padding == true }}"
+			},
+			{
+				"type": "range",
+				"id": "padding_left",
+				"label": "Padding Left",
+				"min": 1,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 24,
+				"visible_if": "{{ block.settings.custom_padding == true }}"
+			},
+			{
+				"type": "range",
+				"id": "padding_right",
+				"label": "Padding Right",
+				"min": 1,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 24,
+				"visible_if": "{{ block.settings.custom_padding == true }}"
+			},
+			{
+				"type": "header",
+				"content": "Class and ID"
+			},
+			{
+				"type": "text",
+				"id": "id",
+				"label": "Add button ID",
+				"placeholder": "E.g add-to-cart "
+			},
+			{
+				"type": "text",
+				"id": "class",
+				"label": "Additional Classes",
+				"placeholder": "E.g rounded-full! "
+			}
+		]
+	}
 {% endschema %}

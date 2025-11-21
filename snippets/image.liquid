@@ -1,5 +1,5 @@
 {% doc %}
-  Renders a responsive image that might be wrapped in a link.
+	Renders a responsive image that might be wrapped in a link.
 
   When `width`, `height` and `crop` are provided, the image will be rendered
   with a fixed aspect ratio.
@@ -7,15 +7,15 @@
   Serves as an example of how to use the `image_url` filter and `image_tag` filter
   as well as how you can use LiquidDoc to document your code.
 
-  @param {image} image - The image to be rendered
-  @param {string} [url] - An optional destination URL for the image
-  @param {string} [class] - Optional class to be added to the image wrapper
-  @param {number} [width] - The highest resolution width of the image to be rendered
-  @param {number} [height] - The highest resolution height of the image to be rendered
-  @param {string} [crop] - The crop position of the image
+	@param {image} image - The image to be rendered
+	@param {string} [url] - An optional destination URL for the image
+	@param {string} [class] - Optional class to be added to the image wrapper
+	@param {number} [width] - The highest resolution width of the image to be rendered
+	@param {number} [height] - The highest resolution height of the image to be rendered
+	@param {string} [crop] - The crop position of the image
 
-  @example
-  {% render 'image', image: product.featured_image %}
+	@example
+	{% render 'image', image: product.featured_image %}
   {% render 'image', image: product.featured_image, url: product.url %}
   {% render 'image',
     class: 'product__image',
@@ -28,37 +28,37 @@
 {% enddoc %}
 
 {% liquid
-  unless height
-    assign width = width | default: image.width
-  endunless
+	unless height
+		assign width = width | default: image.width
+	endunless
 
-  if url
-    assign wrapper = 'a'
-  else
-    assign wrapper = 'div'
-  endif
+	if url
+		assign wrapper = 'a'
+	else
+		assign wrapper = 'div'
+	endif
 %}
 
 <{{ wrapper }}
-  class="image {{ class }}"
-  {% if url %}
-    href="{{ url }}"
-  {% endif %}
+	class='image {{ class }}'
+	{% if url %}
+		href='{{ url }}'
+	{% endif %}
 >
-  {{ image | image_url: width: width, height: height, crop: crop | image_tag }}
+	{{ image | image_url: width: width, height: height, crop: crop | image_tag }}
 </{{ wrapper }}>
 
 {% stylesheet %}
-  .image {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    height: auto;
-  }
+	.image {
+		display: block;
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+		height: auto;
+	}
 
-  .image > img {
-    width: 100%;
-    height: auto;
-  }
+	.image > img {
+		width: 100%;
+		height: auto;
+	}
 {% endstylesheet %}

@@ -39,7 +39,7 @@
   {{ shopify_attributes }}
 >
   {% capture cart_button %}
-        <span class="bg-primary flex justify-center items-center text-primary-foreground z-20 absolute rounded-full! size-6 -top-2 -right-2 p-1 text-xs" data-cartdrawer-bubble>{{ cart.item_count }}</span>
+        <span class="bg-primary text-primary-foreground absolute -top-2 -right-2 z-20 flex size-6 items-center justify-center rounded-full! p-1 text-xs" data-cartdrawer-bubble>{{ cart.item_count }}</span>
           <span aria-hidden="true"> {{ 'icons/shopping-cart.svg' | inline_asset_content }}</span>
   {% endcapture %}
   {% capture cart_trigger %}
@@ -63,9 +63,9 @@
      <p  id="drawer-description" class="sr-only"> Your shopping cart with {{ cart.item_count }} items.</p>
   {% endif %} {% endcomment %}
 
-  <div id="cartdrawer-content" class="h-full w-full bg-white rounded-md lg:rounded-lg  overflow-hidden shadow-lg flex-1">
+  <div id="cartdrawer-content" class="h-full w-full flex-1 overflow-hidden rounded-md  bg-white shadow-lg lg:rounded-lg">
     {% if cart.empty? %}
-      <div id="cartdrawer-empty" class="w-full h-full flex flex-col justify-center items-center gap-4" >
+      <div id="cartdrawer-empty" class="flex h-full w-full flex-col items-center justify-center gap-4" >
 
         {% render 'button'
         , size: 'icon'
@@ -79,18 +79,18 @@
       </div>
     {% else %}
       <p  id="drawer-description" class="sr-only"> Your shopping cart with {{ cart.item_count }} items.</p>
-      <div  class="w-full h-full flex flex-col">
+      <div  class="flex h-full w-full flex-col">
 
-          <div id="cartdrawer-inner" class=" flex-1 flex flex-col " :class="settings.stickyHeader ? 'overflow-hidden' : 'overflow-y-auto'">
+          <div id="cartdrawer-inner" class=" flex flex-1 flex-col " :class="settings.stickyHeader ? 'overflow-hidden' : 'overflow-y-auto'">
       
             <!-- Cart Header -->
-            <div id="cartdrawer-header" class="shrink-0 flex flex-col gap-2 min-h-12 h-fit " aria-label="Cart Drawer Header" tabindex="0">
+            <div id="cartdrawer-header" class="flex h-fit min-h-12 shrink-0 flex-col gap-2 " aria-label="Cart Drawer Header" tabindex="0">
 
-                <div id="cartdrawer-header-inner" class="flex justify-between items-center w-full px-5 lg:px-8 pb-1 lg:pb-2 pt-4" >
+                <div id="cartdrawer-header-inner" class="flex w-full items-center justify-between px-5 pt-4 pb-1 lg:px-8 lg:pb-2" >
                   <div class="flex items-center gap-2" role="presentation">
                         <span class="sr-only">You have {{cart.item_count}} items in cart</span>
                         <p  aria-hidden="true" class="font-semibold lg:text-lg">Cart </p>
-                        <span  aria-hidden="true" class="flex justify-center items-center size-6 min-w-fit bg-primary text-primary-foreground rounded-full p-px text-sm">{{cart.item_count}}</span>
+                        <span  aria-hidden="true" class="bg-primary text-primary-foreground flex size-6 min-w-fit items-center justify-center rounded-full p-px text-sm">{{cart.item_count}}</span>
                   </div>
                   {% render 'button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ', props:'data-drawer-close', aria_label:'Close Cart Drawer' %}
                 </div>
@@ -98,7 +98,7 @@
             </div>
             
             {%# Always Scrollable %}
-            <div class="flex-1 flex flex-col justify-between  pt-1 lg:pt-2 " :class="settings.stickyHeader ? 'overflow-y-auto' : ''">
+            <div class="flex flex-1 flex-col justify-between  pt-1 lg:pt-2 " :class="settings.stickyHeader ? 'overflow-y-auto' : ''">
 
               <div class="pb-5 lg:pb-8">
                   {%# Cart Items %}
@@ -114,7 +114,7 @@
 
                   <div>
                     {%# Recommended Products %}
-                    <div class="bg-gray-200 animate-pulse w-full min-h-32 rounded-lg hidden"></div>
+                    <div class="hidden min-h-32 w-full animate-pulse rounded-lg bg-gray-200"></div>
 
 
                     <template x-if="!settings.stickyFooter">
@@ -156,10 +156,8 @@
 </script>
 <script src="{{ 'js/blocks/cartdrawer.js' | asset_url }}" defer></script>
 
-{% comment %}
-  <script>
-            setTimeout(() => {
-              window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }));
-            }, 1000);
-  </script>
-{% endcomment %}
+<script>
+  setTimeout(() => {
+    window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }));
+  }, 1000);
+</script>

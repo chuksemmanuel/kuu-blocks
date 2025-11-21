@@ -1,22 +1,22 @@
 {% assign quick_add_id = 'quick-add-' | append: product.id %}
-<div data-quick-add="{{product.id}}">
-  {% if product.has_only_default_variant %}
-    {%
-      render 'add-to-cart-button'
-      , id: product.first_available_variant.id
-      , quantity: 1
-      , button_variant:'white'
-      , size:'icon'
-      , icon:'icons/shopping-cart.svg',
-      , class: 'shadow-sm rounded-full!'
-      , loading_class:'bg-primary! text-primary-foreground! shadow-sm rounded-full!'
-      , aria_label:'Add product to cart'
-    %}
+<div data-quick-add='{{product.id}}'>
+	{% if product.has_only_default_variant %}
+		{%
+			render 'add-to-cart-button'
+			, id: product.first_available_variant.id
+			, quantity: 1
+			, button_variant:'white'
+			, size:'icon'
+			, icon:'icons/shopping-cart.svg',
+			, class: 'shadow-sm rounded-full!'
+			, loading_class:'bg-primary! text-primary-foreground! shadow-sm rounded-full!'
+			, aria_label:'Add product to cart'
+		%}
 
-  {% elsif product.variants.size > 1 and product.selected_or_first_available_variant.available %}
-    {% capture quick_add_trigger %}
+	{% elsif product.variants.size > 1 and product.selected_or_first_available_variant.available %}
+		{% capture quick_add_trigger %}
       <div
-        class="absolute bottom-3 right-3">
+        class="absolute right-3 bottom-3">
           {% render 'button'
             , variant: 'white'
             , size: 'icon'
@@ -26,24 +26,24 @@
           %}
       </div>
     {% endcapture %}
-    {% capture quick_add_content %}
+		{% capture quick_add_content %}
       {% render 'quick-add-content', product: product %}
     {% endcapture %}
 
-    {% render 'drawer',
-      trigger: quick_add_trigger,
-      content: quick_add_content,
-      id: quick_add_id,
-      from: 'bottom',
-      class: 'min-h-[400px] h-auto! max-h-screen sm:max-w-[528px] sm:left-auto sm:right-0 max-sm:p-0! max-sm:rounded-b-none! max-sm:justify-end'
-    %}
-  {% endif %}
+		{% render 'drawer',
+			trigger: quick_add_trigger,
+			content: quick_add_content,
+			id: quick_add_id,
+			from: 'bottom',
+			class: 'min-h-[400px] h-auto! max-h-screen sm:max-w-[528px] sm:left-auto sm:right-0 max-sm:p-0! max-sm:rounded-b-none! max-sm:justify-end'
+		%}
+	{% endif %}
 </div>
 {% comment %}
-    Opens quickadd on page load - for development only
-    <script>
-      setTimeout(() =>{
-        document.querySelector('.products-grid > div:nth-child(4) [data-drawer-id*="quick-add"] > div').click()
-      },2000)
-  </script>
+	  Opens quickadd on page load - for development only
+	  <script>
+	    setTimeout(() =>{
+	      document.querySelector('.products-grid > div:nth-child(4) [data-drawer-id*="quick-add"] > div').click()
+	    },2000)
+	</script>
 {% endcomment %}

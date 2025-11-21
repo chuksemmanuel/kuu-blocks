@@ -1,27 +1,25 @@
 {% comment %} Loading Skeleton {% endcomment %}
-<div class="flex flex-col gap-4 md:gap-6 h-full overflow-hidden">
-  {% # tab trigger %}
-  <div class="relative flex gap-4 shrink-0 items-center z-30 overflow-hidden  text-gray-500 bg-white select-none overflow-x-auto w-full no-scrollbar h-6 md:h-7 ">
-    <div class="div rounded bg-gray-200 animate-pulse h-6 md:h-7 w-22 shrink-0"></div>
-    <div class="div rounded bg-gray-200 animate-pulse h-6 md:h-7 w-27 shrink-0"></div>
-    <div class="div rounded bg-gray-200 animate-pulse h-6 md:h-7 w-15 shrink-0"></div>
-  </div>
+<div class='flex h-full flex-col gap-4 overflow-hidden md:gap-6'>
+	{% # tab trigger %}
+	<div class='no-scrollbar relative z-30 flex h-6 w-full shrink-0  items-center gap-4 overflow-hidden overflow-x-auto bg-white text-gray-500 select-none md:h-7 '>
+		<div class='div h-6 w-22 shrink-0 animate-pulse rounded bg-gray-200 md:h-7'></div>
+		<div class='div h-6 w-27 shrink-0 animate-pulse rounded bg-gray-200 md:h-7'></div>
+		<div class='div h-6 w-15 shrink-0 animate-pulse rounded bg-gray-200 md:h-7'></div>
+	</div>
 
-  {% # tab list %}
+	{% # tab list %}
 
-  <div class="flex flex-col flex-1 overflow-y-auto">
-    {% for _ in (1..5) %}
-      <div key="{{ forloop.index }}" class="flex items-center gap-5 pb-4 md:pb-6  ">
+	<div class='flex flex-1 flex-col overflow-y-auto'>
+		{% for _ in (1..5) %}
+			<div key='{{ forloop.index }}' class='flex items-center gap-5 pb-4 md:pb-6  '>
+				<div class='block size-20 shrink-0 animate-pulse overflow-hidden rounded bg-gray-200'></div>
 
-        <div class="block size-20 rounded bg-gray-200 overflow-hidden shrink-0 animate-pulse"></div>
-
-        <div class="flex flex-col gap-2 w-full">
-          <div class="div rounded bg-gray-200 animate-pulse h-3 w-[max(35%,120px)] shrink-0"></div>
-          <div class="div rounded bg-gray-200 animate-pulse h-3 w-[max(70%,160px)] shrink-0"></div>
-          <div class="div rounded bg-gray-200 animate-pulse h-3 w-[max(20%,80px)] shrink-0"></div>
-        </div>
-      </div>
-    {% endfor %}
-
-  </div>
+				<div class='flex w-full flex-col gap-2'>
+					<div class='div h-3 w-[max(35%,120px)] shrink-0 animate-pulse rounded bg-gray-200'></div>
+					<div class='div h-3 w-[max(70%,160px)] shrink-0 animate-pulse rounded bg-gray-200'></div>
+					<div class='div h-3 w-[max(20%,80px)] shrink-0 animate-pulse rounded bg-gray-200'></div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 </div>

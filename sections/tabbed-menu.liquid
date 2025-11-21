@@ -1,46 +1,44 @@
-{% render 'tabbed-menu'
-  , section: section, headless:true%}
-
+{% render 'tabbed-menu', section: section, headless: true %}
 
 {% schema %}
-  {
-    "name": "Tabbed Menu",
-    "settings": [],
-      "blocks": [
-      {
-        "type": "menu_item",
-        "name": "Menu Item",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Item Image"
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Item Title"
-          },
-          {
-            "type": "url",
-            "id": "href",
-            "label": "Item Link"
-          },
-          {
-            "type": "text",
-            "id": "parent_tab",
-            "label": "Parent Tab (must match tab title)"
-          }
-        ]
-      },
-      {
-        "type": "@app"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Tabbed Menu"
-      }
-    ]
-  }
+	{
+		"name": "Tabbed Menu",
+		"settings": [],
+		"blocks": [
+			{
+				"type": "menu_item",
+				"name": "Menu Item",
+				"settings": [
+					{
+						"type": "image_picker",
+						"id": "image",
+						"label": "Item Image"
+					},
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Item Title"
+					},
+					{
+						"type": "url",
+						"id": "href",
+						"label": "Item Link"
+					},
+					{
+						"type": "text",
+						"id": "parent_tab",
+						"label": "Parent Tab (must match tab title)"
+					}
+				]
+			},
+			{
+				"type": "@app"
+			}
+		],
+		"presets": [
+			{
+				"name": "Tabbed Menu"
+			}
+		]
+	}
 {% endschema %}

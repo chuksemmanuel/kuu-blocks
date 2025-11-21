@@ -1,114 +1,114 @@
-<div class="py-6 lg:py-12 flex flex-col gap-4 md:gap-6 lg:gap-12">
-  {%- comment -%}
-    Desktop banner
-  {%- endcomment -%}
-  <div class="w-full aspect-1400/540 hidden sm:flex justify-center items-center rounded-3xl overflow-hidden relative">
-    <div class="flex flex-col items-center text-center gap-4 w-[200px] md:w-[250px]">
-      <p class="relative z-10 text-black text-shadow-xs text-shadow-white text-2xl md:text-4xl">
-        {{ section.settings.heading }}
-      </p>
-      <span class="relative z-10 text-black text-shadow-xs text-shadow-white">
-        {{ section.settings.subtext }}
-      </span>
+<div class='flex flex-col gap-4 py-6 md:gap-6 lg:gap-12 lg:py-12'>
+	{%- comment -%}
+		Desktop banner
+	{%- endcomment -%}
+	<div class='relative hidden aspect-1400/540 w-full items-center justify-center overflow-hidden rounded-3xl sm:flex'>
+		<div class='flex w-[200px] flex-col items-center gap-4 text-center md:w-[250px]'>
+			<p class='relative z-10 text-2xl text-black text-shadow-white text-shadow-xs md:text-4xl'>
+				{{ section.settings.heading }}
+			</p>
+			<span class='relative z-10 text-black text-shadow-white text-shadow-xs'>
+				{{ section.settings.subtext }}
+			</span>
 
-      {% render 'button',
-        variant: 'primary',
-        size: 'lg',
-        href: section.settings.button_link,
-        label: section.settings.button_label,
-        class: 'z-10 rounded-full!'
-      %}
-    </div>
+			{% render 'button',
+				variant: 'primary',
+				size: 'lg',
+				href: section.settings.button_link,
+				label: section.settings.button_label,
+				class: 'z-10 rounded-full!'
+			%}
+		</div>
 
-    {% if section.settings.desktop_image != blank %}
-      <img
-        src="{{ section.settings.desktop_image | image_url: width: 1400 }}"
-        alt="{{ section.settings.heading | escape }}"
-        width="1400"
-        height="540"
-        class="absolute inset-0 h-full! w-full object-cover z-5 transition duration-300 ease-out group-hover:scale-105 group-active:scale-100"
-      >
-    {% endif %}
-  </div>
+		{% if section.settings.desktop_image != blank %}
+			<img
+				src='{{ section.settings.desktop_image | image_url: width: 1400 }}'
+				alt='{{ section.settings.heading | escape }}'
+				width='1400'
+				height='540'
+				class='absolute inset-0 z-5 h-full! w-full object-cover transition duration-300 ease-out group-hover:scale-105 group-active:scale-100'
+			>
+		{% endif %}
+	</div>
 
-  {%- comment -%}
-    Mobile banner
-  {%- endcomment -%}
-  <div class="w-full aspect-360/540 max-h-[540px] flex justify-center p-8 sm:hidden rounded-3xl overflow-hidden relative">
-    <div class="flex flex-col items-center text-center gap-4 w-[250px]">
-      <p class="relative z-10 text-black text-shadow-xs text-shadow-white text-4xl">
-        {{ section.settings.heading }}
-      </p>
-      <span class="relative z-10 text-black text-shadow-xs text-shadow-white">
-        {{ section.settings.subtext }}
-      </span>
+	{%- comment -%}
+		Mobile banner
+	{%- endcomment -%}
+	<div class='relative flex aspect-360/540 max-h-[540px] w-full justify-center overflow-hidden rounded-3xl p-8 sm:hidden'>
+		<div class='flex w-[250px] flex-col items-center gap-4 text-center'>
+			<p class='relative z-10 text-4xl text-black text-shadow-white text-shadow-xs'>
+				{{ section.settings.heading }}
+			</p>
+			<span class='relative z-10 text-black text-shadow-white text-shadow-xs'>
+				{{ section.settings.subtext }}
+			</span>
 
-      {% render 'button',
-        variant: 'primary',
-        size: 'lg',
-        href: section.settings.button_link,
-        label: section.settings.button_label,
-        class: 'z-10 rounded-full!'
-      %}
-    </div>
+			{% render 'button',
+				variant: 'primary',
+				size: 'lg',
+				href: section.settings.button_link,
+				label: section.settings.button_label,
+				class: 'z-10 rounded-full!'
+			%}
+		</div>
 
-    {% if section.settings.mobile_image != blank %}
-      <img
-        src="{{ section.settings.mobile_image | image_url: width: 720 }}"
-        alt="{{ section.settings.heading | escape }}"
-        width="360"
-        height="540"
-        class="absolute inset-0 h-full! w-full object-cover z-5 transition duration-300 ease-out group-hover:scale-105 group-active:scale-100"
-      >
-    {% endif %}
-  </div>
+		{% if section.settings.mobile_image != blank %}
+			<img
+				src='{{ section.settings.mobile_image | image_url: width: 720 }}'
+				alt='{{ section.settings.heading | escape }}'
+				width='360'
+				height='540'
+				class='absolute inset-0 z-5 h-full! w-full object-cover transition duration-300 ease-out group-hover:scale-105 group-active:scale-100'
+			>
+		{% endif %}
+	</div>
 </div>
 
 {% schema %}
-{
-  "name": "Featured Banner",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "desktop_image",
-      "label": "Desktop Banner Image",
-      "info": "Recommended size: 1400 x 540 px"
-    },
-    {
-      "type": "image_picker",
-      "id": "mobile_image",
-      "label": "Mobile Banner Image",
-      "info": "Recommended size: 360 x 540 px"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Get 50% Off"
-    },
-    {
-      "type": "text",
-      "id": "subtext",
-      "label": "Subtext",
-      "default": "for all new products purchases min. purchase $450"
-    },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": "Button Label",
-      "default": "Shop Now"
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": "Button Link"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Featured Banner",
-      "category": "Image"
-    }
-  ]
-}
+	{
+		"name": "Featured Banner",
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "desktop_image",
+				"label": "Desktop Banner Image",
+				"info": "Recommended size: 1400 x 540 px"
+			},
+			{
+				"type": "image_picker",
+				"id": "mobile_image",
+				"label": "Mobile Banner Image",
+				"info": "Recommended size: 360 x 540 px"
+			},
+			{
+				"type": "text",
+				"id": "heading",
+				"label": "Heading",
+				"default": "Get 50% Off"
+			},
+			{
+				"type": "text",
+				"id": "subtext",
+				"label": "Subtext",
+				"default": "for all new products purchases min. purchase $450"
+			},
+			{
+				"type": "text",
+				"id": "button_label",
+				"label": "Button Label",
+				"default": "Shop Now"
+			},
+			{
+				"type": "url",
+				"id": "button_link",
+				"label": "Button Link"
+			}
+		],
+		"presets": [
+			{
+				"name": "Featured Banner",
+				"category": "Image"
+			}
+		]
+	}
 {% endschema %}
