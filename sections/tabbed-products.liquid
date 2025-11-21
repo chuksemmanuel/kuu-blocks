@@ -1,13 +1,13 @@
-{% render 'menu', section: section, headless: true %}
+{% render 'tabbed-products', blocks: section.blocks, headless: true %}
 
 {% schema %}
 {
-  "name": "Tabbed Menu",
+  "name": "Tabbed products",
   "settings": [],
   "blocks": [
     {
-      "type": "menu_item",
-      "name": "Menu Item",
+      "type": "product_item",
+      "name": "product Item",
       "settings": [
         {
           "type": "image_picker",
@@ -37,7 +37,7 @@
   ],
   "presets": [
     {
-      "name": "Tabbed Menu"
+      "name": "Tabbed products"
     }
   ]
 }

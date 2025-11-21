@@ -1,0 +1,31 @@
+{% schema %}
+{
+  "name": "Collection Picker",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Pick a Collection"
+    },
+    {
+      "type": "paragraph",
+      "content": "Products from the selected collection will be displayed in a tab"
+    },
+    {
+      "type": "collection_list",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "tab_title",
+      "label": "Tab Title",
+      "info": "The tab products from this collection should be under*"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pick a collection"
+    }
+  ]
+}
+{% endschema %}
