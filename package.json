@@ -1,7 +1,7 @@
 {
 	"name": "kuu-theme",
 	"version": "1.0.0",
-	"description": "A minimal, performance-focused Shopify theme named Kuu (Sky/Void).",
+	"description": "A minimal, performance-focused Shopify theme named Kuu (Sky).",
 	"main": "index.js",
 	"type": "module",
 	"scripts": {

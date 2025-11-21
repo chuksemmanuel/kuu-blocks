@@ -3,9 +3,9 @@
 </h1>
 
 <p align="center">
-  A minimal, performance-focused Shopify theme designed for modularity, accessibility, and best practices.
+  A minimal, performance-focused Shopify theme designed for performance, modularity, accessibility, search engines and best practices.
   <br>
-  <em>Kuu (空) - Japanese for Sky/Essence.</em>
+  <em>Kuu (空) - Japanese for Sky.</em>
 </p>
 
 <p align="center">
@@ -14,12 +14,22 @@
 
 ## Overview
 
-Kuu is a "skeleton" theme built to be the perfect foundation for custom Shopify storefronts. It prioritizes:
+### 1. Performance as a Feature
 
-- **Performance:** Lean code, critical CSS, and optimized assets.
-- **Accessibility:** Built with semantic HTML and ARIA standards.
-- **Modularity:** Fully leverages Shopify 2.0 Sections and Blocks.
-- **Developer Experience:** Modern tooling with Tailwind CSS and Alpine.js.
+Kuu is built to be lightweight by default.
+
+- **Critical CSS:** Inlined for instant rendering.
+- **Alpine.js:** For lightweight, reactive interactions without the bloat of a full SPA framework.
+- **Native Browser Features:** Leveraging modern browser capabilities instead of polyfills.
+
+### 2. Built for Conversion (CRO)
+
+Every component is designed with Conversion Rate Optimization in mind.
+
+- **A/B Testing Ready:** Blocks and sections are granular and isolated, making it easy to duplicate a section, tweak the copy or layout, and run split tests using Shopify's native tools or third-party apps.
+- **User-Centric UX:** We focus on reducing friction. The cart drawer, for example, handles optimistic UI updates—showing the user the result of their action immediately while syncing with the server in the background.
+- **Exposed APIs:** We expose key component logic to the `window` object. For example, `window.kuu.cartDrawer` allows developers to programmatically open, close, or refresh the cart from anywhere in the app. Useful for A/B testing with JavaScript.
+- **Modular Components:** Developers can take a single block (like our Tab component or Cart Drawer) and drop it into another project with minimal friction.
 
 ## Getting Started
 
