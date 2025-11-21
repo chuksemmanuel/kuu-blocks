@@ -1,7 +1,7 @@
 {
-	"name": "colorful-composition-theme",
+	"name": "kuu-theme",
 	"version": "1.0.0",
-	"description": "",
+	"description": "A minimal, performance-focused Shopify theme named Kuu (Sky/Void).",
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
@@ -10,7 +10,7 @@
 		"build": "npx mix build -p"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "CHUKWUNWEIKE EMMANUEL",
 	"license": "ISC",
 	"packageManager": "pnpm@10.14.0",
 	"devDependencies": {

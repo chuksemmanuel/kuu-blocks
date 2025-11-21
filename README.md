@@ -1,159 +1,92 @@
 <h1 align="center" style="position: relative;">
-
-Shopify Skeleton Theme
-
+  Kuu Theme
 </h1>
 
-A minimal, carefully structured Shopify theme designed to help you quickly get started. Designed with modularity, maintainability, and Shopify's best practices in mind.
-
 <p align="center">
-  <a href="./LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
-  <a href="./actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Shopify/skeleton-theme/actions/workflows/ci.yml/badge.svg"></a>
+  A minimal, performance-focused Shopify theme designed for modularity, accessibility, and best practices.
+  <br>
+  <em>Kuu (空) - Japanese for Sky/Essence.</em>
 </p>
 
-## Getting started
+<p align="center">
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Custom-blue.svg" alt="License"></a>
+</p>
+
+## Overview
+
+Kuu is a "skeleton" theme built to be the perfect foundation for custom Shopify storefronts. It prioritizes:
+
+- **Performance:** Lean code, critical CSS, and optimized assets.
+- **Accessibility:** Built with semantic HTML and ARIA standards.
+- **Modularity:** Fully leverages Shopify 2.0 Sections and Blocks.
+- **Developer Experience:** Modern tooling with Tailwind CSS and Alpine.js.
+
+## Getting Started
 
 ### Prerequisites
 
-Before starting, ensure you have the latest Shopify CLI installed:
+- [Shopify CLI](https://shopify.dev/docs/api/shopify-cli)
+- Node.js & pnpm
 
-- [Shopify CLI](https://shopify.dev/docs/api/shopify-cli) – helps you download, upload, preview themes, and streamline your workflows
+### Installation
 
-If you use VS Code:
+1. **Clone the repository:**
 
-- [Shopify Liquid VS Code Extension](https://shopify.dev/docs/storefronts/themes/tools/shopify-liquid-vscode) – provides syntax highlighting, linting, inline documentation, and auto-completion specifically designed for Liquid templates
+   ```bash
+   git clone git@github.com:chuksemmanuel/kuu-theme.git
+   ```
 
-### Clone
+2. **Install dependencies:**
 
-Clone this repository using Git or Shopify CLI:
+   ```bash
+   pnpm install
+   ```
 
-```bash
-git clone git@github.com:Shopify/skeleton-theme.git
-# or
-shopify theme init
-```
+3. **Start development:**
+   ```bash
+   pnpm dev
+   # and in a separate terminal
+   shopify theme dev
+   ```
 
-### Preview
-
-Preview this theme using Shopify CLI:
-
-```bash
-shopify theme dev
-```
-
-## Theme architecture
+## Theme Architecture
 
 ```bash
 .
-├── assets          # Stores static assets (CSS, JS, images, fonts, etc.)
-├── blocks          # Reusable, nestable, customizable UI components
-├── config          # Global theme settings and customization options
-├── layout          # Top-level wrappers for pages (layout templates)
-├── locales         # Translation files for theme internationalization
-├── sections        # Modular full-width page components
-├── snippets        # Reusable Liquid code or HTML fragments
-└── templates       # Templates combining sections to define page structures
+├── assets          # Static assets (JS, CSS, Images)
+├── blocks          # Reusable UI components (Shopify 2.0)
+├── config          # Theme settings
+├── layout          # Master layout files
+├── sections        # Page sections
+├── snippets        # Liquid snippets & components
+└── src             # Source files (Tailwind CSS)
 ```
 
-To learn more, refer to the [theme architecture documentation](https://shopify.dev/docs/storefronts/themes/architecture).
+## License & Usage
 
-### Templates
+**Copyright (c) 2025 CHUKWUNWEIKE EMMANUEL**
 
-[Templates](https://shopify.dev/docs/storefronts/themes/architecture/templates#template-types) control what's rendered on each type of page in a theme.
+This project is licensed under a custom "No Charge" license designed to be developer-friendly while protecting the creator's work on the Shopify platform.
 
-The Skeleton Theme scaffolds [JSON templates](https://shopify.dev/docs/storefronts/themes/architecture/templates/json-templates) to make it easy for merchants to customize their store.
+### Summary
 
-None of the template types are required, and not all of them are included in the Skeleton Theme. Refer to the [template types reference](https://shopify.dev/docs/storefronts/themes/architecture/templates#template-types) for a full list.
+- **✅ You MAY:** Use this for personal projects, client work (freelance/agency), and internal tools.
+- **❌ You MAY NOT:** Redistribute this theme (modified or not) on the Shopify App Store or Theme Store.
 
-### Sections
+### Examples
 
-[Sections](https://shopify.dev/docs/storefronts/themes/architecture/sections) are Liquid files that allow you to create reusable modules of content that can be customized by merchants. They can also include blocks which allow merchants to add, remove, and reorder content within a section.
+- **Proper Usage:** You are hired by a client to build a custom Shopify store. You use Kuu as the base, customize it, and charge the client for your development time.
+- **Proper Usage:** You build a store for your own business using Kuu.
+- **NOT Proper Usage:** You create a slightly modified version of Kuu and list it on the Shopify Theme Store (even for free).
+- **NOT Proper Usage:** You wrap this code in a Shopify App and charge merchants a monthly fee to use it.
 
-Sections are made customizable by including a `{% schema %}` in the body. For more information, refer to the [section schema documentation](https://shopify.dev/docs/storefronts/themes/architecture/sections/section-schema).
+For full details, please read the [LICENSE](./LICENSE) file.
 
-### Blocks
+### Commercial Inquiries
 
-[Blocks](https://shopify.dev/docs/storefronts/themes/architecture/blocks) let developers create flexible layouts by breaking down sections into smaller, reusable pieces of Liquid. Each block has its own set of settings, and can be added, removed, and reordered within a section.
+If you wish to use this code in a paid product (e.g., a SaaS app or paid theme), please contact:
+**Email:** dev.chuksemmanuel@gmail.com
 
-Blocks are made customizable by including a `{% schema %}` in the body. For more information, refer to the [block schema documentation](https://shopify.dev/docs/storefronts/themes/architecture/blocks/theme-blocks/schema).
+---
 
-## Schemas
-
-When developing components defined by schema settings, we recommend these guidelines to simplify your code:
-
-- **Single property settings**: For settings that correspond to a single CSS property, use CSS variables:
-
-  ```liquid
-  <div class="collection" style="--gap: {{ block.settings.gap }}px">
-    ...
-  </div>
-
-  {% stylesheet %}
-    .collection {
-      gap: var(--gap);
-    }
-  {% endstylesheet %}
-
-  {% schema %}
-  {
-    "settings": [{
-      "type": "range",
-      "label": "gap",
-      "id": "gap",
-      "min": 0,
-      "max": 100,
-      "unit": "px",
-      "default": 0,
-    }]
-  }
-  {% endschema %}
-  ```
-
-- **Multiple property settings**: For settings that control multiple CSS properties, use CSS classes:
-
-  ```liquid
-  <div class="collection {{ block.settings.layout }}">
-    ...
-  </div>
-
-  {% stylesheet %}
-    .collection--full-width {
-      /* multiple styles */
-    }
-    .collection--narrow {
-      /* multiple styles */
-    }
-  {% endstylesheet %}
-
-  {% schema %}
-  {
-    "settings": [{
-      "type": "select",
-      "id": "layout",
-      "label": "layout",
-      "values": [
-        { "value": "collection--full-width", "label": "t:options.full" },
-        { "value": "collection--narrow", "label": "t:options.narrow" }
-      ]
-    }]
-  }
-  {% endschema %}
-  ```
-
-## CSS & JavaScript
-
-For CSS and JavaScript, we recommend using the [`{% stylesheet %}`](https://shopify.dev/docs/api/liquid/tags#stylesheet) and [`{% javascript %}`](https://shopify.dev/docs/api/liquid/tags/javascript) tags. They can be included multiple times, but the code will only appear once.
-
-### `critical.css`
-
-The Skeleton Theme explicitly separates essential CSS necessary for every page into a dedicated `critical.css` file.
-
-## Contributing
-
-We're excited for your contributions to the Skeleton Theme! This repository aims to remain as lean, lightweight, and fundamental as possible, and we kindly ask your contributions to align with this intention.
-
-Visit our [CONTRIBUTING.md](./CONTRIBUTING.md) for a detailed overview of our process, guidelines, and recommendations.
-
-## License
-
-Skeleton Theme is open-sourced under the [MIT](./LICENSE.md) License.
+[Documentation](/pages/documentation)
