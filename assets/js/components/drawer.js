@@ -28,257 +28,341 @@
  * @returns {DrawerComponent}
  */
 document.addEventListener('alpine:init', () => {
-    const Alpine = window.Alpine;
-    const gsap = window.gsap;
+	const Alpine = window.Alpine;
+	const gsap = window.gsap;
 
-    Alpine.data('drawer', () => {
-        return {
-            /** @type {string} */
-            id: '',
-            /** @type {boolean} */
-            open: false,
-            /** @type {DrawerDirection} */
-            direction: 'right',
-            /** @type {DrawerDirection | null} */
-            mobileDirection: null,
-            /** @type {DrawerDirection } */
-            desktopDirection: 'right',
-            /** @type {string} */
-            directionClass: '',
-            /** @type {string} */
-            baseClass: '',
-            /** @type {string} */
-            customClass: '',
-            /** @type {GSAPTimeline | null} */
-            tl: null,
-            /** @type {HTMLElement | null} */
-            $overlay: null,
-            /** @type {HTMLElement | null} */
-            $panel: null,
-            /** @type {HTMLElement | null} */
-            lastFocusedElement: null,
-            /**
-             * Debounce timers for resize event.
-             * @type {Record<string, number>}
-             */
-            debounceTimer: {},
-            /** @type {(e: KeyboardEvent) => void} */
-            _escHandler(e) {
-                if (e.key === 'Escape' && this.open) this.closeDrawer();
-            },
+	Alpine.data('drawer', () => {
+		return {
+			/** @type {string} */
+			id: '',
+			/** @type {string | null} */
+			sectionId: null,
+			/** @type {string | null} */
+			blockId: null,
+			/** @type {boolean} */
+			open: false,
+			/** @type {DrawerDirection} */
+			direction: 'right',
+			/** @type {DrawerDirection | null} */
+			mobileDirection: null,
+			/** @type {DrawerDirection } */
+			desktopDirection: 'right',
+			/** @type {string} */
+			directionClass: '',
+			/** @type {string} */
+			baseClass: '',
+			/** @type {string} */
+			customClass: '',
+			/** @type {GSAPTimeline | null} */
+			tl: null,
+			/** @type {HTMLElement | null} */
+			$overlay: null,
+			/** @type {HTMLElement | null} */
+			$panel: null,
+			/** @type {HTMLElement | null} */
+			lastFocusedElement: null,
+			/**
+			 * Debounce timers for resize event.
+			 * @type {Record<string, number>}
+			 */
+			debounceTimer: {},
+			/** @type {(e: KeyboardEvent) => void} */
+			_escHandler(e) {
+				if (e.key === 'Escape' && this.open) this.closeDrawer();
+			},
 
-            init() {
-                this.$overlay = this.$refs.overlay;
-                this.$panel = this.$refs.panel;
-                this.id = this.$el.dataset.drawerId || 'defaultDrawer';
+			init() {
+				this.$overlay = this.$refs.overlay;
+				this.$panel = this.$refs.panel;
+				this.id = this.$el.dataset.drawerId || 'defaultDrawer';
+				this.sectionId = this.$el.dataset.sectionId || null;
+				this.blockId = this.$el.dataset.blockId || null;
 
-                // Update panel classes
-                this.baseClass = this.$el.dataset.baseClass || ''
-                this.customClass = this.$el.dataset.customClass || ''
+				// Update panel classes
+				this.baseClass = this.$el.dataset.baseClass || '';
+				this.customClass = this.$el.dataset.customClass || '';
 
-                // Initialize direction
-                // @ts-ignore
-                this.direction = this.$el.dataset.direction || 'right';
+				// Initialize direction
+				// @ts-ignore
+				this.direction = this.$el.dataset.direction || 'right';
 
-                this.desktopDirection = this.direction;
+				this.desktopDirection = this.direction;
 
-                const mobileDirection = this.$el.dataset.mobileDirection;
-                // @ts-ignore
-                this.mobileDirection = mobileDirection && mobileDirection.length > 0 ? mobileDirection : null;
+				const mobileDirection = this.$el.dataset.mobileDirection;
+				// @ts-ignore
+				this.mobileDirection =
+					mobileDirection && mobileDirection.length > 0
+						? mobileDirection
+						: null;
 
-                // Update direction class and listen for window resize
-                this.updateDirectionClassListener();
+				// Update direction class and listen for window resize
+				this.updateDirectionClassListener();
 
-                // Put overlay & panel off-screen / hidden initially
-                gsap.set(this.$overlay, { opacity: 0, pointerEvents: 'none' });
+				// Put overlay & panel off-screen / hidden initially
+				gsap.set(this.$overlay, { opacity: 0, pointerEvents: 'none' });
 
-                // Set panel initial offscreen transform + hidden
-                this.resetDrawerTransform()
+				// Set panel initial offscreen transform + hidden
+				this.resetDrawerTransform();
 
-                // hook up data-drawer-close inside the panel
-                this.$panel.addEventListener('click', e => {
-                    if (e.target instanceof Element && e.target?.closest('[data-drawer-close]')) {
-                        this.closeDrawer();
-                    }
-                });
+				this.events();
+			},
 
-                document.addEventListener('keydown', this._escHandler.bind(this));
+			openDrawer() {
+				if (this.open) return;
+				this.open = true;
+				// this.lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null
+				document.body.classList.add('drawer-open');
 
-                // 🔥 Listen to global open/close events
-                window.addEventListener('drawer:open', e => {
-                    const event = /** @type {CustomEvent<DrawerEventDetail>} */ (e);
-                    if (event.detail?.id === this.id) this.openDrawer();
-                });
+				const overlay = this.$overlay;
+				const panel = this.$panel;
 
-                window.addEventListener('drawer:close', e => {
-                    const event = /** @type {CustomEvent<DrawerEventDetail>} */ (e);
-                    if (event.detail?.id === this.id) this.closeDrawer();
-                });
-            },
+				if (!overlay || !panel) return;
 
-            openDrawer() {
-                if (this.open) return;
-                this.open = true;
-                // this.lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null
-                document.body.classList.add('drawer-open');
+				// make panel visible before animating so screen readers/focus can settle
+				panel.style.visibility = 'visible';
+				// allow overlay pointer events during open
+				gsap.set(overlay, { pointerEvents: 'auto' });
 
-                const overlay = this.$overlay;
-                const panel = this.$panel;
+				// Build timeline for overlay + panel
+				const tl = gsap.timeline({
+					defaults: { ease: 'power3.out' },
+				});
 
-                if (!overlay || !panel) return;
+				tl.to(overlay, { opacity: 1, duration: 0.28 }, 0);
 
-                // make panel visible before animating so screen readers/focus can settle
-                panel.style.visibility = 'visible';
-                // allow overlay pointer events during open
-                gsap.set(overlay, { pointerEvents: 'auto' });
+				if (this.direction === 'left' || this.direction === 'right') {
+					// animate x to 0
+					tl.to(panel, { x: '0%', opacity: 1, duration: 0.6 }, 0);
+				} else {
+					// animate y to 0
+					tl.to(panel, { y: '0%', opacity: 1, duration: 0.6 }, 0);
+				}
 
-                // Build timeline for overlay + panel
-                const tl = gsap.timeline({
-                    defaults: { ease: 'power3.out' },
-                });
+				// Focus management: move focus into the panel after animation frame
+				tl.call(
+					() => {
+						// try to focus the first focusable element inside panel, else panel itself
+						const focusable = panel.querySelector(
+							'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+						);
+						if (focusable && focusable instanceof HTMLElement)
+							focusable.focus();
+						else (panel.setAttribute('tabindex', '-1'), panel.focus());
+					},
+					undefined,
+					'>-0.02',
+				);
 
-                tl.to(overlay, { opacity: 1, duration: 0.28 }, 0);
+				this.tl = tl;
 
-                if (this.direction === 'left' || this.direction === 'right') {
-                    // animate x to 0
-                    tl.to(panel, { x: '0%', opacity: 1, duration: 0.6 }, 0);
-                } else {
-                    // animate y to 0
-                    tl.to(panel, { y: '0%', opacity: 1, duration: 0.6 }, 0);
-                }
+				window.dispatchEvent(
+					new CustomEvent('drawer:opened', { detail: { id: this.id } }),
+				);
 
-                // Focus management: move focus into the panel after animation frame
-                tl.call(
-                    () => {
-                        // try to focus the first focusable element inside panel, else panel itself
-                        const focusable = panel.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-                        if (focusable && focusable instanceof HTMLElement) focusable.focus();
-                        else panel.setAttribute('tabindex', '-1'), panel.focus();
-                    },
-                    undefined,
-                    '>-0.02',
-                );
+				// for theme editor
+				window.kuu = window.kuu || {};
+				window.kuu.lastOpenedDrawer = this.id;
+			},
 
-                this.tl = tl;
+			closeDrawer() {
+				if (!this.open) return;
+				const overlay = this.$overlay;
+				const panel = this.$panel;
 
-                window.dispatchEvent(new CustomEvent('drawer:opened', { detail: { id: this.id } }));
-            },
+				if (!overlay || !panel) return;
 
-            closeDrawer() {
-                if (!this.open) return;
-                const overlay = this.$overlay;
-                const panel = this.$panel;
+				// allow pointer events until animation finishes (we will disable after)
+				gsap.set(overlay, { pointerEvents: 'none' });
 
-                if (!overlay || !panel) return;
+				const tl = gsap.timeline({
+					defaults: { ease: 'power3.in' },
+					onComplete: () => {
+						// hide after animation
+						panel.style.visibility = 'hidden';
+						this.open = false;
+						document.body.classList.remove('drawer-open');
 
-                // allow pointer events until animation finishes (we will disable after)
-                gsap.set(overlay, { pointerEvents: 'none' });
+						// restore focus
+						// if (this.lastFocusedElement && typeof this.lastFocusedElement.focus === 'function') {
+						//     this.lastFocusedElement.focus()
+						// }
+					},
+				});
 
-                const tl = gsap.timeline({
-                    defaults: { ease: 'power3.in' },
-                    onComplete: () => {
-                        // hide after animation
-                        panel.style.visibility = 'hidden';
-                        this.open = false;
-                        document.body.classList.remove('drawer-open');
+				if (this.direction === 'left') {
+					tl.to(panel, { x: '-100%', duration: 0.32 }, 0);
+				} else if (this.direction === 'right') {
+					tl.to(panel, { x: '100%', duration: 0.32 }, 0);
+				} else if (this.direction === 'top') {
+					tl.to(panel, { y: '-100%', duration: 0.32 }, 0);
+				} else if (this.direction === 'bottom') {
+					tl.to(panel, { y: '100%', duration: 0.32 }, 0);
+				}
 
-                        // restore focus
-                        // if (this.lastFocusedElement && typeof this.lastFocusedElement.focus === 'function') {
-                        //     this.lastFocusedElement.focus()
-                        // }
-                    },
-                });
+				tl.to(overlay, { opacity: 0, duration: 0.32 }, 0.2);
 
-                if (this.direction === 'left') {
-                    tl.to(panel, { x: '-100%', duration: 0.32 }, 0);
-                } else if (this.direction === 'right') {
-                    tl.to(panel, { x: '100%', duration: 0.32 }, 0);
-                } else if (this.direction === 'top') {
-                    tl.to(panel, { y: '-100%', duration: 0.32 }, 0);
-                } else if (this.direction === 'bottom') {
-                    tl.to(panel, { y: '100%', duration: 0.32 }, 0);
-                }
+				// Clear sr live region
+				const liveRegion = document.querySelector(
+					`#${this.id} [data-drawer-live-region]`,
+				);
+				if (liveRegion) liveRegion.textContent = '';
 
-                tl.to(overlay, { opacity: 0, duration: 0.32 }, 0.2);
+				window.dispatchEvent(
+					new CustomEvent('drawer:closed', { detail: { id: this.id } }),
+				);
 
-                // Clear sr live region
-                const liveRegion = document.querySelector(`#${this.id} [data-drawer-live-region]`);
-                if (liveRegion) liveRegion.textContent = '';
+				window.kuu = window.kuu || {};
+				window.kuu.lastOpenedDrawer = null;
+			},
+			updateDirectionClassListener() {
+				const mobileDirection = this.mobileDirection || this.direction;
 
-                window.dispatchEvent(new CustomEvent('drawer:closed', { detail: { id: this.id } }));
-            },
-            updateDirectionClassListener() {
-                const mobileDirection = this.mobileDirection || this.direction;
+				const verticalDirection = 'h-fit min-h-120 max-h-full left-0';
+				const horizontalDirection = 'h-full top-0 max-w-[min(648px,100%)]';
+				const directionClassObject = {
+					top: `${this.baseClass} ${this.customClass} ${verticalDirection} top-0`,
+					bottom: `${this.baseClass} ${this.customClass} ${verticalDirection} bottom-0`,
+					left: `${this.baseClass} ${this.customClass} ${horizontalDirection} left-0`,
+					right: `${this.baseClass} ${this.customClass} ${horizontalDirection} right-0`,
+				};
 
-                const verticalDirection = 'h-fit min-h-120 max-h-full left-0';
-                const horizontalDirection = 'h-full top-0 max-w-[min(648px,100%)]';
-                const directionClassObject = {
-                    top: `${this.baseClass} ${this.customClass} ${verticalDirection} top-0`,
-                    bottom: `${this.baseClass} ${this.customClass} ${verticalDirection} bottom-0`,
-                    left: `${this.baseClass} ${this.customClass} ${horizontalDirection} left-0`,
-                    right: `${this.baseClass} ${this.customClass} ${horizontalDirection} right-0`,
-                };
+				const updateDirectionClass = () => {
+					let oldDirectionClass = this.directionClass;
+					let oldDirection = this.direction;
 
-                const updateDirectionClass = () => {
-                    let oldDirectionClass = this.directionClass
-                    let oldDirection = this.direction
+					if (window.innerWidth < 768) {
+						this.direction = mobileDirection;
+						this.directionClass = directionClassObject[mobileDirection];
+					} else {
+						this.direction = this.desktopDirection;
+						this.directionClass = directionClassObject[this.desktopDirection];
+					}
 
-                    if (window.innerWidth < 768) {
-                        this.direction = mobileDirection;
-                        this.directionClass = directionClassObject[mobileDirection];
-                    } else {
-                        this.direction = this.desktopDirection;
-                        this.directionClass = directionClassObject[this.desktopDirection];
-                    }
+					// Close the drawer if the direction changes
+					if (oldDirection != this.direction) {
+						this.closeDrawer();
 
-                    // Close the drawer if the direction changes
-                    if (oldDirection != this.direction) {
-                        this.closeDrawer()
+						// only update if the directionClass changes
+						if (oldDirectionClass != this.directionClass) {
+							this.resetDrawerTransform();
+							this.$panel?.setAttribute('class', this.directionClass);
+						}
+					}
+				};
 
+				const updateDirection = () => {
+					if (this.debounceTimer['updateDirection']) {
+						clearTimeout(this.debounceTimer['updateDirection']);
+					}
+					this.debounceTimer['updateDirection'] = setTimeout(() => {
+						updateDirectionClass();
+					}, 200);
+				};
 
-                        // only update if the directionClass changes
-                        if (oldDirectionClass != this.directionClass) {
-                            this.resetDrawerTransform()
-                            this.$panel?.setAttribute('class', this.directionClass)
-                        }
-                    }
+				window.addEventListener('resize', updateDirection);
 
+				updateDirectionClass();
+			},
 
+			resetDrawerTransform() {
+				// Set panel initial offscreen transform + hidden
+				if (this.direction === 'left') {
+					gsap.set(this.$panel, {
+						x: '-100%',
+						y: 0,
+						opacity: 0,
+						visibility: 'hidden',
+					});
+				} else if (this.direction === 'right') {
+					gsap.set(this.$panel, {
+						x: '100%',
+						y: 0,
+						opacity: 0,
+						visibility: 'hidden',
+					});
+				} else if (this.direction === 'top') {
+					gsap.set(this.$panel, {
+						y: '-100%',
+						x: 0,
+						opacity: 0,
+						visibility: 'hidden',
+					});
+				} else if (this.direction === 'bottom') {
+					gsap.set(this.$panel, {
+						y: '100%',
+						x: 0,
+						opacity: 0,
+						visibility: 'hidden',
+					});
+				}
+			},
+			events() {
+				if (this.$panel) {
+					// hook up data-drawer-close inside the panel
+					this.$panel.addEventListener('click', (e) => {
+						if (
+							e.target instanceof Element &&
+							e.target?.closest('[data-drawer-close]')
+						) {
+							this.closeDrawer();
+						}
+					});
+				}
 
-                }
+				document.addEventListener('keydown', this._escHandler.bind(this));
 
-                const updateDirection = () => {
-                    if (this.debounceTimer['updateDirection']) {
-                        clearTimeout(this.debounceTimer['updateDirection'])
-                    }
-                    this.debounceTimer['updateDirection'] = setTimeout(() => {
-                        updateDirectionClass()
-                    }, 200);
-                };
+				// 🔥 Listen to global open/close events
+				window.addEventListener('drawer:open', (e) => {
+					const event = /** @type {CustomEvent<DrawerEventDetail>} */ (e);
+					if (event.detail?.id === this.id) this.openDrawer();
+				});
 
-                window.addEventListener('resize', updateDirection);
+				window.addEventListener('drawer:close', (e) => {
+					const event = /** @type {CustomEvent<DrawerEventDetail>} */ (e);
+					if (event.detail?.id === this.id) this.closeDrawer();
+				});
 
-                updateDirectionClass()
+				// Keep drawer open between rerenders in shopify theme editor
+				document.addEventListener('shopify:section:load', (e) => {
+					const event = /** @type {CustomEvent} */ (e);
 
-            },
+					if (window.kuu?.lastOpenedDrawer == this.id) {
+						setTimeout(() => {
+							window.dispatchEvent(
+								new CustomEvent('drawer:open', {
+									detail: { id: this.id },
+								}),
+							);
+						}, 1000);
+					}
+				});
 
-            resetDrawerTransform() {
-                // Set panel initial offscreen transform + hidden
-                if (this.direction === 'left') {
-                    gsap.set(this.$panel, { x: '-100%', y: 0, opacity: 0, visibility: 'hidden' });
-                } else if (this.direction === 'right') {
-                    gsap.set(this.$panel, { x: '100%', y: 0, opacity: 0, visibility: 'hidden' });
-                } else if (this.direction === 'top') {
-                    gsap.set(this.$panel, { y: '-100%', x: 0, opacity: 0, visibility: 'hidden' });
-                } else if (this.direction === 'bottom') {
-                    gsap.set(this.$panel, { y: '100%', x: 0, opacity: 0, visibility: 'hidden' });
-                }
+				// Keep drawer open between rerenders in shopify theme editor
+				document.addEventListener('shopify:block:select', (e) => {
+					const event = /** @type {CustomEvent} */ (e);
+					let blockId = event.detail?.blockId;
 
-            },
-            // call to clean up listeners if needed
-            destroy() {
-                document.removeEventListener('keydown', this._escHandler);
-            },
-        };
-    });
+					if (blockId && blockId == this.blockId) {
+						if (!this.open) {
+							// this.openDrawer();
+						}
+					}
+				});
+
+				document.addEventListener('shopify:block:deselect', (e) => {
+					const event = /** @type {CustomEvent} */ (e);
+					let blockId = event.detail?.blockId;
+					if (blockId && blockId == this.blockId) {
+						if (this.open) {
+							// this.closeDrawer();
+						}
+					}
+				});
+			},
+			// call to clean up listeners if needed
+			destroy() {
+				document.removeEventListener('keydown', this._escHandler);
+			},
+		};
+	});
 });
