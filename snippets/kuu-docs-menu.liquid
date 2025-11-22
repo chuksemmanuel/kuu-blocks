@@ -20,17 +20,52 @@
 						class='ml-4 flex flex-col gap-1 border-l border-gray-200 pl-4'
 					>
 						{% for child_link in link.links %}
-							<li>
-								<a
-									href='{{ child_link.url }}'
-									class='block py-1 text-sm text-gray-600 hover:text-gray-900'
-									{% if child_link.active %}
-										aria-current='page'
-									{% endif %}
-								>
-									{{ child_link.title }}
-								</a>
-							</li>
+							{% if child_link.links != blank %}
+								<li x-data='{ open: false }' class='w-full'>
+									<button
+										@click='open = !open'
+										class='flex w-full items-center justify-between py-1 text-left text-sm font-medium text-gray-600 hover:text-gray-900'
+										:class="{ 'text-gray-900': open }"
+									>
+										<span>{{ child_link.title }}</span>
+										<span class='transform transition-transform duration-200' :class="{ 'rotate-180': open }">
+											{{- 'icons/chevron-down.svg' | inline_asset_content -}}
+										</span>
+									</button>
+									<ul
+										x-show='open'
+										x-collapse
+										x-cloak
+										class='mt-1 ml-3 flex flex-col gap-1 border-l border-gray-200 pl-3'
+									>
+										{% for grandchild_link in child_link.links %}
+											<li>
+												<a
+													href='{{ grandchild_link.url }}'
+													class='block py-1 text-sm text-gray-500 hover:text-gray-900'
+													{% if grandchild_link.active %}
+														aria-current='page'
+													{% endif %}
+												>
+													{{ grandchild_link.title }}
+												</a>
+											</li>
+										{% endfor %}
+									</ul>
+								</li>
+							{% else %}
+								<li>
+									<a
+										href='{{ child_link.url }}'
+										class='block py-1 text-sm text-gray-600 hover:text-gray-900'
+										{% if child_link.active %}
+											aria-current='page'
+										{% endif %}
+									>
+										{{ child_link.title }}
+									</a>
+								</li>
+							{% endif %}
 						{% endfor %}
 					</ul>
 				</li>
