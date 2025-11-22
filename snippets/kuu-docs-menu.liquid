@@ -1,11 +1,52 @@
 <div class='w-full'>
-	{% for i in (1..10) %}
-		<ul class='flex flex-col gap-2'>
-			<li>Getting Started</li>
-			<li>Components</li>
-			<li>Utilities</li>
-			<li>Customization</li>
-			<li>Migration</li>
-		</ul>
-	{% endfor %}
+	<ul class='flex flex-col gap-2'>
+		{% for link in linklists['docs-menu'].links %}
+			{% if link.links != blank %}
+				<li x-data='{ open: true }'>
+					<button
+						@click='open = !open'
+						class='flex w-full items-center justify-between py-2 text-left font-medium hover:text-gray-900'
+						:class="{ 'text-gray-900': open, 'text-gray-600': !open }"
+					>
+						<span>{{ link.title }}</span>
+						<span class='transform transition-transform duration-200' :class="{ 'rotate-180': open }">
+							{{- 'icons/chevron-down.svg' | inline_asset_content -}}
+						</span>
+					</button>
+					<ul
+						x-show='open'
+						x-collapse
+						x-cloak
+						class='ml-4 flex flex-col gap-1 border-l border-gray-200 pl-4'
+					>
+						{% for child_link in link.links %}
+							<li>
+								<a
+									href='{{ child_link.url }}'
+									class='block py-1 text-sm text-gray-600 hover:text-gray-900'
+									{% if child_link.active %}
+										aria-current='page'
+									{% endif %}
+								>
+									{{ child_link.title }}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</li>
+			{% else %}
+				<li>
+					<a
+						href='{{ link.url }}'
+						class='block py-2 font-medium text-gray-600 hover:text-gray-900'
+						{% if link.active %}
+							aria-current='page'
+						{% endif %}
+					>
+						{{ link.title }}
+					</a>
+				</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
 </div>
