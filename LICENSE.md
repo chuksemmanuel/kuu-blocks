@@ -1,9 +1,56 @@
-Copyright (c) 2018-present Shopify Inc.
+MIT License
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, sell and/or create derivative works of the Software or any part thereof, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Copyright (c) 2025 CHUKWUNWEIKE EMMANUEL
 
-The rights granted above may only be exercised to develop themes that integrate or interoperate with Shopify software or services, and, if applicable, to distribute, offer for sale or otherwise make available any such themes via the Shopify Theme Store. All other uses of the Software are strictly prohibited.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Kuu Theme Usage License
+
+**Copyright (c) 2025 CHUKWUNWEIKE EMMANUEL**
+
+This software is released under a custom license focused on "No Charge" usage for end-users, with specific restrictions on redistribution via the Shopify Ecosystem.
+
+### You MAY:
+
+- Use this code in your personal and professional projects.
+- Use this code as an employee or freelancer for client work.
+- Charge a client a one-time fee for creating a site/product using this code.
+- Modify the code to fit your specific needs.
+
+### You MAY NOT:
+
+- Re-distribute this code (modified or unmodified) through the Shopify App Store or Shopify Theme Store, whether for free or paid.
+- Re-distribute this code as a standalone product (e.g., a starter theme, UI kit, or app template) that competes with Kuu.
+- Charge end-users a recurring usage, access, or license fee to use the product itself (e.g., SaaS, paid theme subscription) without a Commercial License.
+
+### Examples
+
+- **Proper Usage:** You are hired by a client to build a custom Shopify store. You use Kuu as the base, customize it, and charge the client for your development time.
+- **Proper Usage:** You build a personal portfolio or a store for your own business using Kuu.
+- **NOT Proper Usage:** You create a slightly modified version of Kuu and list it on the Shopify Theme Store (even for free).
+- **NOT Proper Usage:** You wrap this code in a Shopify App and charge merchants a monthly fee to use it.
+
+### Commercial License
+
+If your use case involves charging end-users a fee to use the product (e.g., a paid app or theme), please contact us for a Commercial License.
+
+**Contact:** dev.chuksemmanuel@gmail.com
+[LinkedIn](https://www.linkedin.com/in/chuksemmanuel/)
