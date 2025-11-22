@@ -2,38 +2,44 @@
 	<ul class='flex flex-col gap-2'>
 		{% for link in linklists['docs-menu'].links %}
 			{% if link.links != blank %}
-				<li x-data='{ open: true }'>
+				<li x-data='{ expanded: true }'>
 					<button
-						@click='open = !open'
+						@click='expanded = !expanded'
 						class='flex w-full items-center justify-between py-2 text-left font-medium hover:text-gray-900'
-						:class="{ 'text-gray-900': open, 'text-gray-600': !open }"
+						:class="{ 'text-gray-900': expanded, 'text-gray-600': !expanded }"
 					>
 						<span>{{ link.title }}</span>
-						<span class='transform transition-transform duration-200' :class="{ 'rotate-180': open }">
+						<span
+							class='transform text-gray-400 transition-transform duration-200'
+							:class="{ 'rotate-180 text-gray-900': expanded }"
+						>
 							{{- 'icons/chevron-down.svg' | inline_asset_content -}}
 						</span>
 					</button>
 					<ul
-						x-show='open'
+						x-show='expanded'
 						x-collapse
 						x-cloak
 						class='ml-4 flex flex-col gap-1 border-l border-gray-200 pl-4'
 					>
 						{% for child_link in link.links %}
 							{% if child_link.links != blank %}
-								<li x-data='{ open: false }' class='w-full'>
+								<li x-data='{ expanded: false }' class='w-full'>
 									<button
-										@click='open = !open'
+										@click='expanded = !expanded'
 										class='flex w-full items-center justify-between py-1 text-left text-sm font-medium text-gray-600 hover:text-gray-900'
-										:class="{ 'text-gray-900': open }"
+										:class="{ 'text-gray-900': expanded }"
 									>
 										<span>{{ child_link.title }}</span>
-										<span class='transform transition-transform duration-200' :class="{ 'rotate-180': open }">
+										<span
+											class=' transform text-gray-400 transition-transform duration-200'
+											:class="{ 'rotate-180 text-gray-900': expanded }"
+										>
 											{{- 'icons/chevron-down.svg' | inline_asset_content -}}
 										</span>
 									</button>
 									<ul
-										x-show='open'
+										x-show='expanded'
 										x-collapse
 										x-cloak
 										class='mt-1 ml-3 flex flex-col gap-1 border-l border-gray-200 pl-3'
