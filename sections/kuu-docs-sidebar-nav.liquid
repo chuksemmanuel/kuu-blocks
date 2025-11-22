@@ -1,14 +1,8 @@
 <aside class='full-width h-[calc(100svh-120px)] w-full shrink-0'>
 	<div class='fixed h-[calc(100svh-120px)] w-64 overflow-y-auto rounded-lg bg-white p-5'>
-		{% for i in (1..10) %}
-			<ul class='flex flex-col gap-2'>
-				<li>Getting Started</li>
-				<li>Components</li>
-				<li>Utilities</li>
-				<li>Customization</li>
-				<li>Migration</li>
-			</ul>
-		{% endfor %}
+		<div>
+			{% render 'kuu-docs-menu' %}
+		</div>
 	</div>
 </aside>
 

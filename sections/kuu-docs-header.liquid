@@ -7,13 +7,19 @@
 
 		<!-- Header Left -->
 		<div class='flex shrink-0 items-center gap-2'>
+			{% capture menu_drawer_content %}
+				<div class="px-5 pb-5">
+					{% render 'kuu-docs-menu' %}
+				</div>
+			{% endcapture %}
 			{% content_for 'block',
 				type: 'drawer',
 				id: 'kuu-docs-mobile-menu-drawer',
 				drawer_heading: 'Menu',
 				panel_class: 'w-64!',
 				overlay_class: 'bg-black/10!',
-				drawer_class: 'md:hidden'
+				drawer_class: 'md:hidden',
+				content: menu_drawer_content
 			%}
 			{% content_for 'block', type: 'logo', id: 'kuu-docs-logo' %}
 		</div>
