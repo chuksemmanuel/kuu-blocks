@@ -1,49 +1,66 @@
 {% liquid
-  assign id = block.settings.id
+	assign id = block.settings.id
 %}
 
 {% capture drawer_trigger %}
-    {% content_for 'block',type: 'button',id:'drawer-trigger', icon: 'icons/hamburger.svg'%}
+    {% content_for 'block',type: 'button', variant: 'white', radius:'8px',  id:'drawer-trigger', icon: 'icons/hamburger.svg'%}
 {% endcapture %}
 
 {% capture drawer_content %}
-    <div data-drawer class="flex h-full w-full flex-1  flex-col overflow-hidden overflow-x-hidden  rounded-md bg-white shadow-lg lg:rounded-lg"  >
+  <div data-drawer class="flex h-full w-full flex-1  flex-col overflow-hidden overflow-x-hidden  rounded-md bg-white shadow-lg lg:rounded-lg"  >
+    
+      {% if block.settings.hide_header != true %}
             <!-- drawer Header -->
             <div data-drawer-header class="shrink-0"> 
-            <div class=" flex items-center justify-between p-3 lg:p-5">
-                <!-- Title -->
-                <span id="drawer-title" class="text-lg font-semibold" aria-label="drawer">drawer</span>
+              <div class=" flex items-center justify-between p-5">
+                  <!-- Title -->
+                  <span id="drawer-title" class="text-lg font-semibold" aria-label="drawer">{{ block.settings.drawer_heading }}</span>
 
-                <!-- Close button --> 
-                  {% content_for 'block',type: 'button',id: 'drawer-close', icon: 'icons/cancel.svg', radius: '9999px', width: '24px', height: '24px', button_class:'p-0! ', props: 'data-drawer-close', aria_label:'Close drawer' %}
-            </div>
-        </div>
+                  <!-- Close button --> 
+                    {% content_for 'block',type: 'button',id: 'drawer-close', icon: 'icons/cancel.svg', radius: '9999px', width: '24px', height: '24px', button_class:'hover:bg-transparent', props: 'data-drawer-close', aria_label:'Close drawer' %}
+              </div>
+          </div>
+      {% endif %}
 
         <!-- drawer Content -->
         <div data-drawer-content class="flex  flex-1 overflow-y-auto ">
             {% content_for 'blocks' %}
         </div>
+     
     </div>
 {% endcapture %}
 
 {% render 'drawer', trigger: drawer_trigger, content: drawer_content, id: 'drawer', from: 'left' %}
 
 {% schema %}
-{
-  "name": "Drawer",
-  "settings": [],
-  "blocks": [
-    {
-      "type": "@app"
-    },
-    {
-      "type": "@theme"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Drawer"
-    }
-  ]
-}
+	{
+		"name": "Drawer",
+		"settings": [
+			{
+				"type": "text",
+				"id": "drawer_heading",
+				"label": "Drawer Heading",
+				"default": "Drawer Heading"
+			},
+			{
+				"type": "checkbox",
+				"id": "hide_header",
+				"label": "Hide Header",
+				"default": false
+			}
+		],
+		"blocks": [
+			{
+				"type": "@app"
+			},
+			{
+				"type": "@theme"
+			}
+		],
+		"presets": [
+			{
+				"name": "Drawer"
+			}
+		]
+	}
 {% endschema %}

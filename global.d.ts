@@ -1,10 +1,11 @@
+import type { focus } from '@alpinejs/focus';
+import type { morph } from '@alpinejs/morph';
 import type Alpine from 'alpinejs';
 import type { Alpine } from 'alpinejs';
 import type { gsap } from 'gsap';
 import type SwiperClass from 'swiper';
-import type { morph } from '@alpinejs/morph';
-import type { focus } from '@alpinejs/focus';
-import type { Theme } from './types/theme';
+
+import type { Kuu } from './types/kuu';
 
 declare global {
 	interface Window {
@@ -24,7 +25,7 @@ declare global {
 		Alpine: typeof Alpine;
 		Swiper: typeof SwiperClass;
 		gsap: typeof gsap;
-		theme: Theme;
+		kuu?: Kuu;
 		Shopify: ShopifyGlobal;
 	}
 }

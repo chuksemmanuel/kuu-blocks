@@ -1,4 +1,7 @@
 {% liquid
+  # device
+  assign device = block.settings.device | default: 'all'
+
   # label
   if block.settings.label == blank
     assign label = label
@@ -15,13 +18,13 @@
 
   # variant
   if block.settings.variant == 'default'
-    assign variant = variant | default: 'primary'
+    assign variant = variant
   else
     assign variant = block.settings.variant
   endif
 
   # href
-  if block.settings.href == blank
+  if block.settings.custom_link == true and block.settings.href == blank
     assign href = href
   else
     assign href = block.settings.href
@@ -132,6 +135,7 @@
 %}
 
 {% render 'button',
+  device: device,
   variant: variant,
   align: align,
   size: size,
@@ -159,19 +163,29 @@
   "name": "Button",
   "settings": [
     {
-      "type": "text",
-      "id": "label",
-      "label": "Label"
-    },
-    {
-      "type": "url",
-      "id": "href",
-      "label": "Link"
+      "type": "select",
+      "id": "device",
+      "label": "Show Button on",
+      "options": [
+        {
+          "value": "all",
+          "label": "All Devices"
+        },
+        {
+          "value": "mobile",
+          "label": "Mobile  Devices Only"
+        },
+        {
+          "value": "desktop",
+          "label": "Desktop Devices  Only"
+        }
+      ],
+      "default": "all"
     },
     {
       "type": "select",
       "id": "variant",
-      "label": "Variant",
+      "label": "Button variant",
       "options": [
         {
           "value": "default",
@@ -198,6 +212,26 @@
           "label": "Ghost"
         }
       ]
+    },
+    {
+      "type": "header",
+      "content": "Basic "
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_link",
+      "label": "Add Link to button"
+    },
+    {
+      "type": "url",
+      "id": "href",
+      "label": "Link",
+      "visible_if": "{{block.settings.custom_link}}"
     },
     {
       "type": "header",

@@ -21,7 +21,7 @@ Kuu isn't just about looking good; it's about selling. Every component is design
 
 Unlike many themes that are "black boxes" of compiled code, Kuu is designed to be transparent and extensible.
 
-- **Exposed APIs:** We expose key component logic to the `window` object. For example, `window.theme.cartDrawer` allows developers to programmatically open, close, or refresh the cart from anywhere in the app—even from third-party scripts.
+- **Exposed APIs:** We expose key component logic to the `window` object. For example, `window.kuu.cartDrawer` allows developers to programmatically open, close, or refresh the cart from anywhere in the app—even from third-party scripts.
 - **Modular Components:** Developers can take a single block (like our Tab component or Cart Drawer) and drop it into another project with minimal friction.
 
 ## 4. Minimal by Design

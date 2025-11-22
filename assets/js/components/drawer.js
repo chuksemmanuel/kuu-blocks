@@ -104,7 +104,8 @@ document.addEventListener('alpine:init', () => {
 				// Set panel initial offscreen transform + hidden
 				this.resetDrawerTransform();
 
-				this.events();
+				// Add event listeners
+				this.addEventListeners();
 			},
 
 			openDrawer() {
@@ -159,9 +160,11 @@ document.addEventListener('alpine:init', () => {
 					new CustomEvent('drawer:opened', { detail: { id: this.id } }),
 				);
 
-				// for theme editor
-				window.kuu = window.kuu || {};
-				window.kuu.lastOpenedDrawer = this.id;
+				/**
+				 * window.drawer.lastOpened is used to track the last opened drawer in the theme editor
+				 * When the theme editor re-renders, it will use this to open the last opened drawer
+				 */
+				this.setWindowObject({ lastOpened: this.id });
 			},
 
 			closeDrawer() {
@@ -211,8 +214,8 @@ document.addEventListener('alpine:init', () => {
 					new CustomEvent('drawer:closed', { detail: { id: this.id } }),
 				);
 
-				window.kuu = window.kuu || {};
-				window.kuu.lastOpenedDrawer = null;
+				// reset last opened drawer
+				this.setWindowObject({ lastOpened: null });
 			},
 			updateDirectionClassListener() {
 				const mobileDirection = this.mobileDirection || this.direction;
@@ -296,7 +299,7 @@ document.addEventListener('alpine:init', () => {
 					});
 				}
 			},
-			events() {
+			addEventListeners() {
 				if (this.$panel) {
 					// hook up data-drawer-close inside the panel
 					this.$panel.addEventListener('click', (e) => {
@@ -326,7 +329,7 @@ document.addEventListener('alpine:init', () => {
 				document.addEventListener('shopify:section:load', (e) => {
 					const event = /** @type {CustomEvent} */ (e);
 
-					if (window.kuu?.lastOpenedDrawer == this.id) {
+					if (window.kuu?.drawer?.lastOpened == this.id) {
 						setTimeout(() => {
 							window.dispatchEvent(
 								new CustomEvent('drawer:open', {
@@ -336,28 +339,17 @@ document.addEventListener('alpine:init', () => {
 						}, 1000);
 					}
 				});
-
-				// Keep drawer open between rerenders in shopify theme editor
-				document.addEventListener('shopify:block:select', (e) => {
-					const event = /** @type {CustomEvent} */ (e);
-					let blockId = event.detail?.blockId;
-
-					if (blockId && blockId == this.blockId) {
-						if (!this.open) {
-							// this.openDrawer();
-						}
-					}
-				});
-
-				document.addEventListener('shopify:block:deselect', (e) => {
-					const event = /** @type {CustomEvent} */ (e);
-					let blockId = event.detail?.blockId;
-					if (blockId && blockId == this.blockId) {
-						if (this.open) {
-							// this.closeDrawer();
-						}
-					}
-				});
+			},
+			setWindowObject(/** @type {Partial<Drawer>} */ options) {
+				const kuu = window.kuu || {};
+				/** @type {Drawer} */
+				let drawer = kuu.drawer || {};
+				drawer = {
+					...drawer,
+					...options,
+				};
+				kuu.drawer = drawer;
+				window.kuu = kuu;
 			},
 			// call to clean up listeners if needed
 			destroy() {

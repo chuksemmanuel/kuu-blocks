@@ -1,12 +1,12 @@
 {% comment %} Get TabList from Tab items by extracting and de-duplicating the parent_tab value {% endcomment %}
 {% assign tabs = '' %}
 {% for item in blocks %}
-  {% if item.type == 'menu_item' %}
-    {% assign current_tab = item.settings.parent_tab %}
-    {% unless tabs contains current_tab %}
-      {% assign tabs = tabs | append: current_tab | append: ',' %}
-    {% endunless %}
-  {% endif %}
+	{% if item.type == 'menu_item' %}
+		{% assign current_tab = item.settings.parent_tab %}
+		{% unless tabs contains current_tab %}
+			{% assign tabs = tabs | append: current_tab | append: ',' %}
+		{% endunless %}
+	{% endif %}
 {% endfor %}
 {% assign tab_list = tabs | split: ',' %}
 {% comment %} Get TabList from Tab items Ends {% endcomment %}
@@ -43,7 +43,7 @@
             class: ' pl-3 lg:pl-5 text-gray-500 select-none'
                 %}
             
-        {% endcapture %}
+  {% endcapture %}
 
 {% capture tab_content %}
           {%# Tab Content  %}
@@ -92,10 +92,10 @@
         {% endcapture %}
 
 {% render 'tab',
-  triggers: tab_triggers,
-  contents: tab_content,
-  class: 'h-full flex flex-col overflow-hidden',
-  trigger_class: 'shrink-0 pb-2',
-  content_class: 'flex-1 overflow-y-auto',
-  id: 'menu-tablist'
+	triggers: tab_triggers,
+	contents: tab_content,
+	class: 'h-full flex flex-col overflow-hidden',
+	trigger_class: 'shrink-0 pb-2',
+	content_class: 'flex-1 overflow-y-auto',
+	id: 'menu-tablist'
 %}

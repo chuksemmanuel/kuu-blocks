@@ -1,6 +1,7 @@
-export type Theme = {
+export type Kuu = {
 	cartDrawer?: CartDrawer;
 	announce?: (message: string) => void;
+	drawer?: Drawer;
 };
 
 declare global {
@@ -27,4 +28,8 @@ declare global {
 		showSavingsBadge: boolean;
 		savingsBadgeColor: string;
 	}
+
+	type Drawer = {
+		lastOpened: string | null;
+	};
 }

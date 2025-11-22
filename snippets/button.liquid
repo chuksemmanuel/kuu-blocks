@@ -160,9 +160,18 @@
 
 {%- assign final_content = content | default: default_content -%}
 {% assign aria_label = aria_label | default: label | default: null %}
+{% assign device = device | default: 'all' %}
+
+{% if device == 'all' %}
+  {% assign display_class = 'flex' %}
+{% elsif device == 'mobile' %}
+  {% assign display_class = 'flex md:hidden' %}
+{% elsif device == 'desktop' %}
+  {% assign display_class = 'hidden md:flex' %}
+{% endif %}
 
 <div
-  class="flex shrink-0 {{wrapper_class}}"
+  class="{{display_class}} shrink-0 {{wrapper_class}}"
   {% if align %}
     style="justify-content:{{align}}";
   {% endif %}
