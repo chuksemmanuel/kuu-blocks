@@ -1,116 +1,124 @@
-{% comment %}
-  drawer.liquid
-    Accepts:
-    - trigger: {String} a Capture of the trigger (usuallly a button)
-    - content: {String} a Capture/Snippet of the drawer content
-    - from: {String} Direction the drawer slides from
-    - id: {String} Unique identifier of the drawer to target (e.g., 'cartdrawer', 'menudrawer')  used to open/close the drawer via the drawer:open and drawer:close custom Event
-    Example:
-    window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }))
-    window.dispatchEvent(new CustomEvent('drawer:close', { detail: { id: 'menu' } }))
+{% liquid
+	assign from = from | default: 'right'
+	assign mobile_from = mobile_from
+	assign drawer_class = drawer_class | default: ''
+	assign trigger_class = trigger_class | default: ''
+	assign panel_class = panel_class | default: ''
+	assign overlay_class = overlay_class | default: ''
+%}
 
-  Usage:
-    {% render 'drawer'
-      , trigger: cart_trigger
-      , content: cart_content
-      , name: 'cartdrawer'
-      , from: 'right'
-    %}
+{% comment %}
+	drawer.liquid
+	  Accepts:
+	  - trigger: {String} a Capture of the trigger (usuallly a button)
+	  - content: {String} a Capture/Snippet of the drawer content
+	  - from: {String} Direction the drawer slides from
+	  - id: {String} Unique identifier of the drawer to target (e.g., 'cartdrawer', 'menudrawer')  used to open/close the drawer via the drawer:open and drawer:close custom Event
+	  Example:
+	  window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }))
+	  window.dispatchEvent(new CustomEvent('drawer:close', { detail: { id: 'menu' } }))
+
+	Usage:
+	  {% render 'drawer'
+	    , trigger: cart_trigger
+	    , content: cart_content
+	    , name: 'cartdrawer'
+	    , from: 'right'
+	  %}
 {% endcomment %}
 
 <style>
-  [x-cloak] {
-    display: none !important;
-  }
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  body.drawer-open {
-    overflow: hidden;
-  }
+	[x-cloak] {
+		display: none !important;
+	}
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	body.drawer-open {
+		overflow: hidden;
+	}
 </style>
 
-{% assign from = from | default: 'right' %}
-{% assign base_class = 'fixed  flex flex-col justify-stretch w-full  z-50 overflow-y-auto no-scrollbar p-2 lg:p-4 focus-visible:outline-0' %}
+{% assign base_class = 'fixed flex flex-col justify-stretch w-full  z-50 overflow-y-auto no-scrollbar p-2 lg:p-4 focus-visible:outline-0' %}
 
 {% liquid
-  assign vertical_direction = 'h-fit min-h-120 max-h-full left-0'
-  assign horizontal_direction = 'h-full top-0 max-w-[min(648px,100%)]'
+	assign vertical_direction = 'h-fit min-h-120 max-h-full left-0'
+	assign horizontal_direction = 'h-full top-0 max-w-[min(648px,100%)]'
 
-  assign top_direction = vertical_direction | append: 'top-0'
-  assign bottom_direction = vertical_direction | append: 'bottom-0'
-  assign left_direction = horizontal_direction | append: 'left-0'
-  assign right_direction = horizontal_direction | append: 'right-0'
+	assign top_direction = vertical_direction | append: 'top-0'
+	assign bottom_direction = vertical_direction | append: 'bottom-0'
+	assign left_direction = horizontal_direction | append: 'left-0'
+	assign right_direction = horizontal_direction | append: 'right-0'
 %}
 
-<script type="application/json" data-drawer-script="{{id}}">
-  {
-    "top":{{top_direction |  json}},
-    "bottom":{{bottom_direction | json}},
-    "left":{{left_direction | json}},
-    "right":{{right_direction | json}}
-  }
+<script type='application/json' data-drawer-script='{{id}}'>
+	{
+	  "top":{{top_direction |  json}},
+	  "bottom":{{bottom_direction | json}},
+	  "left":{{left_direction | json}},
+	  "right":{{right_direction | json}}
+	}
 </script>
 
 {% case from %}
-  {% when 'top' %}
-    {% assign direction_class = 'h-fit min-h-120 max-h-full left-0 top-0' %}
-  {% when 'bottom' %}
-    {% assign direction_class = 'h-fit min-h-120 max-h-full left-0 bottom-0' %}
-  {% when 'left' %}
-    {% assign direction_class = 'h-full top-0 max-w-[min(648px,100%)] left-0' %}
-  {% when 'right' %}
-    {% assign direction_class = 'h-full top-0 max-w-[min(648px,100%)] right-0' %}
-  {% else %}
-    {% assign direction_class = 'top-0 max-w-[min(648px,100%)] right-0' %}
+	{% when 'top' %}
+		{% assign direction_class = 'h-fit min-h-120 max-h-full left-0 top-0' %}
+	{% when 'bottom' %}
+		{% assign direction_class = 'h-fit min-h-120 max-h-full left-0 bottom-0' %}
+	{% when 'left' %}
+		{% assign direction_class = 'h-full top-0 max-w-[min(648px,100%)] left-0' %}
+	{% when 'right' %}
+		{% assign direction_class = 'h-full top-0 max-w-[min(648px,100%)] right-0' %}
+	{% else %}
+		{% assign direction_class = 'top-0 max-w-[min(648px,100%)] right-0' %}
 {% endcase %}
 
 <div
-  x-data="drawer"
-  x-init="init()"
-  class="ida-drawer"
-  data-block-id="{{block.id}}"
-  data-section-id="{{section.id}}"
-  data-drawer-id="{{id}}"
-  data-direction="{{from}}"
-  data-base-class="{{ base_class }}"
-  data-custom-class="{{class}}"
-  data-mobile-direction="{{mobileFrom}}"
+	x-data='drawer'
+	x-init='init()'
+	class='{{drawer_class}}'
+	data-block-id='{{block.id}}'
+	data-section-id='{{section.id}}'
+	data-drawer-id='{{id}}'
+	data-direction='{{from}}'
+	data-base-class='{{ base_class }}'
+	data-custom-class='{{class}}'
+	data-mobile-direction='{{mobile_from}}'
 >
-  <!-- Trigger -->
-  {% if headless != true %}
-    <div @click="openDrawer()">
-      {{ trigger }}
-    </div>
-  {% endif %}
+	<!-- Trigger -->
+	{% if headless != true %}
+		<div @click='openDrawer()' class='{{trigger_class}}'>
+			{{ trigger }}
+		</div>
+	{% endif %}
 
-  <!-- Overlay -->
-  <div
-    class="fixed inset-0 z-40 bg-black/50"
-    x-cloak
-    x-ref="overlay"
-    style="pointer-events: none; opacity: 0;"
-    @click="closeDrawer()"
-  ></div>
+	<!-- Overlay -->
+	<div
+		class='fixed inset-0 z-40 bg-black/50 {{overlay_class}}'
+		x-cloak
+		x-ref='overlay'
+		style='pointer-events: none; opacity: 0;'
+		@click='closeDrawer()'
+	></div>
 
-  <!-- Drawer panel -->
-  <div
-    class="{{base_class}} {{direction_class}} {{class}}"
+	<!-- Drawer panel -->
+	<div
+		class='{{base_class}} {{direction_class}} {{class}} {{panel_class}}'
 
-    x-cloak
-    x-ref="panel"
-    style="opacity: 0; visibility: hidden; will-change: transform, opacity;"
-    @click.stop
-    role="dialog"
-    aria-modal="true"
-    aria-lablledby="drawer-title"
-    aria-describedby="drawer-description"
-    x-trap="open"
-  >
-    {{ content }}
-  </div>
+		x-cloak
+		x-ref='panel'
+		style='opacity: 0; visibility: hidden; will-change: transform, opacity;'
+		@click.stop
+		role='dialog'
+		aria-modal='true'
+		aria-lablledby='drawer-title'
+		aria-describedby='drawer-description'
+		x-trap='open'
+	>
+		{{ content }}
+	</div>
 </div>

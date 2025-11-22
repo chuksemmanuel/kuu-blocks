@@ -1,5 +1,38 @@
 {% liquid
+	# ID
 	assign id = block.settings.id
+
+	# Drawer Direction
+	if block.settings.from != 'default'
+		assign from = block.settings.from
+	else
+		assign from = from | default: 'left'
+	endif
+
+	if block.settings.custom_mobile_direction
+		assign mobile_from = block.settings.mobile_from
+	else
+		assign mobile_from = mobile_from | default: from
+	endif
+
+	# Drawer Header
+	if block.settings.drawer_heading != blank
+		assign drawer_heading = block.settings.drawer_heading
+	else
+		assign drawer_heading = drawer_heading | default: 'Drawer Heading'
+	endif
+
+	# Hide Header
+	assign hide_header = block.settings.hide_header | default: hide_header
+
+	# Content
+	assign content = content | default: ''
+
+	# Classes
+	assign drawer_class = drawer_class | default: ''
+	assign panel_class = panel_class | default: ''
+	assign trigger_class = trigger_class | default: ''
+	assign overlay_class = overlay_class | default: ''
 %}
 
 {% capture drawer_trigger %}
@@ -9,12 +42,12 @@
 {% capture drawer_content %}
   <div data-drawer class="flex h-full w-full flex-1  flex-col overflow-hidden overflow-x-hidden  rounded-md bg-white shadow-lg lg:rounded-lg"  >
     
-      {% if block.settings.hide_header != true %}
+      {% if hide_header != true %}
             <!-- drawer Header -->
             <div data-drawer-header class="shrink-0"> 
               <div class=" flex items-center justify-between p-5">
                   <!-- Title -->
-                  <span id="drawer-title" class="text-lg font-semibold" aria-label="drawer">{{ block.settings.drawer_heading }}</span>
+                  <span id="drawer-title" class="text-lg font-semibold" aria-label="drawer">{{ drawer_heading }}</span>
 
                   <!-- Close button --> 
                     {% content_for 'block',type: 'button',id: 'drawer-close', icon: 'icons/cancel.svg', radius: '9999px', width: '24px', height: '24px', button_class:'hover:bg-transparent', props: 'data-drawer-close', aria_label:'Close drawer' %}
@@ -25,22 +58,97 @@
         <!-- drawer Content -->
         <div data-drawer-content class="flex  flex-1 overflow-y-auto ">
             {% content_for 'blocks' %}
+			{{content}}
         </div>
      
     </div>
 {% endcapture %}
 
-{% render 'drawer', trigger: drawer_trigger, content: drawer_content, id: 'drawer', from: 'left' %}
+{% render 'drawer',
+	trigger: drawer_trigger,
+	content: drawer_content,
+	id: 'drawer',
+	from: from,
+	mobile_from: mobile_from,
+	drawer_class: drawer_class,
+	panel_class: panel_class,
+	overlay_class: overlay_class,
+	trigger_class: trigger_class
+%}
 
 {% schema %}
 	{
 		"name": "Drawer",
 		"settings": [
 			{
+				"type": "header",
+				"content": "Direction"
+			},
+			{
+				"type": "select",
+				"id": "from",
+				"label": "Drawer Direction",
+				"options": [
+					{
+						"value": "default",
+						"label": "Default"
+					},
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					},
+					{
+						"value": "top",
+						"label": "Top"
+					},
+					{
+						"value": "bottom",
+						"label": "Bottom"
+					}
+				]
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_mobile_direction",
+				"label": "Different Mobile Direction?",
+				"default": false
+			},
+			{
+				"type": "select",
+				"id": "mobile_from",
+				"label": "Mobile Direction",
+				"options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					},
+					{
+						"value": "top",
+						"label": "Top"
+					},
+					{
+						"value": "bottom",
+						"label": "Bottom"
+					}
+				],
+				"visible_if": "{{block.settings.custom_mobile_direction}}"
+			},
+			{
+				"type": "header",
+				"content": "Drawer Heading"
+			},
+			{
 				"type": "text",
 				"id": "drawer_heading",
-				"label": "Drawer Heading",
-				"default": "Drawer Heading"
+				"label": "Drawer Heading"
 			},
 			{
 				"type": "checkbox",

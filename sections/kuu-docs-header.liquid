@@ -7,6 +7,14 @@
 
 		<!-- Header Left -->
 		<div class='flex shrink-0 items-center gap-2'>
+			{% content_for 'block',
+				type: 'drawer',
+				id: 'kuu-docs-mobile-menu-drawer',
+				drawer_heading: 'Menu',
+				panel_class: 'w-64!',
+				overlay_class: 'bg-black/10!',
+				drawer_class: 'md:hidden'
+			%}
 			{% content_for 'block', type: 'logo', id: 'kuu-docs-logo' %}
 		</div>
 
