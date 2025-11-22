@@ -1,0 +1,21 @@
+<aside class='full-width h-[calc(100svh-120px)] w-full shrink-0'>
+	<div class='fixed h-[calc(100svh-120px)] w-64 rounded-lg bg-white'></div>
+</aside>
+
+<style>
+	.kuu-docs-sidebar-scrollspy {
+		max-width: 256px;
+
+		@media (max-width: 1280px) {
+			display: none !important;
+		}
+	}
+</style>
+
+{% schema %}
+	{
+		"name": "Kuu Docs Sidebar",
+		"class": "kuu-docs-sidebar-scrollspy",
+		"settings": []
+	}
+{% endschema %}

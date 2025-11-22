@@ -1,0 +1,46 @@
+<div class='bg-background fixed top-0 left-0 z-30 w-full'>
+	<header
+		class='page-width-docs  grid h-full w-full grid-cols-3  place-content-between py-6  max-[1441px]:px-6  '
+	>
+		{% # Annoucement snippet for screen readers %}
+		{% render 'announcement' %}
+
+		<!-- Header Left -->
+		<div class='flex shrink-0 items-center gap-2'>
+			{% content_for 'block', type: 'logo', id: 'kuu-docs-logo' %}
+		</div>
+
+		<!-- Header center -->
+		<div class='flex items-center justify-center gap-2'>
+			<ul class=' hidden gap-4 md:flex'>
+				<li>Home</li>
+				<li>Components</li>
+				<li>Templates</li>
+				<li>Guides</li>
+			</ul>
+		</div>
+
+		<!-- Header Right -->
+		<div class='flex items-center justify-end  gap-4'>
+			{% content_for 'block', type: '_searchdrawer', id: 'kuu-docs-searchdrawer' %}
+			{% content_for 'block',
+				type: 'button',
+				variant: '',
+				size: 'icon',
+				radius: '999px',
+				id: 'kuu-docs-github-button',
+				button_class: 'bg-gray-700 text-white',
+				icon: 'icons/github.svg',
+				href: 'https://github.com/chuksemmanuel/kuu-blocks',
+				aria_label: 'GitHub Icon'
+			%}
+		</div>
+	</header>
+</div>
+
+{% schema %}
+	{
+		"name": "Kuu Docs Header",
+		"settings": []
+	}
+{% endschema %}

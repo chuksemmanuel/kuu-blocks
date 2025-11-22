@@ -31,7 +31,7 @@
 <div
 	class='
 		logo-block
-		shrink-0 items-center justify-center
+		shrink-0 items-center
 		{{ display_class }}
 	'
 	style='
@@ -67,7 +67,7 @@
 			{{ logo_image }}
 		</div>
 	{% else %}
-		<a href='{{routes.root_url}}' class='text-center font-medium uppercase' aria-label='site logo'>
+		<a href='{{routes.root_url}}' class='text-center text-2xl font-medium uppercase' aria-label='site logo'>
 			{{ shop.name }}
 		</a>
 	{% endif %}

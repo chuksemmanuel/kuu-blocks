@@ -9,6 +9,11 @@
 }
 
 @layer base {
+	* {
+		box-sizing: border-box;
+		margin: 0;
+	}
+
 	*:focus-visible {
 		@apply ring-0! outline-0!;
 	}
@@ -22,10 +27,23 @@
 	display: none !important;
 }
 
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.page-width {
+	max-width: var(--page-width, 1200px);
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+.page-width-docs {
+	max-width: var(--page-width-docs, 1440px);
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}

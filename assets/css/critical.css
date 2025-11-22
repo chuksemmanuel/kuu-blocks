@@ -1,10 +1,6 @@
 /** Critical CSS for the theme. This file is included on every page. */
 
 /* Reset styles inspired by https://www.joshwcomeau.com/css/custom-css-reset/ */
-* {
-	box-sizing: border-box;
-	margin: 0;
-}
 
 body {
 	display: flex;
@@ -92,9 +88,13 @@ body {
  * the entire viewport.
  */
 .shopify-section {
-	--content-width: min(calc(var(--page-width) - var(--page-margin) * 2), calc(100% - var(--page-margin) * 2));
+	--content-width: min(
+		calc(var(--page-width) - var(--page-margin) * 2),
+		calc(100% - var(--page-margin) * 2)
+	);
 	--content-margin: minmax(var(--page-margin), 1fr);
-	--content-grid: var(--content-margin) var(--content-width) var(--content-margin);
+	--content-grid: var(--content-margin) var(--content-width)
+		var(--content-margin);
 
 	/* This is required to make <img> elements work as background images */
 	position: relative;

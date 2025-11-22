@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang='{{ request.locale.iso_code }}'>
+	<head>
+		{% # Inlined CSS Variables %}
+		{% render 'css-variables' %}
+		{% # Load and preload the critical CSS %}
+		{{ 'css/critical.css' | asset_url | stylesheet_tag: preload: true }}
+
+		{% render 'stylesheet' %}
+		{% render 'script' %}
+		{% render 'meta-tags' %}
+
+		{{ content_for_header }}
+	</head>
+
+	<body>
+		<a href='#main-content' class='sr-only'>Skip to main content</a>
+
+		{% section 'kuu-docs-header' %}
+
+		<div class='page-width-docs'>
+			<div class='mt-24 flex gap-16'>
+				{% section 'kuu-docs-sidebar-nav' %}
+
+				<main
+					id='main-content'
+					tabindex='-1'
+					class='mx-auto w-full flex-1  pb-24'
+				>
+					{{ content_for_layout }}
+				</main>
+
+				{% section 'kuu-docs-sidebar-scrollspy' %}
+			</div>
+		</div>
+
+		{% # Playground - for testing components %}
+		{% render 'playground' %}
+		{% render 'js-lib' %}
+	</body>
+</html>
