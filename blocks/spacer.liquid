@@ -1,9 +1,7 @@
 {% assign block_settings = block.settings %}
 
-<div
-	class='		spacer-block'
-	style='
-		      {% if block_settings.unit == 'percent' %}
+{% capture spacer_style %}
+	{% if block_settings.unit == 'percent' %}
 		          --spacer-width: {{ block_settings.percent_width }}%;
 		      {% endif %}
 		      {% if block_settings.unit == 'pixel' %}
@@ -20,7 +18,11 @@
 		      {% endif %}
 		      --spacer-mobile-height: {{ block_settings.height_mobile }}px;
 		{% endif %}
-	'
+{% endcapture %}
+
+<div
+	class='spacer-block'
+	style='{{spacer_style | strip_newlines}}'
 	{{ block.shopify_attributes }}
 ></div>
 

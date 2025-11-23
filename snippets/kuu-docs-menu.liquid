@@ -47,6 +47,7 @@
 										{% for grandchild_link in child_link.links %}
 											<li>
 												<a
+													x-data='menuComingSoon'
 													href='{{ grandchild_link.url }}'
 													class='block py-1 text-sm text-gray-500 hover:text-gray-900'
 													{% if grandchild_link.active %}
@@ -62,8 +63,9 @@
 							{% else %}
 								<li>
 									<a
+										x-data='menuComingSoon'
 										href='{{ child_link.url }}'
-										class='block py-1 text-sm text-gray-600 hover:text-gray-900'
+										class='flex flex-wrap items-center gap-0.5 py-1 text-sm text-gray-600 hover:text-gray-900'
 										{% if child_link.active %}
 											aria-current='page'
 										{% endif %}
@@ -91,3 +93,29 @@
 		{% endfor %}
 	</ul>
 </div>
+
+<script>
+	document.addEventListener('alpine:init', () => {
+		const Alpine = window.Alpine;
+		Alpine.data('menuComingSoon', () => ({
+			coming_soon: false,
+			init() {
+				this.coming_soon = this.$el.href.toLowerCase().includes('coming-soon');
+
+				this.$el.addEventListener('click', (event) => {
+					if (this.coming_soon) {
+						event.preventDefault();
+					}
+				});
+
+				if (this.coming_soon) {
+					this.$el.classList.add('text-gray-400!');
+					this.$el.insertAdjacentHTML(
+						'beforeend',
+						`<span class='mx-1 rounded-full bg-gray-200 px-1 py-px text-[10px] text-gray-400'>Soon</span>`,
+					);
+				}
+			},
+		}));
+	});
+</script>
