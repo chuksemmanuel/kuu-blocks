@@ -6,6 +6,8 @@ document.addEventListener('alpine:init', () => {
 		activeTab: '',
 		/** @type {string | null} */
 		blockId: null,
+		/** @type {string | null} */
+		tabId: null,
 
 		init() {
 			// Initialize active tab from data attribute or default
@@ -15,11 +17,12 @@ document.addEventListener('alpine:init', () => {
 			if (this.$el.dataset.tabBlockId) {
 				this.blockId = this.$el.dataset.tabBlockId;
 			}
+			if (this.$el.dataset.tabId) {
+				this.tabId = this.$el.dataset.tabId;
+			}
 
-			console.log(this.$el.dataset.defaultActive);
 			// If no default active is set, try to find the first trigger
 			if (!this.activeTab) {
-				console.log(this.activeTab);
 				const firstTrigger = this.$el.querySelector('[data-tab-trigger]');
 				if (firstTrigger instanceof HTMLElement) {
 					this.activeTab = firstTrigger.dataset.tabTrigger || '';

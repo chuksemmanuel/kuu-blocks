@@ -1,4 +1,4 @@
-{% assign tabId = block.id | append: '-tab' %}
+{% assign tab_id = block.id | append: '-tab' %}
 
 {% # Tag triggers buttons %}
 {% capture tab_button_list %}
@@ -11,7 +11,7 @@
          
             {% render 'horizontal-scroll',
             content: tab_button_list,
-            id:tabId,
+            id:tab_id,
             props: '  
                   x-ref="tabButtons"
                   role="tablist"
@@ -26,14 +26,14 @@
       {% content_for 'blocks' %}
 {% endcapture %}
 
-<div id='{{tabId}}' data-tab-block='{{tabId}}'>
+<div id='{{tab_id}}' data-tab-block='{{tab_id}}'>
 	{% render 'tab',
 		triggers: tab_triggers,
 		contents: tab_content,
 		class: 'h-full flex flex-col overflow-hidden',
 		trigger_class: 'shrink-0 pb-4',
 		content_class: 'flex-1 overflow-y-auto',
-		id: tabId,
+		id: tab_id,
 		block: block
 	%}
 </div>
@@ -168,20 +168,19 @@
 	 {% endif %}
 	function populateTabButtons() {
 		// Clear horizontal scroll container
-		document.querySelector('[data-tab-block="{{tabId}}"] [data-horizontal-scroll="{{tabId}}"]').innerHTML = '';
+		document.querySelector('[data-tab-block="{{tab_id}}"] [data-horizontal-scroll="{{tab_id}}"]').innerHTML = '';
 
 		let addedTabs = [];
-		const tabEl = document.querySelector('[data-tab-block="{{tabId}}"] [data-tab-id="{{tabId}}"]');
+		const tabEl = document.querySelector('[data-tab-block="{{tab_id}}"] [data-tab-id="{{tab_id}}"]');
 	const contents = tabEl.querySelectorAll(':scope  [data-tab-content]');
 		contents.forEach((tabContentEl) => {
-			if(tabContentEl.closest('[data-tab-id]').dataset.tabId != '{{tabId}}'){
+			if(tabContentEl.closest('[data-tab-id]').dataset.tabId != '{{tab_id}}'){
 				return;
 			}
 			if (!addedTabs.includes(tabContentEl.dataset.tabContent)) {
-				document.querySelector('[data-tab-block="{{tabId}}"] [data-horizontal-scroll="{{tabId}}"]').insertAdjacentHTML(
+				document.querySelector('[data-tab-block="{{tab_id}}"] [data-horizontal-scroll="{{tab_id}}"]').insertAdjacentHTML(
 					'beforeend',
 					/*html*/ `
-					
 					<button
 					data-trigger-block-id="{{block.id}}"
 					data-tab-trigger="${tabContentEl.dataset.tabContent}"
@@ -190,8 +189,8 @@
 					:aria-selected="tabButtonActive($el)"
 					aria-controls=""
 					type="button"
-					:class="{ 'bg-primary text-primary-foreground' : tabButtonActive($el) }"
-					class="relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-full bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out">
+					:class="tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'"
+					class="relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-lg bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out">
 					${tabContentEl.dataset.tabContent}
 					</button>
 				`,
