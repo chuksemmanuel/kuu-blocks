@@ -461,7 +461,7 @@ document.addEventListener('alpine:init', () => {
 		 * @param {string} hex
 		 */
 		_getContrastColor(hex) {
-			return window.Sleek?.utils?.getContrastColor(hex) || '#000000';
+			return window.kuu?.utils?.getContrastColor(hex) || '#000000';
 		},
 		_getSettings() {
 			return this.settings;

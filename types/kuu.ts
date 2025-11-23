@@ -1,4 +1,8 @@
 export type Kuu = {
+	utils?: {
+		getContrastRatio: typeof getContrastRatio;
+		getContrastColor: typeof getContrastColor;
+	};
 	cartDrawer?: CartDrawer;
 	announce?: (message: string) => void;
 	drawer?: Drawer;
@@ -32,4 +36,7 @@ declare global {
 	type Drawer = {
 		lastOpened: string | null;
 	};
+
+	type getContrastRatio = (color1: string, color2: string) => number;
+	type getContrastColor = (hexColor: string) => string;
 }

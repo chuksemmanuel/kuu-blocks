@@ -48,7 +48,7 @@
 	width: 100%;
 }
 
-/* Custom Typography style */
+/* Typography */
 .custom-typography,
 .custom-typography > * {
 	font-family: var(--font-family);
@@ -83,4 +83,8 @@
 .custom-font-weight,
 .custom-font-weight > * {
 	font-weight: var(--weight);
+}
+
+.paragraph > small {
+	font-size: smaller;
 }

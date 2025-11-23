@@ -54,6 +54,7 @@
   "
 
   style="
+   {% render 'spacing-padding', settings: block_settings %}
     {% render 'typography-style', settings: block_settings %}
     --width: {{ text_width }};
     --max-width: var(--max-width--{{ type }}-{{ block_settings.max_width }});
@@ -75,9 +76,6 @@
 	# including if-statements, will break the connection.
 
 	assign element = 'div'
-	if is_rte
-		assign element = 'rte-formatter'
-	endif
 %}
 
 {% if fallback_text != blank and plain_text == blank %}

@@ -32,8 +32,8 @@
 
 		/* Mobile */
 		@media screen and (max-width: 768px) {
-			width: var(--spacer-mobile-width);
-			height: var(--spacer-mobile-height);
+			width: var(--spacer-mobile-width, var(--spacer-width));
+			height: var(--spacer-mobile-height, var(--spacer-height));
 		}
 	}
 {% endstylesheet %}
