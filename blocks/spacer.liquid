@@ -1,0 +1,173 @@
+{% assign block_settings = block.settings %}
+
+<div
+	class='		spacer-block'
+	style='
+		      {% if block_settings.unit == 'percent' %}
+		          --spacer-width: {{ block_settings.percent_width }}%;
+		      {% endif %}
+		      {% if block_settings.unit == 'pixel' %}
+		          --spacer-width: {{ block_settings.pexel_width }}px;
+		      {% endif %}
+		  --spacer-height: {{ block_settings.height }}px;
+
+		{% if block_settings.custom_mobile_size %}
+		      {% if block_settings.mobile_unit == 'percent' %}
+		          --spacer-mobile-width: {{ block_settings.mobile_percent_width }}%;
+		      {% endif %}
+		      {% if block_settings.mobile_unit == 'pixel' %}
+		          --spacer-mobile-width: {{ block_settings.mobile_pexel_width }}px;
+		      {% endif %}
+		      --spacer-mobile-height: {{ block_settings.height_mobile }}px;
+		{% endif %}
+	'
+	{{ block.shopify_attributes }}
+></div>
+
+{% stylesheet %}
+	/* Fill opposite direction */
+	.spacer-block {
+		width: var(--spacer-width);
+		height: var(--spacer-height);
+
+		/* Mobile */
+		@media screen and (max-width: 768px) {
+			width: var(--spacer-mobile-width);
+			height: var(--spacer-mobile-height);
+		}
+	}
+{% endstylesheet %}
+
+{% schema %}
+	{
+		"name": "Spacer",
+		"tag": null,
+
+		"settings": [
+			{
+				"type": "header",
+				"content": "Size"
+			},
+			{
+				"type": "select",
+				"id": "unit",
+				"label": "Unit",
+				"options": [
+					{
+						"value": "percent",
+						"label": "Percent"
+					},
+					{
+						"value": "pixel",
+						"label": "Pixel"
+					}
+				],
+				"default": "percent"
+			},
+			{
+				"type": "range",
+				"id": "percent_width",
+				"label": "Width",
+				"min": 0,
+				"max": 100,
+				"step": 4,
+				"unit": "%",
+				"default": 100,
+				"visible_if": "{{ block.settings.unit == 'percent' }}"
+			},
+			{
+				"type": "range",
+				"id": "pexel_width",
+				"label": "Width",
+				"min": 0,
+				"max": 400,
+				"step": 4,
+				"unit": "px",
+				"default": 120,
+				"visible_if": "{{ block.settings.unit == 'pixel' }}"
+			},
+			{
+				"type": "range",
+				"id": "height",
+				"label": "Height",
+				"min": 0,
+				"max": 400,
+				"step": 4,
+				"unit": "px",
+				"default": 120
+			},
+			{
+				"type": "header",
+				"content": "Mobile Size"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_mobile_size",
+				"label": "Custom Mobile Size",
+				"default": false
+			},
+			{
+				"type": "header",
+				"content": "Mobile Width",
+				"visible_if": "{{ block.settings.custom_mobile_size == true }}"
+			},
+
+			{
+				"type": "select",
+				"id": "mobile_unit",
+				"label": "Mobile Unit",
+				"options": [
+					{
+						"value": "percent",
+						"label": "Percent"
+					},
+					{
+						"value": "pixel",
+						"label": "Pixel"
+					}
+				],
+				"default": "percent",
+				"visible_if": "{{ block.settings.custom_mobile_size == true }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile_percent_width",
+				"label": "Mobile Width",
+				"min": 0,
+				"max": 100,
+				"step": 4,
+				"unit": "%",
+				"default": 100,
+				"visible_if": "{{ block.settings.custom_mobile_size == true and block.settings.mobile_unit == 'percent' }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile_pexel_width",
+				"label": "Mobile Width",
+				"min": 0,
+				"max": 400,
+				"step": 4,
+				"unit": "px",
+				"default": 120,
+				"visible_if": "{{ block.settings.custom_mobile_size == true and block.settings.mobile_unit == 'pixel' }}"
+			},
+			{
+				"type": "range",
+				"id": "height_mobile",
+				"label": "Mobile Height",
+				"min": 0,
+				"max": 400,
+				"step": 4,
+				"unit": "px",
+				"default": 120,
+				"visible_if": "{{ block.settings.custom_mobile_size == true }}"
+			}
+		],
+		"presets": [
+			{
+				"name": "Spacer",
+				"category": "Layout"
+			}
+		]
+	}
+{% endschema %}

@@ -19,8 +19,17 @@
 					height='80px'
 				>
 			</div>
-
-			<p class='text-lg'>{{ product.title }}</p>
+			<div class='flex flex-col gap-2'>
+				<p class='text-lg'>{{ product.title }}</p>
+				{% if block.settings.show_prices %}
+					<div class='flex items-center gap-2'>
+						<p class='text-lg text-red-500'>{{ product.price | money }}</p>
+						{% if block.settings.show_compare_at_prices %}
+							<p class='text-lg text-gray-500 line-through'>{{ product.compare_at_price | money }}</p>
+						{% endif %}
+					</div>
+				{% endif %}
+			</div>
 		</div>
 	</a>
 {% endfor %}
@@ -37,13 +46,25 @@
 			{
 				"type": "text",
 				"id": "tab_title",
-				"label": "Tab Title",
-				"info": "The tab products from this product should be under*"
+				"label": "Tab Title"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_prices",
+				"label": "Show prices",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "show_compare_at_prices",
+				"label": "Show compare at prices",
+				"default": true,
+				"visible_if": "{{block.settings.show_prices}}"
 			}
 		],
 		"presets": [
 			{
-				"name": "Product"
+				"name": "Products"
 			}
 		]
 	}

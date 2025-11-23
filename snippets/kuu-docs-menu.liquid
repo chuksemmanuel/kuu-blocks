@@ -1,26 +1,26 @@
 <div class='w-full'>
-	<ul class='flex flex-col gap-2'>
+	<ul class='flex flex-col gap-2 pb-5'>
 		{% for link in linklists['docs-menu'].links %}
 			{% if link.links != blank %}
 				<li x-data='{ expanded: true }'>
 					<button
 						@click='expanded = !expanded'
-						class='flex w-full items-center justify-between py-2 text-left font-medium hover:text-gray-900'
+						class='flex w-full items-center gap-1 py-2 text-left font-medium hover:text-gray-900'
 						:class="{ 'text-gray-900': expanded, 'text-gray-600': !expanded }"
 					>
-						<span>{{ link.title }}</span>
 						<span
 							class='transform text-gray-400 transition-transform duration-200'
-							:class="{ 'rotate-180 text-gray-900': expanded }"
+							:class="{ 'rotate-90 text-gray-900': expanded }"
 						>
-							{{- 'icons/chevron-down.svg' | inline_asset_content -}}
+							{{- 'icons/chevron-right.svg' | inline_asset_content -}}
 						</span>
+						<span>{{ link.title }}</span>
 					</button>
 					<ul
 						x-show='expanded'
 						x-collapse
 						x-cloak
-						class='ml-4 flex flex-col gap-1 border-l border-gray-200 pl-4'
+						class='ml-3 flex flex-col gap-1 border-l border-gray-200 pl-4'
 					>
 						{% for child_link in link.links %}
 							{% if child_link.links != blank %}
@@ -33,9 +33,9 @@
 										<span>{{ child_link.title }}</span>
 										<span
 											class=' transform text-gray-400 transition-transform duration-200'
-											:class="{ 'rotate-180 text-gray-900': expanded }"
+											:class="{ 'rotate-90 text-gray-900': expanded }"
 										>
-											{{- 'icons/chevron-down.svg' | inline_asset_content -}}
+											{{- 'icons/chevron-right.svg' | inline_asset_content -}}
 										</span>
 									</button>
 									<ul

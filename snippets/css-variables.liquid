@@ -6,18 +6,104 @@
 {% endif %}
 
 {% style %}
-	{% # Loads all font variantions with display: swap %}{{ settings.type_primary_font | font_face: font_display: 'swap' }}{{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}{{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}{{ settings.type_primary_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}:root {
-	  --font-primary--family: {{ settings.type_primary_font.family }},
-	  {{ settings.type_primary_font.fallback_families }};
-	  --font-primary--style: {{ settings.type_primary_font.style }};
-	  --font-primary--weight: {{ settings.type_primary_font.weight }};
-	  --page-width: {{ settings.max_page_width }};
-	  --page-margin: {{ settings.min_page_margin }}px;
-	  --color-primary: {{ settings.primary_color }};
-	  --color-primary-foreground: {{ color_primary_foreground }};
-	  --color-secondary: {{ settings.secondary_color }};
-	  --color-background: {{ settings.background_color }};
-	  --color-foreground: {{ settings.foreground_color }};
-	  --style-border-radius-inputs: {{ settings.input_corner_radius }}px;
-	}
+		{% # Loads all font variantions with display: swap %}{{ settings.type_primary_font | font_face: font_display: 'swap' }}{{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}{{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}{{ settings.type_primary_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}:root {
+		  --font-primary--family: {{ settings.type_primary_font.family }},
+		  {{ settings.type_primary_font.fallback_families }};
+		  --font-primary--style: {{ settings.type_primary_font.style }};
+		  --font-primary--weight: {{ settings.type_primary_font.weight }};
+		  --page-width: {{ settings.max_page_width }};
+		  --page-margin: {{ settings.min_page_margin }}px;
+		  --color-primary: {{ settings.primary_color }};
+		  --color-primary-foreground: {{ color_primary_foreground }};
+		  --color-secondary: {{ settings.secondary_color }};
+		  --color-background: {{ settings.background_color }};
+		  --color-foreground: {{ settings.foreground_color }};
+		  --style-border-radius-inputs: {{ settings.input_corner_radius }}px;
+		}
+
+
+
+		/* Letter-spacing / Tracking */
+	   --letter-spacing--display-tight: -0.03em;
+	   --letter-spacing--display-normal: 0em;
+	   --letter-spacing--display-loose: 0.03em;
+
+	   --letter-spacing--heading-tight: -0.03em;
+	   --letter-spacing--heading-normal: 0em;
+	   --letter-spacing--heading-loose: 0.03em;
+
+	   --letter-spacing--body-tight: -0.03em;
+	   --letter-spacing--body-normal: 0em;
+	   --letter-spacing--body-loose: 0.03em;
+
+	   /* Line height / Leading */
+	   --line-height: 1;
+
+	   --line-height--display-tight: 1;
+	   --line-height--display-normal: 1.1;
+	   --line-height--display-loose: 1.2;
+
+	   --line-height--heading-tight: 1.15;
+	   --line-height--heading-normal: 1.25;
+	   --line-height--heading-loose: 1.35;
+
+	   --line-height--body-tight: 1.2;
+	   --line-height--body-normal: 1.4;
+	   --line-height--body-loose: 1.6;
+
+	/* Hardcoded font sizes */
+		--font-size--2xs: 0.625rem;
+		--font-size--xs: 0.8125rem;
+		--font-size--sm: 0.875rem;
+		--font-size--md: 1rem;
+		--font-size--lg: 1.125rem;
+		--font-size--xl: 1.25rem;
+		--font-size--2xl: 1.5rem;
+		--font-size--3xl: 2rem;
+		--font-size--4xl: 2.5rem;
+		--font-size--5xl: 3rem;
+		--font-size--6xl: 3.5rem;
+
+		/* Spacing */
+		--margin-3xs: 0.125rem;
+		--margin-2xs: 0.3rem;
+		--margin-xs: 0.5rem;
+		--margin-sm: 0.7rem;
+		--margin-md: 0.8rem;
+		--margin-lg: 1rem;
+		--margin-xl: 1.25rem;
+		--margin-2xl: 1.5rem;
+		--margin-3xl: 1.75rem;
+		--margin-4xl: 2rem;
+		--margin-5xl: 3rem;
+		--margin-6xl: 5rem;
+
+		--scroll-margin: 50px;
+
+		--padding-3xs: 0.125rem;
+		--padding-2xs: 0.25rem;
+		--padding-xs: 0.5rem;
+		--padding-sm: 0.7rem;
+		--padding-md: 0.8rem;
+		--padding-lg: 1rem;
+		--padding-xl: 1.25rem;
+		--padding-2xl: 1.5rem;
+		--padding-3xl: 1.75rem;
+		--padding-4xl: 2rem;
+		--padding-5xl: 3rem;
+		--padding-6xl: 4rem;
+
+		--gap-3xs: 0.125rem;
+		--gap-2xs: 0.3rem;
+		--gap-xs: 0.5rem;
+		--gap-sm: 0.7rem;
+		--gap-md: 0.9rem;
+		--gap-lg: 1rem;
+		--gap-xl: 1.25rem;
+		--gap-2xl: 2rem;
+		--gap-3xl: 3rem;
+
+		--spacing-scale-sm: 0.6;
+		--spacing-scale-md: 0.7;
+		--spacing-scale-default: 1;
 {% endstyle %}

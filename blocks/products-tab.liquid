@@ -3,10 +3,6 @@
 {% # Tag triggers buttons %}
 {% capture tab_button_list %}
           {% for block in block.blocks %}
-           
-          
-     
-           
           {% endfor %}
 {% endcapture %}
 
@@ -19,7 +15,7 @@
             props: '  
                   x-ref="tabButtons"
                   role="tablist"
-                  aria-label="Collection tabs"
+                  aria-label="Products tabs"
                 ',
             class: ' pl-3 lg:pl-5 text-gray-500 select-none'
                 %}
@@ -41,13 +37,10 @@
 
 {% schema %}
 	{
-		"name": "Tabbed products",
+		"name": "Products tab",
 		"class": "w-full",
 		"settings": [],
 		"blocks": [
-			{
-				"type": "_products-tab-collection-picker"
-			},
 			{
 				"type": "_products-tab-product-picker"
 			},
@@ -57,7 +50,7 @@
 		],
 		"presets": [
 			{
-				"name": "Tabbed products"
+				"name": "Products tab"
 			}
 		]
 	}
@@ -90,7 +83,7 @@
               aria-controls=""
               type="button"
               :class="{ 'bg-primary text-primary-foreground' : tabButtonActive($el) }"
-              class="relative z-20 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-full bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out">
+              class="relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-full bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out">
               ${tabContentEl.dataset.tabContent}
             </button>
     `,

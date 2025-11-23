@@ -1,32 +1,30 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}">
-  <head>
-    {% # Load and preload the critical CSS %}
-    {{ 'css/critical.css' | asset_url | stylesheet_tag: preload: true }}
+<html lang='{{ request.locale.iso_code }}'>
+	<head>
+		{% # Load and preload the critical CSS %}
+		{{ 'css/critical.css' | asset_url | stylesheet_tag: preload: true }}
 
-    {% render 'css-variables' %}
-    {% render 'stylesheet' %}
-    {% render 'script' %}
-    {% render 'meta-tags' %}
+		{% render 'css-variables' %}
+		{% render 'stylesheet' %}
+		{% render 'script' %}
+		{% render 'meta-tags' %}
 
-    {{ content_for_header }}
-  </head>
+		{{ content_for_header }}
+	</head>
 
-  <body>
-    <a href="#main-content" class="sr-only">Skip to main content</a>
+	<body>
+		<a href='#main-content' class='sr-only'>Skip to main content</a>
 
-    {% sections 'header-group' %}
+		{% sections 'header-group' %}
 
-    <main id="main-content" tabindex="-1">
-      {{ content_for_layout }}
-    </main>
+		<main id='main-content' tabindex='-1'>
+			{{ content_for_layout }}
+		</main>
 
-    {% sections 'footer-group' %}
+		{% sections 'footer-group' %}
 
-    {% section 'tabbed-products' %}
-
-    {% # Playground - for testing components %}
-    {% render 'playground' %}
-    {% render 'js-lib' %}
-  </body>
+		{% # Playground - for testing components %}
+		{% render 'playground' %}
+		{% render 'js-lib' %}
+	</body>
 </html>
