@@ -364,6 +364,36 @@
 				"step": 1,
 				"unit": "px",
 				"default": 0
+			},
+			{
+				"type": "header",
+				"content": "Attributes"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_attributes",
+				"label": "Custom attributes"
+			},
+			{
+				"type": "text",
+				"id": "id",
+				"label": "ID",
+				"info": "Enter the id without the # symbol",
+				"visible_if": "{{ block.settings.custom_attributes }}"
+			},
+			{
+				"type": "text",
+				"id": "class",
+				"label": "Class",
+				"info": "Enter the classes without the . symbol",
+				"visible_if": "{{ block.settings.custom_attributes }}"
+			},
+			{
+				"type": "text",
+				"id": "props",
+				"label": "Props",
+				"info": "Enter additional properties, e.g aria-label='value' data-prop='value' etc.",
+				"visible_if": "{{ block.settings.custom_attributes }}"
 			}
 		],
 		"presets": [
