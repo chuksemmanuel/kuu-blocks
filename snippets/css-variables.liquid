@@ -6,7 +6,13 @@
 {% endif %}
 
 {% style %}
-		{% # Loads all font variantions with display: swap %}{{ settings.type_primary_font | font_face: font_display: 'swap' }}{{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}{{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}{{ settings.type_primary_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}:root {
+		{% # Loads all font variantions with display: swap %}
+		{{ settings.type_primary_font | font_face: font_display: 'swap' }}
+		{{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_face: font_display: 'swap' }}
+		{{ settings.type_primary_font | font_modify: 'weight', 'bold' | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+		{{ settings.type_primary_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+
+		:root {
 		  --font-primary--family: {{ settings.type_primary_font.family }},
 		  {{ settings.type_primary_font.fallback_families }};
 		  --font-primary--style: {{ settings.type_primary_font.style }};
@@ -19,9 +25,33 @@
 		  --color-background: {{ settings.background_color }};
 		  --color-foreground: {{ settings.foreground_color }};
 		  --style-border-radius-inputs: {{ settings.input_corner_radius }}px;
-		}
 
 
+		    /* Font families */
+	   --font-body--family: {{ settings.type_primary_font.family }};
+	   --font-body--style: normal;
+	   --font-body--weight: 400;
+	   --font-subheading--family: {{ settings.type_primary_font.family }};
+	   --font-subheading--style: normal;
+	   --font-subheading--weight: 500;
+	   --font-heading--family: {{ settings.type_primary_font.family }};
+	   --font-heading--style: normal;
+	   --font-heading--weight: 700;
+	   --font-accent--family: {{ settings.type_primary_font.family }};
+	   --font-accent--style: normal;
+	   --font-accent--weight: 700;
+
+
+	       /* Max-width / Measure */
+	   --max-width--body-normal: 50ch;
+	   --max-width--body-narrow: 35ch;
+
+	   --max-width--heading-normal: 50ch;
+	   --max-width--heading-narrow: 30ch;
+
+	   --max-width--display-normal: 20ch;
+	   --max-width--display-narrow: 15ch;
+	   --max-width--display-tight: 5ch;
 
 		/* Letter-spacing / Tracking */
 	   --letter-spacing--display-tight: -0.03em;
@@ -106,4 +136,11 @@
 		--spacing-scale-sm: 0.6;
 		--spacing-scale-md: 0.7;
 		--spacing-scale-default: 1;
+
+
+		/* Typography presets */
+	   --font-size--paragraph: 0.875rem;--font-size--h1: clamp(3.0rem, 5.6vw, 3.5rem);--font-size--h2: clamp(2.25rem, 4.8vw, 3.0rem);--font-size--h3: 2.0rem;--font-size--h4: 1.5rem;--font-size--h5: 0.875rem;--font-size--h6: 0.75rem;--font-paragraph--weight: 400;--font-paragraph--letter-spacing: var(--letter-spacing--body-normal);--font-paragraph--size: var(--font-size--paragraph);--font-paragraph--family: var(--font-body--family);--font-paragraph--style: var(--font-body--style);--font-paragraph--case: ;--font-paragraph--line-height: var(--line-height--body-loose);--font-h1--weight: var(--font-heading--weight);--font-h1--letter-spacing: var(--letter-spacing--heading-normal);--font-h1--size: var(--font-size--h1);--font-h1--family: var(--font-heading--family);--font-h1--style: var(--font-heading--style);--font-h1--case: none;--font-h1--line-height: var(--line-height--display-tight);--font-h2--weight: var(--font-heading--weight);--font-h2--letter-spacing: var(--letter-spacing--heading-normal);--font-h2--size: var(--font-size--h2);--font-h2--family: var(--font-heading--family);--font-h2--style: var(--font-heading--style);--font-h2--case: none;--font-h2--line-height: var(--line-height--display-tight);--font-h3--weight: var(--font-heading--weight);--font-h3--letter-spacing: var(--letter-spacing--heading-normal);--font-h3--size: var(--font-size--h3);--font-h3--family: var(--font-heading--family);--font-h3--style: var(--font-heading--style);--font-h3--case: none;--font-h3--line-height: var(--line-height--display-normal);--font-h4--weight: var(--font-heading--weight);--font-h4--letter-spacing: var(--letter-spacing--heading-normal);--font-h4--size: var(--font-size--h4);--font-h4--family: var(--font-heading--family);--font-h4--style: var(--font-heading--style);--font-h4--case: none;--font-h4--line-height: var(--line-height--display-tight);--font-h5--weight: var(--font-subheading--weight);--font-h5--letter-spacing: var(--letter-spacing--heading-normal);--font-h5--size: var(--font-size--h5);--font-h5--family: var(--font-subheading--family);--font-h5--style: var(--font-subheading--style);--font-h5--case: none;--font-h5--line-height: var(--line-height--display-loose);--font-h6--weight: var(--font-subheading-
+
+
+		}
 {% endstyle %}

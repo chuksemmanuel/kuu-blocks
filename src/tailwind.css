@@ -47,3 +47,40 @@
 	margin-right: auto;
 	width: 100%;
 }
+
+/* Custom Typography style */
+.custom-typography,
+.custom-typography > * {
+	font-family: var(--font-family);
+	font-weight: var(--font-weight);
+	text-transform: var(--text-transform);
+	text-wrap: var(--text-wrap);
+	line-height: var(--line-height);
+	letter-spacing: var(--letter-spacing);
+}
+
+.custom-typography {
+	h1 {
+		line-height: var(--line-height--display, var(--line-height));
+	}
+
+	h2,
+	h3,
+	h4 {
+		line-height: var(--line-height--heading, var(--line-height));
+	}
+
+	p {
+		line-height: var(--line-height--body, var(--line-height));
+	}
+}
+
+.custom-font-size,
+.custom-font-size > * {
+	font-size: var(--font-size);
+}
+
+.custom-font-weight,
+.custom-font-weight > * {
+	font-weight: var(--weight);
+}
