@@ -1,19 +1,160 @@
+{% assign tabId = block.id | append: '-tab' %}
+
+{% # Tag triggers buttons %}
+{% capture tab_button_list %}
+          {% for block in block.blocks %}
+          {% endfor %}
+{% endcapture %}
+
+{% # Tag triggers -  horizontally scrollable %}
+{% capture tab_triggers %}
+         
+            {% render 'horizontal-scroll',
+            content: tab_button_list,
+            id:tabId,
+            props: '  
+                  x-ref="tabButtons"
+                  role="tablist"
+                  aria-label="Tabs"
+                ',
+            class: ' text-gray-500 select-none'
+                %}
+            
+{% endcapture %}
+
+{% capture tab_content %}
+      {% content_for 'blocks' %}
+{% endcapture %}
+
+<div id='{{tabId}}' data-tab-block='{{tabId}}'>
+	{% render 'tab',
+		triggers: tab_triggers,
+		contents: tab_content,
+		class: 'h-full flex flex-col overflow-hidden',
+		trigger_class: 'shrink-0 pb-4',
+		content_class: 'flex-1 overflow-y-auto',
+		id: tabId,
+		block: block
+	%}
+</div>
+
 {% schema %}
 	{
-		"name": "Tabb",
+		"name": "Kuu Tab",
 		"class": "w-full",
-		"settings": [],
-		"blocks": [
+		"settings": [
 			{
-				"type": "_products-tab-product-picker"
+				"type": "header",
+				"content": "Padding"
 			},
 			{
-				"type": "@app"
+				"type": "range",
+				"id": "padding-block-start",
+				"label": "Top",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "range",
+				"id": "padding-block-end",
+				"label": "Bottom",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "range",
+				"id": "padding-inline-start",
+				"label": "Left",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "range",
+				"id": "padding-inline-end",
+				"label": "Right",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_mobile_padding",
+				"label": "Custom Mobile Padding",
+				"default": true
+			},
+			{
+				"type": "header",
+				"content": "Mobile Padding"
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-block-start",
+				"label": "Mobile Top",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-block-end",
+				"label": "Mobile Bottom",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-inline-start",
+				"label": "Mobile Left",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-inline-end",
+				"label": "Mobile Right",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			}
+		],
+		"blocks": [
+			{
+				"type": "_kuu-tab-item"
 			}
 		],
 		"presets": [
 			{
-				"name": "Tab"
+				"name": "Kuu Tab",
+				"category": "Kuu Components",
+				"blocks": [
+					{
+						"type": "_kuu-tab-item",
+						"settings": {
+							"tab_title": "Tab 1"
+						}
+					}
+				]
 			}
 		]
 	}
@@ -27,29 +168,33 @@
 	 {% endif %}
 	function populateTabButtons() {
 		// Clear horizontal scroll container
-		document.querySelector('[data-horizontal-scroll="{{tabId}}"]').innerHTML = '';
+		document.querySelector('[data-tab-block="{{tabId}}"] [data-horizontal-scroll="{{tabId}}"]').innerHTML = '';
 
 		let addedTabs = [];
-		let tabEl = document.querySelector('[data-tab-id="{{tabId}}"]');
-		tabEl.querySelectorAll('[data-tab-content]').forEach((tabContentEl) => {
-			console.log(tabContentEl);
+		const tabEl = document.querySelector('[data-tab-block="{{tabId}}"] [data-tab-id="{{tabId}}"]');
+	const contents = tabEl.querySelectorAll(':scope  [data-tab-content]');
+		contents.forEach((tabContentEl) => {
+			if(tabContentEl.closest('[data-tab-id]').dataset.tabId != '{{tabId}}'){
+				return;
+			}
 			if (!addedTabs.includes(tabContentEl.dataset.tabContent)) {
-				document.querySelector('[data-horizontal-scroll="{{tabId}}"]').insertAdjacentHTML(
+				document.querySelector('[data-tab-block="{{tabId}}"] [data-horizontal-scroll="{{tabId}}"]').insertAdjacentHTML(
 					'beforeend',
 					/*html*/ `
-        <button
-              data-trigger-block-id="{{block.id}}"
-              data-tab-trigger="${tabContentEl.dataset.tabContent}"
-              role="tab"
-              aria-label="${tabContentEl.dataset.tabContent}"
-              :aria-selected="tabButtonActive($el)"
-              aria-controls=""
-              type="button"
-              :class="{ 'bg-primary text-primary-foreground' : tabButtonActive($el) }"
-              class="relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-full bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out">
-              ${tabContentEl.dataset.tabContent}
-            </button>
-    `,
+					
+					<button
+					data-trigger-block-id="{{block.id}}"
+					data-tab-trigger="${tabContentEl.dataset.tabContent}"
+					role="tab"
+					aria-label="${tabContentEl.dataset.tabContent}"
+					:aria-selected="tabButtonActive($el)"
+					aria-controls=""
+					type="button"
+					:class="{ 'bg-primary text-primary-foreground' : tabButtonActive($el) }"
+					class="relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-full bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out">
+					${tabContentEl.dataset.tabContent}
+					</button>
+				`,
 				);
 				addedTabs.push(tabContentEl.dataset.tabContent);
 			}

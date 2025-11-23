@@ -1,0 +1,47 @@
+<div
+	data-tab-content='{{block.settings.tab_title}}'
+	class='min-h-30 rounded-lg border border-gray-200 bg-white p-4'
+>
+	{% if request.design_mode and block.blocks.size == 0 %}
+		<div class='flex h-30 flex-col items-center justify-center text-gray-300'>
+			<p class='text-center'>Your tab is empty</p>
+			<p class='text-center'>Click the <strong>+ Add block</strong> button under Tab Item to add content.</p>
+		</div>
+	{% endif %}
+	{% content_for 'blocks' %}
+</div>
+
+{% schema %}
+	{
+		"name": "Tab Item",
+		"settings": [
+			{
+				"type": "text",
+				"id": "tab_title",
+				"label": "Tab Title",
+				"default": "Tab Title"
+			}
+		],
+		"blocks": [
+			{
+				"type": "@theme"
+			},
+			{
+				"type": "@app"
+			}
+		],
+		"presets": [
+			{
+				"name": "Tab Item",
+				"blocks": [
+					{
+						"type": "text",
+						"settings": {
+							"text": "<h1>Tab Content...</h1>"
+						}
+					}
+				]
+			}
+		]
+	}
+{% endschema %}

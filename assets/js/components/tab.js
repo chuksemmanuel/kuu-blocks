@@ -4,11 +4,17 @@ document.addEventListener('alpine:init', () => {
 	Alpine.data('tab', () => ({
 		/** @type {string} */
 		activeTab: '',
+		/** @type {string | null} */
+		blockId: null,
 
 		init() {
 			// Initialize active tab from data attribute or default
 			// @ts-ignore
 			this.activeTab = this.$el.dataset.defaultActive;
+
+			if (this.$el.dataset.tabBlockId) {
+				this.blockId = this.$el.dataset.tabBlockId;
+			}
 
 			console.log(this.$el.dataset.defaultActive);
 			// If no default active is set, try to find the first trigger
@@ -61,6 +67,14 @@ document.addEventListener('alpine:init', () => {
 			// Update Triggers
 			const triggers = this.$el.querySelectorAll('[data-tab-trigger]');
 			triggers.forEach((trigger) => {
+				if (
+					this.blockId &&
+					trigger
+						.closest('[data-tab-block-id]')
+						?.getAttribute('data-tab-block-id') != this.blockId
+				) {
+					return;
+				}
 				if (!(trigger instanceof HTMLElement)) return;
 				const id = trigger.dataset.tabTrigger;
 				const isActive = id === this.activeTab;
@@ -74,19 +88,20 @@ document.addEventListener('alpine:init', () => {
 				} else {
 					trigger.classList.remove('active');
 				}
-
-				// Bind click event if not already bound (Alpine handles this usually, but for raw elements)
-				// We can use x-on:click in the markup or bind here.
-				// Since we want flexibility, let's assume the user might not add @click.
-				// However, adding event listeners repeatedly is bad.
-				// Better approach: Event delegation on the root or assume user adds @click="setActiveTab('...')"
-				// BUT, to make it "just work" like the drawer, we should probably handle the click.
-				// Let's use Alpine's x-on behavior by adding it dynamically or using event delegation in init.
 			});
 
 			// Update Contents
 			const contents = this.$el.querySelectorAll('[data-tab-content]');
 			contents.forEach((content) => {
+				// Handle cases where there is nested block tab
+				if (
+					this.blockId &&
+					content
+						.closest('[data-tab-block-id]')
+						?.getAttribute('data-tab-block-id') != this.blockId
+				) {
+					return;
+				}
 				if (!(content instanceof HTMLElement)) return;
 				const id = content.dataset.tabContent;
 				const isActive = id === this.activeTab;
@@ -107,6 +122,15 @@ document.addEventListener('alpine:init', () => {
 		 */
 		triggerHandler(e) {
 			const target = /** @type {HTMLElement} */ (e.target);
+
+			if (
+				this.blockId &&
+				target
+					.closest('[data-tab-block-id]')
+					?.getAttribute('data-tab-block-id') != this.blockId
+			) {
+				return;
+			}
 			const trigger = target.closest('[data-tab-trigger]');
 			if (trigger instanceof HTMLElement) {
 				this.setActiveTab(trigger.dataset.tabTrigger || '');

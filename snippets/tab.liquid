@@ -1,24 +1,30 @@
+{% assign block_settings = block.settings %}
 {% liquid
-  assign id = id | default: 'tab'
-  assign default_active = default_active
+	assign id = id | default: 'tab'
+	assign default_active = default_active
 %}
 
 <div
-  data-tab-id="{{id}}"
-  data-default-active="{{default_active}}"
-  x-data="tab"
-  class="w-full {{class}} "
->
-  <!-- Triggers -->
-  <div
-    role="tablist"
-    class="{{trigger_class}} "
-  >
-    {{ triggers }}
-  </div>
+	data-tab-id='{{id}}'
+	data-default-active='{{default_active}}'
+	{% if block and block.id != blank %}
+		data-tab-block-id='{{block.id}}'
+	{% endif %}
 
-  <!-- Contents -->
-  <div class="{{content_class}} ">
-    {{ contents }}
-  </div>
+	x-data='tab'
+	class='spacing-style w-full {{class}} '
+	style='{% render 'spacing-padding', settings: block_settings %}'
+>
+	<!-- Triggers -->
+	<div
+		role='tablist'
+		class='{{trigger_class}} '
+	>
+		{{ triggers }}
+	</div>
+
+	<!-- Contents -->
+	<div class='{{content_class}} '>
+		{{ contents }}
+	</div>
 </div>

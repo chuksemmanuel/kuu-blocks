@@ -69,7 +69,7 @@
 		let addedTabs = [];
 		let tabEl = document.querySelector('[data-tab-id="{{tabId}}"]');
 		tabEl.querySelectorAll('[data-tab-content]').forEach((tabContentEl) => {
-			console.log(tabContentEl);
+			
 			if (!addedTabs.includes(tabContentEl.dataset.tabContent)) {
 				document.querySelector('[data-horizontal-scroll="{{tabId}}"]').insertAdjacentHTML(
 					'beforeend',

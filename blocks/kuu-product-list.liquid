@@ -1,0 +1,71 @@
+{% for product in block.settings.products %}
+	<a
+		data-content-block-id='{{block.id}}'
+		data-tab-content='{{block.settings.tab_title}}'
+		aria-label='{{product.title}}'
+		role='listitem'
+		href='{{ product.url }}'
+		class='flex flex-col  gap-5  rounded-lg p-4 transition duration-300 hover:bg-gray-100 lg:p-6'
+	>
+		<div class='flex items-center gap-5'>
+			<div
+				class='block size-20 shrink-0 overflow-hidden rounded  bg-gray-200'
+			>
+				<img
+					src='{{ product.featured_image | image_url : width : 200 }}'
+					alt='{{ product.title }}'
+					class='h-full w-full object-cover'
+					width='80px'
+					height='80px'
+				>
+			</div>
+			<div class='flex flex-col gap-2'>
+				<p class='text-lg'>{{ product.title }}</p>
+				{% if block.settings.show_prices %}
+					<div class='flex items-center gap-2'>
+						<p class='text-lg text-red-500'>{{ product.price | money }}</p>
+						{% if block.settings.show_compare_at_prices %}
+							<p class='text-lg text-gray-500 line-through'>{{ product.compare_at_price | money }}</p>
+						{% endif %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</a>
+{% endfor %}
+
+{% schema %}
+	{
+		"name": "Product Picker",
+		"settings": [
+			{
+				"type": "product_list",
+				"id": "products",
+				"label": "Products"
+			},
+			{
+				"type": "text",
+				"id": "tab_title",
+				"label": "Tab Title"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_prices",
+				"label": "Show prices",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "show_compare_at_prices",
+				"label": "Show compare at prices",
+				"default": true,
+				"visible_if": "{{block.settings.show_prices}}"
+			}
+		],
+		"presets": [
+			{
+				"name": "Product List"
+			}
+		]
+	}
+{% endschema %}

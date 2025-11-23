@@ -350,7 +350,6 @@ document.addEventListener('alpine:init', () => {
 				...newSettings,
 			};
 			this.settings = updatedSettings;
-			console.log('updated, settings ==>', this.settings);
 		},
 		/**
 		 * dispatch cartdrawer events
