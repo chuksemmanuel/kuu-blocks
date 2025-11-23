@@ -1,0 +1,24 @@
+<div class='item-center flex min-h-60 flex-col justify-center rounded-lg border border-gray-200 bg-white/90 p-6'>
+	{% content_for 'blocks' %}
+</div>
+
+{% schema %}
+	{
+		"name": "Kuu Block Preview",
+		"settings": [],
+		"blocks": [
+			{
+				"type": "@theme"
+			},
+			{
+				"type": "@app"
+			}
+		],
+		"presets": [
+			{
+				"name": "Block Preview",
+				"category": "Kuu Docs"
+			}
+		]
+	}
+{% endschema %}
