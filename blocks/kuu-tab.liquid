@@ -1,0 +1,58 @@
+{% schema %}
+	{
+		"name": "Tabb",
+		"class": "w-full",
+		"settings": [],
+		"blocks": [
+			{
+				"type": "_products-tab-product-picker"
+			},
+			{
+				"type": "@app"
+			}
+		],
+		"presets": [
+			{
+				"name": "Tab"
+			}
+		]
+	}
+{% endschema %}
+
+<script>
+	populateTabButtons();
+	// in theme editor, repopulate buttons when changes occur
+	 {% if request.design_mode %}
+	window.addEventListener('shopify:section:load', populateTabButtons)
+	 {% endif %}
+	function populateTabButtons() {
+		// Clear horizontal scroll container
+		document.querySelector('[data-horizontal-scroll="{{tabId}}"]').innerHTML = '';
+
+		let addedTabs = [];
+		let tabEl = document.querySelector('[data-tab-id="{{tabId}}"]');
+		tabEl.querySelectorAll('[data-tab-content]').forEach((tabContentEl) => {
+			console.log(tabContentEl);
+			if (!addedTabs.includes(tabContentEl.dataset.tabContent)) {
+				document.querySelector('[data-horizontal-scroll="{{tabId}}"]').insertAdjacentHTML(
+					'beforeend',
+					/*html*/ `
+        <button
+              data-trigger-block-id="{{block.id}}"
+              data-tab-trigger="${tabContentEl.dataset.tabContent}"
+              role="tab"
+              aria-label="${tabContentEl.dataset.tabContent}"
+              :aria-selected="tabButtonActive($el)"
+              aria-controls=""
+              type="button"
+              :class="{ 'bg-primary text-primary-foreground' : tabButtonActive($el) }"
+              class="relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-full bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out">
+              ${tabContentEl.dataset.tabContent}
+            </button>
+    `,
+				);
+				addedTabs.push(tabContentEl.dataset.tabContent);
+			}
+		});
+	}
+</script>
