@@ -44,7 +44,7 @@
 					"blocks": {}
 				},
 				"kuu_docs_block_preview_AiihYU": {
-					"type": "kuu-group",
+					"type": "kuu-flex-container",
 					"name": "Block Preview",
 					"settings": {},
 					"blocks": {
