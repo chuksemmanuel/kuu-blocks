@@ -132,8 +132,121 @@
 			},
 			{
 				"type": "select",
+				"id": "tag",
+				"label": "Tag",
+				"options": [
+					{
+						"value": "p",
+						"label": "Paragraph"
+					},
+					{
+						"value": "h1",
+						"label": "H1"
+					},
+					{
+						"value": "h2",
+						"label": "H2"
+					},
+					{
+						"value": "h3",
+						"label": "H3"
+					},
+					{
+						"value": "h4",
+						"label": "H4"
+					},
+					{
+						"value": "h5",
+						"label": "H5"
+					},
+					{
+						"value": "h6",
+						"label": "H6"
+					}
+				],
+				"default": "p"
+			},
+			{
+				"type": "select",
 				"id": "font_size",
 				"label": "Font size",
+				"options": [
+					{
+						"value": "",
+						"label": "Default"
+					},
+					{
+						"value": "0.625rem",
+						"label": "10px"
+					},
+					{
+						"value": "0.75rem",
+						"label": "12px"
+					},
+					{
+						"value": "0.875rem",
+						"label": "14px"
+					},
+					{
+						"value": "1rem",
+						"label": "16px"
+					},
+					{
+						"value": "1.125rem",
+						"label": "18px"
+					},
+					{
+						"value": "1.25rem",
+						"label": "20px"
+					},
+					{
+						"value": "1.5rem",
+						"label": "24px"
+					},
+					{
+						"value": "2rem",
+						"label": "32px"
+					},
+					{
+						"value": "2.5rem",
+						"label": "40px"
+					},
+					{
+						"value": "3rem",
+						"label": "48px"
+					},
+					{
+						"value": "3.5rem",
+						"label": "56px"
+					},
+					{
+						"value": "4.5rem",
+						"label": "72px"
+					},
+					{
+						"value": "5.5rem",
+						"label": "88px"
+					},
+					{
+						"value": "7.5rem",
+						"label": "120px"
+					},
+					{
+						"value": "9.5rem",
+						"label": "152px"
+					},
+					{
+						"value": "11.5rem",
+						"label": "184px"
+					}
+				],
+				"default": "1rem",
+				"visible_if": "{{ block.settings.type_preset == 'custom' }}"
+			},
+			{
+				"type": "select",
+				"id": "mobile_font_size",
+				"label": "Mobile font size",
 				"options": [
 					{
 						"value": "",

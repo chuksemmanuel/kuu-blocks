@@ -1,28 +1,54 @@
 # Getting Started with Kuu
 
-Welcome to **Kuu**, a minimal, performance-focused Shopify theme designed for anyone who want to build custom storefronts without fighting a bloated codebase.
+**Kuu** is a modern, high-performance Shopify theme that adapts to how you build. Use it as a complete **production-ready theme**, or as a **library of modular components** to enhance your existing store.
 
-## Philosophy
+## Choose Your Path
 
-Kuu is not a traditional "theme" you install and forget. It is a **development kit**.
+### 1. For Merchants (Ready to Sell)
 
-- **You own the code:** Components are meant to be copied, pasted, and modified.
-- **No Black Boxes:** Logic is exposed via `window.kuu` and standard Alpine.js components.
-- **Performance First:** We use native browser features, Tailwind CSS, and Alpine.js to keep things lightweight.
+_Target: Store owners who want a fast, beautiful store out of the box._
 
-## Prerequisites
+- **Download & Install:** Download the latest release zip and upload it to your Shopify Admin.
+- **Customize:** Use the standard Shopify Theme Editor. All blocks (Cart Drawer, Tabs, etc.) are fully configurable via settings—no code required.
+- **Kuu App (Coming Soon):** Future ability to install blocks directly to any theme.
 
-Before you begin, ensure you have the following installed:
+### 2. For Builders & Technical Merchants (Mix & Match)
 
-- [Node.js](https://nodejs.org/) (v18+)
-- [Shopify CLI](https://shopify.dev/docs/api/shopify-cli)
-- [pnpm](https://pnpm.io/) (Recommended) or npm/yarn
+_Target: You have an existing theme but want specific Kuu features (e.g., "I just want that Cart Drawer")._
 
-## Installation
+- **Browse & Copy:** Find the component you need in our docs.
+- **The "Drop-in" Workflow:**
+  1.  Copy the **Liquid Snippet** (e.g., `snippets/cartdrawer.liquid`).
+  2.  Copy the **JavaScript** (e.g., `assets/js/blocks/cartdrawer.js`).
+  3.  Add the **Dependencies** (e.g., `snippets/button.liquid`).
+- **Upload:** Add these files to your current theme's code editor.
+- **Result:** The block appears in your Theme Editor, ready to use.
+
+### 3. For Developers (Full Control)
+
+_Target: You are building a custom storefront from scratch._
+
+- **Clone the Repo:** Treat Kuu as your starting skeleton.
+- **Local Dev:** Use Shopify CLI + pnpm for a modern workflow with HMR (Hot Module Replacement).
+- **Extend:** Leverage the `window.kuu` API and Alpine.js architecture to build complex interactions.
+
+## Core Concepts (How it Works)
+
+### Modular Architecture
+
+Every piece (Button, Drawer, Tab) is designed to be self-contained. Logic is split between `snippets/` (markup) and `assets/js/` (logic), making it easy to move components between projects.
+
+### Performance First
+
+We use **Tailwind CSS** (compiled) and **Alpine.js** for a lightweight footprint. No heavy frameworks, no bloat.
+
+### Transparent Logic
+
+No black boxes. You own the code you copy. We expose key component APIs to `window.kuu`, allowing you to control components programmatically (e.g., `window.kuu.cartDrawer.open()`).
+
+## Installation (For Developers)
 
 ### 1. Clone the Repository
-
-Start by cloning the Kuu repository to your local machine.
 
 ```bash
 git clone git@github.com:chuksemmanuel/kuu-theme.git my-new-store
@@ -31,76 +57,18 @@ cd my-new-store
 
 ### 2. Install Dependencies
 
-We use `pnpm` to manage development dependencies like Tailwind CSS.
-
 ```bash
 pnpm install
 ```
 
-### 3. Start Development
-
-Run the development server. This will start both the Tailwind compiler and the Shopify CLI.
+### 3. Start Development to Compile Tailwind CSS
 
 ```bash
 pnpm dev
 ```
 
-_This command runs `shopify theme dev` and watches for Tailwind changes simultaneously._
-
-## Project Structure
-
-Kuu follows the standard Shopify 2.0 structure with a few modern additions:
+### 4. In a differnt terminal Run Shopify CLI
 
 ```bash
-.
-├── assets/
-│   ├── css/            # Compiled CSS (do not edit directly)
-│   ├── js/
-│   │   ├── blocks/     # Logic for specific blocks (e.g., cartdrawer.js)
-│   │   ├── components/ # Reusable component logic (e.g., tabs.js)
-│   │   └── kuu.js      # Core theme entry point
-├── layout/             # Theme layout files (theme.liquid)
-├── sections/           # JSON and Liquid sections
-├── snippets/           # Reusable Liquid components (buttons, drawers)
-└── src/
-    └── tailwind.css    # Source CSS file (EDIT THIS)
+shopify theme dev
 ```
-
-## Core Technologies
-
-### Tailwind CSS
-
-Styling is handled via Tailwind.
-
-- Edit `src/tailwind.css` for global styles.
-- Use utility classes directly in your Liquid files.
-- The build process compiles everything into `assets/css/app.css`.
-
-### Alpine.js
-
-Kuu uses [Alpine.js](https://alpinejs.dev/) for interactivity. It provides the reactivity of a framework like Vue/React but with a much smaller footprint.
-
-**Common Pattern:**
-Most interactive components (like the Cart Drawer) consist of two parts:
-
-1.  **Liquid Snippet:** Defines the markup and `x-data` state.
-    - _Example:_ `snippets/cartdrawer.liquid`
-2.  **JavaScript File:** Defines the logic and registers the Alpine component.
-    - _Example:_ `assets/js/blocks/cartdrawer.js`
-
-### The `window.kuu` Object
-
-We expose key component APIs to the global `window.kuu` object. This allows you to control components programmatically from anywhere in your code.
-
-**Example: Opening the Cart Drawer**
-
-```javascript
-// Open the cart drawer from the console or another script
-window.kuu.cartDrawer.open();
-```
-
-## Next Steps
-
-- Explore the [Components](/docs/components) to see what's available.
-- Read the [Philosophy](/docs/philosophy) to understand our design decisions.
-- Check out `layout/theme.liquid` to see how the app is bootstrapped.
