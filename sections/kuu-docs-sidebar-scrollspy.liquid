@@ -47,7 +47,7 @@
 								.trim()
 								.toLowerCase()
 								.replace(/\s+/g, '-')
-								.replace(/[^\w\-]+/g, '') || `heading-${index}`;
+								.replace(/[^\w\-]+/g, '') + `-${index}` || `heading-${index}`;
 					}
 					return {
 						id: el.id,

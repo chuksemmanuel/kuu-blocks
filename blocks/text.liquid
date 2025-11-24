@@ -469,6 +469,17 @@
 				"default": 0
 			},
 			{
+				"type": "range",
+				"id": "padding-inline-end",
+				"label": "Right",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.custom_mobile_padding }}"
+			},
+			{
 				"type": "checkbox",
 				"id": "custom_mobile_padding",
 				"label": "Custom Mobile Padding",
@@ -511,17 +522,6 @@
 				"type": "range",
 				"id": "mobile-padding-inline-end",
 				"label": "Mobile Right",
-				"min": 0,
-				"max": 100,
-				"step": 1,
-				"unit": "px",
-				"default": 0,
-				"visible_if": "{{ block.settings.custom_mobile_padding }}"
-			},
-			{
-				"type": "range",
-				"id": "padding-inline-end",
-				"label": "Right",
 				"min": 0,
 				"max": 100,
 				"step": 1,
@@ -573,6 +573,36 @@
 				"category": "Basic",
 				"settings": {
 					"text": "<h1>New arrivals</h1>"
+				}
+			},
+			{
+				"name": "Docs Title",
+				"category": "Kuu Docs",
+				"settings": {
+					"text": "<h1>Docs Title</h1>",
+					"type_preset": "custom",
+					"tag": "h1",
+					"font_size": "2rem",
+					"mobile_font_size": "1.5rem",
+					"padding-block-end": 24,
+					"mobile-padding-block-end": 24,
+					"props": "data-doc-heading",
+					"color": "#393838"
+				}
+			},
+			{
+				"name": "Docs Heading",
+				"category": "Kuu Docs",
+				"settings": {
+					"text": "<h2>Docs Heading</h2>",
+					"type_preset": "custom",
+					"tag": "h2",
+					"font_size": "1.5rem",
+					"mobile_font_size": "1.25rem",
+					"padding-block-end": 16,
+					"mobile-padding-block-end": 16,
+					"props": "data-doc-heading",
+					"color": "#393838"
 				}
 			}
 		]
