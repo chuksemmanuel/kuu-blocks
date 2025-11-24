@@ -316,6 +316,18 @@ p:not(.h1, .h2, .h3, .h4, .h5, .h6)
 	}
 }
 
+/* Flex style */
+
+.flex-style {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: var(--flex-direction, column);
+	align-items: var(--align-items, flex-start);
+	justify-content: var(--justify-content, flex-start);
+	row-gap: var(--row-gap, 0px);
+	column-gap: var(--column-gap, 0px);
+}
+
 /* Size style */
 .size-style {
 	width: var(--size-style-width);

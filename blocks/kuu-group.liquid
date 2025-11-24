@@ -1,21 +1,28 @@
 {% liquid
 	assign group_wrapper_class = 'kuu-group-wrapper-' | append: block.id
 	assign group_class = 'kuu-group-' | append: block.id
+
+	case block.settings.width
+		when 'fit-content'
+			assign width_style = 'fit-content'
+		when 'fill'
+			assign width_style = '100%'
+		when 'custom'
+			assign width_style = block.settings.custom_width | append: '%'
+	endcase
 %}
 
 {% capture style %} 
 	{% render 'spacing-padding', settings: block.settings %}
 	{% render 'size-style', settings: block.settings %}
-	--flex-direction: {{ block.settings.flex_direction }};
-	--align-items: {{ block.settings.align_items }};
-	--justify-content: {{ block.settings.justify_content }};
+	{% render 'flex-style', settings: block.settings %}
 {% endcapture %}
 
-<div class=' border-style' style='{% render 'border-override', settings: block.settings %}'>
+<div class='border-style ' style='{% render 'border-override', settings: block.settings %} width:{{ width_style }};'>
 	<div class='{{ group_wrapper_class }}'>
 		<div
 			style='{{ style |  strip}}'
-			class='{{ group_class }} size-style  spacing-style item-center flex flex-col  flex-wrap  overflow-y-auto '
+			class='{{ group_class }} size-style   spacing-style flex-style overflow-y-auto '
 		>
 			{% content_for 'blocks' %}
 		</div>
@@ -23,12 +30,6 @@
 </div>
 
 {% style %}
-	.{{ group_class }} {
-		flex-direction: var(--flex-direction,column);
-		align-items: var(--align-items,flex-start);
-		justify-content: var(--justify-content,flex-start);
-	}
-
 	.{{ group_wrapper_class }} {
 		background-color: {{ block.settings.background_color }};
 		min-height: {{ block.settings.min_height}}px;
@@ -50,7 +51,7 @@
 			},
 			{
 				"type": "header",
-				"content": "Size"
+				"content": "Width"
 			},
 			{
 				"type": "select",
@@ -84,6 +85,12 @@
 				"visible_if": "{{ block.settings.width == 'custom' }}"
 			},
 			{
+				"type": "checkbox",
+				"id": "add_mobile_width",
+				"label": "Custom mobile width",
+				"default": false
+			},
+			{
 				"type": "select",
 				"id": "width_mobile",
 				"label": "Width Mobile",
@@ -101,7 +108,8 @@
 						"label": "Custom"
 					}
 				],
-				"default": "fill"
+				"default": "fill",
+				"visible_if": "{{ block.settings.add_mobile_width }}"
 			},
 			{
 				"type": "range",
@@ -112,7 +120,11 @@
 				"step": 1,
 				"unit": "%",
 				"default": 100,
-				"visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+				"visible_if": "{{ block.settings.add_mobile_width and block.settings.width_mobile == 'custom' }}"
+			},
+			{
+				"type": "header",
+				"content": "Height"
 			},
 			{
 				"type": "select",
@@ -120,7 +132,7 @@
 				"label": "Height",
 				"options": [
 					{
-						"value": "fit",
+						"value": "fit-content",
 						"label": "Fit"
 					},
 					{
@@ -132,7 +144,7 @@
 						"label": "Custom"
 					}
 				],
-				"default": "fit"
+				"default": "fit-content"
 			},
 			{
 				"type": "range",
@@ -324,7 +336,7 @@
 						"label": "Right"
 					}
 				],
-				"default": "left"
+				"default": "flex-start"
 			},
 			{
 				"type": "select",
@@ -345,7 +357,57 @@
 						"label": "Right"
 					}
 				],
-				"default": "left"
+				"default": "flex-start"
+			},
+			{
+				"type": "select",
+				"id": "flex_gap",
+				"label": "Flex Gap",
+				"options": [
+					{
+						"value": "all",
+						"label": "All Gaps"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "all",
+				"info": "Choose custom to style the vertical and horizontal gap separately"
+			},
+			{
+				"type": "range",
+				"id": "gap",
+				"label": "Gap",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 4,
+				"visible_if": "{{ block.settings.flex_gap == 'all' }}"
+			},
+			{
+				"type": "range",
+				"id": "row_gap",
+				"label": "Row Gap",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.flex_gap == 'custom' }}"
+			},
+			{
+				"type": "range",
+				"id": "column_gap",
+				"label": "Column Gap",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.flex_gap == 'custom' }}"
 			},
 			{
 				"type": "header",

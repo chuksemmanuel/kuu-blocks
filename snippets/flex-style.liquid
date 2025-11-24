@@ -1,0 +1,9 @@
+--flex-direction: {{ settings.flex_direction }}; --align-items: {{ settings.align_items }}; --justify-content:
+{{ settings.justify_content }};
+
+{% if settings.flex_gap == 'all' %}
+	--row-gap: {{ settings.gap }}px; --column-gap: {{ settings.gap }}px;
+
+{% else %}
+	--row-gap: {{ settings.row_gap }}px; --column-gap: {{ settings.column_gap }}px;
+{% endif %}
