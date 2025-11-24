@@ -3,7 +3,7 @@
 	key='{{ key }}'
 	data-search-item='{{type}}'
 	aria-label='{{ item.title }}'
-	class='flex items-center gap-5 rounded-lg p-4 transition duration-300 hover:bg-gray-100 md:p-6'
+	class='group flex items-center gap-5 rounded-lg py-2 transition duration-300'
 >
 	{% if item.featured_image != blank %}
 		<div class='block size-20 shrink-0 overflow-hidden rounded bg-gray-200'>
@@ -18,7 +18,7 @@
 	{% endif %}
 
 	<div class='flex flex-col gap-1'>
-		<p class='line-clamp-2 max-w-60 font-semibold'>{{ item.title | highlight: terms }}</p>
+		<p class='reversed-link line-clamp-2 max-w-60 font-semibold'>{{ item.title | highlight: terms }}</p>
 		{% if type == 'product' %}
 			<span>{{ item.price | money }}</span>
 		{% endif %}

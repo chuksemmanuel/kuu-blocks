@@ -10,7 +10,7 @@
 	endif
 
 	# size
-	if block.settings.size == blank
+	if block.settings.size == 'default'
 		assign size = size
 	else
 		assign size = block.settings.size
@@ -23,11 +23,25 @@
 		assign variant = block.settings.variant
 	endif
 
-	# href
-	if block.settings.custom_link == true and block.settings.href == blank
-		assign href = href
+	# color
+	if block.settings.custom_color == true
+		assign color = block.settings.color
 	else
+		assign color = color
+	endif
+
+	# href
+	if block.settings.custom_link == true and block.settings.href != blank
 		assign href = block.settings.href
+	else
+		assign href = href
+	endif
+
+	# target blank
+	if block.settings.target_blank == true
+		assign target_blank = target_blank
+	else
+		assign target_blank = target_blank
 	endif
 
 	# ID
@@ -137,6 +151,7 @@
 {% render 'button',
 	device: device,
 	variant: variant,
+	color: color,
 	align: align,
 	size: size,
 	href: href,
@@ -155,7 +170,8 @@
 	padding_right: padding_right,
 	icon: icon,
 	lucide_icon: lucide_icon,
-	icon_position: icon_position
+	icon_position: icon_position,
+	target_blank: target_blank
 %}
 
 {% schema %}
@@ -200,6 +216,14 @@
 						"label": "Secondary"
 					},
 					{
+						"value": "destructive",
+						"label": "Destructive"
+					},
+					{
+						"value": "link",
+						"label": "Link"
+					},
+					{
 						"value": "white",
 						"label": "White"
 					},
@@ -210,6 +234,46 @@
 					{
 						"value": "ghost",
 						"label": "Ghost"
+					}
+				]
+			},
+			{
+				"type": "select",
+				"id": "size",
+				"label": "Button Size",
+				"options": [
+					{
+						"value": "default",
+						"label": "Default"
+					},
+					{
+						"value": "sm",
+						"label": "Small"
+					},
+					{
+						"value": "md",
+						"label": "Medium"
+					},
+					{
+						"value": "lg",
+						"label": "Large"
+					},
+					{
+						"value": "icon-sm",
+						"label": "Icon Small"
+					},
+					{
+						"value": "icon",
+						"label": "Icon Medium"
+					},
+
+					{
+						"value": "icon-lg",
+						"label": "Icon Large"
+					},
+					{
+						"value": "full",
+						"label": "Full"
 					}
 				]
 			},
@@ -232,6 +296,44 @@
 				"id": "href",
 				"label": "Link",
 				"visible_if": "{{block.settings.custom_link}}"
+			},
+			{
+				"type": "checkbox",
+				"id": "target_blank",
+				"label": "Open Link in new tab",
+				"visible_if": "{{block.settings.custom_link}}"
+			},
+			{
+				"type": "header",
+				"content": "Colors"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_color",
+				"label": "Custom Color"
+			},
+			{
+				"type": "color",
+				"id": "color",
+				"label": "Color",
+				"default": "#000000",
+				"visible_if": "{{block.settings.custom_color}}"
+			},
+			{
+				"type": "header",
+				"content": "Alignment"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_alignment",
+				"label": "Align Button"
+			},
+			{
+				"type": "text_alignment",
+				"id": "alignment",
+				"label": "Align Button",
+				"default": "left",
+				"visible_if": "{{block.settings.custom_alignment}}"
 			},
 			{
 				"type": "header",
@@ -262,9 +364,37 @@
 					{
 						"value": "right",
 						"label": "Right"
+					},
+					{
+						"value": "top",
+						"label": "Top"
+					},
+					{
+						"value": "bottom",
+						"label": "Bottom"
 					}
 				],
 				"visible_if": "{{block.settings.custom_icon}}"
+			},
+			{
+				"type": "header",
+				"content": "Border Radius"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_radius",
+				"label": "Adjust Border Radius"
+			},
+			{
+				"type": "range",
+				"id": "radius",
+				"label": "Roundeness",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"default": 8,
+				"unit": "px",
+				"visible_if": "{{ block.settings.custom_radius == true }}"
 			},
 			{
 				"type": "header",
@@ -398,42 +528,6 @@
 			},
 			{
 				"type": "header",
-				"content": "Border Radius"
-			},
-			{
-				"type": "checkbox",
-				"id": "custom_radius",
-				"label": "Adjust Border Radius"
-			},
-			{
-				"type": "range",
-				"id": "radius",
-				"label": "Roundeness",
-				"min": 0,
-				"max": 100,
-				"step": 1,
-				"default": 0,
-				"unit": "px",
-				"visible_if": "{{ block.settings.custom_radius == true }}"
-			},
-			{
-				"type": "header",
-				"content": "Alignment"
-			},
-			{
-				"type": "checkbox",
-				"id": "custom_alignment",
-				"label": "Align Button"
-			},
-			{
-				"type": "text_alignment",
-				"id": "alignment",
-				"label": "Align Button",
-				"default": "left",
-				"visible_if": "{{block.settings.custom_alignment}}"
-			},
-			{
-				"type": "header",
 				"content": "Padding"
 			},
 			{
@@ -509,7 +603,9 @@
 				"category": "Kuu Components",
 				"settings": {
 					"label": "Button",
-					"variant": "primary"
+					"variant": "primary",
+					"size": "lg",
+					"radius": 8
 				}
 			}
 		]

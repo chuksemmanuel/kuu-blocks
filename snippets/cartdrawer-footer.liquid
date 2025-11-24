@@ -1,90 +1,90 @@
 {% # Cart Footer %}
 <div
-  class="flex min-h-24 shrink-0  flex-col justify-between border-t  border-gray-200 pb-4 md:pb-8 lg:min-h-35"
-  id="cartdrawer-footer"
+	class='flex min-h-24 shrink-0  flex-col justify-between border-t  border-gray-200 pb-4 md:pb-8 lg:min-h-35'
+	id='cartdrawer-footer'
 >
-  <div class="flex flex-col gap-4 lg:gap-6">
-    <!-- Total -->
-    <div class="flex flex-col gap-1 px-4 pt-4 lg:px-8 lg:pt-6">
-      <div class="flex items-center justify-between">
-        <span class="font-medium lg:text-lg">Total</span>
+	<div class='flex flex-col gap-4 lg:gap-6'>
+		<!-- Total -->
+		<div class='flex flex-col gap-1 px-4 pt-4 lg:px-8 lg:pt-6'>
+			<div class='flex items-center justify-between'>
+				<span class='font-medium lg:text-lg'>Total</span>
 
-        <template x-if="settings.showComparePrice">
-          {% if cart.original_total_price > cart.total_price %}
-            <div class="flex gap-2" :class="updatingKey && 'animate-pulse'">
-              <span
-                class="font-semibold lg:text-lg"
-                style="color:{{final_price_color}}"
-                :style="{color: settings.finalPriceColor}"
-              >
-                {{- cart.total_price | money -}}
-              </span>
-              <span class=" line-through lg:text-lg">{{ cart.original_total_price | money }}</span>
-            </div>
-          {% else %}
-            <span class="font-semibold lg:text-lg" :class="updatingKey && 'animate-pulse'">
-              {{- cart.total_price | money -}}
-            </span>
-          {% endif %}
-        </template>
+				<template x-if='settings.showComparePrice'>
+					{% if cart.original_total_price > cart.total_price %}
+						<div class='flex gap-2' :class="updatingKey && 'animate-pulse'">
+							<span
+								class='font-semibold lg:text-lg'
+								style='color:{{final_price_color}}'
+								:style='{color: settings.finalPriceColor}'
+							>
+								{{- cart.total_price | money -}}
+							</span>
+							<span class=' line-through lg:text-lg'>{{ cart.original_total_price | money }}</span>
+						</div>
+					{% else %}
+						<span class='font-semibold lg:text-lg' :class="updatingKey && 'animate-pulse'">
+							{{- cart.total_price | money -}}
+						</span>
+					{% endif %}
+				</template>
 
-        <template x-if="!settings.showComparePrice">
-          <span class="font-semibold lg:text-lg" :class="updatingKey && 'animate-pulse'">
-            {{- cart.total_price | money -}}
-          </span>
-        </template>
-      </div>
-    </div>
+				<template x-if='!settings.showComparePrice'>
+					<span class='font-semibold lg:text-lg' :class="updatingKey && 'animate-pulse'">
+						{{- cart.total_price | money -}}
+					</span>
+				</template>
+			</div>
+		</div>
 
-    <!-- CTA -->
-    <div class="flex flex-col items-center justify-center gap-2 px-4 lg:gap-4 lg:px-8">
-      <div class="flex w-full items-center justify-center gap-4">
-        {% if show_secondary_footer_cta %}
-          <div
-            class="hidden w-full md:block"
-            {% unless secondary_footer_cta_link %}
-              data-drawer-close
-            {% endunless %}
-          >
-            {% render 'button',
-              variant: 'secondary',
-              size: 'lg',
-              label: secondary_footer_cta_label,
-              href: secondary_footer_cta_link,
-              class: 'w-full! rounded-full!'
-            %}
-          </div>
-        {% endif %}
+		<!-- CTA -->
+		<div class='flex flex-col items-center justify-center gap-2 px-4 lg:gap-4 lg:px-8'>
+			<div class='flex w-full items-center justify-center gap-4'>
+				{% if show_secondary_footer_cta %}
+					<div
+						class='hidden w-1/2 md:block'
+						{% unless secondary_footer_cta_link %}
+							data-drawer-close
+						{% endunless %}
+					>
+						{% render 'button',
+							variant: 'secondary',
+							size: 'lg',
+							label: secondary_footer_cta_label,
+							href: secondary_footer_cta_link,
+							class: 'w-full! rounded-full!'
+						%}
+					</div>
+				{% endif %}
 
-        {% if show_checkout_lock_icon %}
-          {% assign icon = 'icons/lock-keyhole.svg' %}
-        {% else %}
-          {% assign icon = null %}
-        {% endif %}
+				{% if show_checkout_lock_icon %}
+					{% assign icon = 'icons/lock-keyhole.svg' %}
+				{% else %}
+					{% assign icon = null %}
+				{% endif %}
 
-        {% render 'button',
-          variant: 'primary',
-          size: 'lg',
-          label: checkout_button_label,
-          icon: icon,
-          class: 'w-full! rounded-full!',
-          wrapper_class: 'max-md:w-full',
-          align: 'center',
-          href: '/checkout'
-        %}
-      </div>
+				{% render 'button',
+					variant: 'primary',
+					size: 'lg',
+					label: checkout_button_label,
+					icon: icon,
+					class: 'w-full! rounded-full!',
+					wrapper_class: 'w-full md:w-1/2',
+					align: 'center',
+					href: '/checkout'
+				%}
+			</div>
 
-      {% if show_secondary_footer_cta %}
-        {% if secondary_footer_cta_link %}
-          <a class="cursor-pointer text-center underline md:hidden" href="{{secondary_footer_cta_link}}">
-            {{- secondary_footer_cta_label -}}
-          </a>
-        {% else %}
-          <span class="cursor-pointer text-center underline md:hidden" data-drawer-close>
-            {{- secondary_footer_cta_label -}}
-          </span>
-        {% endif %}
-      {% endif %}
-    </div>
-  </div>
+			{% if show_secondary_footer_cta %}
+				{% if secondary_footer_cta_link %}
+					<a class='cursor-pointer text-center underline md:hidden' href='{{secondary_footer_cta_link}}'>
+						{{- secondary_footer_cta_label -}}
+					</a>
+				{% else %}
+					<span class='cursor-pointer text-center underline md:hidden' data-drawer-close>
+						{{- secondary_footer_cta_label -}}
+					</span>
+				{% endif %}
+			{% endif %}
+		</div>
+	</div>
 </div>

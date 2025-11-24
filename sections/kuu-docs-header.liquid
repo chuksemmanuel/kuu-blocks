@@ -35,19 +35,9 @@
 		</div>
 
 		<!-- Header Right -->
-		<div class='flex items-center justify-end  gap-4'>
+		<div class='flex items-center justify-end gap-2  md:gap-4'>
 			{% content_for 'block', type: '_searchdrawer', id: 'kuu-docs-searchdrawer' %}
-			{% content_for 'block',
-				type: 'button',
-				variant: '',
-				size: 'icon',
-				radius: '999px',
-				id: 'kuu-docs-github-button',
-				button_class: 'bg-gray-700 text-white',
-				icon: 'icons/github.svg',
-				href: 'https://github.com/chuksemmanuel/kuu-blocks',
-				aria_label: 'GitHub Icon'
-			%}
+			{% content_for 'blocks' %}
 		</div>
 	</header>
 </div>
@@ -55,6 +45,7 @@
 {% schema %}
 	{
 		"name": "Kuu Docs Header",
-		"settings": []
+		"settings": [],
+		"blocks": [{ "type": "@theme" }, { "type": "@app" }]
 	}
 {% endschema %}

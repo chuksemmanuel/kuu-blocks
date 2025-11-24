@@ -1,6 +1,6 @@
 {% # if only icon is passed and no size or label props, set button size to icon %}
 {% if label == blank and size == blank %}
-  {% assign size = 'icon' %}
+	{% assign size = 'icon' %}
 {% endif %}
 
 {% capture inline_styles %}
@@ -16,6 +16,16 @@
   {% endif %}
   {% if mobile_height %}
     --mobile-height: {{mobile_height}};
+  {% endif %}
+
+  {% if color %}
+    --color:{{color}};
+    {% assign contrast = color | color_contrast: '#ffffff' %}
+	{% if contrast < 3.1 %}
+    --color-foreground:#000000;
+	{% else %}
+		--color-foreground:#ffffff;
+	{% endif %}
   {% endif %}
 
 
@@ -51,8 +61,28 @@
       --fallback-height:48px;
       --fallback-pr:24px;
       --fallback-pl:24px;
+
+    {%- when 'full' -%}
+    --fallback-width:100%;
+    --fallback-height:48px;
+
+        {%- when 'icon-sm' -%}
+      --fallback-width:32px;
+      --fallback-height:32px;
+      --fallback-pt:8px;
+      --fallback-pb:8px;
+      --fallback-pr:8px;
+      --fallback-pl:8px;
     
     {%- when 'icon' -%}
+      --fallback-width:40px;
+      --fallback-height:40px;
+      --fallback-pt:8px;
+      --fallback-pb:8px;
+      --fallback-pr:8px;
+      --fallback-pl:8px;
+
+    {%- when 'icon-lg' -%}
       --fallback-width:48px;
       --fallback-height:48px;
       --fallback-pt:8px;
@@ -72,50 +102,64 @@
 {% endcapture %}
 
 {% if block.id != blank %}
-  {% assign button_class = 'button' | append: block.id %}
+	{% assign button_class = 'button' | append: block.id %}
 {% endif %}
 
-{%- assign base_class = 'button relative inline-flex items-center justify-center font-medium transition-colors focus:outline-none  disabled:opacity-50 disabled:pointer-events-none ' -%}
+{%- assign base_class = 'button relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-5 [&_svg]:shrink-0 cursor-pointer' -%}
 
 {%- case variant -%}
-  {%- when 'primary' -%}
-    {%- assign variant_class = 'bg-primary text-primary-foreground hover:bg-primary/90' -%}
-  {%- when 'secondary' -%}
-    {%- assign variant_class = 'bg-gray-100 text-gray-900 hover:bg-gray-200' -%}
-  {%- when 'outline' -%}
-    {%- assign variant_class = 'border border-primary text-gray-900 hover:bg-gray-50' -%}
-  {%- when 'ghost' -%}
-    {%- assign variant_class = 'bg-transparent hover:bg-gray-100' -%}
-  {% when 'white' %}
-    {% assign variant_class = 'bg-white text-black hover:bg-primary hover:text-primary-foreground ' %}
-  {%- else -%}
-    {%- assign variant_class = '' -%}
+	{%- when 'default' -%}
+		{%- assign variant_class = 'bg-primary text-primary-foreground hover:bg-primary/90' -%}
+	{%- when 'primary' -%}
+		{%- assign variant_class = 'bg-primary text-primary-foreground hover:bg-primary/90' -%}
+	{%- when 'destructive' -%}
+		{%- assign variant_class = 'bg-destructive text-destructive-foreground hover:bg-destructive/90' -%}
+	{%- when 'secondary' -%}
+		{%- assign variant_class = 'bg-secondary text-secondary-foreground hover:bg-secondary/80' -%}
+	{%- when 'outline' -%}
+		{%- assign variant_class = 'border border-input bg-background hover:bg-accent hover:text-accent-foreground' -%}
+	{%- when 'ghost' -%}
+		{%- assign variant_class = 'hover:bg-accent hover:text-accent-foreground' -%}
+	{% when 'white' %}
+		{% assign variant_class = 'bg-white text-black hover:bg-primary hover:text-primary-foreground ' %}
+	{% when 'link' %}
+		{% assign variant_class = 'text-primary underline-offset-4 hover:underline' %}
+	{%- else -%}
+		{%- assign variant_class = '' -%}
 {%- endcase -%}
 
 {%- case size -%}
-  {%- when 'sm' -%}
-    {%- assign size_class = 'h-8 px-3 text-sm ' -%}
-  {%- when 'lg' -%}
-    {%- assign size_class = 'h-12 px-6 text-base' -%}
-  {%- when 'icon' -%}
-    {%- assign size_class = 'p-2 size-12' -%}
-  {%- when 'none' -%}
-    {%- assign size_class = '' -%}
-  {%- else -%}
-    {%- assign size_class = 'h-10 px-4 text-sm rounded-md' -%}
+	{%- when 'default' -%}
+		{%- assign size_class = 'h-10 px-4 py-2' -%}
+	{%- when 'sm' -%}
+		{%- assign size_class = 'h-9 rounded-md px-3 ' -%}
+	{%- when 'lg' -%}
+		{%- assign size_class = 'h-11 rounded-md px-8' -%}
+	{%- when 'full' -%}
+		{%- assign size_class = 'w-full h-11 rounded-md px-8' -%}
+	{%- when 'icon' -%}
+		{%- assign size_class = 'size-10' -%}
+	{%- when 'icon-sm' -%}
+		{%- assign size_class = 'size-8' -%}
+	{%- when 'icon-lg' -%}
+		{%- assign size_class = 'size-12' -%}
+	{%- when 'none' -%}
+		{%- assign size_class = '' -%}
+	{%- else -%}
+		{%- assign size_class = 'h-10 px-4 text-sm rounded-md' -%}
 {%- endcase -%}
 
 {%- assign classes = button_class
-  | append: ' '
-  | append: base_class
-  | append: ' '
-  | append: variant_class
-  | append: ' '
-  | append: size_class
-  | append: ' '
-  | append: class
-  | append: ' '
-  | append: button_class
+	| append: ' '
+	| append: base_class
+	| append: ' '
+	| append: variant_class
+	| append: ' '
+	| append: size_class
+	| append: ' '
+	| append: class
+	| append: ' '
+	| append: button_class
 -%}
 
 {% assign icon_position = icon_position | default: 'left' %}
@@ -140,20 +184,28 @@
   {% endif %}
 {% endcapture %}
 
-{%- capture default_content -%}
-  <span aria-hidden="true" class="flex items-center {% if label %}gap-2{% endif %}">
+{% case icon_position %}
+	{% when 'left' %}
+		{% assign flex_direction = 'flex-row gap-2' %}
+	{% when 'right' %}
+		{% assign flex_direction = 'flex-row-reverse gap-2 ' %}
+	{% when 'top' %}
+		{% assign flex_direction = 'flex-col gap-1 py-1' %}
+	{% when 'bottom' %}
+		{% assign flex_direction = 'flex-col-reverse gap-1' %}
+	{% else %}
+		{% assign flex_direction = 'flex-row gap-2 py-1' %}
+{% endcase %}
 
-  {% if icon_position == 'left' %}
+{%- capture default_content -%}
+  <span aria-hidden="true" class="flex items-center {{flex_direction}} ">
+
     {{icon_content}}
-  {% endif %}
 
   {%- if label -%}
         <span>{{ label }}</span>
   {%- endif -%}
 
-  {% if icon_position == 'right' %}
-    {{icon_content}}
-  {% endif %}
    
   </span>
 {%- endcapture -%}
@@ -163,20 +215,20 @@
 {% assign device = device | default: 'all' %}
 
 {% if device == 'all' %}
-  {% assign display_class = 'flex' %}
+	{% assign display_class = 'flex' %}
 {% elsif device == 'mobile' %}
-  {% assign display_class = 'flex md:hidden' %}
+	{% assign display_class = 'flex md:hidden' %}
 {% elsif device == 'desktop' %}
-  {% assign display_class = 'hidden md:flex' %}
+	{% assign display_class = 'hidden md:flex' %}
 {% endif %}
 
 <div
-  class="{{display_class}} shrink-0 {{wrapper_class}}"
-  {% if align %}
-    style="justify-content:{{align}}";
-  {% endif %}
+	class='{{display_class}} shrink-0 {{wrapper_class}}'
+	{% if align %}
+		style='justify-content:{{align}}';
+	{% endif %}
 >
-  {% capture button_props %}
+	{% capture button_props %}
    class="{{ classes }}"
     {% if id %}
     id="{{ id }}"
@@ -195,53 +247,54 @@
    
 {% endcapture %}
 
-  {%- if href -%}
-    <a
-      href="{{ href }}"
-      {{ button_props }}
-    >
-      {{ final_content }}
-    </a>
-  {%- else -%}
-    <button
-      type="{{ type | default: 'button' }}"
-      {{ button_props }}
-    >
-      {{ final_content }}
-    </button>
-  {%- endif -%}
+	{%- if href -%}
+		<a
+			href='{{ href }}'
+			{% if target_blank %}
+				target='_blank'
+			{% endif %}
+			{{ button_props }}
+		>
+			{{ final_content }}
+		</a>
+	{%- else -%}
+		<button
+			type='{{ type | default: 'button' }}'
+			{{ button_props }}
+		>
+			{{ final_content }}
+		</button>
+	{%- endif -%}
 
-  <style>
-    {% if  mobile_width %}
-    @media(max-width:768px){
-      .button{
-        width: var(--mobile-width, var(--fallback-width)) ;
-      }
-    }
-    {% endif %}
+	<style>
+		.{{button_class}}{
 
-    .{{button_class}}{
+		    {% if color %}
+		    background-color:var(--color);
+		      color: var(--color-foreground,#000000);
 
-      width: var(--width, var(--fallback-width, auto));
-      height:var(--height, var(--fallback-height, auto));
-      border-radius: var(--br,0);
-      padding-left: var(--pl, var(--fallback-pl, 0));
-      padding-right: var(--pr, var(--fallback-pr, 0));
-      padding-top: var(--pt, var(--fallback-pt, 0));
-      padding-bottom: var(--pb, var(--fallback-pb, 0));
+		  {% endif %}
 
-      @media (max-width:768px) {
-      width: var(--mobile-width, var(--width, var(--fallback-width, auto)));
-      height: var(--mobile-height, var(--height, var(--fallback-height, auto)));
-      }
-    }
+		  width: var(--width, var(--fallback-width, auto));
+		  height:var(--height, var(--fallback-height, auto));
+		  border-radius: var(--br,8px);
+		  padding-left: var(--pl, var(--fallback-pl, 0));
+		  padding-right: var(--pr, var(--fallback-pr, 0));
+		  padding-top: var(--pt, var(--fallback-pt, 0));
+		  padding-bottom: var(--pb, var(--fallback-pb, 0));
+
+		  @media (max-width:768px) {
+		  width: var(--mobile-width, var(--width, var(--fallback-width, auto)));
+		  height: var(--mobile-height, var(--height, var(--fallback-height, auto)));
+		  }
+		}
 
 
 
 
-    .button svg {
-      color: currentColor;
-      flex-shrink: 0 !important;
-    }
-  </style>
+		.button svg {
+		  color: currentColor;
+		  flex-shrink: 0 !important;
+		}
+	</style>
 </div>

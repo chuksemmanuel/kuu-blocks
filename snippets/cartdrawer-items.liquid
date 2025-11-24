@@ -11,11 +11,11 @@
 			data-line='{{item.id}}'
 			key='{{ item.key }}'
 			aria-label='{{product.title}}'
-			class='focus:outline-none'
+			class='focus:outline-none '
 			tabindex='-1'
 		>
 			<div
-				class='relative flex justify-between gap-5 px-5 lg:px-8'
+				class='group relative flex justify-between gap-5 px-5 lg:px-8'
 				x-id="['{{ item.key }}']"
 				:class="{ 'opacity-95 pointer-events-none': updatingKey === '{{ item.key }}' }"
 			>
@@ -38,12 +38,12 @@
 					</a>
 
 					<!-- Product details -->
-					<div class='flex flex-col gap-1'>
+					<div class=' flex flex-col gap-1'>
 						<!-- Product Title -->
 						<a
 							id='cart-item-{{ item.key }}-title'
 							href='{{item.product.url}}'
-							class='line-clamp-2 max-w-50 font-semibold'
+							class='reversed-link line-clamp-2 max-w-50 font-semibold'
 						>
 							{{- item.title -}}
 						</a>

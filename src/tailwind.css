@@ -1,11 +1,11 @@
 @import 'tailwindcss';
 
 @theme {
-	--color-primary: var(--color-primary);
-	--color-primary-foreground: var(--color-primary-foreground);
-	--color-secondary: var(--color-secondary);
-	--color-foreground: var(--color-foreground);
-	--color-background: var(--color-background);
+	--color-primary: var(--color-primary, #000000);
+	--color-primary-foreground: var(--color-primary-foreground, #ffffff);
+	--color-secondary: var(--color-secondary, #000000);
+	--color-foreground: var(--color-foreground, #000000);
+	--color-background: var(--color-background, #ffffff);
 }
 
 @layer base {
@@ -17,74 +17,4 @@
 	*:focus-visible {
 		@apply ring-0! outline-0!;
 	}
-
-	button {
-		cursor: pointer;
-	}
-}
-
-[x-cloak] {
-	display: none !important;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-	display: none;
-}
-.no-scrollbar {
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-}
-
-.page-width {
-	max-width: var(--page-width, 1200px);
-	margin-left: auto;
-	margin-right: auto;
-	width: 100%;
-}
-.page-width-docs {
-	max-width: var(--page-width-docs, 1440px);
-	margin-left: auto;
-	margin-right: auto;
-	width: 100%;
-}
-
-/* Typography */
-.custom-typography,
-.custom-typography > * {
-	font-family: var(--font-family);
-	font-weight: var(--font-weight);
-	text-transform: var(--text-transform);
-	text-wrap: var(--text-wrap);
-	line-height: var(--line-height);
-	letter-spacing: var(--letter-spacing);
-}
-
-.custom-typography {
-	h1 {
-		line-height: var(--line-height--display, var(--line-height));
-	}
-
-	h2,
-	h3,
-	h4 {
-		line-height: var(--line-height--heading, var(--line-height));
-	}
-
-	p {
-		line-height: var(--line-height--body, var(--line-height));
-	}
-}
-
-.custom-font-size,
-.custom-font-size > * {
-	font-size: var(--font-size);
-}
-
-.custom-font-weight,
-.custom-font-weight > * {
-	font-weight: var(--weight);
-}
-
-.paragraph > small {
-	font-size: smaller;
 }

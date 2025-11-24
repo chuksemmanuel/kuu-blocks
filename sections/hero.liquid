@@ -1,249 +1,249 @@
-<section class="w-full overflow-hidden lg:h-[calc(80svh-148px)] lg:min-h-[640px]">
-  <div class="grid h-full w-full grid-cols-1 gap-4 rounded-3xl bg-white p-4 md:grid-cols-2 lg:p-6">
-    <div class="flex h-full flex-col justify-between gap-6 max-md:order-1">
-      {%- comment -%} Main Content {%- endcomment -%}
-      <div class="flex flex-col gap-4 pt-4 md:gap-6 lg:gap-8">
-        <h1 class="text-3xl font-medium md:text-4xl lg:text-6xl">
-          {{ section.settings.heading }}
-        </h1>
+<section class='w-full overflow-hidden lg:h-[calc(80svh-148px)] lg:min-h-[640px]'>
+	<div class='grid h-full w-full grid-cols-1 gap-4 rounded-3xl bg-white p-4 md:grid-cols-2 lg:p-6'>
+		<div class='flex h-full flex-col justify-between gap-6 max-md:order-1'>
+			{%- comment -%} Main Content {%- endcomment -%}
+			<div class='flex flex-col gap-4 pt-4 md:gap-6 lg:gap-8'>
+				<h1 class='reversed-link hover:show text-3xl font-medium md:text-4xl lg:text-6xl'>
+					{{ section.settings.heading }}
+				</h1>
 
-        {% if section.settings.subheading != blank %}
-          <p class="text-gray-700">
-            {{ section.settings.subheading }}
-          </p>
-        {% endif %}
+				{% if section.settings.subheading != blank %}
+					<p class='text-gray-700'>
+						{{ section.settings.subheading }}
+					</p>
+				{% endif %}
 
-        <div class="flex items-center gap-2">
-          {% for block in section.blocks %}
-            {%- case block.type -%}
-              {%- when 'button' -%}
-                {% assign primary_button = section.blocks | where: 'type', 'button' | first %}
-                {% render 'button',
-                  variant: primary_button.settings.variant,
-                  size: primary_button.settings.size,
-                  href: primary_button.settings.href,
-                  label: primary_button.settings.label,
-                  class: primary_button.settings.class
-                %}
-            {% endcase %}
-          {% endfor %}
+				<div class='flex items-center gap-2'>
+					{% for block in section.blocks %}
+						{%- case block.type -%}
+							{%- when 'button' -%}
+								{% assign primary_button = section.blocks | where: 'type', 'button' | first %}
+								{% render 'button',
+									variant: primary_button.settings.variant,
+									size: primary_button.settings.size,
+									href: primary_button.settings.href,
+									label: primary_button.settings.label,
+									class: primary_button.settings.class
+								%}
+						{% endcase %}
+					{% endfor %}
 
-          {% for block in section.blocks %}
-            {%- case block.type -%}
-              {%- when 'icon_button' -%}
-                {% assign icon_button = section.blocks | where: 'type', 'icon_button' | first %}
-                {% render 'button',
-                  variant: icon_button.settings.variant,
-                  size: icon_button.settings.size,
-                  href: icon_button.settings.href,
-                  icon: icon_button.settings.icon,
-                  class: icon_button.settings.class
-                %}
-            {% endcase %}
-          {% endfor %}
-        </div>
-      </div>
+					{% for block in section.blocks %}
+						{%- case block.type -%}
+							{%- when 'icon_button' -%}
+								{% assign icon_button = section.blocks | where: 'type', 'icon_button' | first %}
+								{% render 'button',
+									variant: icon_button.settings.variant,
+									size: icon_button.settings.size,
+									href: icon_button.settings.href,
+									icon: icon_button.settings.icon,
+									class: icon_button.settings.class
+								%}
+						{% endcase %}
+					{% endfor %}
+				</div>
+			</div>
 
-      {%- comment -%} Hero Review {%- endcomment -%}
-      <div class="flex flex-col justify-between gap-2 lg:flex-row lg:items-end">
-        <div class="flex max-w-[360px] flex-col gap-2 lg:gap-6">
-          <h3 class="text-4xl font-semibold">
-            {{ section.settings.review_heading }}
-          </h3>
-          <p class="text-gray-700">
-            {{ section.settings.review_text }}
-          </p>
-        </div>
+			{%- comment -%} Hero Review {%- endcomment -%}
+			<div class='flex flex-col justify-between gap-2 lg:flex-row lg:items-end'>
+				<div class='flex max-w-[360px] flex-col gap-2 lg:gap-6'>
+					<p class='text-4xl font-semibold'>
+						{{ section.settings.review_heading }}
+					</p>
+					<p class='text-gray-700'>
+						{{ section.settings.review_text }}
+					</p>
+				</div>
 
-        {% # Avatar Images %}
-        <!--
-          comment
-          This class are added here so the tailwind complier picks up the computed values for the avatar translate property
-          -translate-x-[calc(1*6px)]
-          -translate-x-[calc(2*6px)]
-          -translate-x-[calc(3*6px)]
-          -translate-x-[calc(4*6px)]
-          -translate-x-[calc(5*6px)]
-        -->
-        <div class="flex translate-x-1.5" aria-hidden="hidden">
-          {% for block in section.blocks %}
-            {% if block.type == 'avatar' %}
-              <div
-                class="size-12 overflow-hidden rounded-full border-2 border-white bg-gray-200 -translate-x-[calc({{ forloop.index0 }}*6px)]"
-                {{ block.shopify_attributes }}
-              >
-                <img
-                  src="{{ block.settings.avatar | image_url: width: 48 }}"
-                  alt="avatar"
-                  width="48"
-                  height="48"
-                  class="object-fit"
-                  fetchpriority="high"
-                >
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
-    </div>
+				{% # Avatar Images %}
+				<!--
+					comment
+					This class are added here so the tailwind complier picks up the computed values for the avatar translate property
+					-translate-x-[calc(1*6px)]
+					-translate-x-[calc(2*6px)]
+					-translate-x-[calc(3*6px)]
+					-translate-x-[calc(4*6px)]
+					-translate-x-[calc(5*6px)]
+				-->
+				<div class='flex translate-x-1.5' aria-hidden='hidden'>
+					{% for block in section.blocks %}
+						{% if block.type == 'avatar' %}
+							<div
+								class='size-12 overflow-hidden rounded-full border-2 border-white bg-gray-200 -translate-x-[calc({{ forloop.index0 }}*6px)]'
+								{{ block.shopify_attributes }}
+							>
+								<img
+									src='{{ block.settings.avatar | image_url: width: 48 }}'
+									alt='avatar'
+									width='48'
+									height='48'
+									class='object-fit'
+									fetchpriority='high'
+								>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
 
-    {%- comment -%} Featured Image {%- endcomment -%}
-    <div class="aspect-660/600 w-full overflow-hidden rounded-3xl bg-[linear-gradient(45deg,rgba(230,232,235,1)_0%,rgba(211,219,227,1)_51%,rgba(255,255,255,1)_100%)]">
-      {% if section.settings.hero_image %}
-        <img
-          src="{{ section.settings.hero_image | image_url: width: 614 }}"
-          alt="{{ section.settings.hero_image_alt }}"
-          width="614"
-          height="614"
-        >
+		{%- comment -%} Featured Image {%- endcomment -%}
+		<div class='aspect-660/600 w-full overflow-hidden rounded-3xl bg-[linear-gradient(45deg,rgba(230,232,235,1)_0%,rgba(211,219,227,1)_51%,rgba(255,255,255,1)_100%)]'>
+			{% if section.settings.hero_image %}
+				<img
+					src='{{ section.settings.hero_image | image_url: width: 614 }}'
+					alt='{{ section.settings.hero_image_alt }}'
+					width='614'
+					height='614'
+				>
 
-      {% else %}
-        <img
-          src="https://cdn.shopify.com/s/files/1/0628/4348/6291/files/S42325dc6d03e45dd98f379450a1cd6382.png?width=614"
-          alt="Person wearing a gray zip-up sweatshirt on a white background"
-          width="614"
-          height="614"
-        >
-      {% endif %}
-    </div>
-  </div>
+			{% else %}
+				<img
+					src='https://cdn.shopify.com/s/files/1/0628/4348/6291/files/S42325dc6d03e45dd98f379450a1cd6382.png?width=614'
+					alt='Person wearing a gray zip-up sweatshirt on a white background'
+					width='614'
+					height='614'
+				>
+			{% endif %}
+		</div>
+	</div>
 </section>
 
 {% schema %}
-{
-  "name": "Hero",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Unleash Your Style, Shop the Latest Trends"
-    },
-    {
-      "type": "textarea",
-      "id": "subheading",
-      "label": "Subheading",
-      "default": "Discover the latest trends & express your style effortlessly. Shop exclusive collections with premium designs, just for you!"
-    },
-    {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "Hero Image"
-    },
-    {
-      "type": "text",
-      "id": "hero_image_alt",
-      "label": "Hero Image Alt Text",
-      "default": "Person wearing a gray zip-up sweatshirt on a white background"
-    },
-    {
-      "type": "text",
-      "id": "review_heading",
-      "label": "Review Heading",
-      "default": "25 Million+"
-    },
-    {
-      "type": "textarea",
-      "id": "review_text",
-      "label": "Review Text",
-      "default": "Real reviews from our happy customers! See what fashion lovers are saying about our quality, style and service."
-    }
-  ],
-  "blocks": [
-    {
-      "type": "button",
-      "name": "Primary Button",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Label",
-          "default": "Shop Now"
-        },
-        {
-          "type": "url",
-          "id": "href",
-          "label": "Link",
-          "default": "/collections/all"
-        },
-        {
-          "type": "select",
-          "id": "variant",
-          "label": "Variant",
-          "default": "primary",
-          "options": [
-            {
-              "value": "primary",
-              "label": "Primary"
-            },
-            {
-              "value": "secondary",
-              "label": "Secondary"
-            },
-            {
-              "value": "outline",
-              "label": "Outline"
-            },
-            {
-              "value": "ghost",
-              "label": "Ghost"
-            }
-          ]
-        },
-        {
-          "type": "select",
-          "id": "size",
-          "label": "Size",
-          "default": "lg",
-          "options": [
-            {
-              "value": "sm",
-              "label": "Small"
-            },
-            {
-              "value": "lg",
-              "label": "Large"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "id": "class",
-          "label": "Additional Classes",
-          "default": "rounded-full! px-14"
-        }
-      ]
-    },
-    {
-      "type": "avatar",
-      "name": "Review Avatar",
-      "limit": 5,
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "avatar",
-          "label": "Avatar Image"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Hero",
-      "category": "Banner",
-      "blocks": [
-        {
-          "type": "button",
-          "settings": {
-            "label": "Shop Now",
-            "variant": "primary",
-            "size": "lg",
-            "href": "/collections/all"
-          }
-        }
-      ]
-    }
-  ]
-}
+	{
+		"name": "Hero",
+		"settings": [
+			{
+				"type": "text",
+				"id": "heading",
+				"label": "Heading",
+				"default": "Unleash Your Style, Shop the Latest Trends"
+			},
+			{
+				"type": "textarea",
+				"id": "subheading",
+				"label": "Subheading",
+				"default": "Discover the latest trends & express your style effortlessly. Shop exclusive collections with premium designs, just for you!"
+			},
+			{
+				"type": "image_picker",
+				"id": "hero_image",
+				"label": "Hero Image"
+			},
+			{
+				"type": "text",
+				"id": "hero_image_alt",
+				"label": "Hero Image Alt Text",
+				"default": "Person wearing a gray zip-up sweatshirt on a white background"
+			},
+			{
+				"type": "text",
+				"id": "review_heading",
+				"label": "Review Heading",
+				"default": "25 Million+"
+			},
+			{
+				"type": "textarea",
+				"id": "review_text",
+				"label": "Review Text",
+				"default": "Real reviews from our happy customers! See what fashion lovers are saying about our quality, style and service."
+			}
+		],
+		"blocks": [
+			{
+				"type": "button",
+				"name": "Primary Button",
+				"limit": 1,
+				"settings": [
+					{
+						"type": "text",
+						"id": "label",
+						"label": "Label",
+						"default": "Shop Now"
+					},
+					{
+						"type": "url",
+						"id": "href",
+						"label": "Link",
+						"default": "/collections/all"
+					},
+					{
+						"type": "select",
+						"id": "variant",
+						"label": "Variant",
+						"default": "primary",
+						"options": [
+							{
+								"value": "primary",
+								"label": "Primary"
+							},
+							{
+								"value": "secondary",
+								"label": "Secondary"
+							},
+							{
+								"value": "outline",
+								"label": "Outline"
+							},
+							{
+								"value": "ghost",
+								"label": "Ghost"
+							}
+						]
+					},
+					{
+						"type": "select",
+						"id": "size",
+						"label": "Size",
+						"default": "lg",
+						"options": [
+							{
+								"value": "sm",
+								"label": "Small"
+							},
+							{
+								"value": "lg",
+								"label": "Large"
+							}
+						]
+					},
+					{
+						"type": "text",
+						"id": "class",
+						"label": "Additional Classes",
+						"default": "rounded-full! px-14"
+					}
+				]
+			},
+			{
+				"type": "avatar",
+				"name": "Review Avatar",
+				"limit": 5,
+				"settings": [
+					{
+						"type": "image_picker",
+						"id": "avatar",
+						"label": "Avatar Image"
+					}
+				]
+			}
+		],
+		"presets": [
+			{
+				"name": "Hero",
+				"category": "Banner",
+				"blocks": [
+					{
+						"type": "button",
+						"settings": {
+							"label": "Shop Now",
+							"variant": "primary",
+							"size": "lg",
+							"href": "/collections/all"
+						}
+					}
+				]
+			}
+		]
+	}
 {% endschema %}
