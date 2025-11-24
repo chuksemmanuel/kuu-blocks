@@ -7,3 +7,15 @@
 {% else %}
 	--row-gap: {{ settings.row_gap }}px; --column-gap: {{ settings.column_gap }}px;
 {% endif %}
+
+{% if settings.custom_mobile_flex %}
+	--mobile-flex-direction: {{ settings.mobile_flex_direction }}; --mobile-align-items:{{ settings.mobile_align_items }};
+	--mobile-justify-content: {{ settings.mobile_justify_content }};
+
+	{% if settings.mobile_flex_gap == 'all' %}
+		--mobile-row-gap: {{ settings.mobile_gap }}px; --mobile-column-gap: {{ settings.mobile_gap }}px;
+
+	{% else %}
+		--mobile-row-gap: {{ settings.mobile_row_gap }}px; --mobile-column-gap: {{ settings.mobile_column_gap }}px;
+	{% endif %}
+{% endif %}

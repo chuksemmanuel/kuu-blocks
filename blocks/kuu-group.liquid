@@ -410,6 +410,123 @@
 				"visible_if": "{{ block.settings.flex_gap == 'custom' }}"
 			},
 			{
+				"type": "checkbox",
+				"id": "custom_mobile_flex",
+				"label": "Custom Mobile flex",
+				"default": true
+			},
+			{
+				"type": "select",
+				"id": "mobile_flex_direction",
+				"label": "Direction",
+				"options": [
+					{
+						"value": "row",
+						"label": "Row"
+					},
+					{
+						"value": "column",
+						"label": "Column"
+					}
+				],
+				"default": "column",
+				"visible_if": "{{ block.settings.custom_mobile_flex }}"
+			},
+			{
+				"type": "select",
+				"id": "mobile_justify_content",
+				"label": "Justify Content",
+				"options": [
+					{
+						"value": "flex-start",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+
+					{
+						"value": "flex-end",
+						"label": "Right"
+					}
+				],
+				"default": "flex-start",
+				"visible_if": "{{ block.settings.custom_mobile_flex }}"
+			},
+			{
+				"type": "select",
+				"id": "mobile_align_items",
+				"label": "Align Items",
+				"options": [
+					{
+						"value": "flex-start",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+
+					{
+						"value": "flex-end",
+						"label": "Right"
+					}
+				],
+				"default": "flex-start",
+				"visible_if": "{{ block.settings.custom_mobile_flex }}"
+			},
+			{
+				"type": "select",
+				"id": "mobile_flex_gap",
+				"label": "Flex Gap",
+				"options": [
+					{
+						"value": "all",
+						"label": "All Gaps"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "all",
+				"visible_if": "{{ block.settings.custom_mobile_flex }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile_gap",
+				"label": "Gap",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 4,
+				"visible_if": "{{ block.settings.custom_mobile_flex and block.settings.mobile_flex_gap == 'all' }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile_row_gap",
+				"label": "Row Gap",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.mobile_flex_gap == 'custom' }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile_column_gap",
+				"label": "Column Gap",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.mobile_flex_gap == 'custom' }}"
+			},
+			{
 				"type": "header",
 				"content": "Padding"
 			},

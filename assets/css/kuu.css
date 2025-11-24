@@ -324,8 +324,16 @@ p:not(.h1, .h2, .h3, .h4, .h5, .h6)
 	flex-direction: var(--flex-direction, column);
 	align-items: var(--align-items, flex-start);
 	justify-content: var(--justify-content, flex-start);
-	row-gap: var(--row-gap, 0px);
-	column-gap: var(--column-gap, 0px);
+	row-gap: var(--row-gap, 4px);
+	column-gap: var(--column-gap, 4px);
+
+	@media screen and (max-width: 768px) {
+		flex-direction: var(--mobile-flex-direction, column);
+		align-items: var(--mobile-align-items, flex-start);
+		justify-content: var(--mobile-justify-content, flex-start);
+		row-gap: var(--mobile-row-gap, 4px);
+		column-gap: var(--mobile-column-gap, 4px);
+	}
 }
 
 /* Size style */
@@ -333,7 +341,7 @@ p:not(.h1, .h2, .h3, .h4, .h5, .h6)
 	width: var(--size-style-width);
 	height: var(--size-style-height);
 
-	@media screen and (min-width: 750px) {
+	@media screen and (min-width: 768px) {
 		width: var(--size-style-width-mobile, var(--size-style-width));
 		height: var(--size-style-height-mobile, var(--size-style-height));
 	}
