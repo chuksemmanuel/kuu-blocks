@@ -1,0 +1,456 @@
+{% liquid
+	assign group_wrapper_class = 'kuu-group-wrapper-' | append: block.id
+	assign group_class = 'kuu-group-' | append: block.id
+%}
+
+{% capture style %} 
+	{% render 'spacing-padding', settings: block.settings %}
+	{% render 'size-style', settings: block.settings %}
+	--flex-direction: {{ block.settings.flex_direction }};
+	--align-items: {{ block.settings.align_items }};
+	--justify-content: {{ block.settings.justify_content }};
+{% endcapture %}
+
+<div class=' border-style' style='{% render 'border-override', settings: block.settings %}'>
+	<div class='{{ group_wrapper_class }}'>
+		<div
+			style='{{ style |  strip}}'
+			class='{{ group_class }} size-style  spacing-style item-center flex flex-col  flex-wrap  overflow-y-auto '
+		>
+			{% content_for 'blocks' %}
+		</div>
+	</div>
+</div>
+
+{% style %}
+	.{{ group_class }} {
+		flex-direction: var(--flex-direction,column);
+		align-items: var(--align-items,flex-start);
+		justify-content: var(--justify-content,flex-start);
+	}
+
+	.{{ group_wrapper_class }} {
+		background-color: {{ block.settings.background_color }};
+		min-height: {{ block.settings.min_height}}px;
+		{% if block.settings.height != 'custom' and block.settings.add_max_height and block.settings.max_height != blank %}
+		max-height: {{ block.settings.max_height | strip }};
+		overflow-y:auto;
+		{% endif %}
+	}
+{% endstyle %}
+
+{% schema %}
+	{
+		"name": "Kuu Group",
+		"settings": [
+			{
+				"type": "color",
+				"id": "background_color",
+				"label": "Background Color"
+			},
+			{
+				"type": "header",
+				"content": "Size"
+			},
+			{
+				"type": "select",
+				"id": "width",
+				"label": "Width",
+				"options": [
+					{
+						"value": "fit-content",
+						"label": "Fit"
+					},
+					{
+						"value": "fill",
+						"label": "Fill"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "fill"
+			},
+			{
+				"type": "range",
+				"id": "custom_width",
+				"label": "Custom width",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"default": 100,
+				"visible_if": "{{ block.settings.width == 'custom' }}"
+			},
+			{
+				"type": "select",
+				"id": "width_mobile",
+				"label": "Width Mobile",
+				"options": [
+					{
+						"value": "fit-content",
+						"label": "Fit"
+					},
+					{
+						"value": "fill",
+						"label": "Fill"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "fill"
+			},
+			{
+				"type": "range",
+				"id": "custom_width_mobile",
+				"label": "Custom width mobile",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"default": 100,
+				"visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+			},
+			{
+				"type": "select",
+				"id": "height",
+				"label": "Height",
+				"options": [
+					{
+						"value": "fit",
+						"label": "Fit"
+					},
+					{
+						"value": "fill",
+						"label": "Fill"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "fit"
+			},
+			{
+				"type": "range",
+				"id": "custom_height",
+				"label": "Custom height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 240,
+				"visible_if": "{{ block.settings.height == 'custom' }}"
+			},
+			{
+				"type": "range",
+				"id": "min_height",
+				"label": "Minimum height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "checkbox",
+				"id": "add_max_height",
+				"label": "Add max height",
+				"default": false,
+				"visible_if": "{{ block.settings.height != 'custom' }}"
+			},
+			{
+				"type": "text",
+				"id": "max_height",
+				"label": "Max height ",
+				"info": "E.g 1200px, 80vh, min(600px,60svh) etc. Visit [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height) for more info.",
+				"visible_if": "{{block.settings.height != 'custom' and block.settings.add_max_height }}"
+			},
+			{
+				"type": "header",
+				"content": "Border"
+			},
+
+			{
+				"type": "select",
+				"id": "border",
+				"label": "Style",
+				"options": [
+					{
+						"value": "none",
+						"label": "None"
+					},
+					{
+						"value": "solid",
+						"label": "Solid"
+					},
+					{
+						"value": "dashed",
+						"label": "Dashed"
+					}
+				],
+				"default": "none"
+			},
+			{
+				"type": "select",
+				"id": "border_sides",
+				"label": "Sides",
+				"options": [
+					{
+						"value": "all",
+						"label": "All"
+					},
+					{
+						"value": "individual",
+						"label": "Individual"
+					}
+				],
+				"default": "all"
+			},
+			{
+				"type": "range",
+				"id": "border_width",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"label": "Border width",
+				"default": 1,
+				"visible_if": "{{ block.settings.border != 'none' and block.settings.border_sides == 'all' }}"
+			},
+
+			{
+				"type": "range",
+				"id": "border_left_width",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"label": "Border Left",
+				"default": 1,
+				"visible_if": "{{block.settings.border_sides != 'all' }}"
+			},
+			{
+				"type": "range",
+				"id": "border_top_width",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"label": "Border Top",
+				"default": 1,
+				"visible_if": "{{block.settings.border_sides != 'all' }}"
+			},
+			{
+				"type": "range",
+				"id": "border_bottom_width",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"label": "Border Bottom",
+				"default": 1,
+				"visible_if": "{{block.settings.border_sides != 'all' }}"
+			},
+			{
+				"type": "range",
+				"id": "border_right_width",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"label": "Border Right",
+				"default": 1,
+				"visible_if": "{{block.settings.border_sides != 'all' }}"
+			},
+			{
+				"type": "color",
+				"id": "border_color",
+				"label": "Border color",
+				"alpha": true,
+				"default": "#000000",
+				"visible_if": "{{ block.settings.border != 'none' }}"
+			},
+			{
+				"type": "range",
+				"id": "border_radius",
+				"label": "Radius",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			},
+
+			{
+				"type": "header",
+				"content": "Flex"
+			},
+			{
+				"type": "select",
+				"id": "flex_direction",
+				"label": "Direction",
+				"options": [
+					{
+						"value": "row",
+						"label": "Row"
+					},
+					{
+						"value": "column",
+						"label": "Column"
+					}
+				],
+				"default": "column"
+			},
+			{
+				"type": "select",
+				"id": "justify_content",
+				"label": "Justify Content",
+				"options": [
+					{
+						"value": "flex-start",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+
+					{
+						"value": "flex-end",
+						"label": "Right"
+					}
+				],
+				"default": "left"
+			},
+			{
+				"type": "select",
+				"id": "align_items",
+				"label": "Align Items",
+				"options": [
+					{
+						"value": "flex-start",
+						"label": "Left"
+					},
+					{
+						"value": "center",
+						"label": "Center"
+					},
+
+					{
+						"value": "flex-end",
+						"label": "Right"
+					}
+				],
+				"default": "left"
+			},
+			{
+				"type": "header",
+				"content": "Padding"
+			},
+			{
+				"type": "range",
+				"id": "padding-block-start",
+				"label": "Top",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 24
+			},
+			{
+				"type": "range",
+				"id": "padding-block-end",
+				"label": "Bottom",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 24
+			},
+			{
+				"type": "range",
+				"id": "padding-inline-start",
+				"label": "Left",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 24
+			},
+			{
+				"type": "range",
+				"id": "padding-inline-end",
+				"label": "Right",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 24
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_mobile_padding",
+				"label": "Custom Mobile Padding",
+				"default": true
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-block-start",
+				"label": "Mobile Top",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-block-end",
+				"label": "Mobile Bottom",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-inline-start",
+				"label": "Mobile Left",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-inline-end",
+				"label": "Mobile Right",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			}
+		],
+		"blocks": [
+			{
+				"type": "@theme"
+			},
+			{
+				"type": "@app"
+			}
+		],
+		"presets": [
+			{
+				"name": "Group",
+				"category": "Kuu Layout"
+			}
+		]
+	}
+{% endschema %}

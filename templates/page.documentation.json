@@ -8,584 +8,582 @@
  * ------------------------------------------------------------
  */
 {
-  "layout": "documentation",
-  "sections": {
-    "main": {
-      "type": "documentation",
-      "blocks": {
-        "text_VPGBCJ": {
-          "type": "text",
-          "name": "t:general.text",
-          "settings": {
-            "text": "<p>Buttons</p>",
-            "width": "100%",
-            "max_width": "none",
-            "alignment": "left",
-            "type_preset": "h1",
-            "font": "var(--font-heading--family)",
-            "font_size": "2rem",
-            "line_height": "loose",
-            "letter_spacing": "loose",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "#393838",
-            "background": false,
-            "background_color": "#f9ca4f",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 24,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "custom_attributes": true,
-            "id": "",
-            "class": "",
-            "props": "data-doc-heading"
-          },
-          "blocks": {}
-        },
-        "kuu_docs_block_preview_AiihYU": {
-          "type": "kuu-docs-block-preview",
-          "name": "Block Preview",
-          "settings": {},
-          "blocks": {
-            "button_DeJjTc": {
-              "type": "button",
-              "name": "Button",
-              "settings": {
-                "device": "all",
-                "variant": "primary",
-                "label": "Primary",
-                "custom_link": false,
-                "href": "",
-                "custom_icon": false,
-                "lucide_icon": "",
-                "icon_position": "left",
-                "custom_width": true,
-                "unit": "pixel",
-                "percent_width": 100,
-                "pexel_width": 160,
-                "custom_mobile_width": false,
-                "mobile_unit": "percent",
-                "mobile_percent_width": 100,
-                "mobile_pexel_width": 100,
-                "custom_height": true,
-                "height": 50,
-                "custom_mobile_height": false,
-                "mobile_height": 100,
-                "custom_radius": true,
-                "radius": 8,
-                "custom_alignment": true,
-                "alignment": "center",
-                "custom_padding": true,
-                "padding_top": 16,
-                "padding_bottom": 16,
-                "padding_left": 24,
-                "padding_right": 24,
-                "id": "",
-                "class": ""
-              },
-              "blocks": {}
-            },
-            "spacer_7pwrNe": {
-              "type": "spacer",
-              "name": "Spacer",
-              "settings": {
-                "unit": "percent",
-                "percent_width": 100,
-                "pexel_width": 120,
-                "height": 32,
-                "custom_mobile_size": true,
-                "mobile_unit": "percent",
-                "mobile_percent_width": 100,
-                "mobile_pexel_width": 120,
-                "height_mobile": 20
-              },
-              "blocks": {}
-            },
-            "button_6djKxa": {
-              "type": "button",
-              "name": "Button",
-              "settings": {
-                "device": "all",
-                "variant": "secondary",
-                "label": "Secondary",
-                "custom_link": false,
-                "href": "",
-                "custom_icon": false,
-                "lucide_icon": "",
-                "icon_position": "left",
-                "custom_width": true,
-                "unit": "pixel",
-                "percent_width": 100,
-                "pexel_width": 160,
-                "custom_mobile_width": false,
-                "mobile_unit": "percent",
-                "mobile_percent_width": 100,
-                "mobile_pexel_width": 100,
-                "custom_height": true,
-                "height": 50,
-                "custom_mobile_height": false,
-                "mobile_height": 100,
-                "custom_radius": true,
-                "radius": 8,
-                "custom_alignment": true,
-                "alignment": "center",
-                "custom_padding": true,
-                "padding_top": 16,
-                "padding_bottom": 16,
-                "padding_left": 24,
-                "padding_right": 24,
-                "id": "",
-                "class": ""
-              },
-              "blocks": {}
-            },
-            "spacer_6ChPAR": {
-              "type": "spacer",
-              "name": "Spacer",
-              "settings": {
-                "unit": "percent",
-                "percent_width": 100,
-                "pexel_width": 120,
-                "height": 32,
-                "custom_mobile_size": true,
-                "mobile_unit": "percent",
-                "mobile_percent_width": 100,
-                "mobile_pexel_width": 120,
-                "height_mobile": 20
-              },
-              "blocks": {}
-            },
-            "button_DtcxNm": {
-              "type": "button",
-              "name": "Button",
-              "settings": {
-                "device": "all",
-                "variant": "outline",
-                "label": "Secondary",
-                "custom_link": false,
-                "href": "",
-                "custom_icon": false,
-                "lucide_icon": "",
-                "icon_position": "left",
-                "custom_width": true,
-                "unit": "pixel",
-                "percent_width": 100,
-                "pexel_width": 160,
-                "custom_mobile_width": false,
-                "mobile_unit": "percent",
-                "mobile_percent_width": 100,
-                "mobile_pexel_width": 100,
-                "custom_height": true,
-                "height": 50,
-                "custom_mobile_height": false,
-                "mobile_height": 100,
-                "custom_radius": true,
-                "radius": 8,
-                "custom_alignment": true,
-                "alignment": "center",
-                "custom_padding": true,
-                "padding_top": 16,
-                "padding_bottom": 16,
-                "padding_left": 24,
-                "padding_right": 24,
-                "id": "",
-                "class": ""
-              },
-              "blocks": {}
-            },
-            "spacer_8aXEjW": {
-              "type": "spacer",
-              "name": "Spacer",
-              "settings": {
-                "unit": "percent",
-                "percent_width": 100,
-                "pexel_width": 120,
-                "height": 32,
-                "custom_mobile_size": true,
-                "mobile_unit": "percent",
-                "mobile_percent_width": 100,
-                "mobile_pexel_width": 120,
-                "height_mobile": 20
-              },
-              "blocks": {}
-            },
-            "button_MRjDy9": {
-              "type": "button",
-              "name": "Button",
-              "settings": {
-                "device": "all",
-                "variant": "ghost",
-                "label": "Ghost",
-                "custom_link": false,
-                "href": "",
-                "custom_icon": false,
-                "lucide_icon": "",
-                "icon_position": "left",
-                "custom_width": true,
-                "unit": "pixel",
-                "percent_width": 100,
-                "pexel_width": 160,
-                "custom_mobile_width": false,
-                "mobile_unit": "percent",
-                "mobile_percent_width": 100,
-                "mobile_pexel_width": 100,
-                "custom_height": true,
-                "height": 50,
-                "custom_mobile_height": false,
-                "mobile_height": 100,
-                "custom_radius": true,
-                "radius": 8,
-                "custom_alignment": true,
-                "alignment": "center",
-                "custom_padding": true,
-                "padding_top": 16,
-                "padding_bottom": 16,
-                "padding_left": 24,
-                "padding_right": 24,
-                "id": "",
-                "class": ""
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "button_DeJjTc",
-            "spacer_7pwrNe",
-            "button_6djKxa",
-            "spacer_6ChPAR",
-            "button_DtcxNm",
-            "spacer_8aXEjW",
-            "button_MRjDy9"
-          ]
-        },
-        "spacer_Yew7KH": {
-          "type": "spacer",
-          "name": "Spacer",
-          "settings": {
-            "unit": "percent",
-            "percent_width": 100,
-            "pexel_width": 120,
-            "height": 32,
-            "custom_mobile_size": true,
-            "mobile_unit": "percent",
-            "mobile_percent_width": 100,
-            "mobile_pexel_width": 120,
-            "height_mobile": 20
-          },
-          "blocks": {}
-        },
-        "text_TJTFNV": {
-          "type": "text",
-          "name": "Text",
-          "settings": {
-            "text": "<p>In e-commerce, speed is critical. Kuu is lightweight by default, avoiding heavy libraries for simple JavaScript. Emphasis on Critical CSS, Alpine.js, and Native Browser Features</p>",
-            "width": "100%",
-            "max_width": "none",
-            "alignment": "left",
-            "type_preset": "paragraph",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "#000000",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 40,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "custom_attributes": false,
-            "id": "",
-            "class": "",
-            "props": ""
-          },
-          "blocks": {}
-        },
-        "text_JU6rey": {
-          "type": "text",
-          "name": "Text",
-          "settings": {
-            "text": "<p>In e-commerce, speed is critical. Kuu is lightweight by default, avoiding heavy libraries for simple JavaScript. Emphasis on Critical CSS, Alpine.js, and Native Browser Features</p>",
-            "width": "100%",
-            "max_width": "none",
-            "alignment": "left",
-            "type_preset": "paragraph",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "#000000",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 58,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "custom_attributes": false,
-            "id": "",
-            "class": "",
-            "props": ""
-          },
-          "blocks": {}
-        },
-        "text_UdeLdz": {
-          "type": "text",
-          "name": "Text",
-          "settings": {
-            "text": "<p>Why this matter</p>",
-            "width": "100%",
-            "max_width": "none",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "#000000",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 58,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "custom_attributes": true,
-            "id": "",
-            "class": "",
-            "props": "data-doc-heading"
-          },
-          "blocks": {}
-        },
-        "spacer_KbBbWh": {
-          "type": "spacer",
-          "name": "Spacer",
-          "settings": {
-            "unit": "percent",
-            "percent_width": 100,
-            "pexel_width": 120,
-            "height": 24,
-            "custom_mobile_size": false,
-            "mobile_unit": "percent",
-            "mobile_percent_width": 100,
-            "mobile_pexel_width": 120,
-            "height_mobile": 120
-          },
-          "blocks": {}
-        },
-        "products_tab_hMiMWQ": {
-          "type": "products-tab",
-          "name": "Products Tab",
-          "settings": {},
-          "blocks": {
-            "products_tab_product_picker_kkUHLx": {
-              "type": "_products-tab-product-picker",
-              "name": "Product",
-              "settings": {
-                "products": [
-                  "white-mens-summer-suit",
-                  "vancl-pure-cotton-long-sve-t-irt-mens-spring-autumn-loose-fit-inner-wear-base-irt-breathable-comfortable-round-ne",
-                  "teenage-boys-denim-jacket-korean-style-slim-fit-long-sleeve-casual-outerwear-for-high-school-students-autumn-fashion-trend",
-                  "spring-new-milled-shirt-mens-three-dimensional-pockets-plaid-shirt-mens-large-size-mens-casual-handsome-shirt",
-                  "mens-summer-suit-mens-suit-mens-suit-mens-summer-suit-summer-suit-for-men-man-sets-sweatsuit-set-men-mens-clothing"
-                ],
-                "tab_title": "Sales",
-                "show_prices": true,
-                "show_compare_at_prices": true
-              },
-              "blocks": {}
-            },
-            "products_tab_product_picker_F4wQYr": {
-              "type": "_products-tab-product-picker",
-              "name": "Product",
-              "settings": {
-                "products": [
-                  "white-mens-summer-suit",
-                  "vancl-pure-cotton-long-sve-t-irt-mens-spring-autumn-loose-fit-inner-wear-base-irt-breathable-comfortable-round-ne",
-                  "teenage-boys-denim-jacket-korean-style-slim-fit-long-sleeve-casual-outerwear-for-high-school-students-autumn-fashion-trend",
-                  "spring-new-milled-shirt-mens-three-dimensional-pockets-plaid-shirt-mens-large-size-mens-casual-handsome-shirt",
-                  "mens-summer-suit-mens-suit-mens-suit-mens-summer-suit-summer-suit-for-men-man-sets-sweatsuit-set-men-mens-clothing"
-                ],
-                "tab_title": "Men",
-                "show_prices": true,
-                "show_compare_at_prices": true
-              },
-              "blocks": {}
-            },
-            "products_tab_product_picker_BtJzWz": {
-              "type": "_products-tab-product-picker",
-              "name": "Product",
-              "settings": {
-                "products": [
-                  "mens-summer-suit-mens-suit-mens-suit-mens-summer-suit-summer-suit-for-men-man-sets-sweatsuit-set-men-mens-clothing",
-                  "loose-mens-knitted-sweater-crew-neck-round-neck-lazy-style-deer-velvet-warm-underwear-t-shirt-for-couples-in-autumn-winter",
-                  "mens-casual-long-sleeve-corduroy-shirt-vintage-workwear-jacket-comfortable-breathable-square-collar-versatile-fashionable"
-                ],
-                "tab_title": "New Arrivals",
-                "show_prices": true,
-                "show_compare_at_prices": true
-              },
-              "blocks": {}
-            },
-            "products_tab_product_picker_8GHcYC": {
-              "type": "_products-tab-product-picker",
-              "name": "Product",
-              "settings": {
-                "products": [
-                  "2024-mens-spring-and-autumn-printed-jogging-pants-casual-training-pants-fashion-high-quality-fitness-sweatpants",
-                  "autumn-new-style-rabbit-velvet-plain-zipper-hoodie-mens-american-retro-loose-heavy-long-sleeve-casual-top-stand-collar",
-                  "autumn-winter-corduroy-shirts-men-old-money-style-button-up-long-sleeve-comfortable-casual-shirt-blouse",
-                  "casual-loose-short-collar-workwear-jacket-for-men-spring-autumn-trendy-design-loose-fit-short-style-spring-fashion-outerwear",
-                  "fashion-casual-spring-and-autumn-mens-and-womens-hoodie-pants-two-piece-set-a-new-outdoor-basketball-mens-pullover-set"
-                ],
-                "tab_title": "Best Sellers",
-                "show_prices": true,
-                "show_compare_at_prices": true
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "products_tab_product_picker_kkUHLx",
-            "products_tab_product_picker_F4wQYr",
-            "products_tab_product_picker_BtJzWz",
-            "products_tab_product_picker_8GHcYC"
-          ]
-        },
-        "text_7fUbU7": {
-          "type": "text",
-          "name": "Text",
-          "settings": {
-            "text": "<p>Usage</p>",
-            "width": "100%",
-            "max_width": "none",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "#000000",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 58,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "custom_attributes": true,
-            "id": "",
-            "class": "",
-            "props": "data-doc-heading"
-          },
-          "blocks": {}
-        },
-        "products_tab_E6DgNf": {
-          "type": "products-tab",
-          "name": "Products Tab",
-          "settings": {},
-          "blocks": {
-            "products_tab_product_picker_EnQMah": {
-              "type": "_products-tab-product-picker",
-              "name": "Product",
-              "settings": {
-                "products": [
-                  "white-mens-summer-suit",
-                  "vancl-pure-cotton-long-sve-t-irt-mens-spring-autumn-loose-fit-inner-wear-base-irt-breathable-comfortable-round-ne",
-                  "teenage-boys-denim-jacket-korean-style-slim-fit-long-sleeve-casual-outerwear-for-high-school-students-autumn-fashion-trend",
-                  "spring-new-milled-shirt-mens-three-dimensional-pockets-plaid-shirt-mens-large-size-mens-casual-handsome-shirt",
-                  "mens-summer-suit-mens-suit-mens-suit-mens-summer-suit-summer-suit-for-men-man-sets-sweatsuit-set-men-mens-clothing"
-                ],
-                "tab_title": "Sales",
-                "show_prices": true,
-                "show_compare_at_prices": true
-              },
-              "blocks": {}
-            },
-            "products_tab_product_picker_a7Nfe4": {
-              "type": "_products-tab-product-picker",
-              "name": "Product",
-              "settings": {
-                "products": [
-                  "white-mens-summer-suit",
-                  "vancl-pure-cotton-long-sve-t-irt-mens-spring-autumn-loose-fit-inner-wear-base-irt-breathable-comfortable-round-ne",
-                  "teenage-boys-denim-jacket-korean-style-slim-fit-long-sleeve-casual-outerwear-for-high-school-students-autumn-fashion-trend",
-                  "spring-new-milled-shirt-mens-three-dimensional-pockets-plaid-shirt-mens-large-size-mens-casual-handsome-shirt",
-                  "mens-summer-suit-mens-suit-mens-suit-mens-summer-suit-summer-suit-for-men-man-sets-sweatsuit-set-men-mens-clothing"
-                ],
-                "tab_title": "Men",
-                "show_prices": true,
-                "show_compare_at_prices": true
-              },
-              "blocks": {}
-            },
-            "products_tab_product_picker_HzcBc7": {
-              "type": "_products-tab-product-picker",
-              "name": "Product",
-              "settings": {
-                "products": [
-                  "mens-summer-suit-mens-suit-mens-suit-mens-summer-suit-summer-suit-for-men-man-sets-sweatsuit-set-men-mens-clothing",
-                  "loose-mens-knitted-sweater-crew-neck-round-neck-lazy-style-deer-velvet-warm-underwear-t-shirt-for-couples-in-autumn-winter",
-                  "mens-casual-long-sleeve-corduroy-shirt-vintage-workwear-jacket-comfortable-breathable-square-collar-versatile-fashionable"
-                ],
-                "tab_title": "New Arrivals",
-                "show_prices": true,
-                "show_compare_at_prices": true
-              },
-              "blocks": {}
-            },
-            "products_tab_product_picker_EtPeig": {
-              "type": "_products-tab-product-picker",
-              "name": "Product",
-              "settings": {
-                "products": [
-                  "2024-mens-spring-and-autumn-printed-jogging-pants-casual-training-pants-fashion-high-quality-fitness-sweatpants",
-                  "autumn-new-style-rabbit-velvet-plain-zipper-hoodie-mens-american-retro-loose-heavy-long-sleeve-casual-top-stand-collar",
-                  "autumn-winter-corduroy-shirts-men-old-money-style-button-up-long-sleeve-comfortable-casual-shirt-blouse",
-                  "casual-loose-short-collar-workwear-jacket-for-men-spring-autumn-trendy-design-loose-fit-short-style-spring-fashion-outerwear",
-                  "fashion-casual-spring-and-autumn-mens-and-womens-hoodie-pants-two-piece-set-a-new-outdoor-basketball-mens-pullover-set"
-                ],
-                "tab_title": "Best Sellers",
-                "show_prices": true,
-                "show_compare_at_prices": true
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "products_tab_product_picker_EnQMah",
-            "products_tab_product_picker_a7Nfe4",
-            "products_tab_product_picker_HzcBc7",
-            "products_tab_product_picker_EtPeig"
-          ]
-        }
-      },
-      "block_order": [
-        "text_VPGBCJ",
-        "kuu_docs_block_preview_AiihYU",
-        "spacer_Yew7KH",
-        "text_TJTFNV",
-        "text_JU6rey",
-        "text_UdeLdz",
-        "spacer_KbBbWh",
-        "products_tab_hMiMWQ",
-        "text_7fUbU7",
-        "products_tab_E6DgNf"
-      ],
-      "settings": {}
-    }
-  },
-  "order": [
-    "main"
-  ]
+	"layout": "documentation",
+	"sections": {
+		"main": {
+			"type": "documentation",
+			"blocks": {
+				"text_VPGBCJ": {
+					"type": "text",
+					"name": "t:general.text",
+					"settings": {
+						"text": "<p>Buttons</p>",
+						"width": "100%",
+						"max_width": "none",
+						"alignment": "left",
+						"type_preset": "h1",
+						"font": "var(--font-heading--family)",
+						"font_size": "2rem",
+						"line_height": "loose",
+						"letter_spacing": "loose",
+						"case": "none",
+						"wrap": "pretty",
+						"color": "#393838",
+						"background": false,
+						"background_color": "#f9ca4f",
+						"corner_radius": 0,
+						"padding-block-start": 0,
+						"padding-block-end": 24,
+						"padding-inline-start": 0,
+						"padding-inline-end": 0,
+						"custom_attributes": true,
+						"id": "",
+						"class": "",
+						"props": "data-doc-heading"
+					},
+					"blocks": {}
+				},
+				"kuu_docs_block_preview_AiihYU": {
+					"type": "kuu-group",
+					"name": "Block Preview",
+					"settings": {},
+					"blocks": {
+						"button_DeJjTc": {
+							"type": "button",
+							"name": "Button",
+							"settings": {
+								"device": "all",
+								"variant": "primary",
+								"label": "Primary",
+								"custom_link": false,
+								"href": "",
+								"custom_icon": false,
+								"lucide_icon": "",
+								"icon_position": "left",
+								"custom_width": true,
+								"unit": "pixel",
+								"percent_width": 100,
+								"pexel_width": 160,
+								"custom_mobile_width": false,
+								"mobile_unit": "percent",
+								"mobile_percent_width": 100,
+								"mobile_pexel_width": 100,
+								"custom_height": true,
+								"height": 50,
+								"custom_mobile_height": false,
+								"mobile_height": 100,
+								"custom_radius": true,
+								"radius": 8,
+								"custom_alignment": true,
+								"alignment": "center",
+								"custom_padding": true,
+								"padding_top": 16,
+								"padding_bottom": 16,
+								"padding_left": 24,
+								"padding_right": 24,
+								"id": "",
+								"class": ""
+							},
+							"blocks": {}
+						},
+						"spacer_7pwrNe": {
+							"type": "spacer",
+							"name": "Spacer",
+							"settings": {
+								"unit": "percent",
+								"percent_width": 100,
+								"pexel_width": 120,
+								"height": 32,
+								"custom_mobile_size": true,
+								"mobile_unit": "percent",
+								"mobile_percent_width": 100,
+								"mobile_pexel_width": 120,
+								"height_mobile": 20
+							},
+							"blocks": {}
+						},
+						"button_6djKxa": {
+							"type": "button",
+							"name": "Button",
+							"settings": {
+								"device": "all",
+								"variant": "secondary",
+								"label": "Secondary",
+								"custom_link": false,
+								"href": "",
+								"custom_icon": false,
+								"lucide_icon": "",
+								"icon_position": "left",
+								"custom_width": true,
+								"unit": "pixel",
+								"percent_width": 100,
+								"pexel_width": 160,
+								"custom_mobile_width": false,
+								"mobile_unit": "percent",
+								"mobile_percent_width": 100,
+								"mobile_pexel_width": 100,
+								"custom_height": true,
+								"height": 50,
+								"custom_mobile_height": false,
+								"mobile_height": 100,
+								"custom_radius": true,
+								"radius": 8,
+								"custom_alignment": true,
+								"alignment": "center",
+								"custom_padding": true,
+								"padding_top": 16,
+								"padding_bottom": 16,
+								"padding_left": 24,
+								"padding_right": 24,
+								"id": "",
+								"class": ""
+							},
+							"blocks": {}
+						},
+						"spacer_6ChPAR": {
+							"type": "spacer",
+							"name": "Spacer",
+							"settings": {
+								"unit": "percent",
+								"percent_width": 100,
+								"pexel_width": 120,
+								"height": 32,
+								"custom_mobile_size": true,
+								"mobile_unit": "percent",
+								"mobile_percent_width": 100,
+								"mobile_pexel_width": 120,
+								"height_mobile": 20
+							},
+							"blocks": {}
+						},
+						"button_DtcxNm": {
+							"type": "button",
+							"name": "Button",
+							"settings": {
+								"device": "all",
+								"variant": "outline",
+								"label": "Secondary",
+								"custom_link": false,
+								"href": "",
+								"custom_icon": false,
+								"lucide_icon": "",
+								"icon_position": "left",
+								"custom_width": true,
+								"unit": "pixel",
+								"percent_width": 100,
+								"pexel_width": 160,
+								"custom_mobile_width": false,
+								"mobile_unit": "percent",
+								"mobile_percent_width": 100,
+								"mobile_pexel_width": 100,
+								"custom_height": true,
+								"height": 50,
+								"custom_mobile_height": false,
+								"mobile_height": 100,
+								"custom_radius": true,
+								"radius": 8,
+								"custom_alignment": true,
+								"alignment": "center",
+								"custom_padding": true,
+								"padding_top": 16,
+								"padding_bottom": 16,
+								"padding_left": 24,
+								"padding_right": 24,
+								"id": "",
+								"class": ""
+							},
+							"blocks": {}
+						},
+						"spacer_8aXEjW": {
+							"type": "spacer",
+							"name": "Spacer",
+							"settings": {
+								"unit": "percent",
+								"percent_width": 100,
+								"pexel_width": 120,
+								"height": 32,
+								"custom_mobile_size": true,
+								"mobile_unit": "percent",
+								"mobile_percent_width": 100,
+								"mobile_pexel_width": 120,
+								"height_mobile": 20
+							},
+							"blocks": {}
+						},
+						"button_MRjDy9": {
+							"type": "button",
+							"name": "Button",
+							"settings": {
+								"device": "all",
+								"variant": "ghost",
+								"label": "Ghost",
+								"custom_link": false,
+								"href": "",
+								"custom_icon": false,
+								"lucide_icon": "",
+								"icon_position": "left",
+								"custom_width": true,
+								"unit": "pixel",
+								"percent_width": 100,
+								"pexel_width": 160,
+								"custom_mobile_width": false,
+								"mobile_unit": "percent",
+								"mobile_percent_width": 100,
+								"mobile_pexel_width": 100,
+								"custom_height": true,
+								"height": 50,
+								"custom_mobile_height": false,
+								"mobile_height": 100,
+								"custom_radius": true,
+								"radius": 8,
+								"custom_alignment": true,
+								"alignment": "center",
+								"custom_padding": true,
+								"padding_top": 16,
+								"padding_bottom": 16,
+								"padding_left": 24,
+								"padding_right": 24,
+								"id": "",
+								"class": ""
+							},
+							"blocks": {}
+						}
+					},
+					"block_order": [
+						"button_DeJjTc",
+						"spacer_7pwrNe",
+						"button_6djKxa",
+						"spacer_6ChPAR",
+						"button_DtcxNm",
+						"spacer_8aXEjW",
+						"button_MRjDy9"
+					]
+				},
+				"spacer_Yew7KH": {
+					"type": "spacer",
+					"name": "Spacer",
+					"settings": {
+						"unit": "percent",
+						"percent_width": 100,
+						"pexel_width": 120,
+						"height": 32,
+						"custom_mobile_size": true,
+						"mobile_unit": "percent",
+						"mobile_percent_width": 100,
+						"mobile_pexel_width": 120,
+						"height_mobile": 20
+					},
+					"blocks": {}
+				},
+				"text_TJTFNV": {
+					"type": "text",
+					"name": "Text",
+					"settings": {
+						"text": "<p>In e-commerce, speed is critical. Kuu is lightweight by default, avoiding heavy libraries for simple JavaScript. Emphasis on Critical CSS, Alpine.js, and Native Browser Features</p>",
+						"width": "100%",
+						"max_width": "none",
+						"alignment": "left",
+						"type_preset": "paragraph",
+						"font": "var(--font-body--family)",
+						"font_size": "1rem",
+						"line_height": "normal",
+						"letter_spacing": "normal",
+						"case": "none",
+						"wrap": "pretty",
+						"color": "#000000",
+						"background": false,
+						"background_color": "#00000026",
+						"corner_radius": 0,
+						"padding-block-start": 0,
+						"padding-block-end": 40,
+						"padding-inline-start": 0,
+						"padding-inline-end": 0,
+						"custom_attributes": false,
+						"id": "",
+						"class": "",
+						"props": ""
+					},
+					"blocks": {}
+				},
+				"text_JU6rey": {
+					"type": "text",
+					"name": "Text",
+					"settings": {
+						"text": "<p>In e-commerce, speed is critical. Kuu is lightweight by default, avoiding heavy libraries for simple JavaScript. Emphasis on Critical CSS, Alpine.js, and Native Browser Features</p>",
+						"width": "100%",
+						"max_width": "none",
+						"alignment": "left",
+						"type_preset": "paragraph",
+						"font": "var(--font-body--family)",
+						"font_size": "1rem",
+						"line_height": "normal",
+						"letter_spacing": "normal",
+						"case": "none",
+						"wrap": "pretty",
+						"color": "#000000",
+						"background": false,
+						"background_color": "#00000026",
+						"corner_radius": 0,
+						"padding-block-start": 0,
+						"padding-block-end": 58,
+						"padding-inline-start": 0,
+						"padding-inline-end": 0,
+						"custom_attributes": false,
+						"id": "",
+						"class": "",
+						"props": ""
+					},
+					"blocks": {}
+				},
+				"text_UdeLdz": {
+					"type": "text",
+					"name": "Text",
+					"settings": {
+						"text": "<p>Why this matter</p>",
+						"width": "100%",
+						"max_width": "none",
+						"alignment": "left",
+						"type_preset": "h2",
+						"font": "var(--font-body--family)",
+						"font_size": "1rem",
+						"line_height": "normal",
+						"letter_spacing": "normal",
+						"case": "none",
+						"wrap": "pretty",
+						"color": "#000000",
+						"background": false,
+						"background_color": "#00000026",
+						"corner_radius": 0,
+						"padding-block-start": 0,
+						"padding-block-end": 58,
+						"padding-inline-start": 0,
+						"padding-inline-end": 0,
+						"custom_attributes": true,
+						"id": "",
+						"class": "",
+						"props": "data-doc-heading"
+					},
+					"blocks": {}
+				},
+				"spacer_KbBbWh": {
+					"type": "spacer",
+					"name": "Spacer",
+					"settings": {
+						"unit": "percent",
+						"percent_width": 100,
+						"pexel_width": 120,
+						"height": 24,
+						"custom_mobile_size": false,
+						"mobile_unit": "percent",
+						"mobile_percent_width": 100,
+						"mobile_pexel_width": 120,
+						"height_mobile": 120
+					},
+					"blocks": {}
+				},
+				"products_tab_hMiMWQ": {
+					"type": "products-tab",
+					"name": "Products Tab",
+					"settings": {},
+					"blocks": {
+						"products_tab_product_picker_kkUHLx": {
+							"type": "_products-tab-product-picker",
+							"name": "Product",
+							"settings": {
+								"products": [
+									"white-mens-summer-suit",
+									"vancl-pure-cotton-long-sve-t-irt-mens-spring-autumn-loose-fit-inner-wear-base-irt-breathable-comfortable-round-ne",
+									"teenage-boys-denim-jacket-korean-style-slim-fit-long-sleeve-casual-outerwear-for-high-school-students-autumn-fashion-trend",
+									"spring-new-milled-shirt-mens-three-dimensional-pockets-plaid-shirt-mens-large-size-mens-casual-handsome-shirt",
+									"mens-summer-suit-mens-suit-mens-suit-mens-summer-suit-summer-suit-for-men-man-sets-sweatsuit-set-men-mens-clothing"
+								],
+								"tab_title": "Sales",
+								"show_prices": true,
+								"show_compare_at_prices": true
+							},
+							"blocks": {}
+						},
+						"products_tab_product_picker_F4wQYr": {
+							"type": "_products-tab-product-picker",
+							"name": "Product",
+							"settings": {
+								"products": [
+									"white-mens-summer-suit",
+									"vancl-pure-cotton-long-sve-t-irt-mens-spring-autumn-loose-fit-inner-wear-base-irt-breathable-comfortable-round-ne",
+									"teenage-boys-denim-jacket-korean-style-slim-fit-long-sleeve-casual-outerwear-for-high-school-students-autumn-fashion-trend",
+									"spring-new-milled-shirt-mens-three-dimensional-pockets-plaid-shirt-mens-large-size-mens-casual-handsome-shirt",
+									"mens-summer-suit-mens-suit-mens-suit-mens-summer-suit-summer-suit-for-men-man-sets-sweatsuit-set-men-mens-clothing"
+								],
+								"tab_title": "Men",
+								"show_prices": true,
+								"show_compare_at_prices": true
+							},
+							"blocks": {}
+						},
+						"products_tab_product_picker_BtJzWz": {
+							"type": "_products-tab-product-picker",
+							"name": "Product",
+							"settings": {
+								"products": [
+									"mens-summer-suit-mens-suit-mens-suit-mens-summer-suit-summer-suit-for-men-man-sets-sweatsuit-set-men-mens-clothing",
+									"loose-mens-knitted-sweater-crew-neck-round-neck-lazy-style-deer-velvet-warm-underwear-t-shirt-for-couples-in-autumn-winter",
+									"mens-casual-long-sleeve-corduroy-shirt-vintage-workwear-jacket-comfortable-breathable-square-collar-versatile-fashionable"
+								],
+								"tab_title": "New Arrivals",
+								"show_prices": true,
+								"show_compare_at_prices": true
+							},
+							"blocks": {}
+						},
+						"products_tab_product_picker_8GHcYC": {
+							"type": "_products-tab-product-picker",
+							"name": "Product",
+							"settings": {
+								"products": [
+									"2024-mens-spring-and-autumn-printed-jogging-pants-casual-training-pants-fashion-high-quality-fitness-sweatpants",
+									"autumn-new-style-rabbit-velvet-plain-zipper-hoodie-mens-american-retro-loose-heavy-long-sleeve-casual-top-stand-collar",
+									"autumn-winter-corduroy-shirts-men-old-money-style-button-up-long-sleeve-comfortable-casual-shirt-blouse",
+									"casual-loose-short-collar-workwear-jacket-for-men-spring-autumn-trendy-design-loose-fit-short-style-spring-fashion-outerwear",
+									"fashion-casual-spring-and-autumn-mens-and-womens-hoodie-pants-two-piece-set-a-new-outdoor-basketball-mens-pullover-set"
+								],
+								"tab_title": "Best Sellers",
+								"show_prices": true,
+								"show_compare_at_prices": true
+							},
+							"blocks": {}
+						}
+					},
+					"block_order": [
+						"products_tab_product_picker_kkUHLx",
+						"products_tab_product_picker_F4wQYr",
+						"products_tab_product_picker_BtJzWz",
+						"products_tab_product_picker_8GHcYC"
+					]
+				},
+				"text_7fUbU7": {
+					"type": "text",
+					"name": "Text",
+					"settings": {
+						"text": "<p>Usage</p>",
+						"width": "100%",
+						"max_width": "none",
+						"alignment": "left",
+						"type_preset": "h2",
+						"font": "var(--font-body--family)",
+						"font_size": "1rem",
+						"line_height": "normal",
+						"letter_spacing": "normal",
+						"case": "none",
+						"wrap": "pretty",
+						"color": "#000000",
+						"background": false,
+						"background_color": "#00000026",
+						"corner_radius": 0,
+						"padding-block-start": 0,
+						"padding-block-end": 58,
+						"padding-inline-start": 0,
+						"padding-inline-end": 0,
+						"custom_attributes": true,
+						"id": "",
+						"class": "",
+						"props": "data-doc-heading"
+					},
+					"blocks": {}
+				},
+				"products_tab_E6DgNf": {
+					"type": "products-tab",
+					"name": "Products Tab",
+					"settings": {},
+					"blocks": {
+						"products_tab_product_picker_EnQMah": {
+							"type": "_products-tab-product-picker",
+							"name": "Product",
+							"settings": {
+								"products": [
+									"white-mens-summer-suit",
+									"vancl-pure-cotton-long-sve-t-irt-mens-spring-autumn-loose-fit-inner-wear-base-irt-breathable-comfortable-round-ne",
+									"teenage-boys-denim-jacket-korean-style-slim-fit-long-sleeve-casual-outerwear-for-high-school-students-autumn-fashion-trend",
+									"spring-new-milled-shirt-mens-three-dimensional-pockets-plaid-shirt-mens-large-size-mens-casual-handsome-shirt",
+									"mens-summer-suit-mens-suit-mens-suit-mens-summer-suit-summer-suit-for-men-man-sets-sweatsuit-set-men-mens-clothing"
+								],
+								"tab_title": "Sales",
+								"show_prices": true,
+								"show_compare_at_prices": true
+							},
+							"blocks": {}
+						},
+						"products_tab_product_picker_a7Nfe4": {
+							"type": "_products-tab-product-picker",
+							"name": "Product",
+							"settings": {
+								"products": [
+									"white-mens-summer-suit",
+									"vancl-pure-cotton-long-sve-t-irt-mens-spring-autumn-loose-fit-inner-wear-base-irt-breathable-comfortable-round-ne",
+									"teenage-boys-denim-jacket-korean-style-slim-fit-long-sleeve-casual-outerwear-for-high-school-students-autumn-fashion-trend",
+									"spring-new-milled-shirt-mens-three-dimensional-pockets-plaid-shirt-mens-large-size-mens-casual-handsome-shirt",
+									"mens-summer-suit-mens-suit-mens-suit-mens-summer-suit-summer-suit-for-men-man-sets-sweatsuit-set-men-mens-clothing"
+								],
+								"tab_title": "Men",
+								"show_prices": true,
+								"show_compare_at_prices": true
+							},
+							"blocks": {}
+						},
+						"products_tab_product_picker_HzcBc7": {
+							"type": "_products-tab-product-picker",
+							"name": "Product",
+							"settings": {
+								"products": [
+									"mens-summer-suit-mens-suit-mens-suit-mens-summer-suit-summer-suit-for-men-man-sets-sweatsuit-set-men-mens-clothing",
+									"loose-mens-knitted-sweater-crew-neck-round-neck-lazy-style-deer-velvet-warm-underwear-t-shirt-for-couples-in-autumn-winter",
+									"mens-casual-long-sleeve-corduroy-shirt-vintage-workwear-jacket-comfortable-breathable-square-collar-versatile-fashionable"
+								],
+								"tab_title": "New Arrivals",
+								"show_prices": true,
+								"show_compare_at_prices": true
+							},
+							"blocks": {}
+						},
+						"products_tab_product_picker_EtPeig": {
+							"type": "_products-tab-product-picker",
+							"name": "Product",
+							"settings": {
+								"products": [
+									"2024-mens-spring-and-autumn-printed-jogging-pants-casual-training-pants-fashion-high-quality-fitness-sweatpants",
+									"autumn-new-style-rabbit-velvet-plain-zipper-hoodie-mens-american-retro-loose-heavy-long-sleeve-casual-top-stand-collar",
+									"autumn-winter-corduroy-shirts-men-old-money-style-button-up-long-sleeve-comfortable-casual-shirt-blouse",
+									"casual-loose-short-collar-workwear-jacket-for-men-spring-autumn-trendy-design-loose-fit-short-style-spring-fashion-outerwear",
+									"fashion-casual-spring-and-autumn-mens-and-womens-hoodie-pants-two-piece-set-a-new-outdoor-basketball-mens-pullover-set"
+								],
+								"tab_title": "Best Sellers",
+								"show_prices": true,
+								"show_compare_at_prices": true
+							},
+							"blocks": {}
+						}
+					},
+					"block_order": [
+						"products_tab_product_picker_EnQMah",
+						"products_tab_product_picker_a7Nfe4",
+						"products_tab_product_picker_HzcBc7",
+						"products_tab_product_picker_EtPeig"
+					]
+				}
+			},
+			"block_order": [
+				"text_VPGBCJ",
+				"kuu_docs_block_preview_AiihYU",
+				"spacer_Yew7KH",
+				"text_TJTFNV",
+				"text_JU6rey",
+				"text_UdeLdz",
+				"spacer_KbBbWh",
+				"products_tab_hMiMWQ",
+				"text_7fUbU7",
+				"products_tab_E6DgNf"
+			],
+			"settings": {}
+		}
+	},
+	"order": ["main"]
 }

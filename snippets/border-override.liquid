@@ -1,0 +1,19 @@
+{%- comment -%}
+	Renders border override CSS
+{%- endcomment -%}
+
+{% if settings.border_sides == 'individual' %}
+	--border-top-width: {{ settings.border_top_width }}px; --border-right-width: {{ settings.border_right_width }}px;
+	--border-bottom-width: {{ settings.border_bottom_width }}px; --border-left-width: {{ settings.border_left_width }}px;
+{% else %}
+	--border-top-width: {{ settings.border_width }}px; --border-right-width: {{ settings.border_width }}px;
+	--border-bottom-width: {{ settings.border_width }}px; --border-left-width: {{ settings.border_width }}px;
+{% endif %}
+
+--border-style: {{ settings.border }};
+
+--border-color: {{ settings.border_color }};
+
+--border-radius: {{ settings.border_radius }}px;
+
+{% if settings.border_radius > 0 %} overflow: hidden; {% endif %}
