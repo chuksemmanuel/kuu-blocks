@@ -33,6 +33,8 @@
         endif
       endunless
     %}
+
+
     {%- if settings.font_size != blank -%}
       {%- liquid
         assign font_size_rem = settings.font_size | split: 'rem' | first | times: 1.0
@@ -54,6 +56,31 @@
         --font-size: {{ settings.font_size }};
       {%- endif -%}
     {%- endif -%}
+
+    {%- if settings.mobile_font_size != blank -%}
+  {%- liquid
+    assign mobile_font_size_rem = settings.mobile_font_size | split: 'rem' | first | times: 1.0
+    assign mobile_fluid_size_cutoff_rem = 3.0
+
+    if mobile_font_size_rem >= mobile_fluid_size_cutoff_rem
+      assign mobile_target_viewport = 1400
+      assign mobile_vw_value = mobile_font_size_rem | times: 16 | divided_by: mobile_target_viewport | times: 100
+
+      assign mobile_scale_factor = mobile_font_size_rem | divided_by: mobile_fluid_size_cutoff_rem
+      assign mobile_base_min_rem = 3.0
+      assign mobile_scaling_bonus_rem = mobile_scale_factor | minus: 1 | times: 0.25
+      assign mobile_dynamic_min_rem = mobile_base_min_rem | plus: mobile_scaling_bonus_rem
+    endif
+  -%}
+
+  {%- if mobile_font_size_rem >= mobile_fluid_size_cutoff_rem -%}
+    --mobile-font-size: clamp({{ mobile_dynamic_min_rem }}rem, {{ mobile_vw_value }}vw, {{ settings.mobile_font_size }});
+  {%- else -%}
+    --mobile-font-size: {{ settings.mobile_font_size }};
+  {%- endif -%}
+{%- endif -%}
+
+
     {%- if settings.weight != blank -%}
       --font-weight: {{ settings.weight }};
     {% else %}

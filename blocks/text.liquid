@@ -469,6 +469,56 @@
 				"default": 0
 			},
 			{
+				"type": "checkbox",
+				"id": "custom_mobile_padding",
+				"label": "Custom Mobile Padding",
+				"default": true
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-block-start",
+				"label": "Mobile Top",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.custom_mobile_padding }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-block-end",
+				"label": "Mobile Bottom",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.custom_mobile_padding }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-inline-start",
+				"label": "Mobile Left",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.custom_mobile_padding }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-inline-end",
+				"label": "Mobile Right",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.custom_mobile_padding }}"
+			},
+			{
 				"type": "range",
 				"id": "padding-inline-end",
 				"label": "Right",
@@ -476,7 +526,8 @@
 				"max": 100,
 				"step": 1,
 				"unit": "px",
-				"default": 0
+				"default": 0,
+				"visible_if": "{{ block.settings.custom_mobile_padding }}"
 			},
 			{
 				"type": "header",

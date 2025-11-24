@@ -461,6 +461,9 @@ p:not(.h1, .h2, .h3, .h4, .h5, .h6)
 .custom-font-size,
 .custom-font-size > * {
 	font-size: var(--font-size);
+	@media screen and (max-width: 768px) {
+		font-size: var(--mobile-font-size);
+	}
 }
 
 .custom-font-weight,
