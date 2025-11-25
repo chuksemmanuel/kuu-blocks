@@ -32,7 +32,7 @@
 	height='{{ height }}'
 	href='{{ card_href }}'
 	aria-label='{{ card_title }}'
-	class='group relative block w-full shrink-0 cursor-pointer overflow-hidden rounded-3xl bg-gray-100 {{ class }}'
+	class='group relative block  w-full shrink-0 cursor-pointer overflow-hidden rounded-3xl  {{ class }}'
 	{% if block %}
 		{{ block.shopify_attributes }}
 	{% endif %}
@@ -43,7 +43,7 @@
 >
 	<div class='flex {{ position_class }} relative z-30 h-full w-full p-4'>
 		<div class='flex max-w-[60%] flex-col'>
-			<span class='relative z-30 line-clamp-2 text-2xl text-white text-shadow-sm'>
+			<span class='relative z-30 line-clamp-2 text-2xl text-white text-shadow-md'>
 				{{ card_title }}
 			</span>
 
@@ -78,11 +78,11 @@
 		alt='{{ alt }}'
 		width='{{ width }}'
 		height='{{ height }}'
-		class='absolute inset-0 z-5 h-full! w-full object-cover transition duration-300 ease-out group-hover:scale-105 group-active:scale-100 '
+		class='absolute inset-0 z-10 h-full! w-full! object-cover transition duration-300 ease-out group-hover:scale-105 group-active:scale-100 '
 	>
 
 	{% comment %} Overlay {% endcomment %}
 	<div
-		class='{% if position == 'bottom' %}bg-[linear-gradient(0deg,rgba(0,0,0,0.5)_0%,rgba(0,0,0,0.2)_25%,rgba(0,0,0,0)_100%)]{% else %}bg-black/5{% endif %} absolute inset-0 z-10 h-full w-full'
+		class='{% if position == 'bottom' %}bg-[linear-gradient(0deg,rgba(0,0,0,0.5)_0%,rgba(0,0,0,0.2)_25%,rgba(0,0,0,0)_100%)]{% else %}bg-black/15{% endif %} absolute inset-0 z-10 h-full w-full'
 	></div>
 </a>

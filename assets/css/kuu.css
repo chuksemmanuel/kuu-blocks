@@ -316,6 +316,20 @@ p:not(.h1, .h2, .h3, .h4, .h5, .h6)
 	}
 }
 
+.rte ul {
+	padding-left: 20px;
+	list-style-type: disc;
+}
+
+.rte ol {
+	padding-left: 20px;
+	list-style-type: decimal;
+}
+
+.rte li {
+	padding-bottom: 10px;
+}
+
 /* Flex style */
 
 .flex-style {

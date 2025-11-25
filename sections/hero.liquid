@@ -44,7 +44,7 @@
 		</div>
 
 		{%- comment -%} Featured Image {%- endcomment -%}
-		<div class='aspect-660/600 w-full overflow-hidden rounded-3xl bg-[linear-gradient(45deg,rgba(230,232,235,1)_0%,rgba(211,219,227,1)_51%,rgba(255,255,255,1)_100%)]'>
+		<div class='flex aspect-square w-full items-center justify-center overflow-hidden rounded-3xl '>
 			{% if section.settings.hero_image %}
 				<img
 					src='{{ section.settings.hero_image | image_url: width: 614 }}'
@@ -55,10 +55,11 @@
 
 			{% else %}
 				<img
-					src='https://cdn.shopify.com/s/files/1/0628/4348/6291/files/S42325dc6d03e45dd98f379450a1cd6382.png?width=614'
+					src='{{'placeholder-product.jpg' |  asset_img_url: 'large'  }}'
 					alt='Person wearing a gray zip-up sweatshirt on a white background'
 					width='614'
 					height='614'
+					fetchpriority='high'
 				>
 			{% endif %}
 		</div>

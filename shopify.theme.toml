@@ -1,2 +1,5 @@
 [environments.default]
 store = "https://kuu-blocks.myshopify.com/"
+
+[environments.development]
+store = "https://chuksdemo.myshopify.com/"
