@@ -67,7 +67,11 @@
 			{{ logo_image }}
 		</div>
 	{% else %}
-		<a href='{{routes.root_url}}' class='text-center text-2xl font-medium uppercase' aria-label='site logo'>
+		<a
+			href='{{routes.root_url}}'
+			class='text-center text-base font-medium uppercase md:text-2xl'
+			aria-label='site logo'
+		>
 			{{ shop.name }}
 		</a>
 	{% endif %}

@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Custom-blue.svg" alt="License"></a>
+  <a href="./LICENSE.md"><img src="https://img.shields.io/badge/License-Custom-blue.svg" alt="License"></a>
 </p>
 
 ## Overview
@@ -43,7 +43,7 @@ Every component is designed with Conversion Rate Optimization in mind.
 1. **Clone the repository:**
 
    ```bash
-   git clone git@github.com:chuksemmanuel/kuu-theme.git
+   git clone https://github.com/chuksemmanuel/kuu-blocks.git
    ```
 
 2. **Install dependencies:**
@@ -94,9 +94,10 @@ For full details, please read the [LICENSE](./LICENSE) file.
 
 ### Commercial Inquiries
 
-If you wish to use this code in a paid product (e.g., a SaaS app or paid theme), please contact:
+If you wish to use this code in a paid product (e.g., a SaaS app or paid theme), please contact me
 **Email:** dev.chuksemmanuel@gmail.com
+**LinkedIn:** https://linkedin.com/in/chuksemmanuel
 
 ---
 
-[Documentation](/pages/documentation)
+[Documentation](https://kuu-blocks.myshopify.com/pages/docs)

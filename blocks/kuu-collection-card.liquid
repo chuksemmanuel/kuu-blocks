@@ -1,0 +1,21 @@
+{% render 'collection-card',
+	collection: block.settings.collection,
+	image: block.settings.image,
+	title: block.settings.title,
+	href: block.settings.href,
+	count: block.settings.count,
+	height: '250',
+	width: '415.33',
+	class: 'h-60! lg:h-80! min-w-[280px] md:h-[250px]!',
+	show_button: section.settings.show_button,
+	show_count: section.settings.show_count,
+	position: section.settings.position,
+	block: block
+%}
+
+{% schema %}
+	{
+		"name": "Kuu Collection Card",
+		"settings": []
+	}
+{% endschema %}

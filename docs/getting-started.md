@@ -51,7 +51,7 @@ No black boxes. You own the code you copy. We expose key component APIs to `wind
 ### 1. Clone the Repository
 
 ```bash
-git clone git@github.com:chuksemmanuel/kuu-theme.git my-new-store
+git clone https://github.com/chuksemmanuel/kuu-blocks.git my-new-store
 cd my-new-store
 ```
 

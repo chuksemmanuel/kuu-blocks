@@ -13,16 +13,6 @@ html:has(dialog[scroll-lock][open], details[scroll-lock][open]) {
 	overflow: hidden;
 }
 
-img,
-picture,
-video,
-canvas,
-svg {
-	display: block;
-	max-width: 100%;
-	height: auto;
-}
-
 input,
 textarea,
 select {

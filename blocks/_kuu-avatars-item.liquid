@@ -1,0 +1,47 @@
+{% liquid
+	if block.settings.avatar_image
+		assign avatar = block.settings.avatar_image | image_url: width: 48
+		assign alt = block.settings.avatar_image.alt
+	else
+		assign avatar = 'avatar.jpg' | asset_img_url
+		assign alt = 'avatar'
+	endif
+%}
+<div
+	class='kuu-avatars-item size-12 overflow-hidden rounded-full border-2 border-white '
+	{{ block.shopify_attributes }}
+>
+	<img
+		src='{{avatar}}'
+		alt='{{alt}}'
+		width='48'
+		height='48'
+		class='h-full w-full object-cover'
+		fetchpriority='high'
+	>
+</div>
+
+<style>
+	.kuu-avatars-item {
+		transform: translateX(var(--translate-x, 0));
+	}
+</style>
+
+{% schema %}
+	{
+		"name": "Avatar",
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "avatar_image",
+				"label": "Avatar Image"
+			}
+		],
+		"presets": [
+			{
+				"name": "Avatar",
+				"category": "Kuu Blocks"
+			}
+		]
+	}
+{% endschema %}

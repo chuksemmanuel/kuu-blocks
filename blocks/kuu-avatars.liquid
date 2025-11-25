@@ -1,0 +1,33 @@
+{% liquid
+	assign block_class = 'avatars' | append: '-' | append: block.id
+%}
+<div class='{{ block_class }} flex translate-x-1.5' aria-hidden='hidden'>
+	{% content_for 'blocks' %}
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const avatars = document.querySelectorAll('.{{ block_class }} .kuu-avatars-item');
+		avatars.forEach((avatar, index) => {
+			avatar.style.setProperty('--translate-x', `-${index * 6}px`);
+		});
+	});
+</script>
+
+{% schema %}
+	{
+		"name": "Avatars",
+		"settings": [],
+		"blocks": [
+			{
+				"type": "_kuu-avatars-item"
+			}
+		],
+		"presets": [
+			{
+				"name": "Avatars",
+				"category": "Kuu Blocks"
+			}
+		]
+	}
+{% endschema %}

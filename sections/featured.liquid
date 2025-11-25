@@ -1,5 +1,5 @@
-<section class='grid grid-cols-1 gap-4 py-6 md:grid-cols-3 lg:py-12'>
-	<span class='sr-only'>Our Top Categories</span>
+{% capture featured_items_content %}
+	<div class='grid   min-w-full shrink-0 grid-cols-3 gap-4 py-6 lg:py-12'>
 	{% for block in section.blocks %}
 		{% if block.type == 'featured_item' %}
 			{% render 'collection-card',
@@ -10,7 +10,7 @@
 				count: block.settings.count,
 				height: '250',
 				width: '415.33',
-				class: 'h-60! md:h-[250px]!',
+				class: 'h-60! lg:h-80! min-w-[280px] md:h-[250px]!',
 				show_button: section.settings.show_button,
 				show_count: section.settings.show_count,
 				position: section.settings.position,
@@ -19,7 +19,7 @@
 		{% elsif block.type == 'cta_card' %}
 			<div
 				{{ block.shopify_attributes }}
-				class='flex h-40 w-full flex-col items-center justify-center gap-4 rounded-3xl bg-white md:h-[250px]'
+				class='flex h-60! w-full shrink-0 flex-col items-center justify-center gap-4 rounded-3xl bg-white md:h-[250px] lg:h-80!'
 			>
 				<p class='max-w-[200px] text-center text-2xl font-medium'>
 					{{ block.settings.cta_text }}
@@ -34,6 +34,12 @@
 			</div>
 		{% endif %}
 	{% endfor %}
+	</div>
+{% endcapture %}
+
+<section>
+	<span class='sr-only'>Our Top Categories</span>
+	{% render 'horizontal-scroll', content: featured_items_content %}
 </section>
 
 {% schema %}
