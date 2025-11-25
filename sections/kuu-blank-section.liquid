@@ -1,0 +1,217 @@
+{% liquid
+	assign section_class = 'kuu-section-' | append: section.id
+%}
+{% capture style %}
+	{%  render 'size-style', settings:section.settings %}
+{% endcapture %}
+
+<div
+	class='{{ section_class }} size-style relative'
+	style='{{ style | strip | strip_newlines }}'
+>
+	{% if section.settings.background_image %}
+		<div class='custom-section__background'>
+			{{ section.settings.background_image | image_url: width: 2000 | image_tag }}
+		</div>
+	{% endif %}
+
+	{% content_for 'blocks' %}
+</div>
+
+{% style %}
+	.{{ section_class }} {
+		background-image: var(--background-image);
+	}
+
+		.{{ section_class }} .custom-section__background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		overflow: hidden;
+	}
+	.{{ section_class }} .custom-section__background img {
+		position: absolute;
+		width: 100%;
+		height: auto;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+{% endstyle %}
+
+{% schema %}
+	{
+		"name": "Blank Section",
+		"settings": [
+			{
+				"type": "image_picker",
+				"id": "background_image",
+				"label": "Background Image"
+			},
+			{
+				"type": "header",
+				"content": "Width"
+			},
+			{
+				"type": "select",
+				"id": "width",
+				"label": "Width",
+				"options": [
+					{
+						"value": "fit-content",
+						"label": "Fit"
+					},
+					{
+						"value": "fill",
+						"label": "Fill"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "fill"
+			},
+			{
+				"type": "range",
+				"id": "custom_width",
+				"label": "Custom width",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"default": 100,
+				"visible_if": "{{ section.settings.width == 'custom' }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_mobile_width",
+				"label": "Custom mobile width",
+				"default": false
+			},
+			{
+				"type": "select",
+				"id": "width_mobile",
+				"label": "Width Mobile",
+				"options": [
+					{
+						"value": "fit-content",
+						"label": "Fit"
+					},
+					{
+						"value": "fill",
+						"label": "Fill"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "fill",
+				"visible_if": "{{ section.settings.add_mobile_width }}"
+			},
+			{
+				"type": "range",
+				"id": "custom_width_mobile",
+				"label": "Custom width mobile",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"default": 100,
+				"visible_if": "{{ section.settings.add_mobile_width and section.settings.width_mobile == 'custom' }}"
+			},
+			{
+				"type": "header",
+				"content": "Height"
+			},
+			{
+				"type": "select",
+				"id": "height",
+				"label": "Height",
+				"options": [
+					{
+						"value": "fit-content",
+						"label": "Fit"
+					},
+					{
+						"value": "fill",
+						"label": "Fill"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "fit-content"
+			},
+			{
+				"type": "range",
+				"id": "custom_height",
+				"label": "Custom height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 240,
+				"visible_if": "{{ section.settings.height == 'custom' }}"
+			},
+			{
+				"type": "range",
+				"id": "height_min",
+				"label": "Minimum height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 240
+			},
+			{
+				"type": "checkbox",
+				"id": "add_height_max",
+				"label": "Add max height",
+				"default": false,
+				"visible_if": "{{ section.settings.height != 'custom' }}"
+			},
+			{
+				"type": "text",
+				"id": "height_max",
+				"label": "Max height ",
+				"info": "E.g 1200px, 80vh, min(600px,60svh) etc. Visit [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height) for more info.",
+				"visible_if": "{{section.settings.height != 'custom' and section.settings.add_height_max }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_mobile_height",
+				"label": "Custom Mobile Height",
+				"visible_if": "{{ section.settings.custom_height }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile_height",
+				"label": "Mobile Height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 240,
+				"visible_if": "{{ section.settings.custom_mobile_height }}"
+			}
+		],
+		"blocks": [
+			{
+				"type": "@theme"
+			},
+			{
+				"type": "@app"
+			}
+		],
+		"presets": [
+			{
+				"name": "Blank Section",
+				"category": "Kuu Layout"
+			}
+		]
+	}
+{% endschema %}

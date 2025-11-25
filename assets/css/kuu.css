@@ -339,11 +339,25 @@ p:not(.h1, .h2, .h3, .h4, .h5, .h6)
 /* Size style */
 .size-style {
 	width: var(--size-style-width);
+	min-width: var(--size-style-width-min);
+	max-width: var(--size-style-width-max);
 	height: var(--size-style-height);
+	min-height: var(--size-style-height-min);
+	max-height: var(--size-style-height-max);
 
-	@media screen and (min-width: 768px) {
+	@media screen and (max-width: 768px) {
 		width: var(--size-style-width-mobile, var(--size-style-width));
+		min-width: var(--size-style-width-min-mobile, var(--size-style-width-min));
+		max-width: var(--size-style-width-max-mobile, var(--size-style-width-max));
 		height: var(--size-style-height-mobile, var(--size-style-height));
+		min-height: var(
+			--size-style-height-min-mobile,
+			var(--size-style-height-min)
+		);
+		max-height: var(
+			--size-style-height-max-mobile,
+			var(--size-style-height-max)
+		);
 	}
 }
 

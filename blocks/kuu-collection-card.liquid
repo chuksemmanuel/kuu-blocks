@@ -1,3 +1,7 @@
+{% capture style %}
+	{% render 'size-style', settings: block.settings %}
+{% endcapture %}
+
 {% render 'collection-card',
 	collection: block.settings.collection,
 	image: block.settings.image,
@@ -6,16 +10,413 @@
 	count: block.settings.count,
 	height: '250',
 	width: '415.33',
-	class: 'h-60! lg:h-80! min-w-[280px] md:h-[250px]!',
-	show_button: section.settings.show_button,
-	show_count: section.settings.show_count,
-	position: section.settings.position,
-	block: block
+	class: 'size-style',
+	show_button: block.settings.show_button,
+	show_count: block.settings.show_count,
+	position: block.settings.position,
+	block: block,
+	style: style
 %}
 
 {% schema %}
 	{
 		"name": "Kuu Collection Card",
-		"settings": []
+		"tag": null,
+		"settings": [
+			{
+				"type": "collection",
+				"id": "collection",
+				"label": "Choose Collection"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_count",
+				"label": "Show Product Count on Card",
+				"default": false
+			},
+			{
+				"type": "header",
+				"content": "Manual Collection Details"
+			},
+			{
+				"type": "checkbox",
+				"id": "manual",
+				"label": "Manually add image, link and product count instead."
+			},
+			{
+				"type": "image_picker",
+				"id": "image",
+				"label": "Collection Image ",
+				"visible_if": "{{ block.settings.manual }}"
+			},
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Collection Title ",
+				"visible_if": "{{ block.settings.manual }}"
+			},
+			{
+				"type": "url",
+				"id": "href",
+				"label": "Collection Link ",
+				"visible_if": "{{ block.settings.manual }}"
+			},
+
+			{
+				"type": "number",
+				"id": "count",
+				"label": "Product counts",
+				"info": "Leave blank to hide count",
+				"visible_if": "{{ block.settings.manual }}"
+			},
+			{
+				"type": "header",
+				"content": "Content"
+			},
+			{
+				"type": "checkbox",
+				"id": "show_button",
+				"label": "Show Cta Button"
+			},
+			{
+				"type": "select",
+				"id": "position",
+				"label": "Content Position on Cards",
+				"options": [
+					{
+						"value": "center",
+						"label": "Center"
+					},
+					{
+						"value": "bottom",
+						"label": "Bottom"
+					}
+				],
+				"default": "center"
+			},
+			{
+				"type": "header",
+				"content": "Width"
+			},
+			{
+				"type": "select",
+				"id": "width",
+				"label": "Width",
+				"options": [
+					{
+						"value": "fit-content",
+						"label": "Fit"
+					},
+					{
+						"value": "fill",
+						"label": "Fill"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "custom"
+			},
+			{
+				"type": "select",
+				"id": "unit",
+				"label": "Unit",
+				"options": [
+					{
+						"value": "pixel",
+						"label": "Pixel"
+					},
+					{
+						"value": "percent",
+						"label": "Percent"
+					}
+				],
+				"default": "percent",
+				"visible_if": "{{ block.settings.width == 'custom' }}"
+			},
+			{
+				"type": "range",
+				"id": "percent_width",
+				"label": "Width",
+				"min": 10,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"default": 100,
+				"visible_if": "{{ block.settings.unit == 'percent' and block.settings.width == 'custom' }}"
+			},
+			{
+				"type": "range",
+				"id": "pixel_width",
+				"label": "Width",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 48,
+				"visible_if": "{{ block.settings.unit == 'pixel' and block.settings.width == 'custom' }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_width_min",
+				"label": "Add min width",
+				"default": false
+			},
+			{
+				"type": "range",
+				"id": "width_min",
+				"label": "Minimum width",
+				"min": 0,
+				"max": 400,
+				"step": 4,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.add_width_min }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_width_max",
+				"label": "Add max width",
+				"default": false
+			},
+			{
+				"type": "text",
+				"id": "width_max",
+				"label": "Max width ",
+				"info": "E.g 1200px, 80vw, min(600px,60vw) etc. Visit [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width) for more info.",
+				"visible_if": "{{block.settings.add_width_max }}"
+			},
+
+			{
+				"type": "header",
+				"content": "Mobile Width"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_mobile_width",
+				"label": "Custom mobile width",
+				"default": false
+			},
+			{
+				"type": "select",
+				"id": "width_mobile",
+				"label": "Width Mobile",
+				"options": [
+					{
+						"value": "fit-content",
+						"label": "Fit"
+					},
+					{
+						"value": "fill",
+						"label": "Fill"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "fill",
+				"visible_if": "{{ block.settings.custom_mobile_width }}"
+			},
+			{
+				"type": "select",
+				"id": "unit_mobile",
+				"label": "Unit",
+				"options": [
+					{
+						"value": "pixel",
+						"label": "Pixel"
+					},
+					{
+						"value": "percent",
+						"label": "Percent"
+					}
+				],
+				"default": "percent",
+				"visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+			},
+			{
+				"type": "range",
+				"id": "percent_width_mobile",
+				"label": "Width",
+				"min": 10,
+				"max": 100,
+				"step": 1,
+				"unit": "%",
+				"default": 100,
+				"visible_if": "{{ block.settings.unit_mobile == 'percent' and block.settings.width_mobile == 'custom'  }}"
+			},
+			{
+				"type": "range",
+				"id": "pixel_width_mobile",
+				"label": "Width",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 120,
+				"visible_if": "{{ block.settings.unit_mobile == 'pixel' and block.settings.width_mobile == 'custom'  }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_width_mobile_min",
+				"label": "Add min width",
+				"default": false
+			},
+			{
+				"type": "range",
+				"id": "width_mobile_min",
+				"label": "Minimum width",
+				"min": 0,
+				"max": 400,
+				"step": 4,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.add_width_mobile_min }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_width_mobile_max",
+				"label": "Add max width",
+				"default": false
+			},
+			{
+				"type": "text",
+				"id": "width_mobile_max",
+				"label": "Max width ",
+				"info": "E.g 1200px, 80vw, min(600px,60vw) etc. Visit [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width) for more info.",
+				"visible_if": "{{block.settings.add_width_mobile_max }}"
+			},
+			{
+				"type": "header",
+				"content": "Height"
+			},
+			{
+				"type": "select",
+				"id": "height",
+				"label": "Height",
+				"options": [
+					{
+						"value": "fit-content",
+						"label": "Fit"
+					},
+					{
+						"value": "fill",
+						"label": "Fill"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "custom"
+			},
+			{
+				"type": "range",
+				"id": "custom_height",
+				"label": "Custom height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 348,
+				"visible_if": "{{ block.settings.height == 'custom' }}"
+			},
+			{
+				"type": "range",
+				"id": "height_min",
+				"label": "Minimum height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "checkbox",
+				"id": "add_height_max",
+				"label": "Add max height",
+				"default": false
+			},
+			{
+				"type": "text",
+				"id": "height_max",
+				"label": "Max height ",
+				"info": "E.g 1200px, 80vh, min(600px,60svh) etc. Visit [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height) for more info.",
+				"visible_if": "{{block.settings.height != 'custom' and block.settings.add_height_max }}"
+			},
+			{
+				"type": "header",
+				"content": "Mobile Height"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_height_mobile",
+				"label": "Mobile Height"
+			},
+			{
+				"type": "select",
+				"id": "height_mobile",
+				"label": "Height",
+				"options": [
+					{
+						"value": "fit-content",
+						"label": "Fit"
+					},
+					{
+						"value": "fill",
+						"label": "Fill"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "custom",
+				"visible_if": "{{ block.settings.add_height_mobile }}"
+			},
+			{
+				"type": "range",
+				"id": "custom_height_mobile",
+				"label": "Custom height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 348,
+				"visible_if": "{{  block.settings.add_height_mobile and block.settings.height_mobile == 'custom' }}"
+			},
+			{
+				"type": "range",
+				"id": "height_min_mobile",
+				"label": "Minimum height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.add_height_mobile }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_height_max_mobile",
+				"label": "Add max height",
+				"default": false
+			},
+			{
+				"type": "text",
+				"id": "height_max_mobile",
+				"label": "Max height ",
+				"info": "E.g 1200px, 80vh, min(600px,60svh) etc. Visit [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height) for more info.",
+				"visible_if": "{{block.settings.height != 'custom' and block.settings.add_height_max_mobile }}"
+			}
+		],
+		"presets": [
+			{
+				"name": "Collection Card",
+				"category": "Kuu Block"
+			}
+		]
 	}
 {% endschema %}

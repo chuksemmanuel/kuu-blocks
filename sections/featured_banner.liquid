@@ -2,7 +2,7 @@
 	{%- comment -%}
 		Desktop banner
 	{%- endcomment -%}
-	<div class='relative hidden aspect-1400/540 w-full items-center justify-center overflow-hidden rounded-3xl sm:flex'>
+	<div class='relative hidden aspect-1400/540 w-full items-center justify-center overflow-hidden rounded-3xl bg-white sm:flex'>
 		<div class='flex w-[200px] flex-col items-center gap-4 text-center md:w-[250px]'>
 			<p class='relative z-10 text-2xl text-black text-shadow-white text-shadow-xs md:text-4xl'>
 				{{ section.settings.heading }}
@@ -26,7 +26,7 @@
 				alt='{{ section.settings.heading | escape }}'
 				width='1400'
 				height='540'
-				class='absolute inset-0 z-5 h-full! w-full object-cover transition duration-300 ease-out group-hover:scale-105 group-active:scale-100'
+				class='absolute  inset-0 z-50 h-full! w-full object-cover transition duration-300 ease-out group-hover:scale-105 group-active:scale-100'
 			>
 		{% endif %}
 	</div>

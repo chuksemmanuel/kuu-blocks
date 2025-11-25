@@ -32,9 +32,9 @@
 {% style %}
 	.{{ flex_container_wrapper_class }} {
 		background-color: {{ block.settings.background_color }};
-		min-height: {{ block.settings.min_height}}px;
-		{% if block.settings.height != 'custom' and block.settings.add_max_height and block.settings.max_height != blank %}
-		max-height: {{ block.settings.max_height | strip }};
+		min-height: {{ block.settings.height_min}}px;
+		{% if block.settings.height != 'custom' and block.settings.add_height_max and block.settings.height_max != blank %}
+		max-height: {{ block.settings.height_max | strip }};
 		overflow-y:auto;
 		{% endif %}
 	}
@@ -159,7 +159,7 @@
 			},
 			{
 				"type": "range",
-				"id": "min_height",
+				"id": "height_min",
 				"label": "Minimum height",
 				"min": 0,
 				"max": 1200,
@@ -169,17 +169,17 @@
 			},
 			{
 				"type": "checkbox",
-				"id": "add_max_height",
+				"id": "add_height_max",
 				"label": "Add max height",
 				"default": false,
 				"visible_if": "{{ block.settings.height != 'custom' }}"
 			},
 			{
 				"type": "text",
-				"id": "max_height",
+				"id": "height_max",
 				"label": "Max height ",
 				"info": "E.g 1200px, 80vh, min(600px,60svh) etc. Visit [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height) for more info.",
-				"visible_if": "{{block.settings.height != 'custom' and block.settings.add_max_height }}"
+				"visible_if": "{{block.settings.height != 'custom' and block.settings.add_height_max }}"
 			},
 			{
 				"type": "header",
