@@ -1,0 +1,50 @@
+{% render 'markdown', block: block %}
+
+{% schema %}
+	{
+		"name": "Markdown",
+		"settings": [
+			{
+				"type": "select",
+				"id": "language",
+				"label": "Language",
+				"options": [
+					{ "value": "bash", "label": "Bash" },
+					{ "value": "css", "label": "CSS" },
+					{ "value": "html", "label": "HTML" },
+					{ "value": "javascript", "label": "JavaScript" },
+					{ "value": "json", "label": "JSON" },
+					{ "value": "liquid", "label": "Liquid" },
+					{ "value": "markdown", "label": "Markdown" },
+					{ "value": "yaml", "label": "YAML" }
+				]
+			},
+			{
+				"type": "textarea",
+				"id": "content",
+				"label": "Content",
+				"visible_if": "{{block.settings.language != 'liquid'}}"
+			},
+			{
+				"type": "liquid",
+				"id": "liquid_code",
+				"label": "Liquid",
+				"default": "{% raw %} ```liquid  ``` {% endraw %}",
+				"info": "Wrap your liquid code in {% raw %} and {% endraw %}",
+				"visible_if": "{{block.settings.language == 'liquid'}}"
+			},
+			{
+				"type": "checkbox",
+				"id": "download_button",
+				"label": "Enable Download button",
+				"default": false
+			}
+		],
+		"presets": [
+			{
+				"name": "Code Block",
+				"category": "Content"
+			}
+		]
+	}
+{% endschema %}
