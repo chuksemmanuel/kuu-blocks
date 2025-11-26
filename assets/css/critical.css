@@ -73,4 +73,9 @@ body {
 	padding-left: var(--page-margin, 10px);
 	padding-right: var(--page-margin, 10px);
 	width: 100%;
+
+	@media (max-width: 1280px) {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
 }

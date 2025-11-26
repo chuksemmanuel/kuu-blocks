@@ -1,7 +1,36 @@
 <!-- prettier-ignore -->
-<div class="kuu-md mx-auto prose prose-headings:font-semibold" x-data='markdown' x-html="html" x-cloak>
-	{{block.settings.content | escape}}
-	
-    {{ block.settings.liquid_code |  escape}}
+<div class="kuu-md mx-auto prose prose-headings:font-medium scroll-smooth" x-data='markdown' x-html="html" x-cloak>{{block.settings.content | escape}}</div>
 
-</div>
+{% style %}
+	.kuu-md h2 a {
+		font-size: 1.5rem;
+		display: flex;
+		gap: 4px;
+		font-weight: 600;
+	}
+
+	.kuu-md strong {
+		font-weight: 500;
+	}
+
+	.kuu-md h2 a:before {
+		content: '#';
+		flex-shrink: 0;
+		display: inline-block;
+		width: 1em;
+		color: #ccc;
+	}
+
+	.code-toolbar {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.code-toolbar .toolbar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.code-toolbar .toolbar .toolbar-item:first-of-type {
+		visibility: hidden;
+	}
+{% endstyle %}

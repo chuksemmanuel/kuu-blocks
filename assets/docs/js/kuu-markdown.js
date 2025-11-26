@@ -1,26 +1,33 @@
 document.addEventListener('alpine:init', () => {
 	const Alpine = window.Alpine;
-	const Prism = window.Prism;
-	const md = window.markdownit({
-		html: true,
-		linkify: true,
-		typographer: true,
-		breaks: true,
-		highlight: (code, lang) => {
-			console.log(lang);
-			if (Prism.languages[lang]) {
-				return Prism.highlight(code, Prism.languages[lang], lang);
-			} else {
-				console.log('No language found for ' + lang);
-				return '';
-			}
-		},
-	});
 
 	Alpine.data('markdown', function () {
 		return {
 			html: '',
 			init() {
+				const Prism = window.Prism;
+				if (!window.markdownit) {
+					console.error('Markdown-it is not loaded');
+					return;
+				}
+				const md = window.markdownit({
+					html: true,
+					linkify: true,
+					typographer: true,
+					breaks: true,
+					highlight: (code, lang) => {
+						if (!Prism) {
+							console.error('Prism is not loaded');
+							return '';
+						}
+						if (Prism.languages[lang]) {
+							return Prism.highlight(code, Prism.languages[lang], lang);
+						} else {
+							console.log('Prism:No language found for ' + lang);
+							return '';
+						}
+					},
+				});
 				this.html = md.render(this.$el.textContent);
 			},
 		};

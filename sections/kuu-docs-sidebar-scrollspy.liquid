@@ -9,12 +9,15 @@
 			<h4 class='mb-2 text-sm font-semibold uppercase'>On this page</h4>
 			<ul class='flex flex-col gap-2 border-l border-gray-200'>
 				<template x-for='heading in headings' :key='heading.id'>
-					<li>
+					<li
+						class='border-l hover:border-gray-400 hover:text-gray-900'
+						:class="activeId === heading.id ? 'font-bold text-gray-900 border-gray-900' : 'text-gray-500 border-transparent'"
+					>
 						<a
 							:href="'#' + heading.id"
 							@click.prevent='scrollTo(heading.id)'
-							class='-ml-px block border-l py-1 pl-4 text-sm transition-colors duration-200 hover:border-gray-400 hover:text-gray-900'
-							:class="activeId === heading.id ? 'font-bold text-gray-900 border-gray-900' : 'text-gray-500 border-transparent'"
+							class='-ml-px block py-1 transition-colors duration-200'
+							:class="heading.tag === 'h3' ? 'pl-8 text-xs' : 'text-sm pl-4'"
 							x-text='heading.text'
 						></a>
 					</li>
@@ -49,12 +52,28 @@
 								.replace(/\s+/g, '-')
 								.replace(/[^\w\-]+/g, '') + `-${index}` || `heading-${index}`;
 					}
+
+					// wrap text content in a tag and prevent default behavior
+					el.innerHTML = `<a href="#${el.id}">${el.textContent.trim()}</a>`;
+
+					// Prevent default anchor behavior to allow custom scroll
+					const anchor = el.querySelector('a');
+					if (anchor) {
+						anchor.addEventListener('click', (e) => {
+							e.preventDefault();
+							this.scrollTo(el.id);
+						});
+					}
+
 					return {
+						tag: el.tagName.toLowerCase(),
 						id: el.id,
 						text: el.textContent.trim(),
 						offset: el.offsetTop,
 					};
 				});
+
+				console.log(this.headings);
 			},
 			updateActive() {
 				const scrollY = window.scrollY;
@@ -82,6 +101,9 @@
 						behavior: 'smooth',
 					});
 
+					// Update URL after scroll (use pushState to avoid page jump)
+					history.pushState(null, null, `#${id}`);
+
 					// Update active immediately
 					this.activeId = id;
 				}
@@ -93,7 +115,7 @@
 <style>
 	.kuu-docs-sidebar-scrollspy {
 		max-width: 256px;
-
+		margin-right: 10px;
 		@media (max-width: 1280px) {
 			display: none !important;
 		}
