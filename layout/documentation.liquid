@@ -5,6 +5,8 @@
 		{% render 'css-variables' %}
 		{% # Load and preload the critical CSS %}
 		{{ 'css/critical.css' | asset_url | stylesheet_tag: preload: true }}
+		{% # Load prism CSS for syntax highlighting %}
+		<link href='{{ 'docs/css/prism-onelight.css' | asset_url }}' rel='stylesheet'>
 
 		{% render 'stylesheet' %}
 		{% render 'script' %}
@@ -25,7 +27,7 @@
 				<main
 					id='main-content'
 					tabindex='-1'
-					class='mx-auto w-full  flex-1 pb-24'
+					class='mx-auto w-full flex-1  overflow-x-hidden pb-24'
 				>
 					{{ content_for_layout }}
 				</main>
@@ -34,8 +36,10 @@
 			</div>
 		</div>
 
+		{% render 'kuu-docs-js' %}
+		{% render 'js-lib' %}
+
 		{% # Playground - for testing components %}
 		{% render 'playground' %}
-		{% render 'js-lib' %}
 	</body>
 </html>

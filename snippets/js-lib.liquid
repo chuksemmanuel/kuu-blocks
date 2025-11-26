@@ -19,7 +19,7 @@
 	    // create icons once in storefront
 	   lucide.createIcons();
 
-	 // in theme editor, recreate icons when the editor updates
+	 // in theme editor, recreate icons when the editor re-renders
 	 {% if request.design_mode %}
 	        window.addEventListener('shopify:section:load', () =>{
 	       if(window.lucide){

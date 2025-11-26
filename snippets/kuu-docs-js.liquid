@@ -1,0 +1,10 @@
+{% comment %}
+	This snippet is used to load js files for kuu documentation pages. It isn't part of the theme
+{% endcomment %}
+
+{% # Internal JS files %}
+<script src='{{ 'docs/js/kuu-markdown.js' | asset_url }}' defer></script>
+
+{% # External JS libraries %}
+<script src='{{ 'docs/js/lib/markdown-it.min.js' | asset_url }}' defer></script>
+<script src='{{ 'docs/js/lib/prism.js' | asset_url }}' defer></script>

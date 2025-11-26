@@ -16,6 +16,7 @@
 	"devDependencies": {
 		"@ianvs/prettier-plugin-sort-imports": "^4.7.0",
 		"@shopify/prettier-plugin-liquid": "^1.10.0",
+		"@tailwindcss/typography": "^0.5.19",
 		"prettier": "^3.6.2",
 		"prettier-plugin-tailwindcss": "^0.7.1",
 		"typescript": "^5.9.3"
@@ -24,8 +25,11 @@
 		"@alpinejs/focus": "^3.15.2",
 		"@tailwindcss/cli": "^4.1.15",
 		"@types/alpinejs": "^3.13.11",
+		"@types/markdown-it": "^14.1.2",
 		"alpinejs": "^3.15.0",
 		"gsap": "^3.13.0",
+		"markdown-it": "^14.1.0",
+		"prism": "^4.1.2",
 		"swiper": "^12.0.3",
 		"tailwindcss": "^4.1.15"
 	}

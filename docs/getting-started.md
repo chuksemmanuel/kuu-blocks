@@ -72,3 +72,21 @@ pnpm dev
 ```bash
 shopify theme dev
 ```
+
+```liquid
+{% assign hidden = true %}
+{% capture content %}
+  {% render 'markdown' %}
+  {% endcapture %}
+
+{% if hidden != true %}
+	{% comment %} Place holder for tab {% endcomment %}
+	<div class='fixed inset-0 z-50 flex h-screen w-screen items-start justify-center bg-gray-600 p-4'>
+		<div class='relative mx-auto w-full max-w-3xl rounded bg-white p-12'>
+			<div class='relative min-h-[120px] shrink-0'>
+				{{ content | escape }}
+			</div>
+		</div>
+	</div>
+{% endif %}
+```

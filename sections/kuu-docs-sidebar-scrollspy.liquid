@@ -1,8 +1,8 @@
-{% assign attribute = attribute | default: 'data-doc-heading' %}
+{% assign selector = selector | default: '.kuu-md h2' %}
 
 <aside
 	class='full-width h-[calc(100svh-120px)] w-full shrink-0'
-	x-data='docsScrollspy("{{ attribute }}")'
+	x-data='docsScrollspy("{{ selector }}")'
 >
 	<div class='fixed flex h-[calc(100svh-120px)] w-[256px] overflow-y-auto rounded-lg py-5 '>
 		<div x-show='headings.length > 0' x-cloak>
@@ -26,7 +26,7 @@
 
 <script>
 	document.addEventListener('alpine:init', () => {
-		Alpine.data('docsScrollspy', (attribute) => ({
+		Alpine.data('docsScrollspy', (selector) => ({
 			headings: [],
 			activeId: null,
 			init() {
@@ -38,7 +38,7 @@
 				});
 			},
 			scanHeadings() {
-				const elements = document.querySelectorAll(`[${attribute}]`);
+				const elements = document.querySelectorAll(`${selector}`);
 				this.headings = Array.from(elements).map((el, index) => {
 					// Ensure ID exists
 					if (!el.id) {
