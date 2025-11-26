@@ -66,11 +66,11 @@ Some Kuu components rely on JavaScript for their functionality. Create a snippet
 <script src='{{ 'js/kuu.js' | asset_url }}' defer></script>
 
 {% # Components %}
-<script src='{{ 'js/components/tab.js' | asset_url }}' defer></script>
-<script src='{{ 'js/components/drawer.js' | asset_url }}' defer></script>
+<script src='{{ 'js/components/kuu-tab.js' | asset_url }}' defer></script>
+<script src='{{ 'js/components/kuu-drawer.js' | asset_url }}' defer></script>
 
 {% # Blocks %}
-<script src='{{ 'js/blocks/searchdrawer.js' | asset_url }}' defer></script>
+<script src='{{ 'js/blocks/kuu-searchdrawer.js' | asset_url }}' defer></script>
 ```
 
 > **NOTE**: Remember to upload the scripts to the appropriate directory:

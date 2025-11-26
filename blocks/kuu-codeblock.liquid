@@ -1,8 +1,75 @@
-{% render 'kuu-markdown', block: block %}
+{% liquid
+	assign code_block_id = 'kuu-codeblock-' | append: block.id
+
+	capture content
+		echo '```' | append: block.settings.language | append: ' '
+		if block.settings.language == 'liquid'
+			echo block.settings.liquid_code
+		else
+			echo block.settings.content
+		endif
+		echo '```'
+	endcapture
+%}
+
+<div
+	class='mx-auto  my-4 max-w-[65ch] overflow-hidden rounded-lg border-2 border-gray-200'
+	{{ block.shopify_attributes }}
+>
+	{% if block.settings.show_toolbar %}
+		<div class='flex h-10 items-center justify-between  bg-gray-200 px-4'>
+			<span class='text-xs'>{{ block.settings.pathname }}</span>
+
+			{% if block.settings.copy_button %}
+				<button
+					class='relative size-4 [&_svg]:size-4!'
+					:class="copied ? 'text-green-500' : ''"
+					x-data='copyButton'
+					data-content-selector='#{{code_block_id}} .code-toolbar code'
+					@click='copy'
+				>
+					{% capture icon_attributes %}
+						class='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+						x-transition:enter='transition  0.2s ease-in-out delay-100'
+						x-transition:enter-start='scale-0 opacity-0'
+						x-transition:enter-end='scale-100 opacity-100'
+						x-transition:leave='transition  0.2s ease-in-out'
+						x-transition:leave-start='scale-100 opacity-100'
+						x-transition:leave-end='scale-0 opacity-0'
+						x-cloak
+					{% endcapture %}
+					<span x-show='!copied' {{ icon_attributes }}>
+						{{ 'icons/copy.svg' | inline_asset_content }}
+					</span>
+					<span x-show='copied' {{ icon_attributes }}>
+						{{ 'icons/check.svg' | inline_asset_content }}
+					</span>
+				</button>
+			{% endif %}
+		</div>
+	{% endif %}
+	<div id='{{code_block_id}}' class='kuu-codeblock  max-h-70 w-full overflow-y-auto'>
+		{% render 'kuu-markdown', content: content, hide_toolbar: true %}
+	</div>
+</div>
+
+<style>
+	.kuu-codeblock .code-toolbar {
+		width: 100%;
+		min-width: fit-content;
+	}
+	/* Remove vertical  margins from code blocks */
+
+	.kuu-codeblock pre[class*='language-'] {
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
+	}
+</style>
 
 {% schema %}
 	{
 		"name": "Markdown",
+		"tag": null,
 		"settings": [
 			{
 				"type": "select",
@@ -29,15 +96,30 @@
 				"type": "liquid",
 				"id": "liquid_code",
 				"label": "Liquid",
-				"default": "{% raw %} ```liquid  ``` {% endraw %}",
-				"info": "Wrap your liquid code in {% raw %} and {% endraw %}",
+				"default": "{% raw %} {% endraw %}",
+				"info": "Wrap your liquid code in raw tag. e.g {% raw %} your code {% endraw %}",
 				"visible_if": "{{block.settings.language == 'liquid'}}"
 			},
 			{
 				"type": "checkbox",
-				"id": "download_button",
-				"label": "Enable Download button",
-				"default": false
+				"id": "show_toolbar",
+				"label": "Show Toolbar",
+				"default": true
+			},
+			{
+				"type": "text",
+				"id": "pathname",
+				"label": "Pathname",
+				"info": "E.g snippets/kuu-codeblock.liquid",
+				"visible_if": "{{block.settings.show_toolbar}}",
+				"default": "snippets/kuu-codeblock.liquid"
+			},
+			{
+				"type": "checkbox",
+				"id": "copy_button",
+				"label": "Enable Copy button",
+				"default": true,
+				"visible_if": "{{block.settings.show_toolbar}}"
 			}
 		],
 		"presets": [

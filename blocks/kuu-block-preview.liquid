@@ -1,0 +1,26 @@
+<div
+	class='mx-auto  my-4 max-w-[65ch] overflow-hidden rounded-lg border-2 border-gray-200 '
+	{{ block.shopify_attributes }}
+>
+	<div class='flex min-h-20 items-center justify-between  bg-white px-4'>
+		{% content_for 'blocks' %}
+	</div>
+</div>
+
+{% schema %}
+	{
+		"name": "Block Preview",
+		"settings": [],
+		"blocks": [
+			{
+				"type": "@theme"
+			}
+		],
+		"presets": [
+			{
+				"name": "Block Preview",
+				"category": "Kuu Docs"
+			}
+		]
+	}
+{% endschema %}

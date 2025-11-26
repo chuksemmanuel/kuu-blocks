@@ -3,12 +3,16 @@
 {%- endcomment -%}
 <link rel='modulepreload' href='{{ 'js/kuu.js' | asset_url }}'>
 
-{% # Global Utilities %}
+{% # Core JS - most be included first %}
 <script src='{{'js/kuu.js' |  asset_url}}' defer></script>
 
+{% # Utilities %}
+<script src='{{'js/utils/kuu-copy-button.js' |  asset_url}}' defer></script>
+
 {% # COMPONENT %}
-<script src='{{'js/components/tab.js' | asset_url}}' defer></script>
-<script src='{{ 'js/components/drawer.js' | asset_url }}' defer></script>
+<script src='{{'js/components/kuu-tab.js' | asset_url}}' defer></script>
+<script src='{{ 'js/components/kuu-drawer.js' | asset_url }}' defer></script>
 
 {% # Blocks %}
-<script src='{{ 'js/blocks/searchdrawer.js' | asset_url }}' defer></script>
+<script src='{{ 'js/blocks/kuu-searchdrawer.js' | asset_url }}' defer></script>
+<script src='{{ 'js/blocks/kuu-quick-add.js' |  asset_url }}' defer></script>

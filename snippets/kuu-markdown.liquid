@@ -1,5 +1,5 @@
 <!-- prettier-ignore -->
-<div class="kuu-md mx-auto prose prose-headings:font-medium scroll-smooth" x-data='markdown' x-html="html" x-cloak>{{block.settings.content | escape}}</div>
+<div class="kuu-md mx-auto prose prose-headings:font-medium scroll-smooth" x-data='markdown' x-html="html" x-cloak>{{content | escape}}</div>
 
 {% style %}
 	.kuu-md h2 a {
@@ -26,9 +26,13 @@
 		flex-direction: column-reverse;
 	}
 	.code-toolbar .toolbar {
+		{% if hide_toolbar %}
+		display: none;
+		{% else %}
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		{% endif %}
 	}
 	.code-toolbar .toolbar .toolbar-item:first-of-type {
 		visibility: hidden;
