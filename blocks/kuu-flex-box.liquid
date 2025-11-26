@@ -7,7 +7,7 @@
 			assign width_style = 'fit-content'
 		when 'fill'
 			assign width_style = '100%'
-		when 'custom'
+		when 'custom
 			assign width_style = block.settings.custom_width | append: '%'
 	endcase
 %}
@@ -18,7 +18,11 @@
 	{% render 'flex-style', settings: block.settings %}
 {% endcapture %}
 
-<div class='border-style ' style='{% render 'border-override', settings: block.settings %} width:{{ width_style }};'>
+<div
+	{{ block.shopify_attributes }}
+	class='border-style mx-auto'
+	style='{% render 'border-override', settings: block.settings %} width:{{ width_style }}; max-width:{{ block.settings.width_max }};'
+>
 	<div class='{{ flex_container_wrapper_class }}'>
 		<div
 			style='{{ style |  strip}}'
@@ -31,18 +35,24 @@
 
 {% style %}
 	.{{ flex_container_wrapper_class }} {
+		max-width:{{ block.settings.width_max }};
 		background-color: {{ block.settings.background_color }};
 		min-height: {{ block.settings.height_min}}px;
 		{% if block.settings.height != 'custom' and block.settings.add_height_max and block.settings.height_max != blank %}
 		max-height: {{ block.settings.height_max | strip }};
 		overflow-y:auto;
 		{% endif %}
+
+		@media (max-width: 750px) {
+			max-width:{{ block.settings.width_max_mobile }};
+		}
 	}
 {% endstyle %}
 
 {% schema %}
 	{
 		"name": "Kuu Flex Box",
+		"tag": null,
 		"settings": [
 			{
 				"type": "color",
@@ -71,22 +81,85 @@
 						"label": "Custom"
 					}
 				],
-				"default": "fill"
+				"default": "custom"
+			},
+			{
+				"type": "select",
+				"id": "unit",
+				"label": "Unit",
+				"options": [
+					{
+						"value": "pixel",
+						"label": "Pixel"
+					},
+					{
+						"value": "percent",
+						"label": "Percent"
+					}
+				],
+				"default": "percent",
+				"visible_if": "{{ block.settings.width == 'custom' }}"
 			},
 			{
 				"type": "range",
-				"id": "custom_width",
-				"label": "Custom width",
-				"min": 0,
+				"id": "percent_width",
+				"label": "Width",
+				"min": 10,
 				"max": 100,
 				"step": 1,
 				"unit": "%",
 				"default": 100,
-				"visible_if": "{{ block.settings.width == 'custom' }}"
+				"visible_if": "{{ block.settings.unit == 'percent' and block.settings.width == 'custom' }}"
+			},
+			{
+				"type": "range",
+				"id": "pixel_width",
+				"label": "Width",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 48,
+				"visible_if": "{{ block.settings.unit == 'pixel' and block.settings.width == 'custom' }}"
 			},
 			{
 				"type": "checkbox",
-				"id": "add_mobile_width",
+				"id": "add_width_min",
+				"label": "Add min width",
+				"default": false
+			},
+			{
+				"type": "range",
+				"id": "width_min",
+				"label": "Minimum width",
+				"min": 0,
+				"max": 400,
+				"step": 4,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.add_width_min }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_width_max",
+				"label": "Add max width",
+				"default": false
+			},
+			{
+				"type": "text",
+				"id": "width_max",
+				"label": "Max width ",
+				"info": "E.g 1200px, 80vw, min(600px,60vw) etc. Visit [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width) for more info.",
+				"visible_if": "{{block.settings.add_width_max }}"
+			},
+
+			{
+				"type": "header",
+				"content": "Mobile Width"
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_mobile_width",
 				"label": "Custom mobile width",
 				"default": false
 			},
@@ -109,18 +182,76 @@
 					}
 				],
 				"default": "fill",
-				"visible_if": "{{ block.settings.add_mobile_width }}"
+				"visible_if": "{{ block.settings.custom_mobile_width }}"
+			},
+			{
+				"type": "select",
+				"id": "unit_mobile",
+				"label": "Unit",
+				"options": [
+					{
+						"value": "pixel",
+						"label": "Pixel"
+					},
+					{
+						"value": "percent",
+						"label": "Percent"
+					}
+				],
+				"default": "percent",
+				"visible_if": "{{ block.settings.width_mobile == 'custom' }}"
 			},
 			{
 				"type": "range",
-				"id": "custom_width_mobile",
-				"label": "Custom width mobile",
-				"min": 0,
+				"id": "percent_width_mobile",
+				"label": "Width",
+				"min": 10,
 				"max": 100,
 				"step": 1,
 				"unit": "%",
 				"default": 100,
-				"visible_if": "{{ block.settings.add_mobile_width and block.settings.width_mobile == 'custom' }}"
+				"visible_if": "{{ block.settings.unit_mobile == 'percent' and block.settings.width_mobile == 'custom'  }}"
+			},
+			{
+				"type": "range",
+				"id": "pixel_width_mobile",
+				"label": "Width",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 120,
+				"visible_if": "{{ block.settings.unit_mobile == 'pixel' and block.settings.width_mobile == 'custom'  }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_width_mobile_min",
+				"label": "Add min width",
+				"default": false
+			},
+			{
+				"type": "range",
+				"id": "width_mobile_min",
+				"label": "Minimum width",
+				"min": 0,
+				"max": 400,
+				"step": 4,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.add_width_mobile_min }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_width_mobile_max",
+				"label": "Add max width",
+				"default": false
+			},
+			{
+				"type": "text",
+				"id": "width_mobile_max",
+				"label": "Max width ",
+				"info": "E.g 1200px, 80vw, min(600px,60vw) etc. Visit [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width) for more info.",
+				"visible_if": "{{block.settings.add_width_mobile_max }}"
 			},
 			{
 				"type": "header",
@@ -144,7 +275,7 @@
 						"label": "Custom"
 					}
 				],
-				"default": "fit-content"
+				"default": "custom"
 			},
 			{
 				"type": "range",
@@ -154,7 +285,7 @@
 				"max": 1200,
 				"step": 12,
 				"unit": "px",
-				"default": 240,
+				"default": 348,
 				"visible_if": "{{ block.settings.height == 'custom' }}"
 			},
 			{
@@ -171,8 +302,7 @@
 				"type": "checkbox",
 				"id": "add_height_max",
 				"label": "Add max height",
-				"default": false,
-				"visible_if": "{{ block.settings.height != 'custom' }}"
+				"default": false
 			},
 			{
 				"type": "text",
@@ -180,6 +310,71 @@
 				"label": "Max height ",
 				"info": "E.g 1200px, 80vh, min(600px,60svh) etc. Visit [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height) for more info.",
 				"visible_if": "{{block.settings.height != 'custom' and block.settings.add_height_max }}"
+			},
+			{
+				"type": "header",
+				"content": "Mobile Height"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_height_mobile",
+				"label": "Mobile Height"
+			},
+			{
+				"type": "select",
+				"id": "height_mobile",
+				"label": "Height",
+				"options": [
+					{
+						"value": "fit-content",
+						"label": "Fit"
+					},
+					{
+						"value": "fill",
+						"label": "Fill"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "custom",
+				"visible_if": "{{ block.settings.add_height_mobile }}"
+			},
+			{
+				"type": "range",
+				"id": "custom_height_mobile",
+				"label": "Custom height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 348,
+				"visible_if": "{{  block.settings.add_height_mobile and block.settings.height_mobile == 'custom' }}"
+			},
+			{
+				"type": "range",
+				"id": "height_min_mobile",
+				"label": "Minimum height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.add_height_mobile }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_height_max_mobile",
+				"label": "Add max height",
+				"default": false
+			},
+			{
+				"type": "text",
+				"id": "height_max_mobile",
+				"label": "Max height ",
+				"info": "E.g 1200px, 80vh, min(600px,60svh) etc. Visit [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height) for more info.",
+				"visible_if": "{{block.settings.height != 'custom' and block.settings.add_height_max_mobile }}"
 			},
 			{
 				"type": "header",
@@ -632,6 +827,29 @@
 			{
 				"name": "Flex Box",
 				"category": "Kuu Layout"
+			},
+			{
+				"name": "Flex Box (Centered)",
+				"category": "Kuu Layout",
+				"settings": {
+					"width": "fill",
+					"add_width_max": false,
+					"width_max": "65ch",
+					"height_min": 84,
+					"flex_direction": "column",
+					"justify_content": "center",
+					"align_items": "center",
+					"gap": 4,
+					"border": "solid",
+					"border_sides": "all",
+					"border_width": 2,
+					"border_color": "#E5E7EB",
+					"border_radius": 8,
+					"padding-block-start": 24,
+					"padding-block-end": 24,
+					"padding-inline-start": 24,
+					"padding-inline-end": 24
+				}
 			}
 		]
 	}
