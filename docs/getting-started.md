@@ -14,11 +14,11 @@ _Store owners who want a fast, beautiful store out of the box._
 
 _You have an existing theme but want specific Kuu features (e.g., "just want the Cart Drawer")._
 
-- **Browse & Download:** Find the component you need in our docs.
+- **Browse & Copy/Download:** Find the component you need in our docs.
 - **The "Drop-in" Workflow:**
-  1.  Download the **Liquid Snippet** (e.g., `snippets/cartdrawer.liquid`).
-  2.  Download the **JavaScript** (e.g., `assets/js/blocks/cartdrawer.js`).
-  3.  Add the **Dependencies** (e.g., `snippets/button.liquid`).
+  1.  Copy the **Liquid Snippet** (e.g., `snippets/cartdrawer.liquid`).
+  2.  Copy the **JavaScript** (e.g., `assets/js/blocks/cartdrawer.js`).
+  3.  Copy the **Dependencies** (e.g., `snippets/drawer.liquid`, `snippets/button.liquid`).
 - **Upload:** Add these files to your current theme's code editor.
 - **Result:** The block appears in your Theme Editor, ready to use.
 
@@ -70,3 +70,5 @@ pnpm dev
 ```bash
 shopify theme dev
 ```
+
+Next: Learn how to include Kuu's css and js assets in your theme [here](installation.md).

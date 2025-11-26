@@ -5,8 +5,8 @@
 		{{ 'css/critical.css' | asset_url | stylesheet_tag: preload: true }}
 
 		{% render 'css-variables' %}
-		{% render 'stylesheet' %}
-		{% render 'script' %}
+		{% render 'kuu-stylesheet' %}
+		{% render 'kuu-script' %}
 		{% render 'meta-tags' %}
 
 		{{ content_for_header }}
@@ -25,6 +25,6 @@
 
 		{% # Playground - for testing components %}
 		{% render 'playground' %}
-		{% render 'js-lib' %}
+		{% render 'kuu-js-lib' %}
 	</body>
 </html>

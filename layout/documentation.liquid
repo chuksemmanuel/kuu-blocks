@@ -8,8 +8,8 @@
 		{% # Load prism CSS for syntax highlighting %}
 		<link href='{{ 'docs/css/prism-onelight.css' | asset_url }}' rel='stylesheet'>
 
-		{% render 'stylesheet' %}
-		{% render 'script' %}
+		{% render 'kuu-stylesheet' %}
+		{% render 'kuu-script' %}
 		{% render 'meta-tags' %}
 
 		{{ content_for_header }}
@@ -37,7 +37,7 @@
 		</div>
 
 		{% render 'kuu-docs-js' %}
-		{% render 'js-lib' %}
+		{% render 'kuu-js-lib' %}
 
 		{% # Playground - for testing components %}
 		{% render 'playground' %}

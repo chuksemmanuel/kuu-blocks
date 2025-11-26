@@ -1,42 +1,42 @@
-<div class="flex shrink-0 items-center gap-2">
-  {% content_for 'blocks' %}
+<div class='flex shrink-0 items-center gap-2'>
+	{% content_for 'blocks' %}
 </div>
 
 {% schema %}
-{
-  "name": "Header Left",
-  "blocks": [
-    {
-      "type": "_menudrawer"
-    },
-    {
-      "type": "_searchdrawer"
-    },
-    {
-      "type": "logo"
-    },
-    {
-      "type": "@theme"
-    },
-    {
-      "type": "@app"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Header Left",
-      "blocks": [
-        {
-          "type": "_menudrawer"
-        },
-        {
-          "type": "_searchdrawer"
-        },
-        {
-          "type": "logo"
-        }
-      ]
-    }
-  ]
-}
+	{
+		"name": "Header Left",
+		"blocks": [
+			{
+				"type": "_menudrawer"
+			},
+			{
+				"type": "_searchdrawer"
+			},
+			{
+				"type": "kuu-logo"
+			},
+			{
+				"type": "@theme"
+			},
+			{
+				"type": "@app"
+			}
+		],
+		"presets": [
+			{
+				"name": "Header Left",
+				"blocks": [
+					{
+						"type": "_menudrawer"
+					},
+					{
+						"type": "_searchdrawer"
+					},
+					{
+						"type": "kuu-logo"
+					}
+				]
+			}
+		]
+	}
 {% endschema %}
