@@ -2,23 +2,23 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-	--color-foreground: var(--color-foreground, #101828);
-	--color-background: var(--color-background, #393838);
+	--color-background: var(--background-color, #f5f5f5);
+	--color-foreground: var(--foreground-color, #101828);
 
-	--color-primary: var(--color-primary, #f9ca4f);
-	--color-primary-foreground: var(--color-primary-foreground, #393838);
+	--color-primary: var(--primary-color, #f9ca4f);
+	--color-primary-foreground: var(--primary-foreground-color, #393838);
 
-	--color-secondary: var(--color-secondary, #f3f4f6);
-	--color-secondary-foreground: var(--color-secondary-foreground, #101828);
+	--color-secondary: var(--secondary-color, #f3f4f6);
+	--color-secondary-foreground: var(--secondary-foreground-color, #101828);
 
-	--color-accent: var(--accent, #f3f4f6);
-	--color-accent-foreground: var(--accent-foreground, #393838);
+	--color-accent: var(--accent-color, #f3f4f6);
+	--color-accent-foreground: var(--accent-foreground-color, #393838);
 
-	--color-muted: var(--muted, #f3f4f6);
-	--color-muted-foreground: var(--muted-foreground, #6a7282);
+	--color-muted: var(--muted-color, #f3f4f6);
+	--color-muted-foreground: var(--muted-foreground-color, #6a7282);
 
-	--color-destructive: var(--destructive, #e7000b);
-	--color-destructive-foreground: var(--destructive-foreground, #f8fafc);
+	--color-destructive: var(--destructive-color, #e7000b);
+	--color-destructive-foreground: var(--destructive-foreground-color, #f8fafc);
 }
 
 @layer base {

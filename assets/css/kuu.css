@@ -506,18 +506,6 @@ p:not(.h1, .h2, .h3, .h4, .h5, .h6)
 button {
 	cursor: pointer;
 }
-/* 
-.reversed-link {
-	background: linear-gradient(to right, currentColor, currentColor) 0
-		min(100%, 1.35em) / 0 1px no-repeat;
-	transition: background-size 0.3s ease-in-out;
-}
-
-.group:hover .reversed-link,
-.reversed-link.hover\:show:hover {
-	background-size: 100% 1px;
-}
- */
 
 @media screen and (pointer: fine) {
 	.reversed-link {

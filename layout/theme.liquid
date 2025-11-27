@@ -4,7 +4,6 @@
 		{% # Load and preload the critical CSS %}
 		{{ 'css/critical.css' | asset_url | stylesheet_tag: preload: true }}
 
-		{% render 'css-variables' %}
 		{% render 'kuu-stylesheet' %}
 		{% render 'kuu-script' %}
 		{% render 'meta-tags' %}

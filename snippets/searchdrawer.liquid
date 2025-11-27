@@ -23,7 +23,7 @@
 {% endcapture %}
 
 {% capture search_trigger_ghost %}
-    {% render 'button'
+    {% render 'kuu-button'
       variant: 'ghost',
         size: 'icon',
     , icon: 'icons/search.svg'
@@ -51,24 +51,3 @@
 	mobile_from: mobile_direction,
 	class: ''
 %}
-
-{% comment %}
-	{% capture search_trigger %}
-	  {% render 'button'
-	  , size: 'icon'
-	  , icon: 'icons/search.svg'
-	  , class: ' md:size-12 rounded-full!' %}
-	{% endcapture %}
-	{% capture search_content %}
-	  {% render 'searchdrawer-content' %}
-	{% endcapture %}
-	<div class="inline-block md:hidden">
-	  {% render 'drawer'
-	    , trigger: search_trigger
-	    , content: search_content
-	    , id: 'searchdrawer-mobile'
-	    , from: 'top'
-	    , class: 'h-fit! min-h-80! max-h-full!'
-	  %}
-	</div>
-{% endcomment %}

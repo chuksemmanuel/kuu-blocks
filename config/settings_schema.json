@@ -58,73 +58,73 @@
 		"settings": [
 			{
 				"type": "color",
-				"id": "background",
+				"id": "color_background",
 				"default": "#f3f4f6",
 				"label": "Background"
 			},
 			{
 				"type": "color",
-				"id": "foreground",
+				"id": "color_foreground",
 				"default": "#393838",
 				"label": "Foreground"
 			},
 			{
 				"type": "color",
-				"id": "primary",
+				"id": "color_primary",
 				"default": "#f9ca4f",
 				"label": "Primary"
 			},
 			{
 				"type": "color",
-				"id": "primary_foreground",
+				"id": "color_primary_foreground",
 				"default": "#ffffff",
 				"label": "Primary Foreground"
 			},
 			{
 				"type": "color",
-				"id": "secondary",
+				"id": "color_secondary",
 				"default": "#7c2d12",
 				"label": "Secondary"
 			},
 			{
 				"type": "color",
-				"id": "secondary_foreground",
+				"id": "color_secondary_foreground",
 				"default": "#101828",
 				"label": "Secondary Foreground"
 			},
 			{
 				"type": "color",
-				"id": "accent",
+				"id": "color_accent",
 				"default": "#f3f4f6",
 				"label": "Accent"
 			},
 			{
 				"type": "color",
-				"id": "accent_foreground",
+				"id": "color_accent_foreground",
 				"default": "#101828",
 				"label": "Accent Foreground"
 			},
 			{
 				"type": "color",
-				"id": "muted",
+				"id": "color_muted",
 				"default": "#f3f4f6",
 				"label": "Muted"
 			},
 			{
 				"type": "color",
-				"id": "muted_foreground",
+				"id": "color_muted_foreground",
 				"default": "#6a7282",
 				"label": "Muted Foreground"
 			},
 			{
 				"type": "color",
-				"id": "destructive",
+				"id": "color_destructive",
 				"default": "#e7000b",
 				"label": "Destructive"
 			},
 			{
 				"type": "color",
-				"id": "destructive_foreground",
+				"id": "color_destructive_foreground",
 				"default": "#f8fafc",
 				"label": "Destructive Foreground"
 			},
