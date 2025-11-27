@@ -8,9 +8,12 @@
 		else
 			echo block.settings.content
 		endif
-		echo '```'
 	endcapture
 %}
+
+{% capture style %}
+	{% render 'size-style', settings: block.settings %}
+{% endcapture %}
 
 <div
 	class='mx-auto  my-4 max-w-[65ch] overflow-hidden rounded-lg border-2 border-gray-200'
@@ -48,7 +51,7 @@
 			{% endif %}
 		</div>
 	{% endif %}
-	<div id='{{code_block_id}}' class='kuu-codeblock  max-h-70 w-full overflow-y-auto'>
+	<div id='{{code_block_id}}' class='kuu-codeblock size-style w-full overflow-y-auto' style='{{style}}'>
 		{% render 'kuu-markdown', content: content, hide_toolbar: true %}
 	</div>
 </div>
@@ -120,6 +123,126 @@
 				"label": "Enable Copy button",
 				"default": true,
 				"visible_if": "{{block.settings.show_toolbar}}"
+			},
+			{
+				"type": "select",
+				"id": "height",
+				"label": "Height",
+				"options": [
+					{
+						"value": "fit-content",
+						"label": "Fit"
+					},
+					{
+						"value": "fill",
+						"label": "Fill"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "fit-content"
+			},
+			{
+				"type": "range",
+				"id": "custom_height",
+				"label": "Custom height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 348,
+				"visible_if": "{{ block.settings.height == 'custom' }}"
+			},
+			{
+				"type": "range",
+				"id": "height_min",
+				"label": "Minimum height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "checkbox",
+				"id": "add_height_max",
+				"label": "Add max height",
+				"default": true
+			},
+			{
+				"type": "text",
+				"id": "height_max",
+				"label": "Max height ",
+				"default": "348px",
+				"info": "E.g 1200px, 80vh, min(600px,60svh) etc. Visit [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height) for more info.",
+				"visible_if": "{{block.settings.height != 'custom' and block.settings.add_height_max }}"
+			},
+			{
+				"type": "header",
+				"content": "Mobile Height"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_height_mobile",
+				"label": "Mobile Height"
+			},
+			{
+				"type": "select",
+				"id": "height_mobile",
+				"label": "Height",
+				"options": [
+					{
+						"value": "fit-content",
+						"label": "Fit"
+					},
+					{
+						"value": "fill",
+						"label": "Fill"
+					},
+					{
+						"value": "custom",
+						"label": "Custom"
+					}
+				],
+				"default": "custom",
+				"visible_if": "{{ block.settings.add_height_mobile }}"
+			},
+			{
+				"type": "range",
+				"id": "custom_height_mobile",
+				"label": "Custom height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 348,
+				"visible_if": "{{  block.settings.add_height_mobile and block.settings.height_mobile == 'custom' }}"
+			},
+			{
+				"type": "range",
+				"id": "height_min_mobile",
+				"label": "Minimum height",
+				"min": 0,
+				"max": 1200,
+				"step": 12,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.add_height_mobile }}"
+			},
+			{
+				"type": "checkbox",
+				"id": "add_height_max_mobile",
+				"label": "Add max height",
+				"default": false
+			},
+			{
+				"type": "text",
+				"id": "height_max_mobile",
+				"label": "Max height ",
+				"info": "E.g 1200px, 80vh, min(600px,60svh) etc. Visit [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/max-height) for more info.",
+				"visible_if": "{{block.settings.height != 'custom' and block.settings.add_height_max_mobile }}"
 			}
 		],
 		"presets": [
