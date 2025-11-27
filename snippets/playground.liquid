@@ -1,13 +1,22 @@
 {% assign hidden = true %}
 {% capture content %}
- <div class="flex flex-wrap items-center justify-center gap-4 p-4">
-	{% render 'kuu-button', label: 'Primary', variant: 'primary' %}
-	{% render 'kuu-button', label: 'Secondary', variant: 'secondary' %}
-	{% render 'kuu-button', label: 'Outline', variant: 'outline' %}
-	{% render 'kuu-button', label: 'Ghost', variant: 'ghost' %}
-	{% render 'kuu-button', label: 'Link', variant: 'link' %}
-	{% render 'kuu-button', label: 'Destructive', variant: 'destructive' %}
- </div>
+<div class="flex flex-col flex-wrap items-center justify-center gap-4 p-4">
+
+	
+
+{% render 'kuu-button',
+	label: 'Custom Button',
+	class: 'rounded-full! shadow-lg text-white bg-linear-to-r from-cyan-500 to-blue-500',
+	width: '100%'
+	size:'lg'
+	lucide_icon: 'sparkle'
+	icon_position: 'right'
+%}
+
+
+
+	
+</div>
   {% endcapture %}
 
 {% if hidden != true %}

@@ -54,8 +54,6 @@ If you want to offer merchant customization or use this button as a drag-and-dro
 
 ### With Icons
 
-### With Icons
-
 There are two ways to add icons to buttons:
 
 #### 1. SVG Asset (Recommended for Performance)
@@ -74,7 +72,7 @@ Upload your SVG file to the `assets/icons/` directory (e.g., `assets/icons/shopp
 
 #### 2. Lucide Icons (Easiest)
 
-If you have the Lucide library installed (see [Asset Management](/docs/getting-started#3-external-libraries-eg-lucide-icons)), you can simply pass the icon name.
+If you have the Lucide library installed (see [Installation](/docs/getting-started#3-external-libraries-eg-lucide-icons)), you can simply pass the icon name.
 
 ```liquid
 <!-- Using Lucide Icon -->
