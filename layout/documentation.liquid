@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang='{{ request.locale.iso_code }}'>
 	<head>
-		{% # Inlined CSS Variables %}
-		{% render 'css-variables' %}
 		{% # Load and preload the critical CSS %}
 		{{ 'css/critical.css' | asset_url | stylesheet_tag: preload: true }}
 		{% # Load prism CSS for syntax highlighting %}
@@ -21,7 +19,7 @@
 		{% section 'kuu-docs-header' %}
 
 		<div class='page-width-docs'>
-			<div class='mt-24 flex gap-8'>
+			<div class='mt-16 flex gap-8 md:mt-24'>
 				{% section 'kuu-docs-sidebar-nav' %}
 
 				<main

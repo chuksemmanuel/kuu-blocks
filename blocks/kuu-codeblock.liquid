@@ -19,9 +19,13 @@
 	class='mx-auto  my-4 max-w-[65ch] overflow-hidden rounded-lg border-2 border-gray-200'
 	{{ block.shopify_attributes }}
 >
-	{% if block.settings.show_toolbar %}
+	{% if block.settings.show_pathname or block.settings.copy_button %}
 		<div class='flex h-10 items-center justify-between  bg-gray-200 px-4'>
-			<span class='text-xs'>{{ block.settings.pathname }}</span>
+			<div>
+				{% if block.settings.show_pathname %}
+					<span class='text-xs'>{{ block.settings.pathname }}</span>
+				{% endif %}
+			</div>
 
 			{% if block.settings.copy_button %}
 				<button
@@ -109,24 +113,23 @@
 			},
 			{
 				"type": "checkbox",
-				"id": "show_toolbar",
-				"label": "Show Toolbar",
+				"id": "copy_button",
+				"label": "Enable Copy button",
 				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "show_pathname",
+				"label": "Show Pathname",
+				"default": false
 			},
 			{
 				"type": "text",
 				"id": "pathname",
 				"label": "Pathname",
 				"info": "E.g snippets/kuu-codeblock.liquid",
-				"visible_if": "{{block.settings.show_toolbar}}",
+				"visible_if": "{{block.settings.show_pathname}}",
 				"default": "snippets/kuu-codeblock.liquid"
-			},
-			{
-				"type": "checkbox",
-				"id": "copy_button",
-				"label": "Enable Copy button",
-				"default": true,
-				"visible_if": "{{block.settings.show_toolbar}}"
 			},
 			{
 				"type": "select",

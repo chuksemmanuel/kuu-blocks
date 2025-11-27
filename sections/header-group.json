@@ -20,7 +20,7 @@
 					"settings": {},
 					"blocks": {
 						"drawer_aJiFXx": {
-							"type": "drawer",
+							"type": "kuu-drawer",
 							"name": "Menu Drawer",
 							"settings": {
 								"from": "default",
