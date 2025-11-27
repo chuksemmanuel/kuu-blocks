@@ -5,7 +5,7 @@ A versatile, accessible button component that supports multiple variants, sizes,
 ## Preview
 
 ```liquid
-{% render 'button', label: 'Click Me', variant: 'primary' %}
+{% render 'kuu-button', label: 'Click Me', variant: 'primary' %}
 ```
 
 ## Dependencies
@@ -20,27 +20,36 @@ A versatile, accessible button component that supports multiple variants, sizes,
 Create a new file `snippets/button.liquid` and paste the source code.
 
 > [!TIP]
-> You can find the source code in the `snippets/` directory of the Kuu theme repository.
+> You can also find the source code in the `snippets/` directory of the Kuu blocks repository.
 
 ### 2. (Optional) Create the Block
 
-If you want to use this button as a drag-and-drop block in the Theme Editor, create `blocks/button.liquid` and paste the schema code.
+If you want to offer merchant customization or use this button as a drag-and-drop block in the Theme Editor, create `blocks/kuu-button.liquid` and paste the schema code.
 
 ## Usage
 
 ### Basic Usage
 
 ```liquid
-{% render 'button', label: 'Shop Now', href: '/collections/all' %}
+{% render 'kuu-button', label: 'Shop Now', href: '/collections/all' %}
 ```
 
-### Variants & Sizes
+### Variants
 
 ```liquid
-{% render 'button', label: 'Secondary', variant: 'secondary', size: 'sm' %}
-{% render 'button', label: 'Outline', variant: 'outline', size: 'lg' %}
-{% render 'button', label: 'Ghost', variant: 'ghost' %}
-{% render 'button', label: 'Destructive', variant: 'destructive' %}
+{% render 'kuu-button', label: 'Primary', variant: 'primary' %}
+{% render 'kuu-button', label: 'Secondary', variant: 'secondary' %}
+{% render 'kuu-button', label: 'Outline', variant: 'outline' %}
+{% render 'kuu-button', label: 'Ghost', variant: 'ghost' %}
+{% render 'kuu-button', label: 'Destructive', variant: 'destructive' %}
+```
+
+### Sizes
+
+```liquid
+{% render 'kuu-button', label: 'Small', variant: 'primary', size: 'sm' %}
+{% render 'kuu-button', label: 'Medium', variant: 'primary', size: 'md' %}
+{% render 'kuu-button', label: 'Large', variant: 'primary', size: 'lg' %}
 ```
 
 ### With Icons
@@ -54,7 +63,7 @@ There are two ways to add icons to buttons:
 Upload your SVG file to the `assets/icons/` directory (e.g., `assets/icons/shopping-cart.svg`) and pass the path to the `icon` prop. This is the most performant method as it uses inline SVGs.
 
 ```liquid
-{% render 'button',
+{% render 'kuu-button',
 	variant: 'white',
 	size: 'icon-lg',
 	icon: 'icons/shopping-cart.svg',
@@ -69,10 +78,10 @@ If you have the Lucide library installed (see [Asset Management](/docs/getting-s
 
 ```liquid
 <!-- Using Lucide Icon -->
-{% render 'button', label: 'Add to Cart', lucide_icon: 'shopping-cart' %}
+{% render 'kuu-button', label: 'Add to Cart', lucide_icon: 'shopping-cart' %}
 
 <!-- Icon Position -->
-{% render 'button',
+{% render 'kuu-button',
 	label: 'Next',
 	lucide_icon: 'arrow-right',
 	icon_position: 'right'
@@ -84,7 +93,7 @@ If you have the Lucide library installed (see [Asset Management](/docs/getting-s
 Override default styles with utility classes or specific props.
 
 ```liquid
-{% render 'button',
+{% render 'kuu-button',
 	label: 'Custom Button',
 	class: 'rounded-full! shadow-lg',
 	color: '#ff0000',

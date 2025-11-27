@@ -88,7 +88,7 @@
 									]
 								},
 								"drawer-trigger": {
-									"type": "button",
+									"type": "kuu-button",
 									"name": "Menu Drawer Trigger",
 									"static": true,
 									"settings": {
@@ -127,7 +127,7 @@
 									"blocks": {}
 								},
 								"drawer-close": {
-									"type": "button",
+									"type": "kuu-button",
 									"name": "Menu Drawer Close button",
 									"static": true,
 									"settings": {

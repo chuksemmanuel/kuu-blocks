@@ -200,7 +200,7 @@
 			{% # Add to Cart Button %}
 			<div class='w-full shrink-0 '>
 				<template x-if='selectedVariant.available != true'>
-					{% render 'button',
+					{% render 'kuu-button',
 						variant: 'primary',
 						size: 'lg',
 						label: 'Out of stock',
@@ -210,7 +210,7 @@
 				</template>
 
 				<template x-if='!adding'>
-					{% render 'button',
+					{% render 'kuu-button',
 						variant: 'primary',
 						size: 'lg',
 						label: 'Add to Cart',
@@ -220,7 +220,7 @@
 				</template>
 
 				<template x-if='adding'>
-					{% render 'button',
+					{% render 'kuu-button',
 						variant: 'primary',
 						size: 'lg',
 						loading: 'spinner',

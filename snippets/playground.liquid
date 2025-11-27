@@ -1,6 +1,13 @@
-{% assign hidden = true %}
+{% assign hidden = false %}
 {% capture content %}
-  {% render 'kuu-markdown' %}
+ <div class="flex flex-wrap items-center justify-center gap-4 p-4">
+	{% render 'kuu-button', label: 'Primary', variant: 'primary' %}
+	{% render 'kuu-button', label: 'Secondary', variant: 'secondary' %}
+	{% render 'kuu-button', label: 'Outline', variant: 'outline' %}
+	{% render 'kuu-button', label: 'Ghost', variant: 'ghost' %}
+	{% render 'kuu-button', label: 'Link', variant: 'link' %}
+	{% render 'kuu-button', label: 'Destructive', variant: 'destructive' %}
+ </div>
   {% endcapture %}
 
 {% if hidden != true %}

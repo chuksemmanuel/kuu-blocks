@@ -2,11 +2,23 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
+	--color-foreground: var(--color-foreground, #101828);
+	--color-background: var(--color-background, #ffffff);
+
 	--color-primary: var(--color-primary, #000000);
 	--color-primary-foreground: var(--color-primary-foreground, #ffffff);
-	--color-secondary: var(--color-secondary, #000000);
-	--color-foreground: var(--color-foreground, #000000);
-	--color-background: var(--color-background, #ffffff);
+
+	--color-secondary: var(--color-secondary, #f3f4f6);
+	--color-secondary-foreground: var(--color-secondary-foreground, #101828);
+
+	--color-accent: var(--accent, #f3f4f6);
+	--color-accent-foreground: var(--accent-foreground, #101828);
+
+	--color-muted: var(--muted, #f3f4f6);
+	--color-muted-foreground: var(--muted-foreground, #6a7282);
+
+	--color-destructive: var(--destructive, #e7000b);
+	--color-destructive-foreground: var(--destructive-foreground, #f8fafc);
 }
 
 @layer base {

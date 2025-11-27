@@ -25,7 +25,7 @@
 		@click='handleAddToCart'
 	>
 		<template x-if='!adding'>
-			{% render 'button',
+			{% render 'kuu-button',
 				variant: button_variant,
 				size: size,
 				icon: icon,
@@ -37,7 +37,7 @@
 		</template>
 
 		<template x-if='adding'>
-			{% render 'button',
+			{% render 'kuu-button',
 				variant: button_variant,
 				size: size,
 				icon: 'icons/loader-circle.svg',

@@ -43,7 +43,7 @@
           <span aria-hidden="true"> {{ 'icons/shopping-cart.svg' | inline_asset_content }}</span>
   {% endcapture %}
 	{% capture cart_trigger %}
-       {% render 'button'
+       {% render 'kuu-button'
   , variant: 'white'
   , size: 'icon'
   , content: cart_button
@@ -67,14 +67,14 @@
     {% if cart.empty? %}
       <div id="cartdrawer-empty" class="flex h-full w-full flex-col items-center justify-center gap-4" >
 
-        {% render 'button'
+        {% render 'kuu-button'
         , size: 'icon'
         , content: cart_button
         , class: 'bg-white text-black  size-12 rounded-full! '
         , props:'aria-hidden="true"'
         %}
         <p class="text-xl font-semibold" id="drawer-description">Your Cart is Empty</p>
-        {% render 'button',variant:'primary', size:'lg', label:'Continue Shopping', aria_label:'Close cart drawer and continue shopping', class:'rounded-full!', props:'data-drawer-close tabIndex="0"' %}
+        {% render 'kuu-button',variant:'primary', size:'lg', label:'Continue Shopping', aria_label:'Close cart drawer and continue shopping', class:'rounded-full!', props:'data-drawer-close tabIndex="0"' %}
 
       </div>
     {% else %}
@@ -92,7 +92,7 @@
                         <p  aria-hidden="true" class="font-semibold lg:text-lg">Cart </p>
                         <span  aria-hidden="true" class="bg-primary text-primary-foreground flex size-6 min-w-fit items-center justify-center rounded-full p-px text-sm">{{cart.item_count}}</span>
                   </div>
-                  {% render 'button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ', props:'data-drawer-close', aria_label:'Close Cart Drawer' %}
+                  {% render 'kuu-button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ', props:'data-drawer-close', aria_label:'Close Cart Drawer' %}
                 </div>
                 
             </div>

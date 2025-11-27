@@ -36,7 +36,7 @@
 %}
 
 {% capture drawer_trigger %}
-    {% content_for 'block',type: 'button', variant: 'white', radius:'8px',  id:'drawer-trigger', icon: 'icons/hamburger.svg'%}
+    {% content_for 'block',type: 'kuu-button', variant: 'white', radius:'8px',  id:'drawer-trigger', icon: 'icons/hamburger.svg'%}
 {% endcapture %}
 
 {% capture drawer_content %}
@@ -50,7 +50,7 @@
                   <span id="drawer-title" class="text-lg font-semibold" aria-label="drawer">{{ drawer_heading }}</span>
 
                   <!-- Close button --> 
-                    {% content_for 'block',type: 'button',id: 'drawer-close', icon: 'icons/cancel.svg', radius: '9999px', size:'icon', button_class:'hover:bg-transparent', props: 'data-drawer-close', aria_label:'Close drawer' %}
+                    {% content_for 'block',type: 'kuu-button',id: 'drawer-close', icon: 'icons/cancel.svg', radius: '9999px', size:'icon', button_class:'hover:bg-transparent', props: 'data-drawer-close', aria_label:'Close drawer' %}
               </div>
           </div>
       {% endif %}
