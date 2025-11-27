@@ -1,19 +1,131 @@
-{% render 'kuu-markdown', content: block.settings.content %}
+<div
+	{{ block.shopify_attributes }}
+	style='{% render 'spacing-padding', settings: block.settings %}'
+	class='spacing-style'
+>
+	{% render 'kuu-markdown', content: block.settings.content %}
+</div>
 
 {% schema %}
 	{
 		"name": "Markdown",
+		"tag": null,
 		"settings": [
 			{
 				"type": "textarea",
 				"id": "content",
 				"label": "Content"
+			},
+			{
+				"type": "header",
+				"content": "Padding"
+			},
+			{
+				"type": "range",
+				"id": "padding-block-start",
+				"label": "Top",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 24
+			},
+			{
+				"type": "range",
+				"id": "padding-block-end",
+				"label": "Bottom",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 24
+			},
+			{
+				"type": "range",
+				"id": "padding-inline-start",
+				"label": "Left",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "range",
+				"id": "padding-inline-end",
+				"label": "Right",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0
+			},
+			{
+				"type": "checkbox",
+				"id": "custom_mobile_padding",
+				"label": "Custom Mobile Padding",
+				"default": true
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-block-start",
+				"label": "Mobile Top",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.custom_mobile_padding }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-block-end",
+				"label": "Mobile Bottom",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.custom_mobile_padding }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-inline-start",
+				"label": "Mobile Left",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.custom_mobile_padding }}"
+			},
+			{
+				"type": "range",
+				"id": "mobile-padding-inline-end",
+				"label": "Mobile Right",
+				"min": 0,
+				"max": 100,
+				"step": 1,
+				"unit": "px",
+				"default": 0,
+				"visible_if": "{{ block.settings.custom_mobile_padding }}"
 			}
 		],
 		"presets": [
 			{
 				"name": "Markdown",
 				"category": "Kuu Content"
+			},
+			{
+				"name": "Markdown with Padding",
+				"category": "Kuu Content",
+				"settings": {
+					"padding-block-start": 24,
+					"padding-block-end": 24,
+					"custom_mobile_padding": true,
+					"mobile-padding-block-start": 16,
+					"mobile-padding-block-end": 16
+				}
 			}
 		]
 	}

@@ -52,7 +52,7 @@
 		</div>
 	{% endif %}
 	<div id='{{code_block_id}}' class='kuu-codeblock size-style w-full overflow-y-auto' style='{{style}}'>
-		{% render 'kuu-markdown', content: content, hide_toolbar: true %}
+		{% render 'kuu-markdown', content: content %}
 	</div>
 </div>
 
@@ -60,6 +60,10 @@
 	.kuu-codeblock .code-toolbar {
 		width: 100%;
 		min-width: fit-content;
+	}
+
+	.kuu-codeblock .code-toolbar .toolbar {
+		display: none !important;
 	}
 	/* Remove vertical  margins from code blocks */
 

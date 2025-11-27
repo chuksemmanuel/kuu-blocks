@@ -11,7 +11,6 @@ document.addEventListener('alpine:init', () => {
 					return;
 				}
 				const md = window.markdownit({
-					html: true,
 					linkify: true,
 					typographer: true,
 					breaks: true,
