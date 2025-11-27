@@ -17,7 +17,24 @@
           "type": "kuu-markdown",
           "name": "Markdown",
           "settings": {
-            "content": "# Button\n\nA versatile, accessible button component that supports multiple variants, sizes, icons, and responsive styles. It can be rendered as a `< button >` or an `< a >` tag depending on the props.\n\n## Preview",
+            "content": "# Button\n\nA versatile, accessible button component that supports multiple variants, sizes, icons, and responsive styles. It can be rendered as a `< button >` or an `< a >` tag depending on the props.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_qifEUh": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "## Preview",
             "padding-block-start": 24,
             "padding-block-end": 24,
             "padding-inline-start": 0,
@@ -368,8 +385,25 @@
             "height_max_mobile": ""
           },
           "blocks": {}
-        },
-        "kuu_markdown_xJ9QiB": {
+        }
+      },
+      "block_order": [
+        "kuu_markdown_WJ4kxt",
+        "kuu_markdown_qifEUh",
+        "kuu_flex_box_VU36ee",
+        "kuu_markdown_m4m6fY",
+        "kuu_markdown_UrF9aJ",
+        "kuu_codeblock_rejyPY",
+        "kuu_markdown_XGjejA",
+        "kuu_markdown_EYVxmV",
+        "kuu_codeblock_mxKxBA"
+      ],
+      "settings": {}
+    },
+    "kuu_blank_section_aeKGzV": {
+      "type": "kuu-blank-section",
+      "blocks": {
+        "kuu_markdown_pR9Dg8": {
           "type": "kuu-markdown",
           "name": "Markdown",
           "settings": {
@@ -386,7 +420,7 @@
           },
           "blocks": {}
         },
-        "kuu_markdown_c6KNE4": {
+        "kuu_markdown_NbQn8F": {
           "type": "kuu-markdown",
           "name": "Markdown",
           "settings": {
@@ -403,7 +437,7 @@
           },
           "blocks": {}
         },
-        "kuu_flex_box_JiYNpV": {
+        "kuu_flex_box_LHmhC4": {
           "type": "kuu-flex-box",
           "name": "Flex Box (Centered)",
           "settings": {
@@ -626,7 +660,7 @@
             "kuu_tab_f7WzDA"
           ]
         },
-        "kuu_markdown_dBxe3R": {
+        "kuu_markdown_jRgjXr": {
           "type": "kuu-markdown",
           "name": "Markdown",
           "settings": {
@@ -643,7 +677,7 @@
           },
           "blocks": {}
         },
-        "kuu_flex_box_KrMFba": {
+        "kuu_flex_box_ADYNH8": {
           "type": "kuu-flex-box",
           "name": "Flex Box (Centered)",
           "settings": {
@@ -805,7 +839,7 @@
                           "type": "kuu-liquid",
                           "name": "Custom Liquid",
                           "settings": {
-                            "custom_liquid": "<div class=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n\t{% render 'kuu-button', label: 'Primary', variant: 'primary' %}\n\t{% render 'kuu-button', label: 'Secondary', variant: 'secondary' %}\n\t{% render 'kuu-button', label: 'Outline', variant: 'outline' %}\n\t{% render 'kuu-button', label: 'Ghost', variant: 'ghost' %}\n\t{% render 'kuu-button', label: 'Destructive', variant: 'destructive' %}\n </div>"
+                            "custom_liquid": "<div class=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n\t{% render 'kuu-button', label: 'Primary', variant: 'primary' %}\n\t{% render 'kuu-button', label: 'Secondary', variant: 'secondary' %}\n\t{% render 'kuu-button', label: 'Outline', variant: 'outline' %}\n\t{% render 'kuu-button', label: 'Ghost', variant: 'ghost' %}\n\t{% render 'kuu-button', label: 'Link', variant: 'link' %}\n\t{% render 'kuu-button', label: 'Destructive', variant: 'destructive' %}\n </div>"
                           },
                           "blocks": {}
                         }
@@ -832,7 +866,7 @@
                       "settings": {
                         "language": "liquid",
                         "content": "",
-                        "liquid_code": "{% raw %}\n{% render 'kuu-button', label: 'Primary', variant: 'primary' %}\n{% render 'kuu-button', label: 'Secondary', variant: 'secondary' %}\n{% render 'kuu-button', label: 'Outline', variant: 'outline' %}\n{% render 'kuu-button', label: 'Ghost', variant: 'ghost' %}\n{% render 'kuu-button', label: 'Destructive', variant: 'destructive' %}\n{% endraw %}",
+                        "liquid_code": "{% raw %}\n{% render 'kuu-button',  variant: 'primary', label: 'Primary' href=\"#\" %}\n{% render 'kuu-button', variant: 'secondary', label: 'Secondary' href=\"#\" %}\n{% render 'kuu-button', variant: 'outline', label: 'Outline' href=\"#\" %}\n{% render 'kuu-button', variant: 'ghost', label: 'Ghost' href=\"#\" %}\n{% render 'kuu-button', variant: 'link', label: 'Link' href=\"#\" %}\n{% render 'kuu-button', variant: 'destructive', label: 'Destructive' href=\"#\" %}\n{% endraw %}",
                         "show_toolbar": false,
                         "pathname": "snippets/kuu-button.liquid",
                         "copy_button": true,
@@ -865,27 +899,1170 @@
           "block_order": [
             "kuu_tab_CEiMaj"
           ]
+        },
+        "kuu_markdown_rgmEc8": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "### Sizes",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_FDFGtY": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 84,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_tab_H4jcba": {
+              "type": "kuu-tab",
+              "name": "Kuu Tab",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "custom_mobile_padding": true,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_tab_item_9ykEUP": {
+                  "type": "_kuu-tab-item",
+                  "name": "Preview",
+                  "settings": {
+                    "tab_title": "Preview"
+                  },
+                  "blocks": {
+                    "kuu_flex_box_mjFjEe": {
+                      "type": "kuu-flex-box",
+                      "name": "Flex Box",
+                      "settings": {
+                        "background_color": "#ffffff",
+                        "width": "fill",
+                        "unit": "percent",
+                        "percent_width": 100,
+                        "pixel_width": 48,
+                        "add_width_min": false,
+                        "width_min": 0,
+                        "add_width_max": true,
+                        "width_max": "65ch",
+                        "custom_mobile_width": false,
+                        "width_mobile": "custom",
+                        "unit_mobile": "percent",
+                        "percent_width_mobile": 100,
+                        "pixel_width_mobile": 120,
+                        "add_width_mobile_min": false,
+                        "width_mobile_min": 0,
+                        "add_width_mobile_max": false,
+                        "width_mobile_max": "",
+                        "height": "fit-content",
+                        "custom_height": 240,
+                        "height_min": 120,
+                        "add_height_max": false,
+                        "height_max": "",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": "",
+                        "flex_direction": "column",
+                        "justify_content": "center",
+                        "align_items": "center",
+                        "flex_gap": "all",
+                        "gap": 4,
+                        "row_gap": 0,
+                        "column_gap": 0,
+                        "custom_mobile_flex": true,
+                        "mobile_flex_direction": "column",
+                        "mobile_justify_content": "center",
+                        "mobile_align_items": "center",
+                        "mobile_flex_gap": "all",
+                        "mobile_gap": 4,
+                        "mobile_row_gap": 0,
+                        "mobile_column_gap": 0,
+                        "border": "solid",
+                        "border_sides": "all",
+                        "border_width": 2,
+                        "border_left_width": 1,
+                        "border_top_width": 1,
+                        "border_bottom_width": 1,
+                        "border_right_width": 1,
+                        "border_color": "#e5e7eb",
+                        "border_radius": 8,
+                        "padding-block-start": 24,
+                        "padding-block-end": 24,
+                        "padding-inline-start": 24,
+                        "padding-inline-end": 24,
+                        "custom_mobile_padding": false,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "kuu_liquid_MqeiMP": {
+                          "type": "kuu-liquid",
+                          "name": "Custom Liquid",
+                          "settings": {
+                            "custom_liquid": "<div class=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n{% render 'kuu-button', label: 'Small', variant: 'primary', size: 'sm' %}\n{% render 'kuu-button', label: 'Medium', variant: 'primary', size: 'md' %}\n{% render 'kuu-button', label: 'Large', variant: 'primary', size: 'lg' %}\n </div>"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_liquid_MqeiMP"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_flex_box_mjFjEe"
+                  ]
+                },
+                "kuu_tab_item_qwRhb4": {
+                  "type": "_kuu-tab-item",
+                  "name": "Code",
+                  "settings": {
+                    "tab_title": "Code"
+                  },
+                  "blocks": {
+                    "kuu_codeblock_fRW8Vi": {
+                      "type": "kuu-codeblock",
+                      "name": "Code Block",
+                      "settings": {
+                        "language": "liquid",
+                        "content": "",
+                        "liquid_code": "{% raw %}\n{% render 'kuu-button', label: 'Small', variant: 'primary', size: 'sm' %}\n{% render 'kuu-button', label: 'Medium', variant: 'primary', size: 'md' %}\n{% render 'kuu-button', label: 'Large', variant: 'primary', size: 'lg' %}\n{% endraw %}",
+                        "show_toolbar": false,
+                        "pathname": "snippets/kuu-button.liquid",
+                        "copy_button": true,
+                        "height": "fit-content",
+                        "custom_height": 348,
+                        "height_min": 0,
+                        "add_height_max": true,
+                        "height_max": "348px",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "kuu_codeblock_fRW8Vi"
+                  ]
+                }
+              },
+              "block_order": [
+                "kuu_tab_item_9ykEUP",
+                "kuu_tab_item_qwRhb4"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_tab_H4jcba"
+          ]
+        },
+        "kuu_markdown_g7jdPY": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "### Icons",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_V9XekX": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "There are two ways to add icons to buttons:\n\n#### 1. SVG Asset (Recommended for Performance)\n\nUpload your SVG file to the `assets/icons/` directory (e.g., `assets/icons/shopping-cart.svg`) and pass the path to the `icon` prop. This is the most performant method as it uses inline SVGs.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_afqtEg": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 84,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_tab_9diAf6": {
+              "type": "kuu-tab",
+              "name": "Kuu Tab",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "custom_mobile_padding": true,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_tab_item_VrABKM": {
+                  "type": "_kuu-tab-item",
+                  "name": "Preview",
+                  "settings": {
+                    "tab_title": "Preview"
+                  },
+                  "blocks": {
+                    "kuu_flex_box_3bcV6h": {
+                      "type": "kuu-flex-box",
+                      "name": "Flex Box",
+                      "settings": {
+                        "background_color": "#ffffff",
+                        "width": "fill",
+                        "unit": "percent",
+                        "percent_width": 100,
+                        "pixel_width": 48,
+                        "add_width_min": false,
+                        "width_min": 0,
+                        "add_width_max": true,
+                        "width_max": "65ch",
+                        "custom_mobile_width": false,
+                        "width_mobile": "custom",
+                        "unit_mobile": "percent",
+                        "percent_width_mobile": 100,
+                        "pixel_width_mobile": 120,
+                        "add_width_mobile_min": false,
+                        "width_mobile_min": 0,
+                        "add_width_mobile_max": false,
+                        "width_mobile_max": "",
+                        "height": "fit-content",
+                        "custom_height": 240,
+                        "height_min": 120,
+                        "add_height_max": false,
+                        "height_max": "",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": "",
+                        "flex_direction": "column",
+                        "justify_content": "center",
+                        "align_items": "center",
+                        "flex_gap": "all",
+                        "gap": 4,
+                        "row_gap": 0,
+                        "column_gap": 0,
+                        "custom_mobile_flex": true,
+                        "mobile_flex_direction": "column",
+                        "mobile_justify_content": "center",
+                        "mobile_align_items": "center",
+                        "mobile_flex_gap": "all",
+                        "mobile_gap": 4,
+                        "mobile_row_gap": 0,
+                        "mobile_column_gap": 0,
+                        "border": "solid",
+                        "border_sides": "all",
+                        "border_width": 2,
+                        "border_left_width": 1,
+                        "border_top_width": 1,
+                        "border_bottom_width": 1,
+                        "border_right_width": 1,
+                        "border_color": "#e5e7eb",
+                        "border_radius": 8,
+                        "padding-block-start": 24,
+                        "padding-block-end": 24,
+                        "padding-inline-start": 24,
+                        "padding-inline-end": 24,
+                        "custom_mobile_padding": false,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "kuu_liquid_B9K7xV": {
+                          "type": "kuu-liquid",
+                          "name": "Custom Liquid",
+                          "settings": {
+                            "custom_liquid": "<div class=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n\t{% render 'kuu-button',\n\t\tvariant: 'primary',\n\t\tsize: 'icon-lg',\n\t\ticon: 'icons/shopping-cart.svg',\n\t\tclass: 'shadow-sm',\n\t\taria_label: 'View Cart'\n\t%}\n </div>"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_liquid_B9K7xV"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_flex_box_3bcV6h"
+                  ]
+                },
+                "kuu_tab_item_DH8qJG": {
+                  "type": "_kuu-tab-item",
+                  "name": "Code",
+                  "settings": {
+                    "tab_title": "Code"
+                  },
+                  "blocks": {
+                    "kuu_codeblock_yjipJ6": {
+                      "type": "kuu-codeblock",
+                      "name": "Code Block",
+                      "settings": {
+                        "language": "liquid",
+                        "content": "",
+                        "liquid_code": "{% raw %}\n\t{% render 'kuu-button',\n\t\tvariant: 'primary',\n\t\tsize: 'icon-lg',\n\t\ticon: 'icons/shopping-cart.svg',\n\t\tclass: 'shadow-sm',\n\t\taria_label: 'View Cart'\n\t%}\n{% endraw %}",
+                        "show_toolbar": false,
+                        "pathname": "snippets/kuu-button.liquid",
+                        "copy_button": true,
+                        "height": "fit-content",
+                        "custom_height": 348,
+                        "height_min": 0,
+                        "add_height_max": true,
+                        "height_max": "348px",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "kuu_codeblock_yjipJ6"
+                  ]
+                }
+              },
+              "block_order": [
+                "kuu_tab_item_VrABKM",
+                "kuu_tab_item_DH8qJG"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_tab_9diAf6"
+          ]
+        },
+        "kuu_markdown_rgLBUG": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "#### 2. Lucide Icons (Easiest)\n\nIf you have the Lucide library installed (see [Installation](/docs/getting-started#3-external-libraries-eg-lucide-icons)), you can simply pass the icon name.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_nhaXCA": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 84,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_tab_44fp7d": {
+              "type": "kuu-tab",
+              "name": "Kuu Tab",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "custom_mobile_padding": true,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_tab_item_Tba8N8": {
+                  "type": "_kuu-tab-item",
+                  "name": "Preview",
+                  "settings": {
+                    "tab_title": "Preview"
+                  },
+                  "blocks": {
+                    "kuu_flex_box_DWBjwB": {
+                      "type": "kuu-flex-box",
+                      "name": "Flex Box",
+                      "settings": {
+                        "background_color": "#ffffff",
+                        "width": "fill",
+                        "unit": "percent",
+                        "percent_width": 100,
+                        "pixel_width": 48,
+                        "add_width_min": false,
+                        "width_min": 0,
+                        "add_width_max": true,
+                        "width_max": "65ch",
+                        "custom_mobile_width": false,
+                        "width_mobile": "custom",
+                        "unit_mobile": "percent",
+                        "percent_width_mobile": 100,
+                        "pixel_width_mobile": 120,
+                        "add_width_mobile_min": false,
+                        "width_mobile_min": 0,
+                        "add_width_mobile_max": false,
+                        "width_mobile_max": "",
+                        "height": "fit-content",
+                        "custom_height": 240,
+                        "height_min": 120,
+                        "add_height_max": false,
+                        "height_max": "",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": "",
+                        "flex_direction": "column",
+                        "justify_content": "center",
+                        "align_items": "center",
+                        "flex_gap": "all",
+                        "gap": 4,
+                        "row_gap": 0,
+                        "column_gap": 0,
+                        "custom_mobile_flex": true,
+                        "mobile_flex_direction": "column",
+                        "mobile_justify_content": "center",
+                        "mobile_align_items": "center",
+                        "mobile_flex_gap": "all",
+                        "mobile_gap": 4,
+                        "mobile_row_gap": 0,
+                        "mobile_column_gap": 0,
+                        "border": "solid",
+                        "border_sides": "all",
+                        "border_width": 2,
+                        "border_left_width": 1,
+                        "border_top_width": 1,
+                        "border_bottom_width": 1,
+                        "border_right_width": 1,
+                        "border_color": "#e5e7eb",
+                        "border_radius": 8,
+                        "padding-block-start": 24,
+                        "padding-block-end": 24,
+                        "padding-inline-start": 24,
+                        "padding-inline-end": 24,
+                        "custom_mobile_padding": false,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "kuu_liquid_MVfBWf": {
+                          "type": "kuu-liquid",
+                          "name": "Custom Liquid",
+                          "settings": {
+                            "custom_liquid": "<div class=\"flex flex-col flex-wrap items-center justify-center gap-4 p-4\">\n\n<div class=\"flex flex-wrap items-center justify-center gap-4\">\n\t{% render 'kuu-button', variant: 'primary', label: 'Add to cart', lucide_icon: 'shopping-bag', radius: '9999px' %}\n\t{% render 'kuu-button',variant: 'primary',label: 'Next',lucide_icon: 'arrow-right',icon_position: 'right'%}</div>\n<div class=\"flex flex-wrap items-center justify-center gap-4\">\n\t{% render 'kuu-button', variant: 'secondary', aria_label: 'Open Menu', lucide_icon: 'menu' %}\n\t{% render 'kuu-button', variant: 'primary', aria_label: 'Add to wishlist', lucide_icon: 'heart' %}\n\t{% render 'kuu-button', variant: 'destructive', aria_label: 'Delete Item', lucide_icon: 'trash' %}\n</div>\n\n<div class=\"flex flex-wrap items-center justify-center gap-4\">\n\t{% render 'kuu-button',  label: 'account', lucide_icon: 'user', icon_position:'top' class:'text-xs!' %}\n\t{% render 'kuu-button',  label: 'cart', lucide_icon: 'shopping-bag', icon_position:'top' class:'text-xs!' %}\n</div>\n\n </div>"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_liquid_MVfBWf"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_flex_box_DWBjwB"
+                  ]
+                },
+                "kuu_tab_item_AByNNy": {
+                  "type": "_kuu-tab-item",
+                  "name": "Code",
+                  "settings": {
+                    "tab_title": "Code"
+                  },
+                  "blocks": {
+                    "kuu_codeblock_a3AeQF": {
+                      "type": "kuu-codeblock",
+                      "name": "Code Block",
+                      "settings": {
+                        "language": "liquid",
+                        "content": "",
+                        "liquid_code": "{% raw %}\n\n<div class=\"flex flex-wrap items-center justify-center gap-4\">\n\t{% render 'kuu-button', variant: 'primary', label: 'Add to cart', lucide_icon: 'shopping-bag', radius: '9999px' %}\n\t{% render 'kuu-button',variant: 'primary',label: 'Next',lucide_icon: 'arrow-right',icon_position: 'right'%}\t\n</div>\n\n<div class=\"flex flex-wrap items-center justify-center gap-4\">\n\t{% render 'kuu-button', variant: 'secondary', aria_label: 'Open Menu', lucide_icon: 'menu' %}\n\t{% render 'kuu-button', variant: 'primary', aria_label: 'Add to wishlist', lucide_icon: 'heart' %}\n\t{% render 'kuu-button', variant: 'destructive', aria_label: 'Delete Item', lucide_icon: 'trash' %}\n</div>\n\n<div class=\"flex flex-wrap items-center justify-center gap-4\">\n\t{% render 'kuu-button',  label: 'account', lucide_icon: 'user', icon_position:'top' class:'text-xs!' %}\n\t{% render 'kuu-button',  label: 'cart', lucide_icon: 'shopping-bag', icon_position:'top' class:'text-xs!' %}\n</div>\n{% endraw %}",
+                        "show_toolbar": false,
+                        "pathname": "snippets/kuu-button.liquid",
+                        "copy_button": true,
+                        "height": "fit-content",
+                        "custom_height": 348,
+                        "height_min": 0,
+                        "add_height_max": true,
+                        "height_max": "348px",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "kuu_codeblock_a3AeQF"
+                  ]
+                }
+              },
+              "block_order": [
+                "kuu_tab_item_Tba8N8",
+                "kuu_tab_item_AByNNy"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_tab_44fp7d"
+          ]
+        },
+        "kuu_markdown_YdrkeY": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "### Custom Styling\n\nOverride default styles with utility classes or specific props.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_pdxeDF": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 84,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_tab_HJV9Wn": {
+              "type": "kuu-tab",
+              "name": "Kuu Tab",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "custom_mobile_padding": true,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_tab_item_aUwr3F": {
+                  "type": "_kuu-tab-item",
+                  "name": "Preview",
+                  "settings": {
+                    "tab_title": "Preview"
+                  },
+                  "blocks": {
+                    "kuu_flex_box_T4YFey": {
+                      "type": "kuu-flex-box",
+                      "name": "Flex Box",
+                      "settings": {
+                        "background_color": "#ffffff",
+                        "width": "fill",
+                        "unit": "percent",
+                        "percent_width": 100,
+                        "pixel_width": 48,
+                        "add_width_min": false,
+                        "width_min": 0,
+                        "add_width_max": true,
+                        "width_max": "65ch",
+                        "custom_mobile_width": false,
+                        "width_mobile": "custom",
+                        "unit_mobile": "percent",
+                        "percent_width_mobile": 100,
+                        "pixel_width_mobile": 120,
+                        "add_width_mobile_min": false,
+                        "width_mobile_min": 0,
+                        "add_width_mobile_max": false,
+                        "width_mobile_max": "",
+                        "height": "fit-content",
+                        "custom_height": 240,
+                        "height_min": 120,
+                        "add_height_max": false,
+                        "height_max": "",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": "",
+                        "flex_direction": "column",
+                        "justify_content": "center",
+                        "align_items": "center",
+                        "flex_gap": "all",
+                        "gap": 4,
+                        "row_gap": 0,
+                        "column_gap": 0,
+                        "custom_mobile_flex": true,
+                        "mobile_flex_direction": "column",
+                        "mobile_justify_content": "center",
+                        "mobile_align_items": "center",
+                        "mobile_flex_gap": "all",
+                        "mobile_gap": 4,
+                        "mobile_row_gap": 0,
+                        "mobile_column_gap": 0,
+                        "border": "solid",
+                        "border_sides": "all",
+                        "border_width": 2,
+                        "border_left_width": 1,
+                        "border_top_width": 1,
+                        "border_bottom_width": 1,
+                        "border_right_width": 1,
+                        "border_color": "#e5e7eb",
+                        "border_radius": 8,
+                        "padding-block-start": 24,
+                        "padding-block-end": 24,
+                        "padding-inline-start": 24,
+                        "padding-inline-end": 24,
+                        "custom_mobile_padding": false,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "kuu_liquid_t6ChDW": {
+                          "type": "kuu-liquid",
+                          "name": "Custom Liquid",
+                          "settings": {
+                            "custom_liquid": "<div class=\"flex flex-col flex-wrap items-center justify-center gap-4 p-4\">\n\n{% render 'kuu-button',\n\tlabel: 'Custom Button',\n\tclass: 'rounded-full! shadow-lg text-white bg-linear-to-r from-cyan-500 to-blue-500',\n\twidth: '100%'\n\tsize:'lg'\n\tlucide_icon: 'sparkle'\n\ticon_position: 'right'\n%}\n\n </div>"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_liquid_t6ChDW"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_flex_box_T4YFey"
+                  ]
+                },
+                "kuu_tab_item_zqECqW": {
+                  "type": "_kuu-tab-item",
+                  "name": "Code",
+                  "settings": {
+                    "tab_title": "Code"
+                  },
+                  "blocks": {
+                    "kuu_codeblock_ay6WdC": {
+                      "type": "kuu-codeblock",
+                      "name": "Code Block",
+                      "settings": {
+                        "language": "liquid",
+                        "content": "",
+                        "liquid_code": "{% raw %}\n\n{% render 'kuu-button',\n\tlabel: 'Custom Button',\n\tclass: 'rounded-full! shadow-lg text-white bg-linear-to-r from-cyan-500 to-blue-500',\n\twidth: '100%'\n\tsize:'lg'\n\tlucide_icon: 'sparkle'\n\ticon_position: 'right'\n%}\n\n{% endraw %}",
+                        "show_toolbar": false,
+                        "pathname": "snippets/kuu-button.liquid",
+                        "copy_button": true,
+                        "height": "fit-content",
+                        "custom_height": 348,
+                        "height_min": 0,
+                        "add_height_max": true,
+                        "height_max": "348px",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "kuu_codeblock_ay6WdC"
+                  ]
+                }
+              },
+              "block_order": [
+                "kuu_tab_item_aUwr3F",
+                "kuu_tab_item_zqECqW"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_tab_HJV9Wn"
+          ]
         }
       },
       "block_order": [
-        "kuu_markdown_WJ4kxt",
-        "kuu_flex_box_VU36ee",
-        "kuu_markdown_m4m6fY",
-        "kuu_markdown_UrF9aJ",
-        "kuu_codeblock_rejyPY",
-        "kuu_markdown_XGjejA",
-        "kuu_markdown_EYVxmV",
-        "kuu_codeblock_mxKxBA",
-        "kuu_markdown_xJ9QiB",
-        "kuu_markdown_c6KNE4",
-        "kuu_flex_box_JiYNpV",
-        "kuu_markdown_dBxe3R",
-        "kuu_flex_box_KrMFba"
+        "kuu_markdown_pR9Dg8",
+        "kuu_markdown_NbQn8F",
+        "kuu_flex_box_LHmhC4",
+        "kuu_markdown_jRgjXr",
+        "kuu_flex_box_ADYNH8",
+        "kuu_markdown_rgmEc8",
+        "kuu_flex_box_FDFGtY",
+        "kuu_markdown_g7jdPY",
+        "kuu_markdown_V9XekX",
+        "kuu_flex_box_afqtEg",
+        "kuu_markdown_rgLBUG",
+        "kuu_flex_box_nhaXCA",
+        "kuu_markdown_YdrkeY",
+        "kuu_flex_box_pdxeDF"
       ],
-      "settings": {}
+      "name": "Usage",
+      "settings": {
+        "width": "fill",
+        "custom_width": 100,
+        "add_mobile_width": false,
+        "width_mobile": "fill",
+        "custom_width_mobile": 100,
+        "height": "fit-content",
+        "custom_height": 240,
+        "height_min": 240,
+        "add_height_max": false,
+        "height_max": "",
+        "custom_mobile_height": false,
+        "mobile_height": 240
+      }
+    },
+    "kuu_blank_section_ydprEc": {
+      "type": "kuu-blank-section",
+      "blocks": {
+        "kuu_markdown_NGzQUH": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "## Block Settings\n\nWhen used as a block, the following settings are available in the Theme Editor:\n\n- **Label & Link:** Text and destination URL.\n- **Style:** Variant, Size, Color (custom).\n- **Icon:** Lucide icon name and position.\n- **Layout:** Width, Height, Padding, Radius (with responsive options).\n- **Visibility:** Show on All, Mobile only, or Desktop only.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_xghnbY": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "## Props",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_eXeEDy": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 84,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_markdown_UbQTcg": {
+              "type": "kuu-markdown",
+              "name": "Markdown",
+              "settings": {
+                "content": "| Prop            | Type      | Default     | Description                                                                               |\n| :-------------- | :-------- | :---------- | :---------------------------------------------------------------------------------------- |\n| `label`         | `String`  | -           | The text content of the button.                                                           |\n| `href`          | `String`  | -           | If provided, renders as an `<a>` tag.                                                     |\n| `variant`       | `String`  | `'default'` | Visual style: `primary`, `secondary`, `outline`, `ghost`, `destructive`, `link`, `white`. |\n| `size`          | `String`  | `'default'` | Size preset: `sm`, `default`, `lg`, `icon`, `icon-sm`, `icon-lg`, `full`.                 |\n| `lucide_icon`   | `String`  | -           | Name of the Lucide icon to render (e.g., `arrow-right`).                                  |\n| `icon_position` | `String`  | `'left'`    | Position of the icon relative to text: `left`, `right`, `top`, `bottom`.                  |\n| `loading`       | `Boolean` | `false`     | If true, shows a loading spinner instead of the icon.                                     |\n| `disabled`      | `Boolean` | `false`     | Disables the button.                                                                      |\n| `class`         | `String`  | -           | Additional CSS classes to append.                                                         |\n| `props`         | `String`  | -           | Arbitrary HTML attributes (e.g., `data-action=\"add\"`).                                    |\n| `onclick`       | `String`  | -           | JavaScript onclick handler.                                                               |</a>",
+                "padding-block-start": 24,
+                "padding-block-end": 24,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "custom_mobile_padding": false,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "kuu_markdown_UbQTcg"
+          ]
+        }
+      },
+      "block_order": [
+        "kuu_markdown_NGzQUH",
+        "kuu_markdown_xghnbY",
+        "kuu_flex_box_eXeEDy"
+      ],
+      "name": "Props",
+      "settings": {
+        "width": "fill",
+        "custom_width": 100,
+        "add_mobile_width": false,
+        "width_mobile": "fill",
+        "custom_width_mobile": 100,
+        "height": "fit-content",
+        "custom_height": 240,
+        "height_min": 240,
+        "add_height_max": false,
+        "height_max": "",
+        "custom_mobile_height": false,
+        "mobile_height": 240
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "kuu_blank_section_aeKGzV",
+    "kuu_blank_section_ydprEc"
   ]
 }
