@@ -8,12 +8,884 @@
  * ------------------------------------------------------------
  */
 {
-	"layout": "documentation",
-	"sections": {
-		"main": {
-			"type": "documentation",
-			"settings": {}
-		}
-	},
-	"order": ["main"]
+  "layout": "documentation",
+  "sections": {
+    "main": {
+      "type": "documentation",
+      "blocks": {
+        "kuu_markdown_WJ4kxt": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "# Button\n\nA versatile, accessible button component that supports multiple variants, sizes, icons, and responsive styles. It can be rendered as a `< button >` or an `< a >` tag depending on the props.\n\n## Preview",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_VU36ee": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 84,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_tab_ExW4gK": {
+              "type": "kuu-tab",
+              "name": "Kuu Tab",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "custom_mobile_padding": true,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_tab_item_HdfiPU": {
+                  "type": "_kuu-tab-item",
+                  "name": "Preview",
+                  "settings": {
+                    "tab_title": "Preview"
+                  },
+                  "blocks": {
+                    "kuu_flex_box_8PdL44": {
+                      "type": "kuu-flex-box",
+                      "name": "Flex Box",
+                      "settings": {
+                        "background_color": "#ffffff",
+                        "width": "fill",
+                        "unit": "percent",
+                        "percent_width": 100,
+                        "pixel_width": 48,
+                        "add_width_min": false,
+                        "width_min": 0,
+                        "add_width_max": true,
+                        "width_max": "65ch",
+                        "custom_mobile_width": false,
+                        "width_mobile": "custom",
+                        "unit_mobile": "percent",
+                        "percent_width_mobile": 100,
+                        "pixel_width_mobile": 120,
+                        "add_width_mobile_min": false,
+                        "width_mobile_min": 0,
+                        "add_width_mobile_max": false,
+                        "width_mobile_max": "",
+                        "height": "fit-content",
+                        "custom_height": 240,
+                        "height_min": 120,
+                        "add_height_max": false,
+                        "height_max": "",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": "",
+                        "flex_direction": "column",
+                        "justify_content": "center",
+                        "align_items": "center",
+                        "flex_gap": "all",
+                        "gap": 4,
+                        "row_gap": 0,
+                        "column_gap": 0,
+                        "custom_mobile_flex": true,
+                        "mobile_flex_direction": "column",
+                        "mobile_justify_content": "center",
+                        "mobile_align_items": "center",
+                        "mobile_flex_gap": "all",
+                        "mobile_gap": 4,
+                        "mobile_row_gap": 0,
+                        "mobile_column_gap": 0,
+                        "border": "solid",
+                        "border_sides": "all",
+                        "border_width": 2,
+                        "border_left_width": 1,
+                        "border_top_width": 1,
+                        "border_bottom_width": 1,
+                        "border_right_width": 1,
+                        "border_color": "#e5e7eb",
+                        "border_radius": 8,
+                        "padding-block-start": 24,
+                        "padding-block-end": 24,
+                        "padding-inline-start": 24,
+                        "padding-inline-end": 24,
+                        "custom_mobile_padding": false,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "kuu_liquid_E88nti": {
+                          "type": "kuu-liquid",
+                          "name": "Custom Liquid",
+                          "settings": {
+                            "custom_liquid": "{% render 'kuu-button', label: 'Button', variant: 'primary' %}"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_liquid_E88nti"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_flex_box_8PdL44"
+                  ]
+                },
+                "kuu_tab_item_iMKzai": {
+                  "type": "_kuu-tab-item",
+                  "name": "Code",
+                  "settings": {
+                    "tab_title": "Code"
+                  },
+                  "blocks": {
+                    "kuu_codeblock_YLadnF": {
+                      "type": "kuu-codeblock",
+                      "name": "Code Block",
+                      "settings": {
+                        "language": "liquid",
+                        "content": "",
+                        "liquid_code": "{% raw %}\n{% render 'kuu-button', label: 'Button', variant: 'primary' %}\n{% endraw %}",
+                        "show_toolbar": false,
+                        "pathname": "snippets/kuu-button.liquid",
+                        "copy_button": true,
+                        "height": "fit-content",
+                        "custom_height": 348,
+                        "height_min": 0,
+                        "add_height_max": true,
+                        "height_max": "348px",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "kuu_codeblock_YLadnF"
+                  ]
+                }
+              },
+              "block_order": [
+                "kuu_tab_item_HdfiPU",
+                "kuu_tab_item_iMKzai"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_tab_ExW4gK"
+          ]
+        },
+        "kuu_markdown_m4m6fY": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "## Dependencies\n\n- **Snippet:** `snippets/kuu-button.liquid`\n- **Icons (Optional):** Lucide icons (via `lucide_icon` prop) or inline SVGs.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_UrF9aJ": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "## Installation\n\n### 1. Create the Snippet\n\nCreate a new file `snippets/kuu-button.liquid` and paste the source code.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_rejyPY": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "liquid",
+            "content": "",
+            "liquid_code": "{% raw %}\n{% # if only icon is passed and no size or label props, set button size to icon %}\n{% if label == blank and size == blank %}\n\t{% assign size = 'icon' %}\n{% endif %}\n\n{% capture inline_styles %}\n  {% if width %}\n    --width: {{width}};\n  {% endif %}\n  {% if mobile_width %}\n    --mobile-width: {{mobile_width}};\n  {% endif %}\n\n  {% if height %}\n    --height: {{height}};\n  {% endif %}\n  {% if mobile_height %}\n    --mobile-height: {{mobile_height}};\n  {% endif %}\n\n  {% if color %}\n    --color:{{color}};\n    {% assign contrast = color | color_contrast: '#ffffff' %}\n\t{% if contrast < 3.1 %}\n    --color-foreground:#000000;\n\t{% else %}\n\t\t--color-foreground:#ffffff;\n\t{% endif %}\n  {% endif %}\n\n\n\n  {% if radius %}\n    --br:{{radius}};\n  {% endif %}\n\n  {% if padding_top %}\n    --pt:{{padding_top}};\n  {% endif %}\n  \n\n  {% if padding_bottom %}\n    --pb:{{padding_bottom}};\n  {% endif %}\n\n  {% if padding_left %}\n    --pl:{{padding_left}};\n  {% endif %}\n\n  {% if padding_right %}\n    --pr:{{padding_right}};\n  {% endif %}\n\n  {%- case size -%}\n    {%- when 'sm' -%}\n      --fallback-height:32px;\n      --fallback-pr:12px;\n      --fallback-pl:12px;\n    \n    {%- when 'lg' -%}\n      --fallback-height:48px;\n      --fallback-pr:24px;\n      --fallback-pl:24px;\n\n    {%- when 'full' -%}\n    --fallback-width:100%;\n    --fallback-height:48px;\n\n        {%- when 'icon-sm' -%}\n      --fallback-width:32px;\n      --fallback-height:32px;\n      --fallback-pt:8px;\n      --fallback-pb:8px;\n      --fallback-pr:8px;\n      --fallback-pl:8px;\n    \n    {%- when 'icon' -%}\n      --fallback-width:40px;\n      --fallback-height:40px;\n      --fallback-pt:8px;\n      --fallback-pb:8px;\n      --fallback-pr:8px;\n      --fallback-pl:8px;\n\n    {%- when 'icon-lg' -%}\n      --fallback-width:48px;\n      --fallback-height:48px;\n      --fallback-pt:8px;\n      --fallback-pb:8px;\n      --fallback-pr:8px;\n      --fallback-pl:8px;\n\n    {%- when 'none' -%}\n      \n    {%- else -%}\n      --fallback-height:40px;\n      --fallback-pr:16px;\n      --fallback-pl:16px;\n      \n  {%- endcase -%}\n\n{% endcapture %}\n\n{% if block.id != blank %}\n\t{% assign button_class = 'button' | append: block.id %}\n{% endif %}\n\n{%- assign base_class = 'button relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-5 [&_svg]:shrink-0 cursor-pointer' -%}\n\n{%- case variant -%}\n\t{%- when 'default' -%}\n\t\t{%- assign variant_class = 'bg-primary text-primary-foreground hover:bg-primary/90' -%}\n\t{%- when 'primary' -%}\n\t\t{%- assign variant_class = 'bg-primary text-primary-foreground hover:bg-primary/90' -%}\n\t{%- when 'destructive' -%}\n\t\t{%- assign variant_class = 'bg-destructive text-destructive-foreground hover:bg-destructive/90' -%}\n\t{%- when 'secondary' -%}\n\t\t{%- assign variant_class = 'bg-secondary text-secondary-foreground hover:bg-secondary/80' -%}\n\t{%- when 'outline' -%}\n\t\t{%- assign variant_class = 'border border-input bg-background hover:bg-accent hover:text-accent-foreground' -%}\n\t{%- when 'ghost' -%}\n\t\t{%- assign variant_class = 'hover:bg-accent hover:text-accent-foreground' -%}\n\t{% when 'white' %}\n\t\t{% assign variant_class = 'bg-white text-black hover:bg-primary hover:text-primary-foreground ' %}\n\t{% when 'link' %}\n\t\t{% assign variant_class = 'text-primary underline-offset-4 hover:underline' %}\n\t{%- else -%}\n\t\t{%- assign variant_class = '' -%}\n{%- endcase -%}\n\n{%- case size -%}\n\t{%- when 'default' -%}\n\t\t{%- assign size_class = 'h-10 px-4 py-2' -%}\n\t{%- when 'sm' -%}\n\t\t{%- assign size_class = 'h-9 rounded-md px-3 ' -%}\n\t{%- when 'lg' -%}\n\t\t{%- assign size_class = 'h-11 rounded-md px-8' -%}\n\t{%- when 'full' -%}\n\t\t{%- assign size_class = 'w-full h-11 rounded-md px-8' -%}\n\t{%- when 'icon' -%}\n\t\t{%- assign size_class = 'size-10' -%}\n\t{%- when 'icon-sm' -%}\n\t\t{%- assign size_class = 'size-8' -%}\n\t{%- when 'icon-lg' -%}\n\t\t{%- assign size_class = 'size-12' -%}\n\t{%- when 'none' -%}\n\t\t{%- assign size_class = '' -%}\n\t{%- else -%}\n\t\t{%- assign size_class = 'h-10 px-4 text-sm rounded-md' -%}\n{%- endcase -%}\n\n{%- assign classes = button_class\n\t| append: ' '\n\t| append: base_class\n\t| append: ' '\n\t| append: variant_class\n\t| append: ' '\n\t| append: size_class\n\t| append: ' '\n\t| append: class\n\t| append: ' '\n\t| append: button_class\n-%}\n\n{% assign icon_position = icon_position | default: 'left' %}\n\n{% capture loading_spinner %}\n  <span aria-hidden=\"true\" class=\"animate-spin\">{{ 'icons/loader-circle.svg' | inline_asset_content }}</span>\n{% endcapture %}\n\n{% capture icon %}\n  {% if lucide_icon %}\n     <i data-lucide=\"{{lucide_icon}}\"></i>\n     {% elsif icon %}\n       {{ icon | inline_asset_content }}\n  {% endif %}\n{% endcapture %}\n\n{% capture icon_content %}\n    {% if loading %}\n    {{loading_spinner}}\n  {% else %}\n    {{icon}}\n  {% endif %}\n{% endcapture %}\n\n{% case icon_position %}\n\t{% when 'left' %}\n\t\t{% assign flex_direction = 'flex-row gap-2' %}\n\t{% when 'right' %}\n\t\t{% assign flex_direction = 'flex-row-reverse gap-2 ' %}\n\t{% when 'top' %}\n\t\t{% assign flex_direction = 'flex-col gap-1 py-1' %}\n\t{% when 'bottom' %}\n\t\t{% assign flex_direction = 'flex-col-reverse gap-1' %}\n\t{% else %}\n\t\t{% assign flex_direction = 'flex-row gap-2 py-1' %}\n{% endcase %}\n\n{%- capture default_content -%}\n  <span aria-hidden=\"true\" class=\"flex items-center {{flex_direction}} \">\n\n    {{icon_content}}\n\n  {%- if label -%}\n        <span>{{ label }}</span>\n  {%- endif -%}\n\n   \n  </span>\n{%- endcapture -%}\n\n{%- assign final_content = content | default: default_content -%}\n{% assign aria_label = aria_label | default: label | default: null %}\n{% assign device = device | default: 'all' %}\n\n{% if device == 'all' %}\n\t{% assign display_class = 'flex' %}\n{% elsif device == 'mobile' %}\n\t{% assign display_class = 'flex md:hidden' %}\n{% elsif device == 'desktop' %}\n\t{% assign display_class = 'hidden md:flex' %}\n{% endif %}\n\n<div\n\tclass='{{display_class}} shrink-0 {{wrapper_class}}'\n\t{% if align %}\n\t\tstyle='justify-content:{{align}}';\n\t{% endif %}\n>\n\t{% capture button_props %}\n   class=\"{{ classes }}\"\n    {% if id %}\n    id=\"{{ id }}\"\n    {% endif %}\n    {% if onclick %}\n    onclick=\"{{ onclick }}\"\n    {% endif %}\n    {% if aria_label %}\n    aria-label=\"{{ aria_label }}\"\n    {% endif %}\n    {% if props %}\n    {{ props }}\n    {% endif %}\n    style=\"{{inline_styles | strip}}\"\n     x-data\n   \n{% endcapture %}\n\n\t{%- if href -%}\n\t\t<a\n\t\t\thref='{{ href }}'\n\t\t\t{% if target_blank %}\n\t\t\t\ttarget='_blank'\n\t\t\t{% endif %}\n\t\t\t{{ button_props }}\n\t\t>\n\t\t\t{{ final_content }}\n\t\t</a>\n\t{%- else -%}\n\t\t<button\n\t\t\ttype='{{ type | default: 'button' }}'\n\t\t\t{{ button_props }}\n\t\t>\n\t\t\t{{ final_content }}\n\t\t</button>\n\t{%- endif -%}\n\n\t<style>\n\t\t.{{button_class}}{\n\n\t\t    {% if color %}\n\t\t    background-color:var(--color);\n\t\t      color: var(--color-foreground,#000000);\n\n\t\t  {% endif %}\n\n\t\t  width: var(--width, var(--fallback-width, auto));\n\t\t  height:var(--height, var(--fallback-height, auto));\n\t\t  border-radius: var(--br,8px);\n\t\t  padding-left: var(--pl, var(--fallback-pl, 0));\n\t\t  padding-right: var(--pr, var(--fallback-pr, 0));\n\t\t  padding-top: var(--pt, var(--fallback-pt, 0));\n\t\t  padding-bottom: var(--pb, var(--fallback-pb, 0));\n\n\t\t  @media (max-width:768px) {\n\t\t  width: var(--mobile-width, var(--width, var(--fallback-width, auto)));\n\t\t  height: var(--mobile-height, var(--height, var(--fallback-height, auto)));\n\t\t  }\n\t\t}\n\n\n\n\n\t\t.button svg {\n\t\t  color: currentColor;\n\t\t  flex-shrink: 0 !important;\n\t\t}\n\t</style>\n</div>\n\n\n{% endraw %}",
+            "show_toolbar": true,
+            "pathname": "snippets/kuu-button.liquid",
+            "copy_button": true,
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_XGjejA": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "> **TIP**\n> You can also find the source code in the `snippets/` directory of the [Kuu blocks repository.](https://github.com/chuksemmanuel/kuu-blocks)",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_EYVxmV": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "### 2. (Optional) Create the Block\n\nIf you want to use this button as a drag-and-drop block in the Theme Editor, create `blocks/kuu-button.liquid` and paste the schema code.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_mxKxBA": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "liquid",
+            "content": "",
+            "liquid_code": "{% raw %}\n{% liquid\n\t# device\n\tassign device = block.settings.device | default: 'all'\n\n\t# label\n\tif block.settings.label == blank\n\t\tassign label = label\n\telse\n\t\tassign label = block.settings.label\n\tendif\n\n\t# size\n\tif block.settings.size == 'default'\n\t\tassign size = size\n\telse\n\t\tassign size = block.settings.size\n\tendif\n\n\t# variant\n\tif block.settings.variant == 'default'\n\t\tassign variant = variant\n\telse\n\t\tassign variant = block.settings.variant\n\tendif\n\n\t# color\n\tif block.settings.custom_color == true\n\t\tassign color = block.settings.color\n\telse\n\t\tassign color = color\n\tendif\n\n\t# href\n\tif block.settings.custom_link == true and block.settings.href != blank\n\t\tassign href = block.settings.href\n\telse\n\t\tassign href = href\n\tendif\n\n\t# target blank\n\tif block.settings.target_blank == true\n\t\tassign target_blank = target_blank\n\telse\n\t\tassign target_blank = target_blank\n\tendif\n\n\t# ID\n\tif block.settings.id == blank\n\t\tassign id = id\n\telse\n\t\tassign id = block.settings.id\n\tendif\n\n\t# Class\n\tif block.settings.class == blank\n\t\tassign class = button_class\n\telse\n\t\tassign class = block.settings.class\n\tendif\n\n\t# Custom props\n\tif block.settings.props == blank\n\t\tassign props = props | default: ''\n\telse\n\t\tassign props = block.settings.props\n\tendif\n\n\t# Border radius\n\tif block.settings.custom_radius == true\n\t\tassign radius = block.settings.radius | append: 'px'\n\telse\n\t\tassign radius = radius\n\tendif\n\n\t# width\n\tif block.settings.custom_width == true\n\t\t# check if the selected unit is pixel or pecent\n\t\tif block.settings.unit == 'pixel'\n\t\t\tassign width = block.settings.pexel_width | append: 'px'\n\t\telse\n\t\t\tassign width = block.settings.percent_width | append: '%'\n\t\tendif\n\telse\n\t\t# if block settings custom width isn't checked, we use block properties\n\t\tassign width = width\n\tendif\n\n\t# mobile width\n\tif block.settings.custom_mobile_width == true\n\t\tif block.settings.mobile_unit == 'pixel'\n\t\t\tassign mobile_width = block.settings.mobile_pexel_width | append: 'px'\n\t\telse\n\t\t\tassign mobile_width = block.settings.mobile_pexel_width | append: '%'\n\t\tendif\n\telse\n\t\t# if block settings custom width isn't checked, we use block properties\n\t\tassign mobile_width = mobile_width\n\tendif\n\n\t# height\n\tif block.settings.custom_height == true\n\t\tassign height = block.settings.height | append: 'px'\n\telse\n\t\t# if block settings custom width isn't checked, we use block properties\n\t\tassign height = height\n\tendif\n\n\t# mobile height\n\tif block.settings.custom_mobile_height == true\n\t\tassign mobile_height = block.settings.mobile_height | append: 'px'\n\telse\n\t\t# if block settings custom width isn't checked, we use block properties\n\t\tassign mobile_height = mobile_height\n\tendif\n\n\t# custom padding\n\tif block.settings.custom_padding == true\n\t\tassign padding_top = block.settings.padding_top | append: 'px'\n\t\tassign padding_bottom = block.settings.padding_bottom | append: 'px'\n\t\tassign padding_left = block.settings.padding_left | append: 'px'\n\t\tassign padding_right = block.settings.padding_right | append: 'px'\n\telse\n\t\tassign padding_top = padding_top\n\t\tassign padding_bottom = padding_bottom\n\t\tassign padding_left = padding_left\n\t\tassign padding_right = padding_right\n\tendif\n\n\t# button alignment\n\tif block.settings.custom_alignment\n\t\tassign align = block.settings.alignment\n\telse\n\t\tassign align = align\n\tendif\n\n\t# lucide icon\n\tif block.settings.custom_icon and block.settings.lucide_icon != blank\n\t\tassign lucide_icon = block.settings.lucide_icon\n\telse\n\t\tassign lucide_icon = lucide_icon\n\tendif\n\n\t# icon position\n\tif block.settings.custom_icon\n\t\tassign icon_position = block.settings.icon_position\n\telse\n\t\tassign icon_position = icon_position\n\tendif\n%}\n\n{% render 'button',\n\tdevice: device,\n\tvariant: variant,\n\tcolor: color,\n\talign: align,\n\tsize: size,\n\thref: href,\n\tlabel: label,\n\tid: id,\n\tclass: class,\n\tprops: props,\n\tradius: radius,\n\twidth: width,\n\tmobile_width: mobile_width,\n\theight: height,\n\tmobile_height: mobile_height,\n\tpadding_top: padding_top,\n\tpadding_bottom: padding_bottom,\n\tpadding_left: padding_left,\n\tpadding_right: padding_right,\n\ticon: icon,\n\tlucide_icon: lucide_icon,\n\ticon_position: icon_position,\n\ttarget_blank: target_blank\n%}\n\n{% schema %}\n\t{\n\t\t\"name\": \"Button\",\n\t\t\"settings\": [\n\t\t\t{\n\t\t\t\t\"type\": \"select\",\n\t\t\t\t\"id\": \"device\",\n\t\t\t\t\"label\": \"Show Button on\",\n\t\t\t\t\"options\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"all\",\n\t\t\t\t\t\t\"label\": \"All Devices\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"mobile\",\n\t\t\t\t\t\t\"label\": \"Mobile  Devices Only\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"desktop\",\n\t\t\t\t\t\t\"label\": \"Desktop Devices  Only\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"default\": \"all\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"select\",\n\t\t\t\t\"id\": \"variant\",\n\t\t\t\t\"label\": \"Button variant\",\n\t\t\t\t\"options\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"default\",\n\t\t\t\t\t\t\"label\": \"Default\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"primary\",\n\t\t\t\t\t\t\"label\": \"Primary\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"secondary\",\n\t\t\t\t\t\t\"label\": \"Secondary\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"destructive\",\n\t\t\t\t\t\t\"label\": \"Destructive\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"link\",\n\t\t\t\t\t\t\"label\": \"Link\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"white\",\n\t\t\t\t\t\t\"label\": \"White\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"outline\",\n\t\t\t\t\t\t\"label\": \"Outline\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"ghost\",\n\t\t\t\t\t\t\"label\": \"Ghost\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"select\",\n\t\t\t\t\"id\": \"size\",\n\t\t\t\t\"label\": \"Button Size\",\n\t\t\t\t\"options\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"default\",\n\t\t\t\t\t\t\"label\": \"Default\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"sm\",\n\t\t\t\t\t\t\"label\": \"Small\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"md\",\n\t\t\t\t\t\t\"label\": \"Medium\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"lg\",\n\t\t\t\t\t\t\"label\": \"Large\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"icon-sm\",\n\t\t\t\t\t\t\"label\": \"Icon Small\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"icon\",\n\t\t\t\t\t\t\"label\": \"Icon Medium\"\n\t\t\t\t\t},\n\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"icon-lg\",\n\t\t\t\t\t\t\"label\": \"Icon Large\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"full\",\n\t\t\t\t\t\t\"label\": \"Full\"\n\t\t\t\t\t}\n\t\t\t\t]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"header\",\n\t\t\t\t\"content\": \"Basic \"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"text\",\n\t\t\t\t\"id\": \"label\",\n\t\t\t\t\"label\": \"Label\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"custom_link\",\n\t\t\t\t\"label\": \"Add Link to button\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"url\",\n\t\t\t\t\"id\": \"href\",\n\t\t\t\t\"label\": \"Link\",\n\t\t\t\t\"visible_if\": \"{{block.settings.custom_link}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"target_blank\",\n\t\t\t\t\"label\": \"Open Link in new tab\",\n\t\t\t\t\"visible_if\": \"{{block.settings.custom_link}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"header\",\n\t\t\t\t\"content\": \"Colors\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"custom_color\",\n\t\t\t\t\"label\": \"Custom Color\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"color\",\n\t\t\t\t\"id\": \"color\",\n\t\t\t\t\"label\": \"Color\",\n\t\t\t\t\"default\": \"#000000\",\n\t\t\t\t\"visible_if\": \"{{block.settings.custom_color}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"header\",\n\t\t\t\t\"content\": \"Alignment\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"custom_alignment\",\n\t\t\t\t\"label\": \"Align Button\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"text_alignment\",\n\t\t\t\t\"id\": \"alignment\",\n\t\t\t\t\"label\": \"Align Button\",\n\t\t\t\t\"default\": \"left\",\n\t\t\t\t\"visible_if\": \"{{block.settings.custom_alignment}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"header\",\n\t\t\t\t\"content\": \"Icon\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"custom_icon\",\n\t\t\t\t\"label\": \"Adjust Icon\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"text\",\n\t\t\t\t\"id\": \"lucide_icon\",\n\t\t\t\t\"label\": \"Icon Name\",\n\t\t\t\t\"placeholder\": \"E.g shopping-cart\",\n\t\t\t\t\"visible_if\": \"{{block.settings.custom_icon}}\",\n\t\t\t\t\"info\": \"Enter the name of a Lucide icon in the field below. Browse available icons at [lucide.dev/icons](https://lucide.dev/icons).\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"select\",\n\t\t\t\t\"id\": \"icon_position\",\n\t\t\t\t\"label\": \"Icon Position\",\n\t\t\t\t\"options\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"left\",\n\t\t\t\t\t\t\"label\": \"Left\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"right\",\n\t\t\t\t\t\t\"label\": \"Right\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"top\",\n\t\t\t\t\t\t\"label\": \"Top\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"bottom\",\n\t\t\t\t\t\t\"label\": \"Bottom\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"visible_if\": \"{{block.settings.custom_icon}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"header\",\n\t\t\t\t\"content\": \"Border Radius\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"custom_radius\",\n\t\t\t\t\"label\": \"Adjust Border Radius\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"range\",\n\t\t\t\t\"id\": \"radius\",\n\t\t\t\t\"label\": \"Roundeness\",\n\t\t\t\t\"min\": 0,\n\t\t\t\t\"max\": 100,\n\t\t\t\t\"step\": 1,\n\t\t\t\t\"default\": 8,\n\t\t\t\t\"unit\": \"px\",\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_radius == true }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"header\",\n\t\t\t\t\"content\": \"Width\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"custom_width\",\n\t\t\t\t\"label\": \"Adjust Width\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"select\",\n\t\t\t\t\"id\": \"unit\",\n\t\t\t\t\"label\": \"Unit\",\n\t\t\t\t\"options\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"pixel\",\n\t\t\t\t\t\t\"label\": \"Pixel\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"percent\",\n\t\t\t\t\t\t\"label\": \"Percent\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"default\": \"percent\",\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_width }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"range\",\n\t\t\t\t\"id\": \"percent_width\",\n\t\t\t\t\"label\": \"Width\",\n\t\t\t\t\"min\": 10,\n\t\t\t\t\"max\": 100,\n\t\t\t\t\"step\": 1,\n\t\t\t\t\"unit\": \"%\",\n\t\t\t\t\"default\": 100,\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_width and block.settings.unit == 'percent' }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"range\",\n\t\t\t\t\"id\": \"pexel_width\",\n\t\t\t\t\"label\": \"Width\",\n\t\t\t\t\"min\": 10,\n\t\t\t\t\"max\": 500,\n\t\t\t\t\"step\": 5,\n\t\t\t\t\"unit\": \"px\",\n\t\t\t\t\"default\": 100,\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_width and block.settings.unit == 'pixel' }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"custom_mobile_width\",\n\t\t\t\t\"label\": \"Custom Mobile Width\",\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_width}}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"select\",\n\t\t\t\t\"id\": \"mobile_unit\",\n\t\t\t\t\"label\": \"Mobile Unit\",\n\t\t\t\t\"options\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"pixel\",\n\t\t\t\t\t\t\"label\": \"Pixel\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"percent\",\n\t\t\t\t\t\t\"label\": \"Percent\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"default\": \"percent\",\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_mobile_width }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"range\",\n\t\t\t\t\"id\": \"mobile_percent_width\",\n\t\t\t\t\"label\": \"Mobile Width\",\n\t\t\t\t\"min\": 10,\n\t\t\t\t\"max\": 100,\n\t\t\t\t\"step\": 1,\n\t\t\t\t\"unit\": \"%\",\n\t\t\t\t\"default\": 100,\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_mobile_width and block.settings.mobile_unit == 'percent' }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"range\",\n\t\t\t\t\"id\": \"mobile_pexel_width\",\n\t\t\t\t\"label\": \"Mobile Width\",\n\t\t\t\t\"min\": 10,\n\t\t\t\t\"max\": 500,\n\t\t\t\t\"step\": 5,\n\t\t\t\t\"unit\": \"px\",\n\t\t\t\t\"default\": 100,\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_mobile_width and block.settings.mobile_unit == 'pixel' }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"header\",\n\t\t\t\t\"content\": \"Height\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"custom_height\",\n\t\t\t\t\"label\": \"Adjust Height\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"range\",\n\t\t\t\t\"id\": \"height\",\n\t\t\t\t\"label\": \"Height\",\n\t\t\t\t\"min\": 10,\n\t\t\t\t\"max\": 500,\n\t\t\t\t\"step\": 5,\n\t\t\t\t\"unit\": \"px\",\n\t\t\t\t\"default\": 100,\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_height }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"custom_mobile_height\",\n\t\t\t\t\"label\": \"Custom Mobile Height\",\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_height }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"range\",\n\t\t\t\t\"id\": \"mobile_height\",\n\t\t\t\t\"label\": \"Mobile Height\",\n\t\t\t\t\"min\": 10,\n\t\t\t\t\"max\": 500,\n\t\t\t\t\"step\": 5,\n\t\t\t\t\"unit\": \"px\",\n\t\t\t\t\"default\": 100,\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_mobile_height }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"header\",\n\t\t\t\t\"content\": \"Padding\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"custom_padding\",\n\t\t\t\t\"label\": \"Add Padding\"\n\t\t\t},\n\n\t\t\t{\n\t\t\t\t\"type\": \"range\",\n\t\t\t\t\"id\": \"padding_top\",\n\t\t\t\t\"label\": \"Padding Top\",\n\t\t\t\t\"min\": 1,\n\t\t\t\t\"max\": 100,\n\t\t\t\t\"step\": 1,\n\t\t\t\t\"unit\": \"px\",\n\t\t\t\t\"default\": 1,\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_padding == true }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"range\",\n\t\t\t\t\"id\": \"padding_bottom\",\n\t\t\t\t\"label\": \"Padding Bottom\",\n\t\t\t\t\"min\": 1,\n\t\t\t\t\"max\": 100,\n\t\t\t\t\"step\": 1,\n\t\t\t\t\"unit\": \"px\",\n\t\t\t\t\"default\": 1,\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_padding == true }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"range\",\n\t\t\t\t\"id\": \"padding_left\",\n\t\t\t\t\"label\": \"Padding Left\",\n\t\t\t\t\"min\": 1,\n\t\t\t\t\"max\": 100,\n\t\t\t\t\"step\": 1,\n\t\t\t\t\"unit\": \"px\",\n\t\t\t\t\"default\": 24,\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_padding == true }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"range\",\n\t\t\t\t\"id\": \"padding_right\",\n\t\t\t\t\"label\": \"Padding Right\",\n\t\t\t\t\"min\": 1,\n\t\t\t\t\"max\": 100,\n\t\t\t\t\"step\": 1,\n\t\t\t\t\"unit\": \"px\",\n\t\t\t\t\"default\": 24,\n\t\t\t\t\"visible_if\": \"{{ block.settings.custom_padding == true }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"header\",\n\t\t\t\t\"content\": \"Class and ID\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"text\",\n\t\t\t\t\"id\": \"id\",\n\t\t\t\t\"label\": \"Add button ID\",\n\t\t\t\t\"placeholder\": \"E.g add-to-cart \"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"text\",\n\t\t\t\t\"id\": \"class\",\n\t\t\t\t\"label\": \"Additional Classes\",\n\t\t\t\t\"placeholder\": \"E.g rounded-full! \"\n\t\t\t}\n\t\t],\n\t\t\"presets\": [\n\t\t\t{\n\t\t\t\t\"name\": \"Button\",\n\t\t\t\t\"category\": \"Kuu Components\",\n\t\t\t\t\"settings\": {\n\t\t\t\t\t\"label\": \"Button\",\n\t\t\t\t\t\"variant\": \"primary\",\n\t\t\t\t\t\"size\": \"lg\",\n\t\t\t\t\t\"radius\": 8\n\t\t\t\t}\n\t\t\t}\n\t\t]\n\t}\n{% endschema %}\n\n\n{% endraw %}",
+            "show_toolbar": true,
+            "pathname": "blocks/kuu-button.liquid",
+            "copy_button": true,
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_xJ9QiB": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "## Usage",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_c6KNE4": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "### Basic Usage",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_JiYNpV": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 84,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_tab_f7WzDA": {
+              "type": "kuu-tab",
+              "name": "Kuu Tab",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "custom_mobile_padding": false,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_tab_item_kj9CAJ": {
+                  "type": "_kuu-tab-item",
+                  "name": "Preview",
+                  "settings": {
+                    "tab_title": "Preview"
+                  },
+                  "blocks": {
+                    "kuu_flex_box_UUdVEB": {
+                      "type": "kuu-flex-box",
+                      "name": "Flex Box",
+                      "settings": {
+                        "background_color": "#ffffff",
+                        "width": "fill",
+                        "unit": "percent",
+                        "percent_width": 100,
+                        "pixel_width": 48,
+                        "add_width_min": false,
+                        "width_min": 0,
+                        "add_width_max": true,
+                        "width_max": "65ch",
+                        "custom_mobile_width": false,
+                        "width_mobile": "custom",
+                        "unit_mobile": "percent",
+                        "percent_width_mobile": 100,
+                        "pixel_width_mobile": 120,
+                        "add_width_mobile_min": false,
+                        "width_mobile_min": 0,
+                        "add_width_mobile_max": false,
+                        "width_mobile_max": "",
+                        "height": "fit-content",
+                        "custom_height": 240,
+                        "height_min": 120,
+                        "add_height_max": false,
+                        "height_max": "",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": "",
+                        "flex_direction": "column",
+                        "justify_content": "center",
+                        "align_items": "center",
+                        "flex_gap": "all",
+                        "gap": 4,
+                        "row_gap": 0,
+                        "column_gap": 0,
+                        "custom_mobile_flex": true,
+                        "mobile_flex_direction": "column",
+                        "mobile_justify_content": "center",
+                        "mobile_align_items": "center",
+                        "mobile_flex_gap": "all",
+                        "mobile_gap": 4,
+                        "mobile_row_gap": 0,
+                        "mobile_column_gap": 0,
+                        "border": "solid",
+                        "border_sides": "all",
+                        "border_width": 2,
+                        "border_left_width": 1,
+                        "border_top_width": 1,
+                        "border_bottom_width": 1,
+                        "border_right_width": 1,
+                        "border_color": "#e5e7eb",
+                        "border_radius": 8,
+                        "padding-block-start": 24,
+                        "padding-block-end": 24,
+                        "padding-inline-start": 24,
+                        "padding-inline-end": 24,
+                        "custom_mobile_padding": false,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "kuu_liquid_babtjD": {
+                          "type": "kuu-liquid",
+                          "name": "Custom Liquid",
+                          "settings": {
+                            "custom_liquid": "{% render 'kuu-button', label: 'Shop Now', variant:'primary', href: '/collections/all' %}"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_liquid_babtjD"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_flex_box_UUdVEB"
+                  ]
+                },
+                "kuu_tab_item_nh8rnM": {
+                  "type": "_kuu-tab-item",
+                  "name": "Code",
+                  "settings": {
+                    "tab_title": "Code"
+                  },
+                  "blocks": {
+                    "kuu_codeblock_i6cHTV": {
+                      "type": "kuu-codeblock",
+                      "name": "Code Block",
+                      "settings": {
+                        "language": "liquid",
+                        "content": "",
+                        "liquid_code": "{% raw %}\n{% render 'kuu-button', label: 'Shop Now', variant:'primary', href: '/collections/all' %}\n{% endraw %}",
+                        "show_toolbar": false,
+                        "pathname": "snippets/kuu-button.liquid",
+                        "copy_button": true,
+                        "height": "fit-content",
+                        "custom_height": 348,
+                        "height_min": 0,
+                        "add_height_max": true,
+                        "height_max": "348px",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "kuu_codeblock_i6cHTV"
+                  ]
+                }
+              },
+              "block_order": [
+                "kuu_tab_item_kj9CAJ",
+                "kuu_tab_item_nh8rnM"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_tab_f7WzDA"
+          ]
+        },
+        "kuu_markdown_dBxe3R": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "### Variants",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": false,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_KrMFba": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 84,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_tab_CEiMaj": {
+              "type": "kuu-tab",
+              "name": "Kuu Tab",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "custom_mobile_padding": true,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_tab_item_wcm36m": {
+                  "type": "_kuu-tab-item",
+                  "name": "Preview",
+                  "settings": {
+                    "tab_title": "Preview"
+                  },
+                  "blocks": {
+                    "kuu_flex_box_jWVNkm": {
+                      "type": "kuu-flex-box",
+                      "name": "Flex Box",
+                      "settings": {
+                        "background_color": "#ffffff",
+                        "width": "fill",
+                        "unit": "percent",
+                        "percent_width": 100,
+                        "pixel_width": 48,
+                        "add_width_min": false,
+                        "width_min": 0,
+                        "add_width_max": true,
+                        "width_max": "65ch",
+                        "custom_mobile_width": false,
+                        "width_mobile": "custom",
+                        "unit_mobile": "percent",
+                        "percent_width_mobile": 100,
+                        "pixel_width_mobile": 120,
+                        "add_width_mobile_min": false,
+                        "width_mobile_min": 0,
+                        "add_width_mobile_max": false,
+                        "width_mobile_max": "",
+                        "height": "fit-content",
+                        "custom_height": 240,
+                        "height_min": 120,
+                        "add_height_max": false,
+                        "height_max": "",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": "",
+                        "flex_direction": "column",
+                        "justify_content": "center",
+                        "align_items": "center",
+                        "flex_gap": "all",
+                        "gap": 4,
+                        "row_gap": 0,
+                        "column_gap": 0,
+                        "custom_mobile_flex": true,
+                        "mobile_flex_direction": "column",
+                        "mobile_justify_content": "center",
+                        "mobile_align_items": "center",
+                        "mobile_flex_gap": "all",
+                        "mobile_gap": 4,
+                        "mobile_row_gap": 0,
+                        "mobile_column_gap": 0,
+                        "border": "solid",
+                        "border_sides": "all",
+                        "border_width": 2,
+                        "border_left_width": 1,
+                        "border_top_width": 1,
+                        "border_bottom_width": 1,
+                        "border_right_width": 1,
+                        "border_color": "#e5e7eb",
+                        "border_radius": 8,
+                        "padding-block-start": 24,
+                        "padding-block-end": 24,
+                        "padding-inline-start": 24,
+                        "padding-inline-end": 24,
+                        "custom_mobile_padding": false,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "kuu_liquid_V94nPj": {
+                          "type": "kuu-liquid",
+                          "name": "Custom Liquid",
+                          "settings": {
+                            "custom_liquid": "<div class=\"flex flex-wrap items-center justify-center gap-4 p-4\">\n\t{% render 'kuu-button', label: 'Primary', variant: 'primary' %}\n\t{% render 'kuu-button', label: 'Secondary', variant: 'secondary' %}\n\t{% render 'kuu-button', label: 'Outline', variant: 'outline' %}\n\t{% render 'kuu-button', label: 'Ghost', variant: 'ghost' %}\n\t{% render 'kuu-button', label: 'Destructive', variant: 'destructive' %}\n </div>"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_liquid_V94nPj"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_flex_box_jWVNkm"
+                  ]
+                },
+                "kuu_tab_item_fnPUNd": {
+                  "type": "_kuu-tab-item",
+                  "name": "Code",
+                  "settings": {
+                    "tab_title": "Code"
+                  },
+                  "blocks": {
+                    "kuu_codeblock_4yepdC": {
+                      "type": "kuu-codeblock",
+                      "name": "Code Block",
+                      "settings": {
+                        "language": "liquid",
+                        "content": "",
+                        "liquid_code": "{% raw %}\n{% render 'kuu-button', label: 'Primary', variant: 'primary' %}\n{% render 'kuu-button', label: 'Secondary', variant: 'secondary' %}\n{% render 'kuu-button', label: 'Outline', variant: 'outline' %}\n{% render 'kuu-button', label: 'Ghost', variant: 'ghost' %}\n{% render 'kuu-button', label: 'Destructive', variant: 'destructive' %}\n{% endraw %}",
+                        "show_toolbar": false,
+                        "pathname": "snippets/kuu-button.liquid",
+                        "copy_button": true,
+                        "height": "fit-content",
+                        "custom_height": 348,
+                        "height_min": 0,
+                        "add_height_max": true,
+                        "height_max": "348px",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "kuu_codeblock_4yepdC"
+                  ]
+                }
+              },
+              "block_order": [
+                "kuu_tab_item_wcm36m",
+                "kuu_tab_item_fnPUNd"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_tab_CEiMaj"
+          ]
+        }
+      },
+      "block_order": [
+        "kuu_markdown_WJ4kxt",
+        "kuu_flex_box_VU36ee",
+        "kuu_markdown_m4m6fY",
+        "kuu_markdown_UrF9aJ",
+        "kuu_codeblock_rejyPY",
+        "kuu_markdown_XGjejA",
+        "kuu_markdown_EYVxmV",
+        "kuu_codeblock_mxKxBA",
+        "kuu_markdown_xJ9QiB",
+        "kuu_markdown_c6KNE4",
+        "kuu_flex_box_JiYNpV",
+        "kuu_markdown_dBxe3R",
+        "kuu_flex_box_KrMFba"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
 }
