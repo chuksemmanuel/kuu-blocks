@@ -32,20 +32,21 @@
 				<a href='{{product.url}}' class='line-clamp-2 max-w-50 font-semibold'>{{ product.title }}</a>
 
 				{% # Price %}
+				{% if variant_to_use.compare_at_price %}
+					<template x-if='selectedVariant.price != selectedVariant.compare_at_price'>
+						<div class='flex flex-col flex-wrap gap-x-1 gap-y-px md:flex-row md:items-center'>
+							<div class='flex  items-center gap-2'>
+								<span x-text='formatMoney(selectedVariant.price)' style='color:red'>
+									{{- variant_to_use.price | money -}}
+								</span>
 
-				<template x-if='selectedVariant.price != selectedVariant.compare_at_price'>
-					<div class='flex flex-col flex-wrap gap-x-1 gap-y-px md:flex-row md:items-center'>
-						<div class='flex  items-center gap-2'>
-							<span x-text='formatMoney(selectedVariant.price)' style='color:red'>
-								{{- variant_to_use.price | money -}}
-							</span>
-							<span x-text='formatMoney(selectedVariant.compare_at_price)' class='text-gray-500 line-through'>
-								{{ variant_to_use.compare_at_price | money }}
-							</span>
+								<span x-text='formatMoney(selectedVariant.compare_at_price)' class='hidden text-gray-500 line-through'>
+									{{ variant_to_use.compare_at_price | money }}
+								</span>
+							</div>
 						</div>
-					</div>
-				</template>
-
+					</template>
+				{% endif %}
 				<template x-if='!selectedVariant.compare_at_price || selectedVariant.price == selectedVariant.compare_at_price '>
 					<span x-text='formatMoney(selectedVariant.price)' class=''>{{ variant_to_use.price | money }}</span>
 				</template>

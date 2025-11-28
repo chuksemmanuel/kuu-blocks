@@ -3,6 +3,19 @@
 <div class="flex flex-col flex-wrap items-center justify-center gap-4 p-4">
 
 
+{% capture product_list %}
+	{% assign products = collections.all.products |  where: 'available', true %}
+	{% for product in products %}
+		{% render 'kuu-product-card', product: product, show_floating_cart: true, class:'w-60!'  %}
+	{% endfor %}
+{% endcapture %}
+
+
+
+{% render 'horizontal-scroll', content: product_list , class:'h-80'%}
+
+
+
 {% render 'kuu-cartdrawer', id: 'cartdrawer', show_secondary_footer_cta: true, id:'preview-1' %}
 
 
@@ -13,7 +26,7 @@
 {% if hidden != true %}
 	{% comment %} Place holder for tab {% endcomment %}
 	<div class='fixed inset-0 z-50 flex h-screen w-screen items-start justify-center bg-gray-600 p-4'>
-		<div class='relative mx-auto w-full max-w-3xl rounded bg-white p-12'>
+		<div class='relative mx-auto w-full max-w-3xl rounded bg-gray-100 p-12'>
 			<div class='relative min-h-[120px] shrink-0'>
 				{{ content }}
 			</div>

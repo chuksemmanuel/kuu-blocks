@@ -24,7 +24,7 @@
 {%- assign product_url = url | default: card_product.url -%}
 {% assign props = props | default: null %}
 
-<div class='group relative flex flex-col overflow-hidden transition ' {{ props }}>
+<div class='group relative flex flex-col overflow-hidden transition {{class}}' {{ props }}>
 	<div href='{{ product_url }}' class='relative block aspect-square overflow-hidden rounded-3xl'>
 		<a href='{{ product_url }}'>
 			<img
@@ -38,7 +38,7 @@
 		</a>
 		{% if show_floating_cart and product.available %}
 			<div class='absolute right-3 bottom-3'>
-				{% render 'quick-add', product: product %}
+				{% render 'kuu-quick-add', product: product %}
 			</div>
 		{% endif %}
 	</div>
