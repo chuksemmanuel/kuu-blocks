@@ -8,12 +8,36 @@
  * ------------------------------------------------------------
  */
 {
-	"layout": "documentation",
-	"sections": {
-		"main": {
-			"type": "documentation",
-			"settings": {}
-		}
-	},
-	"order": ["main"]
+  "layout": "documentation",
+  "sections": {
+    "main": {
+      "type": "documentation",
+      "blocks": {
+        "kuu_markdown_rVmbhn": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "## Kuu Theme Usage License\n\n**Copyright (c) 2025 CHUKWUNWEIKE EMMANUEL**\n\nThis software is released under a custom license focused on \"No Charge\" usage for end-users, with specific restrictions on redistribution via the Shopify Ecosystem.\n\n### You MAY:\n\n- Use this code in your personal and professional projects.\n- Use this code as an employee or freelancer for client work.\n- Charge a client a one-time fee for creating a site/product using this code.\n- Modify the code to fit your specific needs.\n\n### You MAY NOT:\n\n- Re-distribute this code (modified or unmodified) through the Shopify App Store or Shopify Theme Store, whether for free or paid.\n- Re-distribute this code as a standalone product (e.g., a starter theme, UI kit, or app template) that competes with Kuu.\n- Charge end-users a recurring usage, access, or license fee to use the product itself (e.g., SaaS, paid theme subscription) without a Commercial License.\n\n### Examples\n\n- **Proper Usage:** You are hired by a client to build a custom Shopify store. You use Kuu as the base, customize it, and charge the client for your development time.\n- **Proper Usage:** You build a personal portfolio or a store for your own business using Kuu.\n- **NOT Proper Usage:** You create a slightly modified version of Kuu and list it on the Shopify Theme Store (even for free).\n- **NOT Proper Usage:** You wrap this code in a Shopify App and charge merchants a monthly fee to use it.\n\n### Commercial License\n\nIf your use case involves charging end-users a fee to use the product (e.g., a paid app or theme), please contact us for a Commercial License.\n\n### Contact\n\n- Whatsapp: +2349036727559\n- Email: dev.chuksemmanuel@gmail.com\n- LinkedIn: [https://www.linkedin.com/in/chuksemmanuel/](https://www.linkedin.com/in/chuksemmanuel/)",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "kuu_markdown_rVmbhn"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
 }

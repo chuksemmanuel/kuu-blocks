@@ -245,7 +245,7 @@
 							"blocks": {}
 						},
 						"cartdrawer_ehUNqT": {
-							"type": "_cartdrawer",
+							"type": "kuu-cartdrawer",
 							"name": "Cart Drawer",
 							"settings": {
 								"sticky_header": true,
