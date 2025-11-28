@@ -725,7 +725,7 @@
                           "type": "kuu-liquid",
                           "name": "Custom Liquid",
                           "settings": {
-                            "custom_liquid": "<div class=\"flex flex-col flex-wrap items-center justify-center gap-4 p-4\">\n\n\n{% assign button_class = 'relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-lg bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out' %}\n\n\t{% capture tab_triggers %}\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"tab1\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tTab 1\n\t\t</button>\n\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"tab2\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tTab 2\n\t\t</button>\n{% endcapture %}\n\n{% capture tab_contents %}\n\t<div class=\"py-5\">\n\t\t<div data-tab-content=\"tab1\" style=\"width:320px\" class=\" flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\tContent for Tab 1\n\t\t</div>\n\n\t\t<div data-tab-content=\"tab2\" style=\"width:320px\"  class=\" flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\tContent for Tab 2\n\t\t</div>\n\t</div>\n{% endcapture %}\n\n{% render 'kuu-tab',\n\ttriggers: tab_triggers,\n\tcontents: tab_contents,\n\tid: 'my-tabs'\n%}\n\n </div>"
+                            "custom_liquid": "<div class=\"flex flex-col flex-wrap items-center justify-center gap-4 p-4\">\n\n{% assign button_class = 'relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-lg bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out' %}\n\n\t{% capture tab_triggers %}\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"about\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tAbout\n\t\t</button>\n\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"features\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tFeatures\n\t\t</button>\n\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"reviews\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tReviews\n\t\t</button>\n{% endcapture %}\n\n{% capture tab_contents %}\n\t<div class=\"py-5\">\n\t\t<div data-tab-content=\"about\" style=\"width:320px\" class=\" flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\t<p class=\"text-lg font-semibold\">About</p>\n\t\t\t<p>Product information here...</p>\n\t\t</div>\n\n\t\t<div data-tab-content=\"features\" style=\"width:320px\"  class=\" flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\t<p class=\"text-lg font-semibold\">Features</p>\n\t\t\t<ul>\n\t\t\t\t<li>Feature 1</li>\n\t\t\t\t<li>Feature 2</li>\n\t\t\t</ul>\n\t\t</div>\n\n\t\t<div data-tab-content=\"reviews\" style=\"width:320px\"  class=\" flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\t<p class=\"text-lg font-semibold\">Reviews</p>\n\t\t\t<p>Customer reviews here...</p>\n\t\t</div>\n\t</div>\n{% endcapture %}\n\n{% render 'kuu-tab',\n\ttriggers: tab_triggers,\n\tcontents: tab_contents,\n\tid: 'preview-2'\n%}\n\n\n </div>"
                           },
                           "blocks": {}
                         }
@@ -752,7 +752,7 @@
                       "settings": {
                         "language": "liquid",
                         "content": "",
-                        "liquid_code": "{% raw %}\n\n{% assign button_class = 'relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-lg bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out' %}\n\n\t{% capture tab_triggers %}\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"tab1\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tTab 1\n\t\t</button>\n\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"tab2\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tTab 2\n\t\t</button>\n{% endcapture %}\n\n{% capture tab_contents %}\n\t<div class=\"py-5\">\n\t\t<div data-tab-content=\"tab1\"class=\"flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\tContent for Tab 1\n\t\t</div>\n\t\t\n\t\t<div data-tab-content=\"tab2\" class=\"flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\tContent for Tab 2\n\t\t</div>\n\t</div>\n{% endcapture %}\n\n{% render 'kuu-tab',\n\ttriggers: tab_triggers,\n\tcontents: tab_contents,\n\tid: 'my-tabs'\n%}\n\n{% endraw %}",
+                        "liquid_code": "{% raw %}\n\n{% assign button_class = 'relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-lg bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out' %}\n\n\t{% capture tab_triggers %}\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"about\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tAbout\n\t\t</button>\n\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"features\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tFeatures\n\t\t</button>\n\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"reviews\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tReviews\n\t\t</button>\n{% endcapture %}\n\n{% capture tab_contents %}\n\t<div class=\"py-5\">\n\t\t<div data-tab-content=\"about\" style=\"width:320px\" class=\" flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\t<p class=\"text-lg font-semibold\">About</p>\n\t\t\t<p>Product information here...</p>\n\t\t</div>\n\n\t\t<div data-tab-content=\"features\" style=\"width:320px\"  class=\" flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\t<p class=\"text-lg font-semibold\">Features</p>\n\t\t\t<ul>\n\t\t\t\t<li>Feature 1</li>\n\t\t\t\t<li>Feature 2</li>\n\t\t\t</ul>\n\t\t</div>\n\n\t\t<div data-tab-content=\"reviews\" style=\"width:320px\"  class=\" flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\t<p class=\"text-lg font-semibold\">Reviews</p>\n\t\t\t<p>Customer reviews here...</p>\n\t\t</div>\n\t</div>\n{% endcapture %}\n\n{% render 'kuu-tab',\n\ttriggers: tab_triggers,\n\tcontents: tab_contents,\n\tid: 'preview-2'\n%}\n\n\n{% endraw %}",
                         "copy_button": true,
                         "show_pathname": false,
                         "pathname": "snippets/kuu-button.liquid",
@@ -785,14 +785,834 @@
           "block_order": [
             "kuu_tab_EUPEJV"
           ]
+        },
+        "kuu_markdown_tnA4ik": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "### Using the Block\n\nWhen using `blocks/kuu-tab.liquid`, you can add tab items through the Theme Editor:\n\n1. Add a **Kuu Tab** block to your section\n2. Add **Tab Item** blocks inside it\n3. Each Tab Item has a title and can contain any blocks\n\nThe tab buttons are automatically generated from the Tab Item titles.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_cbCdNf": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "### Real-World Example: Product Collections",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_D4Kht9": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 84,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_tab_RWYzrh": {
+              "type": "kuu-tab",
+              "name": "Kuu Tab",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "custom_mobile_padding": true,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_tab_item_VMm93a": {
+                  "type": "_kuu-tab-item",
+                  "name": "Preview",
+                  "settings": {
+                    "tab_title": "Preview"
+                  },
+                  "blocks": {
+                    "kuu_flex_box_UePWAf": {
+                      "type": "kuu-flex-box",
+                      "name": "Flex Box",
+                      "settings": {
+                        "background_color": "#ffffff",
+                        "width": "fill",
+                        "unit": "percent",
+                        "percent_width": 100,
+                        "pixel_width": 48,
+                        "add_width_min": false,
+                        "width_min": 0,
+                        "add_width_max": true,
+                        "width_max": "65ch",
+                        "custom_mobile_width": false,
+                        "width_mobile": "custom",
+                        "unit_mobile": "percent",
+                        "percent_width_mobile": 100,
+                        "pixel_width_mobile": 120,
+                        "add_width_mobile_min": false,
+                        "width_mobile_min": 0,
+                        "add_width_mobile_max": false,
+                        "width_mobile_max": "",
+                        "height": "fit-content",
+                        "custom_height": 240,
+                        "height_min": 120,
+                        "add_height_max": false,
+                        "height_max": "",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": "",
+                        "flex_direction": "column",
+                        "justify_content": "center",
+                        "align_items": "center",
+                        "flex_gap": "all",
+                        "gap": 4,
+                        "row_gap": 0,
+                        "column_gap": 0,
+                        "custom_mobile_flex": true,
+                        "mobile_flex_direction": "column",
+                        "mobile_justify_content": "center",
+                        "mobile_align_items": "center",
+                        "mobile_flex_gap": "all",
+                        "mobile_gap": 4,
+                        "mobile_row_gap": 0,
+                        "mobile_column_gap": 0,
+                        "border": "solid",
+                        "border_sides": "all",
+                        "border_width": 2,
+                        "border_left_width": 1,
+                        "border_top_width": 1,
+                        "border_bottom_width": 1,
+                        "border_right_width": 1,
+                        "border_color": "#e5e7eb",
+                        "border_radius": 8,
+                        "padding-block-start": 24,
+                        "padding-block-end": 24,
+                        "padding-inline-start": 24,
+                        "padding-inline-end": 24,
+                        "custom_mobile_padding": true,
+                        "mobile-padding-block-start": 8,
+                        "mobile-padding-block-end": 8,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "products_tab_TBDVYj": {
+                          "type": "products-tab",
+                          "name": "Products tab",
+                          "settings": {},
+                          "blocks": {
+                            "products_tab_product_picker_dRefrm": {
+                              "type": "_products-tab-product-picker",
+                              "name": "Products",
+                              "settings": {
+                                "products": [
+                                  "the-collection-snowboard-oxygen",
+                                  "the-compare-at-price-snowboard",
+                                  "the-complete-snowboard"
+                                ],
+                                "tab_title": "Best sellers",
+                                "show_prices": true,
+                                "show_compare_at_prices": true
+                              },
+                              "blocks": {}
+                            },
+                            "products_tab_product_picker_awJQMd": {
+                              "type": "_products-tab-product-picker",
+                              "name": "Products",
+                              "settings": {
+                                "products": [
+                                  "the-3p-fulfilled-snowboard",
+                                  "the-collection-snowboard-hydrogen",
+                                  "the-collection-snowboard-liquid"
+                                ],
+                                "tab_title": "New Arrivals",
+                                "show_prices": true,
+                                "show_compare_at_prices": true
+                              },
+                              "blocks": {}
+                            },
+                            "products_tab_product_picker_aJDDCm": {
+                              "type": "_products-tab-product-picker",
+                              "name": "Products",
+                              "settings": {
+                                "products": [
+                                  "the-multi-managed-snowboard",
+                                  "the-multi-location-snowboard",
+                                  "the-inventory-not-tracked-snowboard"
+                                ],
+                                "tab_title": "Sales",
+                                "show_prices": true,
+                                "show_compare_at_prices": true
+                              },
+                              "blocks": {}
+                            },
+                            "products_tab_product_picker_gVdAqc": {
+                              "type": "_products-tab-product-picker",
+                              "name": "Products",
+                              "settings": {
+                                "products": [
+                                  "gift-card",
+                                  "selling-plans-ski-wax"
+                                ],
+                                "tab_title": "Accessories",
+                                "show_prices": true,
+                                "show_compare_at_prices": true
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "products_tab_product_picker_dRefrm",
+                            "products_tab_product_picker_awJQMd",
+                            "products_tab_product_picker_aJDDCm",
+                            "products_tab_product_picker_gVdAqc"
+                          ]
+                        }
+                      },
+                      "block_order": [
+                        "products_tab_TBDVYj"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_flex_box_UePWAf"
+                  ]
+                },
+                "kuu_tab_item_XD6RPD": {
+                  "type": "_kuu-tab-item",
+                  "name": "Code",
+                  "settings": {
+                    "tab_title": "Code"
+                  },
+                  "blocks": {
+                    "kuu_text_i8YtMC": {
+                      "type": "kuu-text",
+                      "name": "Text",
+                      "settings": {
+                        "text": "<p>Blocks & Snippets</p>",
+                        "width": "fit-content",
+                        "max_width": "none",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "tag": "p",
+                        "font_size": "1rem",
+                        "mobile_font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "#000000",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 8,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0,
+                        "custom_mobile_padding": true,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0,
+                        "custom_attributes": false,
+                        "id": "",
+                        "class": "",
+                        "props": ""
+                      },
+                      "blocks": {}
+                    },
+                    "kuu_tab_mDFYwe": {
+                      "type": "kuu-tab",
+                      "name": "Kuu Tab",
+                      "settings": {
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0,
+                        "custom_mobile_padding": true,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "kuu_tab_item_4DjXTY": {
+                          "type": "_kuu-tab-item",
+                          "name": "Product-tab",
+                          "settings": {
+                            "tab_title": "Products Tab"
+                          },
+                          "blocks": {
+                            "kuu_codeblock_RCBAHp": {
+                              "type": "kuu-codeblock",
+                              "name": "Code Block",
+                              "settings": {
+                                "language": "liquid",
+                                "content": "",
+                                "liquid_code": "{% raw %}\n\n{% assign tabId = block.id | append: '-tab' %}\n\n{% # Tag triggers buttons %}\n{% capture tab_button_list %}\n          {% for block in block.blocks %}\n          {% endfor %}\n{% endcapture %}\n\n{% # Tag triggers -  horizontally scrollable %}\n{% capture tab_triggers %}\n         \n            {% render 'horizontal-scroll',\n            content: tab_button_list,\n            id:tabId,\n            props: '  \n                  x-ref=\"tabButtons\"\n                  role=\"tablist\"\n                  aria-label=\"Products tabs\"\n                ',\n            class: ' pl-3 lg:pl-5 text-gray-500 select-none h-10'\n                %}\n            \n{% endcapture %}\n\n{% capture tab_content %}\n      {% content_for 'blocks' %}\n{% endcapture %}\n\n{% render 'kuu-tab',\n\ttriggers: tab_triggers,\n\tcontents: tab_content,\n\tclass: 'h-full flex flex-col overflow-hidden',\n\ttrigger_class: 'shrink-0 pb-2',\n\tcontent_class: 'flex-1 overflow-y-auto',\n\tid: tabId\n%}\n\n{% schema %}\n\t{\n\t\t\"name\": \"Products tab\",\n\t\t\"class\": \"w-full\",\n\t\t\"settings\": [],\n\t\t\"blocks\": [\n\t\t\t{\n\t\t\t\t\"type\": \"_products-tab-product-picker\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"@app\"\n\t\t\t}\n\t\t],\n\t\t\"presets\": [\n\t\t\t{\n\t\t\t\t\"name\": \"Products tab\"\n\t\t\t}\n\t\t]\n\t}\n{% endschema %}\n\n<script>\n\tpopulateTabButtons();\n\t// in theme editor, repopulate buttons when changes occur\n\t {% if request.design_mode %}\n\twindow.addEventListener('shopify:section:load', populateTabButtons)\n\t {% endif %}\n\tfunction populateTabButtons() {\n\t\t// Clear horizontal scroll container\n\t\tdocument.querySelector('[data-horizontal-scroll=\"{{tabId}}\"]').innerHTML = '';\n\n\t\tlet addedTabs = [];\n\t\tlet tabEl = document.querySelector('[data-tab-id=\"{{tabId}}\"]');\n\t\ttabEl.querySelectorAll('[data-tab-content]').forEach((tabContentEl) => {\n\t\t\t\n\t\t\tif (!addedTabs.includes(tabContentEl.dataset.tabContent)) {\n\t\t\t\tdocument.querySelector('[data-horizontal-scroll=\"{{tabId}}\"]').insertAdjacentHTML(\n\t\t\t\t\t'beforeend',\n\t\t\t\t\t/*html*/ `\n        <button\n              data-trigger-block-id=\"{{block.id}}\"\n              data-tab-trigger=\"${tabContentEl.dataset.tabContent}\"\n              role=\"tab\"\n              aria-label=\"${tabContentEl.dataset.tabContent}\"\n              :aria-selected=\"tabButtonActive($el)\"\n              aria-controls=\"\"\n              type=\"button\"\n              :class=\"{ 'bg-primary text-primary-foreground' : tabButtonActive($el) }\"\n              class=\"relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-full bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out\">\n              ${tabContentEl.dataset.tabContent}\n            </button>\n    `,\n\t\t\t\t);\n\t\t\t\taddedTabs.push(tabContentEl.dataset.tabContent);\n\t\t\t}\n\t\t});\n\t}\n</script>\n\n{% endraw %}",
+                                "copy_button": true,
+                                "show_pathname": true,
+                                "pathname": "blocks/products-tab.liquid",
+                                "height": "fit-content",
+                                "custom_height": 348,
+                                "height_min": 0,
+                                "add_height_max": true,
+                                "height_max": "348px",
+                                "add_height_mobile": false,
+                                "height_mobile": "custom",
+                                "custom_height_mobile": 348,
+                                "height_min_mobile": 0,
+                                "add_height_max_mobile": false,
+                                "height_max_mobile": ""
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "kuu_codeblock_RCBAHp"
+                          ]
+                        },
+                        "kuu_tab_item_7YUJdU": {
+                          "type": "_kuu-tab-item",
+                          "name": "Products Picker",
+                          "settings": {
+                            "tab_title": "Product Picker"
+                          },
+                          "blocks": {
+                            "kuu_codeblock_wTgE6w": {
+                              "type": "kuu-codeblock",
+                              "name": "Code Block",
+                              "settings": {
+                                "language": "liquid",
+                                "content": "",
+                                "liquid_code": "{% raw %}\n\n{% for product in block.settings.products %}\n\t<a\n\t\tdata-content-block-id='{{block.id}}'\n\t\tdata-tab-content='{{block.settings.tab_title}}'\n\t\taria-label='{{product.title}}'\n\t\trole='listitem'\n\t\thref='{{ product.url }}'\n\t\tclass='group flex flex-col  gap-5  rounded-lg p-4 transition duration-300  lg:p-6'\n\t>\n\t\t<div class='flex items-center gap-5'>\n\t\t\t<div\n\t\t\t\tclass='block size-20 shrink-0 overflow-hidden rounded  bg-gray-200'\n\t\t\t>\n\t\t\t\t<img\n\t\t\t\t\tsrc='{{ product.featured_image | image_url : width : 200 }}'\n\t\t\t\t\talt='{{ product.title }}'\n\t\t\t\t\tclass='h-full w-full object-cover'\n\t\t\t\t\twidth='80px'\n\t\t\t\t\theight='80px'\n\t\t\t\t>\n\t\t\t</div>\n\t\t\t<div class='flex flex-col gap-2'>\n\t\t\t\t<p class='reversed-link text-lg'>{{ product.title }}</p>\n\t\t\t\t{% if block.settings.show_prices %}\n\t\t\t\t\t<div class='flex items-center gap-2'>\n\t\t\t\t\t\t<p class='text-lg text-red-500'>{{ product.price | money }}</p>\n\t\t\t\t\t\t{% if block.settings.show_compare_at_prices %}\n\t\t\t\t\t\t\t<p class='text-lg text-gray-500 line-through'>{{ product.compare_at_price | money }}</p>\n\t\t\t\t\t\t{% endif %}\n\t\t\t\t\t</div>\n\t\t\t\t{% endif %}\n\t\t\t</div>\n\t\t</div>\n\t</a>\n{% endfor %}\n\n{% schema %}\n\t{\n\t\t\"name\": \"Product Picker\",\n\t\t\"settings\": [\n\t\t\t{\n\t\t\t\t\"type\": \"product_list\",\n\t\t\t\t\"id\": \"products\",\n\t\t\t\t\"label\": \"Products\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"text\",\n\t\t\t\t\"id\": \"tab_title\",\n\t\t\t\t\"label\": \"Tab Title\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"show_prices\",\n\t\t\t\t\"label\": \"Show prices\",\n\t\t\t\t\"default\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"show_compare_at_prices\",\n\t\t\t\t\"label\": \"Show compare at prices\",\n\t\t\t\t\"default\": true,\n\t\t\t\t\"visible_if\": \"{{block.settings.show_prices}}\"\n\t\t\t}\n\t\t],\n\t\t\"presets\": [\n\t\t\t{\n\t\t\t\t\"name\": \"Products\"\n\t\t\t}\n\t\t]\n\t}\n{% endschema %}\n\n\n{% endraw %}",
+                                "copy_button": true,
+                                "show_pathname": true,
+                                "pathname": "blocks/_products-tab-product-picker.liquid",
+                                "height": "fit-content",
+                                "custom_height": 348,
+                                "height_min": 0,
+                                "add_height_max": true,
+                                "height_max": "348px",
+                                "add_height_mobile": false,
+                                "height_mobile": "custom",
+                                "custom_height_mobile": 348,
+                                "height_min_mobile": 0,
+                                "add_height_max_mobile": false,
+                                "height_max_mobile": ""
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "kuu_codeblock_wTgE6w"
+                          ]
+                        },
+                        "kuu_tab_item_gbJaAm": {
+                          "type": "_kuu-tab-item",
+                          "name": "Horizontal scroll",
+                          "settings": {
+                            "tab_title": "Horizontal Scroll"
+                          },
+                          "blocks": {
+                            "kuu_codeblock_UpyQtB": {
+                              "type": "kuu-codeblock",
+                              "name": "Code Block",
+                              "settings": {
+                                "language": "liquid",
+                                "content": "",
+                                "liquid_code": "{% raw %}\n{% assign id = id | default: 'scroll-x' %}\n\n<div\n\tdata-horizontal-scroll='{{id}}'\n\t{{ props }}\n\n\tclass='no-scrollbar relative z-10 flex  w-full shrink-0   gap-4 overflow-x-auto  overflow-y-hidden {{class}} '\n\t:class=\"!isDragging ? 'cursor-grap': 'cursor-grabbing'\"\n\tx-data=\"\n\t\t{\n\t\t  isDragging: false,\n\t\t  startX: 0,\n\t\t  scrollLeft: 0,\n\t\t  init() {\n\t\t    $el.style.scrollBehavior = 'auto'; // Disable smooth scrolling for better drag fe$el\n\t\t  },\n\t\t  startDragging(e) {\n\t\t    this.isDragging = true;\n\t\t    this.startX = e.pageX - $el.offsetLeft;\n\t\t    this.scrollLeft = $el.scrollLeft;\n\t\t  },\n\t\t  stopDragging() {\n\t\t    this.isDragging = false;\n\t\t  },\n\t\t  drag(e) {\n\t\t    if (!this.isDragging) return;\n\t\t    e.preventDefault();\n\t\t    const x = e.pageX - $el.offsetLeft;\n\t\t    const walk = (x - this.startX) * 1.5; // Adjust multiplier for desired scroll speed\n\t\t    $el.scrollLeft = this.scrollLeft - walk;\n\t\t  },\n\t\t}\n\t\"\n\tx-init='init()'\n\t@mousedown='startDragging'\n\t@mouseup='stopDragging'\n\t@mouseleave='stopDragging'\n\t@mousemove='drag'\n>\n\t{{ content }}\n</div>\n\n\n{% endraw %}",
+                                "copy_button": true,
+                                "show_pathname": true,
+                                "pathname": "snippets/horizontal-scroll.liquid",
+                                "height": "fit-content",
+                                "custom_height": 348,
+                                "height_min": 0,
+                                "add_height_max": true,
+                                "height_max": "348px",
+                                "add_height_mobile": false,
+                                "height_mobile": "custom",
+                                "custom_height_mobile": 348,
+                                "height_min_mobile": 0,
+                                "add_height_max_mobile": false,
+                                "height_max_mobile": ""
+                              },
+                              "blocks": {}
+                            }
+                          },
+                          "block_order": [
+                            "kuu_codeblock_UpyQtB"
+                          ]
+                        }
+                      },
+                      "block_order": [
+                        "kuu_tab_item_4DjXTY",
+                        "kuu_tab_item_7YUJdU",
+                        "kuu_tab_item_gbJaAm"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_text_i8YtMC",
+                    "kuu_tab_mDFYwe"
+                  ]
+                }
+              },
+              "block_order": [
+                "kuu_tab_item_VMm93a",
+                "kuu_tab_item_XD6RPD"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_tab_RWYzrh"
+          ]
+        },
+        "kuu_markdown_mRYqeE": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## Data Attributes\n\n### For Triggers\n\nEach tab trigger button must have:",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_jibFi3": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "liquid",
+            "content": "<button data-tab-trigger=\"unique-id\">Tab Label</button>",
+            "liquid_code": "{% raw %}\n<button data-tab-trigger=\"unique-id\">Tab Label</button>\n{% endraw %}",
+            "copy_button": true,
+            "show_pathname": false,
+            "pathname": "snippets/kuu-button.liquid",
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_q9z76j": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "### For Content\n\nEach tab content panel must have:",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_eHXGYH": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "liquid",
+            "content": "<button data-tab-trigger=\"unique-id\">Tab Label</button>",
+            "liquid_code": "{% raw %}\n<div data-tab-content=\"unique-id\">Content here</div>\n{% endraw %}",
+            "copy_button": true,
+            "show_pathname": false,
+            "pathname": "snippets/kuu-button.liquid",
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_zqyiYt": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "> **IMPORTANT**: The `data-tab-trigger` value must match the corresponding `data-tab-content` value.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "kuu_markdown_NJ8jpD",
         "kuu_markdown_digYUW",
-        "kuu_flex_box_hrjeAh"
+        "kuu_flex_box_hrjeAh",
+        "kuu_markdown_tnA4ik",
+        "kuu_markdown_cbCdNf",
+        "kuu_flex_box_D4Kht9",
+        "kuu_markdown_mRYqeE",
+        "kuu_codeblock_jibFi3",
+        "kuu_markdown_q9z76j",
+        "kuu_codeblock_eHXGYH",
+        "kuu_markdown_zqyiYt"
       ],
       "name": "Usage",
+      "settings": {
+        "width": "fill",
+        "custom_width": 100,
+        "add_mobile_width": false,
+        "width_mobile": "fill",
+        "custom_width_mobile": 100,
+        "height": "fit-content",
+        "custom_height": 240,
+        "height_min": 0,
+        "add_height_max": false,
+        "height_max": "",
+        "custom_mobile_height": false,
+        "mobile_height": 240
+      }
+    },
+    "kuu_blank_section_iWXMpR": {
+      "type": "kuu-blank-section",
+      "blocks": {
+        "kuu_markdown_jMeqd8": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## Block Settings\n\nWhen used as a block (`blocks/kuu-tab.liquid`), the following settings are available:\n\n- **Padding:** Top, Bottom, Left, Right padding controls\n- **Mobile Padding:** Separate padding controls for mobile devices\n- **Tab Items:** Add multiple Tab Item blocks, each with:\n\n* **Tab Title:** The label shown on the tab button\n* **Content Blocks:** Any theme or app blocks can be added inside",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_HN9ahU": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## JavaScript API",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_qdAWbw": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "### Methods\n\nThe tab component exposes these methods via Alpine.js:",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_7XniMg": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "javascript",
+            "content": "// Set active tab programmatically\nAlpine.$data(tabElement).setActiveTab('tab-id');\n\n// Check if a button is active\nAlpine.$data(tabElement).tabButtonActive(buttonElement);\n\n// Check if content is active\nAlpine.$data(tabElement).tabContentActive(contentElement);",
+            "liquid_code": "{% raw %}\n<div data-tab-content=\"unique-id\">Content here</div>\n{% endraw %}",
+            "copy_button": true,
+            "show_pathname": false,
+            "pathname": "snippets/kuu-button.liquid",
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_xXE4m8": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "### Properties\n\n- `activeTab` - Currently active tab ID\n- `blockId` - Block ID (for nested tabs)\n- `tabId` - Tab component ID\n\n## Accessibility\n\nThe tab component includes built-in accessibility features:\n\n- **ARIA Attributes:** Proper `role=\"tablist\"`, `role=\"tab\"`, `aria-selected`, `aria-controls`\n- **Keyboard Support:** Navigate tabs with arrow keys (when using proper ARIA attributes)\n- **Focus Management:** Active tab is focusable (`tabindex=\"0\"`), inactive tabs are not (`tabindex=\"-1\"`)\n- **Screen Reader Support:** Announces active tab state\n\n## Styling\n\n### Active State Styling\n\nUse Alpine.js `:class` binding to style active tabs:",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_AWQ9R8": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "liquid",
+            "content": "",
+            "liquid_code": "{% raw %}\n<button\n\tdata-tab-trigger=\"tab1\"\n\t:class=\"tabButtonActive($el) ? 'bg-primary text-white' : 'bg-gray-100 text-gray-600'\"\n>\n\tTab 1\n</button>\n{% endraw %}",
+            "copy_button": true,
+            "show_pathname": false,
+            "pathname": "snippets/kuu-button.liquid",
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_XHFygh": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "### Custom Styling\n\nAdd custom classes to different parts:",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_rMYjy9": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "liquid",
+            "content": "",
+            "liquid_code": "{% raw %}\n{%\n\trender 'kuu-tab',\n\tclass: 'custom-tab-wrapper',\n\ttrigger_class: 'custom-triggers flex gap-2',\n\tcontent_class: 'custom-content p-4 border rounded',\n\t...\n%}\n{% endraw %}",
+            "copy_button": true,
+            "show_pathname": false,
+            "pathname": "snippets/kuu-button.liquid",
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_rzq6i7": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## Dynamic Tab Buttons\n\nFor blocks that generate tabs dynamically (like `products-tab.liquid`), use a script to populate buttons:",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_NzMChV": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "javascript",
+            "content": "/** Populate Tab Buttons **/\nfunction populateTabButtons() {\n  const container = document.querySelector('[data-horizontal-scroll=\"tab-id\"]');\n  const contents = document.querySelectorAll('[data-tab-content]');\n\n  container.innerHTML = '';\n\n  contents.forEach((content) => {\n    const title = content.dataset.tabContent;\n    container.insertAdjacentHTML('beforeend', `\n      <button data-tab-trigger=\"${title}\" role=\"tab\" class=\"px-4 py-2 rounded-lg\" :aria-selected=\"tabButtonActive($el)\">\n        ${title}\n      </button>\n    `);\n  });\n}\n\npopulateTabButtons();",
+            "liquid_code": "{% raw %}\n\n{% endraw %}",
+            "copy_button": true,
+            "show_pathname": false,
+            "pathname": "snippets/kuu-button.liquid",
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_q9CnHN": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## Tips\n\n1. **Unique IDs:** Always use unique IDs for the tab component to avoid conflicts with nested tabs.\n2. **Matching Attributes:** Ensure `data-tab-trigger` and `data-tab-content` values match exactly.\n3. **Default Active:** Set `default_active` to control which tab shows first.\n4. **Horizontal Scroll:** Use the `horizontal-scroll` helper for many tabs to prevent overflow.\n5. **Theme Editor:** The component automatically handles section reloads in the Shopify theme editor.\n6. **Nested Tabs:** The component supports nested tabs using `blockId` to prevent conflicts.\n\n## Related Components\n\n- [Horizontal Scroll](/pages/docs-components-horizontal-scroll) - Used for scrollable tab buttons\n- [Product List](/pages/docs-blocks-product-list) - Often used in tab content",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "kuu_markdown_jMeqd8",
+        "kuu_markdown_HN9ahU",
+        "kuu_markdown_qdAWbw",
+        "kuu_codeblock_7XniMg",
+        "kuu_markdown_xXE4m8",
+        "kuu_codeblock_AWQ9R8",
+        "kuu_markdown_XHFygh",
+        "kuu_codeblock_rMYjy9",
+        "kuu_markdown_rzq6i7",
+        "kuu_codeblock_NzMChV",
+        "kuu_markdown_q9CnHN"
+      ],
+      "name": "Block Settings",
       "settings": {
         "width": "fill",
         "custom_width": 100,
@@ -811,6 +1631,7 @@
   },
   "order": [
     "main",
-    "kuu_blank_section_QQHmxN"
+    "kuu_blank_section_QQHmxN",
+    "kuu_blank_section_iWXMpR"
   ]
 }
