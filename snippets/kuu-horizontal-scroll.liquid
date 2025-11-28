@@ -1,0 +1,52 @@
+{% doc %}
+	@param {string} slides - The slides to be displayed in the horizontal scroll.
+	@param {number} [gap] - Default 16: The gap between the slides.
+	@param {boolean} [scroll_bar] - Default false: Whether to show the scroll bar.
+	@param {string} [container_class] - Default empty: Additional classes for the container.
+{% enddoc %}
+
+{% capture skeleton %}
+        <div class="flex items-center gap-8 ">
+            <div class='size-80 shrink-0 rounded bg-gray-200 max-md:h-40'></div>
+            <div class='size-80 shrink-0 rounded bg-gray-200 max-md:h-40'></div>
+            <div class='size-80 shrink-0 rounded bg-red-200 max-md:h-40'></div>
+            <div class='size-80 shrink-0 rounded bg-gray-200 max-md:h-40'></div>
+            <div class='size-80 shrink-0 rounded bg-blue-200 max-md:h-40'></div>
+            <div class='size-80 shrink-0 rounded bg-gray-200 max-md:h-40'></div>
+            <div class='size-80 shrink-0 rounded bg-purple-200 max-md:h-40'></div>
+    </div>
+    
+    
+{% endcapture %}
+
+{% assign gap = gap | default: 16 %}
+{% assign slides = slides | default: skeleton %}
+{% assign scroll_bar = scroll_bar | default: false %}
+
+<div class='w-full {{container_class}}'>
+	<!-- Swiper -->
+	<div class='swiper mySwiper h-full w-full ' x-data='kuuHorizontalScroll' data-gap='{{ gap }}' x-cloak>
+		<div class='swiper-wrapper'>
+			<div class='swiper-slide w-fit! min-w-full'>
+				{{ slides }}
+			</div>
+		</div>
+
+		{% if scroll_bar %}
+			<div x-show='scrollBarVisible' class='mt-6'>
+				<div class='relative h-0.5 w-full '>
+					<div
+						class='absolute  top-0 left-0 h-0.5 w-full origin-left bg-black transition-transform duration-600 ease-linear '
+						:style='{ transform: `scaleX(${progress})` }'
+					></div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+</div>
+
+<style>
+	.kuu-horizontal-scroll > div {
+		flex-shrink: 0 !important;
+	}
+</style>

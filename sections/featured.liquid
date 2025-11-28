@@ -1,5 +1,25 @@
 {% capture featured_items_content %}
-	<div class='grid   min-w-full shrink-0 grid-cols-3 gap-4 py-6 lg:py-12'>
+
+	{% assign gap = section.blocks.size |minus: 1 |   times:  24 %}
+	{% assign width = section.blocks.size |   times:  415.33 | plus: gap %}
+	{% assign mobile_width = section.blocks.size |   times:  280 | plus: gap %}
+
+	{% capture styles %}
+		--width: {{ width }}px;
+		--mobile-width: {{ mobile_width }}px;
+	{% endcapture %}
+
+	<style>
+		.featured-grid {
+			width: (var(--width));
+			@media (max-width: 768px) {
+				width: var(--mobile-width);
+			}
+		}
+	</style>
+	
+
+	<div class='featured-grid grid min-w-full shrink-0 grid-cols-3 gap-6 py-6 lg:py-12' style="{{styles}}">
 	{% for block in section.blocks %}
 		{% if block.type == 'featured_item' %}
 			{% render 'collection-card',
@@ -39,7 +59,7 @@
 
 <section>
 	<span class='sr-only'>Our Top Categories</span>
-	{% render 'horizontal-scroll', content: featured_items_content %}
+	{% render 'kuu-horizontal-scroll', slides: featured_items_content, gap: 0 %}
 </section>
 
 {% schema %}
