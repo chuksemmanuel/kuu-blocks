@@ -35,8 +35,8 @@ Add `blocks/kuu-cartdrawer.liquid` to your theme.
 Download and add:
 
 - `snippets/kuu-cartdrawer.liquid`
-- `snippets/cartdrawer-items.liquid`
-- `snippets/cartdrawer-footer.liquid`
+- `snippets/kuu-cartdrawer-items.liquid`
+- `snippets/kuu-cartdrawer-footer.liquid`
 
 ### 3. Add the JavaScript
 
