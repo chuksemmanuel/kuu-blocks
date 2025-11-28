@@ -8,12 +8,809 @@
  * ------------------------------------------------------------
  */
 {
-	"layout": "documentation",
-	"sections": {
-		"main": {
-			"type": "documentation",
-			"settings": {}
-		}
-	},
-	"order": ["main"]
+  "layout": "documentation",
+  "sections": {
+    "main": {
+      "type": "documentation",
+      "blocks": {
+        "kuu_markdown_aWD9Qc": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "# Tab\n\nAn accessible, flexible tab component for organizing content into switchable panels. Perfect for product collections, feature showcases, or any content that benefits from categorization.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_VTNKpJ": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## Preview",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_YAAW6U": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 84,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_tab_i4XBCL": {
+              "type": "kuu-tab",
+              "name": "Kuu Tab",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "custom_mobile_padding": true,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_tab_item_PJx8Lc": {
+                  "type": "_kuu-tab-item",
+                  "name": "Preview",
+                  "settings": {
+                    "tab_title": "Preview"
+                  },
+                  "blocks": {
+                    "kuu_flex_box_ziydiB": {
+                      "type": "kuu-flex-box",
+                      "name": "Flex Box",
+                      "settings": {
+                        "background_color": "#ffffff",
+                        "width": "fill",
+                        "unit": "percent",
+                        "percent_width": 100,
+                        "pixel_width": 48,
+                        "add_width_min": false,
+                        "width_min": 0,
+                        "add_width_max": true,
+                        "width_max": "65ch",
+                        "custom_mobile_width": false,
+                        "width_mobile": "custom",
+                        "unit_mobile": "percent",
+                        "percent_width_mobile": 100,
+                        "pixel_width_mobile": 120,
+                        "add_width_mobile_min": false,
+                        "width_mobile_min": 0,
+                        "add_width_mobile_max": false,
+                        "width_mobile_max": "",
+                        "height": "fit-content",
+                        "custom_height": 240,
+                        "height_min": 120,
+                        "add_height_max": false,
+                        "height_max": "",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": "",
+                        "flex_direction": "column",
+                        "justify_content": "center",
+                        "align_items": "center",
+                        "flex_gap": "all",
+                        "gap": 4,
+                        "row_gap": 0,
+                        "column_gap": 0,
+                        "custom_mobile_flex": true,
+                        "mobile_flex_direction": "column",
+                        "mobile_justify_content": "center",
+                        "mobile_align_items": "center",
+                        "mobile_flex_gap": "all",
+                        "mobile_gap": 4,
+                        "mobile_row_gap": 0,
+                        "mobile_column_gap": 0,
+                        "border": "solid",
+                        "border_sides": "all",
+                        "border_width": 2,
+                        "border_left_width": 1,
+                        "border_top_width": 1,
+                        "border_bottom_width": 1,
+                        "border_right_width": 1,
+                        "border_color": "#e5e7eb",
+                        "border_radius": 8,
+                        "padding-block-start": 24,
+                        "padding-block-end": 24,
+                        "padding-inline-start": 24,
+                        "padding-inline-end": 24,
+                        "custom_mobile_padding": false,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "kuu_liquid_xrRmhA": {
+                          "type": "kuu-liquid",
+                          "name": "Custom Liquid",
+                          "settings": {
+                            "custom_liquid": "<div class=\"flex flex-col flex-wrap items-center justify-center gap-4 p-4\">\n\n\n{% assign button_class = 'relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-lg bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out' %}\n\n\t{% capture tab_triggers %}\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"tab1\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tTab 1\n\t\t</button>\n\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"tab2\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tTab 2\n\t\t</button>\n{% endcapture %}\n\n{% capture tab_contents %}\n\t<div class=\"py-5\">\n\t\t<div data-tab-content=\"tab1\" style=\"width:320px\" class=\" flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\tContent for Tab 1\n\t\t</div>\n\n\t\t<div data-tab-content=\"tab2\" style=\"width:320px\"  class=\" flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\tContent for Tab 2\n\t\t</div>\n\t</div>\n{% endcapture %}\n\n{% render 'kuu-tab',\n\ttriggers: tab_triggers,\n\tcontents: tab_contents,\n\tid: 'my-tabs'\n%}\n\n </div>"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_liquid_xrRmhA"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_flex_box_ziydiB"
+                  ]
+                },
+                "kuu_tab_item_V6kGgG": {
+                  "type": "_kuu-tab-item",
+                  "name": "Code",
+                  "settings": {
+                    "tab_title": "Code"
+                  },
+                  "blocks": {
+                    "kuu_codeblock_9p9WHB": {
+                      "type": "kuu-codeblock",
+                      "name": "Code Block",
+                      "settings": {
+                        "language": "liquid",
+                        "content": "",
+                        "liquid_code": "{% raw %}\n\n{% assign button_class = 'relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-lg bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out' %}\n\n\t{% capture tab_triggers %}\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"tab1\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tTab 1\n\t\t</button>\n\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"tab2\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tTab 2\n\t\t</button>\n{% endcapture %}\n\n{% capture tab_contents %}\n\t<div class=\"py-5\">\n\t\t<div data-tab-content=\"tab1\"class=\"flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\tContent for Tab 1\n\t\t</div>\n\t\t\n\t\t<div data-tab-content=\"tab2\" class=\"flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\tContent for Tab 2\n\t\t</div>\n\t</div>\n{% endcapture %}\n\n{% render 'kuu-tab',\n\ttriggers: tab_triggers,\n\tcontents: tab_contents,\n\tid: 'my-tabs'\n%}\n\n{% endraw %}",
+                        "copy_button": true,
+                        "show_pathname": false,
+                        "pathname": "snippets/kuu-button.liquid",
+                        "height": "fit-content",
+                        "custom_height": 348,
+                        "height_min": 0,
+                        "add_height_max": true,
+                        "height_max": "348px",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "kuu_codeblock_9p9WHB"
+                  ]
+                }
+              },
+              "block_order": [
+                "kuu_tab_item_PJx8Lc",
+                "kuu_tab_item_V6kGgG"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_tab_i4XBCL"
+          ]
+        },
+        "kuu_markdown_qD9FV9": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## Dependencies\n\n- **Snippet:** `snippets/kuu-tab.liquid`\n- **JavaScript:** `assets/js/components/kuu-tab.js`\n- **Helper(Optional):** `snippets/horizontal-scroll.liquid` (for scrollable tab buttons)",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_UK8rxP": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_collapse_YWtwYB": {
+              "type": "kuu-collapse",
+              "name": "Collapse",
+              "settings": {},
+              "blocks": {
+                "kuu_markdown_CFeWXh": {
+                  "type": "kuu-markdown",
+                  "name": "Markdown with Padding",
+                  "settings": {
+                    "content": "### 1. Add the Snippet\n\nCreate `snippets/kuu-tab.liquid` and paste the tab markup.",
+                    "padding-block-start": 24,
+                    "padding-block-end": 24,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0,
+                    "custom_mobile_padding": true,
+                    "mobile-padding-block-start": 16,
+                    "mobile-padding-block-end": 16,
+                    "mobile-padding-inline-start": 0,
+                    "mobile-padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "kuu_codeblock_N6xY6f": {
+                  "type": "kuu-codeblock",
+                  "name": "Code Block",
+                  "settings": {
+                    "language": "liquid",
+                    "content": "",
+                    "liquid_code": "{% raw %}\n{% assign block_settings = block.settings %}\n{% liquid\n\tassign id = id | default: 'tab'\n\tassign default_active = default_active\n%}\n\n<div\n\tdata-tab-id='{{id}}'\n\tdata-default-active='{{default_active}}'\n\t{% if block and block.id != blank %}\n\t\tdata-tab-block-id='{{block.id}}'\n\t{% endif %}\n\n\tx-data='tab'\n\tclass='spacing-style w-full {{class}} '\n\tstyle='{% render 'spacing-padding', settings: block_settings %}'\n\tx-cloak\n>\n\t<!-- Triggers -->\n\t<div\n\t\trole='tablist'\n\t\tclass='{{trigger_class}} '\n\t>\n\t\t{{ triggers }}\n\t</div>\n\n\t<!-- Contents -->\n\t<div class='{{content_class}} '>\n\t\t{{ contents }}\n\t</div>\n</div>\n\n\n{% endraw %}",
+                    "copy_button": true,
+                    "show_pathname": true,
+                    "pathname": "snippets/kuu-tab.liquid",
+                    "height": "fit-content",
+                    "custom_height": 348,
+                    "height_min": 0,
+                    "add_height_max": true,
+                    "height_max": "348px",
+                    "add_height_mobile": false,
+                    "height_mobile": "custom",
+                    "custom_height_mobile": 348,
+                    "height_min_mobile": 0,
+                    "add_height_max_mobile": false,
+                    "height_max_mobile": ""
+                  },
+                  "blocks": {}
+                },
+                "kuu_markdown_yDXNDz": {
+                  "type": "kuu-markdown",
+                  "name": "Markdown with Padding",
+                  "settings": {
+                    "content": "### 2. Add the JavaScript\n\nDownload `assets/js/components/kuu-tab.js` and place it in `assets/js/components/`.",
+                    "padding-block-start": 24,
+                    "padding-block-end": 24,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0,
+                    "custom_mobile_padding": true,
+                    "mobile-padding-block-start": 16,
+                    "mobile-padding-block-end": 16,
+                    "mobile-padding-inline-start": 0,
+                    "mobile-padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "kuu_codeblock_TjwHhY": {
+                  "type": "kuu-codeblock",
+                  "name": "Code Block",
+                  "settings": {
+                    "language": "javascript",
+                    "content": "/** Kuu Tab js **/\ndocument.addEventListener('alpine:init', () => {\n\tconst Alpine = window.Alpine;\n\n\tAlpine.data('tab', () => ({\n\t\t/** @type {string} */\n\t\tactiveTab: '',\n\t\t/** @type {string | null} */\n\t\tblockId: null,\n\t\t/** @type {string | null} */\n\t\ttabId: null,\n\n\t\tinit() {\n\t\t\t// Initialize active tab from data attribute or default\n\t\t\t// @ts-ignore\n\t\t\tthis.activeTab = this.$el.dataset.defaultActive;\n\n\t\t\tif (this.$el.dataset.tabBlockId) {\n\t\t\t\tthis.blockId = this.$el.dataset.tabBlockId;\n\t\t\t}\n\t\t\tif (this.$el.dataset.tabId) {\n\t\t\t\tthis.tabId = this.$el.dataset.tabId;\n\t\t\t}\n\n\t\t\t// If no default active is set, try to find the first trigger\n\t\t\tif (!this.activeTab) {\n\t\t\t\tconst firstTrigger = this.$el.querySelector('[data-tab-trigger]');\n\t\t\t\tif (firstTrigger instanceof HTMLElement) {\n\t\t\t\t\tthis.activeTab = firstTrigger.dataset.tabTrigger || '';\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tthis.updateAttributes();\n\n\t\t\t// Watch for changes to activeTab to update attributes\n\t\t\tthis.$watch('activeTab', () => {\n\t\t\t\tthis.updateAttributes();\n\t\t\t});\n\n\t\t\t// Add click event listener for delegation\n\t\t\tthis.$el.addEventListener('click', this.triggerHandler.bind(this));\n\t\t},\n\n\t\tdestroy() {\n\t\t\tthis.$el.removeEventListener('click', this.triggerHandler.bind(this));\n\t\t},\n\n\t\t/**\n\t\t * @param {string} tabId\n\t\t */\n\t\tsetActiveTab(tabId) {\n\t\t\tthis.activeTab = tabId;\n\t\t},\n\t\t/**\n\t\t *\n\t\t * @param {HTMLElement} button\n\t\t * @returns\n\t\t */\n\t\ttabButtonActive(button) {\n\t\t\treturn button.dataset.tabTrigger === this.activeTab;\n\t\t},\n\t\t/**\n\t\t *\n\t\t * @param {HTMLElement} content\n\t\t * @returns\n\t\t */\n\t\ttabContentActive(content) {\n\t\t\treturn content.dataset.tabContent === this.activeTab;\n\t\t},\n\t\tupdateAttributes() {\n\t\t\t// Update Triggers\n\t\t\tconst triggers = this.$el.querySelectorAll('[data-tab-trigger]');\n\t\t\ttriggers.forEach((trigger) => {\n\t\t\t\tif (\n\t\t\t\t\tthis.blockId &&\n\t\t\t\t\ttrigger\n\t\t\t\t\t\t.closest('[data-tab-block-id]')\n\t\t\t\t\t\t?.getAttribute('data-tab-block-id') != this.blockId\n\t\t\t\t) {\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t\tif (!(trigger instanceof HTMLElement)) return;\n\t\t\t\tconst id = trigger.dataset.tabTrigger;\n\t\t\t\tconst isActive = id === this.activeTab;\n\n\t\t\t\ttrigger.setAttribute('aria-selected', isActive ? 'true' : 'false');\n\t\t\t\ttrigger.setAttribute('tabindex', isActive ? '0' : '-1');\n\n\t\t\t\t// Optional: Add active class if needed for styling hooks that don't use aria-selected\n\t\t\t\tif (isActive) {\n\t\t\t\t\ttrigger.classList.add('active');\n\t\t\t\t} else {\n\t\t\t\t\ttrigger.classList.remove('active');\n\t\t\t\t}\n\t\t\t});\n\n\t\t\t// Update Contents\n\t\t\tconst contents = this.$el.querySelectorAll('[data-tab-content]');\n\t\t\tcontents.forEach((content) => {\n\t\t\t\t// Handle cases where there is nested block tab\n\t\t\t\tif (\n\t\t\t\t\tthis.blockId &&\n\t\t\t\t\tcontent\n\t\t\t\t\t\t.closest('[data-tab-block-id]')\n\t\t\t\t\t\t?.getAttribute('data-tab-block-id') != this.blockId\n\t\t\t\t) {\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t\tif (!(content instanceof HTMLElement)) return;\n\t\t\t\tconst id = content.dataset.tabContent;\n\t\t\t\tconst isActive = id === this.activeTab;\n\n\t\t\t\tif (isActive) {\n\t\t\t\t\tcontent.style.display = 'block';\n\t\t\t\t\tcontent.removeAttribute('hidden');\n\t\t\t\t} else {\n\t\t\t\t\tcontent.style.display = 'none';\n\t\t\t\t\tcontent.setAttribute('hidden', '');\n\t\t\t\t}\n\t\t\t});\n\t\t},\n\n\t\t// Event delegation for triggers\n\t\t/**\n\t\t * @param {Event} e\n\t\t */\n\t\ttriggerHandler(e) {\n\t\t\tconst target = /** @type {HTMLElement} */ (e.target);\n\n\t\t\tif (\n\t\t\t\tthis.blockId &&\n\t\t\t\ttarget\n\t\t\t\t\t.closest('[data-tab-block-id]')\n\t\t\t\t\t?.getAttribute('data-tab-block-id') != this.blockId\n\t\t\t) {\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tconst trigger = target.closest('[data-tab-trigger]');\n\t\t\tif (trigger instanceof HTMLElement) {\n\t\t\t\tthis.setActiveTab(trigger.dataset.tabTrigger || '');\n\t\t\t}\n\t\t},\n\t}));\n});",
+                    "liquid_code": "",
+                    "copy_button": true,
+                    "show_pathname": true,
+                    "pathname": "assets/js/components/kuu-tab.js",
+                    "height": "fit-content",
+                    "custom_height": 348,
+                    "height_min": 0,
+                    "add_height_max": true,
+                    "height_max": "348px",
+                    "add_height_mobile": false,
+                    "height_mobile": "custom",
+                    "custom_height_mobile": 348,
+                    "height_min_mobile": 0,
+                    "add_height_max_mobile": false,
+                    "height_max_mobile": ""
+                  },
+                  "blocks": {}
+                },
+                "kuu_markdown_Nm3Djm": {
+                  "type": "kuu-markdown",
+                  "name": "Markdown with Padding",
+                  "settings": {
+                    "content": "### 3. Include the Script\n\nAdd the tab script to your `snippets/kuu-script.liquid`:",
+                    "padding-block-start": 24,
+                    "padding-block-end": 24,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0,
+                    "custom_mobile_padding": true,
+                    "mobile-padding-block-start": 16,
+                    "mobile-padding-block-end": 16,
+                    "mobile-padding-inline-start": 0,
+                    "mobile-padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "kuu_codeblock_eER6rc": {
+                  "type": "kuu-codeblock",
+                  "name": "Code Block",
+                  "settings": {
+                    "language": "liquid",
+                    "content": "",
+                    "liquid_code": "{% raw %}\n<script src='{{ 'js/components/kuu-tab.js' | asset_url }}' defer></script>\n{% endraw %}",
+                    "copy_button": true,
+                    "show_pathname": true,
+                    "pathname": "snippets/kuu-script.liquid",
+                    "height": "fit-content",
+                    "custom_height": 348,
+                    "height_min": 0,
+                    "add_height_max": true,
+                    "height_max": "348px",
+                    "add_height_mobile": false,
+                    "height_mobile": "custom",
+                    "custom_height_mobile": 348,
+                    "height_min_mobile": 0,
+                    "add_height_max_mobile": false,
+                    "height_max_mobile": ""
+                  },
+                  "blocks": {}
+                },
+                "trigger": {
+                  "type": "kuu-markdown",
+                  "static": true,
+                  "settings": {
+                    "content": "## Installation",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0,
+                    "custom_mobile_padding": true,
+                    "mobile-padding-block-start": 0,
+                    "mobile-padding-block-end": 0,
+                    "mobile-padding-inline-start": 0,
+                    "mobile-padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "kuu_markdown_CFeWXh",
+                "kuu_codeblock_N6xY6f",
+                "kuu_markdown_yDXNDz",
+                "kuu_codeblock_TjwHhY",
+                "kuu_markdown_Nm3Djm",
+                "kuu_codeblock_eER6rc"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_collapse_YWtwYB"
+          ]
+        }
+      },
+      "block_order": [
+        "kuu_markdown_aWD9Qc",
+        "kuu_markdown_VTNKpJ",
+        "kuu_flex_box_YAAW6U",
+        "kuu_markdown_qD9FV9",
+        "kuu_flex_box_UK8rxP"
+      ],
+      "name": "Overview",
+      "settings": {}
+    },
+    "kuu_blank_section_QQHmxN": {
+      "type": "kuu-blank-section",
+      "blocks": {
+        "kuu_markdown_NJ8jpD": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## Usage",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_digYUW": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "### Basic Usage",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_hrjeAh": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 84,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_tab_EUPEJV": {
+              "type": "kuu-tab",
+              "name": "Kuu Tab",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "custom_mobile_padding": true,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_tab_item_gXtMXK": {
+                  "type": "_kuu-tab-item",
+                  "name": "Preview",
+                  "settings": {
+                    "tab_title": "Preview"
+                  },
+                  "blocks": {
+                    "kuu_flex_box_racMFe": {
+                      "type": "kuu-flex-box",
+                      "name": "Flex Box",
+                      "settings": {
+                        "background_color": "#ffffff",
+                        "width": "fill",
+                        "unit": "percent",
+                        "percent_width": 100,
+                        "pixel_width": 48,
+                        "add_width_min": false,
+                        "width_min": 0,
+                        "add_width_max": true,
+                        "width_max": "65ch",
+                        "custom_mobile_width": false,
+                        "width_mobile": "custom",
+                        "unit_mobile": "percent",
+                        "percent_width_mobile": 100,
+                        "pixel_width_mobile": 120,
+                        "add_width_mobile_min": false,
+                        "width_mobile_min": 0,
+                        "add_width_mobile_max": false,
+                        "width_mobile_max": "",
+                        "height": "fit-content",
+                        "custom_height": 240,
+                        "height_min": 120,
+                        "add_height_max": false,
+                        "height_max": "",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": "",
+                        "flex_direction": "column",
+                        "justify_content": "center",
+                        "align_items": "center",
+                        "flex_gap": "all",
+                        "gap": 4,
+                        "row_gap": 0,
+                        "column_gap": 0,
+                        "custom_mobile_flex": true,
+                        "mobile_flex_direction": "column",
+                        "mobile_justify_content": "center",
+                        "mobile_align_items": "center",
+                        "mobile_flex_gap": "all",
+                        "mobile_gap": 4,
+                        "mobile_row_gap": 0,
+                        "mobile_column_gap": 0,
+                        "border": "solid",
+                        "border_sides": "all",
+                        "border_width": 2,
+                        "border_left_width": 1,
+                        "border_top_width": 1,
+                        "border_bottom_width": 1,
+                        "border_right_width": 1,
+                        "border_color": "#e5e7eb",
+                        "border_radius": 8,
+                        "padding-block-start": 24,
+                        "padding-block-end": 24,
+                        "padding-inline-start": 24,
+                        "padding-inline-end": 24,
+                        "custom_mobile_padding": false,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "kuu_liquid_d4gYWi": {
+                          "type": "kuu-liquid",
+                          "name": "Custom Liquid",
+                          "settings": {
+                            "custom_liquid": "<div class=\"flex flex-col flex-wrap items-center justify-center gap-4 p-4\">\n\n\n{% assign button_class = 'relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-lg bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out' %}\n\n\t{% capture tab_triggers %}\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"tab1\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tTab 1\n\t\t</button>\n\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"tab2\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tTab 2\n\t\t</button>\n{% endcapture %}\n\n{% capture tab_contents %}\n\t<div class=\"py-5\">\n\t\t<div data-tab-content=\"tab1\" style=\"width:320px\" class=\" flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\tContent for Tab 1\n\t\t</div>\n\n\t\t<div data-tab-content=\"tab2\" style=\"width:320px\"  class=\" flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\tContent for Tab 2\n\t\t</div>\n\t</div>\n{% endcapture %}\n\n{% render 'kuu-tab',\n\ttriggers: tab_triggers,\n\tcontents: tab_contents,\n\tid: 'my-tabs'\n%}\n\n </div>"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_liquid_d4gYWi"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_flex_box_racMFe"
+                  ]
+                },
+                "kuu_tab_item_APKfrf": {
+                  "type": "_kuu-tab-item",
+                  "name": "Code",
+                  "settings": {
+                    "tab_title": "Code"
+                  },
+                  "blocks": {
+                    "kuu_codeblock_hqxkKX": {
+                      "type": "kuu-codeblock",
+                      "name": "Code Block",
+                      "settings": {
+                        "language": "liquid",
+                        "content": "",
+                        "liquid_code": "{% raw %}\n\n{% assign button_class = 'relative z-10 inline-flex h-10 w-fit cursor-pointer items-center justify-center rounded-lg bg-gray-100 px-3 text-sm font-medium whitespace-nowrap transition duration-300 ease-out' %}\n\n\t{% capture tab_triggers %}\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"tab1\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tTab 1\n\t\t</button>\n\n\t\t<button role=\"tab\"\n\t\tdata-tab-trigger=\"tab2\"\n\t\tclass=\"{{button_class}}\"\n\t\t:class=\"tabButtonActive($el) ? 'bg-primary text-primary-foreground' : 'bg-gray-200 text-gray-500'\"\n\t\t>\n\t\t\tTab 2\n\t\t</button>\n{% endcapture %}\n\n{% capture tab_contents %}\n\t<div class=\"py-5\">\n\t\t<div data-tab-content=\"tab1\"class=\"flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\tContent for Tab 1\n\t\t</div>\n\t\t\n\t\t<div data-tab-content=\"tab2\" class=\"flex h-30 items-center justify-center rounded bg-gray-100 p-4\">\n\t\t\tContent for Tab 2\n\t\t</div>\n\t</div>\n{% endcapture %}\n\n{% render 'kuu-tab',\n\ttriggers: tab_triggers,\n\tcontents: tab_contents,\n\tid: 'my-tabs'\n%}\n\n{% endraw %}",
+                        "copy_button": true,
+                        "show_pathname": false,
+                        "pathname": "snippets/kuu-button.liquid",
+                        "height": "fit-content",
+                        "custom_height": 348,
+                        "height_min": 0,
+                        "add_height_max": true,
+                        "height_max": "348px",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "kuu_codeblock_hqxkKX"
+                  ]
+                }
+              },
+              "block_order": [
+                "kuu_tab_item_gXtMXK",
+                "kuu_tab_item_APKfrf"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_tab_EUPEJV"
+          ]
+        }
+      },
+      "block_order": [
+        "kuu_markdown_NJ8jpD",
+        "kuu_markdown_digYUW",
+        "kuu_flex_box_hrjeAh"
+      ],
+      "name": "Usage",
+      "settings": {
+        "width": "fill",
+        "custom_width": 100,
+        "add_mobile_width": false,
+        "width_mobile": "fill",
+        "custom_width_mobile": 100,
+        "height": "fit-content",
+        "custom_height": 240,
+        "height_min": 0,
+        "add_height_max": false,
+        "height_max": "",
+        "custom_mobile_height": false,
+        "mobile_height": 240
+      }
+    }
+  },
+  "order": [
+    "main",
+    "kuu_blank_section_QQHmxN"
+  ]
 }

@@ -358,6 +358,5 @@ populateTabButtons();
 
 ## Related Components
 
-- [Horizontal Scroll](/docs/components/horizontal-scroll) - Used for scrollable tab buttons
-- [Product Card](/docs/components/product-card) - Often used in tab content
-- [Collection Card](/docs/components/collection-card) - Can be used in tab panels
+- [Horizontal Scroll](/pages/docs-components-horizontal-scroll) - Used for scrollable tab buttons
+- [Product List](/pages/docs-blocks-product-list) - Often used in tab content
