@@ -26,7 +26,7 @@ An accessible, flexible tab component for organizing content into switchable pan
 
 - **Snippet:** `snippets/kuu-tab.liquid`
 - **JavaScript:** `assets/js/components/kuu-tab.js`
-- **Helper:** `snippets/horizontal-scroll.liquid` (for scrollable tab buttons)
+- **Helper(Optional):** `snippets/horizontal-scroll.liquid` (for scrollable tab buttons)
 
 ## Installation
 
@@ -43,7 +43,7 @@ Download `assets/js/components/kuu-tab.js` and place it in `assets/js/components
 Add the tab script to your `snippets/kuu-script.liquid`:
 
 ```liquid
-<script src='{{ 'js/components/tab.js' | asset_url }}' defer></script>
+<script src='{{ 'js/components/kuu-tab.js' | asset_url }}' defer></script>
 ```
 
 ## Usage
