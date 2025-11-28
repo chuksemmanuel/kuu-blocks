@@ -28,5 +28,8 @@ This software is released under a custom license focused on "No Charge" usage fo
 
 If your use case involves charging end-users a fee to use the product (e.g., a paid app or theme), please contact us for a Commercial License.
 
-**Contact:** dev.chuksemmanuel@gmail.com
-[LinkedIn](https://www.linkedin.com/in/chuksemmanuel/)
+### Contact
+
+- Whatsapp: +2349036727559
+- Email: dev.chuksemmanuel@gmail.com
+- LinkedIn: [https://www.linkedin.com/in/chuksemmanuel/](https://www.linkedin.com/in/chuksemmanuel/)
