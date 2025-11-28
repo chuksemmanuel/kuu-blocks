@@ -1,7 +1,7 @@
 {%- if predictive_search.performed -%}
 	<div id='predictive-search-results'>
 		{%- if predictive_search.resources != blank -%}
-			{% render 'searchdrawer-content',
+			{% render 'kuu-searchdrawer-content',
 				products: predictive_search.resources.products,
 				collections: predictive_search.resources.collections,
 				pages: predictive_search.resources.pages,

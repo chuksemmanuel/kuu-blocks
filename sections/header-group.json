@@ -169,7 +169,7 @@
 							"block_order": ["products_tab_NXHbWb"]
 						},
 						"searchdrawer_3ECJdH": {
-							"type": "_searchdrawer",
+							"type": "kuu-searchdrawer",
 							"name": "Search Drawer",
 							"settings": {
 								"device": "mobile",
@@ -234,7 +234,7 @@
 							"blocks": {}
 						},
 						"searchdrawer_8DPf9q": {
-							"type": "_searchdrawer",
+							"type": "kuu-searchdrawer",
 							"name": "Search Drawer",
 							"settings": {
 								"device": "desktop",
