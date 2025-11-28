@@ -1,9 +1,21 @@
+{% doc %}
+	@param {string} [fallback_content]
+{% enddoc %}
+
+{% liquid
+	if block.settings.content == blank
+		assign content = fallback_content
+	else
+		assign content = block.settings.content
+	endif
+%}
+
 <div
 	{{ block.shopify_attributes }}
 	style='{% render 'spacing-padding', settings: block.settings %}'
 	class='spacing-style'
 >
-	{% render 'kuu-markdown', content: block.settings.content %}
+	{% render 'kuu-markdown', content: content %}
 </div>
 
 {% schema %}

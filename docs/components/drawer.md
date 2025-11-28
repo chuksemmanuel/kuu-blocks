@@ -116,7 +116,9 @@ Use headless mode when you want to control the trigger separately:
 Open and close drawers programmatically using custom events:
 
 ```javascript
-// Open a drawer
+/**
+ * Open a drawer
+ */
 window.dispatchEvent(
 	new CustomEvent('drawer:open', {
 		detail: { id: 'cartdrawer' },
@@ -272,6 +274,6 @@ Add `data-drawer-close` attribute to any element inside the drawer to make it cl
 
 ## Related Components
 
-- [Button](/docs/components/button) - Often used as drawer triggers
-- [Cart Drawer](/docs/blocks/cart-drawer) - Pre-built cart drawer implementation
-- [Search Drawer](/docs/blocks/search-drawer) - Pre-built search drawer implementation
+- [Button](pages/docs-components-button) - Often used as drawer triggers
+- [Cart Drawer](pages/docs-blocks-cartdrawer) - Pre-built cart drawer implementation
+- [Search Drawer](pages/docs-blocks-searchdrawer) - Pre-built search drawer implementation

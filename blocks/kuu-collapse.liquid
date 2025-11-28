@@ -1,0 +1,31 @@
+{% capture trigger %}
+    {% content_for 'block', type:'kuu-markdown', id:'trigger' %}
+{% endcapture %}
+
+{% capture content %}
+    {% content_for 'blocks' %}
+{% endcapture %}
+
+{% render 'kuu-collapse', trigger: trigger, content: content, block: block %}
+
+{% schema %}
+	{
+		"name": "Collapse",
+		"tag": null,
+		"settings": [],
+		"blocks": [
+			{
+				"type": "@theme"
+			},
+			{
+				"type": "@app"
+			}
+		],
+		"presets": [
+			{
+				"name": "Collapse",
+				"category": "Kuu Components"
+			}
+		]
+	}
+{% endschema %}

@@ -1,4 +1,14 @@
-{% render 'kuu-text', block: block %}
+{% doc %}
+	@param {string} [fallback_text] - The fallback text to use when the block text is not set.
+	@param {string} [fallback_tag] - The fallback tag to use when the block tag is not set.
+{% enddoc %}
+
+{% liquid
+	assign fallback_text = fallback_text
+	assign fallback_tag = fallback_tag
+%}
+
+{% render 'kuu-text', block: block, fallback_text: fallback_text, fallback_tag: fallback_tag %}
 
 {% schema %}
 	{

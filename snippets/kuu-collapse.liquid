@@ -1,0 +1,32 @@
+{% doc %}
+	@param {string} trigger
+	@param {string} content
+	@param {object} [block]
+{% enddoc %}
+
+<div x-data='{ expanded: false }' class='w-full!' {{ block.shopify_attributes }}>
+	<div
+		@click='expanded = !expanded'
+		class='flex w-full items-center justify-between gap-1 border-b border-gray-400 py-4 text-left font-medium hover:text-gray-900'
+		:class="{ 'text-gray-900': expanded, 'text-gray-600': !expanded }"
+	>
+		<span>{{ trigger }}</span>
+
+		{% capture props %}
+            :class="{ 'rotate-180': expanded }"
+        {% endcapture %}
+		{% render 'kuu-button',
+			icon: 'icons/chevron-down.svg',
+			button_class: 'transform transition-transform duration-300',
+			props: props
+		%}
+	</div>
+	<div
+		x-show='expanded'
+		class='mt-2'
+		x-collapse
+		x-cloak
+	>
+		{{ content }}
+	</div>
+</div>

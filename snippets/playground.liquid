@@ -2,22 +2,7 @@
 {% capture content %}
 <div class="flex flex-col flex-wrap items-center justify-center gap-4 p-4">
 
-	
-{% capture drawer_trigger %}
-	{% render 'kuu-button', variant:'primary', label:'Click to Open Drawer' %}
-{% endcapture %}
-
-{% capture drawer_content %}
-	<div class="flex h-full w-full flex-1 flex-col items-center  justify-center gap-4   rounded-lg bg-white ">
-
-		<p class="text-2xl font-semibold">Drawer Content</p>
-
-		{% render 'kuu-button', variant:'outline', label:'Click to Open Drawer', props:'data-drawer-close' %}
-
-	</div>
-{% endcapture %}
-
-{% render 'kuu-drawer', trigger: drawer_trigger, content: drawer_content, id: 'preview-1', from: 'right'%}
+{% render 'kuu-cartdrawer', show_secondary_footer_cta: true %}
 
 
 

@@ -6,6 +6,7 @@
 	@param {object} [block] - The block settings object
 	@param {object} [text_settings] - The text settings when text is a static block
 	@param {string} [width] - width of the text block
+	@param {string} [fallback_tag]
 {%- enddoc -%}
 
 {% liquid
@@ -13,6 +14,7 @@
 	assign plain_text = block_settings.text | strip_newlines | strip_html | strip
 	assign text_width = width | default: block_settings.width
 	assign class = class | append: ' ' | append: block_settings.class | default: ''
+	assign tag = block_settings.tag | default: fallback_tag
 
 	if block_settings.font_size contains 'heading-lg' or block_settings.font_size contains 'heading-xl'
 		assign type = 'display'
@@ -21,7 +23,7 @@
 	else
 		assign type = 'body'
 	endif
-	if block_settings.type_preset == 'rte' or block_settings.type_preset == 'paragraph' or block_settings.tag == 'p'
+	if block_settings.type_preset == 'rte' or block_settings.type_preset == 'paragraph' or tag == 'p'
 		assign is_rte = true
 	endif
 
@@ -89,7 +91,7 @@
 	if is_rte
 		assign element = 'div'
 	elsif block_settings.type_preset == 'custom'
-		assign element = block_settings.tag | default: 'div'
+		assign element = tag | default: 'div'
 	else
 		assign element = block_settings.type_preset | default: 'div'
 	endif

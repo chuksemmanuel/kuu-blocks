@@ -8,12 +8,497 @@
  * ------------------------------------------------------------
  */
 {
-	"layout": "documentation",
-	"sections": {
-		"main": {
-			"type": "documentation",
-			"settings": {}
-		}
-	},
-	"order": ["main"]
+  "layout": "documentation",
+  "sections": {
+    "main": {
+      "type": "documentation",
+      "blocks": {
+        "kuu_markdown_bLRKDw": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "# Drawer\n\nA versatile slide-in drawer component with smooth GSAP animations. Perfect for cart drawers, navigation menus, search interfaces, and any content that needs to slide in from the edges of the screen.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_Nn73H3": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 84,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_tab_fHd3fN": {
+              "type": "kuu-tab",
+              "name": "Kuu Tab",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "custom_mobile_padding": true,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_tab_item_XQLRbb": {
+                  "type": "_kuu-tab-item",
+                  "name": "Preview",
+                  "settings": {
+                    "tab_title": "Preview"
+                  },
+                  "blocks": {
+                    "kuu_flex_box_nBygrV": {
+                      "type": "kuu-flex-box",
+                      "name": "Flex Box",
+                      "settings": {
+                        "background_color": "#ffffff",
+                        "width": "fill",
+                        "unit": "percent",
+                        "percent_width": 100,
+                        "pixel_width": 48,
+                        "add_width_min": false,
+                        "width_min": 0,
+                        "add_width_max": true,
+                        "width_max": "65ch",
+                        "custom_mobile_width": false,
+                        "width_mobile": "custom",
+                        "unit_mobile": "percent",
+                        "percent_width_mobile": 100,
+                        "pixel_width_mobile": 120,
+                        "add_width_mobile_min": false,
+                        "width_mobile_min": 0,
+                        "add_width_mobile_max": false,
+                        "width_mobile_max": "",
+                        "height": "fit-content",
+                        "custom_height": 240,
+                        "height_min": 120,
+                        "add_height_max": false,
+                        "height_max": "",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": "",
+                        "flex_direction": "column",
+                        "justify_content": "center",
+                        "align_items": "center",
+                        "flex_gap": "all",
+                        "gap": 4,
+                        "row_gap": 0,
+                        "column_gap": 0,
+                        "custom_mobile_flex": true,
+                        "mobile_flex_direction": "column",
+                        "mobile_justify_content": "center",
+                        "mobile_align_items": "center",
+                        "mobile_flex_gap": "all",
+                        "mobile_gap": 4,
+                        "mobile_row_gap": 0,
+                        "mobile_column_gap": 0,
+                        "border": "solid",
+                        "border_sides": "all",
+                        "border_width": 2,
+                        "border_left_width": 1,
+                        "border_top_width": 1,
+                        "border_bottom_width": 1,
+                        "border_right_width": 1,
+                        "border_color": "#e5e7eb",
+                        "border_radius": 8,
+                        "padding-block-start": 24,
+                        "padding-block-end": 24,
+                        "padding-inline-start": 24,
+                        "padding-inline-end": 24,
+                        "custom_mobile_padding": false,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "kuu_liquid_KCR3aC": {
+                          "type": "kuu-liquid",
+                          "name": "Custom Liquid",
+                          "settings": {
+                            "custom_liquid": "<div class=\"flex flex-col flex-wrap items-center justify-center gap-4 p-4\">\n\n{% capture drawer_trigger %}\n{% render 'kuu-button', variant:'primary', label:'Click to Open Drawer' %}\n{% endcapture %}\n\n{% capture drawer_content %}\n<div class=\"flex h-full w-full flex-1 flex-col items-center  justify-center gap-4   rounded-lg bg-white \">\n\n<p class=\"text-2xl font-semibold\">Drawer Content</p>\n\n{% render 'kuu-button', variant:'outline', label:'Click to Open Drawer', props:'data-drawer-close' %}\n\n</div>\n{% endcapture %}\n\n{% render 'kuu-drawer', trigger: drawer_trigger, content: drawer_content, id: 'preview-1', from: 'right'%}\n\n </div>"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_liquid_KCR3aC"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_flex_box_nBygrV"
+                  ]
+                },
+                "kuu_tab_item_Wg7Bfq": {
+                  "type": "_kuu-tab-item",
+                  "name": "Code",
+                  "settings": {
+                    "tab_title": "Code"
+                  },
+                  "blocks": {
+                    "kuu_codeblock_YnpcxX": {
+                      "type": "kuu-codeblock",
+                      "name": "Code Block",
+                      "settings": {
+                        "language": "liquid",
+                        "content": "",
+                        "liquid_code": "{% raw %}\n\n{% capture drawer_trigger %}\n\t{% render 'kuu-button', variant:'primary', label:'Click to Open Drawer' %}\n{% endcapture %}\n\n{% capture drawer_content %}\n\t<div class=\"flex h-full w-full flex-1 flex-col items-center  justify-center gap-4   rounded-lg bg-white \">\n\n\t\t<p class=\"text-2xl font-semibold\">Drawer Content</p>\n\n\t\t{% render 'kuu-button', variant:'outline', label:'Click to Open Drawer', props:'data-drawer-close' %}\n\n\t</div>\n{% endcapture %}\n\n{% render 'kuu-drawer', trigger: drawer_trigger, content: drawer_content, id: 'preview-1', from: 'right'%}\n{% endraw %}",
+                        "copy_button": true,
+                        "show_pathname": false,
+                        "pathname": "snippets/kuu-button.liquid",
+                        "height": "fit-content",
+                        "custom_height": 348,
+                        "height_min": 0,
+                        "add_height_max": true,
+                        "height_max": "348px",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "kuu_codeblock_YnpcxX"
+                  ]
+                }
+              },
+              "block_order": [
+                "kuu_tab_item_XQLRbb",
+                "kuu_tab_item_Wg7Bfq"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_tab_fHd3fN"
+          ]
+        }
+      },
+      "block_order": [
+        "kuu_markdown_bLRKDw",
+        "kuu_flex_box_Nn73H3"
+      ],
+      "name": "Overview",
+      "settings": {}
+    },
+    "kuu_blank_section_Qi3fUV": {
+      "type": "kuu-blank-section",
+      "blocks": {
+        "kuu_markdown_iWEcmP": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## Dependencies\n\n- **Snippet:** `snippets/kuu-drawer.liquid`\n- **JavaScript:** `assets/js/components/kuu-drawer.js`\n- **External Library:** GSAP (for smooth animations)",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "kuu_markdown_iWEcmP"
+      ],
+      "name": "Dependencies",
+      "settings": {
+        "width": "fill",
+        "custom_width": 100,
+        "add_mobile_width": false,
+        "width_mobile": "fill",
+        "custom_width_mobile": 100,
+        "height": "fit-content",
+        "custom_height": 240,
+        "height_min": 240,
+        "add_height_max": false,
+        "height_max": "",
+        "custom_mobile_height": false,
+        "mobile_height": 240
+      }
+    },
+    "kuu_blank_section_RLwbnk": {
+      "type": "kuu-blank-section",
+      "blocks": {
+        "kuu_markdown_3NxwpD": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## Installation\n\n### 1. Add the Snippet\n\nCreate `snippets/kuu-drawer.liquid` and paste the drawer markup.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_Mwa7cL": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "liquid",
+            "content": "",
+            "liquid_code": "{% raw %}\n{% liquid\n\tassign from = from | default: 'right'\n\tassign mobile_from = mobile_from\n\tassign drawer_class = drawer_class | default: ''\n\tassign trigger_class = trigger_class | default: ''\n\tassign panel_class = panel_class | default: ''\n\tassign overlay_class = overlay_class | default: ''\n%}\n\n{% comment %}\n\tdrawer.liquid\n\t  Accepts:\n\t  - trigger: {String} a Capture of the trigger (usuallly a button)\n\t  - content: {String} a Capture/Snippet of the drawer content\n\t  - from: {String} Direction the drawer slides from\n\t  - id: {String} Unique identifier of the drawer to target (e.g., 'cartdrawer', 'menudrawer')  used to open/close the drawer via the drawer:open and drawer:close custom Event\n\t  Example:\n\t  window.dispatchEvent(new CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }))\n\t  window.dispatchEvent(new CustomEvent('drawer:close', { detail: { id: 'menu' } }))\n\n\tUsage:\n\t  {% render 'drawer'\n\t    , trigger: cart_trigger\n\t    , content: cart_content\n\t    , name: 'cartdrawer'\n\t    , from: 'right'\n\t  %}\n{% endcomment %}\n\n<style>\n\t[x-cloak] {\n\t\tdisplay: none !important;\n\t}\n\t.no-scrollbar::-webkit-scrollbar {\n\t\tdisplay: none;\n\t}\n\t.no-scrollbar {\n\t\t-ms-overflow-style: none;\n\t\tscrollbar-width: none;\n\t}\n\tbody.drawer-open {\n\t\toverflow: hidden;\n\t}\n</style>\n\n{% assign base_class = 'fixed flex flex-col justify-stretch w-full  z-50 overflow-y-auto no-scrollbar p-2 lg:p-4 focus-visible:outline-0' %}\n\n{% liquid\n\tassign vertical_direction = 'h-fit min-h-120 max-h-full left-0'\n\tassign horizontal_direction = 'h-full top-0 max-w-[min(648px,100%)]'\n\n\tassign top_direction = vertical_direction | append: 'top-0'\n\tassign bottom_direction = vertical_direction | append: 'bottom-0'\n\tassign left_direction = horizontal_direction | append: 'left-0'\n\tassign right_direction = horizontal_direction | append: 'right-0'\n%}\n\n<script type='application/json' data-drawer-script='{{id}}'>\n\t{\n\t  \"top\":{{top_direction |  json}},\n\t  \"bottom\":{{bottom_direction | json}},\n\t  \"left\":{{left_direction | json}},\n\t  \"right\":{{right_direction | json}}\n\t}\n</script>\n\n{% case from %}\n\t{% when 'top' %}\n\t\t{% assign direction_class = 'h-fit min-h-120 max-h-full left-0 top-0' %}\n\t{% when 'bottom' %}\n\t\t{% assign direction_class = 'h-fit min-h-120 max-h-full left-0 bottom-0' %}\n\t{% when 'left' %}\n\t\t{% assign direction_class = 'h-full top-0 max-w-[min(648px,100%)] left-0' %}\n\t{% when 'right' %}\n\t\t{% assign direction_class = 'h-full top-0 max-w-[min(648px,100%)] right-0' %}\n\t{% else %}\n\t\t{% assign direction_class = 'top-0 max-w-[min(648px,100%)] right-0' %}\n{% endcase %}\n\n<div\n\tx-data='drawer'\n\tx-init='init()'\n\tclass='{{drawer_class}}'\n\tdata-block-id='{{block.id}}'\n\tdata-section-id='{{section.id}}'\n\tdata-drawer-id='{{id}}'\n\tdata-direction='{{from}}'\n\tdata-base-class='{{ base_class }}'\n\tdata-custom-class='{{class}}'\n\tdata-mobile-direction='{{mobile_from}}'\n>\n\t<!-- Trigger -->\n\t{% if headless != true %}\n\t\t<div @click='openDrawer()' class='{{trigger_class}}'>\n\t\t\t{{ trigger }}\n\t\t</div>\n\t{% endif %}\n\n\t<!-- Overlay -->\n\t<div\n\t\tclass='fixed inset-0 z-40 bg-black/50 {{overlay_class}}'\n\t\tx-cloak\n\t\tx-ref='overlay'\n\t\tstyle='pointer-events: none; opacity: 0;'\n\t\t@click='closeDrawer()'\n\t></div>\n\n\t<!-- Drawer panel -->\n\t<div\n\t\tclass='{{base_class}} {{direction_class}} {{class}} {{panel_class}}'\n\n\t\tx-cloak\n\t\tx-ref='panel'\n\t\tstyle='opacity: 0; visibility: hidden; will-change: transform, opacity;'\n\t\t@click.stop\n\t\trole='dialog'\n\t\taria-modal='true'\n\t\taria-lablledby='drawer-title'\n\t\taria-describedby='drawer-description'\n\t\tx-trap='open'\n\t>\n\t\t{{ content }}\n\t</div>\n</div>\n\n{% endraw %}",
+            "copy_button": true,
+            "show_pathname": true,
+            "pathname": "snippets/kuu-drawer.liquid",
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_PGPVNB": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "### 2. Add the JavaScript\n\nDownload `assets/js/components/kuu-drawer.js` and place it in `assets/js/components/`.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_jm7JFx": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "javascript",
+            "content": "/**\n * Drawer Alpine.js component\n * Provides slide-in drawer behavior for cart, menu, etc.\n *\n * @param  [direction='right']\n * @returns {DrawerComponent}\n */\ndocument.addEventListener('alpine:init', () => {\n\tconst Alpine = window.Alpine;\n\tconst gsap = window.gsap;\n\n\tAlpine.data('drawer', () => {\n\t\treturn {\n\t\t\t/** @type {string} */\n\t\t\tid: '',\n\t\t\t/** @type {string | null} */\n\t\t\tsectionId: null,\n\t\t\t/** @type {string | null} */\n\t\t\tblockId: null,\n\t\t\t/** @type {boolean} */\n\t\t\topen: false,\n\t\t\t/** @type {DrawerDirection} */\n\t\t\tdirection: 'right',\n\t\t\t/** @type {DrawerDirection | null} */\n\t\t\tmobileDirection: null,\n\t\t\t/** @type {DrawerDirection } */\n\t\t\tdesktopDirection: 'right',\n\t\t\t/** @type {string} */\n\t\t\tdirectionClass: '',\n\t\t\t/** @type {string} */\n\t\t\tbaseClass: '',\n\t\t\t/** @type {string} */\n\t\t\tcustomClass: '',\n\t\t\t/** @type {GSAPTimeline | null} */\n\t\t\ttl: null,\n\t\t\t/** @type {HTMLElement | null} */\n\t\t\t$overlay: null,\n\t\t\t/** @type {HTMLElement | null} */\n\t\t\t$panel: null,\n\t\t\t/** @type {HTMLElement | null} */\n\t\t\tlastFocusedElement: null,\n\t\t\t/**\n\t\t\t * Debounce timers for resize event.\n\t\t\t * @type {Record<string number>}\n\t\t\t */\n\t\t\tdebounceTimer: {},\n\t\t\t/** @type {(e: KeyboardEvent) => void} */\n\t\t\t_escHandler(e) {\n\t\t\t\tif (e.key === 'Escape' && this.open) this.closeDrawer();\n\t\t\t},\n\n\t\t\tinit() {\n\t\t\t\tthis.$overlay = this.$refs.overlay;\n\t\t\t\tthis.$panel = this.$refs.panel;\n\t\t\t\tthis.id = this.$el.dataset.drawerId || 'defaultDrawer';\n\t\t\t\tthis.sectionId = this.$el.dataset.sectionId || null;\n\t\t\t\tthis.blockId = this.$el.dataset.blockId || null;\n\n\t\t\t\t// Update panel classes\n\t\t\t\tthis.baseClass = this.$el.dataset.baseClass || '';\n\t\t\t\tthis.customClass = this.$el.dataset.customClass || '';\n\n\t\t\t\t// Initialize direction\n\t\t\t\t// @ts-ignore\n\t\t\t\tthis.direction = this.$el.dataset.direction || 'right';\n\n\t\t\t\tthis.desktopDirection = this.direction;\n\n\t\t\t\tconst mobileDirection = this.$el.dataset.mobileDirection;\n\t\t\t\t// @ts-ignore\n\t\t\t\tthis.mobileDirection =\n\t\t\t\t\tmobileDirection && mobileDirection.length > 0\n\t\t\t\t\t\t? mobileDirection\n\t\t\t\t\t\t: null;\n\n\t\t\t\t// Update direction class and listen for window resize\n\t\t\t\tthis.updateDirectionClassListener();\n\n\t\t\t\t// Put overlay & panel off-screen / hidden initially\n\t\t\t\tgsap.set(this.$overlay, { opacity: 0, pointerEvents: 'none' });\n\n\t\t\t\t// Set panel initial offscreen transform + hidden\n\t\t\t\tthis.resetDrawerTransform();\n\n\t\t\t\t// Add event listeners\n\t\t\t\tthis.addEventListeners();\n\t\t\t},\n\n\t\t\topenDrawer() {\n\t\t\t\tif (this.open) return;\n\t\t\t\tthis.open = true;\n\t\t\t\t// this.lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null\n\t\t\t\tdocument.body.classList.add('drawer-open');\n\n\t\t\t\tconst overlay = this.$overlay;\n\t\t\t\tconst panel = this.$panel;\n\n\t\t\t\tif (!overlay || !panel) return;\n\n\t\t\t\t// make panel visible before animating so screen readers/focus can settle\n\t\t\t\tpanel.style.visibility = 'visible';\n\t\t\t\t// allow overlay pointer events during open\n\t\t\t\tgsap.set(overlay, { pointerEvents: 'auto' });\n\n\t\t\t\t// Build timeline for overlay + panel\n\t\t\t\tconst tl = gsap.timeline({\n\t\t\t\t\tdefaults: { ease: 'power3.out' },\n\t\t\t\t});\n\n\t\t\t\ttl.to(overlay, { opacity: 1, duration: 0.28 }, 0);\n\n\t\t\t\tif (this.direction === 'left' || this.direction === 'right') {\n\t\t\t\t\t// animate x to 0\n\t\t\t\t\ttl.to(panel, { x: '0%', opacity: 1, duration: 0.6 }, 0);\n\t\t\t\t} else {\n\t\t\t\t\t// animate y to 0\n\t\t\t\t\ttl.to(panel, { y: '0%', opacity: 1, duration: 0.6 }, 0);\n\t\t\t\t}\n\n\t\t\t\t// Focus management: move focus into the panel after animation frame\n\t\t\t\ttl.call(\n\t\t\t\t\t() => {\n\t\t\t\t\t\t// try to focus the first focusable element inside panel, else panel itself\n\t\t\t\t\t\tconst focusable = panel.querySelector(\n\t\t\t\t\t\t\t'button, [href], input, select, textarea, [tabindex]:not([tabindex=\"-1\"])',\n\t\t\t\t\t\t);\n\t\t\t\t\t\tif (focusable && focusable instanceof HTMLElement)\n\t\t\t\t\t\t\tfocusable.focus();\n\t\t\t\t\t\telse (panel.setAttribute('tabindex', '-1'), panel.focus());\n\t\t\t\t\t},\n\t\t\t\t\tundefined,\n\t\t\t\t\t'>-0.02',\n\t\t\t\t);\n\n\t\t\t\tthis.tl = tl;\n\n\t\t\t\twindow.dispatchEvent(\n\t\t\t\t\tnew CustomEvent('drawer:opened', { detail: { id: this.id } }),\n\t\t\t\t);\n\n\t\t\t\t/**\n\t\t\t\t * window.drawer.lastOpened is used to track the last opened drawer in the theme editor\n\t\t\t\t * When the theme editor re-renders, it will use this to open the last opened drawer\n\t\t\t\t */\n\t\t\t\tthis.setWindowObject({ lastOpened: this.id });\n\t\t\t},\n\n\t\t\tcloseDrawer() {\n\t\t\t\tif (!this.open) return;\n\t\t\t\tconst overlay = this.$overlay;\n\t\t\t\tconst panel = this.$panel;\n\n\t\t\t\tif (!overlay || !panel) return;\n\n\t\t\t\t// allow pointer events until animation finishes (we will disable after)\n\t\t\t\tgsap.set(overlay, { pointerEvents: 'none' });\n\n\t\t\t\tconst tl = gsap.timeline({\n\t\t\t\t\tdefaults: { ease: 'power3.in' },\n\t\t\t\t\tonComplete: () => {\n\t\t\t\t\t\t// hide after animation\n\t\t\t\t\t\tpanel.style.visibility = 'hidden';\n\t\t\t\t\t\tthis.open = false;\n\t\t\t\t\t\tdocument.body.classList.remove('drawer-open');\n\n\t\t\t\t\t\t// restore focus\n\t\t\t\t\t\t// if (this.lastFocusedElement && typeof this.lastFocusedElement.focus === 'function') {\n\t\t\t\t\t\t//     this.lastFocusedElement.focus()\n\t\t\t\t\t\t// }\n\t\t\t\t\t},\n\t\t\t\t});\n\n\t\t\t\tif (this.direction === 'left') {\n\t\t\t\t\ttl.to(panel, { x: '-100%', duration: 0.32 }, 0);\n\t\t\t\t} else if (this.direction === 'right') {\n\t\t\t\t\ttl.to(panel, { x: '100%', duration: 0.32 }, 0);\n\t\t\t\t} else if (this.direction === 'top') {\n\t\t\t\t\ttl.to(panel, { y: '-100%', duration: 0.32 }, 0);\n\t\t\t\t} else if (this.direction === 'bottom') {\n\t\t\t\t\ttl.to(panel, { y: '100%', duration: 0.32 }, 0);\n\t\t\t\t}\n\n\t\t\t\ttl.to(overlay, { opacity: 0, duration: 0.32 }, 0.2);\n\n\t\t\t\t// Clear sr live region\n\t\t\t\tconst liveRegion = document.querySelector(\n\t\t\t\t\t`#${this.id} [data-drawer-live-region]`,\n\t\t\t\t);\n\t\t\t\tif (liveRegion) liveRegion.textContent = '';\n\n\t\t\t\twindow.dispatchEvent(\n\t\t\t\t\tnew CustomEvent('drawer:closed', { detail: { id: this.id } }),\n\t\t\t\t);\n\n\t\t\t\t// reset last opened drawer\n\t\t\t\tthis.setWindowObject({ lastOpened: null });\n\t\t\t},\n\t\t\tupdateDirectionClassListener() {\n\t\t\t\tconst mobileDirection = this.mobileDirection || this.direction;\n\n\t\t\t\tconst verticalDirection = 'h-fit min-h-120 max-h-full left-0';\n\t\t\t\tconst horizontalDirection = 'h-full top-0 max-w-[min(648px,100%)]';\n\t\t\t\tconst directionClassObject = {\n\t\t\t\t\ttop: `${this.baseClass} ${this.customClass} ${verticalDirection} top-0`,\n\t\t\t\t\tbottom: `${this.baseClass} ${this.customClass} ${verticalDirection} bottom-0`,\n\t\t\t\t\tleft: `${this.baseClass} ${this.customClass} ${horizontalDirection} left-0`,\n\t\t\t\t\tright: `${this.baseClass} ${this.customClass} ${horizontalDirection} right-0`,\n\t\t\t\t};\n\n\t\t\t\tconst updateDirectionClass = () => {\n\t\t\t\t\tlet oldDirectionClass = this.directionClass;\n\t\t\t\t\tlet oldDirection = this.direction;\n\n\t\t\t\t\tif (window.innerWidth < 768) {\n\t\t\t\t\t\tthis.direction = mobileDirection;\n\t\t\t\t\t\tthis.directionClass = directionClassObject[mobileDirection];\n\t\t\t\t\t} else {\n\t\t\t\t\t\tthis.direction = this.desktopDirection;\n\t\t\t\t\t\tthis.directionClass = directionClassObject[this.desktopDirection];\n\t\t\t\t\t}\n\n\t\t\t\t\t// Close the drawer if the direction changes\n\t\t\t\t\tif (oldDirection != this.direction) {\n\t\t\t\t\t\tthis.closeDrawer();\n\n\t\t\t\t\t\t// only update if the directionClass changes\n\t\t\t\t\t\tif (oldDirectionClass != this.directionClass) {\n\t\t\t\t\t\t\tthis.resetDrawerTransform();\n\t\t\t\t\t\t\tthis.$panel?.setAttribute('class', this.directionClass);\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t};\n\n\t\t\t\tconst updateDirection = () => {\n\t\t\t\t\tif (this.debounceTimer['updateDirection']) {\n\t\t\t\t\t\tclearTimeout(this.debounceTimer['updateDirection']);\n\t\t\t\t\t}\n\t\t\t\t\tthis.debounceTimer['updateDirection'] = setTimeout(() => {\n\t\t\t\t\t\tupdateDirectionClass();\n\t\t\t\t\t}, 200);\n\t\t\t\t};\n\n\t\t\t\twindow.addEventListener('resize', updateDirection);\n\n\t\t\t\tupdateDirectionClass();\n\t\t\t},\n\n\t\t\tresetDrawerTransform() {\n\t\t\t\t// Set panel initial offscreen transform + hidden\n\t\t\t\tif (this.direction === 'left') {\n\t\t\t\t\tgsap.set(this.$panel, {\n\t\t\t\t\t\tx: '-100%',\n\t\t\t\t\t\ty: 0,\n\t\t\t\t\t\topacity: 0,\n\t\t\t\t\t\tvisibility: 'hidden',\n\t\t\t\t\t});\n\t\t\t\t} else if (this.direction === 'right') {\n\t\t\t\t\tgsap.set(this.$panel, {\n\t\t\t\t\t\tx: '100%',\n\t\t\t\t\t\ty: 0,\n\t\t\t\t\t\topacity: 0,\n\t\t\t\t\t\tvisibility: 'hidden',\n\t\t\t\t\t});\n\t\t\t\t} else if (this.direction === 'top') {\n\t\t\t\t\tgsap.set(this.$panel, {\n\t\t\t\t\t\ty: '-100%',\n\t\t\t\t\t\tx: 0,\n\t\t\t\t\t\topacity: 0,\n\t\t\t\t\t\tvisibility: 'hidden',\n\t\t\t\t\t});\n\t\t\t\t} else if (this.direction === 'bottom') {\n\t\t\t\t\tgsap.set(this.$panel, {\n\t\t\t\t\t\ty: '100%',\n\t\t\t\t\t\tx: 0,\n\t\t\t\t\t\topacity: 0,\n\t\t\t\t\t\tvisibility: 'hidden',\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t},\n\t\t\taddEventListeners() {\n\t\t\t\tif (this.$panel) {\n\t\t\t\t\t// hook up data-drawer-close inside the panel\n\t\t\t\t\tthis.$panel.addEventListener('click', (e) => {\n\t\t\t\t\t\tif (\n\t\t\t\t\t\t\te.target instanceof Element &&\n\t\t\t\t\t\t\te.target?.closest('[data-drawer-close]')\n\t\t\t\t\t\t) {\n\t\t\t\t\t\t\tthis.closeDrawer();\n\t\t\t\t\t\t}\n\t\t\t\t\t});\n\t\t\t\t}\n\n\t\t\t\tdocument.addEventListener('keydown', this._escHandler.bind(this));\n\n\t\t\t\t// 🔥 Listen to global open/close events\n\t\t\t\twindow.addEventListener('drawer:open', (e) => {\n\t\t\t\t\tconst event = /** @type {CustomEvent<drawereventdetail>} */ (e);\n\t\t\t\t\tif (event.detail?.id === this.id) this.openDrawer();\n\t\t\t\t});\n\n\t\t\t\twindow.addEventListener('drawer:close', (e) => {\n\t\t\t\t\tconst event = /** @type {CustomEvent<drawereventdetail>} */ (e);\n\t\t\t\t\tif (event.detail?.id === this.id) this.closeDrawer();\n\t\t\t\t});\n\n\t\t\t\t// Keep drawer open between rerenders in shopify theme editor\n\t\t\t\tdocument.addEventListener('shopify:section:load', (e) => {\n\t\t\t\t\tconst event = /** @type {CustomEvent} */ (e);\n\n\t\t\t\t\tif (window.kuu?.drawer?.lastOpened == this.id) {\n\t\t\t\t\t\tsetTimeout(() => {\n\t\t\t\t\t\t\twindow.dispatchEvent(\n\t\t\t\t\t\t\t\tnew CustomEvent('drawer:open', {\n\t\t\t\t\t\t\t\t\tdetail: { id: this.id },\n\t\t\t\t\t\t\t\t}),\n\t\t\t\t\t\t\t);\n\t\t\t\t\t\t}, 1000);\n\t\t\t\t\t}\n\t\t\t\t});\n\t\t\t},\n\t\t\tsetWindowObject(/** @type {Partial<drawer>} */ options) {\n\t\t\t\tconst kuu = window.kuu || {};\n\t\t\t\t/** @type {Drawer} */\n\t\t\t\tlet drawer = kuu.drawer || {};\n\t\t\t\tdrawer = {\n\t\t\t\t\t...drawer,\n\t\t\t\t\t...options,\n\t\t\t\t};\n\t\t\t\tkuu.drawer = drawer;\n\t\t\t\twindow.kuu = kuu;\n\t\t\t},\n\t\t\t// call to clean up listeners if needed\n\t\t\tdestroy() {\n\t\t\t\tdocument.removeEventListener('keydown', this._escHandler);\n\t\t\t},\n\t\t};\n\t});\n})</drawer></drawereventdetail></drawereventdetail></string>",
+            "liquid_code": "",
+            "copy_button": true,
+            "show_pathname": true,
+            "pathname": "assets/js/components/kuu-drawer.js",
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_JgkgqK": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "### 3. Include the Script\n\nAdd the drawer script to your `snippets/kuu-script.liquid`:",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_gXCwV4": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "liquid",
+            "content": "",
+            "liquid_code": "{% raw %}\n<script src='{{ 'js/components/drawer.js' | asset_url }}' defer></script>\n{% endraw %}",
+            "copy_button": true,
+            "show_pathname": true,
+            "pathname": "snippets/kuu-script.liquid",
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_8UFM6K": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "### 4. Ensure GSAP is Loaded\n\nThe drawer requires GSAP for animations. Make sure it's included in your `snippets/kuu-js-lib.liquid`:",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_yjDX46": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "liquid",
+            "content": "",
+            "liquid_code": "{% raw %}\n<script src='{{ 'js/lib/gsap@3.13.0.min.js' | asset_url }}' defer></script>\n{% endraw %}",
+            "copy_button": true,
+            "show_pathname": true,
+            "pathname": "snippets/kuu-script.liquid",
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "kuu_markdown_3NxwpD",
+        "kuu_codeblock_Mwa7cL",
+        "kuu_markdown_PGPVNB",
+        "kuu_codeblock_jm7JFx",
+        "kuu_markdown_JgkgqK",
+        "kuu_codeblock_gXCwV4",
+        "kuu_markdown_8UFM6K",
+        "kuu_codeblock_yjDX46"
+      ],
+      "name": "Installation",
+      "settings": {
+        "width": "fill",
+        "custom_width": 100,
+        "add_mobile_width": false,
+        "width_mobile": "fill",
+        "custom_width_mobile": 100,
+        "height": "fit-content",
+        "custom_height": 240,
+        "height_min": 240,
+        "add_height_max": false,
+        "height_max": "",
+        "custom_mobile_height": false,
+        "mobile_height": 240
+      }
+    }
+  },
+  "order": [
+    "main",
+    "kuu_blank_section_Qi3fUV",
+    "kuu_blank_section_RLwbnk"
+  ]
 }
