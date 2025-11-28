@@ -8,12 +8,680 @@
  * ------------------------------------------------------------
  */
 {
-	"layout": "documentation",
-	"sections": {
-		"main": {
-			"type": "documentation",
-			"settings": {}
-		}
-	},
-	"order": ["main"]
+  "layout": "documentation",
+  "sections": {
+    "main": {
+      "type": "documentation",
+      "blocks": {
+        "kuu_markdown_ryfinx": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "# Cart Drawer\n\nA fully-featured, production-ready cart drawer with optimistic updates, debounced network requests, and comprehensive customization options. Perfect for modern e-commerce experiences with smooth animations and real-time cart management.\n\n## Preview\n\nThe Cart Drawer automatically appears when users add products to their cart, displaying:\n\n- Product images and titles\n- Variant information\n- Quantity controls with +/- buttons\n- Real-time price updates\n- Compare-at prices and savings badges\n- Sticky header and footer options\n- Checkout button with optional lock icon\n\n## Dependencies\n\n- **Block:** `blocks/kuu-cartdrawer.liquid`\n- **Snippets:**\n  - `snippets/kuu-cartdrawer.liquid` (main wrapper)\n  - `snippets/cartdrawer-items.liquid` (cart items list)\n  - `snippets/cartdrawer-footer.liquid` (footer with total and CTAs)\n- **JavaScript:** `assets/js/blocks/kuu-cartdrawer.js`\n- **Dependencies:** Drawer component, Button component",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "kuu_markdown_ryfinx"
+      ],
+      "name": "Overview",
+      "settings": {}
+    },
+    "kuu_blank_section_nF8hKD": {
+      "type": "kuu-blank-section",
+      "blocks": {
+        "kuu_flex_box_fpg48k": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_collapse_ibFHU9": {
+              "type": "kuu-collapse",
+              "name": "Collapse",
+              "settings": {},
+              "blocks": {
+                "kuu_markdown_mqxjYG": {
+                  "type": "kuu-markdown",
+                  "name": "Markdown with Padding",
+                  "settings": {
+                    "content": "### 1. Add the Block\n\nAdd `blocks/kuu-cartdrawer.liquid` to your theme.",
+                    "padding-block-start": 24,
+                    "padding-block-end": 24,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0,
+                    "custom_mobile_padding": true,
+                    "mobile-padding-block-start": 16,
+                    "mobile-padding-block-end": 16,
+                    "mobile-padding-inline-start": 0,
+                    "mobile-padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "kuu_codeblock_TaMfXA": {
+                  "type": "kuu-codeblock",
+                  "name": "Code Block",
+                  "settings": {
+                    "language": "liquid",
+                    "content": "",
+                    "liquid_code": "{% raw %}\n{%\n\trender 'kuu-cartdrawer'\n\t, id: 'cartdrawer',\n\t, sticky_header: block.settings.sticky_header\n\t, sticky_footer: block.settings.sticky_footer\n\t, show_compare_price: block.settings.show_compare_price\n\t, final_price_color: block.settings.final_price_color\n\t, show_savings_badge: block.settings.show_savings_badge\n\t, savings_badge_color: block.settings.savings_badge_color\n\t, show_variant_title: block.settings.show_variant_title\n\t, show_secondary_footer_cta: block.settings.show_secondary_footer_cta\n\t, secondary_footer_cta_label: block.settings.secondary_footer_cta_label\n\t, secondary_footer_cta_link: block.settings.secondary_footer_cta_link\n\t, show_checkout_lock_icon: block.settings.show_checkout_lock_icon\n\t, checkout_button_label: block.settings.checkout_button_label,\n\t, section_id: section.id\n%}\n\n{% schema %}\n\t{\n\t\t\"name\": \"Cart Drawer\",\n\t\t\"settings\": [\n\t\t\t{\n\t\t\t\t\"type\": \"header\",\n\t\t\t\t\"content\": \"Layout\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"sticky_header\",\n\t\t\t\t\"label\": \"Enable sticky header\",\n\t\t\t\t\"default\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"sticky_footer\",\n\t\t\t\t\"label\": \"Enable sticky footer\",\n\t\t\t\t\"default\": true\n\t\t\t},\n\n\t\t\t{\n\t\t\t\t\"type\": \"header\",\n\t\t\t\t\"content\": \"Cart Items\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"show_variant_title\",\n\t\t\t\t\"label\": \"Show variant title\",\n\t\t\t\t\"default\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"show_compare_price\",\n\t\t\t\t\"label\": \"Show compare-at price\",\n\t\t\t\t\"default\": false\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"color\",\n\t\t\t\t\"id\": \"final_price_color\",\n\t\t\t\t\"label\": \"Final price color\",\n\t\t\t\t\"default\": \"#fb2c36\",\n\t\t\t\t\"visible_if\": \"{{ section.settings.show_compare_price == true }}\"\n\t\t\t},\n\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"show_savings_badge\",\n\t\t\t\t\"label\": \"Show savings badge\",\n\t\t\t\t\"default\": false,\n\t\t\t\t\"visible_if\": \"{{ section.settings.show_compare_price == true }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"color\",\n\t\t\t\t\"id\": \"savings_badge_color\",\n\t\t\t\t\"label\": \"Savings badge color\",\n\t\t\t\t\"default\": \"#fb2c36\",\n\t\t\t\t\"visible_if\": \"{{ section.settings.show_savings_badge == true }}\"\n\t\t\t},\n\n\t\t\t{\n\t\t\t\t\"type\": \"header\",\n\t\t\t\t\"content\": \"Cart Drawer Footer\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"show_checkout_lock_icon\",\n\t\t\t\t\"label\": \"Show lock icon\",\n\t\t\t\t\"default\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"text\",\n\t\t\t\t\"id\": \"checkout_button_label\",\n\t\t\t\t\"label\": \"Checkout button label\",\n\t\t\t\t\"default\": \"Proceed to Checkout\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"checkbox\",\n\t\t\t\t\"id\": \"show_secondary_footer_cta\",\n\t\t\t\t\"label\": \"Show secondary button\",\n\t\t\t\t\"default\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"text\",\n\t\t\t\t\"id\": \"secondary_footer_cta_label\",\n\t\t\t\t\"label\": \"Secondary button label\",\n\t\t\t\t\"default\": \"Continue Shopping\",\n\t\t\t\t\"visible_if\": \"{{ section.settings.show_secondary_footer_cta == true }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"select\",\n\t\t\t\t\"id\": \"secondary_footer_cta_action\",\n\t\t\t\t\"label\": \"Secondary button action\",\n\t\t\t\t\"options\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"close-drawer\",\n\t\t\t\t\t\t\"label\": \"Close Drawer\"\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\t\"value\": \"open-link\",\n\t\t\t\t\t\t\"label\": \"Open link\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"default\": \"close-drawer\",\n\t\t\t\t\"visible_if\": \"{{ section.settings.show_secondary_footer_cta == true }}\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"type\": \"url\",\n\t\t\t\t\"id\": \"secondary_footer_cta_link\",\n\t\t\t\t\"label\": \"Secondary button link\",\n\t\t\t\t\"default\": \"/\",\n\t\t\t\t\"visible_if\": \"{{ section.settings.secondary_footer_cta_action == 'open-link' }}\"\n\t\t\t}\n\t\t],\n\t\t\"presets\": [\n\t\t\t{\n\t\t\t\t\"name\": \"Cart Drawer\"\n\t\t\t}\n\t\t]\n\t}\n{% endschema %}\n\n{% endraw %}",
+                    "copy_button": true,
+                    "show_pathname": true,
+                    "pathname": "blocks/kuu-cartdrawer.liquid",
+                    "height": "fit-content",
+                    "custom_height": 348,
+                    "height_min": 0,
+                    "add_height_max": true,
+                    "height_max": "348px",
+                    "add_height_mobile": false,
+                    "height_mobile": "custom",
+                    "custom_height_mobile": 348,
+                    "height_min_mobile": 0,
+                    "add_height_max_mobile": false,
+                    "height_max_mobile": ""
+                  },
+                  "blocks": {}
+                },
+                "kuu_markdown_Hk6Lah": {
+                  "type": "kuu-markdown",
+                  "name": "Markdown with Padding",
+                  "settings": {
+                    "content": "### 2. Add Required Snippets\n\nDownload and add:\n\n- `snippets/kuu-cartdrawer.liquid`\n- `snippets/kuu-cartdrawer-items.liquid`\n- `snippets/kuu-cartdrawer-footer.liquid`",
+                    "padding-block-start": 24,
+                    "padding-block-end": 24,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0,
+                    "custom_mobile_padding": true,
+                    "mobile-padding-block-start": 16,
+                    "mobile-padding-block-end": 16,
+                    "mobile-padding-inline-start": 0,
+                    "mobile-padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "kuu_tab_E6E8CF": {
+                  "type": "kuu-tab",
+                  "name": "Kuu Tab",
+                  "settings": {
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0,
+                    "custom_mobile_padding": true,
+                    "mobile-padding-block-start": 0,
+                    "mobile-padding-block-end": 0,
+                    "mobile-padding-inline-start": 0,
+                    "mobile-padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "kuu_tab_item_em8bXy": {
+                      "type": "_kuu-tab-item",
+                      "name": "kuu-cartdrawer",
+                      "settings": {
+                        "tab_title": "Cartdrawer main"
+                      },
+                      "blocks": {
+                        "kuu_codeblock_4Cgyrj": {
+                          "type": "kuu-codeblock",
+                          "name": "Code Block",
+                          "settings": {
+                            "language": "liquid",
+                            "content": "",
+                            "liquid_code": "{% raw %}\n\n{% liquid\n\tassign headless = headless\n\tassign id = id | default: 'cartdrawer'\n\n\tassign sticky_header = sticky_header\n\tassign sticky_footer = sticky_footer\n\n\tassign show_compare_price = show_compare_price\n\tassign final_price_color = final_price_color | default: '#fb2c36'\n\n\tassign show_savings_badge = show_savings_badge\n\tassign savings_badge_color = savings_badge_color | default: '#fb2c36'\n\n\tassign show_variant_title = show_variant_title\n\n\tassign show_secondary_footer_cta = show_secondary_footer_cta\n\tassign secondary_footer_cta_label = secondary_cta_label | default: 'Continue Shopping'\n\tassign secondary_footer_cta_link = secondary_cta_link | default: null\n\n\tassign show_checkout_lock_icon = show_checkout_lock_icon\n\tassign checkout_button_label = checkout_button_label | default: 'Proceed to Checkout'\n%}\n\n{% capture footer %}\n    {% render 'kuu-cartdrawer-footer'\n    , show_compare_price:show_compare_price\n    , final_price_color:final_price_color\n    , show_secondary_footer_cta:show_secondary_footer_cta\n    , secondary_footer_cta_label:secondary_footer_cta_label\n    , secondary_footer_cta_link:secondary_footer_cta_link\n    , show_checkout_lock_icon: show_checkout_lock_icon\n    , checkout_button_label:checkout_button_label\n    %}\n{% endcapture %}\n<div\n\tid='cartdrawer'\n\tx-data='cartDrawer()'\n\tdata-section-id='{{ section_id }}'\n\t{{ shopify_attributes }}\n>\n\t{% capture cart_button %}\n        <span class=\"bg-primary text-primary-foreground absolute -top-2 -right-2 z-20 flex size-6 items-center justify-center rounded-full! p-1 text-xs\" data-cartdrawer-bubble>{{ cart.item_count }}</span>\n          <span aria-hidden=\"true\"> {{ 'icons/shopping-cart.svg' | inline_asset_content }}</span>\n  {% endcapture %}\n\t{% capture cart_trigger %}\n       {% render 'kuu-button'\n  , variant: 'white'\n  , size: 'icon'\n  , content: cart_button\n  , class:'rounded-full!'\n  , aria_label: 'Open Shopping cart'\n  , props: 'x-data @click=\"$dispatch(`drawer:open`,{id:`cartdrawer`})\"'\n%}\n  {% endcapture %}\n\t{% capture cart_content %}\n  \n  <div role=\"status\" aria-live=\"assertive\" class=\"sr-only\" id=\"cartdrawer-live-region\" aria-atomic=\"true\" data-drawer-live-region></div>\n  {% comment %} <h2 id=\"drawer-title\" class=\"sr-only\">Cart Drawer</h2> {% endcomment %}\n  \n  {% comment %} {% if cart.empty? %}\n    <p  id=\"drawer-description\" class=\"sr-only\"> Your Cart is empty.</p>\n    {% else %}\n     <p  id=\"drawer-description\" class=\"sr-only\"> Your shopping cart with {{ cart.item_count }} items.</p>\n  {% endif %} {% endcomment %}\n\n  <div id=\"cartdrawer-content\" class=\"h-full w-full flex-1 overflow-hidden rounded-md  bg-white shadow-lg lg:rounded-lg\">\n    {% if cart.empty? %}\n      <div id=\"cartdrawer-empty\" class=\"flex h-full w-full flex-col items-center justify-center gap-4\" >\n\n        {% render 'kuu-button'\n        , size: 'icon'\n        , content: cart_button\n        , class: 'bg-white text-black  size-12 rounded-full! '\n        , props:'aria-hidden=\"true\"'\n        %}\n        <p class=\"text-xl font-semibold\" id=\"drawer-description\">Your Cart is Empty</p>\n        {% render 'kuu-button',variant:'primary', size:'lg', label:'Continue Shopping', aria_label:'Close cart drawer and continue shopping', class:'rounded-full!', props:'data-drawer-close tabIndex=\"0\"' %}\n\n      </div>\n    {% else %}\n      <p  id=\"drawer-description\" class=\"sr-only\"> Your shopping cart with {{ cart.item_count }} items.</p>\n      <div  class=\"flex h-full w-full flex-col\">\n\n          <div id=\"cartdrawer-inner\" class=\" flex flex-1 flex-col \" :class=\"settings.stickyHeader ? 'overflow-hidden' : 'overflow-y-auto'\">\n      \n            <!-- Cart Header -->\n            <div id=\"cartdrawer-header\" class=\"flex h-fit min-h-12 shrink-0 flex-col gap-2 \" aria-label=\"Cart Drawer Header\" tabindex=\"0\">\n\n                <div id=\"cartdrawer-header-inner\" class=\"flex w-full items-center justify-between px-5 pt-4 pb-2 lg:px-8 lg:pb-2\" >\n                  <div class=\"flex items-center gap-2\" role=\"presentation\">\n                        <span class=\"sr-only\">You have {{cart.item_count}} items in cart</span>\n                        <p  aria-hidden=\"true\" class=\"font-semibold lg:text-lg\">Cart </p>\n                        <span  aria-hidden=\"true\" class=\"bg-primary text-primary-foreground flex size-6 min-w-fit items-center justify-center rounded-full p-px text-sm\">{{cart.item_count}}</span>\n                  </div>\n                  {% render 'kuu-button', icon:'icons/cancel.svg',class:'rounded-full! size-6! p-0! ', props:'data-drawer-close', aria_label:'Close Cart Drawer' %}\n                </div>\n                \n            </div>\n            \n            {%# Always Scrollable %}\n            <div class=\"flex flex-1 flex-col justify-between  pt-1 lg:pt-2 \" :class=\"settings.stickyHeader ? 'overflow-y-auto' : ''\">\n\n              <div class=\"pb-5 lg:pb-8\">\n                  {%# Cart Items %}\n                  {% render 'kuu-cartdrawer-items'\n                  , show_compare_price:show_compare_price\n                  , final_price_color:final_price_color\n                  , show_savings_badge:show_savings_badge\n                  , show_variant_title:show_variant_title\n                  , savings_badge_color:savings_badge_color\n                  %}\n              </div>\n\n\n                  <div>\n                    {%# Recommended Products %}\n                    <div class=\"hidden min-h-32 w-full animate-pulse rounded-lg bg-gray-200\"></div>\n\n\n                    <template x-if=\"!settings.stickyFooter\">\n                      {{footer}}\n                    </template>\n                 \n                  </div>\n              \n            </div>\n\n          </div>\n\n                    <template x-if=\"settings.stickyFooter\">\n                      {{footer}}\n                    </template>\n\n     \n      \n      </div>\n\n    {% endif %}\n    </div>\n  {% endcapture %}\n\t{% render 'kuu-drawer', trigger: cart_trigger, content: cart_content, id: id, from: 'right', headless: headless %}\n</div>\n\n<script type='application/json' id='cartdrawer-settings'>\n\t{\n\t\"stickyHeader\": {{ sticky_header | json }},\n\t\"stickyFooter\": {{ sticky_footer | json }},\n\n\t\"showComparePrice\": {{ show_compare_price | json }},\n\t\"finalPriceColor\": {{ final_price_color  | json }},\n\t\"showVariantTitle\": {{ show_variant_title | json }},\n\n\t\"showSavingsBadge\": {{ show_savings_badge | json }},\n\t\"savingsBadgeColor\":{{ savings_badge_color  | json }}\n\t}\n</script>\n\n\n\n{% endraw %}",
+                            "copy_button": true,
+                            "show_pathname": true,
+                            "pathname": "snippets/kuu-cartdrawer.liquid",
+                            "height": "fit-content",
+                            "custom_height": 348,
+                            "height_min": 0,
+                            "add_height_max": true,
+                            "height_max": "348px",
+                            "add_height_mobile": false,
+                            "height_mobile": "custom",
+                            "custom_height_mobile": 348,
+                            "height_min_mobile": 0,
+                            "add_height_max_mobile": false,
+                            "height_max_mobile": ""
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_codeblock_4Cgyrj"
+                      ]
+                    },
+                    "kuu_tab_item_7M6qcy": {
+                      "type": "_kuu-tab-item",
+                      "name": "kuu-cartdrawer-items",
+                      "settings": {
+                        "tab_title": "Cartdrawer Items"
+                      },
+                      "blocks": {
+                        "kuu_codeblock_ahjMad": {
+                          "type": "kuu-codeblock",
+                          "name": "Code Block",
+                          "settings": {
+                            "language": "liquid",
+                            "content": "",
+                            "liquid_code": "{% raw %}\n<ul\n\tclass='flex flex-col gap-4 lg:gap-6'\n\tid='cartdrawer-content'\n\taria-label='cart items'\n>\n\t{% for item in cart.items %}\n\t\t<li\n\t\t\taria-labelledby='cart-item-{{ item.key }}-title'\n\t\t\tdata-product-id='{{ item.product.id }}'\n\t\t\tdata-variant-id='{{item.variant.id}}'\n\t\t\tdata-line='{{item.id}}'\n\t\t\tkey='{{ item.key }}'\n\t\t\taria-label='{{product.title}}'\n\t\t\tclass='focus:outline-none '\n\t\t\ttabindex='-1'\n\t\t>\n\t\t\t<div\n\t\t\t\tclass='group relative flex justify-between gap-5 px-5 lg:px-8'\n\t\t\t\tx-id=\"['{{ item.key }}']\"\n\t\t\t\t:class=\"{ 'opacity-95 pointer-events-none': updatingKey === '{{ item.key }}' }\"\n\t\t\t>\n\t\t\t\t<!-- LEFT SIDE: IMAGE + DETAILS -->\n\t\t\t\t<div class='flex  gap-5'>\n\t\t\t\t\t<!-- Product image -->\n\t\t\t\t\t<a\n\t\t\t\t\t\thref='{{item.product.url}}'\n\t\t\t\t\t\taria-labelledby='cart-item-{{ item.key }}-title'\n\t\t\t\t\t\tclass='block size-20 shrink-0 overflow-hidden rounded  bg-gray-200'\n\t\t\t\t\t>\n\t\t\t\t\t\t<img\n\t\t\t\t\t\t\tsrc='{{ item.image | image_url: width: 200 }}'\n\t\t\t\t\t\t\talt='{{ item.title | escape }}'\n\t\t\t\t\t\t\tclass='h-full w-full object-cover'\n\t\t\t\t\t\t\twidth='80px'\n\t\t\t\t\t\t\theight='80px'\n\t\t\t\t\t\t\taria-hidden='true'\n\t\t\t\t\t\t>\n\t\t\t\t\t</a>\n\n\t\t\t\t\t<!-- Product details -->\n\t\t\t\t\t<div class=' flex flex-col gap-1'>\n\t\t\t\t\t\t<!-- Product Title -->\n\t\t\t\t\t\t<a\n\t\t\t\t\t\t\tid='cart-item-{{ item.key }}-title'\n\t\t\t\t\t\t\thref='{{item.product.url}}'\n\t\t\t\t\t\t\tclass='reversed-link line-clamp-2 max-w-50 font-semibold'\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t{{- item.title -}}\n\t\t\t\t\t\t</a>\n\n\t\t\t\t\t\t<!-- Price -->\n\n\t\t\t\t\t\t<template x-if='settings.showComparePrice'>\n\t\t\t\t\t\t\t{% if item.original_line_price != item.final_line_price %}\n\t\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\t\tclass='flex flex-col flex-wrap gap-x-1 gap-y-px md:flex-row md:items-center'\n\t\t\t\t\t\t\t\t\t:class=\"updatingKey == '{{item.key}}' && 'animate-pulse'\"\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t<div class='flex  items-center gap-2'>\n\t\t\t\t\t\t\t\t\t\t<span class='sr-only'>Discounted price</span>\n\t\t\t\t\t\t\t\t\t\t<span style='color:{{final_price_color}}' :style='{color: settings.finalPriceColor}'>\n\t\t\t\t\t\t\t\t\t\t\t{{- item.final_line_price | money -}}\n\t\t\t\t\t\t\t\t\t\t</span>\n\n\t\t\t\t\t\t\t\t\t\t<span class='sr-only'>Original price</span>\n\t\t\t\t\t\t\t\t\t\t<span class='text-gray-500 line-through'>\n\t\t\t\t\t\t\t\t\t\t\t{{ item.original_line_price | money }}\n\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t\t\t\t<template x-if='settings.showSavingsBadge'>\n\t\t\t\t\t\t\t\t\t\t<span\n\t\t\t\t\t\t\t\t\t\t\tclass='w-fit shrink-0 rounded-md  px-1.5 py-px text-xs'\n\t\t\t\t\t\t\t\t\t\t\t:style='{background:settings.savingsBadgeColor, color:_getContrastColor(settings.savingsBadgeColor)}'\n\t\t\t\t\t\t\t\t\t\t\tdata-savings-badge\n\t\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\t\tSaved {{ item.original_line_price | minus: item.final_line_price | money }}\n\t\t\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t\t</template>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t{% else %}\n\t\t\t\t\t\t\t\t<span :class=\"updatingKey == '{{item.key}}' && 'animate-pulse'\">\n\t\t\t\t\t\t\t\t\t{{- item.final_line_price | money -}}\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t{% endif %}\n\t\t\t\t\t\t</template>\n\n\t\t\t\t\t\t<template x-if='!settings.showComparePrice'>\n\t\t\t\t\t\t\t<span :class=\"updatingKey == '{{item.key}}' && 'animate-pulse'\">{{ item.final_line_price | money }}</span>\n\t\t\t\t\t\t</template>\n\n\t\t\t\t\t\t<!-- Variant options (Color: Red, Size: M, etc.) -->\n\t\t\t\t\t\t<template x-if='settings.showVariantTitle'>\n\t\t\t\t\t\t\t{% if item.product.has_only_default_variant == false and item.item_components.size == 0 %}\n\t\t\t\t\t\t\t\t<span class='max-w-30 text-xs text-gray-500' aria-hidden='true'>{{ item.variant.title }}</span>\n\n\t\t\t\t\t\t\t\t{% for option in item.options_with_values %}\n\t\t\t\t\t\t\t\t\t<span class='sr-only'> {{ option.name }}: {{ option.value }} </span>\n\t\t\t\t\t\t\t\t{% endfor %}\n\t\t\t\t\t\t\t{% endif %}\n\t\t\t\t\t\t</template>\n\n\t\t\t\t\t\t<!-- Error Messages -->\n\t\t\t\t\t\t<template x-if=\"cartMessage && cartMessage.key === '{{ item.key }}'\">\n\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\tclass=' min-h-5 text-sm '\n\t\t\t\t\t\t\t\t:class=\"cartMessage.type === 'warning'? 'text-amber-500': cartMessage.type === 'success' ? 'text-green-500':'text-red-500'\"\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<style>\n\t\t\t\t\t\t\t\t\t.cart-message-icon > svg {\n\t\t\t\t\t\t\t\t\t\twidth: 14px;\n\t\t\t\t\t\t\t\t\t\tdisplay: inline;\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t</style>\n\n\t\t\t\t\t\t\t\t<span class='cart-message-icon shrink-0' aria-hidden='true'>\n\t\t\t\t\t\t\t\t\t<template x-if=\"cartMessage.type === 'warning'\">\n\t\t\t\t\t\t\t\t\t\t{{ 'icons/circle-alert.svg' | inline_asset_content }}\n\t\t\t\t\t\t\t\t\t</template>\n\t\t\t\t\t\t\t\t\t<template x-if=\"cartMessage.type === 'success'\">\n\t\t\t\t\t\t\t\t\t\t{{ 'icons/circle-check.svg' | inline_asset_content }}\n\t\t\t\t\t\t\t\t\t</template>\n\t\t\t\t\t\t\t\t\t<template x-if=\"cartMessage.type === 'error'\">\n\t\t\t\t\t\t\t\t\t\t{{ 'icons/circle-x.svg' | inline_asset_content }}\n\t\t\t\t\t\t\t\t\t</template>\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t\t<span class='sr-only' x-text='cartMessage.type'></span>\n\t\t\t\t\t\t\t\t<span x-text='cartMessage.message' class='text-sm'></span>\n\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\t@click='clearCartMessage()'\n\t\t\t\t\t\t\t\t\tclass='ml-1 cursor-pointer underline'\n\t\t\t\t\t\t\t\t\ttitle='Click to clear error'\n\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\tClear\n\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</template>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<!-- RIGHT SIDE: QUANTITY + REMOVE -->\n\t\t\t\t<div class='flex shrink-0 flex-col items-center justify-center gap-2'>\n\t\t\t\t\t<!-- Quantity control -->\n\t\t\t\t\t<div class='flex h-10 items-center justify-center overflow-hidden rounded border border-gray-200 p-px'>\n\t\t\t\t\t\t<label for='qty-{{ item.id }}' class='sr-only'>Quantity for {{ item.title }}</label>\n\t\t\t\t\t\t<input\n\t\t\t\t\t\t\tid='qty-{{ item.id }}'\n\t\t\t\t\t\t\tname='{{item.key}}'\n\t\t\t\t\t\t\ttype='text'\n\t\t\t\t\t\t\tvalue='{{ item.quantity }}'\n\t\t\t\t\t\t\tclass='w-12 appearance-none p-px text-center ring-0 outline-0'\n\t\t\t\t\t\t\t@change=\"onQuantityInput($event, '{{ item.key }}')\"\n\t\t\t\t\t\t\t@keyup=\"filterNumeric($event, '{{ item.key }}')\"\n\t\t\t\t\t\t>\n\n\t\t\t\t\t\t<div class='hidden flex-col items-center justify-center md:flex '>\n\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\tdata-qty-increase='{{ item.id }}'\n\t\t\t\t\t\t\t\taria-label='Increase quantity for {{ item.title }}'\n\t\t\t\t\t\t\t\tclass='flex size-5 items-center justify-center bg-gray-50 text-gray-400 transition duration-400 ease-out hover:bg-gray-200 hover:text-gray-700'\n\t\t\t\t\t\t\t\t@click=\"onQuantityClick('{{ item.key }}', Number($event.target.closest('[key]').querySelector('input').value) + 1)\"\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t{{ 'icons/chevron-up.svg' | inline_asset_content }}\n\t\t\t\t\t\t\t</button>\n\n\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\tdata-qty-decrease='{{ item.id }}'\n\t\t\t\t\t\t\t\taria-label='Decrease quantity for {{ item.title }}'\n\t\t\t\t\t\t\t\tclass='flex size-5 items-center justify-center bg-gray-50 text-gray-400 transition duration-400 ease-out hover:bg-gray-200 hover:text-gray-700 disabled:pointer-events-none disabled:opacity-50'\n\t\t\t\t\t\t\t\t@click=\"onQuantityClick('{{ item.key }}', Math.max(1, Number($event.target.closest('[key]').querySelector('input').value) - 1))\"\n\t\t\t\t\t\t\t\t{%- if item.quantity == 1 -%}\n\t\t\t\t\t\t\t\t\tdisabled\n\t\t\t\t\t\t\t\t{%- endif -%}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t{{ 'icons/chevron-down.svg' | inline_asset_content }}\n\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<!-- Remove -->\n\t\t\t\t\t<button\n\t\t\t\t\t\tdata-qty-remove='{{ item.id }}'\n\t\t\t\t\t\taria-label='Remove {{ item.title }} from cart'\n\t\t\t\t\t\tx-show=\"updatingKey !== '{{ item.key }}'\"\n\t\t\t\t\t\tclass='h-5 text-right text-xs text-gray-500 underline hover:text-black'\n\t\t\t\t\t\t@click=\"updateQuantity('{{ item.key }}', 0)\"\n\t\t\t\t\t>\n\t\t\t\t\t\tRemove\n\t\t\t\t\t</button>\n\n\t\t\t\t\t<!-- Spinner for currently updating item -->\n\t\t\t\t\t<template x-if=\"updatingKey === '{{ item.key }}'\">\n\t\t\t\t\t\t<span\n\t\t\t\t\t\t\taria-hidden='true'\n\t\t\t\t\t\t\tclass=' flex size-5 animate-spin items-center justify-center self-end text-gray-500 transition ease-linear  [animation-duration:0.5s]'\n\t\t\t\t\t\t\t@click=\"updateQuantity('{{ item.key }}', 0)\"\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t{{ 'icons/loader-circle.svg' | inline_asset_content }}\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</template>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</li>\n\t{% endfor %}\n</ul>\n\n\n{% endraw %}",
+                            "copy_button": true,
+                            "show_pathname": true,
+                            "pathname": "snippets/kuu-cartdrawer-items.liquid",
+                            "height": "fit-content",
+                            "custom_height": 348,
+                            "height_min": 0,
+                            "add_height_max": true,
+                            "height_max": "348px",
+                            "add_height_mobile": false,
+                            "height_mobile": "custom",
+                            "custom_height_mobile": 348,
+                            "height_min_mobile": 0,
+                            "add_height_max_mobile": false,
+                            "height_max_mobile": ""
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_codeblock_ahjMad"
+                      ]
+                    },
+                    "kuu_tab_item_aPNHWJ": {
+                      "type": "_kuu-tab-item",
+                      "name": "kuu-cartdrawer-footer",
+                      "settings": {
+                        "tab_title": "Cartdrawer Footer"
+                      },
+                      "blocks": {
+                        "kuu_codeblock_we8FAV": {
+                          "type": "kuu-codeblock",
+                          "name": "Code Block",
+                          "settings": {
+                            "language": "liquid",
+                            "content": "",
+                            "liquid_code": "{% raw %}\n{% # Cart Footer %}\n<div\n\tclass='flex min-h-24 shrink-0  flex-col justify-between border-t  border-gray-200 pb-4 md:pb-8 lg:min-h-35'\n\tid='cartdrawer-footer'\n>\n\t<div class='flex flex-col gap-4 lg:gap-6'>\n\t\t<!-- Total -->\n\t\t<div class='flex flex-col gap-1 px-4 pt-4 lg:px-8 lg:pt-6'>\n\t\t\t<div class='flex items-center justify-between'>\n\t\t\t\t<span class='font-medium lg:text-lg'>Total</span>\n\n\t\t\t\t<template x-if='settings.showComparePrice'>\n\t\t\t\t\t{% if cart.original_total_price > cart.total_price %}\n\t\t\t\t\t\t<div class='flex gap-2' :class=\"updatingKey && 'animate-pulse'\">\n\t\t\t\t\t\t\t<span\n\t\t\t\t\t\t\t\tclass='font-semibold lg:text-lg'\n\t\t\t\t\t\t\t\tstyle='color:{{final_price_color}}'\n\t\t\t\t\t\t\t\t:style='{color: settings.finalPriceColor}'\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t{{- cart.total_price | money -}}\n\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t<span class=' line-through lg:text-lg'>{{ cart.original_total_price | money }}</span>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t{% else %}\n\t\t\t\t\t\t<span class='font-semibold lg:text-lg' :class=\"updatingKey && 'animate-pulse'\">\n\t\t\t\t\t\t\t{{- cart.total_price | money -}}\n\t\t\t\t\t\t</span>\n\t\t\t\t\t{% endif %}\n\t\t\t\t</template>\n\n\t\t\t\t<template x-if='!settings.showComparePrice'>\n\t\t\t\t\t<span class='font-semibold lg:text-lg' :class=\"updatingKey && 'animate-pulse'\">\n\t\t\t\t\t\t{{- cart.total_price | money -}}\n\t\t\t\t\t</span>\n\t\t\t\t</template>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<!-- CTA -->\n\t\t<div class='flex flex-col items-center justify-center gap-2 px-4 lg:gap-4 lg:px-8'>\n\t\t\t<div class='flex w-full items-center justify-center gap-4'>\n\t\t\t\t{% if show_secondary_footer_cta %}\n\t\t\t\t\t<div\n\t\t\t\t\t\tclass='hidden w-1/2 md:block'\n\t\t\t\t\t\t{% unless secondary_footer_cta_link %}\n\t\t\t\t\t\t\tdata-drawer-close\n\t\t\t\t\t\t{% endunless %}\n\t\t\t\t\t>\n\t\t\t\t\t\t{% render 'kuu-button',\n\t\t\t\t\t\t\tvariant: 'secondary',\n\t\t\t\t\t\t\tsize: 'lg',\n\t\t\t\t\t\t\tlabel: secondary_footer_cta_label,\n\t\t\t\t\t\t\thref: secondary_footer_cta_link,\n\t\t\t\t\t\t\tclass: 'w-full! rounded-full!'\n\t\t\t\t\t\t%}\n\t\t\t\t\t</div>\n\t\t\t\t{% endif %}\n\n\t\t\t\t{% if show_checkout_lock_icon %}\n\t\t\t\t\t{% assign icon = 'icons/lock-keyhole.svg' %}\n\t\t\t\t{% else %}\n\t\t\t\t\t{% assign icon = null %}\n\t\t\t\t{% endif %}\n\n\t\t\t\t{% render 'kuu-button',\n\t\t\t\t\tvariant: 'primary',\n\t\t\t\t\tsize: 'lg',\n\t\t\t\t\tlabel: checkout_button_label,\n\t\t\t\t\ticon: icon,\n\t\t\t\t\tclass: 'w-full! rounded-full!',\n\t\t\t\t\twrapper_class: 'w-full md:w-1/2',\n\t\t\t\t\talign: 'center',\n\t\t\t\t\thref: '/checkout'\n\t\t\t\t%}\n\t\t\t</div>\n\n\t\t\t{% if show_secondary_footer_cta %}\n\t\t\t\t{% if secondary_footer_cta_link %}\n\t\t\t\t\t<a class='cursor-pointer text-center underline md:hidden' href='{{secondary_footer_cta_link}}'>\n\t\t\t\t\t\t{{- secondary_footer_cta_label -}}\n\t\t\t\t\t</a>\n\t\t\t\t{% else %}\n\t\t\t\t\t<span class='cursor-pointer text-center underline md:hidden' data-drawer-close>\n\t\t\t\t\t\t{{- secondary_footer_cta_label -}}\n\t\t\t\t\t</span>\n\t\t\t\t{% endif %}\n\t\t\t{% endif %}\n\t\t</div>\n\t</div>\n</div>\n\n\n{% endraw %}",
+                            "copy_button": true,
+                            "show_pathname": true,
+                            "pathname": "snippets/kuu-cartdrawer-footer.liquid",
+                            "height": "fit-content",
+                            "custom_height": 348,
+                            "height_min": 0,
+                            "add_height_max": true,
+                            "height_max": "348px",
+                            "add_height_mobile": false,
+                            "height_mobile": "custom",
+                            "custom_height_mobile": 348,
+                            "height_min_mobile": 0,
+                            "add_height_max_mobile": false,
+                            "height_max_mobile": ""
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_codeblock_we8FAV"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_tab_item_em8bXy",
+                    "kuu_tab_item_7M6qcy",
+                    "kuu_tab_item_aPNHWJ"
+                  ]
+                },
+                "kuu_markdown_nENHRP": {
+                  "type": "kuu-markdown",
+                  "name": "Markdown with Padding",
+                  "settings": {
+                    "content": "### 3. Add the JavaScript\n\nPlace `assets/js/blocks/kuu-cartdrawer.js` in `assets/js/blocks/`.",
+                    "padding-block-start": 24,
+                    "padding-block-end": 24,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0,
+                    "custom_mobile_padding": true,
+                    "mobile-padding-block-start": 16,
+                    "mobile-padding-block-end": 16,
+                    "mobile-padding-inline-start": 0,
+                    "mobile-padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "kuu_codeblock_jrfQqW": {
+                  "type": "kuu-codeblock",
+                  "name": "Code Block",
+                  "settings": {
+                    "language": "javascript",
+                    "content": "/** Kuu cartdrawer js **/\n\ndocument.addEventListener('alpine:init', () => {\n\tconst Alpine = window.Alpine;\n\n\tAlpine.data('cartDrawer', () => ({\n\t\t/** @type {string} */\n\t\tsectionId: '',\n\t\t/**\n\t\t * The key of the item currently being updated.\n\t\t * Used to show per-item spinners.\n\t\t * @type {string|null}\n\t\t */\n\t\tupdatingKey: null,\n\n\t\t/**\n\t\t * The cart update message.\n\t\t * @type {CartMessage | null}\n\t\t */\n\t\tcartMessage: null,\n\t\t/**\n\t\t * Debounce timers for each item (by key).\n\t\t * Prevents rapid clicks from sending multiple network requests.\n\t\t * @type {Record<string number>}\n\t\t */\n\t\tdebounceTimers: {},\n\n\t\t/**\n\t\t * Locally tracked quantities before syncing with the server.\n\t\t * This ensures optimistic UI updates while the user interacts.\n\t\t * @type {Record<string number>}\n\t\t */\n\t\tpendingQuantities: {},\n\t\t/**\n\t\t * Locally tracked quantities before syncing with the server.\n\t\t * This allows us to revert to the previous quantity if the update fails.\n\t\t * @type {Record<string number>}\n\t\t */\n\t\titemsQuantity: {},\n\t\t/** @type {Cart | null} */\n\t\tcart: null,\n\t\t/**\n\t\t * @type {CartDrawerSettings}\n\t\t */\n\t\tsettings: {\n\t\t\tstickyHeader: true,\n\t\t\tstickyFooter: true,\n\t\t\tshowComparePrice: false,\n\t\t\tfinalPriceColor: '#fb2c36',\n\t\t\tshowVariantTitle: true,\n\t\t\tshowSavingsBadge: false,\n\t\t\tsavingsBadgeColor: '#fb2c36',\n\t\t},\n\t\tasync init() {\n\t\t\tthis.sectionId = this.$el.dataset.sectionId || '';\n\n\t\t\tconst script = document.getElementById(`cartdrawer-settings`);\n\t\t\tif (!script) {\n\t\t\t\treturn;\n\t\t\t}\n\n\t\t\tthis.settings = JSON.parse(script.textContent);\n\n\t\t\ttry {\n\t\t\t\t// Populate items quantity\n\t\t\t\tconst cartRes = await fetch('/cart.js');\n\t\t\t\t/** @type {Cart} */\n\t\t\t\tconst cart = await cartRes.json();\n\n\t\t\t\tthis.cart = cart;\n\n\t\t\t\tif (!cartRes.ok) {\n\t\t\t\t\tconst cartErr = await cartRes.json();\n\t\t\t\t\tthrow new Error(`${cartErr?.message || 'Failed to fetch cart'}`);\n\t\t\t\t}\n\t\t\t\tcart.items.forEach((item) => {\n\t\t\t\t\tthis.itemsQuantity[item.key] = item.quantity;\n\t\t\t\t});\n\n\t\t\t\t// Add window object\n\t\t\t\tthis.addWindowObject();\n\n\t\t\t\tthis.dispatchEvent('cartdrawer:init', {});\n\t\t\t} catch (error) {\n\t\t\t\tthis.dispatchEvent('cartdrawer:init', { error });\n\t\t\t}\n\t\t},\n\t\t/**\n\t\t * Sanitize user input to allow only numeric values.\n\t\t * @param {Event} event - Input event from quantity field\n\t\t */\n\t\tfilterNumeric(event) {\n\t\t\tconst el = event.target;\n\t\t\tif (!(el instanceof HTMLInputElement)) return;\n\t\t\tel.value = el.value.replace(/\\D/g, '');\n\t\t},\n\t\t/**\n\t\t * Clear the cart update message.\n\t\t */\n\t\tclearCartMessage() {\n\t\t\tlet restoreSelector = this.getActiveElementSelector();\n\t\t\tthis.cartMessage = null;\n\n\t\t\t// Restore focus\n\t\t\tif (restoreSelector) {\n\t\t\t\tconst el = document.querySelector(restoreSelector);\n\n\t\t\t\tif (el instanceof HTMLInputElement || el instanceof HTMLButtonElement) {\n\t\t\t\t\tel.focus();\n\t\t\t\t}\n\t\t\t}\n\t\t},\n\t\t/**\n\t\t * Add a message to the cart drawer.\n\t\t * @param {CartMessage} cartMessage\n\t\t */\n\t\tsetCartMessage(cartMessage, skipAnnouncement = false) {\n\t\t\tconst { message, type, key } = cartMessage;\n\t\t\tthis.cartMessage = { message, type, key };\n\n\t\t\t// Annouce message to screen readers\n\t\t\tif (!skipAnnouncement) {\n\t\t\t\tthis.announce(cartMessage.message);\n\t\t\t}\n\t\t},\n\n\t\t/**\n\t\t * Handles manual typing in the quantity input.\n\t\t * Optimistically updates local state and triggers a debounced update.\n\t\t *\n\t\t * @param {Event} event - Input event\n\t\t * @param {string} key - Unique cart item key\n\t\t */\n\t\tonQuantityInput(event, key) {\n\t\t\tconst el = event.target;\n\t\t\tif (!(el instanceof HTMLInputElement)) return;\n\t\t\tconst value = el.value.trim();\n\n\t\t\tif (value.length === 0) {\n\t\t\t\tthis.updateQuantityValue(key, this.itemsQuantity[key] || 1);\n\t\t\t\treturn;\n\t\t\t}\n\n\t\t\t// Save optimistic quantity immediately\n\t\t\tthis.pendingQuantities[key] = value;\n\t\t\tthis.debounceCartUpdate(key, value);\n\t\t},\n\n\t\t/**\n\t\t * Handles clicks on increment/decrement buttons.\n\t\t * Updates the input immediately and debounces the request.\n\t\t *\n\t\t * @param {string} key - Unique cart item key\n\t\t * @param {string} newQuantity - New quantity after click\n\t\t */\n\t\tonQuantityClick(key, newQuantity) {\n\t\t\tthis.updateQuantityValue(key, newQuantity);\n\n\t\t\tthis.pendingQuantities[key] = newQuantity;\n\t\t\tthis.debounceCartUpdate(key, newQuantity);\n\t\t},\n\n\t\t/**\n\t\t * Updates the quantity input value optimistically.\n\t\t * @param {string} key - Unique cart item key\n\t\t * @param {string | number} newQuantity - New quantity after click\n\t\t */\n\t\tupdateQuantityValue(key, newQuantity) {\n\t\t\tconst cartItem = document.querySelector(`[key=\"${key}\"]`);\n\n\t\t\t/** @type {HTMLInputElement|null|undefined} */\n\t\t\tconst input = cartItem?.querySelector('input[type=\"text\"]');\n\n\t\t\tif (input) {\n\t\t\t\tinput.value = newQuantity.toString();\n\t\t\t}\n\t\t},\n\n\t\t/**\n\t\t * Debounces cart updates to avoid sending too many requests.\n\t\t * Each item key has its own independent debounce timer.\n\t\t *\n\t\t * @param {string} key - Unique cart item key\n\t\t * @param {number|string} quantity - Target quantity\n\t\t */\n\t\tdebounceCartUpdate(key, quantity) {\n\t\t\tclearTimeout(this.debounceTimers[key]);\n\n\t\t\tthis.debounceTimers[key] = setTimeout(() => {\n\t\t\t\tthis.updateQuantity(key, quantity);\n\t\t\t}, 500); // Wait 0.5s after last input/click\n\t\t},\n\n\t\t/**\n\t\t * Sends the network request to update the Shopify cart.\n\t\t * This method morphs the `#cartdrawer-content` with updated markup.\n\t\t *\n\t\t * @param {string} key - Unique cart item key\n\t\t * @param {number|string} quantity - Target quantity\n\t\t * @returns {Promise<void>}\n\t\t */\n\t\tasync updateQuantity(key, quantity) {\n\t\t\tthis.updatingKey = key;\n\t\t\tthis.clearCartMessage();\n\n\t\t\ttry {\n\t\t\t\t// Update cart item quantity via Shopify AJAX API\n\t\t\t\tconst cartRes = await fetch('/cart/change.js', {\n\t\t\t\t\tmethod: 'POST',\n\t\t\t\t\theaders: { 'Content-Type': 'application/json' },\n\t\t\t\t\tbody: JSON.stringify({ id: key, quantity }),\n\t\t\t\t});\n\n\t\t\t\tif (!cartRes.ok) {\n\t\t\t\t\tconst cartErr = await cartRes.json();\n\t\t\t\t\tthrow new Error(`${cartErr?.message || 'Failed to update cart'}`);\n\t\t\t\t}\n\n\t\t\t\t/** @type {Cart} */\n\t\t\t\tconst cart = await cartRes.json();\n\n\t\t\t\tthis.cart = cart;\n\n\t\t\t\t// Update ItemsQuantity\n\t\t\t\tcart.items.forEach((item) => {\n\t\t\t\t\tthis.itemsQuantity[item.key] = item.quantity;\n\t\t\t\t});\n\n\t\t\t\t// Reflect the confirmed quantity from server\n\t\t\t\tconst newQuantity =\n\t\t\t\t\tcart?.items?.find((item) => item.key === key)?.quantity ?? null;\n\t\t\t\tif (newQuantity && newQuantity !== quantity) {\n\t\t\t\t\tthis.setCartMessage({\n\t\t\t\t\t\tmessage: `Only ${newQuantity} item${newQuantity > 1 ? 's' : ''} left in stock`,\n\t\t\t\t\t\ttype: 'warning',\n\t\t\t\t\t\tkey,\n\t\t\t\t\t});\n\t\t\t\t\tthis.updateQuantityValue(key, newQuantity);\n\t\t\t\t} else {\n\t\t\t\t\tthis.announce('Cart Quantity updated');\n\t\t\t\t}\n\n\t\t\t\t// Refresh the cart drawer content\n\t\t\t\tawait this.updateCartDrawer();\n\t\t\t} catch (err) {\n\t\t\t\tawait this.updateCartDrawer();\n\n\t\t\t\tif (typeof err === 'string') {\n\t\t\t\t\tthis.setCartMessage({ message: err, type: 'error', key });\n\t\t\t\t} else if (err instanceof Error) {\n\t\t\t\t\tthis.setCartMessage({ message: err.message, type: 'error', key });\n\t\t\t\t} else {\n\t\t\t\t\tthis.setCartMessage({\n\t\t\t\t\t\tmessage: 'Unable to update cart. Please try again.',\n\t\t\t\t\t\ttype: 'error',\n\t\t\t\t\t\tkey,\n\t\t\t\t\t});\n\t\t\t\t}\n\n\t\t\t\t// Revert optimistic update on error\n\t\t\t\tthis.updateQuantityValue(key, this.itemsQuantity[key] || 1);\n\t\t\t} finally {\n\t\t\t\tthis.updatingKey = null;\n\t\t\t}\n\t\t},\n\t\t/**\n\t\t * @param {CartDrawerUpdateOptions } [options]\n\t\t */\n\t\tasync updateCartDrawer(options) {\n\t\t\tconst beforeRefresh = options?.beforeRefresh;\n\t\t\tconst afterRefresh = options?.afterRefresh;\n\n\t\t\ttry {\n\t\t\t\t//CAPTURE CURRENT FOCUS USING data-line ATTRIBUTE\n\t\t\t\tconst active = document.activeElement;\n\t\t\t\tlet restoreSelector = this.getActiveElementSelector();\n\n\t\t\t\t// Fetch updated cart drawer section\n\t\t\t\tconst res = await fetch(`/?sections=${this.sectionId}`);\n\t\t\t\tconst data = await res.json();\n\t\t\t\tconst cartContent = document.querySelector('#cartdrawer-content');\n\t\t\t\tconst cartBubbles = document.querySelectorAll(\n\t\t\t\t\t'[data-cartdrawer-bubble]',\n\t\t\t\t);\n\n\t\t\t\tconst fragment = new DOMParser().parseFromString(\n\t\t\t\t\tdata[this.sectionId],\n\t\t\t\t\t'text/html',\n\t\t\t\t);\n\t\t\t\tconst newCartDrawer = fragment.querySelector('#cartdrawer');\n\t\t\t\tconst newContent = fragment.querySelector('#cartdrawer-content');\n\t\t\t\tconst newBubble = fragment.querySelector('[data-cartdrawer-bubble]');\n\n\t\t\t\tthis.dispatchEvent('cartdrawer:updating', {\n\t\t\t\t\tcartDrawer: newCartDrawer,\n\t\t\t\t});\n\n\t\t\t\tif (beforeRefresh) {\n\t\t\t\t\tbeforeRefresh(newCartDrawer, this.cart);\n\t\t\t\t}\n\n\t\t\t\tif (cartContent && newContent) {\n\t\t\t\t\tAlpine.morph(cartContent, newContent);\n\n\t\t\t\t\t// RESTORE FOCUS\n\t\t\t\t\tif (restoreSelector) {\n\t\t\t\t\t\tconst target = document.querySelector(restoreSelector);\n\t\t\t\t\t\tif (\n\t\t\t\t\t\t\ttarget &&\n\t\t\t\t\t\t\t(target instanceof HTMLInputElement ||\n\t\t\t\t\t\t\t\ttarget instanceof HTMLButtonElement)\n\t\t\t\t\t\t) {\n\t\t\t\t\t\t\ttarget.focus();\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\tif (afterRefresh) {\n\t\t\t\t\tafterRefresh(document.querySelector('#cartdrawer'), this.cart);\n\t\t\t\t}\n\n\t\t\t\tif (cartBubbles.length > 0 && newBubble) {\n\t\t\t\t\tcartBubbles.forEach((cartBubble) => {\n\t\t\t\t\t\tcartBubble.textContent = newBubble.textContent;\n\t\t\t\t\t});\n\t\t\t\t}\n\t\t\t} catch (error) {\n\t\t\t\tthis.setCartMessage({\n\t\t\t\t\tmessage: 'Unable to update cart. Please try again.',\n\t\t\t\t\ttype: 'error',\n\t\t\t\t});\n\t\t\t}\n\t\t},\n\t\t/**\n\t\t *\n\t\t * @param {Partial<cartdrawersettings>} newSettings\n\t\t */\n\t\tupdateSettings(newSettings) {\n\t\t\tconst updatedSettings = {\n\t\t\t\t...this.settings,\n\t\t\t\t...newSettings,\n\t\t\t};\n\t\t\tthis.settings = updatedSettings;\n\t\t},\n\t\t/**\n\t\t * dispatch cartdrawer events\n\t\t * @param {CartdrawerEvents} event\n\t\t * @param {Object} detail\n\t\t */\n\t\tdispatchEvent(event, detail) {\n\t\t\twindow.dispatchEvent(\n\t\t\t\tnew CustomEvent(event, {\n\t\t\t\t\tdetail,\n\t\t\t\t}),\n\t\t\t);\n\t\t},\n\t\taddWindowObject() {\n\t\t\t/**\n\t\t\t * @type {CartDrawer}\n\t\t\t */\n\t\t\t// @ts-ignore\n\t\t\tconst cartdrawer = window.kuu?.cartDrawer || {};\n\n\t\t\tconst open = () => {\n\t\t\t\twindow.dispatchEvent(\n\t\t\t\t\tnew CustomEvent('drawer:open', { detail: { id: 'cartdrawer' } }),\n\t\t\t\t);\n\t\t\t};\n\n\t\t\tconst close = () => {\n\t\t\t\twindow.dispatchEvent(\n\t\t\t\t\tnew CustomEvent('drawer:close', { detail: { id: 'cartdrawer' } }),\n\t\t\t\t);\n\t\t\t};\n\n\t\t\tconst refresh = this.updateCartDrawer.bind(this);\n\n\t\t\tconst settings = this.settings;\n\n\t\t\tconst updateSettings = this.updateSettings.bind(this);\n\n\t\t\tconst getSettings = this._getSettings.bind(this);\n\n\t\t\tthis.setWindowObject({\n\t\t\t\topen,\n\t\t\t\tclose,\n\t\t\t\trefresh,\n\t\t\t\tsettings,\n\t\t\t\tupdateSettings,\n\t\t\t\tgetSettings,\n\t\t\t});\n\t\t},\n\t\tgetActiveElementSelector() {\n\t\t\t// --- CAPTURE CURRENT FOCUS USING data-line ATTRIBUTE ---\n\t\t\tconst active = document.activeElement;\n\t\t\tlet restoreSelector = null;\n\n\t\t\tif (active) {\n\t\t\t\tconst lineEl = active.closest('[data-line]');\n\t\t\t\tif (lineEl) {\n\t\t\t\t\tconst line = lineEl.getAttribute('data-line');\n\t\t\t\t\tif (line) {\n\t\t\t\t\t\tif (active.matches('input')) {\n\t\t\t\t\t\t\trestoreSelector = `[data-line=\"${line}\"] input`;\n\t\t\t\t\t\t} else if (active.matches('button[data-qty-increase]')) {\n\t\t\t\t\t\t\trestoreSelector = `[data-line=\"${line}\"] button[data-qty-increase]`;\n\t\t\t\t\t\t} else if (active.matches('button[data-qty-decrease]')) {\n\t\t\t\t\t\t\trestoreSelector = `[data-line=\"${line}\"] button[data-qty-decrease]`;\n\t\t\t\t\t\t} else if (active.matches('button[data-qty-remove]')) {\n\t\t\t\t\t\t\t// optional: add data attribute to remove button for consistency\n\t\t\t\t\t\t\trestoreSelector = `[data-line=\"${line}\"] button[data-qty-remove]`;\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t// fallback - focus on entire line container\n\t\t\t\t\t\t\trestoreSelector = `[data-line=\"${line}\"]`;\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\treturn restoreSelector;\n\t\t},\n\t\t/**\n\t\t * Announce a message for screen readers\n\t\t * @param {string} message\n\t\t */\n\t\tannounce(message) {\n\t\t\tconst cartDrawerRegion = document.querySelector(\n\t\t\t\t'#cartdrawer-live-region',\n\t\t\t);\n\t\t\tif (cartDrawerRegion) {\n\t\t\t\tcartDrawerRegion.textContent = '';\n\n\t\t\t\tsetTimeout(() => {\n\t\t\t\t\tcartDrawerRegion.textContent = message;\n\t\t\t\t}, 100);\n\t\t\t}\n\t\t},\n\t\tsetWindowObject(/** @type {Partial<cartdrawer>} */ options) {\n\t\t\tconst kuu = window.kuu || {};\n\t\t\t/** @type {CartDrawer} */\n\t\t\tlet cartDrawer = kuu.cartDrawer || {};\n\t\t\tcartDrawer = {\n\t\t\t\t...cartDrawer,\n\t\t\t\t...options,\n\t\t\t};\n\t\t\tkuu.cartDrawer = cartDrawer;\n\t\t\twindow.kuu = kuu;\n\t\t},\n\t\t/**\n\t\t * Returns the contrast color (Black/White) based on the given HEX color.\n\t\t * @param {string} hex\n\t\t */\n\t\t_getContrastColor(hex) {\n\t\t\treturn window.kuu?.utils?.getContrastColor(hex) || '#000000';\n\t\t},\n\t\t_getSettings() {\n\t\t\treturn this.settings;\n\t\t},\n\t}));\n});</cartdrawer></cartdrawersettings></void></string></string></string>",
+                    "liquid_code": "",
+                    "copy_button": true,
+                    "show_pathname": true,
+                    "pathname": "assets/js/blocks/kuu-cartdrawer.js",
+                    "height": "fit-content",
+                    "custom_height": 348,
+                    "height_min": 0,
+                    "add_height_max": true,
+                    "height_max": "348px",
+                    "add_height_mobile": false,
+                    "height_mobile": "custom",
+                    "custom_height_mobile": 348,
+                    "height_min_mobile": 0,
+                    "add_height_max_mobile": false,
+                    "height_max_mobile": ""
+                  },
+                  "blocks": {}
+                },
+                "kuu_markdown_GBb7zY": {
+                  "type": "kuu-markdown",
+                  "name": "Markdown with Padding",
+                  "settings": {
+                    "content": "### 4. Include the Script\n\nAdd to your `snippets/kuu-script.liquid`:",
+                    "padding-block-start": 24,
+                    "padding-block-end": 24,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0,
+                    "custom_mobile_padding": true,
+                    "mobile-padding-block-start": 16,
+                    "mobile-padding-block-end": 16,
+                    "mobile-padding-inline-start": 0,
+                    "mobile-padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "kuu_codeblock_BKBRbB": {
+                  "type": "kuu-codeblock",
+                  "name": "Code Block",
+                  "settings": {
+                    "language": "liquid",
+                    "content": "",
+                    "liquid_code": "{% raw %}\n<script src='{{ 'js/blocks/kuu-cartdrawer.js' | asset_url }}' defer></script>\n{% endraw %}",
+                    "copy_button": true,
+                    "show_pathname": true,
+                    "pathname": "snippets/kuu-script.liquid",
+                    "height": "fit-content",
+                    "custom_height": 348,
+                    "height_min": 0,
+                    "add_height_max": true,
+                    "height_max": "348px",
+                    "add_height_mobile": false,
+                    "height_mobile": "custom",
+                    "custom_height_mobile": 348,
+                    "height_min_mobile": 0,
+                    "add_height_max_mobile": false,
+                    "height_max_mobile": ""
+                  },
+                  "blocks": {}
+                },
+                "kuu_markdown_EhY6Bp": {
+                  "type": "kuu-markdown",
+                  "name": "Markdown with Padding",
+                  "settings": {
+                    "content": "### 5. Add to Theme Editor\n\nIn your theme's  header section, add the Cart Drawer block.",
+                    "padding-block-start": 24,
+                    "padding-block-end": 24,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0,
+                    "custom_mobile_padding": true,
+                    "mobile-padding-block-start": 16,
+                    "mobile-padding-block-end": 16,
+                    "mobile-padding-inline-start": 0,
+                    "mobile-padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "trigger": {
+                  "type": "kuu-markdown",
+                  "static": true,
+                  "settings": {
+                    "content": "## Installation",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0,
+                    "custom_mobile_padding": true,
+                    "mobile-padding-block-start": 0,
+                    "mobile-padding-block-end": 0,
+                    "mobile-padding-inline-start": 0,
+                    "mobile-padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "kuu_markdown_mqxjYG",
+                "kuu_codeblock_TaMfXA",
+                "kuu_markdown_Hk6Lah",
+                "kuu_tab_E6E8CF",
+                "kuu_markdown_nENHRP",
+                "kuu_codeblock_jrfQqW",
+                "kuu_markdown_GBb7zY",
+                "kuu_codeblock_BKBRbB",
+                "kuu_markdown_EhY6Bp"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_collapse_ibFHU9"
+          ]
+        }
+      },
+      "block_order": [
+        "kuu_flex_box_fpg48k"
+      ],
+      "name": "Installation",
+      "settings": {
+        "width": "fill",
+        "custom_width": 100,
+        "add_mobile_width": false,
+        "width_mobile": "fill",
+        "custom_width_mobile": 100,
+        "height": "fit-content",
+        "custom_height": 240,
+        "height_min": 0,
+        "add_height_max": false,
+        "height_max": "",
+        "custom_mobile_height": false,
+        "mobile_height": 240
+      }
+    },
+    "kuu_blank_section_c6CtMe": {
+      "type": "kuu-blank-section",
+      "blocks": {
+        "kuu_markdown_dzrEqa": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## Features\n\n### 1. **Optimistic UI Updates**\n\n- Instant visual feedback when changing quantities\n- Smooth transitions without page reloads\n- Automatic reversion on errors\n\n### 2. **Debounced Network Requests**\n\n- Prevents excessive API calls during rapid clicks\n- 500ms debounce per item\n- Independent timers for each cart item\n\n### 3. **Per-Item Loading States**\n\n- Individual spinners for updating items\n- Non-blocking UI (other items remain interactive)\n- Clear visual feedback\n\n### 4. **Smart Error Handling**\n\n- Stock limit warnings\n- Network error messages\n- Automatic quantity reversion on failure\n- Screen reader announcements\n\n### 5. **Sticky Header & Footer**\n\n- Optional sticky positioning\n- Keeps cart total and checkout button visible\n- Configurable via Theme Editor\n\n### 6. **Price Display Options**\n\n- Show/hide compare-at prices\n- Custom color for sale prices\n- Savings badges with custom colors\n- Automatic contrast color calculation\n\n### 7. **Accessibility**\n\n- ARIA live regions for updates\n- Screen reader announcements\n- Keyboard navigation support\n- Focus management after updates\n\n## Block Settings\n\nConfigure the cart drawer through the Shopify Theme Editor:\n\n### Layout\n\n| Setting                  | Type     | Default | Description                               |\n| :----------------------- | :------- | :------ | :---------------------------------------- |\n| **Enable sticky header** | Checkbox | `true`  | Keeps cart header visible while scrolling |\n| **Enable sticky footer** | Checkbox | `true`  | Keeps total and checkout button visible   |\n\n### Cart Items\n\n| Setting                   | Type     | Default   | Description                                 |\n| :------------------------ | :------- | :-------- | :------------------------------------------ |\n| **Show variant title**    | Checkbox | `true`    | Display variant options (Size, Color, etc.) |\n| **Show compare-at price** | Checkbox | `false`   | Show original price when on sale            |\n| **Final price color**     | Color    | `#fb2c36` | Color for discounted prices                 |\n| **Show savings badge**    | Checkbox | `false`   | Display \"Saved $X\" badge                    |\n| **Savings badge color**   | Color    | `#fb2c36` | Background color for savings badge          |\n\n### Cart Drawer Footer\n\n| Setting                     | Type     | Default                 | Description                          |\n| :-------------------------- | :------- | :---------------------- | :----------------------------------- |\n| **Show lock icon**          | Checkbox | `true`                  | Display lock icon on checkout button |\n| **Checkout button label**   | Text     | `\"Proceed to Checkout\"` | Custom checkout button text          |\n| **Show secondary button**   | Checkbox | `true`                  | Display \"Continue Shopping\" button   |\n| **Secondary button label**  | Text     | `\"Continue Shopping\"`   | Custom secondary button text         |\n| **Secondary button action** | Select   | `close-drawer`          | Action: close drawer or open link    |\n| **Secondary button link**   | URL      | `/`                     | Link when action is \"open-link\"      |",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_Jz4BmJ": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## JavaScript API\n\n### Window Object\n\nThe cart drawer exposes a global API via `window.kuu.cartDrawer`:\n\n```javascript\n// Open the cart drawer\nwindow.kuu.cartDrawer.open();\n\n// Close the cart drawer\nwindow.kuu.cartDrawer.close();\n\n// Refresh cart content\nawait window.kuu.cartDrawer.refresh();\n\n// Get current settings\nconst settings = window.kuu.cartDrawer.getSettings();\n\n// Update settings\nwindow.kuu.cartDrawer.updateSettings({\n\tshowComparePrice: true,\n\tfinalPriceColor: '#ff0000',\n});\n```\n\n### Events\n\nListen to cart drawer events:\n\n```javascript\n// Cart drawer initialized\nwindow.addEventListener('cartdrawer:init', (e) => {\n\tconsole.log('Cart initialized', e.detail);\n});\n\n// Cart drawer updating\nwindow.addEventListener('cartdrawer:updating', (e) => {\n\tconsole.log('Cart updating', e.detail.cartDrawer);\n});\n```\n\n### Refresh with Callbacks\n\n```javascript\nawait window.kuu.cartDrawer.refresh({\n\tbeforeRefresh: (newCartDrawer, cart) => {\n\t\tconsole.log('Before refresh', cart);\n\t},\n\tafterRefresh: (cartDrawer, cart) => {\n\t\tconsole.log('After refresh', cart);\n\t},\n});\n```",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_RAXwcJ": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## Extensibility\n\n### Adding Custom Elements\n\nThe cart drawer has three main areas where you can add custom content:\n\n#### 1. Header Area\n\nAdd elements before or after the cart header in `snippets/kuu-cartdrawer.liquid`:\n\n```liquid\n<!-- After header -->\n<div data-drawer-header class=\"shrink-0\">\n\t<!-- Existing header -->\n\n\t<!-- Custom element -->\n\t<div class=\"bg-blue-50 px-5 py-2\">\n\t\t<p class=\"text-sm\">Free shipping on orders over $50!</p>\n\t</div>\n</div>\n```",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_pTMpQA": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "#### 2. Scrollable Area\n\nAdd content between items and footer in `snippets/kuu-cartdrawer.liquid`:",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_7xGAyB": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "liquid",
+            "content": "",
+            "liquid_code": "{% raw %}\n<div class='flex-1 overflow-y-auto'>\n\t{% render 'cartdrawer-items', ... %}\n\n\t<!-- Custom upsell section -->\n\t<div class='px-5 py-4'>\n\t\t<h3 class='mb-2 font-semibold'>You might also like</h3>\n\t\t<!-- Product recommendations -->\n\t</div>\n\n\t<!-- Footer if not sticky -->\n</div>\n{% endraw %}",
+            "copy_button": true,
+            "show_pathname": false,
+            "pathname": "",
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_Hizm7y": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "#### 3. Footer Area\n\nModify `snippets/cartdrawer-footer.liquid` to add elements:\n\n```liquid\n<div id=\"cartdrawer-footer\">\n\t<!-- Custom promo code input -->\n\t<div class=\"px-4 py-2\">\n\t\t<input type=\"text\" placeholder=\"Promo code\" class=\"w-full rounded border px-3 py-2\">\n\t</div>\n\n\t<!-- Existing total and buttons -->\n</div>\n```",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_T33qNB": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "### A/B Testing\n\nUse the JavaScript API for A/B testing:\n\n```javascript\n// Test different checkout button labels\nconst variant = Math.random() > 0.5 ? 'A' : 'B';\n\nif (variant === 'A') {\n\t// Change button label dynamically\n\tdocument.querySelector('#cartdrawer-footer button').textContent =\n\t\t'Complete Purchase';\n} else {\n\t// Use default label\n}\n\n// Track which variant converts better\n```\n\n### Custom Styling\n\nOverride default styles with custom classes:",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_QzbtRw": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "liquid",
+            "content": "",
+            "liquid_code": "{% raw %}\n{%\n\trender 'kuu-cartdrawer',\n\tpanel_class: 'custom-cart-panel',\n\t...\n%}\n{% endraw %}",
+            "copy_button": true,
+            "show_pathname": false,
+            "pathname": "",
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_codeblock_4zLT3p": {
+          "type": "kuu-codeblock",
+          "name": "Code Block",
+          "settings": {
+            "language": "css",
+            "content": "/** Style cart panel **/\n.custom-cart-panel {\n\tbackground: linear-gradient(to bottom, #ffffff, #f9fafb);\n}",
+            "liquid_code": "",
+            "copy_button": true,
+            "show_pathname": false,
+            "pathname": "",
+            "height": "fit-content",
+            "custom_height": 348,
+            "height_min": 0,
+            "add_height_max": true,
+            "height_max": "348px",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": ""
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_YR998p": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## Advanced Usage\n\n### Programmatic Cart Updates\n\n```javascript\n// Add item to cart and open drawer\nfetch('/cart/add.js', {\n\tmethod: 'POST',\n\theaders: { 'Content-Type': 'application/json' },\n\tbody: JSON.stringify({ id: variantId, quantity: 1 }),\n}).then(() => {\n\twindow.kuu.cartDrawer.refresh();\n\twindow.kuu.cartDrawer.open();\n});\n```\n\n### Custom Quantity Validation\n\nModify `kuu-cartdrawer.js` to add custom validation:\n\n```javascript\nasync updateQuantity(key, quantity) {\n  // Custom validation\n  if (quantity > 10) {\n    this.setCartMessage({\n      message: 'Maximum 10 items per product',\n      type: 'warning',\n      key\n    });\n    return;\n  }\n\n  // Continue with update...\n}\n```\n\n### Dynamic Settings\n\nChange settings based on cart value:\n\n```javascript\nwindow.addEventListener('cartdrawer:updating', (e) => {\n\tconst cart = window.kuu.cartDrawer.cart;\n\n\tif (cart.total_price > 5000) {\n\t\t// $50+\n\t\twindow.kuu.cartDrawer.updateSettings({\n\t\t\tshowSavingsBadge: true,\n\t\t\tsavingsBadgeColor: '#10b981', // Green for free shipping\n\t\t});\n\t}\n});\n```\n\n## Tips\n\n1. **Sticky Footer:** Enable sticky footer for better UX on mobile devices\n2. **Compare Prices:** Show compare-at prices to highlight savings\n3. **Custom Colors:** Match sale price colors to your brand\n4. **Secondary CTA:** Use \"Continue Shopping\" to reduce cart abandonment\n5. **Loading States:** The drawer handles all loading states automatically\n6. **Focus Management:** Focus is preserved during updates for better accessibility\n7. **Error Recovery:** Failed updates automatically revert to previous quantity\n\n## Accessibility\n\nThe cart drawer includes comprehensive accessibility features:\n\n- **ARIA Live Regions:** Announces cart updates to screen readers\n- **Focus Management:** Maintains focus position during updates\n- **Keyboard Navigation:** Full keyboard support for all controls\n- **Screen Reader Labels:** Descriptive labels for all interactive elements\n- **Error Announcements:** Errors are announced to assistive technologies\n- **Loading States:** Communicated to screen readers\n\n## Related Components\n\n- [Drawer](pages/docs-components-drawer) - Base drawer component\n- [Button](pages/docs-components-button) - Used for CTAs and controls",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "kuu_markdown_dzrEqa",
+        "kuu_markdown_Jz4BmJ",
+        "kuu_markdown_RAXwcJ",
+        "kuu_markdown_pTMpQA",
+        "kuu_codeblock_7xGAyB",
+        "kuu_markdown_Hizm7y",
+        "kuu_markdown_T33qNB",
+        "kuu_codeblock_QzbtRw",
+        "kuu_codeblock_4zLT3p",
+        "kuu_markdown_YR998p"
+      ],
+      "name": "Blank Section",
+      "settings": {
+        "width": "fill",
+        "custom_width": 100,
+        "add_mobile_width": false,
+        "width_mobile": "fill",
+        "custom_width_mobile": 100,
+        "height": "fit-content",
+        "custom_height": 240,
+        "height_min": 0,
+        "add_height_max": false,
+        "height_max": "",
+        "custom_mobile_height": false,
+        "mobile_height": 240
+      }
+    }
+  },
+  "order": [
+    "main",
+    "kuu_blank_section_nF8hKD",
+    "kuu_blank_section_c6CtMe"
+  ]
 }
