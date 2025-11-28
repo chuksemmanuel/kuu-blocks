@@ -361,6 +361,5 @@ The cart drawer includes comprehensive accessibility features:
 
 ## Related Components
 
-- [Drawer](/docs/components/drawer) - Base drawer component
-- [Button](/docs/components/button) - Used for CTAs and controls
-- [Product Card](/docs/components/product-card) - For upsell sections
+- [Drawer](pages/docs-components-drawer) - Base drawer component
+- [Button](pages/docs-components-button) - Used for CTAs and controls
