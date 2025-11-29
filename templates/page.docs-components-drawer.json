@@ -1843,11 +1843,11 @@
           },
           "blocks": {}
         },
-        "kuu_markdown_fNghPd": {
+        "kuu_markdown_fMCaDH": {
           "type": "kuu-markdown",
           "name": "Markdown with Padding",
           "settings": {
-            "content": "## Tips\n\n1. **Unique IDs:** Always use unique IDs for each drawer to avoid conflicts.\n2. **Content Structure:** Wrap your drawer content in a container with proper styling (background, padding, rounded corners).\n3. **Mobile Optimization:** Use `mobile_from` to optimize drawer direction for smaller screens (e.g., `bottom` works well on mobile).\n4. **Performance:** The drawer uses GSAP for smooth 60fps animations even on lower-end devices.\n5. **Theme Editor:** The drawer automatically reopens after section reloads in the Shopify theme editor.\n\n## Related Components\n\n- [Button](pages/docs-components-button) - Often used as drawer triggers\n- [Cart Drawer](pages/docs-blocks-cartdrawer) - Pre-built cart drawer implementation\n- [Search Drawer](pages/docs-blocks-searchdrawer) - Pre-built search drawer implementation",
+            "content": "## Props\n\n| Prop            | Type      | Default      | Description                                                         |\n| :-------------- | :-------- | :----------- | :------------------------------------------------------------------ |\n| `trigger`       | `String`  | -            | Captured HTML for the trigger button (ignored if `headless: true`). |\n| `content`       | `String`  | **Required** | Captured HTML for the drawer content.                               |\n| `id`            | `String`  | **Required** | Unique identifier for the drawer (e.g., `'cartdrawer'`, `'menu'`).  |\n| `from`          | `String`  | `'right'`    | Direction the drawer slides from: `left`, `right`, `top`, `bottom`. |\n| `mobile_from`   | `String`  | `from`       | Different direction for mobile devices.                             |\n| `headless`      | `Boolean` | `false`      | If true, the trigger is not rendered (control externally).          |\n| `drawer_class`  | `String`  | `''`         | Additional classes for the drawer wrapper.                          |\n| `panel_class`   | `String`  | `''`         | Additional classes for the drawer panel.                            |\n| `trigger_class` | `String`  | `''`         | Additional classes for the trigger wrapper.                         |\n| `overlay_class` | `String`  | `''`         | Additional classes for the overlay.                                 |\n| `class`         | `String`  | `''`         | Additional classes for the panel (same as `panel_class`).           |",
             "padding-block-start": 24,
             "padding-block-end": 24,
             "padding-inline-start": 0,
@@ -1860,11 +1860,11 @@
           },
           "blocks": {}
         },
-        "kuu_markdown_fMCaDH": {
+        "kuu_markdown_fNghPd": {
           "type": "kuu-markdown",
           "name": "Markdown with Padding",
           "settings": {
-            "content": "## Props\n\n| Prop            | Type      | Default      | Description                                                         |\n| :-------------- | :-------- | :----------- | :------------------------------------------------------------------ |\n| `trigger`       | `String`  | -            | Captured HTML for the trigger button (ignored if `headless: true`). |\n| `content`       | `String`  | **Required** | Captured HTML for the drawer content.                               |\n| `id`            | `String`  | **Required** | Unique identifier for the drawer (e.g., `'cartdrawer'`, `'menu'`).  |\n| `from`          | `String`  | `'right'`    | Direction the drawer slides from: `left`, `right`, `top`, `bottom`. |\n| `mobile_from`   | `String`  | `from`       | Different direction for mobile devices.                             |\n| `headless`      | `Boolean` | `false`      | If true, the trigger is not rendered (control externally).          |\n| `drawer_class`  | `String`  | `''`         | Additional classes for the drawer wrapper.                          |\n| `panel_class`   | `String`  | `''`         | Additional classes for the drawer panel.                            |\n| `trigger_class` | `String`  | `''`         | Additional classes for the trigger wrapper.                         |\n| `overlay_class` | `String`  | `''`         | Additional classes for the overlay.                                 |\n| `class`         | `String`  | `''`         | Additional classes for the panel (same as `panel_class`).           |",
+            "content": "## Tips\n\n1. **Unique IDs:** Always use unique IDs for each drawer to avoid conflicts.\n2. **Content Structure:** Wrap your drawer content in a container with proper styling (background, padding, rounded corners).\n3. **Mobile Optimization:** Use `mobile_from` to optimize drawer direction for smaller screens (e.g., `bottom` works well on mobile).\n4. **Performance:** The drawer uses GSAP for smooth 60fps animations even on lower-end devices.\n5. **Theme Editor:** The drawer automatically reopens after section reloads in the Shopify theme editor.\n\n## Related Components\n\n- [Button](/docs-components-button) - Often used as drawer triggers\n- [Cart Drawer](/docs-blocks-cartdrawer) - Pre-built cart drawer implementation\n- [Search Drawer](/docs-blocks-searchdrawer) - Pre-built search drawer implementation",
             "padding-block-start": 24,
             "padding-block-end": 24,
             "padding-inline-start": 0,
@@ -1893,8 +1893,8 @@
         "kuu_codeblock_F7cFMt",
         "kuu_markdown_QHNcD3",
         "kuu_codeblock_VW7Jdg",
-        "kuu_markdown_fNghPd",
-        "kuu_markdown_fMCaDH"
+        "kuu_markdown_fMCaDH",
+        "kuu_markdown_fNghPd"
       ],
       "name": "Usage",
       "settings": {
