@@ -9,6 +9,162 @@
  */
 {
   "sections": {
+    "kuu_blank_section_EH4C6y": {
+      "type": "kuu-blank-section",
+      "blocks": {
+        "kuu_responsive_8W8EBi": {
+          "type": "kuu-responsive",
+          "name": "Responsive",
+          "settings": {
+            "device": "mobile",
+            "display": "flex"
+          },
+          "blocks": {
+            "kuu_flex_box_33yt6T": {
+              "type": "kuu-flex-box",
+              "name": "Flex Box",
+              "settings": {
+                "background_color": "",
+                "width": "custom",
+                "unit": "percent",
+                "percent_width": 100,
+                "pixel_width": 48,
+                "add_width_min": false,
+                "width_min": 0,
+                "add_width_max": false,
+                "width_max": "",
+                "custom_mobile_width": false,
+                "width_mobile": "fill",
+                "unit_mobile": "percent",
+                "percent_width_mobile": 100,
+                "pixel_width_mobile": 120,
+                "add_width_mobile_min": false,
+                "width_mobile_min": 0,
+                "add_width_mobile_max": false,
+                "width_mobile_max": "",
+                "height": "fit-content",
+                "custom_height": 348,
+                "height_min": 0,
+                "add_height_max": false,
+                "height_max": "",
+                "add_height_mobile": false,
+                "height_mobile": "custom",
+                "custom_height_mobile": 348,
+                "height_min_mobile": 0,
+                "add_height_max_mobile": false,
+                "height_max_mobile": "",
+                "flex_direction": "column",
+                "justify_content": "flex-start",
+                "align_items": "flex-start",
+                "flex_gap": "all",
+                "gap": 4,
+                "row_gap": 0,
+                "column_gap": 0,
+                "custom_mobile_flex": true,
+                "mobile_flex_direction": "column",
+                "mobile_justify_content": "flex-start",
+                "mobile_align_items": "flex-start",
+                "mobile_flex_gap": "all",
+                "mobile_gap": 4,
+                "mobile_row_gap": 0,
+                "mobile_column_gap": 0,
+                "border": "none",
+                "border_sides": "all",
+                "border_width": 1,
+                "border_left_width": 1,
+                "border_top_width": 1,
+                "border_bottom_width": 1,
+                "border_right_width": 1,
+                "border_color": "#000000",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 4,
+                "padding-inline-start": 0,
+                "padding-inline-end": 2,
+                "custom_mobile_padding": false,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_badge_fXF7P9": {
+                  "type": "kuu-badge",
+                  "name": "Badge",
+                  "settings": {
+                    "content": "Beta"
+                  },
+                  "blocks": {
+                    "badge-label": {
+                      "type": "kuu-text",
+                      "static": true,
+                      "settings": {
+                        "text": "",
+                        "width": "fit-content",
+                        "max_width": "none",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "tag": "p",
+                        "font_size": "1rem",
+                        "mobile_font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "#000000",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0,
+                        "custom_mobile_padding": true,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0,
+                        "custom_attributes": false,
+                        "id": "",
+                        "class": "",
+                        "props": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": []
+                }
+              },
+              "block_order": [
+                "kuu_badge_fXF7P9"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_flex_box_33yt6T"
+          ]
+        }
+      },
+      "block_order": [
+        "kuu_responsive_8W8EBi"
+      ],
+      "name": "Blank Section",
+      "settings": {
+        "width": "fill",
+        "custom_width": 100,
+        "add_mobile_width": false,
+        "width_mobile": "fill",
+        "custom_width_mobile": 100,
+        "height": "fit-content",
+        "custom_height": 240,
+        "height_min": 0,
+        "add_height_max": false,
+        "height_max": "",
+        "custom_mobile_height": false,
+        "mobile_height": 240
+      }
+    },
     "hero": {
       "type": "hero",
       "blocks": {
@@ -285,6 +441,7 @@
     }
   },
   "order": [
+    "kuu_blank_section_EH4C6y",
     "hero",
     "featured",
     "featured_categories",

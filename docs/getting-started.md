@@ -1,5 +1,9 @@
 # Getting Started with Kuu
 
+<!-- Thumbnail -->
+
+![Thumbnail](https://cdn.shopify.com/s/files/1/0628/4348/6291/files/Kuu_Blocks_Image.png?v=1764416747)
+
 **Kuu** is a modern, high-performance Shopify theme that adapts to how you build. Use it as a complete **production-ready theme**, or as a **library of modular components** to enhance your existing store.
 
 ## 1. For Non Technical Merchants
