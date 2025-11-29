@@ -30,7 +30,8 @@
 
 <div
 	class='
-		logo-block
+			logo-block
+
 		shrink-0 items-center
 		{{ display_class }}
 	'
@@ -41,7 +42,7 @@
 		  {% if image %}
 		    --logo-width: {{ image.width | times: 1.00 | divided_by: image.height | times: block.settings.pixel_height }}px;
 		  {% else %}
-		    --logo-width: {{ shop.name.size }}ch;
+		    --logo-width: fit-content;
 		    --logo-height: {{ block.settings.pixel_height }}px;
 		  {% endif %}
 		{% endif %}

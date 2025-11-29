@@ -213,6 +213,8 @@
     "featured_banner": {
       "type": "featured_banner",
       "settings": {
+        "desktop_image": "shopify://shop_images/Kuu_Desktop_Banner.png",
+        "mobile_image": "shopify://shop_images/Kuu_Mobile_Banner.png",
         "heading": "Get 50% Off",
         "subtext": "for all new products purchases min. purchase $450",
         "button_label": "Shop Now",
