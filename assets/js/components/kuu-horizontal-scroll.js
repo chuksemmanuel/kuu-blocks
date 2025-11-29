@@ -22,7 +22,9 @@ document.addEventListener('alpine:init', () => {
 					// scrollbar: {
 					// 	el: '.swiper-scrollbar',
 					// },
-					mousewheel: true,
+					mousewheel: {
+						forceToAxis: true,
+					},
 					on: {
 						progress: (swiper, progress) => {
 							const minWidthPercent = 10;
