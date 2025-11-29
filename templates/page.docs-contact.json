@@ -8,12 +8,36 @@
  * ------------------------------------------------------------
  */
 {
-	"layout": "documentation",
-	"sections": {
-		"main": {
-			"type": "documentation",
-			"settings": {}
-		}
-	},
-	"order": ["main"]
+  "layout": "documentation",
+  "sections": {
+    "main": {
+      "type": "documentation",
+      "blocks": {
+        "kuu_markdown_hc3HFR": {
+          "type": "kuu-markdown",
+          "name": "Markdown",
+          "settings": {
+            "content": "# Contact\n\n- Whatsapp: +2349036727559\n- Email: dev.chuksemmanuel@gmail.com\n- LinkedIn: [https://www.linkedin.com/in/chuksemmanuel/](https://www.linkedin.com/in/chuksemmanuel/)",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "kuu_markdown_hc3HFR"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
 }
