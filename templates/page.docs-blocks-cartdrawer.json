@@ -13,11 +13,310 @@
     "main": {
       "type": "documentation",
       "blocks": {
+        "kuu_markdown_QjazNc": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "# Cart Drawer\n\nA fully-featured, production-ready cart drawer with optimistic updates, debounced network requests, and comprehensive customization options. Perfect for modern e-commerce experiences with smooth animations and real-time cart management.",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_n9N8yA": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": "## Preview",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_K6qG8y": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": ">Trying adding some items to the cart by clicking the quickadd button on any product below",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_liquid_FKE3dE": {
+          "type": "kuu-liquid",
+          "name": "Custom Liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"flex flex-col flex-wrap items-center justify-center gap-4 p-4 max-w-[65ch] mx-auto\">\n\n{% capture product_list %}\n\t{% assign products = collections.all.products |  where: 'available', true %}\n\t\n\t<div class=\"flex items-center gap-8 \">\n\t\t{% for product in products %}\n\t\t\t{% render 'kuu-product-card', product: product, show_floating_cart: true, class:'w-60!'  %}\n\t\t{% endfor %}\n\t</div>\n{% endcapture %}\n\n{% render 'kuu-horizontal-scroll', slides: product_list, scroll_bar: true%}\n\n\n </div>"
+          },
+          "blocks": {}
+        },
+        "kuu_markdown_8WHbiB": {
+          "type": "kuu-markdown",
+          "name": "Markdown with Padding",
+          "settings": {
+            "content": ">Now click the cart button below to open the cartdrawer",
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 16,
+            "mobile-padding-block-end": 16,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "kuu_flex_box_GLBeEK": {
+          "type": "kuu-flex-box",
+          "name": "Flex Box (Centered)",
+          "settings": {
+            "background_color": "",
+            "width": "fill",
+            "unit": "percent",
+            "percent_width": 100,
+            "pixel_width": 48,
+            "add_width_min": false,
+            "width_min": 0,
+            "add_width_max": false,
+            "width_max": "65ch",
+            "custom_mobile_width": false,
+            "width_mobile": "fill",
+            "unit_mobile": "percent",
+            "percent_width_mobile": 100,
+            "pixel_width_mobile": 120,
+            "add_width_mobile_min": false,
+            "width_mobile_min": 0,
+            "add_width_mobile_max": false,
+            "width_mobile_max": "",
+            "height": "fill",
+            "custom_height": 348,
+            "height_min": 84,
+            "add_height_max": false,
+            "height_max": "",
+            "add_height_mobile": false,
+            "height_mobile": "custom",
+            "custom_height_mobile": 348,
+            "height_min_mobile": 0,
+            "add_height_max_mobile": false,
+            "height_max_mobile": "",
+            "flex_direction": "column",
+            "justify_content": "center",
+            "align_items": "center",
+            "flex_gap": "all",
+            "gap": 4,
+            "row_gap": 0,
+            "column_gap": 0,
+            "custom_mobile_flex": true,
+            "mobile_flex_direction": "column",
+            "mobile_justify_content": "flex-start",
+            "mobile_align_items": "flex-start",
+            "mobile_flex_gap": "all",
+            "mobile_gap": 4,
+            "mobile_row_gap": 0,
+            "mobile_column_gap": 0,
+            "border": "none",
+            "border_sides": "all",
+            "border_width": 2,
+            "border_left_width": 1,
+            "border_top_width": 1,
+            "border_bottom_width": 1,
+            "border_right_width": 1,
+            "border_color": "#e5e7eb",
+            "border_radius": 8,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "custom_mobile_padding": true,
+            "mobile-padding-block-start": 0,
+            "mobile-padding-block-end": 0,
+            "mobile-padding-inline-start": 0,
+            "mobile-padding-inline-end": 0
+          },
+          "blocks": {
+            "kuu_tab_MCw87F": {
+              "type": "kuu-tab",
+              "name": "Kuu Tab",
+              "settings": {
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0,
+                "custom_mobile_padding": true,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_tab_item_xFtq8k": {
+                  "type": "_kuu-tab-item",
+                  "name": "Preview",
+                  "settings": {
+                    "tab_title": "Preview"
+                  },
+                  "blocks": {
+                    "kuu_flex_box_g4F6zi": {
+                      "type": "kuu-flex-box",
+                      "name": "Flex Box",
+                      "settings": {
+                        "background_color": "#f3f4f6",
+                        "width": "fill",
+                        "unit": "percent",
+                        "percent_width": 100,
+                        "pixel_width": 48,
+                        "add_width_min": false,
+                        "width_min": 0,
+                        "add_width_max": true,
+                        "width_max": "65ch",
+                        "custom_mobile_width": false,
+                        "width_mobile": "custom",
+                        "unit_mobile": "percent",
+                        "percent_width_mobile": 100,
+                        "pixel_width_mobile": 120,
+                        "add_width_mobile_min": false,
+                        "width_mobile_min": 0,
+                        "add_width_mobile_max": false,
+                        "width_mobile_max": "",
+                        "height": "fit-content",
+                        "custom_height": 240,
+                        "height_min": 120,
+                        "add_height_max": false,
+                        "height_max": "",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": "",
+                        "flex_direction": "column",
+                        "justify_content": "center",
+                        "align_items": "center",
+                        "flex_gap": "all",
+                        "gap": 4,
+                        "row_gap": 0,
+                        "column_gap": 0,
+                        "custom_mobile_flex": true,
+                        "mobile_flex_direction": "column",
+                        "mobile_justify_content": "center",
+                        "mobile_align_items": "center",
+                        "mobile_flex_gap": "all",
+                        "mobile_gap": 4,
+                        "mobile_row_gap": 0,
+                        "mobile_column_gap": 0,
+                        "border": "solid",
+                        "border_sides": "all",
+                        "border_width": 2,
+                        "border_left_width": 1,
+                        "border_top_width": 1,
+                        "border_bottom_width": 1,
+                        "border_right_width": 1,
+                        "border_color": "#e5e7eb",
+                        "border_radius": 8,
+                        "padding-block-start": 24,
+                        "padding-block-end": 24,
+                        "padding-inline-start": 24,
+                        "padding-inline-end": 24,
+                        "custom_mobile_padding": false,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0
+                      },
+                      "blocks": {
+                        "kuu_liquid_Ukyfnc": {
+                          "type": "kuu-liquid",
+                          "name": "Custom Liquid",
+                          "settings": {
+                            "custom_liquid": "<div class=\"flex flex-col flex-wrap items-center justify-center gap-4 p-4\">\n\n\n{%\n\trender 'kuu-cartdrawer'\n\t, id: 'cartdrawer', %}\n\n </div>"
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "kuu_liquid_Ukyfnc"
+                      ]
+                    }
+                  },
+                  "block_order": [
+                    "kuu_flex_box_g4F6zi"
+                  ]
+                },
+                "kuu_tab_item_TyV4NN": {
+                  "type": "_kuu-tab-item",
+                  "name": "Code",
+                  "settings": {
+                    "tab_title": "Code"
+                  },
+                  "blocks": {
+                    "kuu_codeblock_yzRpYj": {
+                      "type": "kuu-codeblock",
+                      "name": "Code Block",
+                      "settings": {
+                        "language": "liquid",
+                        "content": "",
+                        "liquid_code": "{% raw %}\n\n{% capture drawer_trigger %}\n\t{% render 'kuu-button', variant:'primary', label:'Click to Open Drawer', class:'rounded-full!', size:'lg' %}\n{% endcapture %}\n\n{% capture drawer_content %}\n\t<div  class=\"h-full w-full flex-1 overflow-hidden rounded-md  bg-white shadow-lg lg:rounded-lg\">\n\n\t\t<div  class=\"flex h-full w-full flex-col items-center justify-center gap-4\" >\n\t\t\t<p class=\"text-xl font-semibold\" id=\"drawer-description\">Drawer Content</p>\n\t\t\t{% render 'kuu-button',variant:'primary', size:'lg', label:'Close Drawer', aria_label:'Close drawer', class:'rounded-full!', props:'data-drawer-close tabIndex=\"0\"' %}\n\t\t</div>\n\t\t\n\t</div>\n{% endcapture %}\n\n{% render 'kuu-drawer', trigger: drawer_trigger, content: drawer_content, id: 'preview-1', from: 'right'%}\n\n{% endraw %}",
+                        "copy_button": true,
+                        "show_pathname": false,
+                        "pathname": "snippets/kuu-button.liquid",
+                        "height": "fit-content",
+                        "custom_height": 348,
+                        "height_min": 0,
+                        "add_height_max": true,
+                        "height_max": "348px",
+                        "add_height_mobile": false,
+                        "height_mobile": "custom",
+                        "custom_height_mobile": 348,
+                        "height_min_mobile": 0,
+                        "add_height_max_mobile": false,
+                        "height_max_mobile": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "kuu_codeblock_yzRpYj"
+                  ]
+                }
+              },
+              "block_order": [
+                "kuu_tab_item_xFtq8k",
+                "kuu_tab_item_TyV4NN"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_tab_MCw87F"
+          ]
+        },
         "kuu_markdown_ryfinx": {
           "type": "kuu-markdown",
           "name": "Markdown with Padding",
           "settings": {
-            "content": "# Cart Drawer\n\nA fully-featured, production-ready cart drawer with optimistic updates, debounced network requests, and comprehensive customization options. Perfect for modern e-commerce experiences with smooth animations and real-time cart management.\n\n## Preview\n\nThe Cart Drawer automatically appears when users add products to their cart, displaying:\n\n- Product images and titles\n- Variant information\n- Quantity controls with +/- buttons\n- Real-time price updates\n- Compare-at prices and savings badges\n- Sticky header and footer options\n- Checkout button with optional lock icon\n\n## Dependencies\n\n- **Block:** `blocks/kuu-cartdrawer.liquid`\n- **Snippets:**\n  - `snippets/kuu-cartdrawer.liquid` (main wrapper)\n  - `snippets/cartdrawer-items.liquid` (cart items list)\n  - `snippets/cartdrawer-footer.liquid` (footer with total and CTAs)\n- **JavaScript:** `assets/js/blocks/kuu-cartdrawer.js`\n- **Dependencies:** Drawer component, Button component",
+            "content": "The Cart Drawer automatically appears when users add products to their cart, displaying:\n\n- Product images and titles\n- Variant information\n- Quantity controls with +/- buttons\n- Real-time price updates\n- Compare-at prices and savings badges\n- Sticky header and footer options\n- Checkout button with optional lock icon\n\n## Dependencies\n\n- **Block:** `blocks/kuu-cartdrawer.liquid`\n- **Snippets:**\n  - `snippets/kuu-cartdrawer.liquid` (main wrapper)\n  - `snippets/cartdrawer-items.liquid` (cart items list)\n  - `snippets/cartdrawer-footer.liquid` (footer with total and CTAs)\n- **JavaScript:** `assets/js/blocks/kuu-cartdrawer.js`\n- **Dependencies:** Drawer component, Button component",
             "padding-block-start": 24,
             "padding-block-end": 24,
             "padding-inline-start": 0,
@@ -32,6 +331,12 @@
         }
       },
       "block_order": [
+        "kuu_markdown_QjazNc",
+        "kuu_markdown_n9N8yA",
+        "kuu_markdown_K6qG8y",
+        "kuu_liquid_FKE3dE",
+        "kuu_markdown_8WHbiB",
+        "kuu_flex_box_GLBeEK",
         "kuu_markdown_ryfinx"
       ],
       "name": "Overview",

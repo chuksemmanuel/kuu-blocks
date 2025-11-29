@@ -8,272 +8,290 @@
  * ------------------------------------------------------------
  */
 {
-	"type": "header",
-	"name": "t:general.header",
-	"sections": {
-		"header": {
-			"type": "header",
-			"blocks": {
-				"header-left": {
-					"type": "_header-left",
-					"static": true,
-					"settings": {},
-					"blocks": {
-						"drawer_aJiFXx": {
-							"type": "kuu-drawer",
-							"name": "Menu Drawer",
-							"settings": {
-								"from": "default",
-								"custom_mobile_direction": false,
-								"mobile_from": "left",
-								"drawer_heading": "",
-								"hide_header": false
-							},
-							"blocks": {
-								"products_tab_NXHbWb": {
-									"type": "products-tab",
-									"name": "Tabbed products",
-									"settings": {},
-									"blocks": {
-										"products_tab_product_picker_aP7kbP": {
-											"type": "_products-tab-product-picker",
-											"name": "Sales",
-											"settings": {
-												"products": [
-													"loose-mens-knitted-sweater-crew-neck-round-neck-lazy-style-deer-velvet-warm-underwear-t-shirt-for-couples-in-autumn-winter",
-													"male-tracksuit-jacket-pants-men-set-large-size-6xl-7xl-8xl-fashion-new-autumn-winter-homme-suit-sweatshirt-sweatpants-man-set",
-													"mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater",
-													"mens-casual-long-sleeve-corduroy-shirt-vintage-workwear-jacket-comfortable-breathable-square-collar-versatile-fashionable"
-												],
-												"tab_title": "Sales"
-											},
-											"blocks": {}
-										},
-										"products_tab_product_picker_J8MQxr": {
-											"type": "_products-tab-product-picker",
-											"name": "Best Sellers",
-											"settings": {
-												"products": [
-													"mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater",
-													"mens-summer-suit-mens-suit-mens-suit-mens-summer-suit-summer-suit-for-men-man-sets-sweatsuit-set-men-mens-clothing",
-													"spring-new-milled-shirt-mens-three-dimensional-pockets-plaid-shirt-mens-large-size-mens-casual-handsome-shirt"
-												],
-												"tab_title": "Best Sellers"
-											},
-											"blocks": {}
-										},
-										"products_tab_product_picker_XnAJh6": {
-											"type": "_products-tab-product-picker",
-											"name": "New Arrivals",
-											"settings": {
-												"products": [
-													"2024-mens-spring-and-autumn-printed-jogging-pants-casual-training-pants-fashion-high-quality-fitness-sweatpants",
-													"autumn-new-style-rabbit-velvet-plain-zipper-hoodie-mens-american-retro-loose-heavy-long-sleeve-casual-top-stand-collar",
-													"autumn-winter-corduroy-shirts-men-old-money-style-button-up-long-sleeve-comfortable-casual-shirt-blouse",
-													"casual-loose-short-collar-workwear-jacket-for-men-spring-autumn-trendy-design-loose-fit-short-style-spring-fashion-outerwear",
-													"fashion-casual-spring-and-autumn-mens-and-womens-hoodie-pants-two-piece-set-a-new-outdoor-basketball-mens-pullover-set",
-													"free-shipping-casual-hooded-jacket-fake-two-piece-set-large-size-mens-fashion-hong-kong-style-couples-neutral-jacket",
-													"loose-mens-knitted-sweater-crew-neck-round-neck-lazy-style-deer-velvet-warm-underwear-t-shirt-for-couples-in-autumn-winter",
-													"male-tracksuit-jacket-pants-men-set-large-size-6xl-7xl-8xl-fashion-new-autumn-winter-homme-suit-sweatshirt-sweatpants-man-set"
-												],
-												"tab_title": "New Arrivals"
-											},
-											"blocks": {}
-										}
-									},
-									"block_order": [
-										"products_tab_product_picker_aP7kbP",
-										"products_tab_product_picker_J8MQxr",
-										"products_tab_product_picker_XnAJh6"
-									]
-								},
-								"drawer-trigger": {
-									"type": "kuu-button",
-									"name": "Menu Drawer Trigger",
-									"static": true,
-									"settings": {
-										"device": "all",
-										"variant": "default",
-										"label": "",
-										"custom_link": false,
-										"href": "",
-										"custom_icon": false,
-										"lucide_icon": "",
-										"icon_position": "left",
-										"custom_width": false,
-										"unit": "percent",
-										"percent_width": 100,
-										"pexel_width": 100,
-										"custom_mobile_width": false,
-										"mobile_unit": "percent",
-										"mobile_percent_width": 100,
-										"mobile_pexel_width": 100,
-										"custom_height": false,
-										"height": 100,
-										"custom_mobile_height": false,
-										"mobile_height": 100,
-										"custom_radius": false,
-										"radius": 0,
-										"custom_alignment": false,
-										"alignment": "left",
-										"custom_padding": false,
-										"padding_top": 1,
-										"padding_bottom": 1,
-										"padding_left": 24,
-										"padding_right": 24,
-										"id": "",
-										"class": ""
-									},
-									"blocks": {}
-								},
-								"drawer-close": {
-									"type": "kuu-button",
-									"name": "Menu Drawer Close button",
-									"static": true,
-									"settings": {
-										"device": "all",
-										"variant": "default",
-										"label": "",
-										"custom_link": false,
-										"href": "",
-										"custom_icon": false,
-										"lucide_icon": "",
-										"icon_position": "left",
-										"custom_width": false,
-										"unit": "percent",
-										"percent_width": 100,
-										"pexel_width": 100,
-										"custom_mobile_width": false,
-										"mobile_unit": "percent",
-										"mobile_percent_width": 100,
-										"mobile_pexel_width": 100,
-										"custom_height": false,
-										"height": 100,
-										"custom_mobile_height": false,
-										"mobile_height": 100,
-										"custom_radius": false,
-										"radius": 0,
-										"custom_alignment": false,
-										"alignment": "left",
-										"custom_padding": false,
-										"padding_top": 1,
-										"padding_bottom": 1,
-										"padding_left": 24,
-										"padding_right": 24,
-										"id": "",
-										"class": ""
-									},
-									"blocks": {}
-								}
-							},
-							"block_order": ["products_tab_NXHbWb"]
-						},
-						"searchdrawer_3ECJdH": {
-							"type": "kuu-searchdrawer",
-							"name": "Search Drawer",
-							"settings": {
-								"device": "mobile",
-								"variant": "ghost",
-								"direction": "top",
-								"mobile_direction": "top"
-							},
-							"blocks": {}
-						},
-						"logo_MW8JVk": {
-							"type": "kuu-logo",
-							"name": "Logo",
-							"settings": {
-								"device": "desktop",
-								"unit": "pixel",
-								"percent_width": 100,
-								"pixel_height": 64,
-								"custom_mobile_size": false,
-								"unit_mobile": "percent",
-								"percent_width_mobile": 100,
-								"pixel_height_mobile": 120
-							},
-							"blocks": {}
-						}
-					},
-					"block_order": ["drawer_aJiFXx", "searchdrawer_3ECJdH", "logo_MW8JVk"]
-				},
-				"header-center": {
-					"type": "_header-center",
-					"static": true,
-					"settings": {
-						"menu": "main-menu"
-					},
-					"blocks": {
-						"site-logo": {
-							"type": "kuu-logo",
-							"static": true,
-							"settings": {
-								"device": "mobile",
-								"unit": "percent",
-								"percent_width": 100,
-								"pixel_height": 48,
-								"custom_mobile_size": false,
-								"unit_mobile": "percent",
-								"percent_width_mobile": 100,
-								"pixel_height_mobile": 120
-							},
-							"blocks": {}
-						}
-					},
-					"block_order": []
-				},
-				"header-right": {
-					"type": "_header-right",
-					"static": true,
-					"settings": {},
-					"blocks": {
-						"account_button_hXdMCB": {
-							"type": "_account-button",
-							"name": "Account Button",
-							"settings": {},
-							"blocks": {}
-						},
-						"searchdrawer_8DPf9q": {
-							"type": "kuu-searchdrawer",
-							"name": "Search Drawer",
-							"settings": {
-								"device": "desktop",
-								"variant": "circled",
-								"direction": "right",
-								"mobile_direction": "top"
-							},
-							"blocks": {}
-						},
-						"cartdrawer_ehUNqT": {
-							"type": "kuu-cartdrawer",
-							"name": "Cart Drawer",
-							"settings": {
-								"sticky_header": true,
-								"sticky_footer": true,
-								"show_variant_title": true,
-								"show_compare_price": false,
-								"final_price_color": "#fb2c36",
-								"show_savings_badge": false,
-								"savings_badge_color": "#fb2c36",
-								"show_checkout_lock_icon": true,
-								"checkout_button_label": "Proceed to Checkout",
-								"show_secondary_footer_cta": true,
-								"secondary_footer_cta_label": "Continue Shopping",
-								"secondary_footer_cta_action": "close-drawer",
-								"secondary_footer_cta_link": "/"
-							},
-							"blocks": {}
-						}
-					},
-					"block_order": [
-						"account_button_hXdMCB",
-						"searchdrawer_8DPf9q",
-						"cartdrawer_ehUNqT"
-					]
-				}
-			},
-			"settings": {}
-		}
-	},
-	"order": ["header"]
+  "type": "header",
+  "name": "t:general.header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "blocks": {
+        "header-left": {
+          "type": "_header-left",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "drawer_aJiFXx": {
+              "type": "kuu-drawer",
+              "name": "Menu Drawer",
+              "settings": {
+                "from": "default",
+                "custom_mobile_direction": false,
+                "mobile_from": "left",
+                "drawer_heading": "Menu",
+                "hide_header": false
+              },
+              "blocks": {
+                "products_tab_NXHbWb": {
+                  "type": "products-tab",
+                  "name": "Tabbed products",
+                  "settings": {},
+                  "blocks": {
+                    "products_tab_product_picker_XnAJh6": {
+                      "type": "_products-tab-product-picker",
+                      "name": "New Arrivals",
+                      "settings": {
+                        "products": [
+                          "the-out-of-stock-snowboard",
+                          "the-videographer-snowboard",
+                          "the-multi-managed-snowboard",
+                          "the-multi-location-snowboard"
+                        ],
+                        "tab_title": "New Arrivals",
+                        "show_prices": true,
+                        "show_compare_at_prices": true
+                      },
+                      "blocks": {}
+                    },
+                    "products_tab_product_picker_J8MQxr": {
+                      "type": "_products-tab-product-picker",
+                      "name": "Best Sellers",
+                      "settings": {
+                        "products": [
+                          "the-collection-snowboard-oxygen",
+                          "the-compare-at-price-snowboard",
+                          "the-complete-snowboard",
+                          "the-inventory-not-tracked-snowboard"
+                        ],
+                        "tab_title": "Best Sellers",
+                        "show_prices": true,
+                        "show_compare_at_prices": true
+                      },
+                      "blocks": {}
+                    },
+                    "products_tab_product_picker_aP7kbP": {
+                      "type": "_products-tab-product-picker",
+                      "name": "Sales",
+                      "settings": {
+                        "products": [
+                          "the-3p-fulfilled-snowboard",
+                          "the-collection-snowboard-hydrogen",
+                          "the-collection-snowboard-liquid"
+                        ],
+                        "tab_title": "Sales",
+                        "show_prices": true,
+                        "show_compare_at_prices": true
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "products_tab_product_picker_XnAJh6",
+                    "products_tab_product_picker_J8MQxr",
+                    "products_tab_product_picker_aP7kbP"
+                  ]
+                },
+                "drawer-trigger": {
+                  "type": "kuu-button",
+                  "name": "Menu Drawer Trigger",
+                  "static": true,
+                  "settings": {
+                    "device": "all",
+                    "variant": "default",
+                    "size": "default",
+                    "label": "",
+                    "custom_link": false,
+                    "href": "",
+                    "target_blank": false,
+                    "custom_color": false,
+                    "color": "#000000",
+                    "custom_alignment": false,
+                    "alignment": "left",
+                    "custom_icon": false,
+                    "lucide_icon": "",
+                    "icon_position": "left",
+                    "custom_radius": false,
+                    "radius": 0,
+                    "custom_width": false,
+                    "unit": "percent",
+                    "percent_width": 100,
+                    "pexel_width": 100,
+                    "custom_mobile_width": false,
+                    "mobile_unit": "percent",
+                    "mobile_percent_width": 100,
+                    "mobile_pexel_width": 100,
+                    "custom_height": false,
+                    "height": 100,
+                    "custom_mobile_height": false,
+                    "mobile_height": 100,
+                    "custom_padding": false,
+                    "padding_top": 1,
+                    "padding_bottom": 1,
+                    "padding_left": 24,
+                    "padding_right": 24,
+                    "id": "",
+                    "class": ""
+                  },
+                  "blocks": {}
+                },
+                "drawer-close": {
+                  "type": "kuu-button",
+                  "name": "Menu Drawer Close button",
+                  "static": true,
+                  "settings": {
+                    "device": "all",
+                    "variant": "default",
+                    "size": "default",
+                    "label": "",
+                    "custom_link": false,
+                    "href": "",
+                    "target_blank": false,
+                    "custom_color": false,
+                    "color": "#000000",
+                    "custom_alignment": false,
+                    "alignment": "left",
+                    "custom_icon": false,
+                    "lucide_icon": "",
+                    "icon_position": "left",
+                    "custom_radius": false,
+                    "radius": 0,
+                    "custom_width": false,
+                    "unit": "percent",
+                    "percent_width": 100,
+                    "pexel_width": 100,
+                    "custom_mobile_width": false,
+                    "mobile_unit": "percent",
+                    "mobile_percent_width": 100,
+                    "mobile_pexel_width": 100,
+                    "custom_height": false,
+                    "height": 100,
+                    "custom_mobile_height": false,
+                    "mobile_height": 100,
+                    "custom_padding": false,
+                    "padding_top": 1,
+                    "padding_bottom": 1,
+                    "padding_left": 24,
+                    "padding_right": 24,
+                    "id": "",
+                    "class": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "products_tab_NXHbWb"
+              ]
+            },
+            "searchdrawer_3ECJdH": {
+              "type": "kuu-searchdrawer",
+              "name": "Search Drawer",
+              "settings": {
+                "device": "mobile",
+                "variant": "ghost",
+                "direction": "top",
+                "mobile_direction": "top"
+              },
+              "blocks": {}
+            },
+            "logo_MW8JVk": {
+              "type": "kuu-logo",
+              "name": "Logo",
+              "settings": {
+                "device": "desktop",
+                "unit": "pixel",
+                "percent_width": 100,
+                "pixel_height": 64,
+                "custom_mobile_size": false,
+                "unit_mobile": "percent",
+                "percent_width_mobile": 100,
+                "pixel_height_mobile": 120
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "drawer_aJiFXx",
+            "searchdrawer_3ECJdH",
+            "logo_MW8JVk"
+          ]
+        },
+        "header-center": {
+          "type": "_header-center",
+          "static": true,
+          "settings": {
+            "menu": "main-menu"
+          },
+          "blocks": {
+            "site-logo": {
+              "type": "kuu-logo",
+              "static": true,
+              "settings": {
+                "device": "mobile",
+                "unit": "percent",
+                "percent_width": 100,
+                "pixel_height": 48,
+                "custom_mobile_size": false,
+                "unit_mobile": "percent",
+                "percent_width_mobile": 100,
+                "pixel_height_mobile": 120
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        },
+        "header-right": {
+          "type": "_header-right",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "account_button_hXdMCB": {
+              "type": "_account-button",
+              "name": "Account Button",
+              "settings": {},
+              "blocks": {}
+            },
+            "searchdrawer_8DPf9q": {
+              "type": "kuu-searchdrawer",
+              "name": "Search Drawer",
+              "settings": {
+                "device": "desktop",
+                "variant": "circled",
+                "direction": "right",
+                "mobile_direction": "top"
+              },
+              "blocks": {}
+            },
+            "cartdrawer_ehUNqT": {
+              "type": "kuu-cartdrawer",
+              "name": "Cart Drawer",
+              "settings": {
+                "sticky_header": true,
+                "sticky_footer": true,
+                "show_variant_title": true,
+                "show_compare_price": false,
+                "final_price_color": "#fb2c36",
+                "show_savings_badge": false,
+                "savings_badge_color": "#fb2c36",
+                "show_checkout_lock_icon": true,
+                "checkout_button_label": "Proceed to Checkout",
+                "show_secondary_footer_cta": true,
+                "secondary_footer_cta_label": "Continue Shopping",
+                "secondary_footer_cta_action": "close-drawer",
+                "secondary_footer_cta_link": "/"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "account_button_hXdMCB",
+            "searchdrawer_8DPf9q",
+            "cartdrawer_ehUNqT"
+          ]
+        }
+      },
+      "settings": {}
+    }
+  },
+  "order": [
+    "header"
+  ]
 }

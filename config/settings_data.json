@@ -12,8 +12,8 @@
     "type_primary_font": "poppins_n4",
     "color_background": "#f5f5f5",
     "color_foreground": "#393838",
-    "color_primary": "#f9ca4f",
-    "color_primary_foreground": "#101828",
+    "color_primary": "#364153",
+    "color_primary_foreground": "#f3f4f6",
     "color_secondary": "#f3f4f6",
     "sections": {
       "kuu-docs-header": {
@@ -104,7 +104,7 @@
             "blocks": {}
           },
           "kuu-docs-mobile-menu-drawer": {
-            "type": "drawer",
+            "type": "kuu-drawer",
             "static": true,
             "settings": {
               "from": "default",
@@ -217,7 +217,7 @@
             "blocks": {}
           },
           "kuu-docs-searchdrawer": {
-            "type": "_searchdrawer",
+            "type": "kuu-searchdrawer",
             "static": true,
             "settings": {
               "device": "all",
