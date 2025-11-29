@@ -251,7 +251,7 @@
                           "type": "kuu-liquid",
                           "name": "Custom Liquid",
                           "settings": {
-                            "custom_liquid": "<div class=\"flex flex-col flex-wrap items-center justify-center gap-4 p-4\">\n\n\n{%\n\trender 'kuu-cartdrawer'\n\t, id: 'cartdrawer-1', %}\n\n </div>"
+                            "custom_liquid": "<div class=\"flex flex-col flex-wrap items-center justify-center gap-4 p-4\">\n\n\n{%\n\trender 'kuu-cartdrawer'\n\t, id: 'cartdrawer', %}\n\n </div>"
                           },
                           "blocks": {}
                         }

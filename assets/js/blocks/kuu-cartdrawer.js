@@ -309,10 +309,7 @@ document.addEventListener('alpine:init', () => {
 				}
 
 				if (cartContent && newContent) {
-					console.log('morphing cartdrawer-content');
-					document.querySelectorAll('#cartdrawer-content').forEach((el) => {
-						Alpine.morph(el, newContent);
-					});
+					Alpine.morph(cartContent, newContent);
 
 					// RESTORE FOCUS
 					if (restoreSelector) {

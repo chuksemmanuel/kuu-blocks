@@ -116,7 +116,6 @@
             "blocks": {
               "drawer-trigger": {
                 "type": "kuu-button",
-                "name": "Mobile Menu",
                 "static": true,
                 "settings": {
                   "device": "all",
@@ -159,7 +158,6 @@
               },
               "drawer-close": {
                 "type": "kuu-button",
-                "name": "Drawer close button",
                 "static": true,
                 "settings": {
                   "device": "all",
