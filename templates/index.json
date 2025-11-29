@@ -9,6 +9,162 @@
  */
 {
   "sections": {
+    "kuu_blank_section_EH4C6y": {
+      "type": "kuu-blank-section",
+      "blocks": {
+        "kuu_responsive_8W8EBi": {
+          "type": "kuu-responsive",
+          "name": "Responsive",
+          "settings": {
+            "device": "mobile",
+            "display": "flex"
+          },
+          "blocks": {
+            "kuu_flex_box_33yt6T": {
+              "type": "kuu-flex-box",
+              "name": "Flex Box",
+              "settings": {
+                "background_color": "",
+                "width": "custom",
+                "unit": "percent",
+                "percent_width": 100,
+                "pixel_width": 48,
+                "add_width_min": false,
+                "width_min": 0,
+                "add_width_max": false,
+                "width_max": "",
+                "custom_mobile_width": false,
+                "width_mobile": "fill",
+                "unit_mobile": "percent",
+                "percent_width_mobile": 100,
+                "pixel_width_mobile": 120,
+                "add_width_mobile_min": false,
+                "width_mobile_min": 0,
+                "add_width_mobile_max": false,
+                "width_mobile_max": "",
+                "height": "fit-content",
+                "custom_height": 348,
+                "height_min": 0,
+                "add_height_max": false,
+                "height_max": "",
+                "add_height_mobile": false,
+                "height_mobile": "custom",
+                "custom_height_mobile": 348,
+                "height_min_mobile": 0,
+                "add_height_max_mobile": false,
+                "height_max_mobile": "",
+                "flex_direction": "column",
+                "justify_content": "flex-start",
+                "align_items": "flex-start",
+                "flex_gap": "all",
+                "gap": 4,
+                "row_gap": 0,
+                "column_gap": 0,
+                "custom_mobile_flex": true,
+                "mobile_flex_direction": "column",
+                "mobile_justify_content": "flex-start",
+                "mobile_align_items": "flex-start",
+                "mobile_flex_gap": "all",
+                "mobile_gap": 4,
+                "mobile_row_gap": 0,
+                "mobile_column_gap": 0,
+                "border": "none",
+                "border_sides": "all",
+                "border_width": 1,
+                "border_left_width": 1,
+                "border_top_width": 1,
+                "border_bottom_width": 1,
+                "border_right_width": 1,
+                "border_color": "#000000",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 4,
+                "padding-inline-start": 0,
+                "padding-inline-end": 2,
+                "custom_mobile_padding": false,
+                "mobile-padding-block-start": 0,
+                "mobile-padding-block-end": 0,
+                "mobile-padding-inline-start": 0,
+                "mobile-padding-inline-end": 0
+              },
+              "blocks": {
+                "kuu_badge_fXF7P9": {
+                  "type": "kuu-badge",
+                  "name": "Badge",
+                  "settings": {
+                    "content": "Beta"
+                  },
+                  "blocks": {
+                    "badge-label": {
+                      "type": "kuu-text",
+                      "static": true,
+                      "settings": {
+                        "text": "",
+                        "width": "fit-content",
+                        "max_width": "none",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "tag": "p",
+                        "font_size": "1rem",
+                        "mobile_font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "#000000",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0,
+                        "custom_mobile_padding": true,
+                        "mobile-padding-block-start": 0,
+                        "mobile-padding-block-end": 0,
+                        "mobile-padding-inline-start": 0,
+                        "mobile-padding-inline-end": 0,
+                        "custom_attributes": false,
+                        "id": "",
+                        "class": "",
+                        "props": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": []
+                }
+              },
+              "block_order": [
+                "kuu_badge_fXF7P9"
+              ]
+            }
+          },
+          "block_order": [
+            "kuu_flex_box_33yt6T"
+          ]
+        }
+      },
+      "block_order": [
+        "kuu_responsive_8W8EBi"
+      ],
+      "name": "Blank Section",
+      "settings": {
+        "width": "fill",
+        "custom_width": 100,
+        "add_mobile_width": false,
+        "width_mobile": "fill",
+        "custom_width_mobile": 100,
+        "height": "fit-content",
+        "custom_height": 240,
+        "height_min": 0,
+        "add_height_max": false,
+        "height_max": "",
+        "custom_mobile_height": false,
+        "mobile_height": 240
+      }
+    },
     "hero": {
       "type": "hero",
       "blocks": {
@@ -19,9 +175,9 @@
             "device": "all",
             "variant": "default",
             "size": "default",
-            "label": "",
-            "custom_link": false,
-            "href": "",
+            "label": "View documentation",
+            "custom_link": true,
+            "href": "shopify://pages/docs",
             "target_blank": false,
             "custom_color": false,
             "color": "#000000",
@@ -109,7 +265,8 @@
       },
       "settings": {
         "heading": "Unleash Your Style, Shop the Latest Trends",
-        "subheading": "Discover the latest trends & express your style effortlessly. Shop exclusive collections with premium designs, just for you!",
+        "subheading": "Actually, this page is a showcase of Kuu Blocks, a modern and modular component library for Shopify theme development. \n<br><br>\nExplore how each block works and see what’s possible.",
+        "hero_image": "shopify://shop_images/S64f2eab983114e5ca6aeab1d76df3ef3a.webp",
         "hero_image_alt": "Person wearing a gray zip-up sweatshirt on a white background",
         "review_heading": "25 Million+",
         "review_text": "Real reviews from our happy customers! See what fashion lovers are saying about our quality, style and services."
@@ -121,7 +278,7 @@
         "featured_item_aA3pbd": {
           "type": "featured_item",
           "settings": {
-            "collection": "",
+            "collection": "cozy-wears",
             "title": "Cozy wears",
             "href": "shopify://products/vancl-pure-cotton-long-sve-t-irt-mens-spring-autumn-loose-fit-inner-wear-base-irt-breathable-comfortable-round-ne"
           }
@@ -129,7 +286,7 @@
         "featured_item_R9Eg6r": {
           "type": "featured_item",
           "settings": {
-            "collection": "",
+            "collection": "top-jackets",
             "title": "Shirts",
             "href": "shopify://products/autumn-winter-corduroy-shirts-men-old-money-style-button-up-long-sleeve-comfortable-casual-shirt-blouse"
           }
@@ -160,7 +317,7 @@
         "featured_category_qMEC7T": {
           "type": "featured_category",
           "settings": {
-            "collection": "",
+            "collection": "casual-collection",
             "title": "Set Collection",
             "href": "shopify://products/male-tracksuit-jacket-pants-men-set-large-size-6xl-7xl-8xl-fashion-new-autumn-winter-homme-suit-sweatshirt-sweatpants-man-set",
             "count": 35
@@ -169,7 +326,7 @@
         "featured_category_yCAdR6": {
           "type": "featured_category",
           "settings": {
-            "collection": "",
+            "collection": "top-jackets",
             "title": "Jackets",
             "href": "",
             "count": 10
@@ -178,7 +335,7 @@
         "featured_category_YbNKcR": {
           "type": "featured_category",
           "settings": {
-            "collection": "",
+            "collection": "cozy-wears",
             "title": "Shirts",
             "href": "",
             "count": 25
@@ -199,7 +356,7 @@
       }
     },
     "featured_products": {
-      "type": "featured_products",
+      "type": "kuu-featured_products",
       "settings": {
         "title": "Our Products",
         "subheading": "Recently Added Shirts!",
@@ -212,6 +369,8 @@
     "featured_banner": {
       "type": "featured_banner",
       "settings": {
+        "desktop_image": "shopify://shop_images/Kuu_Desktop_Banner.png",
+        "mobile_image": "shopify://shop_images/Kuu_Mobile_Banner.png",
         "heading": "Get 50% Off",
         "subtext": "for all new products purchases min. purchase $450",
         "button_label": "Shop Now",
@@ -224,7 +383,7 @@
         "featured_collection_qDeYm9": {
           "type": "featured_collection",
           "settings": {
-            "collection": "",
+            "collection": "cozy-wears",
             "title": "Top Jacktes",
             "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
           }
@@ -232,7 +391,7 @@
         "featured_collection_qEJwf3": {
           "type": "featured_collection",
           "settings": {
-            "collection": "",
+            "collection": "top-sleeves",
             "title": "Top Sleeves",
             "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
           }
@@ -240,7 +399,7 @@
         "featured_collection_DjArDx": {
           "type": "featured_collection",
           "settings": {
-            "collection": "",
+            "collection": "zip-ups",
             "title": "Cozy wears",
             "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
           }
@@ -248,7 +407,7 @@
         "featured_collection_QbtTBV": {
           "type": "featured_collection",
           "settings": {
-            "collection": "",
+            "collection": "casual-collection",
             "title": "Winter Collection",
             "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
           }
@@ -256,7 +415,7 @@
         "featured_collection_gHTpft": {
           "type": "featured_collection",
           "settings": {
-            "collection": "",
+            "collection": "winter-collection",
             "title": "Zip ups",
             "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
           }
@@ -282,6 +441,7 @@
     }
   },
   "order": [
+    "kuu_blank_section_EH4C6y",
     "hero",
     "featured",
     "featured_categories",

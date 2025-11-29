@@ -18,7 +18,7 @@
 				drawer_heading: 'Menu',
 				panel_class: 'w-64!',
 				overlay_class: 'bg-black/10!',
-				drawer_class: 'md:hidden',
+				trigger_class: 'md:hidden',
 				content: menu_drawer_content
 			%}
 			{% content_for 'block', type: 'kuu-logo', id: 'kuu-docs-logo' %}
@@ -26,17 +26,18 @@
 
 		<!-- Header center -->
 		<div class='flex items-center justify-center gap-2'>
-			<ul class=' hidden gap-4 md:flex'>
-				<li>Home</li>
-				<li>Components</li>
-				<li>Templates</li>
-				<li>Guides</li>
+			<ul aria-label='menu items' class=' hidden justify-between gap-8 font-medium md:flex'>
+				{% for link in linklists['main-menu'].links limit: 5 %}
+					<li>
+						{{ link.title | link_to: link.url }}
+					</li>
+				{% endfor %}
 			</ul>
 		</div>
 
 		<!-- Header Right -->
 		<div class='flex items-center justify-end gap-2  md:gap-4'>
-			{% content_for 'block', type: '_searchdrawer', id: 'kuu-docs-searchdrawer' %}
+			{% content_for 'block', type: 'kuu-searchdrawer', id: 'kuu-docs-searchdrawer' %}
 			{% content_for 'blocks' %}
 		</div>
 	</header>

@@ -1,0 +1,30 @@
+{% capture label %}
+    {% content_for 'block', type: 'kuu-text', id: 'badge-label', fallback_text: 'Beta' %}
+{% endcapture %}
+
+{% render 'kuu-badge', content: label %}
+
+{% schema %}
+	{
+		"name": "Badge",
+		"settings": [
+			{
+				"id": "content",
+				"type": "text",
+				"label": "Badge Text",
+				"default": "Beta"
+			}
+		],
+		"blocks": [
+			{
+				"type": "kuu-text"
+			}
+		],
+		"presets": [
+			{
+				"name": "Badge",
+				"category": "Content"
+			}
+		]
+	}
+{% endschema %}

@@ -4,7 +4,15 @@
 	@param {object} [block]
 {% enddoc %}
 
-<div x-data='{ expanded: false }' class='w-full!' {{ block.shopify_attributes }}>
+{% comment %} Expanded by default in theme editor {% endcomment %}
+
+{% if request.design_mode %}
+	{% assign expanded = true %}
+{% else %}
+	{% assign expanded = false %}
+{% endif %}
+
+<div x-data='{ expanded: {{ expanded }} }' class='w-full!' {{ block.shopify_attributes }}>
 	<div
 		@click='expanded = !expanded'
 		class='flex w-full items-center justify-between gap-1 border-b border-gray-400 py-4 text-left font-medium hover:text-gray-900'

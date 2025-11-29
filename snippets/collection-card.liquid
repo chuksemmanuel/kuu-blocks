@@ -28,11 +28,10 @@
 {% endcase %}
 
 <a
-	width='{{ width }}'
 	height='{{ height }}'
 	href='{{ card_href }}'
 	aria-label='{{ card_title }}'
-	class='group relative block  w-full shrink-0 cursor-pointer overflow-hidden rounded-3xl  {{ class }}'
+	class='group relative block w-full shrink-0 cursor-pointer overflow-hidden rounded-3xl  {{ class }}'
 	{% if block %}
 		{{ block.shopify_attributes }}
 	{% endif %}
