@@ -1,0 +1,85 @@
+{% assign display = block.settings.display %}
+{% case block.settings.device %}
+	{% when 'mobile' %}
+		{% assign display_class = 'md:hidden' | append: ' ' | append: display %}
+
+	{% when 'desktop' %}
+		{% assign display_class = 'hidden' | append: ' ' | append: 'md:' | append: display %}
+	{% else %}
+		{% assign display_class = display %}
+{% endcase %}
+
+<div class='{{ display_class }}' {{ block.shopify_attributes }}>
+	{% content_for 'blocks' %}
+</div>
+
+{% schema %}
+	{
+		"name": "Responsive",
+		"tag": null,
+		"settings": [
+			{
+				"type": "select",
+				"id": "device",
+				"label": "Show Logo on",
+				"options": [
+					{
+						"value": "all",
+						"label": "All Devices"
+					},
+					{
+						"value": "mobile",
+						"label": "Mobile  Devices Only"
+					},
+					{
+						"value": "desktop",
+						"label": "Desktop Devices  Only"
+					}
+				],
+				"default": "all"
+			},
+			{
+				"type": "select",
+				"id": "display",
+				"label": "Display",
+				"options": [
+					{
+						"value": "flex",
+						"label": "Flex"
+					},
+					{
+						"value": "inline-flex",
+						"label": "Inline-flex"
+					},
+					{
+						"value": "block",
+						"label": "Block"
+					},
+					{
+						"value": "inline",
+						"label": "Inline"
+					},
+					{
+						"value": "inline-block",
+						"label": "Inline Block"
+					}
+				],
+				"default": "flex"
+			}
+		],
+		"blocks": [
+			{
+				"type": "@theme"
+			},
+			{
+				"type": "@app"
+			}
+		],
+		"presets": [
+			{
+				"name": "Responsive",
+				"category": "Basic"
+			}
+		]
+	}
+{% endschema %}

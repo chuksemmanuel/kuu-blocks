@@ -77,6 +77,13 @@
 		{% assign direction_class = 'top-0 max-w-[min(648px,100%)] right-0' %}
 {% endcase %}
 
+<!-- Trigger -->
+{% if headless != true %}
+	<div x-data @click='$dispatch("drawer:open", { id: "{{id}}" })' class='{{trigger_class}}'>
+		{{ trigger }}
+	</div>
+{% endif %}
+
 <div
 	x-data='drawer'
 	x-init='init()'
@@ -89,13 +96,6 @@
 	data-custom-class='{{class}}'
 	data-mobile-direction='{{mobile_from}}'
 >
-	<!-- Trigger -->
-	{% if headless != true %}
-		<div @click='openDrawer()' class='{{trigger_class}}'>
-			{{ trigger }}
-		</div>
-	{% endif %}
-
 	<!-- Overlay -->
 	<div
 		class='fixed inset-0 z-40 bg-black/50 {{overlay_class}}'

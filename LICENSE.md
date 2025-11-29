@@ -26,7 +26,7 @@ This software is released under a custom license focused on "No Charge" usage fo
 
 ### Commercial License
 
-If your use case involves charging end-users a fee to use the product (e.g., a paid app or theme), please contact us for a Commercial License.
+If your use case involves charging end-users a fee to use the product (e.g., a paid app or theme), please contact me for a Commercial License.
 
 ### Contact
 

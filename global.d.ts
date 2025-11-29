@@ -4,8 +4,8 @@ import type Alpine from 'alpinejs';
 import type { gsap } from 'gsap';
 import type MarkdownIt from 'markdown-it';
 import type Prism from 'prismjs';
-import type SwiperClass from 'swiper';
 
+import Swiper from './node_modules/swiper/swiper';
 import type { Kuu } from './types/kuu';
 
 declare global {
@@ -16,7 +16,7 @@ declare global {
 		getContrastRatio: typeof getContrastRatio;
 		// Libraries
 		Alpine: typeof Alpine;
-		Swiper: typeof SwiperClass;
+		Swiper: typeof Swiper;
 		gsap: typeof gsap;
 		markdownit: typeof MarkdownIt;
 		kuu?: Kuu;

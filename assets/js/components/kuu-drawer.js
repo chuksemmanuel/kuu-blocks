@@ -106,6 +106,12 @@ document.addEventListener('alpine:init', () => {
 
 				// Add event listeners
 				this.addEventListeners();
+
+				setTimeout(() => {
+					console.log('Moving drawer to bottom of DOM');
+					// Move drawer to bottom of DOM
+					document.body.appendChild(this.$el);
+				}, 100);
 			},
 
 			openDrawer() {

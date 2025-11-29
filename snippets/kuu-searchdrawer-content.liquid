@@ -49,7 +49,7 @@
 			x-cloak
 			class='flex h-full flex-col'
 		>
-			{% render 'searchdrawer-content-skeleton' %}
+			{% render 'kuu-searchdrawer-content-skeleton' %}
 		</div>
 
 		<div
@@ -157,7 +157,7 @@
 						{% if products.size > 0 %}
 							<div role='list' class='flex flex-col gap-5'>
 								{% for product in products %}
-									{% render 'searchdrawer-item', type: 'product', item: product, key: forloop.index, terms: terms %}
+									{% render 'kuu-searchdrawer-item', type: 'product', item: product, key: forloop.index, terms: terms %}
 								{% endfor %}
 							</div>
 						{% else %}
@@ -185,7 +185,7 @@
 						{% if collections.size > 0 %}
 							<div role='list' class='flex flex-col gap-5'>
 								{% for collection in collections %}
-									{% render 'searchdrawer-item',
+									{% render 'kuu-searchdrawer-item',
 										type: 'collection',
 										item: collection,
 										key: forloop.index,
@@ -218,7 +218,7 @@
 						{% if pages.size > 0 %}
 							<div role='list' class='flex flex-col gap-5'>
 								{% for page in pages %}
-									{% render 'searchdrawer-item', type: 'page', item: page, key: forloop.index, terms: terms %}
+									{% render 'kuu-searchdrawer-item', type: 'page', item: page, key: forloop.index, terms: terms %}
 								{% endfor %}
 							</div>
 						{% else %}

@@ -192,7 +192,7 @@
 					<template x-if="updatingKey === '{{ item.key }}'">
 						<span
 							aria-hidden='true'
-							class=' size-5 animate-spin  self-end text-gray-500 transition  [animation-duration:0.5s]'
+							class=' flex size-5 animate-spin items-center justify-center self-end text-gray-500 transition ease-linear  [animation-duration:0.5s]'
 							@click="updateQuantity('{{ item.key }}', 0)"
 						>
 							{{ 'icons/loader-circle.svg' | inline_asset_content }}
