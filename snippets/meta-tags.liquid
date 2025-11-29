@@ -38,6 +38,9 @@
 	content='{{ og_description | escape }}'
 >
 
+{% assign og_image = 'kuu-og_image.png' | asset_img_url %}
+{% assign page_image = page_image | default: og_image %}
+
 {%- if page_image -%}
 	<meta
 		property='og:image'

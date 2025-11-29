@@ -74,7 +74,17 @@
                         "products": [
                           "the-3p-fulfilled-snowboard",
                           "the-collection-snowboard-hydrogen",
-                          "the-collection-snowboard-liquid"
+                          "the-collection-snowboard-liquid",
+                          "selling-plans-ski-wax",
+                          "gift-card",
+                          "the-collection-snowboard-oxygen",
+                          "the-compare-at-price-snowboard",
+                          "the-complete-snowboard",
+                          "the-inventory-not-tracked-snowboard",
+                          "the-multi-location-snowboard",
+                          "the-multi-managed-snowboard",
+                          "the-out-of-stock-snowboard",
+                          "the-videographer-snowboard"
                         ],
                         "tab_title": "Sales",
                         "show_prices": true,
