@@ -8,285 +8,286 @@
  * ------------------------------------------------------------
  */
 {
-	"sections": {
-		"hero": {
-			"type": "hero",
-			"blocks": {
-				"hero-button": {
-					"type": "kuu-button",
-					"static": true,
-					"settings": {
-						"device": "all",
-						"variant": "default",
-						"size": "default",
-						"label": "",
-						"custom_link": false,
-						"href": "",
-						"target_blank": false,
-						"custom_color": false,
-						"color": "#000000",
-						"custom_alignment": false,
-						"alignment": "left",
-						"custom_icon": false,
-						"lucide_icon": "",
-						"icon_position": "left",
-						"custom_radius": false,
-						"radius": 8,
-						"custom_width": false,
-						"unit": "percent",
-						"percent_width": 100,
-						"pexel_width": 100,
-						"custom_mobile_width": false,
-						"mobile_unit": "percent",
-						"mobile_percent_width": 100,
-						"mobile_pexel_width": 100,
-						"custom_height": false,
-						"height": 100,
-						"custom_mobile_height": false,
-						"mobile_height": 100,
-						"custom_padding": false,
-						"padding_top": 1,
-						"padding_bottom": 1,
-						"padding_left": 24,
-						"padding_right": 24,
-						"id": "",
-						"class": ""
-					},
-					"blocks": {}
-				},
-				"hero-avatars": {
-					"type": "kuu-avatars",
-					"static": true,
-					"settings": {},
-					"blocks": {
-						"kuu_avatars_item_kjHhEK": {
-							"type": "_kuu-avatars-item",
-							"name": "Avatar",
-							"settings": {
-								"avatar_image": "shopify://shop_images/Avatar_from_TinyPNG.jpg"
-							},
-							"blocks": {}
-						},
-						"kuu_avatars_item_WKA9it": {
-							"type": "_kuu-avatars-item",
-							"name": "Avatar",
-							"settings": {
-								"avatar_image": "shopify://shop_images/young-man-portrait.jpg"
-							},
-							"blocks": {}
-						},
-						"kuu_avatars_item_UH9mba": {
-							"type": "_kuu-avatars-item",
-							"name": "Avatar",
-							"settings": {
-								"avatar_image": "shopify://shop_images/portrait-young-man-smiling.jpg"
-							},
-							"blocks": {}
-						},
-						"kuu_avatars_item_LPJjdp": {
-							"type": "_kuu-avatars-item",
-							"name": "Avatar",
-							"settings": {
-								"avatar_image": "shopify://shop_images/close-up-of-a-woman-using-a-green-jade-face-roller.jpg"
-							},
-							"blocks": {}
-						},
-						"kuu_avatars_item_YP7bWK": {
-							"type": "_kuu-avatars-item",
-							"name": "Avatar",
-							"settings": {},
-							"blocks": {}
-						}
-					},
-					"block_order": [
-						"kuu_avatars_item_kjHhEK",
-						"kuu_avatars_item_WKA9it",
-						"kuu_avatars_item_UH9mba",
-						"kuu_avatars_item_LPJjdp",
-						"kuu_avatars_item_YP7bWK"
-					]
-				}
-			},
-			"settings": {
-				"heading": "Unleash Your Style, Shop the Latest Trends",
-				"subheading": "Discover the latest trends & express your style effortlessly. Shop exclusive collections with premium designs, just for you!",
-				"hero_image_alt": "Person wearing a gray zip-up sweatshirt on a white background",
-				"review_heading": "25 Million+",
-				"review_text": "Real reviews from our happy customers! See what fashion lovers are saying about our quality, style and services."
-			}
-		},
-		"featured": {
-			"type": "featured",
-			"blocks": {
-				"featured_item_aA3pbd": {
-					"type": "featured_item",
-					"settings": {
-						"collection": "",
-						"title": "Cozy wears",
-						"href": "shopify://products/vancl-pure-cotton-long-sve-t-irt-mens-spring-autumn-loose-fit-inner-wear-base-irt-breathable-comfortable-round-ne"
-					}
-				},
-				"featured_item_R9Eg6r": {
-					"type": "featured_item",
-					"settings": {
-						"collection": "",
-						"title": "Shirts",
-						"href": "shopify://products/autumn-winter-corduroy-shirts-men-old-money-style-button-up-long-sleeve-comfortable-casual-shirt-blouse"
-					}
-				},
-				"cta_card_3W8DaV": {
-					"type": "cta_card",
-					"settings": {
-						"cta_text": "Models wearing full outfits",
-						"cta_link": "shopify://collections/all",
-						"cta_label": "Explore more"
-					}
-				}
-			},
-			"block_order": [
-				"featured_item_aA3pbd",
-				"featured_item_R9Eg6r",
-				"cta_card_3W8DaV"
-			],
-			"settings": {
-				"show_button": false,
-				"show_count": false,
-				"position": "center"
-			}
-		},
-		"featured_categories": {
-			"type": "featured_categories",
-			"blocks": {
-				"featured_category_qMEC7T": {
-					"type": "featured_category",
-					"settings": {
-						"collection": "",
-						"title": "Set Collection",
-						"href": "shopify://products/male-tracksuit-jacket-pants-men-set-large-size-6xl-7xl-8xl-fashion-new-autumn-winter-homme-suit-sweatshirt-sweatpants-man-set",
-						"count": 35
-					}
-				},
-				"featured_category_yCAdR6": {
-					"type": "featured_category",
-					"settings": {
-						"collection": "",
-						"title": "Jackets",
-						"href": "",
-						"count": 10
-					}
-				},
-				"featured_category_YbNKcR": {
-					"type": "featured_category",
-					"settings": {
-						"collection": "",
-						"title": "Shirts",
-						"href": "",
-						"count": 25
-					}
-				}
-			},
-			"block_order": [
-				"featured_category_qMEC7T",
-				"featured_category_yCAdR6",
-				"featured_category_YbNKcR"
-			],
-			"settings": {
-				"heading_title": "Our Category List",
-				"heading_align": "left",
-				"show_button": false,
-				"show_count": true,
-				"position": "center"
-			}
-		},
-		"featured_products": {
-			"type": "kuu-featured_products",
-			"settings": {
-				"title": "Our Products",
-				"subheading": "Recently Added Shirts!",
-				"align": "center",
-				"collection": "",
-				"filter": "new",
-				"limit": 8
-			}
-		},
-		"featured_banner": {
-			"type": "featured_banner",
-			"settings": {
-				"heading": "Get 50% Off",
-				"subtext": "for all new products purchases min. purchase $450",
-				"button_label": "Shop Now",
-				"button_link": "shopify://collections"
-			}
-		},
-		"featured_collections": {
-			"type": "featured_collections",
-			"blocks": {
-				"featured_collection_qDeYm9": {
-					"type": "featured_collection",
-					"settings": {
-						"collection": "",
-						"title": "Top Jacktes",
-						"href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
-					}
-				},
-				"featured_collection_qEJwf3": {
-					"type": "featured_collection",
-					"settings": {
-						"collection": "",
-						"title": "Top Sleeves",
-						"href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
-					}
-				},
-				"featured_collection_DjArDx": {
-					"type": "featured_collection",
-					"settings": {
-						"collection": "",
-						"title": "Cozy wears",
-						"href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
-					}
-				},
-				"featured_collection_QbtTBV": {
-					"type": "featured_collection",
-					"settings": {
-						"collection": "",
-						"title": "Winter Collection",
-						"href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
-					}
-				},
-				"featured_collection_gHTpft": {
-					"type": "featured_collection",
-					"settings": {
-						"collection": "",
-						"title": "Zip ups",
-						"href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
-					}
-				}
-			},
-			"block_order": [
-				"featured_collection_qDeYm9",
-				"featured_collection_qEJwf3",
-				"featured_collection_DjArDx",
-				"featured_collection_QbtTBV",
-				"featured_collection_gHTpft"
-			],
-			"settings": {
-				"heading_title": "Our Featured Collections",
-				"heading_subtitle": "Best sellers",
-				"heading_align": "center",
-				"card_width": "440",
-				"card_height": "460",
-				"show_button": true,
-				"show_count": false,
-				"position": "bottom"
-			}
-		}
-	},
-	"order": [
-		"hero",
-		"featured",
-		"featured_categories",
-		"featured_products",
-		"featured_banner",
-		"featured_collections"
-	]
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "hero-button": {
+          "type": "kuu-button",
+          "static": true,
+          "settings": {
+            "device": "all",
+            "variant": "default",
+            "size": "default",
+            "label": "",
+            "custom_link": false,
+            "href": "",
+            "target_blank": false,
+            "custom_color": false,
+            "color": "#000000",
+            "custom_alignment": false,
+            "alignment": "left",
+            "custom_icon": false,
+            "lucide_icon": "",
+            "icon_position": "left",
+            "custom_radius": false,
+            "radius": 8,
+            "custom_width": false,
+            "unit": "percent",
+            "percent_width": 100,
+            "pexel_width": 100,
+            "custom_mobile_width": false,
+            "mobile_unit": "percent",
+            "mobile_percent_width": 100,
+            "mobile_pexel_width": 100,
+            "custom_height": false,
+            "height": 100,
+            "custom_mobile_height": false,
+            "mobile_height": 100,
+            "custom_padding": false,
+            "padding_top": 1,
+            "padding_bottom": 1,
+            "padding_left": 24,
+            "padding_right": 24,
+            "id": "",
+            "class": ""
+          },
+          "blocks": {}
+        },
+        "hero-avatars": {
+          "type": "kuu-avatars",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "kuu_avatars_item_kjHhEK": {
+              "type": "_kuu-avatars-item",
+              "name": "Avatar",
+              "settings": {
+                "avatar_image": "shopify://shop_images/Avatar_from_TinyPNG.jpg"
+              },
+              "blocks": {}
+            },
+            "kuu_avatars_item_WKA9it": {
+              "type": "_kuu-avatars-item",
+              "name": "Avatar",
+              "settings": {
+                "avatar_image": "shopify://shop_images/young-man-portrait.jpg"
+              },
+              "blocks": {}
+            },
+            "kuu_avatars_item_UH9mba": {
+              "type": "_kuu-avatars-item",
+              "name": "Avatar",
+              "settings": {
+                "avatar_image": "shopify://shop_images/portrait-young-man-smiling.jpg"
+              },
+              "blocks": {}
+            },
+            "kuu_avatars_item_LPJjdp": {
+              "type": "_kuu-avatars-item",
+              "name": "Avatar",
+              "settings": {
+                "avatar_image": "shopify://shop_images/close-up-of-a-woman-using-a-green-jade-face-roller.jpg"
+              },
+              "blocks": {}
+            },
+            "kuu_avatars_item_YP7bWK": {
+              "type": "_kuu-avatars-item",
+              "name": "Avatar",
+              "settings": {},
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "kuu_avatars_item_kjHhEK",
+            "kuu_avatars_item_WKA9it",
+            "kuu_avatars_item_UH9mba",
+            "kuu_avatars_item_LPJjdp",
+            "kuu_avatars_item_YP7bWK"
+          ]
+        }
+      },
+      "settings": {
+        "heading": "Unleash Your Style, Shop the Latest Trends",
+        "subheading": "Discover the latest trends & express your style effortlessly. Shop exclusive collections with premium designs, just for you!",
+        "hero_image": "shopify://shop_images/S64f2eab983114e5ca6aeab1d76df3ef3a.webp",
+        "hero_image_alt": "Person wearing a gray zip-up sweatshirt on a white background",
+        "review_heading": "25 Million+",
+        "review_text": "Real reviews from our happy customers! See what fashion lovers are saying about our quality, style and services."
+      }
+    },
+    "featured": {
+      "type": "featured",
+      "blocks": {
+        "featured_item_aA3pbd": {
+          "type": "featured_item",
+          "settings": {
+            "collection": "cozy-wears",
+            "title": "Cozy wears",
+            "href": "shopify://products/vancl-pure-cotton-long-sve-t-irt-mens-spring-autumn-loose-fit-inner-wear-base-irt-breathable-comfortable-round-ne"
+          }
+        },
+        "featured_item_R9Eg6r": {
+          "type": "featured_item",
+          "settings": {
+            "collection": "top-jackets",
+            "title": "Shirts",
+            "href": "shopify://products/autumn-winter-corduroy-shirts-men-old-money-style-button-up-long-sleeve-comfortable-casual-shirt-blouse"
+          }
+        },
+        "cta_card_3W8DaV": {
+          "type": "cta_card",
+          "settings": {
+            "cta_text": "Models wearing full outfits",
+            "cta_link": "shopify://collections/all",
+            "cta_label": "Explore more"
+          }
+        }
+      },
+      "block_order": [
+        "featured_item_aA3pbd",
+        "featured_item_R9Eg6r",
+        "cta_card_3W8DaV"
+      ],
+      "settings": {
+        "show_button": false,
+        "show_count": false,
+        "position": "center"
+      }
+    },
+    "featured_categories": {
+      "type": "featured_categories",
+      "blocks": {
+        "featured_category_qMEC7T": {
+          "type": "featured_category",
+          "settings": {
+            "collection": "casual-collection",
+            "title": "Set Collection",
+            "href": "shopify://products/male-tracksuit-jacket-pants-men-set-large-size-6xl-7xl-8xl-fashion-new-autumn-winter-homme-suit-sweatshirt-sweatpants-man-set",
+            "count": 35
+          }
+        },
+        "featured_category_yCAdR6": {
+          "type": "featured_category",
+          "settings": {
+            "collection": "top-jackets",
+            "title": "Jackets",
+            "href": "",
+            "count": 10
+          }
+        },
+        "featured_category_YbNKcR": {
+          "type": "featured_category",
+          "settings": {
+            "collection": "cozy-wears",
+            "title": "Shirts",
+            "href": "",
+            "count": 25
+          }
+        }
+      },
+      "block_order": [
+        "featured_category_qMEC7T",
+        "featured_category_yCAdR6",
+        "featured_category_YbNKcR"
+      ],
+      "settings": {
+        "heading_title": "Our Category List",
+        "heading_align": "left",
+        "show_button": false,
+        "show_count": true,
+        "position": "center"
+      }
+    },
+    "featured_products": {
+      "type": "kuu-featured_products",
+      "settings": {
+        "title": "Our Products",
+        "subheading": "Recently Added Shirts!",
+        "align": "center",
+        "collection": "",
+        "filter": "new",
+        "limit": 8
+      }
+    },
+    "featured_banner": {
+      "type": "featured_banner",
+      "settings": {
+        "heading": "Get 50% Off",
+        "subtext": "for all new products purchases min. purchase $450",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections"
+      }
+    },
+    "featured_collections": {
+      "type": "featured_collections",
+      "blocks": {
+        "featured_collection_qDeYm9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cozy-wears",
+            "title": "Top Jacktes",
+            "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
+          }
+        },
+        "featured_collection_qEJwf3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "top-sleeves",
+            "title": "Top Sleeves",
+            "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
+          }
+        },
+        "featured_collection_DjArDx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "zip-ups",
+            "title": "Cozy wears",
+            "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
+          }
+        },
+        "featured_collection_QbtTBV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "casual-collection",
+            "title": "Winter Collection",
+            "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
+          }
+        },
+        "featured_collection_gHTpft": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "winter-collection",
+            "title": "Zip ups",
+            "href": "shopify://products/mens-solid-color-zipper-autumn-and-winter-casual-simple-and-versatile-daily-long-sleeved-pullover-sweater"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_qDeYm9",
+        "featured_collection_qEJwf3",
+        "featured_collection_DjArDx",
+        "featured_collection_QbtTBV",
+        "featured_collection_gHTpft"
+      ],
+      "settings": {
+        "heading_title": "Our Featured Collections",
+        "heading_subtitle": "Best sellers",
+        "heading_align": "center",
+        "card_width": "440",
+        "card_height": "460",
+        "show_button": true,
+        "show_count": false,
+        "position": "bottom"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "featured",
+    "featured_categories",
+    "featured_products",
+    "featured_banner",
+    "featured_collections"
+  ]
 }
